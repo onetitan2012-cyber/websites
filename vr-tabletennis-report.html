@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VR乒乓球调研报告 2021–2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1A73E8;
+      --indigo:  #3B3F9E;
+      --teal:    #00897B;
+      --orange:  #E8711A;
+      --light:   #F5F7FA;
+      --dark:    #1C1E2A;
+      --text:    #2D3142;
+      --muted:   #6B7280;
+      --border:  #E2E8F0;
+      --card:    #FFFFFF;
+      --radius:  12px;
+      --shadow:  0 4px 24px rgba(0,0,0,.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    .hero {
+      background: linear-gradient(135deg, #0D1B4B 0%, #1A3A8F 50%, #0E6B9B 100%);
+      color: #fff;
+      padding: 64px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(0,180,255,.18) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 50% at 20% 70%, rgba(80,40,200,.2) 0%, transparent 60%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 4px 16px;
+      font-size: .8rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: .75;
+      max-width: 640px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      margin-top: 36px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-meta span { font-size: .85rem; opacity: .8; }
+    .hero-meta strong { color: #7DD6FF; font-size: 1.4rem; display: block; margin-top: 4px; }
+    .toc-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+    }
+    .toc-bar ul {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .toc-bar ul::-webkit-scrollbar { display: none; }
+    .toc-bar a {
+      display: block;
+      padding: 14px 16px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .toc-bar a:hover { color: var(--blue); border-color: var(--blue); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .section-icon {
+      width: 44px; height: 44px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 { font-size: 1.5rem; font-weight: 700; }
+    .section-header p { font-size: .9rem; color: var(--muted); margin-top: 2px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+    .card-accent { border-top: 4px solid var(--blue); }
+    .card-accent-teal { border-top: 4px solid var(--teal); }
+    .card-accent-orange { border-top: 4px solid var(--orange); }
+    .card-accent-indigo { border-top: 4px solid var(--indigo); }
+    .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .card .badge {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .badge-blue   { background: #EBF2FF; color: #1A73E8; }
+    .badge-teal   { background: #E6F4F1; color: #00897B; }
+    .badge-orange { background: #FFF3E6; color: #E8711A; }
+    .badge-purple { background: #F0EBFF; color: #6B3FA0; }
+    .badge-green  { background: #E8F5E9; color: #2E7D32; }
+    .badge-gray   { background: #F0F2F5; color: #6B7280; }
+    .meta-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+    .card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+    .card ul { padding-left: 18px; }
+    .card li { font-size: .9rem; color: var(--muted); margin-bottom: 4px; }
+    .stat-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      text-align: center;
+      border: 1px solid var(--border);
+    }
+    .stat-card .stat-num { font-size: 2.2rem; font-weight: 800; line-height: 1; margin: 12px 0 6px; }
+    .stat-card .stat-label { font-size: .82rem; color: var(--muted); }
+    .stat-card .stat-icon { font-size: 1.6rem; }
+    .compare-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .compare-table th {
+      background: var(--dark);
+      color: #fff;
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    .compare-table th:first-child { border-radius: 8px 0 0 0; }
+    .compare-table th:last-child  { border-radius: 0 8px 0 0; }
+    .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table tr:nth-child(even) td { background: #FAFBFC; }
+    .compare-table tr:hover td { background: #EBF2FF; }
+    .star { color: #F59E0B; }
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), var(--teal));
+    }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -28px; top: 6px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 2px solid #fff;
+      box-shadow: 0 0 0 3px rgba(26,115,232,.2);
+    }
+    .tl-year {
+      display: inline-block;
+      font-size: .75rem; font-weight: 700;
+      color: var(--blue);
+      background: #EBF2FF;
+      border-radius: 4px;
+      padding: 2px 8px;
+      margin-bottom: 4px;
+    }
+    .tl-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+    .tl-item p  { font-size: .87rem; color: var(--muted); }
+    .two-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    @media (max-width: 640px) { .two-panel { grid-template-columns: 1fr; } }
+    .panel { border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
+    .panel-challenge   { background: #FFF8F6; }
+    .panel-opportunity { background: #F0FBF8; }
+    .panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .panel ul { padding-left: 18px; }
+    .panel li { font-size: .88rem; margin-bottom: 8px; color: var(--text); }
+    .callout {
+      border-left: 4px solid var(--blue);
+      background: #EBF2FF;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 24px 0;
+      font-size: .9rem;
+      color: #1C3A6E;
+    }
+    .callout.orange { border-color: var(--orange); background: #FFF3E6; color: #6B3000; }
+    .callout.teal   { border-color: var(--teal);   background: #E6F4F1; color: #004D40; }
+    .progress-group { display: flex; flex-direction: column; gap: 14px; }
+    .progress-item label { font-size: .85rem; font-weight: 600; display: flex; justify-content: space-between; margin-bottom: 4px; }
+    .progress-bar { height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
+    .progress-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+    .conclusion-banner {
+      background: linear-gradient(135deg, #0D1B4B, #1A3A8F);
+      color: #fff;
+      border-radius: 16px;
+      padding: 48px;
+      text-align: center;
+    }
+    .conclusion-banner h2 { font-size: 1.6rem; margin-bottom: 16px; }
+    .conclusion-banner p  { opacity: .8; max-width: 660px; margin: 0 auto 24px; font-size: .95rem; }
+    .conclusion-banner .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+    .pill {
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: .82rem;
+    }
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .8rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    section { padding: 56px 0; }
+    section + section { border-top: 1px solid var(--border); }
+    @media (max-width: 768px) {
+      .hero { padding: 48px 16px 36px; }
+      .container { padding: 32px 16px; }
+      .hero-meta { gap: 20px; }
+      .conclusion-banner { padding: 32px 20px; }
+      .compare-table { font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-tag">全球调研报告 · 2021–2026</div>
+  <h1>VR乒乓球：产品、市场与未来</h1>
+  <p>深度解析近5年虚拟现实乒乓球的产品格局、用户画像、市场数据，及VR运动赛道的未来演进路径</p>
+  <div class="hero-meta">
+    <div><span>报告日期</span><strong>2026年3月</strong></div>
+    <div><span>VR运动市场（2024）</span><strong>$6.2 B</strong></div>
+    <div><span>市场年复合增长率</span><strong>26.7%</strong></div>
+    <div><span>ITTF首届VR电竞世锦赛</span><strong>2024年</strong></div>
+  </div>
+</div>
+
+<nav class="toc-bar">
+  <ul>
+    <li><a href="#overview">行业概览</a></li>
+    <li><a href="#products">主要产品</a></li>
+    <li><a href="#events">赛事生态</a></li>
+    <li><a href="#users">用户画像</a></li>
+    <li><a href="#market">市场数据</a></li>
+    <li><a href="#research">学术研究</a></li>
+    <li><a href="#china">中国市场</a></li>
+    <li><a href="#future">未来展望</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- §1 行业概览 -->
+  <section id="overview">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EBF2FF">🌐</div>
+      <div>
+        <h2>行业概览</h2>
+        <p>VR乒乓球从游戏娱乐走向竞技体育与科学训练</p>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>核心判断：</strong>2021–2026年，VR乒乓球完成了从"休闲娱乐小品类"向"正式竞技项目+专业训练工具"的关键跃迁。国际乒联（ITTF）于2024年举办首届世界电竞乒乓球锦标赛，标志着这一品类获得最高级别体育官方认可，进入新发展阶段。
+    </div>
+    <div class="grid-4" style="margin-top:28px">
+      <div class="stat-card">
+        <div class="stat-icon">🎮</div>
+        <div class="stat-num" style="color:#1A73E8">3+</div>
+        <div class="stat-label">主流VR乒乓球产品</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🏆</div>
+        <div class="stat-num" style="color:#3B3F9E">1st</div>
+        <div class="stat-label">ITTF电竞世锦赛（2024）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🔬</div>
+        <div class="stat-num" style="color:#00897B">10+</div>
+        <div class="stat-label">同行评审学术研究（近3年）</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📈</div>
+        <div class="stat-num" style="color:#E8711A">26.7%</div>
+        <div class="stat-label">VR运动市场CAGR</div>
+      </div>
+    </div>
+    <div class="callout teal" style="margin-top:28px">
+      <strong>时代背景：</strong>Meta Quest 2（2020）的大众化定价（299美元）、Quest 3（2023）的混合现实能力升级，以及Pico 4等国产头显的普及，共同构成了VR乒乓球快速发展的硬件基础。独立头显免去PC线缆限制，使"起身挥拍"的运动场景成为现实。
+    </div>
+  </section>
+
+  <!-- §2 主要产品 -->
+  <section id="products">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F0EBFF">🏓</div>
+      <div>
+        <h2>主要产品格局</h2>
+        <p>三大核心应用定位差异鲜明，周边硬件生态同步成熟</p>
+      </div>
+    </div>
+
+    <div class="grid-3" style="margin-bottom:32px">
+      <div class="card card-accent">
+        <div class="meta-row">
+          <span class="badge badge-blue">竞技对战首选</span>
+          <span class="badge badge-green">强烈推荐</span>
+        </div>
+        <h3>Eleven Table Tennis VR</h3>
+        <p style="font-size:.8rem;color:#888;margin-bottom:10px">开发商：For Fun Labs | 平台：Meta Quest / PC VR</p>
+        <ul>
+          <li><strong>物理引擎：</strong>业界公认最真实的球路与击打手感</li>
+          <li><strong>多人联机：</strong>低延迟匹配、排名赛、俱乐部天梯</li>
+          <li><strong>AI对手：</strong>自适应难度，行为自然</li>
+          <li><strong>游戏模式：</strong>竞技赛、训练、啤酒乒乓等</li>
+          <li><strong>官方认可：</strong>ITTF首届电竞世锦赛指定平台</li>
+          <li><strong>不足：</strong>画面音效较朴素，发球规则严格</li>
+        </ul>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <span class="star">★★★★★</span> <span style="font-size:.82rem;color:var(--muted)">综合评分领跑同类</span>
+        </div>
+      </div>
+
+      <div class="card card-accent-teal">
+        <div class="meta-row">
+          <span class="badge badge-teal">专业训练工具</span>
+          <span class="badge badge-blue">持续迭代中</span>
+          <span class="badge badge-green">Quest已上线</span>
+        </div>
+        <h3>T3S – Table Tennis Training Simulator</h3>
+        <p style="font-size:.8rem;color:#888;margin-bottom:10px">平台：Meta Quest 2/3/Pro（已上线）+ Pico | 价格：$14.99</p>
+        <ul>
+          <li><strong>62项训练任务：</strong>击球、发球、步法，含真人示范视频</li>
+          <li><strong>48种AI发球：</strong>覆盖多线路、旋转类型</li>
+          <li><strong>动作回放：</strong>可复盘自身击球轨迹</li>
+          <li><strong>球拍定制：</strong>精细模拟胶皮厚度、粘性等参数</li>
+          <li><strong>多人对战：</strong>Quest平台多人对战模式已完成上线</li>
+          <li><strong>适配器支持：</strong>SolidSlime / BonWasyl等物理球拍架</li>
+        </ul>
+        <div style="margin-top:10px;padding:10px 12px;background:#FFF8F0;border-radius:8px;border-left:3px solid #E8711A">
+          <div style="font-size:.78rem;font-weight:700;color:#E8711A;margin-bottom:4px">⚠️ 现阶段主要不足（待改进）</div>
+          <ul style="font-size:.82rem;color:#7A4010;padding-left:14px;margin:0">
+            <li>场景画质与视觉表现有提升空间</li>
+            <li>UI 界面与交互设计不够完善，操作引导待优化</li>
+            <li>缺少系统性教学功能与课程体系（如分级课程、动作讲解等）</li>
+          </ul>
+        </div>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <span class="star">★★★★☆</span> <span style="font-size:.82rem;color:var(--muted)">训练核心扎实，产品体验打磨中</span>
+        </div>
+      </div>
+
+      <div class="card card-accent-orange">
+        <div class="meta-row">
+          <span class="badge badge-orange">视听体验</span>
+          <span class="badge badge-gray">谨慎推荐</span>
+        </div>
+        <h3>Racket Fury: Table Tennis VR</h3>
+        <p style="font-size:.8rem;color:#888;margin-bottom:10px">开发商：Pixel Edge Games | 平台：Meta Quest / PC VR</p>
+        <ul>
+          <li><strong>视觉设计：</strong>机器人角色+科幻场景，画面震撼</li>
+          <li><strong>音效体验：</strong>击球音效爽快有力</li>
+          <li><strong>自定义性：</strong>球台位置/角度精细调整</li>
+          <li><strong>训练模式：</strong>无限回合热身模式</li>
+          <li><strong>主要问题：</strong>多人延迟严重，AI设计不平衡</li>
+          <li><strong>用户基数：</strong>在线玩家少，匹配困难</li>
+        </ul>
+        <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border)">
+          <span class="star">★★★☆☆</span> <span style="font-size:.82rem;color:var(--muted)">单机体验尚可，联机不佳</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="padding:0;overflow:hidden">
+      <div style="padding:20px 24px;border-bottom:1px solid var(--border)">
+        <h3 style="font-size:1rem">产品横向对比</h3>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>维度</th>
+              <th>Eleven Table Tennis VR</th>
+              <th>T3S 训练模拟器</th>
+              <th>Racket Fury</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>核心定位</strong></td><td>多人竞技</td><td>单人精训</td><td>娱乐体验</td></tr>
+            <tr><td><strong>物理真实度</strong></td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐☆☆</td></tr>
+            <tr><td><strong>多人联机</strong></td><td>✅ 流畅、有排名</td><td>✅ Quest多人对战已上线；Pico同步支持</td><td>❌ 严重延迟</td></tr>
+            <tr><td><strong>AI训练</strong></td><td>✅ 自适应难度</td><td>✅ 48种发球模式</td><td>⚠️ AI设计不平衡</td></tr>
+            <tr><td><strong>赛事背书</strong></td><td>✅ ITTF官方指定</td><td>—</td><td>—</td></tr>
+            <tr><td><strong>外设适配</strong></td><td>支持多品牌球拍架</td><td>SolidSlime / BonWasyl</td><td>基础支持</td></tr>
+            <tr><td><strong>价格（约）</strong></td><td>~$29.99</td><td>~$14.99</td><td>~$19.99</td></tr>
+            <tr><td><strong>适合人群</strong></td><td>希望竞技、有乒乓球基础</td><td>专注技术提升的训练者</td><td>追求视觉体验的休闲玩家</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="margin-top:28px">
+      <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px">📦 周边硬件生态</h3>
+      <div class="grid-3">
+        <div class="card card-accent-indigo">
+          <div class="meta-row"><span class="badge badge-purple">物理适配器</span></div>
+          <h3>VR球拍架适配器</h3>
+          <p>将VR手柄嵌入真实球拍形状的外壳中，模拟真实球拍重量与平衡感。主要品牌：<strong>Glistco G-Spin</strong>、<strong>Sanlaki</strong>（支持Quest 2/3）、<strong>BonWasyl</strong>，售价约$15–$35。核心价值：增强击球本体感，提升物理训练迁移率。</p>
+        </div>
+        <div class="card card-accent-indigo">
+          <div class="meta-row"><span class="badge badge-purple">触觉反馈</span></div>
+          <h3>触觉手套 &amp; 振动背心</h3>
+          <p>2023–2025年涌现多款触觉外设，如<strong>bHaptics TactGlove</strong>、<strong>Woojer Vest Edge</strong>等，可与VR乒乓球结合提供击球震动反馈。目前仍属高端小众，普及化是未来方向。</p>
+        </div>
+        <div class="card card-accent-indigo">
+          <div class="meta-row"><span class="badge badge-purple">头显平台</span></div>
+          <h3>主流头显支持</h3>
+          <p>Meta Quest 2/3/3S/Pro 是VR乒乓球最主流平台；Pico 4/4 Ultra在中国市场占据主要份额；PC VR（Index/Vive）为高端玩家提供更高精度追踪。Quest 3的混合现实（MR）功能为现实空间感知提供新可能。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §3 赛事生态 -->
+  <section id="events">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E6F4F1">🏆</div>
+      <div>
+        <h2>赛事生态</h2>
+        <p>从民间联赛到ITTF官方世锦赛，竞技体系快速成型</p>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-year">2021–2022</span>
+        <h4>社区草根联赛阶段</h4>
+        <p>Eleven VR社区在Discord自发组织俱乐部联赛、天梯排名赛。11Clubhouse等第三方平台提供全球玩家排名，涌现出一批"VR乒乓职业玩家"（如法国Anto、德国Aiphaton等）。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2022</span>
+        <h4>杜塞尔多夫欧洲锦标赛（首届正式洲际赛）</h4>
+        <p>欧洲VR乒乓球玩家在德国线下举办首届欧洲锦标赛，法国Anto夺冠，引发媒体广泛关注，为ITTF介入提供示范。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2023年12月</span>
+        <h4>ITTF宣布举办VR乒乓球世界赛事</h4>
+        <p>国际乒乓球联合会（ITTF）执行委员会宣布：将于2024年举办首届VR乒乓球世界头衔赛，与国际奥委会"奥林匹克虚拟系列赛"战略对齐，标志着官方体育组织正式拥抱VR电竞。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2024年10–11月</span>
+        <h4>ITTF世界电竞乒乓球锦标赛（瑞典赫尔辛堡）</h4>
+        <p><strong>历史性事件：</strong>首届ITTF电竞世锦赛，线上资格赛吸引超200名全球选手，8名精英晋级赫尔辛堡线下决赛。法国20岁选手Antonin "Anto" Landreau以3-1击败德国Aiphaton夺冠，加冕史上首位ITTF电竞世界冠军。赛期同步举办电竞峰会，IOC、UNEP等机构代表与会。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-year">2025–2026预期</span>
+        <h4>赛事体系进一步扩展</h4>
+        <p>预计ITTF将建立常规电竞巡回赛体系；结合IOC奥林匹克电竞运动会（2025年沙特），VR体育赛事有望跨项目扩展；中国、日本等乒乓球强国官方俱乐部预计加大VR赛事投入。</p>
+      </div>
+    </div>
+    <div class="callout orange" style="margin-top:8px">
+      <strong>深层意义：</strong>ITTF的背书解决了VR乒乓球"合法性"问题——它不再是"游戏"，而是正式的体育竞技形式。这将吸引赞助商、职业体育机构和更主流的用户群体入场。
+    </div>
+  </section>
+
+  <!-- §4 用户画像 -->
+  <section id="users">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FFF3E6">👥</div>
+      <div>
+        <h2>用户画像</h2>
+        <p>多层次用户结构：从休闲玩家到职业运动员辅助训练</p>
+      </div>
+    </div>
+    <div class="grid-3" style="margin-bottom:24px">
+      <div class="card card-accent">
+        <div class="meta-row"><span class="badge badge-blue">第一梯队</span></div>
+        <h3>VR竞技玩家</h3>
+        <p>有一定现实乒乓球基础，主要使用Eleven VR进行多人对战和排名竞技。全球活跃排名玩家以欧洲（法国、德国、瑞士、英国）和日本为核心。调研显示：<strong>许多玩家将VR乒乓球视为"秘密武器"</strong>，用于弥补缺乏练球场地的问题。</p>
+      </div>
+      <div class="card card-accent-teal">
+        <div class="meta-row"><span class="badge badge-teal">第二梯队</span></div>
+        <h3>技能提升训练者</h3>
+        <p>乒乓球爱好者或运动员使用T3S、Eleven VR的训练模式进行专项练习。研究证实VR乒乓球可改善反手、正手击球技术，并存在可观察的<strong>现实技能迁移</strong>效果。12周随机对照试验表明VR训练在特定指标上不弱于传统教学。</p>
+      </div>
+      <div class="card card-accent-orange">
+        <div class="meta-row"><span class="badge badge-orange">第三梯队</span></div>
+        <h3>休闲健身用户</h3>
+        <p>将VR乒乓球作为有氧运动和娱乐结合的方式，类似Beat Saber用户群体。VR运动研究显示玩家因"心流"效应更容易坚持锻炼。全球VR健身用户估计已超过<strong>100–200万</strong>（2024年数据）。</p>
+      </div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3 style="margin-bottom:16px">🎯 用户核心动机</h3>
+        <div class="progress-group">
+          <div class="progress-item">
+            <label><span>弥补场地/对手限制</span><span>82%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>技能练习与提升</span><span>71%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:71%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>多人竞技娱乐</span><span>68%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>日常健身运动</span><span>54%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:54%"></div></div>
+          </div>
+          <div class="progress-item">
+            <label><span>参与竞技赛事</span><span>28%</span></label>
+            <div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div>
+          </div>
+        </div>
+        <p style="font-size:.77rem;margin-top:12px;color:var(--muted)">数据来源：基于ACM SUI 2023用户调研及社区访谈综合估算</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:16px">📊 用户特征总结</h3>
+        <ul style="line-height:2">
+          <li>年龄主要集中在 <strong>20–45岁</strong></li>
+          <li>男性用户占主导，但女性用户比例在健身类用途中更高</li>
+          <li>欧洲用户（尤其法国、德国）在竞技榜单中占主导</li>
+          <li>日本和中国用户数量快速增长（Pico设备普及驱动）</li>
+          <li>现实乒乓球经历者更倾向于成为高活跃用户</li>
+          <li>有明确竞技目标的用户留存率显著更高</li>
+          <li>付费意愿强：周边球拍适配器已形成独立消费品类</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- §5 市场数据 -->
+  <section id="market">
+    <div class="section-header">
+      <div class="section-icon" style="background:#E8F5E9">📊</div>
+      <div>
+        <h2>市场数据</h2>
+        <p>VR运动赛道高速扩张，VR乒乓球处于最早商业验证阶段</p>
+      </div>
+    </div>
+    <div class="grid-4" style="margin-bottom:28px">
+      <div class="stat-card">
+        <div class="stat-icon">💰</div>
+        <div class="stat-num" style="color:#1A73E8">$6.2B</div>
+        <div class="stat-label">2024年全球VR运动市场规模</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🚀</div>
+        <div class="stat-num" style="color:#00897B">26.7%</div>
+        <div class="stat-label">2025–2033年CAGR预测</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🌍</div>
+        <div class="stat-num" style="color:#E8711A">$22.6B</div>
+        <div class="stat-label">2024年全球传统乒乓球市场</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">👤</div>
+        <div class="stat-num" style="color:#3B3F9E">100K+</div>
+        <div class="stat-label">Supernatural VR健身付费用户（2024年末）</div>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:28px">
+      <div class="card">
+        <h3 style="margin-bottom:16px">📈 VR运动市场规模预测</h3>
+        <div style="padding:8px 0">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <span style="width:50px;font-size:.8rem;font-weight:700;color:var(--muted)">2024</span>
+            <div style="flex:1;background:var(--border);border-radius:50px;height:22px;overflow:hidden">
+              <div style="width:15%;height:100%;background:linear-gradient(90deg,#1A73E8,#00897B);border-radius:50px;display:flex;align-items:center;padding-left:8px">
+                <span style="font-size:.72rem;color:#fff;white-space:nowrap">$6.2B</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <span style="width:50px;font-size:.8rem;font-weight:700;color:var(--muted)">2027</span>
+            <div style="flex:1;background:var(--border);border-radius:50px;height:22px;overflow:hidden">
+              <div style="width:35%;height:100%;background:linear-gradient(90deg,#1A73E8,#00897B);border-radius:50px;display:flex;align-items:center;padding-left:8px">
+                <span style="font-size:.72rem;color:#fff;white-space:nowrap">~$15B</span>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="width:50px;font-size:.8rem;font-weight:700;color:var(--muted)">2033</span>
+            <div style="flex:1;background:var(--border);border-radius:50px;height:22px;overflow:hidden">
+              <div style="width:100%;height:100%;background:linear-gradient(90deg,#1A73E8,#3B3F9E);border-radius:50px;display:flex;align-items:center;padding-left:8px">
+                <span style="font-size:.72rem;color:#fff;white-space:nowrap">~$42B+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:.78rem;margin-top:12px;color:var(--muted)">数据来源：DataIntelo, Credence Research, WiseGuy Reports综合</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:16px">🏢 主要参与方</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+          <div style="background:#F5F7FA;border-radius:8px;padding:12px">
+            <div style="font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px">硬件平台</div>
+            <div style="font-size:.85rem;line-height:1.8">Meta (Quest)<br>HTC (VIVE)<br>Pico (字节)</div>
+          </div>
+          <div style="background:#F5F7FA;border-radius:8px;padding:12px">
+            <div style="font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px">软件应用</div>
+            <div style="font-size:.85rem;line-height:1.8">For Fun Labs<br>Pixel Edge Games<br>T3S开发团队</div>
+          </div>
+          <div style="background:#F5F7FA;border-radius:8px;padding:12px">
+            <div style="font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px">官方机构</div>
+            <div style="font-size:.85rem;line-height:1.8">ITTF<br>国际奥委会<br>各国乒协</div>
+          </div>
+          <div style="background:#F5F7FA;border-radius:8px;padding:12px">
+            <div style="font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:6px">周边外设</div>
+            <div style="font-size:.85rem;line-height:1.8">Glistco / Sanlaki<br>SolidSlime<br>BonWasyl</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="callout">
+      <strong>与传统乒乓球市场的关系：</strong>传统乒乓球市场2024年规模约22.6亿美元，VR乒乓球目前是其补充而非替代。大量VR乒乓球用户是现实乒乓球爱好者，VR使用反而可能增强其对传统装备的消费意愿（正向拉动效应）。
+    </div>
+  </section>
+
+  <!-- §6 学术研究 -->
+  <section id="research">
+    <div class="section-header">
+      <div class="section-icon" style="background:#F0FBF8">🔬</div>
+      <div>
+        <h2>学术研究进展</h2>
+        <p>科学验证VR乒乓球的训练价值与技能迁移可行性</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card card-accent-teal">
+        <div class="meta-row"><span class="badge badge-teal">2024年 · MDPI Sensors</span></div>
+        <h3>VR技术在乒乓球教育中的效果研究</h3>
+        <p>一项<strong>12周随机对照试验</strong>，对比VR训练与传统教学法。结论：VR训练在提升初学者击球技术和动作标准化方面具有显著效果，物理引擎为运动认知和肌肉记忆形成提供支持。提出VR有望"革命性地改变体育训练方法论"。</p>
+      </div>
+      <div class="card card-accent-teal">
+        <div class="meta-row"><span class="badge badge-teal">2023年 · ACM SUI</span></div>
+        <h3>"VR乒乓球是我的秘密武器"——用户调研</h3>
+        <p>通过问卷调研VR乒乓球玩家群体，研究发现：玩家普遍认为<strong>正手和反手技术可在VR和现实之间双向迁移</strong>；玩家将VR训练视为弥补无法随时找对手练球的有效替代手段；同时提出空间限制、抖动感等改善建议。</p>
+      </div>
+      <div class="card card-accent-teal">
+        <div class="meta-row"><span class="badge badge-teal">2022年 · IEEE</span></div>
+        <h3>VR乒乓球技能迁移实验研究</h3>
+        <p>为VR平台开发了融合定制物理引擎、真实声画刺激、触觉反馈和动作捕捉的研究系统。实验测量了玩家在VR训练后的现实乒乓球表现提升，并从<strong>运动学层面验证了技能迁移的可行性</strong>。</p>
+      </div>
+      <div class="card card-accent-teal">
+        <div class="meta-row"><span class="badge badge-teal">2024年 · Springer</span></div>
+        <h3>VR乒乓球运动强度与吸引力评估</h3>
+        <p>测量玩家在VR乒乓球中的心率、运动强度和主观体验。发现VR乒乓球可达到<strong>中等强度有氧运动水平</strong>（比休息状态心率高40–60%），且用户因"心流"效应低估运动强度，有助于维持锻炼动力。</p>
+      </div>
+    </div>
+    <div class="callout teal">
+      <strong>学术共识：</strong>现有研究一致支持VR乒乓球的训练价值——物理引擎的真实度是关键，真实度越高，技能迁移效果越好。VR不能完全替代现实训练，但可以作为有效的<strong>补充训练工具</strong>，尤其在场地、对手可及性受限时价值突出。
+    </div>
+  </section>
+
+  <!-- §7 中国市场 -->
+  <section id="china">
+    <div class="section-header">
+      <div class="section-icon" style="background:#FEE8E8">🇨🇳</div>
+      <div>
+        <h2>中国市场特殊视角</h2>
+        <p>政策驱动+乒乓球文化基础+本土硬件，形成独特增长逻辑</p>
+      </div>
+    </div>
+    <div class="grid-2" style="margin-bottom:24px">
+      <div class="card">
+        <h3 style="margin-bottom:12px">宏观政策支持</h3>
+        <ul style="line-height:2">
+          <li>《全民健身计划（2021–2025年）》明确推动虚拟运动发展</li>
+          <li>《虚拟现实与行业应用融合发展行动计划（2022–2026年）》目标：VR产业规模超3500亿元，终端销量2500万台</li>
+          <li>2024年度国家体育总局"智能体育典型案例"公示，多个VR运动项目入选</li>
+          <li>2024年中国虚拟体育市场规模同比增长25.7%，2025年预期达1152亿元</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-bottom:12px">乒乓球文化基础</h3>
+        <ul style="line-height:2">
+          <li>中国拥有全球最大的乒乓球参与群体，估算注册球员超1000万</li>
+          <li>"国球"文化使乒乓球相关技术产品在中国有天然用户认同</li>
+          <li>Pico 4系列（字节跳动旗下）在国内市场形成Meta Quest的有力竞争，T3S等应用均支持Pico平台</li>
+          <li>中国头部乒乓球俱乐部和职业队已开始探索VR辅助训练</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:24px">
+      <h3 style="margin-bottom:16px">标志性案例：上海虚拟体育公开赛（SVS）</h3>
+      <div class="grid-3">
+        <div style="text-align:center;padding:16px;background:#F5F7FA;border-radius:8px">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--blue)">2.7万</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-top:4px">首届报名人数</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#F5F7FA;border-radius:8px">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--teal)">750万</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-top:4px">单场直播观看人次</div>
+        </div>
+        <div style="text-align:center;padding:16px;background:#F5F7FA;border-radius:8px">
+          <div style="font-size:1.8rem;font-weight:800;color:var(--orange)">3.2亿</div>
+          <div style="font-size:.82rem;color:var(--muted);margin-top:4px">媒体曝光量</div>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-size:.9rem;color:var(--muted)">上海虚拟体育公开赛是国内首个综合性虚拟体育赛事，目前主要涵盖虚拟自行车、赛艇等项目，并持续扩展品类。基于中国乒乓球文化基础，VR乒乓球被视为未来SVS的重要候选项目。</p>
+    </div>
+    <div class="callout">
+      <strong>中国机遇：</strong>每日4亿人健身（占人口28.6%）+ 强烈的乒乓球文化认同 + 政策红利 + 本土VR硬件（Pico）普及 = VR乒乓球在中国拥有全球最大潜在用户基础，但目前产品生态和竞技赛事体系仍以海外为主导，本土化空间巨大。
+    </div>
+  </section>
+
+  <!-- §8 未来展望 -->
+  <section id="future">
+    <div class="section-header">
+      <div class="section-icon" style="background:#EBF2FF">🔭</div>
+      <div>
+        <h2>未来展望</h2>
+        <p>VR乒乓球的5年演进路径，及VR运动的长期叙事</p>
+      </div>
+    </div>
+    <div class="two-panel" style="margin-bottom:28px">
+      <div class="panel panel-challenge">
+        <h3 style="color:#C0392B">⚠️ 当前主要挑战</h3>
+        <ul>
+          <li><strong>晕动症（VR眩晕）：</strong>长时间使用仍是部分用户的入门障碍，尤其对高强度运动场景</li>
+          <li><strong>空间限制：</strong>VR乒乓球需要较大活动空间（2米×2米以上），家庭环境难以满足</li>
+          <li><strong>触感缺失：</strong>缺乏真实的球拍持握感、击球振动感，影响深度训练效果</li>
+          <li><strong>延迟问题：</strong>联机延迟对乒乓球这类快节奏运动影响尤为显著</li>
+          <li><strong>用户规模不足：</strong>全球活跃用户仍属小众，相对Supernatural/Beat Saber等大众VR运动差距明显</li>
+          <li><strong>国际竞技壁垒：</strong>真实乒乓球职业选手对VR版本的接受度和参与仍然有限</li>
+          <li><strong>内容深度：</strong>战术分析、系统化教学课程、完整团体赛制等专业功能尚缺——以T3S为例，物理引擎已成熟，但分级课程体系、动作讲解指导仍是明显缺口</li>
+        </ul>
+      </div>
+      <div class="panel panel-opportunity">
+        <h3 style="color:#2E7D32">✅ 重大发展机遇</h3>
+        <ul>
+          <li><strong>ITTF官方体系化：</strong>赛事体系成熟将带来赞助商和媒体资源，形成正向飞轮</li>
+          <li><strong>AI教练普及：</strong>AI实时分析击球姿势、提供个性化训练建议，结合系统化分级课程体系，使VR成为更高效的训练工具（T3S等产品的核心进化方向）</li>
+          <li><strong>触觉技术进步：</strong>低成本触觉手套和外设将大幅提升真实感</li>
+          <li><strong>混合现实（MR）升级：</strong>Quest 3等MR设备可叠加虚拟球台于真实空间，开启"真实房间内打球"新场景</li>
+          <li><strong>职业队合作：</strong>顶级职业队将VR纳入常规训练体系（STRIVR等公司已在其他运动验证）</li>
+          <li><strong>中国市场爆发：</strong>本土政策红利+Pico生态+乒乓文化，驱动中国市场快速扩张</li>
+          <li><strong>大众健身切入：</strong>乒乓球的运动强度适中，是比格斗/射击更适合全年龄段的VR健身品类</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px">
+      <h3 style="margin-bottom:20px">🛣 VR乒乓球技术演进路线图</h3>
+      <div class="grid-3">
+        <div style="background:#F0F7FF;border-radius:8px;padding:16px;border-top:3px solid #1A73E8">
+          <div style="font-weight:700;margin-bottom:8px;color:#1A73E8">2026–2027 · 近期</div>
+          <ul style="font-size:.87rem;color:var(--muted);padding-left:16px;line-height:1.9">
+            <li>MR模式普及（叠加真实空间）</li>
+            <li>ITTF电竞巡回赛体系建立</li>
+            <li>T3S等训练APP补全UI/UX体验 + 引入AI姿势分析 + 上线系统化教学课程</li>
+            <li>触觉球拍适配器迭代升级</li>
+            <li>中国本土VR乒乓球应用上线</li>
+          </ul>
+        </div>
+        <div style="background:#F0FBF8;border-radius:8px;padding:16px;border-top:3px solid #00897B">
+          <div style="font-weight:700;margin-bottom:8px;color:#00897B">2028–2030 · 中期</div>
+          <ul style="font-size:.87rem;color:var(--muted);padding-left:16px;line-height:1.9">
+            <li>专业队将VR纳入标准训练计划</li>
+            <li>VR乒乓球进入学校体育课</li>
+            <li>全身动作捕捉普及（步法训练）</li>
+            <li>低成本触觉手套商用</li>
+            <li>AI陪练达到省级运动员水平</li>
+          </ul>
+        </div>
+        <div style="background:#FFF3E6;border-radius:8px;padding:16px;border-top:3px solid #E8711A">
+          <div style="font-weight:700;margin-bottom:8px;color:#E8711A">2030+ · 长期愿景</div>
+          <ul style="font-size:.87rem;color:var(--muted);padding-left:16px;line-height:1.9">
+            <li>VR乒乓球进入奥林匹克电竞运动会</li>
+            <li>虚拟与现实世界排名体系互通</li>
+            <li>脑机接口辅助技战术分析</li>
+            <li>全息投影无头显化交互</li>
+            <li>全球亿级用户规模</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-accent-indigo">
+      <h3 style="margin-bottom:16px">VR运动的长期叙事：三条并行轨道</h3>
+      <div class="grid-3">
+        <div>
+          <div style="font-weight:700;color:var(--indigo);margin-bottom:8px">🏅 竞技赛事轨道</div>
+          <p style="font-size:.87rem;color:var(--muted)">以ITTF为代表的传统体育组织陆续将VR纳入官方赛事体系，IOC的奥林匹克电竞运动会是最高背书。VR运动将形成与传统运动平行的竞技生态，具备独立价值。</p>
+        </div>
+        <div>
+          <div style="font-weight:700;color:var(--teal);margin-bottom:8px">💪 专业训练轨道</div>
+          <p style="font-size:.87rem;color:var(--muted)">职业运动员和青少年运动员将VR纳入日常训练体系（类似STRIVR服务NFL的模式）。VR训练的核心价值：量化反馈精准、训练可重复性高、无需搭档、安全无伤。</p>
+        </div>
+        <div>
+          <div style="font-weight:700;color:var(--orange);margin-bottom:8px">🏃 大众健身轨道</div>
+          <p style="font-size:.87rem;color:var(--muted)">VR乒乓球作为"老少皆宜"的有氧运动，有潜力成为VR健身领域的标杆品类（类似Beat Saber之于音律运动）。全球VR健身市场将在2030年前后突破百亿规模。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="border-top:none;padding-top:0">
+    <div class="conclusion-banner">
+      <h2>核心结论与展望</h2>
+      <p>VR乒乓球正站在从小众到主流的临界点上。ITTF的官方背书、扎实的学术训练价值验证、日趋完善的产品生态，以及中国巨大的市场潜力，共同构成了这一品类未来5–10年高速增长的底层逻辑。</p>
+      <p style="margin-top:12px">更广泛地看，VR运动代表了"游戏化健身"和"数字化竞技"的融合趋势——技术进步将持续模糊虚拟与现实运动的边界，最终VR乒乓球不只是乒乓球的"数字孪生"，而将成为独立存在的竞技与运动形式。</p>
+      <div class="pill-row">
+        <span class="pill">官方赛事体系化</span>
+        <span class="pill">物理引擎逼真化</span>
+        <span class="pill">训练价值科学验证</span>
+        <span class="pill">中国市场高速增长</span>
+        <span class="pill">MR混合现实融合</span>
+        <span class="pill">AI教练普及化</span>
+        <span class="pill">全球VR运动市场$42B+（2033）</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>本报告基于公开资料综合整理，数据来源包括：ITTF官方公告、Reality Remake评测、Tampa Bay TT评测、MDPI Sensors学术期刊、ACM SUI 2023论文、Cynergy Sports报道、澎湃新闻、百度百科"虚拟体育"词条及多家市场研究机构（DataIntelo / MarkWide Research / Credence Research / WiseGuy Reports）。</p>
+  <p style="margin-top:8px">调研周期：2021年1月 – 2026年3月 | 报告生成日期：2026年3月13日</p>
+</footer>
+
+</body>
+</html>

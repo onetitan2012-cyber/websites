@@ -1,0 +1,2202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 FIFA 世界杯 · 完整赛程 & 预测</title>
+  <style>
+    :root {
+      --gold: #f5c842;
+      --gold-dark: #c9a227;
+      --dark-bg: #0a0e1a;
+      --card-bg: #111827;
+      --card-border: #1e2d45;
+      --text-primary: #e8edf5;
+      --text-secondary: #8899aa;
+      --accent-blue: #3b82f6;
+      --accent-green: #22c55e;
+      --accent-red: #ef4444;
+      --accent-orange: #f97316;
+      --accent-purple: #a855f7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--dark-bg);
+      color: var(--text-primary);
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(135deg, #0a0e1a 0%, #0f1f3d 50%, #0a1628 100%);
+      border-bottom: 2px solid var(--gold);
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(245,200,66,0.12) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #0a0e1a;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 56px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #fff 30%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat .num {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .hero-stat .label {
+      font-size: 12px;
+      color: var(--text-secondary);
+      letter-spacing: 1px;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ===== ODDS DASHBOARD ===== */
+    .odds-section {
+      padding: 50px 20px;
+      background: linear-gradient(180deg, #0c1220 0%, #0a0e1a 100%);
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--gold);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 30px;
+    }
+
+    .odds-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+
+    .odds-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 20px 16px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .odds-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-dark);
+    }
+
+    .odds-card.tier-1 { border-top: 3px solid var(--gold); }
+    .odds-card.tier-2 { border-top: 3px solid var(--accent-blue); }
+    .odds-card.tier-3 { border-top: 3px solid var(--accent-purple); }
+
+    .odds-rank {
+      font-size: 11px;
+      color: var(--text-secondary);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+
+    .odds-flag {
+      font-size: 36px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .odds-team {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .odds-prob {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--gold);
+    }
+
+    .odds-bar {
+      height: 4px;
+      background: #1e2d45;
+      border-radius: 2px;
+      margin-top: 10px;
+      overflow: hidden;
+    }
+
+    .odds-bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+    }
+
+    /* ===== GROUPS SECTION ===== */
+    .groups-section {
+      padding: 50px 20px;
+    }
+
+    .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .group-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .group-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: linear-gradient(135deg, #0f1f3d, #111827);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .group-letter {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 900;
+      color: #0a0e1a;
+    }
+
+    .group-meta {
+      flex: 1;
+      padding-left: 12px;
+    }
+
+    .group-name {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .group-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .group-teams {
+      padding: 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .team-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+    }
+
+    .team-flag {
+      font-size: 22px;
+      width: 30px;
+      text-align: center;
+    }
+
+    .team-name {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .team-rank {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .team-strength {
+      display: flex;
+      gap: 3px;
+    }
+
+    .strength-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #1e2d45;
+    }
+
+    .strength-dot.active { background: var(--gold); }
+
+    .group-insight {
+      padding: 14px 20px;
+      background: rgba(245, 200, 66, 0.05);
+      border-top: 1px solid rgba(245, 200, 66, 0.1);
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    .group-insight strong {
+      color: var(--gold);
+    }
+
+    /* ===== MATCHES TABLE ===== */
+    .matches-section {
+      padding: 50px 20px;
+      background: linear-gradient(180deg, #0a0e1a 0%, #0c1220 100%);
+    }
+
+    .phase-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+    }
+
+    .phase-tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .phase-tab.active,
+    .phase-tab:hover {
+      background: var(--gold);
+      color: #0a0e1a;
+      border-color: var(--gold);
+    }
+
+    .match-day {
+      margin-bottom: 32px;
+    }
+
+    .match-day-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .match-date-badge {
+      background: linear-gradient(135deg, #0f1f3d, #1e2d45);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 8px 16px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .match-date-line {
+      flex: 1;
+      height: 1px;
+      background: var(--card-border);
+    }
+
+    .match-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 10px;
+      display: grid;
+      grid-template-columns: 1fr 140px 1fr 1fr;
+      gap: 16px;
+      align-items: center;
+      transition: border-color 0.2s;
+    }
+
+    .match-card:hover {
+      border-color: #2a3d5a;
+    }
+
+    .match-card.featured {
+      border-color: rgba(245, 200, 66, 0.3);
+      background: linear-gradient(135deg, var(--card-bg) 0%, rgba(245,200,66,0.04) 100%);
+    }
+
+    .match-team {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .match-team.right {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .match-team-flag {
+      font-size: 28px;
+    }
+
+    .match-team-name {
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .match-team-sub {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .match-vs {
+      text-align: center;
+    }
+
+    .match-time {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .match-group-badge {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-bottom: 4px;
+    }
+
+    .match-venue {
+      font-size: 11px;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    .match-prediction {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .prediction-bars {
+      display: flex;
+      gap: 3px;
+      height: 6px;
+    }
+
+    .pred-win { border-radius: 3px 0 0 3px; background: var(--accent-green); }
+    .pred-draw { background: var(--accent-orange); }
+    .pred-lose { border-radius: 0 3px 3px 0; background: var(--accent-blue); }
+
+    .prediction-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+    }
+
+    .pred-label-win { color: var(--accent-green); font-weight: 600; }
+    .pred-label-draw { color: var(--accent-orange); font-weight: 600; text-align: center; }
+    .pred-label-lose { color: var(--accent-blue); font-weight: 600; text-align: right; }
+
+    .prediction-verdict {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .prediction-verdict .winner {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .match-highlight {
+      font-size: 12px;
+      color: var(--text-secondary);
+      border-left: 2px solid var(--gold-dark);
+      padding-left: 8px;
+      line-height: 1.5;
+    }
+
+    .hot-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      color: white;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 10px;
+      letter-spacing: 1px;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    /* ===== KNOCKOUT BRACKET ===== */
+    .knockout-section {
+      padding: 50px 20px;
+    }
+
+    .knockout-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .knockout-round {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .knockout-round-header {
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #0f1f3d, #111827);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .round-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .round-date {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .knockout-matches {
+      padding: 16px 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+    }
+
+    .knockout-match {
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.02);
+    }
+
+    .knockout-match-teams {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .ko-team {
+      font-size: 14px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ko-vs {
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    .ko-prediction {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .ko-prediction .predicted-winner {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .match-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .match-team.right {
+        flex-direction: row;
+        text-align: left;
+      }
+
+      .odds-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      }
+
+      .groups-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid var(--card-border);
+      color: var(--text-secondary);
+      font-size: 13px;
+    }
+
+    .footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* ===== SCROLL TOC ===== */
+    .toc {
+      position: fixed;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 100;
+    }
+
+    .toc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--card-border);
+      cursor: pointer;
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .toc-dot:hover {
+      background: var(--gold);
+      transform: scale(1.5);
+    }
+
+    .toc-dot .toc-label {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .toc-dot:hover .toc-label {
+      opacity: 1;
+    }
+
+    @media (max-width: 1200px) {
+      .toc { display: none; }
+    }
+
+    /* ===== NOTE BANNER ===== */
+    .note-banner {
+      background: rgba(245, 200, 66, 0.08);
+      border: 1px solid rgba(245, 200, 66, 0.2);
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .note-banner span { color: var(--gold); font-size: 18px; }
+  </style>
+</head>
+<body>
+
+<!-- TOC -->
+<nav class="toc">
+  <div class="toc-dot" onclick="document.querySelector('.odds-section').scrollIntoView({behavior:'smooth'})">
+    <span class="toc-label">夺冠赔率</span>
+  </div>
+  <div class="toc-dot" onclick="document.querySelector('.groups-section').scrollIntoView({behavior:'smooth'})">
+    <span class="toc-label">小组分析</span>
+  </div>
+  <div class="toc-dot" onclick="document.querySelector('.matches-section').scrollIntoView({behavior:'smooth'})">
+    <span class="toc-label">赛程预测</span>
+  </div>
+  <div class="toc-dot" onclick="document.querySelector('.knockout-section').scrollIntoView({behavior:'smooth'})">
+    <span class="toc-label">淘汰赛</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-badge">FIFA WORLD CUP 2026</div>
+  <h1>美加墨世界杯<br>完整赛程 · 预测分析</h1>
+  <p class="hero-sub">史上最大规模 · 48队 · 104场 · 美国 / 加拿大 / 墨西哥 · 2026.06.11 – 07.19</p>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="num">48</div>
+      <div class="label">参赛球队</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">104</div>
+      <div class="label">场比赛</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">16</div>
+      <div class="label">举办城市</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">39</div>
+      <div class="label">天赛程</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">3</div>
+      <div class="label">主办国</div>
+    </div>
+  </div>
+</header>
+
+<!-- ODDS -->
+<section class="odds-section" id="odds">
+  <div class="container">
+    <div class="section-title">🏆 夺冠热门排行</div>
+    <div class="section-subtitle">基于 Elo 评分 + xG 数据模型（截至 2026.03）</div>
+    <div class="odds-grid">
+      <div class="odds-card tier-1">
+        <div class="odds-rank">🥇 No.1 最热门</div>
+        <span class="odds-flag">🇫🇷</span>
+        <div class="odds-team">法国</div>
+        <div class="odds-prob">33.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:100%"></div></div>
+      </div>
+      <div class="odds-card tier-1">
+        <div class="odds-rank">#2</div>
+        <span class="odds-flag">🇦🇷</span>
+        <div class="odds-team">阿根廷</div>
+        <div class="odds-prob">29.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:88%"></div></div>
+      </div>
+      <div class="odds-card tier-1">
+        <div class="odds-rank">#3</div>
+        <span class="odds-flag">🇪🇸</span>
+        <div class="odds-team">西班牙</div>
+        <div class="odds-prob">28.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="odds-card tier-1">
+        <div class="odds-rank">#4</div>
+        <span class="odds-flag">🇧🇷</span>
+        <div class="odds-team">巴西</div>
+        <div class="odds-prob">28.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="odds-card tier-1">
+        <div class="odds-rank">#5</div>
+        <span class="odds-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+        <div class="odds-team">英格兰</div>
+        <div class="odds-prob">28.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="odds-card tier-2">
+        <div class="odds-rank">#6</div>
+        <span class="odds-flag">🇩🇪</span>
+        <div class="odds-team">德国</div>
+        <div class="odds-prob">28.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:82%"></div></div>
+      </div>
+      <div class="odds-card tier-2">
+        <div class="odds-rank">#7</div>
+        <span class="odds-flag">🇵🇹</span>
+        <div class="odds-team">葡萄牙</div>
+        <div class="odds-prob">27.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:79%"></div></div>
+      </div>
+      <div class="odds-card tier-2">
+        <div class="odds-rank">#8</div>
+        <span class="odds-flag">🇳🇱</span>
+        <div class="odds-team">荷兰</div>
+        <div class="odds-prob">26.0%</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:76%"></div></div>
+      </div>
+      <div class="odds-card tier-3">
+        <div class="odds-rank">🌑 黑马</div>
+        <span class="odds-flag">🇲🇦</span>
+        <div class="odds-team">摩洛哥</div>
+        <div class="odds-prob">黑马</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:40%"></div></div>
+      </div>
+      <div class="odds-card tier-3">
+        <div class="odds-rank">🌑 黑马</div>
+        <span class="odds-flag">🇯🇵</span>
+        <div class="odds-team">日本</div>
+        <div class="odds-prob">黑马</div>
+        <div class="odds-bar"><div class="odds-bar-fill" style="width:35%"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GROUPS -->
+<section class="groups-section" id="groups">
+  <div class="container">
+    <div class="section-title">⚽ 12组分组分析</div>
+    <div class="section-subtitle">小组赛 · 每组 4 队 · 前两名 + 最佳 8 支第三名晋级</div>
+    <div class="note-banner">
+      <span>⚠️</span>
+      部分席位通过欧洲/洲际附加赛产生（标注为"待定"），正式名单于2026年3月底确认。
+    </div>
+    <div class="groups-grid">
+
+      <!-- A组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">A</div>
+          <div class="group-meta">
+            <div class="group-name">A组 · 墨西哥主场组</div>
+            <div class="group-desc">东道主墨西哥领衔 · 阿兹特克的荣耀</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇲🇽</span>
+            <span class="team-name">墨西哥</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇰🇷</span>
+            <span class="team-name">韩国</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇿🇦</span>
+            <span class="team-name">南非</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（欧洲附加赛D组）</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>墨西哥、韩国 &nbsp;|&nbsp; <strong>看点：</strong>墨西哥主场阿兹特克体育场迎来揭幕战，孙兴慜领衔韩国挑战东道主，气氛将极为热烈
+        </div>
+      </div>
+
+      <!-- B组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">B</div>
+          <div class="group-meta">
+            <div class="group-name">B组 · 北美双雄</div>
+            <div class="group-desc">加拿大 + 卡塔尔 + 瑞士</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇨🇦</span>
+            <span class="team-name">加拿大</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇨🇭</span>
+            <span class="team-name">瑞士</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇶🇦</span>
+            <span class="team-name">卡塔尔</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（欧洲附加赛A组）</span>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>瑞士、加拿大 &nbsp;|&nbsp; <strong>看点：</strong>加拿大主场作战，戴维斯（阿方斯·戴维斯）若能复出将大幅提升出线可能性，瑞士预选赛全程不败是最强出线保障
+        </div>
+      </div>
+
+      <!-- C组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">C</div>
+          <div class="group-meta">
+            <div class="group-name">C组 · 巴西死亡组</div>
+            <div class="group-desc">南美巨人 vs 非洲黑马</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇧🇷</span>
+            <span class="team-name">巴西</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇲🇦</span>
+            <span class="team-name">摩洛哥</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</span>
+            <span class="team-name">苏格兰</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇭🇹</span>
+            <span class="team-name">海地</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>巴西、摩洛哥 &nbsp;|&nbsp; <strong>看点：</strong>巴西vs摩洛哥是本届小组赛最强碰撞！哈基米、布努等2022年老将携手挑战五星巴西，非洲黑马能否再度爆冷？
+        </div>
+      </div>
+
+      <!-- D组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">D</div>
+          <div class="group-meta">
+            <div class="group-name">D组 · 美国主场</div>
+            <div class="group-desc">东道主压力与机遇并存</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇺🇸</span>
+            <span class="team-name">美国</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇵🇾</span>
+            <span class="team-name">巴拉圭</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇦🇺</span>
+            <span class="team-name">澳大利亚</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（欧洲附加赛C组）</span>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>美国、澳大利亚 &nbsp;|&nbsp; <strong>看点：</strong>美国在SoFi体育场首战巴拉圭，主场氛围空前热烈，普利西奇领衔的新生代美国队能否借主场东风突出重围是焦点
+        </div>
+      </div>
+
+      <!-- E组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">E</div>
+          <div class="group-meta">
+            <div class="group-name">E组 · 德国考验</div>
+            <div class="group-desc">德国 vs 南美意外劲旅厄瓜多尔</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇩🇪</span>
+            <span class="team-name">德国</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇪🇨</span>
+            <span class="team-name">厄瓜多尔</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇨🇮</span>
+            <span class="team-name">科特迪瓦</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇨🇼</span>
+            <span class="team-name">库拉索</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>德国、厄瓜多尔 &nbsp;|&nbsp; <strong>看点：</strong>厄瓜多尔曾击败阿根廷、战平巴西，防守极为严密；德国面临首场真正意义上的硬仗，能否以德国式效率强攻突破？
+        </div>
+      </div>
+
+      <!-- F组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">F</div>
+          <div class="group-meta">
+            <div class="group-name">F组 · 亚洲之光</div>
+            <div class="group-desc">荷兰 vs 日本的现代足球之战</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇳🇱</span>
+            <span class="team-name">荷兰</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇯🇵</span>
+            <span class="team-name">日本</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇹🇳</span>
+            <span class="team-name">突尼斯</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（欧洲附加赛B组）</span>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>荷兰、日本 &nbsp;|&nbsp; <strong>看点：</strong>日本已有多名球员征战欧洲豪门，高强度反抢战术有望复制2022年德西爆冷；荷兰凭借阵容深度为大热门
+        </div>
+      </div>
+
+      <!-- G组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">G</div>
+          <div class="group-meta">
+            <div class="group-name">G组 · 英超传奇对决</div>
+            <div class="group-desc">德布劳内 vs 萨拉赫 最后的世界杯舞台</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇧🇪</span>
+            <span class="team-name">比利时</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇮🇷</span>
+            <span class="team-name">伊朗</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇪🇬</span>
+            <span class="team-name">埃及</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇳🇿</span>
+            <span class="team-name">新西兰</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>比利时、埃及 &nbsp;|&nbsp; <strong>看点：</strong>比利时vs埃及是G组核心对决——德布劳内与萨拉赫极可能是两人最后同台的世界杯，这场"英超传奇之战"情感浓度满格🔥
+        </div>
+      </div>
+
+      <!-- H组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">H</div>
+          <div class="group-meta">
+            <div class="group-name">H组 · 亚马尔时代</div>
+            <div class="group-desc">西班牙 · 传控之王迎接挑战</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇪🇸</span>
+            <span class="team-name">西班牙</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇺🇾</span>
+            <span class="team-name">乌拉圭</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇸🇦</span>
+            <span class="team-name">沙特阿拉伯</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇨🇻</span>
+            <span class="team-name">佛得角</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>西班牙、乌拉圭 &nbsp;|&nbsp; <strong>看点：</strong>亚马尔领衔的年轻西班牙是本届最热门的观赏球队，乌拉圭的高强度身体对抗足以限制西班牙的传控节奏，西乌之战是H组天王山
+        </div>
+      </div>
+
+      <!-- I组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">I</div>
+          <div class="group-meta">
+            <div class="group-name">I组 · 死亡之组</div>
+            <div class="group-desc">法国 + 挪威 + 塞内加尔 = 三强争二席</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇫🇷</span>
+            <span class="team-name">法国</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇳🇴</span>
+            <span class="team-name">挪威</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇸🇳</span>
+            <span class="team-name">塞内加尔</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（洲际附加赛2组）</span>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>法国、挪威 &nbsp;|&nbsp; <strong>看点：</strong>本届最强死亡之组！姆巴佩领衔法国世界第三；哈兰德+厄德高的挪威世界第20；马内领衔的塞内加尔随时爆冷。三强只能走二，谁出局就是大新闻！
+        </div>
+      </div>
+
+      <!-- J组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">J</div>
+          <div class="group-meta">
+            <div class="group-name">J组 · 卫冕冠军出征</div>
+            <div class="group-desc">阿根廷 · 梅西最后的世界杯征程</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇦🇷</span>
+            <span class="team-name">阿根廷</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇦🇹</span>
+            <span class="team-name">奥地利</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇩🇿</span>
+            <span class="team-name">阿尔及利亚</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇯🇴</span>
+            <span class="team-name">约旦</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>阿根廷、奥地利 &nbsp;|&nbsp; <strong>看点：</strong>这极可能是梅西最后一届世界杯！卫冕冠军阿根廷面对朗尼克执教、高压逼抢的奥地利，这场战术与天才的博弈是J组最大看点
+        </div>
+      </div>
+
+      <!-- K组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">K</div>
+          <div class="group-meta">
+            <div class="group-name">K组 · C罗压轴</div>
+            <div class="group-desc">葡萄牙 vs 哥伦比亚 争组头</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🇵🇹</span>
+            <span class="team-name">葡萄牙</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇨🇴</span>
+            <span class="team-name">哥伦比亚</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇺🇿</span>
+            <span class="team-name">乌兹别克斯坦</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🔘</span>
+            <span class="team-name">待定（洲际附加赛1组）</span>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>葡萄牙、哥伦比亚 &nbsp;|&nbsp; <strong>看点：</strong>C罗大概率携葡萄牙冲刺最后荣耀，而哥伦比亚气候适应优势显著，南美气候下葡萄牙能否稳住是悬念；乌兹别克斯坦是首次世界杯亮相的惊喜球队
+        </div>
+      </div>
+
+      <!-- L组 -->
+      <div class="group-card">
+        <div class="group-header">
+          <div class="group-letter">L</div>
+          <div class="group-meta">
+            <div class="group-name">L组 · 复仇之战</div>
+            <div class="group-desc">英格兰 vs 克罗地亚 · 2018年的答案</div>
+          </div>
+        </div>
+        <div class="group-teams">
+          <div class="team-row">
+            <span class="team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+            <span class="team-name">英格兰</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇭🇷</span>
+            <span class="team-name">克罗地亚</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇬🇭</span>
+            <span class="team-name">加纳</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+          <div class="team-row">
+            <span class="team-flag">🇵🇦</span>
+            <span class="team-name">巴拿马</span>
+            <div class="team-strength">
+              <div class="strength-dot active"></div><div class="strength-dot active"></div><div class="strength-dot"></div><div class="strength-dot"></div><div class="strength-dot"></div>
+            </div>
+          </div>
+        </div>
+        <div class="group-insight">
+          <strong>出线预测：</strong>英格兰、克罗地亚 &nbsp;|&nbsp; <strong>看点：</strong>图赫尔首次执教英格兰的世界杯大赛亮相 + 2018年半决赛仇家克罗地亚，历史债一次算清。英格兰能否冲破"总决赛魔咒"？
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MATCHES -->
+<section class="matches-section" id="matches">
+  <div class="container">
+    <div class="section-title">📅 小组赛完整赛程 & 预测</div>
+    <div class="section-subtitle">北京时间 · 共 72 场小组赛 · 6月11日 – 6月28日</div>
+
+    <div class="note-banner">
+      <span>💡</span>
+      预测数据基于 FIFA Elo 积分、xG 效率及历史对阵记录综合分析，仅供参考。胜负预测格式：<strong style="color:#22c55e">主队胜%</strong> / <strong style="color:#f97316">平局%</strong> / <strong style="color:#3b82f6">客队胜%</strong>
+    </div>
+
+    <!-- 第1比赛日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">⚽ 揭幕战 · 6月12日（周四）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇲🇽</span>
+          <div><div class="match-team-name">墨西哥</div><div class="match-team-sub">主场优势</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">A组 · 揭幕战</div>
+          <div class="match-time">03:00</div>
+          <div class="match-venue">阿兹特克体育场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇿🇦</span>
+          <div><div class="match-team-name">南非</div><div class="match-team-sub">首次参加</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:60"></div>
+            <div class="pred-draw" style="flex:25"></div>
+            <div class="pred-lose" style="flex:15"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">60%</span>
+            <span class="pred-label-draw">25%</span>
+            <span class="pred-label-lose">15%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">墨西哥胜</span> 2-0</div>
+          <div class="match-highlight">揭幕战 + 主场 + 10万球迷压阵，墨西哥士气爆表。吉梅内斯进球概率极高</div>
+        </div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇰🇷</span>
+          <div><div class="match-team-name">韩国</div><div class="match-team-sub">孙兴慜领衔</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">A组</div>
+          <div class="match-time">10:00</div>
+          <div class="match-venue">阿克伦球场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🔘</span>
+          <div><div class="match-team-name">待定</div><div class="match-team-sub">欧洲附加赛</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:45"></div>
+            <div class="pred-draw" style="flex:30"></div>
+            <div class="pred-lose" style="flex:25"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">45%</span>
+            <span class="pred-label-draw">30%</span>
+            <span class="pred-label-lose">25%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">韩国小胜</span> 1-0</div>
+          <div class="match-highlight">孙兴慜状态是关键变量，若正常发挥韩国理应压制欧洲小国</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月13日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月13日（周五）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇺🇸</span>
+          <div><div class="match-team-name">美国</div><div class="match-team-sub">主场，普利西奇</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">D组</div>
+          <div class="match-time">09:00</div>
+          <div class="match-venue">SoFi体育场，洛杉矶</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇵🇾</span>
+          <div><div class="match-team-name">巴拉圭</div><div class="match-team-sub">南美硬骨头</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:50"></div>
+            <div class="pred-draw" style="flex:28"></div>
+            <div class="pred-lose" style="flex:22"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">50%</span>
+            <span class="pred-label-draw">28%</span>
+            <span class="pred-label-lose">22%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">美国险胜</span> 2-1</div>
+          <div class="match-highlight">主场10万球迷加持，但巴拉圭擅长低位防守，美国需要耐心破防</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月14日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月14日（周六）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇧🇷</span>
+          <div><div class="match-team-name">巴西</div><div class="match-team-sub">五星巨人</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">C组</div>
+          <div class="match-time">06:00</div>
+          <div class="match-venue">大都会人寿体育场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇲🇦</span>
+          <div><div class="match-team-name">摩洛哥</div><div class="match-team-sub">非洲黑马</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:48"></div>
+            <div class="pred-draw" style="flex:30"></div>
+            <div class="pred-lose" style="flex:22"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">48%</span>
+            <span class="pred-label-draw">30%</span>
+            <span class="pred-label-lose">22%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">巴西险胜</span> 2-1</div>
+          <div class="match-highlight">C组天王山！摩洛哥2022年四强班底在，布努门将极难被破，巴西进攻华丽但恐遭爆冷</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月15日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月15日（周日）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇳🇱</span>
+          <div><div class="match-team-name">荷兰</div><div class="match-team-sub">范迪克领衔防线</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">F组</div>
+          <div class="match-time">04:00</div>
+          <div class="match-venue">NRG体育场，休斯顿</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇯🇵</span>
+          <div><div class="match-team-name">日本</div><div class="match-team-sub">亚洲之光</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:45"></div>
+            <div class="pred-draw" style="flex:28"></div>
+            <div class="pred-lose" style="flex:27"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">45%</span>
+            <span class="pred-label-draw">28%</span>
+            <span class="pred-label-lose">27%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">荷兰小胜</span> 2-1</div>
+          <div class="match-highlight">日本2022年击败德国西班牙的魔咒依然有效！荷兰虽强但日本的反抢体系极具威胁，这场可能是世界杯首周最精彩比赛</div>
+        </div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇩🇪</span>
+          <div><div class="match-team-name">德国</div><div class="match-team-sub">战车重启</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">E组</div>
+          <div class="match-time">01:00</div>
+          <div class="match-venue">林肯金融球场，费城</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇨🇼</span>
+          <div><div class="match-team-name">库拉索</div><div class="match-team-sub">世界杯首秀</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:85"></div>
+            <div class="pred-draw" style="flex:10"></div>
+            <div class="pred-lose" style="flex:5"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">85%</span>
+            <span class="pred-label-draw">10%</span>
+            <span class="pred-label-lose">5%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">德国大胜</span> 5-0</div>
+          <div class="match-highlight">库拉索首次世界杯亮相，实力差距明显，德国应借此热身积累进球数</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月16日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月16日（周一）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇧🇪</span>
+          <div><div class="match-team-name">比利时</div><div class="match-team-sub">德布劳内</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">G组 🔥</div>
+          <div class="match-time">03:00</div>
+          <div class="match-venue">梅赛德斯-奔驰体育场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇪🇬</span>
+          <div><div class="match-team-name">埃及</div><div class="match-team-sub">萨拉赫</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:52"></div>
+            <div class="pred-draw" style="flex:28"></div>
+            <div class="pred-lose" style="flex:20"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">52%</span>
+            <span class="pred-label-draw">28%</span>
+            <span class="pred-label-lose">20%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">比利时险胜</span> 2-1</div>
+          <div class="match-highlight">英超双雄传奇对决！德布劳内与萨拉赫或许最后一次同台世界杯，两人状态决定一切，情感价值堪称本届最高</div>
+        </div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇪🇸</span>
+          <div><div class="match-team-name">西班牙</div><div class="match-team-sub">亚马尔</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">H组</div>
+          <div class="match-time">00:00</div>
+          <div class="match-venue">硬石体育场，迈阿密</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇨🇻</span>
+          <div><div class="match-team-name">佛得角</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:88"></div>
+            <div class="pred-draw" style="flex:8"></div>
+            <div class="pred-lose" style="flex:4"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">88%</span>
+            <span class="pred-label-draw">8%</span>
+            <span class="pred-label-lose">4%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">西班牙大胜</span> 4-0</div>
+          <div class="match-highlight">西班牙展示传控艺术的绝佳机会，亚马尔、莫拉塔预计多点开花</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月17日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月17日（周二）· 死亡之组开战</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇫🇷</span>
+          <div><div class="match-team-name">法国</div><div class="match-team-sub">姆巴佩 + 格列兹曼</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">I组 · 死亡之组</div>
+          <div class="match-time">03:00</div>
+          <div class="match-venue">大都会人寿体育场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇸🇳</span>
+          <div><div class="match-team-name">塞内加尔</div><div class="match-team-sub">马内领衔</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:58"></div>
+            <div class="pred-draw" style="flex:25"></div>
+            <div class="pred-lose" style="flex:17"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">58%</span>
+            <span class="pred-label-draw">25%</span>
+            <span class="pred-label-lose">17%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">法国胜</span> 2-0</div>
+          <div class="match-highlight">死亡之组揭幕战！法国与塞内加尔的法语世界宿命对决，马内能否兑现2022世界杯欠下的债？</div>
+        </div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇦🇷</span>
+          <div><div class="match-team-name">阿根廷</div><div class="match-team-sub">梅西 · 卫冕冠军</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">J组</div>
+          <div class="match-time">09:00</div>
+          <div class="match-venue">箭头体育场，堪萨斯城</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇩🇿</span>
+          <div><div class="match-team-name">阿尔及利亚</div><div class="match-team-sub">北非劲旅</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:72"></div>
+            <div class="pred-draw" style="flex:18"></div>
+            <div class="pred-lose" style="flex:10"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">72%</span>
+            <span class="pred-label-draw">18%</span>
+            <span class="pred-label-lose">10%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">阿根廷胜</span> 3-1</div>
+          <div class="match-highlight">梅西世界杯首秀，媒体焦点无上限。阿尔及利亚不甘示弱，但阿根廷整体实力压制</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月18日 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月18日（周三）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+          <div><div class="match-team-name">英格兰</div><div class="match-team-sub">图赫尔新帅首战</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">L组</div>
+          <div class="match-time">04:00</div>
+          <div class="match-venue">AT&T体育场，达拉斯</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇭🇷</span>
+          <div><div class="match-team-name">克罗地亚</div><div class="match-team-sub">2018半决赛宿敌</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:55"></div>
+            <div class="pred-draw" style="flex:27"></div>
+            <div class="pred-lose" style="flex:18"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">55%</span>
+            <span class="pred-label-draw">27%</span>
+            <span class="pred-label-lose">18%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">英格兰胜</span> 2-0</div>
+          <div class="match-highlight">2018年世界杯半决赛的历史宿怨！图赫尔的世界杯处子秀，英格兰能否一雪前耻完成复仇，悬念十足</div>
+        </div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇵🇹</span>
+          <div><div class="match-team-name">葡萄牙</div><div class="match-team-sub">C罗领衔</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">K组</div>
+          <div class="match-time">01:00</div>
+          <div class="match-venue">NRG体育场，休斯顿</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🔘</span>
+          <div><div class="match-team-name">待定</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:75"></div>
+            <div class="pred-draw" style="flex:15"></div>
+            <div class="pred-lose" style="flex:10"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">75%</span>
+            <span class="pred-label-draw">15%</span>
+            <span class="pred-label-lose">10%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">葡萄牙胜</span> 3-1</div>
+          <div class="match-highlight">C罗与菲利克斯攻击线轮番输出，葡萄牙首战出线欲望强烈</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月22日 西班牙乌拉圭 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月22日（周日）· H组天王山</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇪🇸</span>
+          <div><div class="match-team-name">西班牙</div><div class="match-team-sub">传控之王</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">H组</div>
+          <div class="match-time">00:00</div>
+          <div class="match-venue">梅赛德斯-奔驰体育场</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇸🇦</span>
+          <div><div class="match-team-name">沙特阿拉伯</div><div class="match-team-sub">2022杀手</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:78"></div>
+            <div class="pred-draw" style="flex:14"></div>
+            <div class="pred-lose" style="flex:8"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">78%</span>
+            <span class="pred-label-draw">14%</span>
+            <span class="pred-label-lose">8%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">西班牙胜</span> 3-0</div>
+          <div class="match-highlight">沙特2022年爆冷阿根廷，但西班牙传控体系令任何奇兵战术都难以奏效</div>
+        </div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇺🇾</span>
+          <div><div class="match-team-name">乌拉圭</div><div class="match-team-sub">努涅斯</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">H组</div>
+          <div class="match-time">06:00</div>
+          <div class="match-venue">硬石体育场，迈阿密</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇨🇻</span>
+          <div><div class="match-team-name">佛得角</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:82"></div>
+            <div class="pred-draw" style="flex:12"></div>
+            <div class="pred-lose" style="flex:6"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">82%</span>
+            <span class="pred-label-draw">12%</span>
+            <span class="pred-label-lose">6%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">乌拉圭胜</span> 3-0</div>
+          <div class="match-highlight">乌拉圭强力拿下三分备战西班牙天王山</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月23日 阿根廷奥地利 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月23日（周一）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇦🇷</span>
+          <div><div class="match-team-name">阿根廷</div><div class="match-team-sub">卫冕冠军</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">J组</div>
+          <div class="match-time">01:00</div>
+          <div class="match-venue">AT&T体育场，达拉斯</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇦🇹</span>
+          <div><div class="match-team-name">奥地利</div><div class="match-team-sub">朗尼克压迫流</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:60"></div>
+            <div class="pred-draw" style="flex:25"></div>
+            <div class="pred-lose" style="flex:15"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">60%</span>
+            <span class="pred-label-draw">25%</span>
+            <span class="pred-label-lose">15%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">阿根廷胜</span> 2-1</div>
+          <div class="match-highlight">朗尼克的高压逼抢恰好是对付梅西最有效的手段之一！阿根廷绝对实力占优但不会轻松，J组最精彩对决</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月24日 英格兰克罗地亚 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月24日（周二）</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+          <div><div class="match-team-name">英格兰</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">L组</div>
+          <div class="match-time">04:00</div>
+          <div class="match-venue">吉列体育场，福克斯伯勒</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇬🇭</span>
+          <div><div class="match-team-name">加纳</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:68"></div>
+            <div class="pred-draw" style="flex:20"></div>
+            <div class="pred-lose" style="flex:12"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">68%</span>
+            <span class="pred-label-draw">20%</span>
+            <span class="pred-label-lose">12%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">英格兰胜</span> 3-1</div>
+          <div class="match-highlight">英格兰应拿稳三分，凯恩、萨卡发挥空间较大</div>
+        </div>
+      </div>
+
+      <div class="match-card">
+        <div class="match-team">
+          <span class="match-team-flag">🇵🇹</span>
+          <div><div class="match-team-name">葡萄牙</div><div class="match-team-sub">C罗</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">K组</div>
+          <div class="match-time">01:00</div>
+          <div class="match-venue">NRG体育场，休斯顿</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇺🇿</span>
+          <div><div class="match-team-name">乌兹别克斯坦</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:82"></div>
+            <div class="pred-draw" style="flex:12"></div>
+            <div class="pred-lose" style="flex:6"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">82%</span>
+            <span class="pred-label-draw">12%</span>
+            <span class="pred-label-lose">6%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">葡萄牙大胜</span> 4-0</div>
+          <div class="match-highlight">乌兹别克斯坦的世界杯首秀，葡萄牙锋线将面对一场进攻大演练</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月27日 小组赛末轮生死战 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月27日（周五）· 小组赛高潮！生死末轮</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇺🇾</span>
+          <div><div class="match-team-name">乌拉圭</div><div class="match-team-sub">誓死出线</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">H组 决定性</div>
+          <div class="match-time">08:00</div>
+          <div class="match-venue">阿克伦体育场，墨西哥</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇪🇸</span>
+          <div><div class="match-team-name">西班牙</div><div class="match-team-sub">欧洲霸主</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:22"></div>
+            <div class="pred-draw" style="flex:30"></div>
+            <div class="pred-lose" style="flex:48"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">22%</span>
+            <span class="pred-label-draw">30%</span>
+            <span class="pred-label-lose">48%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">西班牙胜</span> 2-1</div>
+          <div class="match-highlight">H组天王山，两队均可能已各有积分！乌拉圭强力身体对抗+努涅斯闪击，亚马尔的天才能否在压力下发光，这场必是小组赛最佳之一</div>
+        </div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇳🇴</span>
+          <div><div class="match-team-name">挪威</div><div class="match-team-sub">哈兰德+厄德高</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">I组 · 死亡之组决战</div>
+          <div class="match-time">03:00</div>
+          <div class="match-venue">吉列体育场，福克斯伯勒</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇫🇷</span>
+          <div><div class="match-team-name">法国</div><div class="match-team-sub">姆巴佩</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:30"></div>
+            <div class="pred-draw" style="flex:28"></div>
+            <div class="pred-lose" style="flex:42"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">30%</span>
+            <span class="pred-label-draw">28%</span>
+            <span class="pred-label-lose">42%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">法国险胜</span> 2-1</div>
+          <div class="match-highlight">死亡之组最后决战！哈兰德vs姆巴佩的超级射手对决，这场可能是小组赛最大的进球秀，一场定乾坤！</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6月28日 J组末轮 -->
+    <div class="match-day">
+      <div class="match-day-header">
+        <div class="match-date-badge">6月28日（周六）· 小组赛收官</div>
+        <div class="match-date-line"></div>
+      </div>
+
+      <div class="match-card featured">
+        <div class="match-team">
+          <span class="match-team-flag">🇯🇴</span>
+          <div><div class="match-team-name">约旦</div><div class="match-team-sub">中东黑马</div></div>
+        </div>
+        <div class="match-vs">
+          <div class="match-group-badge">J组 · 末轮</div>
+          <div class="match-time">10:00</div>
+          <div class="match-venue">AT&T体育场，达拉斯</div>
+        </div>
+        <div class="match-team right">
+          <span class="match-team-flag">🇦🇷</span>
+          <div><div class="match-team-name">阿根廷</div><div class="match-team-sub">梅西最后一舞？</div></div>
+        </div>
+        <div class="match-prediction">
+          <div class="prediction-bars">
+            <div class="pred-win" style="flex:8"></div>
+            <div class="pred-draw" style="flex:17"></div>
+            <div class="pred-lose" style="flex:75"></div>
+          </div>
+          <div class="prediction-labels">
+            <span class="pred-label-win">8%</span>
+            <span class="pred-label-draw">17%</span>
+            <span class="pred-label-lose">75%</span>
+          </div>
+          <div class="prediction-verdict">预测：<span class="winner">阿根廷胜</span> 3-0</div>
+          <div class="match-highlight">梅西世界杯小组赛谢幕战，若已出线可能涉及轮换，但梅西的每次亮相都可能是绝唱</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- KNOCKOUT PREDICTIONS -->
+<section class="knockout-section" id="knockout">
+  <div class="container">
+    <div class="section-title">🏆 淘汰赛预测路线图</div>
+    <div class="section-subtitle">6月29日 – 7月19日 · 32强至决赛 · 基于当前实力模型推演</div>
+
+    <div class="knockout-timeline">
+
+      <div class="knockout-round">
+        <div class="knockout-round-header">
+          <div class="round-title">⚔️ 16强预测 (6月29日 – 7月5日)</div>
+          <div class="round-date">共16场</div>
+        </div>
+        <div class="knockout-matches">
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇫🇷 法国</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇯🇵 日本</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇫🇷 法国</span> 2-1（但日本随时爆冷！）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇦🇷 阿根廷</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇲🇦 摩洛哥</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇦🇷 阿根廷</span> 2-1（摩洛哥超级黑马威胁）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇪🇸 西班牙</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇧🇪 比利时</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇪🇸 西班牙</span> 2-0（传控vs年老比利时）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇳🇱 荷兰</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span> 2-1（欧洲豪强强碰，英格兰主场氛围占优）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇧🇷 巴西</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇺🇾 乌拉圭</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇧🇷 巴西</span> 2-1（南美德比！乌拉圭有爆冷可能）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇩🇪 德国</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇵🇹 葡萄牙</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇩🇪 德国</span> 1-0（历史上的葡德之战，双方旗鼓相当）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="knockout-round">
+        <div class="knockout-round-header">
+          <div class="round-title">⚡ 8强预测 (7月6日 – 7月9日)</div>
+          <div class="round-date">共8场</div>
+        </div>
+        <div class="knockout-matches">
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇫🇷 法国</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇪🇸 西班牙</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇫🇷 法国</span> 2-1（最期待的8强对决！姆巴佩vs亚马尔超级对决）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇦🇷 阿根廷</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇦🇷 阿根廷</span> 1-0（1986年马拉多纳复仇历史重演？）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇧🇷 巴西</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇩🇪 德国</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇧🇷 巴西</span> 2-1（复仇2014年7-1！巴西誓死报仇）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="knockout-round">
+        <div class="knockout-round-header">
+          <div class="round-title">🔥 半决赛预测 (7月14日 – 7月15日)</div>
+          <div class="round-date">共2场</div>
+        </div>
+        <div class="knockout-matches">
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇫🇷 法国</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🇦🇷 阿根廷</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇫🇷 法国</span> 3-2（2022决赛复仇！极限拉锯，梅西vs姆巴佩终极决战）</div>
+          </div>
+          <div class="knockout-match">
+            <div class="knockout-match-teams">
+              <span class="ko-team">🇧🇷 巴西</span>
+              <span class="ko-vs">vs</span>
+              <span class="ko-team">🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰</span>
+            </div>
+            <div class="ko-prediction">预测晋级：<span class="predicted-winner">🇧🇷 巴西</span> 2-1（英格兰的夺冠梦或再次终止）</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="knockout-round" style="border-color: rgba(245,200,66,0.4);">
+        <div class="knockout-round-header" style="background: linear-gradient(135deg, #1a1200, #2a1f00);">
+          <div class="round-title" style="font-size:20px;">🏆 决赛预测 (7月19日 北京时间03:00)</div>
+          <div class="round-date">MetLife Stadium · 纽约/新泽西</div>
+        </div>
+        <div class="knockout-matches">
+          <div class="knockout-match" style="border-color: rgba(245,200,66,0.3); background: rgba(245,200,66,0.05);">
+            <div class="knockout-match-teams" style="margin-bottom:14px;">
+              <span class="ko-team" style="font-size:20px;">🇫🇷 法国</span>
+              <span class="ko-vs" style="font-size:20px; font-weight:800; color:#f5c842;">VS</span>
+              <span class="ko-team" style="font-size:20px;">🇧🇷 巴西</span>
+            </div>
+            <div class="ko-prediction" style="font-size:14px; line-height:1.8;">
+              预测冠军：<span class="predicted-winner" style="font-size:18px;">🇫🇷 法国 2-1 (AET)</span><br>
+              <span style="color:#8899aa">法国拥有本届最均衡的阵容，姆巴佩+格列兹曼+坎特的中轴线被认为是史上最强配置之一。巴西则依靠五星传统底蕴与进攻活力寻求第六星。这场决赛将是技术派传控与南美桑巴风格的终极碰撞，一场注定永载史册的决赛！</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <p>数据来源：FIFA 官方赛程 · FYT体育预测模型 · ESPN分析 · soccer2026.cn · 龙大仙整理制作</p>
+    <p style="margin-top:8px; color:#555;">⚠️ 部分附加赛席位待定 | 预测仅供参考，足球充满意外 | 以 FIFA 官方发布为准</p>
+    <p style="margin-top:16px; color:#f5c842; font-size:15px;">⚽ 让我们一起期待 2026 年夏天最精彩的足球盛宴！</p>
+  </div>
+</footer>
+
+</body>
+</html>
