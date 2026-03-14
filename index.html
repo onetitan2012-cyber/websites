@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponghood - VR 研究与洞察</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      min-height: 100vh;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 60px 20px;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .logo {
+      font-size: 3rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .tagline {
+      color: #94a3b8;
+      font-size: 1.1rem;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      width: 100%;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 32px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+      border-color: rgba(96, 165, 250, 0.5);
+    }
+    .card-icon {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #f1f5f9;
+    }
+    .card-desc {
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .card-date {
+      margin-top: auto;
+      padding-top: 16px;
+      font-size: 0.8rem;
+      color: #64748b;
+    }
+    .footer {
+      margin-top: 60px;
+      color: #64748b;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .logo { font-size: 2rem; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">PONGHOOD</div>
+    <div class="tagline">VR 研究 · 数据分析 · 未来洞察</div>
+  </div>
+
+  <div class="cards">
+    <a href="intel-2026-03-14.html" class="card">
+      <div class="card-icon">📡</div>
+      <div class="card-title">每日未来情报</div>
+      <div class="card-desc">2026年3月14日情报汇总，聚焦科技趋势、市场动态与前沿观察</div>
+      <div class="card-date">2026-03-14</div>
+    </a>
+
+    <a href="2026世界杯赛程预测.html" class="card">
+      <div class="card-icon">⚽</div>
+      <div class="card-title">2026 世界杯赛程预测</div>
+      <div class="card-desc">基于数据模型的世界杯赛事分析与预测报告，覆盖小组赛至决赛完整赛程</div>
+      <div class="card-date">2026年赛事前瞻</div>
+    </a>
+
+    <a href="vr-tabletennis-report.html" class="card">
+      <div class="card-icon">🏓</div>
+      <div class="card-title">VR 乒乓球调研报告</div>
+      <div class="card-desc">2021-2026年全球VR乒乓球产品、市场与用户深度研究，含ITTF赛事生态分析</div>
+      <div class="card-date">2026-03-13</div>
+    </a>
+  </div>
+
+  <div class="footer">
+    © 2026 Ponghood · 探索虚拟与现实的边界
+  </div>
+</body>
+</html>
