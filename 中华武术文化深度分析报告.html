@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中华武术文化深度分析报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 封面样式 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            padding: 60px;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        .cover-title {
+            font-size: 72px;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        
+        .cover-subtitle {
+            font-size: 28px;
+            color: #c9b037;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+        
+        .cover-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+        }
+        
+        .cover-quote {
+            font-size: 24px;
+            color: #a0a0a0;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .cover-quote span {
+            color: #d4af37;
+            font-size: 36px;
+        }
+        
+        .cover-meta {
+            font-size: 16px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            background: rgba(13, 27, 42, 0.8);
+            margin: 40px 0;
+            padding: 60px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-number {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #888;
+            margin-top: 30px;
+        }
+        
+        /* 引言卡片 */
+        .intro-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-left: 4px solid #d4af37;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .intro-card p {
+            font-size: 18px;
+            color: #e8e8e8;
+            line-height: 2;
+        }
+        
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #d4af37, transparent);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: rgba(27, 38, 59, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .timeline-year {
+            font-size: 24px;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            border: 4px solid #0d1b2a;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* 流派卡片 */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .style-card {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .style-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .style-header {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .style-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .style-name {
+            font-size: 28px;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        
+        .style-origin {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .style-body {
+            padding: 30px;
+        }
+        
+        .style-feature {
+            margin-bottom: 20px;
+        }
+        
+        .style-feature-title {
+            font-size: 14px;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .style-feature-content {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .style-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .style-tag {
+            padding: 4px 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #d4af37;
+        }
+        
+        /* 哲学思想 */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .philosophy-card {
+            background: rgba(27, 38, 59, 0.6);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .philosophy-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .philosophy-symbol {
+            font-size: 64px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+        
+        .philosophy-title {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .philosophy-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* 数据统计 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* 国际传播 */
+        .global-section {
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.8), rgba(13, 27, 42, 0.9));
+        }
+        
+        .milestone-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .milestone-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: rgba(27, 38, 59, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .milestone-year {
+            font-size: 24px;
+            color: #d4af37;
+            font-weight: 700;
+            min-width: 100px;
+        }
+        
+        .milestone-content {
+            flex: 1;
+        }
+        
+        .milestone-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* 结语 */
+        .conclusion {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(15, 52, 96, 0.8));
+            text-align: center;
+            padding: 80px 60px;
+        }
+        
+        .conclusion-text {
+            font-size: 22px;
+            color: #e8e8e8;
+            line-height: 2.2;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        
+        .conclusion-highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        
+        .conclusion-quote {
+            font-size: 28px;
+            color: #d4af37;
+            font-style: italic;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 60px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover-title {
+                font-size: 42px;
+            }
+            
+            .cover-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .content-section {
+                padding: 30px 20px;
+            }
+            
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Cultural Heritage Report</div>
+            <h1 class="cover-title">中华武术</h1>
+            <p class="cover-subtitle">中国主流武术种类深度分析报告</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">
+                <span>"</span>
+                止戈为武，以德服人
+                <span>"</span>
+            </p>
+            <p class="cover-meta">向世界传递中华武术文化 | 2026年3月</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 引言 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">INTRODUCTION</div>
+                <h2 class="section-title">引言</h2>
+                <p class="section-subtitle">中华武术：五千年文明的精神图腾</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>中华武术，作为中华民族传统文化的重要载体，承载着五千年的文明积淀与智慧结晶。它不仅是一种防身技击之术，更是一门融合哲学、医学、美学、伦理学的综合性文化体系。从远古时期的狩猎格斗，到春秋战国的军事武艺，再到唐宋以降的武术流派纷呈，中华武术始终与中华文明的发展同频共振，成为中华民族精神的重要标识。</p>
+            </div>
+            
+            <p style="font-size: 16px; color: #aaa; line-height: 2; margin-top: 30px;">
+                本报告旨在系统梳理中国主流武术种类的历史渊源、技术特点与文化内涵，向世界展示中华武术的博大精深，促进中华武术文化的国际传播与交流互鉴。通过深入分析少林、武当、峨眉等武术流派，以及太极拳、形意拳、八卦掌等内家拳法，揭示中华武术背后蕴含的哲学思想、伦理价值与审美追求，为中华武术走向世界提供理论支撑与实践参考。
+            </p>
+        </section>
+
+        <!-- 历史发展 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">历史发展脉络</h2>
+                <p class="section-subtitle">从远古格斗到现代体育的演进历程</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">远古时期</div>
+                        <div class="timeline-title">武术萌芽</div>
+                        <div class="timeline-desc">原始社会的狩猎活动与部落战争催生了格斗技术的雏形。考古发现表明，早在新石器时代，先民就已使用石器、骨器进行格斗训练，武术的原始形态开始形成。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">春秋战国</div>
+                        <div class="timeline-title">武术兴盛</div>
+                        <div class="timeline-desc">诸侯争霸促进了军事武艺的发展。"角抵"、"击剑"等竞技形式出现，武术开始从军事技能向体育竞技转变。诸子百家的哲学思想为武术理论奠定了基础。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">秦汉时期</div>
+                        <div class="timeline-title">体系初成</div>
+                        <div class="timeline-desc">秦始皇统一中国后，"收天下兵，聚之咸阳"，民间武术受到抑制，但军中武艺持续发展。汉代设立"武官学"，武术开始系统化、规范化发展。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">唐宋时期</div>
+                        <div class="timeline-title">流派纷呈</div>
+                        <div class="timeline-desc">唐代武术得到极大发展，形成了象形拳等拳种。宋代民间武术组织兴起，"社"、"团"等武术团体遍布城乡，武术套路体系日趋完善。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">明清时期</div>
+                        <div class="timeline-title">武术大成</div>
+                        <div class="timeline-desc">武术发展的黄金时期，少林、武当、峨眉等流派正式形成，内家拳法体系成熟，太极拳、形意拳、八卦掌等拳种相继创立，武术理论达到高峰。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">近现代</div>
+                        <div class="timeline-title">走向世界</div>
+                        <div class="timeline-desc">武术逐渐体育化、竞技化。1936年柏林奥运会中国武术代表团首次亮相国际舞台。1990年武术成为亚运会正式比赛项目，2020年太极拳被列入联合国非物质文化遗产名录。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 七大拳系 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">七大拳系概览</h2>
+                <p class="section-subtitle">中华武术的主要流派体系</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>中国武术以地域文化为底蕴，形成了七大主要拳系：少林、武当、峨眉、南拳、太极、形意、八卦。这七大拳系各具特色，涵盖了中华武术的主要流派，体现了不同地域文化对武术发展的深刻影响。</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">少林拳种</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">129</div>
+                    <div class="stat-label">国家级武术非遗</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">158</div>
+                    <div class="stat-label">国际武联成员国</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">年历史传承</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 少林武术 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">少林武术</h2>
+                <p class="section-subtitle">天下武功出少林</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🏛️</div>
+                        <div class="style-name">少林派</div>
+                        <div class="style-origin">河南嵩山 · 北魏太和十九年(495年)</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">历史渊源</div>
+                            <div class="style-feature-content">少林寺始建于北魏孝文帝时期，最初为西域高僧跋陀所建。达摩祖师面壁九年，创立禅宗，"以禅入武，习武修禅"，形成独特的"武术禅"文化。少林武术历经千年发展，成为中华武术中范围最广、历史最长、拳种最多的门派。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">少林武术以刚猛迅疾著称，讲究"拳打卧牛之地"，招式朴实无华，注重实战。拳法有"拳打一条线"之说，身法灵活多变，步法稳健扎实。器械种类繁多，有"十八般兵器"之说。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">刚猛迅疾</span>
+                            <span class="style-tag">实战为本</span>
+                            <span class="style-tag">禅武合一</span>
+                            <span class="style-tag">套路繁多</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">📚</div>
+                        <div class="style-name">代表拳法</div>
+                        <div class="style-origin">经典套路</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">少林拳</div>
+                            <div class="style-feature-content">少林拳是少林武术的基础拳法，动作刚劲有力，节奏鲜明，讲究"手似两扇门，全靠腿打人"。主要套路有少林大洪拳、小洪拳、罗汉拳、七星拳等。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">器械套路</div>
+                            <div class="style-feature-content">少林器械以棍法最为著名，有"棍打一大片"之说。代表器械有少林棍、梅花刀、达摩剑、方便铲等。其中少林棍法被誉为"百兵之首"。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">七十二绝技</div>
+                            <div class="style-feature-content">传说中的少林七十二绝技包括铁砂掌、一指禅、金钟罩、铁布衫等硬气功，以及轻功、点穴等特殊技法，体现了少林武术的深厚底蕴。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 武当武术 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">武当武术</h2>
+                <p class="section-subtitle">内家拳法之宗</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">⛰️</div>
+                        <div class="style-name">武当派</div>
+                        <div class="style-origin">湖北武当山 · 元末明初</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">历史渊源</div>
+                            <div class="style-feature-content">武当武术由张三丰祖师创立于武当山，融合道家养生思想与武术技击，开创内家拳法先河。武当武术强调"以柔克刚"、"后发先至"，与少林武术形成鲜明对比，有"北崇少林，南尊武当"之说。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">核心理念</div>
+                            <div class="style-feature-content">武当武术以道家哲学为指导，讲究"天人合一"、"以静制动"。强调内功修炼，注重意气力的统一，追求"四两拨千斤"的技击境界。主张"以武入道"，通过武术修炼达到身心合一。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">以柔克刚</span>
+                            <span class="style-tag">后发先至</span>
+                            <span class="style-tag">内功修炼</span>
+                            <span class="style-tag">道家哲学</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">☯️</div>
+                        <div class="style-name">武当内家拳</div>
+                        <div class="style-origin">内家三拳</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">太极拳</div>
+                            <div class="style-feature-content">太极拳是武当武术的重要组成部分，以"掤、捋、挤、按、采、挒、肘、靠"八法为技术核心，动作柔和缓慢，讲究"以意领气，以气运身"。2020年被列入联合国人类非物质文化遗产代表作名录。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">形意拳</div>
+                            <div class="style-feature-content">形意拳模仿十二种动物的捕食和自卫动作，以"劈、崩、钻、炮、横"五行为基本拳法。特点是直进直退，身法迅疾，劲力刚猛，适合战场搏杀。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">八卦掌</div>
+                            <div class="style-feature-content">八卦掌以绕圆走转为基本运动形式，步法灵活多变，掌法丰富。特点是"形如游龙，视若猿守，坐如虎踞，转似鹰盘"，讲究走化与击打相结合。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 峨眉武术 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">峨眉武术</h2>
+                <p class="section-subtitle">亦刚亦柔的武林奇葩</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🌸</div>
+                        <div class="style-name">峨眉派</div>
+                        <div class="style-origin">四川峨眉山 · 春秋战国时期</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">历史渊源</div>
+                            <div class="style-feature-content">峨眉武术发源于四川峨眉山，与少林、武当并称中华武术三大流派。峨眉武术融合了佛道两家思想，兼具南北武术之长，形成了独特的技术体系。有"峨眉天下秀，武术天下奇"的美誉。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">峨眉武术亦刚亦柔，动作优美飘逸，如玉树临风。讲究"桩功扎实，身法灵活，手法多变，腿法凌厉"。技术全面，攻防兼备，是诸家武术中姿态最为优美的一种。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">亦刚亦柔</span>
+                            <span class="style-tag">姿态优美</span>
+                            <span class="style-tag">技术全面</span>
+                            <span class="style-tag">佛道融合</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">⚔️</div>
+                        <div class="style-name">峨眉绝技</div>
+                        <div class="style-origin">独特技法</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">峨眉十二桩</div>
+                            <div class="style-feature-content">峨眉十二桩是峨眉武术的基础功法，包括天、地、之、心、龙、鹤、风、云、大、小、幽、冥十二种桩法，分别对应不同的内功修炼方法。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">峨眉刺</div>
+                            <div class="style-feature-content">峨眉刺是峨眉派的代表性器械，长约一尺，中间有握柄，两端尖锐。技法灵活多变，可刺、可点、可拨、可挑，是近身短打的利器。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">玉女素心剑</div>
+                            <div class="style-feature-content">峨眉剑法以"玉女素心剑"最为著名，剑法轻盈飘逸，如仙女起舞，兼具实战价值与观赏价值，充分体现了峨眉武术的美学追求。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 南拳 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">南拳体系</h2>
+                <p class="section-subtitle">岭南武术的璀璨明珠</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🐯</div>
+                        <div class="style-name">洪拳</div>
+                        <div class="style-origin">广东 · 清代</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">洪拳是南拳中流传最广、影响最大的拳种，以"桥马稳固"、"刚劲有力"著称。动作大开大合，发劲刚猛，步法稳健，讲究"硬桥硬马，稳扎稳打"。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">代表套路</div>
+                            <div class="style-feature-content">洪拳代表套路有工字伏虎拳、虎鹤双形拳、铁线拳等。其中虎鹤双形拳融合虎之威猛与鹤之灵巧，是洪拳的经典之作。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">桥马稳固</span>
+                            <span class="style-tag">刚劲有力</span>
+                            <span class="style-tag">硬桥硬马</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🦋</div>
+                        <div class="style-name">咏春拳</div>
+                        <div class="style-origin">福建/广东 · 清代</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">咏春拳以"中线理论"为核心，动作简洁实用，手法丰富多变，讲究"寸劲"发力。拳法短桥寸劲，贴身近战，适合南方街巷狭窄环境的实战需求。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">国际影响</div>
+                            <div class="style-feature-content">咏春拳因李小龙而名扬世界，成为全球传播最广的中国武术之一。木人桩、黐手等独特训练方法深受国际武术爱好者喜爱。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">中线理论</span>
+                            <span class="style-tag">寸劲发力</span>
+                            <span class="style-tag">简洁实用</span>
+                            <span class="style-tag">国际知名</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🦁</div>
+                        <div class="style-name">蔡李佛拳</div>
+                        <div class="style-origin">广东新会 · 清代道光年间</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">蔡李佛拳由陈享融合蔡家拳、李家拳、佛家拳三家之长而创。特点是动作舒展大方，长桥大马，刚劲有力，步法灵活，讲究"长桥大马，侧身闪避"。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">器械丰富</div>
+                            <div class="style-feature-content">蔡李佛拳器械种类繁多，有"十八般兵器"之称。代表性器械有蔡李佛刀、蔡李佛棍、耙头、板凳等，技法独特，实战性强。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">三家融合</span>
+                            <span class="style-tag">长桥大马</span>
+                            <span class="style-tag">器械丰富</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🦢</div>
+                        <div class="style-name">白鹤拳</div>
+                        <div class="style-origin">福建永春 · 清代</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">白鹤拳模仿白鹤的姿态与动作，讲究"白鹤亮翅"、"白鹤独立"等招式。特点是动作舒展优美，刚柔相济，手法细腻，步法轻盈。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">分支流派</div>
+                            <div class="style-feature-content">白鹤拳分为飞、鸣、宿、食、走五种鹤形，衍生出多种流派。永春白鹤拳、福州鹤拳、福清鹤拳等各具特色，在福建、台湾及东南亚广泛流传。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">仿生拳法</span>
+                            <span class="style-tag">刚柔相济</span>
+                            <span class="style-tag">姿态优美</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 内家三拳 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 07</div>
+                <h2 class="section-title">内家三拳</h2>
+                <p class="section-subtitle">太极拳 · 形意拳 · 八卦掌</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>内家拳以修炼内功为核心，强调"以意领气，以气运身"，追求身心合一的境界。太极拳、形意拳、八卦掌并称"内家三拳"，各具特色又相互补充，代表了中华武术内功修炼的最高成就。</p>
+            </div>
+            
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">☯️</div>
+                        <div class="style-name">太极拳</div>
+                        <div class="style-origin">河南陈家沟 · 明末清初</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">核心理念</div>
+                            <div class="style-feature-content">太极拳以中国传统道家哲学中的太极、阴阳辩证理念为核心思想，集颐养性情、强身健体、技击对抗等多种功能为一体。讲究"以柔克刚"、"四两拨千斤"。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">主要流派</div>
+                            <div class="style-feature-content">太极拳发展出陈式、杨式、武式、吴式、孙式五大流派，各具特色。陈式太极拳刚柔相济，杨式太极拳舒展大方，是流传最广的两大流派。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">世界影响</div>
+                            <div class="style-feature-content">2020年12月17日，太极拳被列入联合国教科文组织人类非物质文化遗产代表作名录。目前全球有超过3亿人练习太极拳，是中国文化走向世界的重要名片。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">阴阳辩证</span>
+                            <span class="style-tag">以柔克刚</span>
+                            <span class="style-tag">人类非遗</span>
+                            <span class="style-tag">全球3亿习练者</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🐻</div>
+                        <div class="style-name">形意拳</div>
+                        <div class="style-origin">山西 · 明末清初</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">核心理念</div>
+                            <div class="style-feature-content">形意拳以"心意诚于中，肢体形于外"为核心理念，讲究"象形取意"。模仿十二种动物的捕食和自卫动作，融五行拳与十二形为一体。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术体系</div>
+                            <div class="style-feature-content">形意拳以"劈、崩、钻、炮、横"五行为基本拳法，对应金、木、水、火、土五行。特点是直进直退，身法迅疾，劲力刚猛，适合战场搏杀。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">实战特点</div>
+                            <div class="style-feature-content">形意拳打法如同阵地战，讲究"硬打硬上无遮拦"，抢半步迎着打，把对方的劲憋住，顶而不顶，似顶非顶。实战性极强，被誉为"一年形意打死人"。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">象形取意</span>
+                            <span class="style-tag">五行拳法</span>
+                            <span class="style-tag">刚猛迅疾</span>
+                            <span class="style-tag">实战为本</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="style-card">
+                    <div class="style-header">
+                        <div class="style-icon">🌀</div>
+                        <div class="style-name">八卦掌</div>
+                        <div class="style-origin">北京 · 清代道光年间</div>
+                    </div>
+                    <div class="style-body">
+                        <div class="style-feature">
+                            <div class="style-feature-title">创始人</div>
+                            <div class="style-feature-content">八卦掌由董海川祖师创立，融合道家八卦学说与武术技击，以绕圆走转为基本运动形式。董海川曾任职清廷大内，八卦掌因此有"大内绝技"之称。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">技术特点</div>
+                            <div class="style-feature-content">八卦掌以"形如游龙，视若猿守，坐如虎踞，转似鹰盘"为特点。步法灵活多变，掌法丰富，讲究走化与击打相结合，如同游击战，变化莫测。</div>
+                        </div>
+                        <div class="style-feature">
+                            <div class="style-feature-title">独特训练</div>
+                            <div class="style-feature-content">八卦掌以走圈为基本训练方法，通过不断绕圆走转，培养身法的灵活性与协调性。代表器械有八卦刀、八卦剑、八卦钺等，技法独特。</div>
+                        </div>
+                        <div class="style-tags">
+                            <span class="style-tag">绕圆走转</span>
+                            <span class="style-tag">变化莫测</span>
+                            <span class="style-tag">步法灵活</span>
+                            <span class="style-tag">大内绝技</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 哲学思想 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 08</div>
+                <h2 class="section-title">哲学思想与文化内涵</h2>
+                <p class="section-subtitle">止戈为武 · 武德修养</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>中华武术不仅是一种技击之术，更是一门深奥的哲学。"武"字由"止"与"戈"组成，本义即为"止戈为武"——制止战争、消停战事才是真正的武力。这一核心理念贯穿中华武术发展的始终，体现了中华民族热爱和平的文化基因。</p>
+            </div>
+            
+            <div class="philosophy-grid">
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">☯️</div>
+                    <div class="philosophy-title">天人合一</div>
+                    <div class="philosophy-desc">武术追求人与自然的和谐统一，通过模仿自然界的动物形态与运动规律，达到"道法自然"的境界。太极拳的"以柔克刚"、八卦掌的"绕圆走转"都体现了这一哲学思想。</div>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">⚖️</div>
+                    <div class="philosophy-title">阴阳辩证</div>
+                    <div class="philosophy-desc">武术讲究阴阳相生、刚柔相济。攻与防、进与退、刚与柔、快与慢，都是对立统一的辩证关系。掌握阴阳平衡，是武术修炼的核心要义。</div>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">🛡️</div>
+                    <div class="philosophy-title">止戈为武</div>
+                    <div class="philosophy-desc">"武"的本义是制止战争。中华武术强调"以德服人"、"以武止戈"，武力是维护和平的手段而非目的。这一理念体现了中华民族"和为贵"的文化精神。</div>
+                </div>
+            </div>
+            
+            <div class="philosophy-grid" style="margin-top: 30px;">
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">❤️</div>
+                    <div class="philosophy-title">武德修养</div>
+                    <div class="philosophy-desc">武德是武术文化的核心。传统武德以"仁、义、礼、智、信"为准则，强调"未曾学艺先学礼，未曾习武先习德"。武德修养是习武者的必修课。</div>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">🧘</div>
+                    <div class="philosophy-title">身心合一</div>
+                    <div class="philosophy-desc">武术追求身体与精神的统一。通过调身、调息、调心的综合修炼，达到强身健体、修身养性的目的。"内练一口气，外练筋骨皮"是武术修炼的基本方法。</div>
+                </div>
+                
+                <div class="philosophy-card">
+                    <div class="philosophy-symbol">🎭</div>
+                    <div class="philosophy-title">审美追求</div>
+                    <div class="philosophy-desc">武术具有独特的美学价值。动作的韵律美、力量的爆发美、姿态的造型美，构成了武术独特的审美体系。"手似两扇门，全靠腿打人"体现了武术的形式美与实用美的统一。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 国际传播 -->
+        <section class="content-section global-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 09</div>
+                <h2 class="section-title">国际传播与文化交流</h2>
+                <p class="section-subtitle">中华武术走向世界</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>中华武术是中华民族文化软实力的重要组成部分，在国际文化交流中发挥着独特作用。从1936年柏林奥运会的首次亮相，到2020年太极拳申遗成功，中华武术正以崭新的姿态走向世界舞台。</p>
+            </div>
+            
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1936</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">柏林奥运会武术表演</div>
+                        <div class="milestone-desc">中国武术代表团在柏林奥运会期间进行武术表演，这是中华武术首次在国际体育盛会上亮相，引起国际社会广泛关注。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">1990</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">武术入亚</div>
+                        <div class="milestone-desc">武术成为北京亚运会正式比赛项目，标志着武术正式进入国际综合性体育赛事，开启了武术竞技化、体育化发展的新篇章。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2002</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">国际武联成立</div>
+                        <div class="milestone-desc">国际武术联合会（IWUF）获得国际奥委会正式承认，目前拥有158个会员国，成为推动武术全球传播的重要国际组织。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2020</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">太极拳申遗成功</div>
+                        <div class="milestone-desc">太极拳被列入联合国教科文组织人类非物质文化遗产代表作名录，这是中华武术首次获得世界级非遗认定，具有里程碑意义。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">武术入世运</div>
+                        <div class="milestone-desc">武术首次成为世界运动会正式比赛项目，在成都世运会上精彩亮相。中国选手实现11金全胜战绩，展现了中国武术的竞技水平。</div>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card">
+                    <div class="stat-number">158</div>
+                    <div class="stat-label">国际武联成员国</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3亿+</div>
+                    <div class="stat-label">全球太极拳习练者</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">海外孔子学院武术课</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">171</div>
+                    <div class="stat-label">近六年世锦赛金牌</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            
+            <p class="conclusion-text">
+                中华武术是<span class="conclusion-highlight">五千年文明的精神结晶</span>，是<span class="conclusion-highlight">东方智慧的生动体现</span>。从少林的刚猛迅疾到武当的以柔克刚，从峨眉的亦刚亦柔到南拳的桥马稳固，从太极拳的阴阳辩证到形意拳的象形取意，再到八卦掌的变化莫测——七大拳系、数百拳种，共同构成了<span class="conclusion-highlight">博大精深的中华武术文化体系</span>。
+            </p>
+            
+            <p class="conclusion-text">
+                中华武术不仅是<span class="conclusion-highlight">防身技击之术</span>，更是<span class="conclusion-highlight">修身养性之道</span>。"止戈为武"的核心理念、"武德修养"的伦理追求、"天人合一"的哲学境界，赋予武术深厚的文化内涵与精神价值。在全球化时代，中华武术正以其独特的魅力走向世界，成为<span class="conclusion-highlight">连接东西方文化的重要桥梁</span>。
+            </p>
+            
+            <div class="conclusion-quote">
+                "未曾学艺先学礼，未曾习武先习德"
+            </div>
+            
+            <p class="conclusion-text" style="margin-top: 40px; font-size: 18px; color: #aaa;">
+                愿中华武术文化薪火相传，在世界舞台上绽放更加璀璨的光芒，为构建人类命运共同体贡献东方智慧。
+            </p>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>中华武术文化深度分析报告 | 向世界传递中华武术文化</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年3月 | 数据来源：国家体育总局、国际武术联合会、中国非物质文化遗产网</p>
+        </footer>
+    </div>
+</body>
+</html>
