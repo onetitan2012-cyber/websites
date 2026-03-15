@@ -6,119 +6,389 @@
   <title>Ponghood - VR 研究与洞察</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', sans-serif;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+      background: linear-gradient(135deg, #0a0f1a 0%, #141b2d 50%, #1e2435 100%);
       min-height: 100vh;
       color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 20px;
+      padding: 40px 20px;
     }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    /* Header */
     .header {
       text-align: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
+    
     .logo {
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      background: linear-gradient(90deg, #60a5fa, #a78bfa, #c084fc);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -1px;
     }
+    
     .tagline {
-      color: #94a3b8;
-      font-size: 1.1rem;
+      color: #64748b;
+      font-size: 1rem;
+      font-weight: 400;
     }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 24px;
-      max-width: 1000px;
-      width: 100%;
+    
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+      padding: 0 10px;
     }
-    .card {
-      background: rgba(255,255,255,0.05);
+    
+    .tab {
+      padding: 10px 20px;
+      border-radius: 50px;
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 32px;
+      background: rgba(255,255,255,0.03);
+      color: #94a3b8;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: all 0.3s ease;
+      white-space: nowrap;
+    }
+    
+    .tab:hover {
+      background: rgba(255,255,255,0.08);
+      color: #e2e8f0;
+    }
+    
+    .tab.active {
+      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+      border-color: transparent;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+    }
+    
+    /* Cards Grid */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px;
+      cursor: pointer;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       color: inherit;
       display: flex;
       flex-direction: column;
+      position: relative;
+      overflow: hidden;
     }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--category-color, #60a5fa), var(--category-color-2, #a78bfa));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
     .card:hover {
-      background: rgba(255,255,255,0.1);
-      transform: translateY(-4px);
-      border-color: rgba(96, 165, 250, 0.5);
+      background: rgba(255,255,255,0.06);
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.15);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
     }
-    .card-icon {
-      font-size: 2.5rem;
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    .card.hidden {
+      display: none;
+    }
+    
+    /* Category Colors */
+    .card[data-category="daily"] { --category-color: #f59e0b; --category-color-2: #f97316; }
+    .card[data-category="vr"] { --category-color: #8b5cf6; --category-color-2: #a78bfa; }
+    .card[data-category="game"] { --category-color: #10b981; --category-color-2: #34d399; }
+    .card[data-category="football"] { --category-color: #3b82f6; --category-color-2: #60a5fa; }
+    .card[data-category="culture"] { --category-color: #ef4444; --category-color-2: #f87171; }
+    
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin-bottom: 16px;
     }
-    .card-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 8px;
-      color: #f1f5f9;
+    
+    .card-icon {
+      font-size: 2rem;
+      line-height: 1;
     }
+    
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      color: var(--category-color, #94a3b8);
+      font-weight: 600;
+    }
+    
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #f8fafc;
+      line-height: 1.4;
+    }
+    
     .card-desc {
       color: #94a3b8;
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      line-height: 1.7;
+      flex-grow: 1;
     }
-    .card-date {
-      margin-top: auto;
+    
+    .card-footer {
+      margin-top: 20px;
       padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .card-date {
       font-size: 0.8rem;
       color: #64748b;
     }
+    
+    .card-arrow {
+      font-size: 1.2rem;
+      color: var(--category-color, #64748b);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover .card-arrow {
+      transform: translateX(4px);
+    }
+    
+    /* Footer */
     .footer {
+      text-align: center;
       margin-top: 60px;
-      color: #64748b;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: #475569;
       font-size: 0.85rem;
     }
-    @media (max-width: 600px) {
+    
+    /* Mobile */
+    @media (max-width: 640px) {
       .logo { font-size: 2rem; }
       .cards { grid-template-columns: 1fr; }
+      .filter-tabs { gap: 8px; }
+      .tab { padding: 8px 16px; font-size: 0.85rem; }
     }
+    
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .card {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    .card:nth-child(1) { animation-delay: 0.05s; }
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.15s; }
+    .card:nth-child(4) { animation-delay: 0.2s; }
+    .card:nth-child(5) { animation-delay: 0.25s; }
+    .card:nth-child(6) { animation-delay: 0.3s; }
+    .card:nth-child(7) { animation-delay: 0.35s; }
   </style>
 </head>
 <body>
-  <div class="header">
-    <div class="logo">PONGHOOD</div>
-    <div class="tagline">VR 研究 · 数据分析 · 未来洞察</div>
+  <div class="container">
+    <header class="header">
+      <div class="logo">PONGHOOD</div>
+      <div class="tagline">探索虚拟与现实的边界</div>
+    </header>
+
+    <nav class="filter-tabs">
+      <button class="tab active" data-filter="all">全部</button>
+      <button class="tab" data-filter="daily">📡 未来日报</button>
+      <button class="tab" data-filter="vr">🥽 VR世界</button>
+      <button class="tab" data-filter="game">🎮 游戏知识</button>
+      <button class="tab" data-filter="football">⚽ 足球</button>
+      <button class="tab" data-filter="culture">🥋 中华文化</button>
+    </nav>
+
+    <div class="cards">
+      <!-- 未来日报 -->
+      <a href="intel-2026-03-14.html" class="card" data-category="daily">
+        <div class="card-header">
+          <span class="card-icon">📡</span>
+          <span class="card-category">未来日报</span>
+        </div>
+        <div class="card-title">每日未来情报</div>
+        <div class="card-desc">2026年3月14日情报汇总，聚焦科技趋势、市场动态与前沿观察</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-14</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- VR世界 -->
+      <a href="vr-headset-hardware-report.html" class="card" data-category="vr">
+        <div class="card-header">
+          <span class="card-icon">🥽</span>
+          <span class="card-category">VR世界</span>
+        </div>
+        <div class="card-title">VR 一体机硬件报告</div>
+        <div class="card-desc">Quest 2/3、Pico 4/Ultra、Vision Pro等主流设备横向对比，解析硬件演进路线与未来趋势</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-14</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="vr-tabletennis-report.html" class="card" data-category="vr">
+        <div class="card-header">
+          <span class="card-icon">🏓</span>
+          <span class="card-category">VR世界</span>
+        </div>
+        <div class="card-title">VR 乒乓球调研报告</div>
+        <div class="card-desc">2021-2026年全球VR乒乓球产品、市场与用户深度研究，含ITTF赛事生态分析</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-13</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 足球 -->
+      <a href="2026世界杯赛程预测.html" class="card" data-category="football">
+        <div class="card-header">
+          <span class="card-icon">⚽</span>
+          <span class="card-category">足球</span>
+        </div>
+        <div class="card-title">2026 世界杯赛程预测</div>
+        <div class="card-desc">基于数据模型的世界杯赛事分析与预测报告，覆盖小组赛至决赛完整赛程</div>
+        <div class="card-footer">
+          <span class="card-date">2026年赛事前瞻</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 游戏知识 -->
+      <a href="game-genres-guide.html" class="card" data-category="game">
+        <div class="card-header">
+          <span class="card-icon">🎮</span>
+          <span class="card-category">游戏知识</span>
+        </div>
+        <div class="card-title">游戏类型图鉴</div>
+        <div class="card-desc">全面解析各类游戏类型的定义、特点与代表作品，从动作到策略，从RPG到独立游戏</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-15</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 中华文化 -->
+      <a href="sanhuang-paohui.html" class="card" data-category="culture">
+        <div class="card-header">
+          <span class="card-icon">🥋</span>
+          <span class="card-category">中华文化</span>
+        </div>
+        <div class="card-title">三皇炮锤</div>
+        <div class="card-desc">中国传统武术流派深度解析，探寻百年传承的武学精髓与实战技法</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-15</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+
+      <a href="chinese-wushu.html" class="card" data-category="culture">
+        <div class="card-header">
+          <span class="card-icon">🐉</span>
+          <span class="card-category">中华文化</span>
+        </div>
+        <div class="card-title">中国武术</div>
+        <div class="card-desc">中华武术文化全景概览，从少林武当到各门各派，展现千年武学传承</div>
+        <div class="card-footer">
+          <span class="card-date">2026-03-15</span>
+          <span class="card-arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <footer class="footer">
+      © 2026 Ponghood · 探索虚拟与现实的边界
+    </footer>
   </div>
 
-  <div class="cards">
-    <a href="intel-2026-03-14.html" class="card">
-      <div class="card-icon">📡</div>
-      <div class="card-title">每日未来情报</div>
-      <div class="card-desc">2026年3月14日情报汇总，聚焦科技趋势、市场动态与前沿观察</div>
-      <div class="card-date">2026-03-14</div>
-    </a>
+  <script>
+    // Filter functionality
+    const tabs = document.querySelectorAll('.tab');
+    const cards = document.querySelectorAll('.card');
 
-    <a href="2026世界杯赛程预测.html" class="card">
-      <div class="card-icon">⚽</div>
-      <div class="card-title">2026 世界杯赛程预测</div>
-      <div class="card-desc">基于数据模型的世界杯赛事分析与预测报告，覆盖小组赛至决赛完整赛程</div>
-      <div class="card-date">2026年赛事前瞻</div>
-    </a>
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
 
-    <a href="vr-tabletennis-report.html" class="card">
-      <div class="card-icon">🏓</div>
-      <div class="card-title">VR 乒乓球调研报告</div>
-      <div class="card-desc">2021-2026年全球VR乒乓球产品、市场与用户深度研究，含ITTF赛事生态分析</div>
-      <div class="card-date">2026-03-13</div>
-    </a>
-  </div>
+        // Filter cards
+        const filter = tab.dataset.filter;
+        cards.forEach(card => {
+          if (filter === 'all' || card.dataset.category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
 
-  <div class="footer">
-    © 2026 Ponghood · 探索虚拟与现实的边界
-  </div>
+        // Update URL hash for sharing
+        if (filter !== 'all') {
+          history.replaceState(null, null, `#${filter}`);
+        } else {
+          history.replaceState(null, null, window.location.pathname);
+        }
+      });
+    });
+
+    // Handle URL hash on load
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+      const targetTab = document.querySelector(`.tab[data-filter="${hash}"]`);
+      if (targetTab) {
+        targetTab.click();
+      }
+    }
+  </script>
 </body>
 </html>
