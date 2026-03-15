@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三皇炮捶拳深度调研报告</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 封面样式 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            padding: 60px;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        .cover-title {
+            font-size: 72px;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        
+        .cover-subtitle {
+            font-size: 28px;
+            color: #c9b037;
+            margin-bottom: 60px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+        
+        .cover-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+        }
+        
+        .cover-quote {
+            font-size: 24px;
+            color: #a0a0a0;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .cover-quote span {
+            color: #d4af37;
+            font-size: 36px;
+        }
+        
+        .cover-meta {
+            font-size: 16px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            background: rgba(13, 27, 42, 0.8);
+            margin: 40px 0;
+            padding: 60px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-number {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #888;
+            margin-top: 30px;
+        }
+        
+        /* 引言卡片 */
+        .intro-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-left: 4px solid #d4af37;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .intro-card p {
+            font-size: 18px;
+            color: #e8e8e8;
+            line-height: 2;
+        }
+        
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #d4af37, transparent);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: rgba(212, 175, 55, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .timeline-year {
+            font-size: 24px;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            border: 4px solid #1a1a2e;
+        }
+        
+        /* 卡片网格 */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .info-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 8px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+        }
+        
+        .info-card-icon {
+            font-size: 36px;
+            color: #d4af37;
+            margin-bottom: 20px;
+        }
+        
+        .info-card-title {
+            font-size: 22px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .info-card-content {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* 技术体系表格 */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+        }
+        
+        .tech-table th {
+            background: rgba(212, 175, 55, 0.2);
+            color: #d4af37;
+            padding: 20px;
+            text-align: left;
+            font-size: 18px;
+            border-bottom: 2px solid #d4af37;
+        }
+        
+        .tech-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 16px;
+            color: #ccc;
+        }
+        
+        .tech-table tr:hover td {
+            background: rgba(212, 175, 55, 0.05);
+        }
+        
+        /* 流派对比 */
+        .compare-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .compare-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 40px;
+        }
+        
+        .compare-card h3 {
+            font-size: 28px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .compare-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .compare-card li {
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+            font-size: 16px;
+            color: #ccc;
+        }
+        
+        .compare-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .compare-card li strong {
+            color: #d4af37;
+        }
+        
+        /* 传承谱系 */
+        .lineage-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 0;
+        }
+        
+        .lineage-level {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .lineage-node {
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 20px 30px;
+            text-align: center;
+            min-width: 150px;
+        }
+        
+        .lineage-node .name {
+            font-size: 18px;
+            color: #d4af37;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .lineage-node .title {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .lineage-connector {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(180deg, #d4af37, transparent);
+        }
+        
+        /* 引用块 */
+        .quote-block {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid #d4af37;
+            padding: 30px 40px;
+            margin: 40px 0;
+            font-style: italic;
+            font-size: 20px;
+            color: #d4af37;
+            line-height: 1.8;
+        }
+        
+        .quote-block cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #888;
+            font-style: normal;
+        }
+        
+        /* 要点列表 */
+        .key-points {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        
+        .key-points li {
+            padding: 15px 0 15px 40px;
+            position: relative;
+            font-size: 18px;
+            color: #ccc;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+        }
+        
+        .key-points li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            color: #d4af37;
+            font-size: 14px;
+        }
+        
+        /* 数据来源 */
+        .data-source {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 8px;
+            margin-top: 40px;
+        }
+        
+        .data-source h4 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .data-source ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .data-source li {
+            padding: 10px 0;
+            color: #888;
+            font-size: 14px;
+        }
+        
+        .data-source li a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            margin-top: 60px;
+        }
+        
+        .footer-text {
+            color: #888;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+        
+        .footer-signature {
+            color: #d4af37;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover-title {
+                font-size: 42px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .compare-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item {
+                flex-direction: column !important;
+            }
+            
+            .timeline-content {
+                width: 100%;
+                margin-left: 40px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">谦哥修习拳种 · 深度调研</div>
+            <h1 class="cover-title">三皇炮捶拳</h1>
+            <p class="cover-subtitle">出手如捶 · 发劲如炮</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">
+                <span>"</span>
+                以气为主，以理当先。蓄如灌铅，开如放箭。
+                <span>"</span>
+            </p>
+            <div class="cover-meta">
+                <p>北派五大拳系之"炮"拳代表</p>
+                <p>2012年列入河北省非物质文化遗产</p>
+                <p>调研日期：2026年3月15日</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 第一章：拳种概述 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">拳种概述</h2>
+                <p class="section-subtitle">北派硬功拳法的典型代表</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>三皇炮捶拳，简称"炮捶"，属三皇门（亦称人宗门、人祖门）。三皇者，天皇伏羲、地皇神农、人皇黄帝。拳以此立名曰"三皇"；又因该拳出手如捶，发劲如炮，故名炮捶，合之则称"三皇炮捶"。</p>
+            </div>
+            
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">⚔️</div>
+                    <h3 class="info-card-title">拳种定位</h3>
+                    <p class="info-card-content">北派武术"查华花滑炮"五大拳系中的"炮"拳代表，以刚猛迅捷著称，是北派硬功拳法的典型。注重发力刚烈，招式直击要害，实战性强。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">🎯</div>
+                    <h3 class="info-card-title">核心特点</h3>
+                    <p class="info-card-content">"出手如捶，发劲如炮"——强调瞬间爆发力。以完整统一周身之功力，与灵巧多变之技法相结合，是集技击技术与健身功能为一体的优秀拳种。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">📜</div>
+                    <h3 class="info-card-title">非遗地位</h3>
+                    <p class="info-card-content">2012年列入河北省非物质文化遗产名录，后纳入北京、济南等多地非遗保护体系。承载着保家卫国的家国文化与强身健体的体育文化。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第二章：历史源流 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">历史源流</h2>
+                <p class="section-subtitle">明末清初至今的四百年传承</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">明末清初</div>
+                        <div class="timeline-title">拳法起源</div>
+                        <div class="timeline-desc">由少林僧人普照在四川峨眉山得峨眉道人真传，后传于乔三秀与甘凤池，形成"刚柔两脉"。拳法取义"三皇"，蕴含对天地人三才的尊崇。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">清乾隆年间</div>
+                        <div class="timeline-title">乔鹤龄传艺</div>
+                        <div class="timeline-desc">乔三秀传艺于乔鹤龄，乔鹤龄于道光年间授徒宋迈伦、于连登等人，为日后"于派"与"宋派"两大分支的形成奠定基础。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">清道光年间</div>
+                        <div class="timeline-title">两派分立</div>
+                        <div class="timeline-desc">宋迈伦融合多家拳法，创"夫子三拱手"绝技；于连登之子于鉴投奔宋迈伦深造，形成"于拳宋手"的特色，两派正式分立。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">清咸丰年间</div>
+                        <div class="timeline-title">会友镖局创立</div>
+                        <div class="timeline-desc">宋迈伦在北京创立"京都会友镖局"，三皇炮捶拳成为镖师必修武艺，依托镖局行业经历六代传承至今，具有重要的历史价值。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1916年</div>
+                        <div class="timeline-title">于派北传</div>
+                        <div class="timeline-desc">于鉴应邀去太原任山西国术馆总教习，遂将三皇炮捶拳传到山西及华北一带，扩大了拳种的影响范围。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">2012年至今</div>
+                        <div class="timeline-title">非遗保护时代</div>
+                        <div class="timeline-desc">列入河北省非物质文化遗产，建立河北省三皇炮捶武术研究院。北京、河北等地设有10余处固定练功场，西班牙人卡洛斯成立"欧洲三皇炮捶拳协会"。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第三章：技术体系 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">技术体系</h2>
+                <p class="section-subtitle">以气为主，以理当先</p>
+            </div>
+            
+            <div class="quote-block">
+                "力起于足，发于腿，主宰于腰，形于手指"
+                <cite>—— 三皇炮捶拳发力要诀</cite>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">核心理论</h3>
+            <ul class="key-points">
+                <li><strong>十字捶：</strong>拳法根本，所有技法围绕十字劲展开</li>
+                <li><strong>五行之象：</strong>拳形取于猿、熊、虎、甲、蛇五形</li>
+                <li><strong>五步：</strong>进、退、顾、盼、定</li>
+                <li><strong>五动：</strong>挫、顿、转、拧、蓄</li>
+                <li><strong>十二炮法：</strong>开门炮、连环炮、十字炮、通天炮等十二种核心技法</li>
+            </ul>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">核心功法</h3>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>功法名称</th>
+                        <th>功能定位</th>
+                        <th>练习要点</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>伏虎桩</strong></td>
+                        <td>筑基功夫</td>
+                        <td>外形如伏虎，培养内劲、撑劲、圈劲及擒扑力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>十字锤（十字炮）</strong></td>
+                        <td>核心发力</td>
+                        <td>从伏虎桩演变，注重前后通透的整劲爆发</td>
+                    </tr>
+                    <tr>
+                        <td><strong>开弓势</strong></td>
+                        <td>横向撑拔</td>
+                        <td>强调"五弓合一"，增强胸背和双臂灵活性</td>
+                    </tr>
+                    <tr>
+                        <td><strong>阴阳掌</strong></td>
+                        <td>上下拉拔</td>
+                        <td>锻炼上下拉拔力与沉浮力，形成弹簧劲</td>
+                    </tr>
+                    <tr>
+                        <td><strong>抓虎式</strong></td>
+                        <td>单式整劲</td>
+                        <td>以松沉为基，以腰带手为轴，以内气催动为魂</td>
+                    </tr>
+                    <tr>
+                        <td><strong>夫子三拱手</strong></td>
+                        <td>宋派绝技</td>
+                        <td>宋迈伦融合多家拳法所创，技法系统化</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">习练口诀</h3>
+            <div class="quote-block">
+                含胸拔背，虎抱头；<br>
+                开胯圆裆，把股收；<br>
+                气沉丹田，腰要松；<br>
+                双肩合抱，脊背弓；<br>
+                手足抓力，掌含空；<br>
+                气贴脊背，两臂撑。
+                <cite>—— 三皇炮捶拳技术要领口诀</cite>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">器械体系</h3>
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">🔱</div>
+                    <h3 class="info-card-title">大枪（子龙枪）</h3>
+                    <p class="info-card-content">主修器械，融合滚、崩、劈等实战技法，是镖师必修技能。枪法与拳法劲路相通，讲究"枪扎一条线"。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">⚔️</div>
+                    <h3 class="info-card-title">无极刀</h3>
+                    <p class="info-card-content">第七代传人李尧臣为抗日大刀队所创，融合刀劈、剑刺特点，是抗战时期的著名武术器械。李尧臣嫡传弟子李宗儒（谦哥师父）为1969年全国武术冠军，深得无极刀真传。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">🗡️</div>
+                    <h3 class="info-card-title">刀剑棍</h3>
+                    <p class="info-card-content">兼修刀、剑、棍、双刀等传统器械，器械技法与拳法劲力体系一脉相承。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第四章：流派对比 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">流派对比</h2>
+                <p class="section-subtitle">宋派与于派：于拳宋手</p>
+            </div>
+            
+            <div class="compare-section">
+                <div class="compare-card">
+                    <h3>宋派（宋迈伦）</h3>
+                    <ul>
+                        <li><strong>核心理念：</strong>注重体系化、实战应用，特别是在镖局行业中的运用</li>
+                        <li><strong>技法风格：</strong>开创以"夫子三拱手"为代表的拳法精髓，技法更为系统化</li>
+                        <li><strong>器械发展：</strong>衍生发展出大枪与无极刀等器械功法</li>
+                        <li><strong>整体特点：</strong>创新与应用导向，将拳法与特定职业需求紧密结合</li>
+                        <li><strong>代表传承：</strong>京都会友镖局体系，张成仁（第六代传人）</li>
+                    </ul>
+                </div>
+                
+                <div class="compare-card">
+                    <h3>于派（于连登/于鉴）</h3>
+                    <ul>
+                        <li><strong>核心理念：</strong>专注于古拳架的继承和完善，力求保持拳法的原始风貌</li>
+                        <li><strong>技法风格：</strong>延续传统技法风格，强调对原始拳架的传承</li>
+                        <li><strong>器械发展：</strong>更侧重于拳法本身的传承，器械方面继承传统</li>
+                        <li><strong>整体特点：</strong>守正与传承导向，以保留拳种古风和研究原始技法为核心</li>
+                        <li><strong>代表传承：</strong>山西国术馆体系，赵恒通（河北非遗传承人）</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="intro-card">
+                <p><strong>共同点：</strong>两派虽风格有异，但都共享三皇炮捶拳的根本技法特征——追求"发劲如炮，出手如捶"，强调瞬间爆发力；以沉稳的马步桩为基础；包含十二炮法、五形腰劲、十字捶等技巧；讲究刚柔相济，将刚猛与灵巧统一。</p>
+            </div>
+        </section>
+
+        <!-- 第五章：传承谱系 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">传承谱系</h2>
+                <p class="section-subtitle">历代宗师与当代传人</p>
+            </div>
+            
+            <div class="lineage-tree">
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">普照僧</div>
+                        <div class="title">开山祖师</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">乔三秀</div>
+                        <div class="title">第二代传人</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">甘凤池</div>
+                        <div class="title">第二代传人</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">乔鹤龄</div>
+                        <div class="title">第四代传人</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">宋迈伦</div>
+                        <div class="title">宋派创始人</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">于连登</div>
+                        <div class="title">于派创始人</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">宋彩臣</div>
+                        <div class="title">宋派第六代</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">于鉴</div>
+                        <div class="title">于派第六代</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">孙德润</div>
+                        <div class="title">第六代传人</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">李尧臣</div>
+                        <div class="title">创无极刀·第七代</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">庞连福</div>
+                        <div class="title">北京设点传艺</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node" style="border-color: #ff6b6b; background: rgba(255, 107, 107, 0.1);">
+                        <div class="name" style="color: #ff6b6b;">李宗儒</div>
+                        <div class="title">李尧臣嫡传·1969年全国冠军</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node" style="border-color: #4ecdc4; background: rgba(78, 205, 196, 0.1);">
+                        <div class="name" style="color: #4ecdc4;">李永杰</div>
+                        <div class="title">李宗儒直系传人·三皇会友总会</div>
+                    </div>
+                    <div class="lineage-node" style="border-color: #4ecdc4; background: rgba(78, 205, 196, 0.1);">
+                        <div class="name" style="color: #4ecdc4;">谦哥</div>
+                        <div class="title">李宗儒弟子·宋派传人</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node" style="border-color: #95e1d3; background: rgba(149, 225, 211, 0.1);">
+                        <div class="name" style="color: #95e1d3;">孙文君</div>
+                        <div class="title">李永杰直传·三皇会友总会</div>
+                    </div>
+                </div>
+                <div class="lineage-connector"></div>
+                <div class="lineage-level">
+                    <div class="lineage-node">
+                        <div class="name">张成仁</div>
+                        <div class="title">宋派第六代·海淀非遗</div>
+                    </div>
+                    <div class="lineage-node">
+                        <div class="name">赵恒通</div>
+                        <div class="title">于派·河北非遗</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">谦哥师承脉络</h3>
+            <div class="intro-card" style="border-left-color: #ff6b6b; background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 107, 107, 0.05));">
+                <p><strong>李宗儒师父</strong>——李尧臣先生嫡传弟子，1969年全国武术冠军。为人低调，不事张扬，故网上难觅其信息。深得宋派三皇炮捶拳真传，是当代宋派传承的重要支脉。</p>
+                <p style="margin-top: 15px;"><strong>李永杰师哥</strong>——李宗儒师父直系传人，谦哥师哥，承袭师门衣钵，延续宋派三皇炮捶拳法脉。</p>
+                <p style="margin-top: 15px;"><strong>孙文君</strong>——李永杰师哥直传弟子，三皇会友武术总会成员，为李师哥下一代传人。</p>
+                <p style="margin-top: 15px;"><strong>谦哥</strong>——李宗儒师父亲传弟子，宋派三皇炮捶拳传人，现正系统修习本门拳法，每周与李永杰师哥、孙文君等同门在新川办餐厅共同练功。</p>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">三皇会友武术总会</h3>
+            <div class="card-grid">
+                <div class="info-card" style="border: 2px solid #4ecdc4;">
+                    <div class="info-card-icon">🏛️</div>
+                    <h3 class="info-card-title" style="color: #4ecdc4;">三皇会友武术总会</h3>
+                    <p class="info-card-content">由李永杰师哥创立，承袭"京都会友镖局"传统，延续宋派三皇炮捶拳法脉。会名取"三皇"拳种之名与"会友"镖局之号，寓意传承历史、以武会友。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">📍</div>
+                    <h3 class="info-card-title">练功地点</h3>
+                    <p class="info-card-content">北京新川办餐厅。每周末固定时间授课练功，谦哥每周前往与师哥、同门一起练习，延续师门传统。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">👥</div>
+                    <h3 class="info-card-title">传承成员</h3>
+                    <p class="info-card-content">李永杰（总会负责人）、孙文君（李师哥直传徒弟）、谦哥（李宗儒师父弟子）等，形成师门传承的完整链条。</p>
+                </div>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">当代传承现状</h3>
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">🏛️</div>
+                    <h3 class="info-card-title">北京传承</h3>
+                    <p class="info-card-content">宋氏三皇炮捶拳为海淀区非物质文化遗产。张成仁老先生掌舵，2025年1月举行二十周年联谊会，吴彬（国际武联、亚武联主席）等出席。李宗儒师父一脉同为北京宋派重要传承。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">🏔️</div>
+                    <h3 class="info-card-title">河北传承</h3>
+                    <p class="info-card-content">衡水市冀州区是三皇炮捶的发祥地。建立河北省三皇炮捶武术研究院，赵恒通为非遗传承人，定期举办演武大会。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">🌍</div>
+                    <h3 class="info-card-title">国际传播</h3>
+                    <p class="info-card-content">西班牙人卡洛斯成立"欧洲三皇炮捶拳协会"，推动海外传播。北京、河北等地设有10余处固定练功场。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第六章：哲学内涵 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">哲学内涵</h2>
+                <p class="section-subtitle">文武兼备，阴阳动静</p>
+            </div>
+            
+            <div class="quote-block">
+                "自古三治此，实为创业之祖、是以有济世之才者。必有文武之道。习文必有武备，练武必有文理，文武兼备，可为矣。"
+                <cite>—— 三皇炮捶拳老谱</cite>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">三才思想</h3>
+            <p style="color: #ccc; font-size: 18px; line-height: 1.8; margin-bottom: 30px;">
+                三皇炮捶拳取义"三皇"——天皇伏羲、地皇神农、人皇黄帝。他们是传说中远古时期的杰出部落首领，先秦时期三皇神的属性更高于人的属性，三皇皆有天帝属性，被后世记载为人类文明的开创者。拳法以此立名，体现了对天地人三才的尊崇，追求天人合一的武学境界。
+            </p>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">阴阳动静</h3>
+            <ul class="key-points">
+                <li><strong>阴阳动静：</strong>拳法中蕴含阴阳变化，动中有静，静中有动</li>
+                <li><strong>虚实内含：</strong>招式虚实相生，真假难辨</li>
+                <li><strong>刚柔相济：</strong>刚猛与灵巧统一，极刚极柔，气劲合一</li>
+                <li><strong>开合相连：</strong>动作开合有度，连绵不断</li>
+                <li><strong>蓄如灌铅，开如放箭：</strong>蓄发有序，内外合一</li>
+            </ul>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">内家拳特色</h3>
+            <p style="color: #ccc; font-size: 18px; line-height: 1.8; margin-bottom: 30px;">
+                三皇炮捶虽属外家拳体系，但部分流派融合内家理念，注重"以气运力"。会友镖局所传承的三皇炮捶拳作为中国传统内家拳的重要代表之一，以"以气为主，以理当先"为核心，既具外家拳的刚猛迅捷，更蕴含内家拳的整劲与内功修炼。
+            </p>
+            
+            <div class="card-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">☯️</div>
+                    <h3 class="info-card-title">以气为主</h3>
+                    <p class="info-card-content">强调"气"为力量本源，与中医经络学说结合。发力时以短促呼气（如"哼哈"二气）助爆发出拳，气沉丹田凝聚内劲。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">🧘</div>
+                    <h3 class="info-card-title">以理当先</h3>
+                    <p class="info-card-content">注重意念引导与内气运行，追求"意与气合，气与力合"，意、气、力三者的统一。</p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-card-icon">⚡</div>
+                    <h3 class="info-card-title">整劲体系</h3>
+                    <p class="info-card-content">"以松沉为基，以腰带手为轴，以气势贯穿为形，以内气催动为魂"的劲力体系，追求周身一家的整体发力。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 第七章：习练建议 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 07</div>
+                <h2 class="section-title">习练建议</h2>
+                <p class="section-subtitle">入门路径与修炼要点</p>
+            </div>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">入门路径</h3>
+            <table class="tech-table">
+                <thead>
+                    <tr>
+                        <th>阶段</th>
+                        <th>练习内容</th>
+                        <th>目标</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>第一阶段：筑基</strong></td>
+                        <td>伏虎桩、马步桩、基础步法</td>
+                        <td>培养下肢力量、整体撑拔与横向劲力</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第二阶段：整劲</strong></td>
+                        <td>十字锤单式、开弓势、阴阳掌</td>
+                        <td>体会"力起于足，发于腿，主宰于腰，形于手指"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第三阶段：套路</strong></td>
+                        <td>十二炮法、十二趟主套路</td>
+                        <td>掌握开门炮、连环炮、十字炮、通天炮等核心技法</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第四阶段：应用</strong></td>
+                        <td>对练、拆手、擒拿摔法</td>
+                        <td>散打、擒拿、摔法结合，善攻中门，长短兼用</td>
+                    </tr>
+                    <tr>
+                        <td><strong>第五阶段：器械</strong></td>
+                        <td>大枪、无极刀、刀剑棍</td>
+                        <td>器械技法与拳法劲路相通，融会贯通</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3 style="color: #d4af37; margin: 40px 0 20px; font-size: 24px;">修炼心法</h3>
+            <div class="quote-block">
+                十字一点：静、专、松、沉、敛、匀、圆、合、擤、连
+                <cite>—— 三皇炮捶拳心法要诀</cite>
+            </div>
+            
+            <ul class="key-points">
+                <li><strong>心静：</strong>起势时心静、意专，排除杂念</li>
+                <li><strong>体松：</strong>身体放松，不僵不硬</li>
+                <li><strong>气沉：</strong>气沉丹田，呼吸均匀</li>
+                <li><strong>腰松：</strong>以腰胯为中心引导全身劲力</li>
+                <li><strong>内外合一：</strong>追求意、气、力三者统一</li>
+            </ul>
+            
+            <div class="intro-card">
+                <p><strong>谦哥专属建议：</strong>三皇炮捶拳讲究"极刚极柔，气劲合一"的发力境界，注重内在领悟而非单纯外形模仿。建议每日坚持桩功与单操发力练习，体会气劲变化。每周前往<strong>三皇会友武术总会</strong>（北京新川办餐厅）与李永杰师哥、孙文君等同门共同练功，在师门传承中精进技艺。</p>
+            </div>
+        </section>
+
+        <!-- 数据来源 -->
+        <section class="content-section">
+            <div class="data-source">
+                <h4>数据来源与参考资料</h4>
+                <ul>
+                    <li>百度百科词条《三皇炮捶拳》<a href="https://baike.baidu.com/item/三皇炮捶拳/15682813" target="_blank">https://baike.baidu.com/item/三皇炮捶拳/15682813</a></li>
+                    <li>百度百科词条《三皇炮捶》<a href="https://baike.baidu.com/item/三皇炮捶/4996024" target="_blank">https://baike.baidu.com/item/三皇炮捶/4996024</a></li>
+                    <li>搜狐网《三皇炮捶基功三大核心发力》<a href="https://www.sohu.com/a/949401978_122418340" target="_blank">https://www.sohu.com/a/949401978_122418340</a></li>
+                    <li>搜狐网《刚柔相济！三皇炮捶拳传承百年》<a href="https://www.sohu.com/a/931934936_121683270" target="_blank">https://www.sohu.com/a/931934936_121683270</a></li>
+                    <li>石景山文旅《"仙山"下的非遗技艺——三皇炮捶拳》<a href="https://www.sohu.com/a/957605778_121106842" target="_blank">https://www.sohu.com/a/957605778_121106842</a></li>
+                    <li>知乎《从习练三皇炮捶拳单式找内家拳整劲儿》<a href="https://zhuanlan.zhihu.com/p/1971593330686146201" target="_blank">https://zhuanlan.zhihu.com/p/1971593330686146201</a></li>
+                    <li>河北省三皇炮捶武术研究院、北京市武协三皇炮捶研究会等机构资料</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p class="footer-text">三皇炮捶拳深度调研报告 · 谦哥专属</p>
+        <p class="footer-signature">—— 龙大仙为谦哥整理 ——</p>
+    </footer>
+</body>
+</html>
