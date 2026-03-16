@@ -45,6 +45,35 @@
         radial-gradient(ellipse 45% 55% at 15% 75%, rgba(123,94,255,.15) 0%, transparent 60%),
         radial-gradient(ellipse 30% 40% at 50% 100%, rgba(0,229,160,.08) 0%, transparent 60%);
     }
+    /* 返回主页按钮 */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(10,13,26,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -306,6 +335,14 @@
   </style>
 </head>
 <body>
+
+<!-- Back to Home -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  返回主页
+</a>
 
 <!-- ── HERO ── -->
 <div class="hero">

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>VR乒乓球调研报告 2021–2026</title>
   <style>
+    /* ── 基础重置 & 字体 ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       --blue:    #1A73E8;
@@ -27,6 +28,8 @@
       color: var(--text);
       line-height: 1.75;
     }
+
+    /* ── 顶部英雄区 ── */
     .hero {
       background: linear-gradient(135deg, #0D1B4B 0%, #1A3A8F 50%, #0E6B9B 100%);
       color: #fff;
@@ -41,35 +44,6 @@
       background: radial-gradient(ellipse 60% 60% at 70% 40%, rgba(0,180,255,.18) 0%, transparent 70%),
                   radial-gradient(ellipse 40% 50% at 20% 70%, rgba(80,40,200,.2) 0%, transparent 60%);
     }
-    /* 返回主页按钮 */
-    .back-home {
-      position: fixed;
-      top: 16px;
-      left: 16px;
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: rgba(255,255,255,.95);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      font-size: .8rem;
-      color: var(--muted);
-      text-decoration: none;
-      backdrop-filter: blur(12px);
-      transition: all .2s;
-    }
-    .back-home svg {
-      width: 16px;
-      height: 16px;
-    }
-    .back-home:hover {
-      background: var(--card);
-      color: var(--text);
-      transform: translateX(-2px);
-    }
-
     .hero-tag {
       display: inline-block;
       background: rgba(255,255,255,.15);
@@ -104,8 +78,13 @@
       flex-wrap: wrap;
       position: relative;
     }
-    .hero-meta span { font-size: .85rem; opacity: .8; }
+    .hero-meta span {
+      font-size: .85rem;
+      opacity: .8;
+    }
     .hero-meta strong { color: #7DD6FF; font-size: 1.4rem; display: block; margin-top: 4px; }
+
+    /* ── 导航 ── */
     .toc-bar {
       background: #fff;
       border-bottom: 1px solid var(--border);
@@ -135,8 +114,17 @@
       transition: all .2s;
     }
     .toc-bar a:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* ── 容器 ── */
     .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
-    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+
+    /* ── 分区标题 ── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
     .section-icon {
       width: 44px; height: 44px;
       border-radius: 10px;
@@ -144,11 +132,21 @@
       font-size: 1.3rem;
       flex-shrink: 0;
     }
-    .section-header h2 { font-size: 1.5rem; font-weight: 700; }
-    .section-header p { font-size: .9rem; color: var(--muted); margin-top: 2px; }
+    .section-header h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+    .section-header p {
+      font-size: .9rem;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── 卡片网格 ── */
     .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
     .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
     .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+
     .card {
       background: var(--card);
       border-radius: var(--radius);
@@ -158,10 +156,12 @@
       transition: transform .2s, box-shadow .2s;
     }
     .card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+
     .card-accent { border-top: 4px solid var(--blue); }
     .card-accent-teal { border-top: 4px solid var(--teal); }
     .card-accent-orange { border-top: 4px solid var(--orange); }
     .card-accent-indigo { border-top: 4px solid var(--indigo); }
+
     .card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
     .card .badge {
       display: inline-block;
@@ -174,13 +174,17 @@
     .badge-blue   { background: #EBF2FF; color: #1A73E8; }
     .badge-teal   { background: #E6F4F1; color: #00897B; }
     .badge-orange { background: #FFF3E6; color: #E8711A; }
+    .badge-red    { background: #FEE8E8; color: #C0392B; }
     .badge-purple { background: #F0EBFF; color: #6B3FA0; }
     .badge-green  { background: #E8F5E9; color: #2E7D32; }
     .badge-gray   { background: #F0F2F5; color: #6B7280; }
+
     .meta-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
     .card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
     .card ul { padding-left: 18px; }
     .card li { font-size: .9rem; color: var(--muted); margin-bottom: 4px; }
+
+    /* ── 大数字统计 ── */
     .stat-card {
       background: var(--card);
       border-radius: var(--radius);
@@ -189,10 +193,21 @@
       text-align: center;
       border: 1px solid var(--border);
     }
-    .stat-card .stat-num { font-size: 2.2rem; font-weight: 800; line-height: 1; margin: 12px 0 6px; }
+    .stat-card .stat-num {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      margin: 12px 0 6px;
+    }
     .stat-card .stat-label { font-size: .82rem; color: var(--muted); }
     .stat-card .stat-icon { font-size: 1.6rem; }
-    .compare-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+
+    /* ── 对比表格 ── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+    }
     .compare-table th {
       background: var(--dark);
       color: #fff;
@@ -201,11 +216,17 @@
       font-weight: 600;
     }
     .compare-table th:first-child { border-radius: 8px 0 0 0; }
-    .compare-table th:last-child  { border-radius: 0 8px 0 0; }
-    .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .compare-table th:last-child { border-radius: 0 8px 0 0; }
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
     .compare-table tr:nth-child(even) td { background: #FAFBFC; }
     .compare-table tr:hover td { background: #EBF2FF; }
     .star { color: #F59E0B; }
+
+    /* ── 时间线 ── */
     .timeline { position: relative; padding-left: 32px; }
     .timeline::before {
       content: '';
@@ -227,7 +248,8 @@
     }
     .tl-year {
       display: inline-block;
-      font-size: .75rem; font-weight: 700;
+      font-size: .75rem;
+      font-weight: 700;
       color: var(--blue);
       background: #EBF2FF;
       border-radius: 4px;
@@ -235,15 +257,23 @@
       margin-bottom: 4px;
     }
     .tl-item h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
-    .tl-item p  { font-size: .87rem; color: var(--muted); }
+    .tl-item p { font-size: .87rem; color: var(--muted); }
+
+    /* ── 挑战/机遇双栏 ── */
     .two-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     @media (max-width: 640px) { .two-panel { grid-template-columns: 1fr; } }
-    .panel { border-radius: var(--radius); padding: 24px; border: 1px solid var(--border); }
-    .panel-challenge   { background: #FFF8F6; }
+    .panel {
+      border-radius: var(--radius);
+      padding: 24px;
+      border: 1px solid var(--border);
+    }
+    .panel-challenge { background: #FFF8F6; }
     .panel-opportunity { background: #F0FBF8; }
     .panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
     .panel ul { padding-left: 18px; }
     .panel li { font-size: .88rem; margin-bottom: 8px; color: var(--text); }
+
+    /* ── 引用框 ── */
     .callout {
       border-left: 4px solid var(--blue);
       background: #EBF2FF;
@@ -254,11 +284,18 @@
       color: #1C3A6E;
     }
     .callout.orange { border-color: var(--orange); background: #FFF3E6; color: #6B3000; }
-    .callout.teal   { border-color: var(--teal);   background: #E6F4F1; color: #004D40; }
+    .callout.teal   { border-color: var(--teal); background: #E6F4F1; color: #004D40; }
+
+    /* ── 进度条 ── */
     .progress-group { display: flex; flex-direction: column; gap: 14px; }
     .progress-item label { font-size: .85rem; font-weight: 600; display: flex; justify-content: space-between; margin-bottom: 4px; }
     .progress-bar { height: 8px; background: var(--border); border-radius: 50px; overflow: hidden; }
     .progress-fill { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--blue), var(--teal)); }
+
+    /* ── 分隔线 ── */
+    .divider { height: 1px; background: var(--border); margin: 0; }
+
+    /* ── 结论横幅 ── */
     .conclusion-banner {
       background: linear-gradient(135deg, #0D1B4B, #1A3A8F);
       color: #fff;
@@ -267,7 +304,7 @@
       text-align: center;
     }
     .conclusion-banner h2 { font-size: 1.6rem; margin-bottom: 16px; }
-    .conclusion-banner p  { opacity: .8; max-width: 660px; margin: 0 auto 24px; font-size: .95rem; }
+    .conclusion-banner p { opacity: .8; max-width: 660px; margin: 0 auto 24px; font-size: .95rem; }
     .conclusion-banner .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
     .pill {
       background: rgba(255,255,255,.15);
@@ -276,6 +313,8 @@
       padding: 6px 18px;
       font-size: .82rem;
     }
+
+    /* ── 页脚 ── */
     footer {
       text-align: center;
       padding: 32px 24px;
@@ -283,8 +322,12 @@
       color: var(--muted);
       border-top: 1px solid var(--border);
     }
+
+    /* ── 分区间距 ── */
     section { padding: 56px 0; }
     section + section { border-top: 1px solid var(--border); }
+
+    /* ── 响应式 ── */
     @media (max-width: 768px) {
       .hero { padding: 48px 16px 36px; }
       .container { padding: 32px 16px; }
@@ -296,14 +339,7 @@
 </head>
 <body>
 
-<!-- Back to Home -->
-<a href="index.html" class="back-home">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M19 12H5M12 19l-7-7 7-7"/>
-  </svg>
-  返回主页
-</a>
-
+<!-- ═══ 英雄区 ═══ -->
 <div class="hero">
   <div class="hero-tag">全球调研报告 · 2021–2026</div>
   <h1>VR乒乓球：产品、市场与未来</h1>
@@ -316,6 +352,7 @@
   </div>
 </div>
 
+<!-- ═══ 导航栏 ═══ -->
 <nav class="toc-bar">
   <ul>
     <li><a href="#overview">行业概览</a></li>
@@ -329,6 +366,7 @@
   </ul>
 </nav>
 
+<!-- ═══ 正文 ═══ -->
 <div class="container">
 
   <!-- §1 行业概览 -->
@@ -340,9 +378,11 @@
         <p>VR乒乓球从游戏娱乐走向竞技体育与科学训练</p>
       </div>
     </div>
+
     <div class="callout">
       <strong>核心判断：</strong>2021–2026年，VR乒乓球完成了从"休闲娱乐小品类"向"正式竞技项目+专业训练工具"的关键跃迁。国际乒联（ITTF）于2024年举办首届世界电竞乒乓球锦标赛，标志着这一品类获得最高级别体育官方认可，进入新发展阶段。
     </div>
+
     <div class="grid-4" style="margin-top:28px">
       <div class="stat-card">
         <div class="stat-icon">🎮</div>
@@ -365,6 +405,7 @@
         <div class="stat-label">VR运动市场CAGR</div>
       </div>
     </div>
+
     <div class="callout teal" style="margin-top:28px">
       <strong>时代背景：</strong>Meta Quest 2（2020）的大众化定价（299美元）、Quest 3（2023）的混合现实能力升级，以及Pico 4等国产头显的普及，共同构成了VR乒乓球快速发展的硬件基础。独立头显免去PC线缆限制，使"起身挥拍"的运动场景成为现实。
     </div>
@@ -380,7 +421,9 @@
       </div>
     </div>
 
+    <!-- 三款核心游戏 -->
     <div class="grid-3" style="margin-bottom:32px">
+      <!-- Eleven VR -->
       <div class="card card-accent">
         <div class="meta-row">
           <span class="badge badge-blue">竞技对战首选</span>
@@ -401,6 +444,7 @@
         </div>
       </div>
 
+      <!-- T3S -->
       <div class="card card-accent-teal">
         <div class="meta-row">
           <span class="badge badge-teal">专业训练工具</span>
@@ -430,6 +474,7 @@
         </div>
       </div>
 
+      <!-- Racket Fury -->
       <div class="card card-accent-orange">
         <div class="meta-row">
           <span class="badge badge-orange">视听体验</span>
@@ -451,6 +496,7 @@
       </div>
     </div>
 
+    <!-- 对比表格 -->
     <div class="card" style="padding:0;overflow:hidden">
       <div style="padding:20px 24px;border-bottom:1px solid var(--border)">
         <h3 style="font-size:1rem">产品横向对比</h3>
@@ -466,19 +512,60 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td><strong>核心定位</strong></td><td>多人竞技</td><td>单人精训</td><td>娱乐体验</td></tr>
-            <tr><td><strong>物理真实度</strong></td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐⭐⭐</td><td>⭐⭐⭐☆☆</td></tr>
-            <tr><td><strong>多人联机</strong></td><td>✅ 流畅、有排名</td><td>✅ Quest多人对战已上线；Pico同步支持</td><td>❌ 严重延迟</td></tr>
-            <tr><td><strong>AI训练</strong></td><td>✅ 自适应难度</td><td>✅ 48种发球模式</td><td>⚠️ AI设计不平衡</td></tr>
-            <tr><td><strong>赛事背书</strong></td><td>✅ ITTF官方指定</td><td>—</td><td>—</td></tr>
-            <tr><td><strong>外设适配</strong></td><td>支持多品牌球拍架</td><td>SolidSlime / BonWasyl</td><td>基础支持</td></tr>
-            <tr><td><strong>价格（约）</strong></td><td>~$29.99</td><td>~$14.99</td><td>~$19.99</td></tr>
-            <tr><td><strong>适合人群</strong></td><td>希望竞技、有乒乓球基础</td><td>专注技术提升的训练者</td><td>追求视觉体验的休闲玩家</td></tr>
+            <tr>
+              <td><strong>核心定位</strong></td>
+              <td>多人竞技</td>
+              <td>单人精训</td>
+              <td>娱乐体验</td>
+            </tr>
+            <tr>
+              <td><strong>物理真实度</strong></td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐⭐⭐</td>
+              <td>⭐⭐⭐☆☆</td>
+            </tr>
+            <tr>
+              <td><strong>多人联机</strong></td>
+              <td>✅ 流畅、有排名</td>
+              <td>✅ Quest多人对战已上线；Pico同步支持</td>
+              <td>❌ 严重延迟</td>
+            </tr>
+            <tr>
+              <td><strong>AI训练</strong></td>
+              <td>✅ 自适应难度</td>
+              <td>✅ 48种发球模式</td>
+              <td>⚠️ AI设计不平衡</td>
+            </tr>
+            <tr>
+              <td><strong>赛事背书</strong></td>
+              <td>✅ ITTF官方指定</td>
+              <td>—</td>
+              <td>—</td>
+            </tr>
+            <tr>
+              <td><strong>外设适配</strong></td>
+              <td>支持多品牌球拍架</td>
+              <td>SolidSlime / BonWasyl</td>
+              <td>基础支持</td>
+            </tr>
+            <tr>
+              <td><strong>价格（约）</strong></td>
+              <td>~$29.99</td>
+              <td>~$14.99</td>
+              <td>~$19.99</td>
+            </tr>
+            <tr>
+              <td><strong>适合人群</strong></td>
+              <td>希望竞技、有乒乓球基础</td>
+              <td>专注技术提升的训练者</td>
+              <td>追求视觉体验的休闲玩家</td>
+            </tr>
           </tbody>
         </table>
       </div>
     </div>
 
+    <!-- 周边硬件 -->
     <div style="margin-top:28px">
       <h3 style="font-size:1rem;font-weight:700;margin-bottom:16px">📦 周边硬件生态</h3>
       <div class="grid-3">
@@ -489,7 +576,7 @@
         </div>
         <div class="card card-accent-indigo">
           <div class="meta-row"><span class="badge badge-purple">触觉反馈</span></div>
-          <h3>触觉手套 &amp; 振动背心</h3>
+          <h3>触觉手套 & 振动背心</h3>
           <p>2023–2025年涌现多款触觉外设，如<strong>bHaptics TactGlove</strong>、<strong>Woojer Vest Edge</strong>等，可与VR乒乓球结合提供击球震动反馈。目前仍属高端小众，普及化是未来方向。</p>
         </div>
         <div class="card card-accent-indigo">
@@ -510,6 +597,7 @@
         <p>从民间联赛到ITTF官方世锦赛，竞技体系快速成型</p>
       </div>
     </div>
+
     <div class="timeline">
       <div class="tl-item">
         <span class="tl-year">2021–2022</span>
@@ -537,6 +625,7 @@
         <p>预计ITTF将建立常规电竞巡回赛体系；结合IOC奥林匹克电竞运动会（2025年沙特），VR体育赛事有望跨项目扩展；中国、日本等乒乓球强国官方俱乐部预计加大VR赛事投入。</p>
       </div>
     </div>
+
     <div class="callout orange" style="margin-top:8px">
       <strong>深层意义：</strong>ITTF的背书解决了VR乒乓球"合法性"问题——它不再是"游戏"，而是正式的体育竞技形式。这将吸引赞助商、职业体育机构和更主流的用户群体入场。
     </div>
@@ -551,11 +640,12 @@
         <p>多层次用户结构：从休闲玩家到职业运动员辅助训练</p>
       </div>
     </div>
+
     <div class="grid-3" style="margin-bottom:24px">
       <div class="card card-accent">
         <div class="meta-row"><span class="badge badge-blue">第一梯队</span></div>
         <h3>VR竞技玩家</h3>
-        <p>有一定现实乒乓球基础，主要使用Eleven VR进行多人对战和排名竞技。全球活跃排名玩家以欧洲（法国、德国、瑞士、英国）和日本为核心。调研显示：<strong>许多玩家将VR乒乓球视为"秘密武器"</strong>，用于弥补缺乏练球场地的问题。</p>
+        <p>有一定现实乒乓球基础，主要使用Eleven VR进行多人对战和排名竞技。全球活跃排名玩家分布广泛，以欧洲（法国、德国、瑞士、英国）和日本为核心。调研显示：<strong>许多玩家将VR乒乓球视为"秘密武器"</strong>，用于弥补缺乏练球场地的问题。</p>
       </div>
       <div class="card card-accent-teal">
         <div class="meta-row"><span class="badge badge-teal">第二梯队</span></div>
@@ -565,9 +655,10 @@
       <div class="card card-accent-orange">
         <div class="meta-row"><span class="badge badge-orange">第三梯队</span></div>
         <h3>休闲健身用户</h3>
-        <p>将VR乒乓球作为有氧运动和娱乐结合的方式，类似Beat Saber用户群体。VR运动研究显示玩家因"心流"效应更容易坚持锻炼。全球VR健身用户估计已超过<strong>100–200万</strong>（2024年数据）。</p>
+        <p>将VR乒乓球作为有氧运动和娱乐结合的方式，类似Beat Saber用户群体。VR运动研究显示玩家在运动过程中会低估运动强度（"心流"效应），更容易坚持锻炼。全球VR健身用户估计已超过<strong>100–200万</strong>（2024年数据）。</p>
       </div>
     </div>
+
     <div class="grid-2">
       <div class="card">
         <h3 style="margin-bottom:16px">🎯 用户核心动机</h3>
@@ -603,7 +694,7 @@
           <li>欧洲用户（尤其法国、德国）在竞技榜单中占主导</li>
           <li>日本和中国用户数量快速增长（Pico设备普及驱动）</li>
           <li>现实乒乓球经历者更倾向于成为高活跃用户</li>
-          <li>有明确竞技目标的用户留存率显著更高</li>
+          <li>用户留存率：有明确竞技目标的用户留存率显著更高</li>
           <li>付费意愿强：周边球拍适配器已形成独立消费品类</li>
         </ul>
       </div>
@@ -619,6 +710,7 @@
         <p>VR运动赛道高速扩张，VR乒乓球处于最早商业验证阶段</p>
       </div>
     </div>
+
     <div class="grid-4" style="margin-bottom:28px">
       <div class="stat-card">
         <div class="stat-icon">💰</div>
@@ -641,6 +733,7 @@
         <div class="stat-label">Supernatural VR健身付费用户（2024年末）</div>
       </div>
     </div>
+
     <div class="grid-2" style="margin-bottom:28px">
       <div class="card">
         <h3 style="margin-bottom:16px">📈 VR运动市场规模预测</h3>
@@ -672,6 +765,7 @@
         </div>
         <p style="font-size:.78rem;margin-top:12px;color:var(--muted)">数据来源：DataIntelo, Credence Research, WiseGuy Reports综合</p>
       </div>
+
       <div class="card">
         <h3 style="margin-bottom:16px">🏢 主要参与方</h3>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
@@ -694,8 +788,9 @@
         </div>
       </div>
     </div>
+
     <div class="callout">
-      <strong>与传统乒乓球市场的关系：</strong>传统乒乓球市场2024年规模约22.6亿美元，VR乒乓球目前是其补充而非替代。大量VR乒乓球用户是现实乒乓球爱好者，VR使用反而可能增强其对传统装备的消费意愿（正向拉动效应）。
+      <strong>与传统乒乓球市场的关系：</strong>传统乒乓球市场2024年规模约22.6亿美元（预计2033年达55.5亿），VR乒乓球目前是其补充而非替代。大量VR乒乓球用户是现实乒乓球爱好者，VR使用反而可能增强其对传统装备的消费意愿（正向拉动效应）。
     </div>
   </section>
 
@@ -708,6 +803,7 @@
         <p>科学验证VR乒乓球的训练价值与技能迁移可行性</p>
       </div>
     </div>
+
     <div class="grid-2" style="margin-bottom:24px">
       <div class="card card-accent-teal">
         <div class="meta-row"><span class="badge badge-teal">2024年 · MDPI Sensors</span></div>
@@ -717,7 +813,7 @@
       <div class="card card-accent-teal">
         <div class="meta-row"><span class="badge badge-teal">2023年 · ACM SUI</span></div>
         <h3>"VR乒乓球是我的秘密武器"——用户调研</h3>
-        <p>通过问卷调研VR乒乓球玩家群体，研究发现：玩家普遍认为<strong>正手和反手技术可在VR和现实之间双向迁移</strong>；玩家将VR训练视为弥补无法随时找对手练球的有效替代手段；同时提出空间限制、抖动感等改善建议。</p>
+        <p>通过问卷调研VR乒乓球玩家群体，研究发现：玩家普遍认为<strong>正手和反手技术可在VR和现实之间双向迁移</strong>；玩家将VR训练视为弥补无法随时找对手练球的有效替代手段；同时提出了空间限制、抖动感等改善建议。</p>
       </div>
       <div class="card card-accent-teal">
         <div class="meta-row"><span class="badge badge-teal">2022年 · IEEE</span></div>
@@ -727,9 +823,10 @@
       <div class="card card-accent-teal">
         <div class="meta-row"><span class="badge badge-teal">2024年 · Springer</span></div>
         <h3>VR乒乓球运动强度与吸引力评估</h3>
-        <p>测量玩家在VR乒乓球中的心率、运动强度和主观体验。发现VR乒乓球可达到<strong>中等强度有氧运动水平</strong>（比休息状态心率高40–60%），且用户因"心流"效应低估运动强度，有助于维持锻炼动力。</p>
+        <p>测量玩家在VR乒乓球中的心率、运动强度和主观体验。发现VR乒乓球可达到<strong>中等强度有氧运动水平</strong>（比休息状态心率高40–60%），且用户在游戏过程中因"心流"效应低估运动强度，有助于维持锻炼动力。</p>
       </div>
     </div>
+
     <div class="callout teal">
       <strong>学术共识：</strong>现有研究一致支持VR乒乓球的训练价值——物理引擎的真实度是关键，真实度越高，技能迁移效果越好。VR不能完全替代现实训练，但可以作为有效的<strong>补充训练工具</strong>，尤其在场地、对手可及性受限时价值突出。
     </div>
@@ -744,6 +841,7 @@
         <p>政策驱动+乒乓球文化基础+本土硬件，形成独特增长逻辑</p>
       </div>
     </div>
+
     <div class="grid-2" style="margin-bottom:24px">
       <div class="card">
         <h3 style="margin-bottom:12px">宏观政策支持</h3>
@@ -764,6 +862,7 @@
         </ul>
       </div>
     </div>
+
     <div class="card" style="margin-bottom:24px">
       <h3 style="margin-bottom:16px">标志性案例：上海虚拟体育公开赛（SVS）</h3>
       <div class="grid-3">
@@ -782,6 +881,7 @@
       </div>
       <p style="margin-top:16px;font-size:.9rem;color:var(--muted)">上海虚拟体育公开赛是国内首个综合性虚拟体育赛事，目前主要涵盖虚拟自行车、赛艇等项目，并持续扩展品类。基于中国乒乓球文化基础，VR乒乓球被视为未来SVS的重要候选项目。</p>
     </div>
+
     <div class="callout">
       <strong>中国机遇：</strong>每日4亿人健身（占人口28.6%）+ 强烈的乒乓球文化认同 + 政策红利 + 本土VR硬件（Pico）普及 = VR乒乓球在中国拥有全球最大潜在用户基础，但目前产品生态和竞技赛事体系仍以海外为主导，本土化空间巨大。
     </div>
@@ -796,6 +896,7 @@
         <p>VR乒乓球的5年演进路径，及VR运动的长期叙事</p>
       </div>
     </div>
+
     <div class="two-panel" style="margin-bottom:28px">
       <div class="panel panel-challenge">
         <h3 style="color:#C0392B">⚠️ 当前主要挑战</h3>
@@ -823,6 +924,7 @@
       </div>
     </div>
 
+    <!-- 未来技术演进 -->
     <div class="card" style="margin-bottom:24px">
       <h3 style="margin-bottom:20px">🛣 VR乒乓球技术演进路线图</h3>
       <div class="grid-3">
@@ -859,6 +961,7 @@
       </div>
     </div>
 
+    <!-- VR运动大趋势 -->
     <div class="card card-accent-indigo">
       <h3 style="margin-bottom:16px">VR运动的长期叙事：三条并行轨道</h3>
       <div class="grid-3">
@@ -878,6 +981,7 @@
     </div>
   </section>
 
+  <!-- 结论 -->
   <section style="border-top:none;padding-top:0">
     <div class="conclusion-banner">
       <h2>核心结论与展望</h2>
@@ -897,6 +1001,7 @@
 
 </div>
 
+<!-- ═══ 页脚 ═══ -->
 <footer>
   <p>本报告基于公开资料综合整理，数据来源包括：ITTF官方公告、Reality Remake评测、Tampa Bay TT评测、MDPI Sensors学术期刊、ACM SUI 2023论文、Cynergy Sports报道、澎湃新闻、百度百科"虚拟体育"词条及多家市场研究机构（DataIntelo / MarkWide Research / Credence Research / WiseGuy Reports）。</p>
   <p style="margin-top:8px">调研周期：2021年1月 – 2026年3月 | 报告生成日期：2026年3月13日</p>
