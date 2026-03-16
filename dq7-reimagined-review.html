@@ -39,6 +39,21 @@
         radial-gradient(ellipse 50% 30% at 20% 80%, rgba(139,92,246,.1) 0%, transparent 50%);
     }
     
+    .hero-image {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -83,6 +98,20 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 20px 32px;
+    }
+    
+    .score-logo {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    
+    .score-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .score-main {
@@ -273,6 +302,28 @@
     .pc-card.pros li::before { content: '✓'; color: #4ade80; }
     .pc-card.cons li::before { content: '✗'; color: #f87171; }
     
+    /* Screenshots */
+    .screenshot {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 24px 0;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    
+    .screenshot img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .screenshot-caption {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    
     /* Feature Cards */
     .feature-grid {
       display: grid;
@@ -364,6 +415,11 @@
 <!-- Hero -->
 <header class="hero">
   <div class="hero-badge">🎮 GAME REVIEW</div>
+  
+  <div class="hero-image">
+    <img src="images/dq7/dq7-hero.png" alt="Dragon Quest VII Reimagined">
+  </div>
+  
   <h1>
     DQ7 Reimagined 深度评测
     <span class="en">Dragon Quest VII: A 26-Year Journey Reimagined</span>
@@ -371,6 +427,9 @@
   <p class="hero-subtitle">当百小时史诗被压缩至一半，是精华浓缩还是失去了灵魂？一场关于JRPG重制的深度思考</p>
   
   <div class="score-card">
+    <div class="score-logo">
+      <img src="images/dq7/dq7-logo.png" alt="DQ7 Logo">
+    </div>
     <div class="score-main">
       <div class="score-value">8.5</div>
       <div class="score-label">总评分 /10</div>
@@ -410,6 +469,11 @@
     </div>
     
     <p>游戏最核心的改变是<strong>流程压缩</strong>：原版100+小时的内容被精简至55小时左右。这一改动引发了两极分化的评价——新玩家欢呼终于能通关，老玩家则惋惜被删减的剧情和探索。</p>
+    
+    <div class="screenshot">
+      <img src="images/dq7/dq7-screenshot-character.png" alt="角色对话场景">
+      <div class="screenshot-caption">全语音演出的角色对话，主角终于开口说话</div>
+    </div>
   </section>
 
   <!-- Changes -->
@@ -454,6 +518,11 @@
         <p>世界地图改为3D可旋转视角，迷宫结构简化，减少迷路 frustration</p>
       </div>
     </div>
+    
+    <div class="screenshot">
+      <img src="images/dq7/dq7-screenshot-world.png" alt="世界地图探索">
+      <div class="screenshot-caption">3D世界地图，可自由旋转视角探索</div>
+    </div>
   </section>
 
   <!-- Combat -->
@@ -466,6 +535,11 @@
     <p><strong>怪物行为变化：</strong>敌人不再只是无脑攻击，会根据战况使用不同技能。部分 Boss 战加入了阶段转换机制，战斗节奏更加紧凑刺激。</p>
     
     <p><strong>自动战斗优化：</strong>AI 策略更加智能，可以设置优先级（优先治疗/优先输出等），刷级时的操作负担大幅降低。</p>
+    
+    <div class="screenshot">
+      <img src="images/dq7/dq7-screenshot-combat.png" alt="战斗画面">
+      <div class="screenshot-caption">可视化行动条让战斗策略性大幅提升</div>
+    </div>
     
     <div class="quote-box">
       <p>"战斗系统的改动让这款26年前的游戏有了现代JRPG的策略深度，但又保留了DQ系列一贯的简洁易懂。这是我认为重制版最成功的部分。"</p>
@@ -481,6 +555,11 @@
     <p>角色现在可以同时拥有<strong>主职业和副职业</strong>，副职业的技能和特性可以部分继承。这一改动极大地拓展了Build的可能性——你可以打造一个会治疗魔法的战士，或是一个能物理输出的法师。</p>
     
     <p>不过，这一系统也有代价：<strong>怪物职业被删减</strong>。原版中通过捕捉怪物学习特殊技能的系统被移除，部分老玩家对此颇有微词。SE的解释是为了平衡性考虑，但确实损失了一些收集乐趣。</p>
+    
+    <div class="screenshot">
+      <img src="images/dq7/dq7-screenshot-vocation.png" alt="职业系统界面">
+      <div class="screenshot-caption">Moonlighting系统允许角色同时装备主副职业</div>
+    </div>
   </section>
 
   <!-- Pros & Cons -->
@@ -522,6 +601,11 @@
     <p>对于<strong>新玩家</strong>，这是体验DQ7的最佳方式。55小时的流程在JRPG中依然算长，但已经是可以接受的范围。现代化的战斗系统和保姆级引导让入门门槛大幅降低。</p>
     
     <p>对于<strong>老玩家</strong>，这是一次复杂的体验。你会怀念被删减的内容，但也会惊喜于战斗系统的进化。如果把它当作一款"基于DQ7改编的新游戏"而非"DQ7的高清版"，心态会平和很多。</p>
+    
+    <div class="screenshot">
+      <img src="images/dq7/dq7-screenshot-boss.png" alt="Boss战">
+      <div class="screenshot-caption">Boss战设计更加紧凑刺激，有阶段转换机制</div>
+    </div>
     
     <div class="verdict-box">
       <h3>🎯 推荐人群</h3>
