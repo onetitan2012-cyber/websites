@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欧洲五大联赛完全指南 — 足球世界的巅峰舞台</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --card: #1a2332;
+      --border: rgba(255,255,255,.08);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --accent: #22c55e;
+      --accent2: #3b82f6;
+      --gold: #fbbf24;
+      --radius: 16px;
+      
+      /* 联赛主题色 */
+      --premier: #3b82f6;
+      --laliga: #f97316;
+      --bundesliga: #dc2626;
+      --seriea: #16a34a;
+      --ligue1: #7c3aed;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'PingFang SC', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34,197,94,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(59,130,246,.1) 0%, transparent 50%);
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto 32px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #86efac;
+      letter-spacing: .05em;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    
+    .hero h1 .en {
+      display: block;
+      font-size: .55em;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 40px;
+    }
+    
+    .hero-stats {
+      display: inline-flex;
+      gap: 0;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px;
+    }
+    
+    .hero-stat {
+      padding: 6px 20px;
+      font-size: .8rem;
+      color: var(--muted);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat strong { color: var(--text); display: block; font-size: 1rem; font-weight: 700; }
+    
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    /* Navigation */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10,14,23,.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .nav-inner {
+      display: flex;
+      gap: 8px;
+      max-width: 900px;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    
+    .nav-inner::-webkit-scrollbar { display: none; }
+    
+    .nav a {
+      padding: 10px 18px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 8px;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    
+    .nav a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.05);
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    
+    .section {
+      margin-bottom: 64px;
+    }
+    
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .section h2::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    
+    .section p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+      font-size: .95rem;
+    }
+    
+    .section strong {
+      color: var(--text);
+    }
+    
+    /* League Cards */
+    .league-grid {
+      display: grid;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    
+    .league-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .league-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+    }
+    
+    .league-card.premier::before { background: var(--premier); }
+    .league-card.laliga::before { background: var(--laliga); }
+    .league-card.bundesliga::before { background: var(--bundesliga); }
+    .league-card.seriea::before { background: var(--seriea); }
+    .league-card.ligue1::before { background: var(--ligue1); }
+    
+    .league-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    
+    .league-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+    }
+    
+    .league-card.premier .league-icon { background: rgba(59,130,246,.2); }
+    .league-card.laliga .league-icon { background: rgba(249,115,22,.2); }
+    .league-card.bundesliga .league-icon { background: rgba(220,38,38,.2); }
+    .league-card.seriea .league-icon { background: rgba(22,163,74,.2); }
+    .league-card.ligue1 .league-icon { background: rgba(124,58,237,.2); }
+    
+    .league-title h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    
+    .league-title span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    
+    .league-meta {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .league-meta-item {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    
+    .league-meta-item strong {
+      color: var(--text);
+      display: block;
+      font-size: .9rem;
+    }
+    
+    .league-section {
+      margin-top: 20px;
+    }
+    
+    .league-section h4 {
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+    
+    .league-section p {
+      font-size: .88rem;
+      margin: 0;
+    }
+    
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    
+    .tag {
+      padding: 4px 12px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #94a3b8;
+    }
+    
+    /* Feature Cards */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: transform .2s, border-color .2s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(34,197,94,.3);
+    }
+    
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(34,197,94,.2), rgba(59,130,246,.2));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    .feature-card p {
+      font-size: .85rem;
+      margin: 0;
+    }
+    
+    /* Timeline */
+    .timeline {
+      position: relative;
+      margin-top: 24px;
+      padding-left: 24px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+    }
+    
+    .timeline-item {
+      position: relative;
+      padding-bottom: 24px;
+    }
+    
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 4px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg);
+    }
+    
+    .timeline-year {
+      font-size: .85rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .timeline-content {
+      font-size: .9rem;
+      color: #94a3b8;
+    }
+    
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 24px;
+      font-size: .85rem;
+    }
+    
+    .compare-table th,
+    .compare-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .compare-table th {
+      color: var(--muted);
+      font-weight: 500;
+      background: var(--surface);
+    }
+    
+    .compare-table td {
+      color: #94a3b8;
+    }
+    
+    .compare-table tr:hover td {
+      background: rgba(255,255,255,.02);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 60px 16px 50px; }
+      .hero-stats { flex-wrap: wrap; border-radius: 12px; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stat:last-child { border-bottom: none; }
+      .container { padding: 40px 16px; }
+      .league-header { flex-direction: column; text-align: center; }
+      .compare-table { font-size: .75rem; }
+      .compare-table th, .compare-table td { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Back to Home -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">⚽ FOOTBALL GUIDE</div>
+  
+  <div class="hero-image">
+    <img src="images/five-leagues-hero.png" alt="欧洲五大联赛">
+  </div>
+  
+  <h1>
+    欧洲五大联赛完全指南
+    <span class="en">The Complete Guide to Europe's Top Five Football Leagues</span>
+  </h1>
+  <p class="hero-subtitle">探索世界足球的巅峰舞台，了解英超、西甲、德甲、意甲、法甲的历史传承与独特魅力</p>
+  
+  <div class="hero-stats">
+    <div class="hero-stat"><strong>5</strong>大联赛</div>
+    <div class="hero-stat"><strong>98</strong>支球队</div>
+    <div class="hero-stat"><strong>130+</strong>年历史</div>
+    <div class="hero-stat"><strong>∞</strong>精彩瞬间</div>
+  </div>
+</header>
+
+<!-- Navigation -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#history">诞生历史</a>
+    <a href="#premier">英超</a>
+    <a href="#laliga">西甲</a>
+    <a href="#bundesliga">德甲</a>
+    <a href="#seriea">意甲</a>
+    <a href="#ligue1">法甲</a>
+    <a href="#compare">横向对比</a>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main class="container">
+
+  <!-- History -->
+  <section class="section" id="history">
+    <h2>五大联赛的诞生与发展</h2>
+    <p>欧洲五大联赛（Big Five）是指欧洲足球五大顶级职业联赛：英格兰足球超级联赛（Premier League）、西班牙足球甲级联赛（La Liga）、德国足球甲级联赛（Bundesliga）、意大利足球甲级联赛（Serie A）和法国足球甲级联赛（Ligue 1）。这五个联赛代表了世界足球的最高水平。</p>
+    
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-year">1888年</div>
+        <div class="timeline-content">英格兰足球联赛（Football League）成立，是世界上最早的职业足球联赛，标志着现代职业足球的开端。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1898年</div>
+        <div class="timeline-content">意大利足球甲级联赛（Serie A）创立，尤文图斯、AC米兰、国际米兰等豪门开始书写传奇。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1929年</div>
+        <div class="timeline-content">西班牙足球甲级联赛（La Liga）正式成立，皇马与巴萨的百年 rivalry 由此开始。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1963年</div>
+        <div class="timeline-content">德国足球甲级联赛（Bundesliga）创立，以其专业的运营模式和球迷文化著称。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1932/1993年</div>
+        <div class="timeline-content">法国足球甲级联赛（Ligue 1）前身成立于1932年，1993年改为现名，近年来随着巴黎圣日耳曼的崛起而备受关注。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">1992年</div>
+        <div class="timeline-content">英格兰超级联赛（Premier League）成立，取代旧英甲，开启商业化新时代，迅速成为全球最具商业价值的联赛。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Premier League -->
+  <section class="section" id="premier">
+    <h2>英格兰足球超级联赛</h2>
+    
+    <div class="league-card premier">
+      <div class="league-header">
+        <div class="league-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <div class="league-title">
+          <h3>英超 Premier League</h3>
+          <span>成立于1992年 · 20支球队</span>
+        </div>
+      </div>
+      
+      <div class="league-meta">
+        <div class="league-meta-item">
+          <strong>比赛特点</strong>
+          快节奏、高强度、身体对抗激烈
+        </div>
+        <div class="league-meta-item">
+          <strong>代表球队</strong>
+          曼联、利物浦、阿森纳、切尔西、曼城
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>⚽ 足球风格</h4>
+        <p>英超以快节奏、高强度和身体对抗著称。比赛节奏快，攻防转换迅速，强调体能和速度。近年来随着瓜迪奥拉等教练的入驻，技术流打法也逐渐兴起，但身体对抗和高位逼抢仍是英超的标志。</p>
+      </div>
+      
+      <div class="league-section">
+        <h4>⭐ 传奇球星</h4>
+        <div class="tag-list">
+          <span class="tag">亨利</span>
+          <span class="tag">C罗</span>
+          <span class="tag">鲁尼</span>
+          <span class="tag">杰拉德</span>
+          <span class="tag">兰帕德</span>
+          <span class="tag">德布劳内</span>
+          <span class="tag">萨拉赫</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>👔 知名教练</h4>
+        <div class="tag-list">
+          <span class="tag">弗格森爵士</span>
+          <span class="tag">温格</span>
+          <span class="tag">穆里尼奥</span>
+          <span class="tag">瓜迪奥拉</span>
+          <span class="tag">克洛普</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>🎯 比赛看点</h4>
+        <p>圣诞赛程是英超独特传统，每年12月底至1月初的密集赛程考验球队深度。此外，英超没有冬歇期，比赛密度大，竞争激烈，"Big Six"之间的对决总是火花四溅。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- La Liga -->
+  <section class="section" id="laliga">
+    <h2>西班牙足球甲级联赛</h2>
+    
+    <div class="league-card laliga">
+      <div class="league-header">
+        <div class="league-icon">🇪🇸</div>
+        <div class="league-title">
+          <h3>西甲 La Liga</h3>
+          <span>成立于1929年 · 20支球队</span>
+        </div>
+      </div>
+      
+      <div class="league-meta">
+        <div class="league-meta-item">
+          <strong>比赛特点</strong>
+          技术流、控球为王、个人技术出众
+        </div>
+        <div class="league-meta-item">
+          <strong>代表球队</strong>
+          皇家马德里、巴塞罗那、马德里竞技
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>⚽ 足球风格</h4>
+        <p>西甲以技术流和控球打法闻名于世。拉玛西亚青训营和西班牙足球哲学强调传球、控球和技术，"Tiki-taka"成为西班牙足球的代名词。球员个人技术出众，比赛注重地面配合和进攻组织。</p>
+      </div>
+      
+      <div class="league-section">
+        <h4>⭐ 传奇球星</h4>
+        <div class="tag-list">
+          <span class="tag">梅西</span>
+          <span class="tag">C罗</span>
+          <span class="tag">劳尔</span>
+          <span class="tag">齐达内</span>
+          <span class="tag">罗纳尔迪尼奥</span>
+          <span class="tag">本泽马</span>
+          <span class="tag">莫德里奇</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>👔 知名教练</h4>
+        <div class="tag-list">
+          <span class="tag">克鲁伊夫</span>
+          <span class="tag">瓜迪奥拉</span>
+          <span class="tag">穆里尼奥</span>
+          <span class="tag">安切洛蒂</span>
+          <span class="tag">西蒙尼</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>🎯 比赛看点</h4>
+        <p>国家德比（皇马vs巴萨）是世界足坛最瞩目的对决。此外，马德里德比、塞维利亚德比等也极具看点。西甲球队在欧冠赛场表现优异，皇马更是欧冠之王。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bundesliga -->
+  <section class="section" id="bundesliga">
+    <h2>德国足球甲级联赛</h2>
+    
+    <div class="league-card bundesliga">
+      <div class="league-header">
+        <div class="league-icon">🇩🇪</div>
+        <div class="league-title">
+          <h3>德甲 Bundesliga</h3>
+          <span>成立于1963年 · 18支球队</span>
+        </div>
+      </div>
+      
+      <div class="league-meta">
+        <div class="league-meta-item">
+          <strong>比赛特点</strong>
+          高效务实、青训出色、球迷文化浓厚
+        </div>
+        <div class="league-meta-item">
+          <strong>代表球队</strong>
+          拜仁慕尼黑、多特蒙德、勒沃库森
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>⚽ 足球风格</h4>
+        <p>德甲以高效、务实和纪律性著称。德国足球强调团队配合和战术执行力，高位逼抢（Gegenpressing）在克洛普时代后成为德甲标志。同时，德甲拥有世界一流的青训体系，培养了大量优秀球员。</p>
+      </div>
+      
+      <div class="league-section">
+        <h4>⭐ 传奇球星</h4>
+        <div class="tag-list">
+          <span class="tag">贝肯鲍尔</span>
+          <span class="tag">盖德·穆勒</span>
+          <span class="tag">马特乌斯</span>
+          <span class="tag">巴拉克</span>
+          <span class="tag">莱万多夫斯基</span>
+          <span class="tag">罗伊斯</span>
+          <span class="tag">穆勒</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>👔 知名教练</h4>
+        <div class="tag-list">
+          <span class="tag">海因克斯</span>
+          <span class="tag">克洛普</span>
+          <span class="tag">瓜迪奥拉</span>
+          <span class="tag">弗里克</span>
+          <span class="tag">阿隆索</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>🎯 比赛看点</h4>
+        <p>德甲以超高上座率和球迷文化闻名，场均观众数常年居五大联赛之首。"50+1规则"保证了球迷对俱乐部的话语权。拜仁vs多特的国家德比、鲁尔区德比都是经典对决。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serie A -->
+  <section class="section" id="seriea">
+    <h2>意大利足球甲级联赛</h2>
+    
+    <div class="league-card seriea">
+      <div class="league-header">
+        <div class="league-icon">🇮🇹</div>
+        <div class="league-title">
+          <h3>意甲 Serie A</h3>
+          <span>成立于1898年 · 20支球队</span>
+        </div>
+      </div>
+      
+      <div class="league-meta">
+        <div class="league-meta-item">
+          <strong>比赛特点</strong>
+          战术大师、防守艺术、链式防守
+        </div>
+        <div class="league-meta-item">
+          <strong>代表球队</strong>
+          尤文图斯、AC米兰、国际米兰、罗马、那不勒斯
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>⚽ 足球风格</h4>
+        <p>意甲以战术深度和防守艺术著称。"Catenaccio"（链式防守）是意大利足球的标志性战术，强调防守组织和战术纪律。意甲培养了无数战术大师，比赛往往充满战术博弈。</p>
+      </div>
+      
+      <div class="league-section">
+        <h4>⭐ 传奇球星</h4>
+        <div class="tag-list">
+          <span class="tag">马拉多纳</span>
+          <span class="tag">巴乔</span>
+          <span class="tag">马尔蒂尼</span>
+          <span class="tag">巴蒂斯图塔</span>
+          <span class="tag">齐达内</span>
+          <span class="tag">罗纳尔多</span>
+          <span class="tag">伊布</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>👔 知名教练</h4>
+        <div class="tag-list">
+          <span class="tag">萨基</span>
+          <span class="tag">里皮</span>
+          <span class="tag">卡佩罗</span>
+          <span class="tag">穆里尼奥</span>
+          <span class="tag">安切洛蒂</span>
+          <span class="tag">孔蒂</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>🎯 比赛看点</h4>
+        <p>米兰德比（AC米兰vs国际米兰）是意甲最瞩目的对决。此外，意大利国家德比（尤文vs国米）、罗马德比也极具看点。意甲以培养顶级后卫和战术大师闻名。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ligue 1 -->
+  <section class="section" id="ligue1">
+    <h2>法国足球甲级联赛</h2>
+    
+    <div class="league-card ligue1">
+      <div class="league-header">
+        <div class="league-icon">🇫🇷</div>
+        <div class="league-title">
+          <h3>法甲 Ligue 1</h3>
+          <span>成立于1932年 · 18支球队</span>
+        </div>
+      </div>
+      
+      <div class="league-meta">
+        <div class="league-meta-item">
+          <strong>比赛特点</strong>
+          技术细腻、青训摇篮、新兴力量
+        </div>
+        <div class="league-meta-item">
+          <strong>代表球队</strong>
+          巴黎圣日耳曼、马赛、里昂、摩纳哥
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>⚽ 足球风格</h4>
+        <p>法甲以技术细腻和青训出色著称。法国足球强调个人技术和创造力，克莱枫丹青训营是世界足坛的标杆。近年来随着巴黎圣日耳曼的崛起，法甲关注度大幅提升。</p>
+      </div>
+      
+      <div class="league-section">
+        <h4>⭐ 传奇球星</h4>
+        <div class="tag-list">
+          <span class="tag">普拉蒂尼</span>
+          <span class="tag">齐达内</span>
+          <span class="tag">姆巴佩</span>
+          <span class="tag">内马尔</span>
+          <span class="tag">伊布</span>
+          <span class="tag">卡瓦尼</span>
+          <span class="tag">梅西</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>👔 知名教练</h4>
+        <div class="tag-list">
+          <span class="tag">温格</span>
+          <span class="tag">安切洛蒂</span>
+          <span class="tag">埃梅里</span>
+          <span class="tag">图赫尔</span>
+          <span class="tag">加尔蒂埃</span>
+        </div>
+      </div>
+      
+      <div class="league-section">
+        <h4>🎯 比赛看点</h4>
+        <p>法国国家德比（马赛vs巴黎）是法甲最激烈的对决。法甲是五大联赛的"球星加工厂"，培养了姆巴佩、登贝莱等新星。巴黎圣日耳曼的欧冠征程是近年来法甲的最大看点。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section" id="compare">
+    <h2>五大联赛横向对比</h2>
+    
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>联赛</th>
+          <th>成立年份</th>
+          <th>球队数量</th>
+          <th>核心特点</th>
+          <th>欧冠冠军数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong style="color: #3b82f6;">英超</strong></td>
+          <td>1992</td>
+          <td>20支</td>
+          <td>快节奏、身体对抗、商业价值最高</td>
+          <td>11次</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #f97316;">西甲</strong></td>
+          <td>1929</td>
+          <td>20支</td>
+          <td>技术流、控球为王、球星云集</td>
+          <td>20次</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #dc2626;">德甲</strong></td>
+          <td>1963</td>
+          <td>18支</td>
+          <td>高效务实、青训出色、球迷文化</td>
+          <td>7次</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #16a34a;">意甲</strong></td>
+          <td>1898</td>
+          <td>20支</td>
+          <td>战术大师、防守艺术、历史底蕴</td>
+          <td>12次</td>
+        </tr>
+        <tr>
+          <td><strong style="color: #7c3aed;">法甲</strong></td>
+          <td>1932</td>
+          <td>18支</td>
+          <td>技术细腻、青训摇篮、新兴力量</td>
+          <td>1次</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="feature-grid" style="margin-top: 32px;">
+      <div class="feature-card">
+        <div class="feature-icon">💰</div>
+        <h3>商业价值最高</h3>
+        <p>英超以超过100亿欧元的转播合同领跑五大联赛，是全球商业运作最成熟的联赛。</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <h3>欧冠成绩最佳</h3>
+        <p>西甲以20次欧冠冠军居首（皇马15次、巴萨5次），皇马是当之无愧的欧冠之王。</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>上座率最高</h3>
+        <p>德甲场均观众超过4万人，50+1规则保证了球迷文化，是观赛体验最好的联赛。</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">🎓</div>
+        <h3>青训最出色</h3>
+        <p>法甲和德甲的青训体系最为完善，培养了众多世界级球星，是五大联赛的"人才库"。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Football Guide · 探索足球世界的无限魅力</p>
+  <p style="margin-top: 8px; opacity: .6;">"足球无关生死，足球高于生死" — 比尔·香克利</p>
+</footer>
+
+</body>
+</html>
