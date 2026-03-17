@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>人类数千年来最狂野的梦想被他给实现了 — Gravity Jet Suit</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --card: #1a2332;
+      --border: rgba(255,255,255,.08);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --gold: #fbbf24;
+      --radius: 16px;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'PingFang SC', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(6,182,212,.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(59,130,246,.1) 0%, transparent 50%);
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(6,182,212,.12);
+      border: 1px solid rgba(6,182,212,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #67e8f9;
+      letter-spacing: .05em;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    
+    .hero-meta {
+      display: inline-flex;
+      gap: 24px;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    /* Video Section */
+    .video-section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+    
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+    
+    .video-container iframe,
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    
+    .video-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    
+    .lead {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.9;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--accent);
+    }
+    
+    .section {
+      margin-bottom: 48px;
+    }
+    
+    .section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+    
+    .section h2::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 28px 0 12px;
+      color: #93c5fd;
+    }
+    
+    .section p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+      font-size: .95rem;
+      line-height: 1.9;
+    }
+    
+    .section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    /* Image */
+    .article-image {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 24px 0;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    
+    .article-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .image-caption {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    
+    /* Highlight Box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(59,130,246,.1), rgba(6,182,212,.1));
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 28px 0;
+    }
+    
+    .highlight-box h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #93c5fd;
+    }
+    
+    .highlight-box p {
+      margin: 0;
+    }
+    
+    /* Stats Grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    
+    .stat-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .stat-value {
+      font-size: 1.8rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .stat-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    
+    /* Quote */
+    .quote-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent2);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    
+    .quote-box p {
+      color: #cbd5e1;
+      font-style: italic;
+      margin: 0;
+    }
+    
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(59,130,246,.15), rgba(6,182,212,.15));
+      border: 1px solid rgba(59,130,246,.3);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    
+    .cta-box h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #93c5fd;
+    }
+    
+    .cta-box p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform .2s, box-shadow .2s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59,130,246,.3);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    
+    .author-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #06b6d4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .author-text {
+      text-align: left;
+    }
+    
+    .author-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .author-bio {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 60px 16px 40px; }
+      .hero-meta { flex-direction: column; gap: 8px; }
+      .container { padding: 32px 16px 60px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Back to Home -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">🚀 科技前沿</div>
+  <h1>人类数千年来最狂野的梦想<br>被他给实现了</h1>
+  <p class="hero-subtitle">当钢铁侠的飞行梦照进现实，Gravity Jet Suit 如何让我们像鸟儿一样自由翱翔</p>
+  <div class="hero-meta">
+    <span>📅 原创于公众号</span>
+    <span>👁️ 6000+ 阅读</span>
+    <span>✍️ 谦哥</span>
+  </div>
+</header>
+
+<!-- Video Section -->
+<section class="video-section">
+  <div class="video-container">
+    <iframe src="//player.bilibili.com/player.html?bvid=BV1HfwRzEEfz&page=1&high_quality=1&danmaku=0" 
+            allowfullscreen="true" 
+            loading="lazy">
+    </iframe>
+  </div>
+</section>
+
+<!-- Main Content -->
+<main class="container">
+
+  <p class="lead">
+    自古以来，人类就有一个狂野的梦想——像鸟儿一样在天空中自由飞翔。从古希腊神话中伊卡洛斯的蜡翼，到中国鲁班制作的木鸢，再到达芬奇设计的飞行器草图……数千年来，这个梦想一直激励着人类不断探索。
+  </p>
+
+  <section class="section">
+    <h2>引言：飞翔的梦想</h2>
+    <p>人类对飞行的向往，几乎与人类文明一样古老。在古代神话中，飞行是神的特权；在中世纪的传说里，飞行是炼金术士追求的终极目标；而在现代科学诞生之前，无数先驱者为这个梦想付出了生命的代价。</p>
+    
+    <p>然而，直到 20 世纪初，莱特兄弟才实现了人类首次动力飞行。此后的一百多年里，飞机、直升机、喷气背包……人类不断突破飞行的边界，但真正的"个人自由飞行"——像钢铁侠那样随心所欲地在空中穿梭——似乎始终遥不可及。</p>
+    
+    <p>直到 <strong>Richard Browning</strong> 的出现。</p>
+  </section>
+
+  <section class="section">
+    <h2>Gravity Jet Suit：梦想的实现</h2>
+    
+    <div class="article-image">
+      <img src="images/gravity-jet-suit/product.jpg" alt="Gravity Jet Suit 产品展示">
+      <div class="image-caption">Gravity Jet Suit 官方产品展示</div>
+    </div>
+    
+    <p>Richard Browning 是英国皇家海军陆战队的前预备役军官，也是一名资深的石油交易员。但他真正的身份，是一位梦想家。受到父亲关于飞行和工程的启蒙，以及自己作为飞行员的体验，Browning 在 2016 年创立了 <strong>Gravity Industries</strong>，开始研发一种革命性的个人飞行装置。</p>
+    
+    <p>经过无数次的失败和改进，<strong>Gravity Jet Suit</strong> 诞生了。</p>
+    
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-value">6</div>
+        <div class="stat-label">喷气引擎</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">85</div>
+        <div class="stat-label">最高时速(英里)</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">12,000</div>
+        <div class="stat-label">英尺飞行高度</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-value">$440k</div>
+        <div class="stat-label">售价(美元)</div>
+      </div>
+    </div>
+    
+    <h3>操控方式：用身体飞行</h3>
+    <p>与传统的飞行器不同，Gravity Jet Suit 的操控极其直观——完全依靠人体姿态。手臂上的四个引擎控制方向和推力，背部的两个引擎提供主要升力。飞行员只需要像游泳一样移动手臂，就能控制飞行方向。</p>
+    
+    <p>这种设计让飞行变得前所未有的自然。正如 Browning 所说："这不是在驾驶一台机器，这是让你的身体成为飞行器本身。"</p>
+  </section>
+
+  <section class="section">
+    <h2>创始人故事：从理想到现实</h2>
+    
+    <div class="article-image">
+      <img src="images/gravity-jet-suit/founder.jpg" alt="Richard Browning">
+      <div class="image-caption">Richard Browning 与他的发明</div>
+    </div>
+    
+    <p>Richard Browning 的故事本身就是一个关于梦想和坚持的传奇。在创立 Gravity Industries 之前，他没有任何工程学位，也没有航空航天背景。他有的只是对飞行的热爱，以及一个看似不可能实现的梦想。</p>
+    
+    <p>在研发初期，Browning 遭遇了无数次失败。早期的原型机要么动力不足，要么无法控制，甚至多次导致他受伤。但他从未放弃。他自学流体力学、引擎技术、材料科学……用业余时间在车库里一点点打磨自己的发明。</p>
+    
+    <div class="quote-box">
+      <p>"我不相信有些事情是不可能的。如果有人说某件事做不到，那只是因为还没找到正确的方法。"</p>
+    </div>
+    
+    <p>2017 年，Browning 穿着 Gravity Jet Suit 在伦敦的一场科技大会上首次公开飞行，震惊了全世界。视频在社交媒体上疯传，Gravity Industries 一夜之间成为全球瞩目的焦点。</p>
+  </section>
+
+  <section class="section">
+    <h2>应用场景：从娱乐到救援</h2>
+    
+    <p>Gravity Jet Suit 不仅仅是一个昂贵的玩具，它在多个领域都展现出了巨大的应用潜力：</p>
+    
+    <div class="highlight-box">
+      <h4>🚑 医疗救援</h4>
+      <p>在山区或海上救援中，Jet Suit 可以让医护人员快速抵达难以到达的地点。英国大北方空中救护服务（GNAA）已经开始测试 Jet Suit 在山区救援中的应用。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🎖️ 军事用途</h4>
+      <p>英国皇家海军陆战队和英国陆军都对 Jet Suit 表现出了浓厚兴趣。在特种作战中，士兵可以快速跨越障碍物，从舰艇登上敌船，或者快速部署到难以到达的据点。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🎢 娱乐体验</h4>
+      <p>Gravity Industries 目前主要收入来源是体验项目。在全球多个地点，普通人可以花费约 $7,000 美元参加为期一天的 Jet Suit 飞行体验课程。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>未来展望：人人飞行的时代</h2>
+    
+    <p>尽管 Gravity Jet Suit 目前售价高达 44 万美元，且需要专业训练才能安全飞行，但它代表了一个重要的里程碑——人类终于实现了真正的个人自由飞行。</p>
+    
+    <p>Browning 的愿景远不止于此。他正在研发更轻、更便宜、更易操控的版本。他相信，在未来十年内，个人飞行装置将像汽车一样普及。</p>
+    
+    <div class="quote-box">
+      <p>"想象一下，未来的孩子们上学不是坐公交车，而是穿着 Jet Suit 飞过去。这听起来很疯狂，但这就是我们要创造的未来。"</p>
+    </div>
+    
+    <p>从伊卡洛斯的蜡翼到 Gravity Jet Suit，人类用了数千年时间追逐飞行的梦想。而今天，这个梦想终于成为了现实。</p>
+  </section>
+
+  <div class="cta-box">
+    <h3>你准备好飞了吗？</h3>
+    <p>Gravity Jet Suit 体验课程现已在全球多个地点开放预订</p>
+    <a href="https://gravity.co" class="cta-button" target="_blank">
+      访问官网了解更多 →
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="author-info">
+    <div class="author-avatar">✍️</div>
+    <div class="author-text">
+      <div class="author-name">谦哥</div>
+      <div class="author-bio">探索技术、文化与未来的个人实验室</div>
+    </div>
+  </div>
+  <p>© 原创文章 · 首发于微信公众号</p>
+  <p style="margin-top: 8px; opacity: .6;">"人类数千年来最狂野的梦想被他给实现了"</p>
+</footer>
+
+</body>
+</html>

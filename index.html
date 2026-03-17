@@ -32,6 +32,7 @@
       --c-game:     #FB923C;
       --c-football: #4ADE80;
       --c-culture:  #F472B6;
+      --c-original: #F97316;
     }
 
     html { scroll-behavior: smooth; }
@@ -155,6 +156,7 @@
     .tab[data-tab="game"].active   { background: rgba(251,146,60,.12);  border-color: rgba(251,146,60,.3);  color: #FDB678; }
     .tab[data-tab="football"].active { background: rgba(74,222,128,.12); border-color: rgba(74,222,128,.3); color: #86EFAC; }
     .tab[data-tab="culture"].active { background: rgba(244,114,182,.12); border-color: rgba(244,114,182,.3); color: #F9A8D4; }
+    .tab[data-tab="original"].active { background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.3); color: #FDBA74; }
 
     /* ── MAIN GRID ── */
     .main {
@@ -247,6 +249,8 @@
     .card[data-cat="game"]    .card-tag { color: #FDB678; border-color: rgba(251,146,60,.3);  background: rgba(251,146,60,.1); }
     .card[data-cat="football"].card-tag { color: #86EFAC; border-color: rgba(74,222,128,.3);  background: rgba(74,222,128,.1); }
     .card[data-cat="culture"] .card-tag { color: #F9A8D4; border-color: rgba(244,114,182,.3); background: rgba(244,114,182,.1); }
+    .card[data-cat="original"] .card-tag { color: #FDBA74; border-color: rgba(249,115,22,.3); background: rgba(249,115,22,.1); }
+    .card[data-cat="original"]::before { background: linear-gradient(90deg, #F97316, #EA580C); }
 
     .card-title {
       font-size: 1.1rem;
@@ -328,7 +332,7 @@
     <div class="logo">PONGHOOD</div>
     <div class="tagline">探索技术、文化与未来的个人实验室</div>
     <div class="hero-stats">
-      <div class="hero-stat"><strong id="total-count">10</strong>项目总数</div>
+      <div class="hero-stat"><strong id="total-count">11</strong>项目总数</div>
       <div class="hero-stat"><strong>5</strong>内容分类</div>
       <div class="hero-stat"><strong>2026</strong>持续更新</div>
     </div>
@@ -367,6 +371,11 @@
       <span class="dot" style="background:var(--c-culture)"></span>
       中华文化
       <span class="count" id="count-culture"></span>
+    </button>
+    <button class="tab" data-tab="original">
+      <span class="dot" style="background:var(--c-original)"></span>
+      原创项目
+      <span class="count" id="count-original"></span>
     </button>
   </div>
 </nav>
@@ -496,6 +505,20 @@
       </div>
     </a>
 
+    <!-- 原创项目 -->
+    <a href="gravity-jet-suit.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🚀</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">Gravity Jet Suit：人类飞行梦想</div>
+      <div class="card-desc">公众号 6000+ 阅读热门文章：当钢铁侠的飞行梦照进现实，个人飞行装置如何让我们像鸟儿一样自由翱翔</div>
+      <div class="card-footer">
+        <span class="card-date">科技前沿</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
     <!-- 足球 -->
     <a href="five-major-leagues.html" class="card" data-cat="football">
       <div class="card-top">
@@ -584,6 +607,7 @@
     game:     '游戏',
     football: '足球',
     culture:  '中华文化',
+    original: '原创项目',
   };
 
   // 计算各分类数量
