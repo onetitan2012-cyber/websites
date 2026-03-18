@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>疯狂的螳螂</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #1a1a2e;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        /* 游戏容器 - 固定比例 */
+        #gameWrapper {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #87CEEB 0%, #C8E6C9 100%);
+        }
+        
+        /* 游戏画布容器 - 固定 9:16 比例 */
+        #canvasContainer {
+            position: relative;
+            width: min(100vw, 56.25vh); /* 9:16 比例 */
+            height: min(177.78vw, 100vh);
+            max-width: 500px;
+            max-height: 900px;
+            background: linear-gradient(180deg, #87CEEB 0%, #B8E6B8 100%);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        #gameCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+        /* 返回主页按钮 */
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            padding: 10px 18px;
+            background: rgba(255,255,255,0.95);
+            border: none;
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            transition: all 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            background: #fff;
+        }
+        
+        /* UI 层 */
+        #uiLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            padding: 15px;
+        }
+        
+        .ui-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .scoreBoard {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+        .scoreBoard .label { font-size: 12px; opacity: 0.8; }
+        .scoreBoard .score { font-size: 28px; font-weight: bold; color: #FFD700; }
+        
+        .currency {
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 20px;
+        }
+        
+        .health-bar {
+            position: absolute;
+            top: 130px;
+            left: 15px;
+            display: flex;
+            gap: 6px;
+            background: rgba(0,0,0,0.5);
+            padding: 8px 12px;
+            border-radius: 8px;
+        }
+        .health-heart { font-size: 24px; }
+        
+        /* 成语提示 */
+        .proverb-hint {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            background: rgba(0,0,0,0.4);
+            padding: 12px 24px;
+            border-radius: 12px;
+            backdrop-filter: blur(4px);
+        }
+        .proverb-text {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FFD700;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        .proverb-meaning {
+            font-size: 12px;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .level-display {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.6);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        /* 弹窗 */
+        .modal {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            pointer-events: auto;
+        }
+        .modal.hidden { display: none !important; }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            padding: 35px 30px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            width: 85%;
+            max-width: 320px;
+            border: 2px solid #90EE90;
+        }
+        .modal-content h1 { font-size: 32px; margin-bottom: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .claw-icon { font-size: 60px; margin: 10px 0; animation: bounce 1.2s infinite; }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(-12px) rotate(10deg); }
+        }
+        .modal-content p { font-size: 14px; margin: 8px 0; line-height: 1.4; }
+        
+        .btn {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #333;
+            border: none;
+            padding: 14px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 30px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+            pointer-events: auto;
+        }
+        .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255,215,0,0.5); }
+        
+        .tutorial {
+            background: rgba(255,255,255,0.12);
+            padding: 12px;
+            border-radius: 10px;
+            margin: 12px 0;
+            text-align: left;
+        }
+        .tutorial-item {
+            display: flex;
+            align-items: center;
+            margin: 6px 0;
+            font-size: 13px;
+        }
+        .tutorial-item span { font-size: 20px; margin-right: 10px; width: 30px; text-align: center; }
+        
+        .combo {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 48px;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+            pointer-events: none;
+            animation: comboPop 1s ease-out forwards;
+        }
+        @keyframes comboPop {
+            0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
+            30% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+            100% { transform: translate(-50%, -90%) scale(1); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-btn">← 返回主页</a>
+    <div id="gameWrapper">
+        <div id="canvasContainer">
+            <canvas id="gameCanvas"></canvas>
+            
+            <div id="uiLayer">
+                <div class="ui-top">
+                    <div class="scoreBoard">
+                        <div class="label">得分</div>
+                        <div class="score" id="scoreDisplay">0</div>
+                    </div>
+                    <div class="currency">
+                        <span>💧</span>
+                        <span id="dewdropDisplay">0</span>
+                    </div>
+                </div>
+                
+                <div class="health-bar" id="healthBar">
+                    <span class="health-heart">❤️</span>
+                    <span class="health-heart">❤️</span>
+                    <span class="health-heart">❤️</span>
+                </div>
+                
+                <div class="level-display">关卡 <span id="levelDisplay">1</span></div>
+                
+                <!-- 成语提示 -->
+                <div class="proverb-hint">
+                    <div class="proverb-text">螳螂捕蝉，黄雀在后</div>
+                    <div class="proverb-meaning">专注捕猎，但也要警惕身后的危险</div>
+                </div>
+            </div>
+            
+            <!-- 开始界面 -->
+            <div id="startModal" class="modal">
+                <div class="modal-content">
+                    <h1>🥢 疯狂的螳螂</h1>
+                    <div class="claw-icon">🥢</div>
+                    <p>绕着树桩爬行，伸出利爪捕蝉！</p>
+                    <div class="tutorial">
+                        <div class="tutorial-item"><span>🥢</span><div>螳螂自动绕圈爬行</div></div>
+                        <div class="tutorial-item"><span>👆</span><div>点击屏幕伸出利爪</div></div>
+                        <div class="tutorial-item"><span>🪰</span><div>砍中蝉得分</div></div>
+                        <div class="tutorial-item"><span>🍂</span><div>避开枯叶陷阱</div></div>
+                    </div>
+                    <button class="btn" id="startBtn">开始游戏</button>
+                </div>
+            </div>
+            
+            <!-- 游戏结束界面 -->
+            <div id="gameOverModal" class="modal hidden">
+                <div class="modal-content">
+                    <h1>游戏结束</h1>
+                    <div class="claw-icon">😵</div>
+                    <p>最终得分: <span id="finalScore" style="font-size: 32px; color: #FFD700;">0</span></p>
+                    <p>收集露珠: <span id="finalDewdrops" style="color: #87CEEB;">0</span> 💧</p>
+                    <p>最高连击: <span id="maxCombo" style="color: #FF6B6B;">0</span></p>
+                    <button class="btn" id="restartBtn">再玩一次</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+        const container = document.getElementById('canvasContainer');
+        
+        // 固定画布尺寸
+        const GAME_WIDTH = 500;
+        const GAME_HEIGHT = 900;
+        
+        canvas.width = GAME_WIDTH;
+        canvas.height = GAME_HEIGHT;
+        
+        // 游戏区域参数
+        const centerX = GAME_WIDTH / 2;
+        const centerY = GAME_HEIGHT / 2 + 20;
+        const diskRadius = 180;
+        
+        // 游戏状态
+        let state = 'menu';
+        let score = 0;
+        let dewdrops = 0;
+        let level = 1;
+        let health = 3;
+        let combo = 0;
+        let maxCombo = 0;
+        let lastHitTime = 0;
+        
+        // 螳螂
+        const mantis = {
+            angle: -Math.PI / 2,
+            speed: 0.015,
+            direction: 1,
+            isAttacking: false,
+            attackProgress: 0,
+            clawLength: 0,
+            maxClawLength: 140
+        };
+        
+        // 游戏对象
+        let items = [];
+        let particles = [];
+        let dewdrops_arr = [];
+        
+        // 生成物品
+        // 物品ID计数器
+        let itemIdCounter = 0;
+        
+        function spawnItemAtAngle(angle) {
+            const types = [
+                { type: 'cicada', emoji: '🪰', value: 10, color: '#8B4513', size: 28 },
+                { type: 'cicada', emoji: '🦟', value: 20, color: '#2F4F4F', size: 26 },
+                { type: 'cicada', emoji: '🪲', value: 30, color: '#556B2F', size: 30 },
+                { type: 'cicada', emoji: '🐛', value: 50, color: '#32CD32', size: 24 },
+                { type: 'trap', emoji: '🍂', value: 0, color: '#8B4513', size: 32 },
+                { type: 'trap', emoji: '🕷️', value: 0, color: '#4B0082', size: 30 }
+            ];
+            
+            const rand = Math.random();
+            const type = rand < 0.6 ? types[Math.floor(Math.random() * 4)] : types[4 + Math.floor(Math.random() * 2)];
+            const distanceFromCenter = diskRadius - 30 - Math.random() * 25;
+            
+            items.push({
+                id: itemIdCounter++,
+                angle: angle,
+                distance: distanceFromCenter,
+                x: centerX + Math.cos(angle) * distanceFromCenter,
+                y: centerY + Math.sin(angle) * distanceFromCenter,
+                ...type
+            });
+        }
+        
+        function spawnInitialItems() {
+            items = [];
+            const count = 8 + level * 2;
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.3;
+                spawnItemAtAngle(angle);
+            }
+        }
+        
+        // 音频上下文
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        
+        // 播放音效函数
+        function playSound(type) {
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            const now = audioCtx.currentTime;
+            
+            if (type === 'hit') {
+                // 击中蝉 - 清脆的"啪"声
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, now);
+                osc.frequency.exponentialRampToValueAtTime(400, now + 0.1);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.1);
+                osc.start(now);
+                osc.stop(now + 0.1);
+            } else if (type === 'trap') {
+                // 击中陷阱 - 沉闷的"咚"声
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(200, now);
+                osc.frequency.exponentialRampToValueAtTime(100, now + 0.2);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.2);
+                osc.start(now);
+                osc.stop(now + 0.2);
+            } else if (type === 'dewdrop') {
+                // 收集露珠 - 清脆的"叮"声
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(1200, now);
+                osc.frequency.exponentialRampToValueAtTime(1800, now + 0.15);
+                gain.gain.setValueAtTime(0.2, now);
+                gain.gain.exponentialRampToValueAtTime(0.01, now + 0.15);
+                osc.start(now);
+                osc.stop(now + 0.15);
+            }
+        }
+        
+        function attack() {
+            if (mantis.isAttacking) return;
+            mantis.isAttacking = true;
+            mantis.attackProgress = 0;
+            hitItemsThisAttack.clear(); // 重置命中记录
+        }
+        
+        // 记录已命中的物品，防止一次攻击多次命中
+        let hitItemsThisAttack = new Set();
+        
+        function checkAttackCollision() {
+            const orbitR = diskRadius + 40;
+            const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
+            const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
+            const attackAngle = mantis.angle + Math.PI;
+            // 缩小攻击角度范围，使攻击更精准
+            const attackArc = Math.PI / 12; // 从 36度 缩小到 15度
+            
+            // 找到所有在攻击范围内的物品，按距离排序
+            let hitCandidates = [];
+            
+            for (let i = items.length - 1; i >= 0; i--) {
+                const item = items[i];
+                // 跳过已命中的物品
+                if (hitItemsThisAttack.has(item.id)) continue;
+                
+                const dx = item.x - mantisX;
+                const dy = item.y - mantisY;
+                const itemAngle = Math.atan2(dy, dx);
+                let angleDiff = itemAngle - attackAngle;
+                while (angleDiff > Math.PI) angleDiff -= Math.PI * 2;
+                while (angleDiff < -Math.PI) angleDiff += Math.PI * 2;
+                
+                const distToMantis = Math.sqrt(dx * dx + dy * dy);
+                // 缩小攻击范围判定
+                const inAngle = Math.abs(angleDiff) < attackArc;
+                const inRange = distToMantis < mantis.clawLength + item.size + 10;
+                
+                if (inAngle && inRange) {
+                    hitCandidates.push({ item, index: i, dist: distToMantis });
+                }
+            }
+            
+            // 只命中最近的一个物品
+            if (hitCandidates.length > 0) {
+                hitCandidates.sort((a, b) => a.dist - b.dist);
+                const closest = hitCandidates[0];
+                hitItemsThisAttack.add(closest.item.id);
+                if (closest.item.type === 'cicada') hitCicada(closest.item, closest.index);
+                else hitTrap(closest.item, closest.index);
+            }
+        }
+        
+        function hitCicada(item, index) {
+            items.splice(index, 1);
+            playSound('hit'); // 播放击中音效
+            const now = Date.now();
+            combo = (now - lastHitTime < 2000) ? combo + 1 : 1;
+            lastHitTime = now;
+            maxCombo = Math.max(maxCombo, combo);
+            score += item.value + Math.min(combo * 5, 50);
+            if (combo > 1) showCombo(combo);
+            createParticles(item.x, item.y, item.color);
+            if (Math.random() < 0.35) {
+                dewdrops_arr.push({
+                    x: item.x, y: item.y,
+                    angle: Math.atan2(item.y - centerY, item.x - centerX),
+                    distance: item.distance,
+                    value: 1, life: 180
+                });
+            }
+            updateUI();
+            
+            const cicadasLeft = items.filter(item => item.type === 'cicada').length;
+            if (cicadasLeft === 0) nextLevel();
+        }
+        
+        function hitTrap(item, index) {
+            items.splice(index, 1);
+            playSound('trap'); // 播放陷阱音效
+            health--;
+            combo = 0;
+            createParticles(item.x, item.y, '#8B0000', 15);
+            shakeScreen();
+            if (health <= 0) gameOver();
+            updateUI();
+        }
+        
+        function nextLevel() {
+            level++;
+            mantis.speed = Math.min(0.04, 0.015 + level * 0.002);
+            spawnInitialItems();
+            updateUI();
+            
+            const el = document.createElement('div');
+            el.className = 'combo';
+            el.textContent = '第 ' + level + ' 关!';
+            el.style.color = '#00FF00';
+            document.getElementById('uiLayer').appendChild(el);
+            setTimeout(() => el.remove(), 1500);
+        }
+        
+        function showCombo(c) {
+            const el = document.createElement('div');
+            el.className = 'combo';
+            el.textContent = c + ' 连击!';
+            document.getElementById('uiLayer').appendChild(el);
+            setTimeout(() => el.remove(), 1000);
+        }
+        
+        function createParticles(x, y, color, count = 12) {
+            for (let i = 0; i < count; i++) {
+                const angle = (Math.PI * 2 / count) * i + Math.random() * 0.8;
+                const speed = 3 + Math.random() * 5;
+                particles.push({
+                    x, y,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    life: 40 + Math.random() * 20,
+                    color, size: 4 + Math.random() * 6
+                });
+            }
+        }
+        
+        function shakeScreen() {
+            container.style.transform = 'translate(5px, 5px)';
+            setTimeout(() => {
+                container.style.transform = 'translate(-5px, -5px)';
+                setTimeout(() => container.style.transform = 'translate(0, 0)', 50);
+            }, 50);
+        }
+        
+        function drawDisk() {
+            const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, diskRadius);
+            gradient.addColorStop(0, '#D2B48C');
+            gradient.addColorStop(0.7, '#C19A6B');
+            gradient.addColorStop(1, '#A0826D');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, diskRadius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.strokeStyle = '#E6D5C3';
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            
+            ctx.strokeStyle = 'rgba(139, 69, 19, 0.3)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, diskRadius - 15, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#8B7355';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 25, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#A0826D';
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, 15, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        
+        function drawMantis() {
+            const orbitR = diskRadius + 40;
+            const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
+            const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
+            const faceAngle = mantis.angle + Math.PI;
+            
+            ctx.save();
+            ctx.translate(mantisX, mantisY);
+            ctx.rotate(faceAngle + Math.PI / 2);
+            
+            // 钳子
+            ctx.strokeStyle = '#4CAF50';
+            ctx.fillStyle = '#66BB6A';
+            ctx.lineWidth = 5;
+            ctx.lineCap = 'round';
+            
+            ctx.beginPath();
+            ctx.moveTo(0, -10);
+            ctx.quadraticCurveTo(-18, -25, -12, -45);
+            ctx.quadraticCurveTo(-6, -50, 0, -42);
+            ctx.stroke();
+            ctx.fill();
+            
+            ctx.beginPath();
+            ctx.moveTo(0, 10);
+            ctx.quadraticCurveTo(18, 25, 12, 45);
+            ctx.quadraticCurveTo(6, 50, 0, 42);
+            ctx.stroke();
+            ctx.fill();
+            
+            ctx.strokeStyle = '#2E7D32';
+            ctx.lineWidth = 3;
+            for (let i = 0; i < 4; i++) {
+                ctx.beginPath();
+                ctx.moveTo(-6 - i * 4, -38 + i * 6);
+                ctx.lineTo(-10 - i * 4, -35 + i * 6);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(6 + i * 4, 38 - i * 6);
+                ctx.lineTo(10 + i * 4, 35 - i * 6);
+                ctx.stroke();
+            }
+            
+            if (mantis.isAttacking && mantis.clawLength > 0) {
+                const clawLen = mantis.clawLength;
+                ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+                ctx.lineWidth = 10;
+                ctx.beginPath();
+                ctx.moveTo(0, -10);
+                ctx.lineTo(0, -10 - clawLen);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, 10);
+                ctx.lineTo(0, 10 - clawLen);
+                ctx.stroke();
+                
+                ctx.strokeStyle = 'rgba(135, 206, 235, 0.9)';
+                ctx.lineWidth = 5;
+                ctx.beginPath();
+                ctx.moveTo(0, -10);
+                ctx.lineTo(0, -10 - clawLen * 0.9);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(0, 10);
+                ctx.lineTo(0, 10 - clawLen * 0.9);
+                ctx.stroke();
+                
+                ctx.font = '35px Arial';
+                ctx.fillText('⚔️', -18, -10 - clawLen);
+                ctx.fillText('⚔️', -18, 10 - clawLen);
+            }
+            
+            ctx.restore();
+        }
+        
+        function update() {
+            if (state !== 'playing') return;
+            
+            mantis.angle += mantis.speed * mantis.direction;
+            
+            if (mantis.isAttacking) {
+                mantis.attackProgress += 0.12;
+                if (mantis.attackProgress < 0.5) {
+                    mantis.clawLength = mantis.maxClawLength * (mantis.attackProgress * 2);
+                } else {
+                    mantis.clawLength = mantis.maxClawLength * (2 - mantis.attackProgress * 2);
+                }
+                if (mantis.attackProgress >= 0.5 && mantis.attackProgress < 0.65) {
+                    checkAttackCollision();
+                }
+                if (mantis.attackProgress >= 1) {
+                    mantis.isAttacking = false;
+                    mantis.attackProgress = 0;
+                    mantis.clawLength = 0;
+                }
+            }
+            
+            particles = particles.filter(p => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.vx *= 0.95;
+                p.vy *= 0.95;
+                p.life--;
+                return p.life > 0;
+            });
+            
+            dewdrops_arr = dewdrops_arr.filter(dew => {
+                dew.life--;
+                dew.x = centerX + Math.cos(dew.angle) * dew.distance;
+                dew.y = centerY + Math.sin(dew.angle) * dew.distance;
+                const orbitR = diskRadius + 40;
+                const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
+                const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
+                if (Math.sqrt((dew.x - mantisX) ** 2 + (dew.y - mantisY) ** 2) < 50) {
+                    dewdrops += dew.value;
+                    playSound('dewdrop'); // 播放收集露珠音效
+                    createParticles(dew.x, dew.y, '#87CEEB', 8);
+                    updateUI();
+                    return false;
+                }
+                return dew.life > 0;
+            });
+        }
+        
+        function draw() {
+            ctx.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+            drawDisk();
+            
+            items.forEach(item => {
+                ctx.font = `${item.size}px Arial`;
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(item.emoji, item.x, item.y);
+            });
+            
+            dewdrops_arr.forEach(dew => {
+                ctx.globalAlpha = dew.life / 180;
+                ctx.font = '24px Arial';
+                ctx.fillText('💧', dew.x, dew.y);
+            });
+            ctx.globalAlpha = 1;
+            
+            drawMantis();
+            
+            particles.forEach(p => {
+                ctx.globalAlpha = p.life / 60;
+                ctx.fillStyle = p.color;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+            ctx.globalAlpha = 1;
+        }
+        
+        function updateUI() {
+            document.getElementById('scoreDisplay').textContent = score;
+            document.getElementById('dewdropDisplay').textContent = dewdrops;
+            document.getElementById('levelDisplay').textContent = level;
+            const healthBar = document.getElementById('healthBar');
+            healthBar.innerHTML = '';
+            for (let i = 0; i < health; i++) healthBar.innerHTML += '<span class="health-heart">❤️</span>';
+            for (let i = health; i < 3; i++) healthBar.innerHTML += '<span class="health-heart" style="opacity:0.3;">🖤</span>';
+        }
+        
+        function gameOver() {
+            state = 'gameover';
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('finalDewdrops').textContent = dewdrops;
+            document.getElementById('maxCombo').textContent = maxCombo;
+            document.getElementById('gameOverModal').classList.remove('hidden');
+        }
+        
+        function startGame() {
+            document.getElementById('startModal').classList.add('hidden');
+            state = 'playing';
+            resetGame();
+        }
+        
+        function restartGame() {
+            document.getElementById('gameOverModal').classList.add('hidden');
+            state = 'playing';
+            resetGame();
+        }
+        
+        function resetGame() {
+            score = 0; dewdrops = 0; level = 1; health = 3; combo = 0; maxCombo = 0;
+            particles = []; dewdrops_arr = [];
+            mantis.angle = -Math.PI / 2;
+            mantis.isAttacking = false;
+            mantis.attackProgress = 0;
+            mantis.clawLength = 0;
+            mantis.speed = 0.015;
+            spawnInitialItems();
+            updateUI();
+        }
+        
+        // 事件绑定
+        document.getElementById('startBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            startGame();
+        });
+        
+        document.getElementById('restartBtn').addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            restartGame();
+        });
+        
+        function handleGameClick(e) {
+            if (state !== 'playing') return;
+            attack();
+        }
+        
+        canvas.addEventListener('mousedown', handleGameClick);
+        canvas.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            handleGameClick(e);
+        }, { passive: false });
+        
+        function loop() {
+            update();
+            draw();
+            requestAnimationFrame(loop);
+        }
+        
+        loop();
+    </script>
+</body>
+</html>
