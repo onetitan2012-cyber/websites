@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World-class Simulator？通往驾驶元宇宙之路</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --card: #1a2332;
+      --border: rgba(255,255,255,.08);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --accent: #ef4444;
+      --accent2: #f97316;
+      --gold: #fbbf24;
+      --radius: 16px;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'PingFang SC', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 80px 24px 60px;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(239,68,68,.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(249,115,22,.1) 0%, transparent 50%);
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(239,68,68,.12);
+      border: 1px solid rgba(239,68,68,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #fca5a5;
+      letter-spacing: .05em;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: clamp(1.6rem, 5vw, 2.4rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.3;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .hero-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    
+    .hero-meta {
+      display: inline-flex;
+      gap: 24px;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+    
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+    
+    .lead {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.9;
+      margin-bottom: 40px;
+      padding: 24px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--accent);
+    }
+    
+    .section {
+      margin-bottom: 48px;
+    }
+    
+    .section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text);
+    }
+    
+    .section h2::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(180deg, var(--accent), var(--accent2));
+      border-radius: 2px;
+    }
+    
+    .section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 28px 0 12px;
+      color: #fca5a5;
+    }
+    
+    .section p {
+      color: #94a3b8;
+      margin-bottom: 16px;
+      font-size: .95rem;
+      line-height: 1.9;
+    }
+    
+    .section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+    
+    /* Image */
+    .article-image {
+      width: 100%;
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin: 24px 0;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+    }
+    
+    .article-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    .image-caption {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      margin-top: 12px;
+    }
+    
+    /* Highlight Box */
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(239,68,68,.1), rgba(249,115,22,.1));
+      border: 1px solid rgba(239,68,68,.2);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin: 28px 0;
+    }
+    
+    .highlight-box h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #fca5a5;
+    }
+    
+    .highlight-box p {
+      margin: 0;
+    }
+    
+    /* Module Grid */
+    .module-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 24px 0;
+    }
+    
+    .module-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all .2s;
+    }
+    
+    .module-item:hover {
+      border-color: rgba(239,68,68,.3);
+      transform: translateY(-2px);
+    }
+    
+    .module-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, rgba(239,68,68,.2), rgba(249,115,22,.2));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+    
+    .module-text {
+      font-size: .85rem;
+      color: #cbd5e1;
+    }
+    
+    /* Product Cards */
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 24px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    
+    .product-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .product-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, rgba(239,68,68,.2), rgba(249,115,22,.2));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+    
+    .product-title h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    
+    .product-title span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    
+    .product-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    
+    .product-tag {
+      padding: 4px 12px;
+      background: rgba(255,255,255,.05);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #94a3b8;
+    }
+    
+    /* Comparison Table */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: .85rem;
+    }
+    
+    .compare-table th,
+    .compare-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    
+    .compare-table th {
+      color: var(--muted);
+      font-weight: 500;
+      background: var(--surface);
+    }
+    
+    .compare-table td {
+      color: #94a3b8;
+    }
+    
+    .compare-table tr:hover td {
+      background: rgba(255,255,255,.02);
+    }
+    
+    /* Quote */
+    .quote-box {
+      background: var(--surface);
+      border-left: 3px solid var(--accent2);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 0 12px 12px 0;
+    }
+    
+    .quote-box p {
+      color: #cbd5e1;
+      font-style: italic;
+      margin: 0;
+    }
+    
+    /* CTA */
+    .cta-box {
+      background: linear-gradient(135deg, rgba(239,68,68,.15), rgba(249,115,22,.15));
+      border: 1px solid rgba(239,68,68,.3);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      margin-top: 48px;
+    }
+    
+    .cta-box h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #fca5a5;
+    }
+    
+    .cta-box p {
+      color: #94a3b8;
+      margin-bottom: 20px;
+    }
+    
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: transform .2s, box-shadow .2s;
+    }
+    
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(239,68,68,.3);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .8rem;
+    }
+    
+    .author-info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ef4444, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .author-text {
+      text-align: left;
+    }
+    
+    .author-name {
+      font-weight: 600;
+      color: var(--text);
+    }
+    
+    .author-bio {
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero { padding: 60px 16px 40px; }
+      .hero-meta { flex-direction: column; gap: 8px; }
+      .container { padding: 32px 16px 60px; }
+      .module-grid { grid-template-columns: 1fr; }
+      .product-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Back to Home -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="hero-badge">🏎️ 汽车科技</div>
+  <h1>World-class Simulator？<br>通往驾驶元宇宙之路</h1>
+  <p class="hero-subtitle">从游戏模拟到专业驾驶模拟器，探索虚拟驾驶世界的终极形态</p>
+  <div class="hero-meta">
+    <span>📅 原创于公众号</span>
+    <span>👁️ 深度长文</span>
+    <span>✍️ 谦哥</span>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="container">
+
+  <p class="lead">
+    驾驶模拟器（Driving Simulator）是一种用于驾驶训练、车辆研发、科学研究和娱乐体验的综合设备。它通过计算机图形学、运动平台、人机交互等技术，创造出逼真的驾驶环境，让使用者在安全的条件下体验各种驾驶场景。
+  </p>
+
+  <section class="section">
+    <h2>模拟游戏：从娱乐到拟真</h2>
+    <p>在讨论驾驶模拟器之前，让我们先回顾一下模拟类游戏的发展历程。从早期的《模拟城市》《模拟人生》到后来的《微软飞行模拟》，模拟游戏一直是游戏界的重要品类。</p>
+    
+    <p>在赛车游戏领域，我们可以将其分为两大类：</p>
+    
+    <div class="highlight-box">
+      <h4>🎮 娱乐型赛车游戏</h4>
+      <p>如《极品飞车》《马里奥赛车》等，追求爽快的驾驶体验和视觉效果，物理引擎相对简化，上手门槛低，适合大众娱乐。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🏁 拟真型赛车模拟</h4>
+      <p>如《iRacing》《Assetto Corsa》《rFactor》等，追求极致的物理真实感，需要专业的方向盘、踏板等设备，面向硬核玩家和专业车手。</p>
+    </div>
+    
+    <p>而<strong>驾驶模拟器</strong>，则是从拟真型赛车模拟进一步发展而来的专业设备，它不仅追求视觉和物理的真实，更注重驾驶姿态、体感反馈和实际应用价值。</p>
+  </section>
+
+  <section class="section">
+    <h2>什么是驾驶模拟器？</h2>
+    <p>根据维基百科的定义，驾驶模拟器是一种用于<strong>娱乐、培训、科研和车辆研发</strong>的人机交互系统。它通过模拟真实的驾驶环境和车辆动力学，让使用者在虚拟环境中获得接近真实的驾驶体验。</p>
+    
+    <p>与普通的赛车游戏相比，驾驶模拟器具有以下特点：</p>
+    
+    <ul style="color: #94a3b8; margin: 16px 0; padding-left: 24px; line-height: 2;">
+      <li>专业的硬件配置（方向盘、踏板、座椅等）</li>
+      <li>高保真的车辆动力学模型</li>
+      <li>沉浸式的视觉系统（环幕/VR）</li>
+      <li>可选的运动平台（体感反馈）</li>
+      <li>数据采集和分析功能</li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>驾驶模拟器的构成</h2>
+    <p>一套完整的驾驶模拟器通常由以下九大模块组成：</p>
+    
+    <div class="module-grid">
+      <div class="module-item">
+        <div class="module-icon">🎨</div>
+        <span class="module-text">外观结构</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">👁️</div>
+        <span class="module-text">视景系统</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">💻</div>
+        <span class="module-text">计算系统</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">🎮</div>
+        <span class="module-text">交互系统</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">🔄</div>
+        <span class="module-text">转向系统</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">🛑</div>
+        <span class="module-text">制动加速</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">⚙️</div>
+        <span class="module-text">变速器</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">🅿️</div>
+        <span class="module-text">驻车制动</span>
+      </div>
+      <div class="module-item">
+        <div class="module-icon">💺</div>
+        <span class="module-text">座椅系统</span>
+      </div>
+    </div>
+    
+    <p>高端驾驶模拟器还会配备<strong>运动平台（Motion Platform）</strong>，通过六自由度运动系统模拟加速、刹车、转弯时的体感，进一步提升沉浸感。</p>
+  </section>
+
+  <section class="section">
+    <h2>国内外行业现状对比</h2>
+    
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>维度</th>
+          <th>国内现状</th>
+          <th>国外现状</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>产品定位</strong></td>
+          <td>以驾校资质应对为主，低端产品居多</td>
+          <td>覆盖娱乐、培训、科研、车辆研发全领域</td>
+        </tr>
+        <tr>
+          <td><strong>设计工艺</strong></td>
+          <td>外观粗糙，缺乏工业设计</td>
+          <td>注重美学与功能结合，碳纤维等高端材料应用</td>
+        </tr>
+        <tr>
+          <td><strong>技术深度</strong></td>
+          <td>软硬件整合能力弱，依赖进口</td>
+          <td>自主研发能力强，核心技术自主可控</td>
+        </tr>
+        <tr>
+          <td><strong>应用场景</strong></td>
+          <td>主要用于驾照考试培训</td>
+          <td>广泛应用于主机厂研发、赛车训练、科研实验</td>
+        </tr>
+        <tr>
+          <td><strong>用户体验</strong></td>
+          <td>沉浸感差，交互生硬</td>
+          <td>追求极致沉浸感，高刷新率、低延迟</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div class="quote-box">
+      <p>"国内的驾驶模拟器产品大多停留在'应付检查'的层面，真正用于提升驾驶技能、车辆研发的产品凤毛麟角。"</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>三款世界级驾驶模拟器</h2>
+    <p>让我们来看看国际上的顶级产品，它们代表了驾驶模拟器的三种不同发展方向：</p>
+    
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🏎️</div>
+        <div class="product-title">
+          <h3>the-eClassic Club 2</h3>
+          <span>手工定制 · 经典车体验</span>
+        </div>
+      </div>
+      <div class="article-image">
+        <img src="images/driving-simulator/eclassic-club.jpg" alt="the-eClassic Club 2 驾驶模拟器">
+        <div class="image-caption">the-eClassic Club 2 - 手工打造的经典车体验</div>
+      </div>
+      <p>来自意大利的高端驾驶模拟器品牌，主打<strong>经典汽车虚拟体验</strong>。每一台设备都是手工打造，外观采用实木和真皮材质，完美复刻经典赛车的驾驶舱。</p>
+      <p>除了硬件的精致，eClassic 还构建了一个<strong>车主社区平台</strong>，用户可以分享自己的驾驶数据、参加虚拟赛事、交流经典车文化。</p>
+      <div class="product-features">
+        <span class="product-tag">手工打造</span>
+        <span class="product-tag">经典车复刻</span>
+        <span class="product-tag">社区功能</span>
+        <span class="product-tag">实木真皮材质</span>
+      </div>
+    </div>
+    
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🔥</div>
+        <div class="product-title">
+          <h3>Aston Martin CURV AMR-C01</h3>
+          <span>量产高端 · 消费级旗舰</span>
+        </div>
+      </div>
+      <div class="article-image">
+        <img src="images/driving-simulator/aston-martin.jpg" alt="Aston Martin CURV AMR-C01 驾驶模拟器">
+        <div class="image-caption">Aston Martin CURV AMR-C01 - 碳纤维单体壳结构</div>
+      </div>
+      <p>阿斯顿·马丁与 CURV Racing Simulators 合作推出的<strong>量产高端驾驶模拟器</strong>，面向高端消费者和赛车爱好者。</p>
+      <p>采用与阿斯顿·马丁赛车相同的<strong>碳纤维单体壳结构</strong>，配备 32:9 超宽曲面屏、专业级方向盘和踏板系统，以及高精度运动平台。</p>
+      <div class="product-features">
+        <span class="product-tag">碳纤维结构</span>
+        <span class="product-tag">32:9 曲面屏</span>
+        <span class="product-tag">运动平台</span>
+        <span class="product-tag">限量发售</span>
+      </div>
+    </div>
+    
+    <!-- Product 3 -->
+    <div class="product-card">
+      <div class="product-header">
+        <div class="product-icon">🔬</div>
+        <div class="product-title">
+          <h3>VI-grade DiM 400</h3>
+          <span>科研级 · 主机厂首选</span>
+        </div>
+      </div>
+      <div class="article-image">
+        <img src="images/driving-simulator/vi-grade.jpg" alt="VI-grade DiM 400 驾驶模拟器">
+        <div class="image-caption">VI-grade DiM 400 - 主机厂研发级运动平台</div>
+      </div>
+      <p>VI-grade 是驾驶模拟器领域的<strong>顶级品牌</strong>，其 DiM 400 系列是全球主机厂和科研机构的首选设备。</p>
+      <p>配备<strong>大范围运动平台</strong>，可实现长距离纵向移动（模拟急加速/急刹车）和横向移动（模拟转弯侧倾）。支持<strong>复合工况测试</strong>，是车辆动力学研发、ADAS 测试、人机工程研究的终极工具。</p>
+      <div class="product-features">
+        <span class="product-tag">大范围运动平台</span>
+        <span class="product-tag">复合工况测试</span>
+        <span class="product-tag">主机厂标准</span>
+        <span class="product-tag">科研级精度</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>驾驶元宇宙：未来的方向</h2>
+    <p>随着 VR/AR 技术、5G 通信、云计算和人工智能的发展，驾驶模拟器正在向<strong>"驾驶元宇宙"</strong>的方向演进。</p>
+    
+    <p>未来的驾驶模拟器将具备以下特征：</p>
+    
+    <div class="highlight-box">
+      <h4>🥽 全感官沉浸</h4>
+      <p>VR/AR 头显、触觉反馈手套、风力模拟、温度控制……让用户获得接近 100% 的真实感。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🌐 云端互联</h4>
+      <p>通过 5G/6G 网络，实现全球用户的实时联机，虚拟赛道上的竞速如同真实赛事。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🤖 AI 陪练</h4>
+      <p>人工智能教练实时分析驾驶数据，提供个性化的训练建议，帮助用户快速提升驾驶技能。</p>
+    </div>
+    
+    <div class="highlight-box">
+      <h4>🏭 数字孪生</h4>
+      <p>真实车辆与虚拟模型的实时同步，主机厂可以在虚拟环境中完成 90% 以上的研发工作。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>结语：奋起直追的时代</h2>
+    <p>驾驶模拟器不仅是一个游戏设备，它是<strong>汽车工业、人工智能、虚拟现实</strong>等多领域技术的集大成者。</p>
+    
+    <p>面对国外产品的领先优势，国内企业需要：</p>
+    
+    <ul style="color: #94a3b8; margin: 16px 0; padding-left: 24px; line-height: 2;">
+      <li><strong>加大研发投入</strong>：核心技术必须自主可控</li>
+      <li><strong>提升设计水平</strong>：工业设计和用户体验同样重要</li>
+      <li><strong>拓展应用场景</strong>：从驾校培训走向车辆研发、赛车训练</li>
+      <li><strong>构建生态体系</strong>：硬件、软件、内容、社区缺一不可</li>
+    </ul>
+    
+    <div class="quote-box">
+      <p>"驾驶元宇宙的时代已经来临，这是一个值得我们所有人投入热情和智慧的领域。让我们一起，为中国驾驶模拟器产业的崛起而努力！"</p>
+    </div>
+  </section>
+
+  <div class="cta-box">
+    <h3>探索更多汽车科技</h3>
+    <p>关注公众号，获取更多深度内容</p>
+    <a href="https://mp.weixin.qq.com/s/y8rGqA3OLqUZTPAaVbla9A" class="cta-button" target="_blank">
+      阅读原文 →
+    </a>
+  </div>
+
+</main>
+
+<footer>
+  <div class="author-info">
+    <div class="author-avatar">✍️</div>
+    <div class="author-text">
+      <div class="author-name">谦哥</div>
+      <div class="author-bio">探索技术、文化与未来的个人实验室</div>
+    </div>
+  </div>
+  <p>© 原创文章 · 首发于微信公众号</p>
+  <p style="margin-top: 8px; opacity: .6;">World-class Simulator？通往驾驶元宇宙之路</p>
+</footer>
+
+</body>
+</html>
