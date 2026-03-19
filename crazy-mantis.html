@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>疯狂的螳螂</title>
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html, body {
@@ -91,17 +92,19 @@
         }
         
         .scoreBoard {
-            background: rgba(0,0,0,0.7);
+            background: rgba(139, 90, 43, 0.85);
             color: #fff;
             padding: 12px 20px;
             border-radius: 12px;
             text-align: center;
+            border: 1px solid rgba(218, 165, 105, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.3);
         }
         .scoreBoard .label { font-size: 12px; opacity: 0.8; }
         .scoreBoard .score { font-size: 28px; font-weight: bold; color: #FFD700; }
         
         .currency {
-            background: rgba(0,0,0,0.7);
+            background: rgba(139, 90, 43, 0.85);
             color: #fff;
             padding: 12px 20px;
             border-radius: 12px;
@@ -109,6 +112,8 @@
             align-items: center;
             gap: 8px;
             font-size: 20px;
+            border: 1px solid rgba(218, 165, 105, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.3);
         }
         
         .health-bar {
@@ -117,9 +122,51 @@
             left: 15px;
             display: flex;
             gap: 6px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(139, 90, 43, 0.85);
             padding: 8px 12px;
             border-radius: 8px;
+            border: 1px solid rgba(218, 165, 105, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.3);
+        }
+        
+        /* 倒计时 */
+        .timer-display {
+            position: absolute;
+            top: 180px;
+            left: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(139, 90, 43, 0.85);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(218, 165, 105, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .timer-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+        }
+        .timer-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+        .timer-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #FFD700;
+            min-width: 36px;
+            text-align: center;
+        }
+        .timer-text.warning {
+            color: #FF6B6B;
+            animation: timerPulse 0.5s ease-in-out infinite;
+        }
+        @keyframes timerPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
         }
         .health-heart { font-size: 24px; }
         
@@ -130,24 +177,26 @@
             left: 50%;
             transform: translateX(-50%);
             text-align: center;
-            background: rgba(0,0,0,0.4);
-            padding: 10px 16px;
+            background: rgba(60, 40, 20, 0.75);
+            padding: 12px 20px;
             border-radius: 12px;
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(218, 165, 105, 0.3);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.08), 0 2px 12px rgba(0,0,0,0.4);
             max-width: 90%;
             white-space: nowrap;
         }
         .proverb-text {
-            font-size: 16px;
+            font-size: 18px;
             font-weight: bold;
             color: #FFD700;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
             white-space: nowrap;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         .proverb-meaning {
-            font-size: 11px;
-            color: rgba(255,255,255,0.7);
+            font-size: 12px;
+            color: rgba(255,255,255,0.8);
             white-space: nowrap;
         }
         
@@ -156,12 +205,14 @@
             top: 15px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(0,0,0,0.6);
+            background: rgba(139, 90, 43, 0.85);
             color: #fff;
             padding: 10px 24px;
             border-radius: 20px;
             font-size: 16px;
             font-weight: bold;
+            border: 1px solid rgba(218, 165, 105, 0.4);
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 8px rgba(0,0,0,0.3);
         }
         
         /* 弹窗 */
@@ -181,17 +232,21 @@
         .modal.hidden { display: none !important; }
         
         .modal-content {
-            background: linear-gradient(135deg, #2E8B57 0%, #228B22 100%);
+            background: linear-gradient(135deg, #8B5A2B 0%, #654321 100%);
             padding: 35px 30px;
             border-radius: 20px;
             text-align: center;
             color: white;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.1);
             width: 85%;
             max-width: 320px;
-            border: 2px solid #90EE90;
+            border: 2px solid rgba(218, 165, 105, 0.5);
         }
-        .modal-content h1 { font-size: 32px; margin-bottom: 12px; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .modal-content h1 { 
+            font-size: 32px; 
+            margin-bottom: 12px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+        }
         .claw-icon { width: 80px; height: 80px; margin: 10px auto; animation: bounce 1.2s infinite; }
         @keyframes bounce {
             0%, 100% { transform: translateY(0) rotate(-10deg); }
@@ -200,9 +255,9 @@
         .modal-content p { font-size: 14px; margin: 8px 0; line-height: 1.4; }
         
         .btn {
-            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
-            color: #333;
-            border: none;
+            background: linear-gradient(135deg, #C4A35A 0%, #8B6914 100%);
+            color: #2C1810;
+            border: 1px solid rgba(218, 165, 105, 0.5);
             padding: 14px 40px;
             font-size: 20px;
             font-weight: bold;
@@ -210,17 +265,22 @@
             cursor: pointer;
             margin-top: 20px;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(255,215,0,0.4);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.2);
             pointer-events: auto;
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 6px 20px rgba(255,215,0,0.5); }
+        .btn:hover { 
+            transform: scale(1.05); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+            background: linear-gradient(135deg, #D4B36A 0%, #9B7924 100%);
+        }
         
         .tutorial {
-            background: rgba(255,255,255,0.12);
+            background: rgba(0,0,0,0.2);
             padding: 12px;
             border-radius: 10px;
             margin: 12px 0;
             text-align: left;
+            border: 1px solid rgba(218, 165, 105, 0.2);
         }
         .tutorial-item {
             display: flex;
@@ -236,12 +296,33 @@
             top: 45%;
             left: 50%;
             transform: translate(-50%, -50%);
-            font-size: 48px;
+            font-size: 52px;
             font-weight: bold;
             color: #FFD700;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
             pointer-events: none;
             animation: comboPop 1s ease-out forwards;
+        }
+        
+        /* 结束页文化文案 */
+        .end-quote {
+            background: rgba(0,0,0,0.25);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border: 1px solid rgba(218, 165, 105, 0.3);
+            border-left: 3px solid #FFD700;
+        }
+        .quote-text {
+            font-size: 20px;
+            color: #FFD700;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        .quote-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
         }
         @keyframes comboPop {
             0% { transform: translate(-50%, -50%) scale(0.3); opacity: 0; }
@@ -274,6 +355,21 @@
                     <span class="health-heart">❤️</span>
                 </div>
                 
+                <!-- 倒计时 -->
+                <div class="timer-display" id="timerDisplay">
+                    <div class="timer-icon">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <!-- 水滴外框 -->
+                            <path d="M12 2C12 2 6 8 6 13C6 16.5 8.5 20 12 20C15.5 20 18 16.5 18 13C18 8 12 2 12 2Z" 
+                                  stroke="#87CEEB" stroke-width="2" fill="rgba(135, 206, 235, 0.3)"/>
+                            <!-- 水位 -->
+                            <path id="timerWaterLevel" d="M6 13C6 13 8 15 12 15C16 15 18 13 18 13V20H6V13Z" 
+                                  fill="#87CEEB"/>
+                        </svg>
+                    </div>
+                    <span class="timer-text" id="timerText">300</span>
+                </div>
+                
                 <div class="level-display">关卡 <span id="levelDisplay">1</span></div>
                 
                 <div class="proverb-hint">
@@ -303,6 +399,13 @@
                 <div class="modal-content">
                     <h1>游戏结束</h1>
                     <div style="font-size: 60px; margin: 10px 0;">😵</div>
+                    
+                    <!-- 文化文案 -->
+                    <div class="end-quote" id="endQuote">
+                        <div class="quote-text"></div>
+                        <div class="quote-sub"></div>
+                    </div>
+                    
                     <p>最终得分: <span id="finalScore" style="font-size: 32px; color: #FFD700;">0</span></p>
                     <p>收集露珠: <span id="finalDewdrops" style="color: #87CEEB;">0</span> 💧</p>
                     <p>最高连击: <span id="maxCombo" style="color: #FF6B6B;">0</span></p>
@@ -327,7 +430,7 @@
         // 游戏区域参数
         const centerX = GAME_WIDTH / 2;
         const centerY = GAME_HEIGHT / 2 + 20;
-        const diskRadius = 180;
+        const diskRadius = 130;
         
         // 资源路径
         const ASSETS_PATH = 'images/crazy-mantis/';
@@ -451,6 +554,11 @@
         let combo = 0;
         let maxCombo = 0;
         let lastHitTime = 0;
+        let powerCombo = 0;  // 连击强化计数
+        let isPowered = false;  // 是否处于强化状态
+        let powerTimer = 0;  // 强化状态计时器
+        let gameTime = 300;  // 游戏倒计时（秒）- 无限生存模式，初始300秒
+        let lastTimeUpdate = 0;  // 上次更新时间
         
         // 螳螂
         const mantis = {
@@ -460,7 +568,9 @@
             isAttacking: false,
             attackProgress: 0,
             clawLength: 0,
-            maxClawLength: 140
+            maxClawLength: 230,  // 攻击爪更长，能伸到树桩
+            isPreparing: false,  // 是否处于预备状态
+            prepareProgress: 0   // 预备动画进度
         };
         
         // 游戏对象
@@ -476,24 +586,54 @@
         
         // 蝉类配置
         const cicadaTypes = [
-            { type: 'cicada', image: 'cicada1', value: 10, size: 28 },
-            { type: 'cicada', image: 'cicada2', value: 20, size: 26 },
-            { type: 'cicada', image: 'cicada3', value: 30, size: 30 },
-            { type: 'cicada', image: 'cicada4', value: 50, size: 24 }
+            { type: 'cicada', image: 'cicada1', value: 10, size: 22 },  // 96x96高清图片，显示尺寸22px
+            { type: 'cicada', image: 'cicada2', value: 20, size: 21 },
+            { type: 'cicada', image: 'cicada3', value: 30, size: 24 },
+            { type: 'cicada', image: 'cicada4', value: 50, size: 20 }
         ];
         
         const trapTypes = [
-            { type: 'trap', image: 'trapLeaf', value: 0, size: 32 },
-            { type: 'trap', image: 'trapSpider', value: 0, size: 30 }
+            { type: 'trap', image: 'trapLeaf', value: 0, size: 26 },  // 96x96高清图片，显示尺寸26px
+            { type: 'trap', image: 'trapSpider', value: 0, size: 24 }
         ];
         
-        function spawnItemAtAngle(angle) {
-            const rand = Math.random();
-            const typeConfig = rand < 0.6 
-                ? cicadaTypes[Math.floor(Math.random() * cicadaTypes.length)]
-                : trapTypes[Math.floor(Math.random() * trapTypes.length)];
+        // 当前关卡的主要元素类型（控制密度规则）
+        let currentLevelPrimaryType = 'cicada';  // 'cicada' 或 'mosquito'
+        
+        // 难度配置 - 随关卡递增
+        function getDifficultyConfig() {
+            // 基础陷阱比例随关卡增加
+            const baseTrapRate = Math.min(0.55, 0.35 + level * 0.02);  // 从35%开始，每关+2%，最高55%
             
-            const distanceFromCenter = diskRadius - 30 - Math.random() * 25;
+            // 最小陷阱数（确保有挑战）
+            const minTraps = Math.min(4, 1 + Math.floor(level / 2));  // 第1关至少1个，第6关至少4个
+            
+            return { baseTrapRate, minTraps };
+        }
+        
+        function spawnItemAtAngle(angle) {
+            const { baseTrapRate, minTraps } = getDifficultyConfig();
+            
+            // 统计当前元素
+            const cicadaCount = items.filter(i => i.type === 'cicada').length;
+            const trapCount = items.filter(i => i.type === 'trap').length;
+            const totalCount = items.length;
+            
+            let typeConfig;
+            
+            // 规则1：确保最少陷阱数
+            if (trapCount < minTraps && totalCount > 0) {
+                typeConfig = trapTypes[Math.floor(Math.random() * trapTypes.length)];
+            }
+            // 规则2：根据概率生成
+            else {
+                const rand = Math.random();
+                typeConfig = rand < (1 - baseTrapRate) 
+                    ? cicadaTypes[Math.floor(Math.random() * cicadaTypes.length)]
+                    : trapTypes[Math.floor(Math.random() * trapTypes.length)];
+            }
+            
+            const distanceFromCenter = diskRadius - 25 - Math.random() * 20;  // 稍微靠近边缘，155-175px
             
             items.push({
                 id: itemIdCounter++,
@@ -507,23 +647,46 @@
         
         function spawnInitialItems() {
             items = [];
-            const count = 8 + level * 2;
+            // 元素总数随关卡增加，但增速放缓
+            const count = Math.min(20, 6 + level * 2);  // 从8个开始，每关+2，最高20个
+            
+            // 先生成确保的最小陷阱数
+            const { minTraps } = getDifficultyConfig();
+            
             for (let i = 0; i < count; i++) {
-                const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.3;
+                const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.5;  // 增加随机偏移
                 spawnItemAtAngle(angle);
+            }
+            
+            // 如果随机生成后陷阱还不够，强制补充
+            const currentTraps = items.filter(i => i.type === 'trap').length;
+            if (currentTraps < minTraps) {
+                const cicadas = items.filter(i => i.type === 'cicada');
+                const needReplace = Math.min(minTraps - currentTraps, cicadas.length);
+                for (let i = 0; i < needReplace; i++) {
+                    const idx = items.indexOf(cicadas[i]);
+                    if (idx !== -1) {
+                        items[idx] = {
+                            ...items[idx],
+                            ...trapTypes[Math.floor(Math.random() * trapTypes.length)]
+                        };
+                    }
+                }
             }
         }
         
         function attack() {
-            if (mantis.isAttacking) return;
-            mantis.isAttacking = true;
-            mantis.attackProgress = 0;
-            hitItemsThisAttack.clear();
-            playSound('attack');
+            if (mantis.isAttacking || mantis.isPreparing) return;
+            
+            // 进入预备状态，扭动屁股
+            mantis.isPreparing = true;
+            mantis.prepareProgress = 0;
+            // 预备音效（可选）
+            // playSound('prepare');
         }
         
         function checkAttackCollision() {
-            const orbitR = diskRadius + 40;
+            const orbitR = diskRadius + 130;  // 螳螂远离树桩，增加距离感
             const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
             const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
             const attackAngle = mantis.angle + Math.PI;
@@ -562,20 +725,50 @@
         
         function hitCicada(item, index) {
             items.splice(index, 1);
-            playSound('hit');
+            
+            // 连击强化系统
             const now = Date.now();
             combo = (now - lastHitTime < 2000) ? combo + 1 : 1;
             lastHitTime = now;
             maxCombo = Math.max(maxCombo, combo);
-            score += item.value + Math.min(combo * 5, 50);
+            
+            // 强化状态判定：每3连击进入强化
+            if (combo > 0 && combo % 3 === 0) {
+                activatePowerMode();
+            }
+            
+            // 强化状态：双倍分数，特殊音效
+            let points = item.value + Math.min(combo * 5, 50);
+            if (isPowered) {
+                points *= 2;
+                playSound('powerhit');  // 强化音效
+            } else {
+                playSound('hit');
+            }
+            score += points;
+            
             if (combo > 1) showCombo(combo);
-            createParticles(item.x, item.y, '#FFD700', 12);
-            if (Math.random() < 0.35) {
+            
+            // 强化状态：更多粒子、红色粒子
+            const particleColor = isPowered ? '#FF6B6B' : '#FFD700';
+            const particleCount = isPowered ? 20 : 12;
+            createParticles(item.x, item.y, particleColor, particleCount);
+            
+            // 露珠生成概率随关卡增加，强化状态下更高
+            const baseDewRate = Math.min(0.6, 0.4 + level * 0.02);  // 40%→60%
+            const dewRate = isPowered ? baseDewRate * 1.5 : baseDewRate;  // 强化状态+50%
+            
+            if (Math.random() < dewRate) {
+                // 露珠生成在螳螂轨道附近，方便收集
+                const angle = Math.atan2(item.y - centerY, item.x - centerX);
+                // 生成在树桩边缘到螳螂之间的位置（适配新轨道+60）
+                const distance = diskRadius + 80 + Math.random() * 40; // 螳螂远离后调整：210-250px
+                
                 dewdrops_arr.push({
-                    x: item.x, y: item.y,
-                    angle: Math.atan2(item.y - centerY, item.x - centerX),
-                    distance: item.distance,
-                    value: 1, life: 180
+                    angle: angle,
+                    distance: distance,
+                    value: isPowered ? 2 : 1,  // 强化状态露珠价值翻倍
+                    life: 240  // 增加存在时间从180到240帧（4秒）
                 });
             }
             updateUI();
@@ -584,11 +777,30 @@
             if (cicadasLeft === 0) nextLevel();
         }
         
+        function activatePowerMode() {
+            isPowered = true;
+            powerTimer = 180;  // 3秒（60fps）
+            showPowerIndicator();
+        }
+        
+        function showPowerIndicator() {
+            // 显示强化状态提示
+            const el = document.createElement('div');
+            el.className = 'combo';
+            el.textContent = '🔥 强化!';
+            el.style.color = '#FF6B6B';
+            el.style.fontSize = '36px';
+            document.getElementById('uiLayer').appendChild(el);
+            setTimeout(() => el.remove(), 1500);
+        }
+        
         function hitTrap(item, index) {
             items.splice(index, 1);
             playSound('trap');
             health--;
             combo = 0;
+            isPowered = false;  // 击中陷阱取消强化状态
+            powerTimer = 0;
             createParticles(item.x, item.y, '#8B0000', 15);
             shakeScreen();
             if (health <= 0) gameOver();
@@ -597,7 +809,9 @@
         
         function nextLevel() {
             level++;
-            mantis.speed = Math.min(0.04, 0.015 + level * 0.002);
+            // 速度成长曲线：前期慢，后期快
+            // 第1关: 0.015, 第5关: 0.022, 第10关: 0.032, 最高0.045
+            mantis.speed = Math.min(0.045, 0.015 + Math.pow(level, 1.3) * 0.003);
             spawnInitialItems();
             updateUI();
             playSound('levelup');
@@ -677,6 +891,20 @@
             }, 50);
         }
         
+        function drawVignette() {
+            // 绘制 vignette 效果 - 中心亮，四周暗
+            const gradient = ctx.createRadialGradient(
+                centerX, centerY, diskRadius * 0.8,  // 内圆（亮区）
+                centerX, centerY, Math.max(GAME_WIDTH, GAME_HEIGHT) * 0.8  // 外圆（暗区）
+            );
+            gradient.addColorStop(0, 'rgba(0,0,0,0)');  // 中心透明
+            gradient.addColorStop(0.5, 'rgba(0,0,0,0.1)');  // 过渡
+            gradient.addColorStop(1, 'rgba(0,0,0,0.35)');  // 边缘较暗
+            
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        }
+        
         function drawDisk() {
             // 绘制树桩
             if (images.treeDisk) {
@@ -688,12 +916,12 @@
             
             // 绘制树桩中心
             if (images.treeCenter) {
-                ctx.drawImage(images.treeCenter, centerX - 25, centerY - 25, 50, 50);
+                ctx.drawImage(images.treeCenter, centerX - 18, centerY - 18, 36, 36);  // 树桩缩小后，中心也缩小
             }
         }
         
         function drawMantis() {
-            const orbitR = diskRadius + 40;
+            const orbitR = diskRadius + 130;  // 螳螂远离树桩，增加距离感
             const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
             const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
             const faceAngle = mantis.angle + Math.PI;
@@ -702,38 +930,84 @@
             ctx.translate(mantisX, mantisY);
             ctx.rotate(faceAngle + Math.PI / 2);
             
-            // 绘制螳螂身体
+            // 绘制螳螂身体 - 新尺寸 140x180
             if (images.mantisBody) {
-                ctx.drawImage(images.mantisBody, -30, -40, 60, 80);
+                ctx.drawImage(images.mantisBody, -70, -90, 140, 180);
             }
             
-            // 绘制攻击爪
+            // 绘制攻击爪 - 新尺寸 80x160
             if (mantis.isAttacking && mantis.clawLength > 0) {
                 const clawImg = images.mantisClawAttack || images.mantisClaw;
                 if (clawImg) {
-                    const clawScale = mantis.clawLength / 100;
+                    const clawScale = mantis.clawLength / 160;  // 基于新爪子高度160
                     
                     // 左爪
                     ctx.save();
-                    ctx.translate(-15, -30);
+                    ctx.translate(-35, -50);  // 调整位置适配大身体
                     ctx.scale(1, clawScale);
-                    ctx.drawImage(clawImg, -20, -100, 40, 100);
+                    ctx.drawImage(clawImg, -40, -160, 80, 160);
                     ctx.restore();
                     
                     // 右爪
                     ctx.save();
-                    ctx.translate(15, -30);
+                    ctx.translate(35, -50);
                     ctx.scale(1, clawScale);
-                    ctx.drawImage(clawImg, -20, -100, 40, 100);
+                    ctx.drawImage(clawImg, -40, -160, 80, 160);
+                    ctx.restore();
+                }
+            }
+            
+            // 预备状态：爪子微张，身体后仰
+            if (mantis.isPreparing) {
+                const clawImg = images.mantisClawAttack || images.mantisClaw;
+                if (clawImg) {
+                    // 预备时爪子微张（20%长度）
+                    const prepareScale = 0.2 + Math.sin(mantis.prepareProgress * Math.PI * 4) * 0.05;
+                    
+                    // 左爪 - 微微张开
+                    ctx.save();
+                    ctx.translate(-35, -50);
+                    ctx.scale(1, prepareScale);
+                    ctx.drawImage(clawImg, -40, -160, 80, 160);
+                    ctx.restore();
+                    
+                    // 右爪 - 微微张开
+                    ctx.save();
+                    ctx.translate(35, -50);
+                    ctx.scale(1, prepareScale);
+                    ctx.drawImage(clawImg, -40, -160, 80, 160);
                     ctx.restore();
                 }
                 
-                // 刀光效果
-                if (images.slashEffect) {
-                    ctx.globalAlpha = 0.7;
+                // 预备提示：身体周围有微光
+                ctx.save();
+                ctx.globalAlpha = 0.3 + Math.sin(mantis.prepareProgress * Math.PI * 4) * 0.2;
+                ctx.fillStyle = '#FFD700';
+                ctx.beginPath();
+                ctx.arc(0, 0, 90, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            }
+            
+            // 刀光效果 - 攻击时显示
+            if (mantis.isAttacking && mantis.clawLength > 0 && images.slashEffect) {
+                ctx.globalAlpha = isPowered ? 1.0 : 0.7;
+                const scale = isPowered ? 1.5 : 1.2;
+                const size = 140 * scale;
+                const offset = size / 2;
+                
+                // 强化状态：红色光晕
+                if (isPowered) {
+                    ctx.save();
+                    ctx.globalCompositeOperation = 'screen';
+                    ctx.shadowColor = '#FF6B6B';
+                    ctx.shadowBlur = 30;
+                    ctx.drawImage(images.slashEffect, -offset, -mantis.clawLength - offset, size, size);
+                    ctx.restore();
+                } else {
                     ctx.drawImage(images.slashEffect, -50, -mantis.clawLength - 50, 100, 100);
-                    ctx.globalAlpha = 1;
                 }
+                ctx.globalAlpha = 1;
             }
             
             ctx.restore();
@@ -742,7 +1016,47 @@
         function update() {
             if (state !== 'playing') return;
             
-            mantis.angle += mantis.speed * mantis.direction;
+            // 倒计时更新（每秒一次）
+            const now = Date.now();
+            if (now - lastTimeUpdate >= 1000) {
+                gameTime--;
+                lastTimeUpdate = now;
+                updateTimerUI();
+                
+                if (gameTime <= 0) {
+                    gameOver();
+                    return;
+                }
+            }
+            
+            // 强化状态计时
+            if (isPowered) {
+                powerTimer--;
+                if (powerTimer <= 0) {
+                    isPowered = false;
+                }
+            }
+            
+            // 预备状态：屁股扭动，但不移动
+            if (mantis.isPreparing) {
+                mantis.prepareProgress += 0.15;
+                
+                // 扭动动画：快速小幅度摆动
+                const wiggle = Math.sin(mantis.prepareProgress * Math.PI * 4) * 0.08;
+                mantis.angle += wiggle;
+                
+                // 预备完成，开始攻击
+                if (mantis.prepareProgress >= 1) {
+                    mantis.isPreparing = false;
+                    mantis.isAttacking = true;
+                    mantis.attackProgress = 0;
+                    hitItemsThisAttack.clear();
+                    playSound('attack');
+                }
+            } else {
+                // 正常移动
+                mantis.angle += mantis.speed * mantis.direction;
+            }
             
             if (mantis.isAttacking) {
                 mantis.attackProgress += 0.12;
@@ -774,22 +1088,33 @@
                 }
             }
             
-            dewdrops_arr = dewdrops_arr.filter(dew => {
+            // 更新露珠位置（跟随树桩旋转）
+            for (let i = dewdrops_arr.length - 1; i >= 0; i--) {
+                const dew = dewdrops_arr[i];
                 dew.life--;
-                dew.x = centerX + Math.cos(dew.angle) * dew.distance;
-                dew.y = centerY + Math.sin(dew.angle) * dew.distance;
-                const orbitR = diskRadius + 40;
+                
+                // 计算露珠当前位置（跟随树桩旋转）
+                const dewX = centerX + Math.cos(dew.angle) * dew.distance;
+                const dewY = centerY + Math.sin(dew.angle) * dew.distance;
+                
+                // 检测螳螂碰撞 - 增加碰撞范围
+                const orbitR = diskRadius + 130;  // 螳螂远离树桩，增加距离感
                 const mantisX = centerX + Math.cos(mantis.angle) * orbitR;
                 const mantisY = centerY + Math.sin(mantis.angle) * orbitR;
-                if (Math.sqrt((dew.x - mantisX) ** 2 + (dew.y - mantisY) ** 2) < 50) {
+                const dist = Math.sqrt((dewX - mantisX) ** 2 + (dewY - mantisY) ** 2);
+                
+                if (dist < 80) {  // 增加碰撞范围到80
                     dewdrops += dew.value;
+                    // 每收集1滴露珠，增加10秒倒计时
+                    gameTime += 10;
                     playSound('dewdrop');
-                    createParticles(dew.x, dew.y, '#87CEEB', 8);
+                    createParticles(dewX, dewY, '#87CEEB', 8);
                     updateUI();
-                    return false;
+                    dewdrops_arr.splice(i, 1);
+                } else if (dew.life <= 0) {
+                    dewdrops_arr.splice(i, 1);
                 }
-                return dew.life > 0;
-            });
+            }
         }
         
         function draw() {
@@ -800,6 +1125,9 @@
                 ctx.fillStyle = '#87CEEB';
                 ctx.fillRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
             }
+            
+            // 绘制 vignette 聚光效果（让注意力集中在树桩区域）
+            drawVignette();
             
             drawDisk();
             
@@ -814,8 +1142,11 @@
             // 绘制露珠
             dewdrops_arr.forEach(dew => {
                 if (images.dewdrop) {
-                    ctx.globalAlpha = dew.life / 180;
-                    ctx.drawImage(images.dewdrop, dew.x - 15, dew.y - 15, 30, 30);
+                    // 计算当前位置（跟随树桩旋转）
+                    const dewX = centerX + Math.cos(dew.angle) * dew.distance;
+                    const dewY = centerY + Math.sin(dew.angle) * dew.distance;
+                    ctx.globalAlpha = Math.min(1, dew.life / 60);  // 最后1秒开始淡出
+                    ctx.drawImage(images.dewdrop, dewX - 15, dewY - 15, 30, 30);
                 }
             });
             ctx.globalAlpha = 1;
@@ -850,6 +1181,39 @@
             healthBar.innerHTML = heartsHTML;
         }
         
+        // 更新倒计时UI
+        function updateTimerUI() {
+            const timerText = document.getElementById('timerText');
+            const timerWaterLevel = document.getElementById('timerWaterLevel');
+            
+            timerText.textContent = gameTime;
+            
+            // 水位随时间下降（基于300秒）
+            const waterHeight = Math.max(6, (gameTime / 300) * 14 + 6); // 6-20px
+            const waterY = 20 - waterHeight;
+            timerWaterLevel.setAttribute('d', `M6 ${13 + waterY}C6 ${13 + waterY} 8 ${waterY + 7} 12 ${waterY + 7}C16 ${waterY + 7} 18 ${13 + waterY} 18 ${13 + waterY}V20H6V${13 + waterY}Z`);
+            
+            // 时间少于10秒变红色警告
+            if (gameTime <= 10) {
+                timerText.classList.add('warning');
+                timerWaterLevel.setAttribute('fill', '#FF6B6B');
+            } else {
+                timerText.classList.remove('warning');
+                timerWaterLevel.setAttribute('fill', '#87CEEB');
+            }
+        }
+        
+        // 文化文案池
+        const endQuotes = [
+            { text: '螳螂一击，得其所哉', sub: '专注当下，方得始终' },
+            { text: '猎得数蝉，未觉秋深', sub: '时光易逝，把握此刻' },
+            { text: '一念捕猎，一念在后', sub: '进取之时，莫忘警惕' },
+            { text: '蝉噪林逾静，螳螂伺其机', sub: '静中生动，待机而发' },
+            { text: '秋风起兮，蝉鸣急兮，螳螂伺之', sub: '顺势而为，伺机而动' },
+            { text: '刀光一闪，蝉已入怀', sub: '眼疾手快，事半功倍' },
+            { text: '树桩之上，生死之间', sub: '危机四伏，步步为营' }
+        ];
+        
         function gameOver() {
             state = 'gameover';
             stopBGM();
@@ -857,6 +1221,15 @@
             document.getElementById('finalScore').textContent = score;
             document.getElementById('finalDewdrops').textContent = dewdrops;
             document.getElementById('maxCombo').textContent = maxCombo;
+            
+            // 随机显示文化文案
+            const quote = endQuotes[Math.floor(Math.random() * endQuotes.length)];
+            const quoteEl = document.getElementById('endQuote');
+            if (quoteEl) {
+                quoteEl.querySelector('.quote-text').textContent = quote.text;
+                quoteEl.querySelector('.quote-sub').textContent = quote.sub;
+            }
+            
             document.getElementById('gameOverModal').classList.remove('hidden');
         }
         
@@ -876,14 +1249,19 @@
         
         function resetGame() {
             score = 0; dewdrops = 0; level = 1; health = 3; combo = 0; maxCombo = 0;
+            powerCombo = 0; isPowered = false; powerTimer = 0;
+            gameTime = 300; lastTimeUpdate = Date.now();
             particles = []; dewdrops_arr = [];
             mantis.angle = -Math.PI / 2;
             mantis.isAttacking = false;
             mantis.attackProgress = 0;
             mantis.clawLength = 0;
+            mantis.isPreparing = false;
+            mantis.prepareProgress = 0;
             mantis.speed = 0.015;
             spawnInitialItems();
             updateUI();
+            updateTimerUI();
         }
         
         // 事件绑定
