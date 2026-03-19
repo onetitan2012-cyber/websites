@@ -252,6 +252,16 @@
     .card[data-cat="original"] .card-tag { color: #FDBA74; border-color: rgba(249,115,22,.3); background: rgba(249,115,22,.1); }
     .card[data-cat="original"]::before { background: linear-gradient(90deg, #F97316, #EA580C); }
 
+    /* 最新日报卡片特殊标识 */
+    .card-latest::before {
+      background: linear-gradient(90deg, #A78BFA, #22D3EE) !important;
+    }
+    .card-latest .card-tag {
+      background: linear-gradient(90deg, rgba(167,139,250,.15), rgba(34,211,238,.15)) !important;
+      border-color: rgba(167,139,250,.4) !important;
+      color: #C4B5FD !important;
+    }
+
     .card-title {
       font-size: 1.1rem;
       font-weight: 800;
@@ -302,6 +312,64 @@
       display: none;
     }
     .empty.show { display: block; }
+
+    /* ── ARCHIVE SECTION ── */
+    .archive-section {
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .archive-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .85rem;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 16px;
+      letter-spacing: .05em;
+    }
+    .archive-icon {
+      font-size: 1rem;
+    }
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .archive-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      text-decoration: none;
+      color: inherit;
+      transition: all .2s;
+    }
+    .archive-item:hover {
+      background: rgba(255,255,255,.06);
+      border-color: rgba(167,139,250,.3);
+      transform: translateX(4px);
+    }
+    .archive-date {
+      font-size: .75rem;
+      font-weight: 600;
+      color: #A78BFA;
+      min-width: 40px;
+    }
+    .archive-title {
+      font-size: .85rem;
+      color: #94a3b8;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .archive-item:hover .archive-title {
+      color: var(--text);
+    }
 
     /* ── WECHAT SECTION ── */
     .wechat-section {
@@ -502,11 +570,11 @@
   <div class="section-label" id="section-label">全部项目</div>
   <div class="grid" id="grid">
 
-    <!-- 未来日报 -->
-    <a href="intel-2026-03-19.html" class="card" data-cat="intel">
+    <!-- 未来日报 · 最新3条 -->
+    <a href="intel-2026-03-19.html" class="card card-latest" data-cat="intel">
       <div class="card-top">
         <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
+        <span class="card-tag">未来日报 · 最新</span>
       </div>
       <div class="card-title">每日未来情报 · 03/19</div>
       <div class="card-desc">小米三款大模型深夜突袭发布；银河通用25亿元融资刷新纪录；Unity 2026报告：73%开发者用AI提效</div>
@@ -516,10 +584,10 @@
       </div>
     </a>
 
-    <a href="intel-2026-03-18.html" class="card" data-cat="intel">
+    <a href="intel-2026-03-18.html" class="card card-latest" data-cat="intel">
       <div class="card-top">
         <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
+        <span class="card-tag">未来日报 · 最新</span>
       </div>
       <div class="card-title">每日未来情报 · 03/18</div>
       <div class="card-desc">今日科技情报汇总：AI、硬件、前沿技术最新动态</div>
@@ -529,54 +597,15 @@
       </div>
     </a>
 
-    <a href="intel-2026-03-17.html" class="card" data-cat="intel">
+    <a href="intel-2026-03-17.html" class="card card-latest" data-cat="intel">
       <div class="card-top">
         <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
+        <span class="card-tag">未来日报 · 最新</span>
       </div>
       <div class="card-title">每日未来情报 · 03/17</div>
-      <div class="card-desc">NVIDIA Vera Rubin平台推理成本降至1/10；百度"悟空"企业级AI Agent接入OpenClaw；英特尔FHE芯片比通用处理器快5000倍</div>
+      <div class="card-desc">NVIDIA Vera Rubin平台推理成本降至1/10；阿里"悟空"企业级AI Agent；英特尔FHE芯片快5000倍</div>
       <div class="card-footer">
         <span class="card-date">2026-03-17</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-16.html" class="card" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/16</div>
-      <div class="card-desc">GPT-5.3 & Gemini 3.1 Pro & Qwen 3.5 三强同月爆发、中科大锶原子钟突破 10⁻¹⁹ 量级、追觅 AURORA NEX LS1 全球首款模块化三摄手机亮相 AWE2026</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-16</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-15.html" class="card" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/15</div>
-      <div class="card-desc">Gemini 2.5 Ultra 登场、PICO 自研芯片预告、人形机器人亮相 AWE2026，今日最重要科技信号汇总</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-15</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-14.html" class="card" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/14</div>
-      <div class="card-desc">2026年3月14日情报汇总，聚焦科技趋势、市场动态与前沿观察</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-14</span>
         <span class="card-arrow">→</span>
       </div>
     </a>
@@ -782,6 +811,28 @@
     </a>
 
     <div class="empty" id="empty">该分类暂无内容，敬请期待～</div>
+  </div>
+
+  <!-- 历史日报归档 -->
+  <div class="archive-section" id="archive-section">
+    <div class="archive-header">
+      <span class="archive-icon">📚</span>
+      <span>历史日报归档</span>
+    </div>
+    <div class="archive-list">
+      <a href="intel-2026-03-16.html" class="archive-item">
+        <span class="archive-date">03/16</span>
+        <span class="archive-title">GPT-5.3 & Gemini 3.1 Pro 三强同月爆发</span>
+      </a>
+      <a href="intel-2026-03-15.html" class="archive-item">
+        <span class="archive-date">03/15</span>
+        <span class="archive-title">Gemini 2.5 Ultra 登场、PICO 自研芯片预告</span>
+      </a>
+      <a href="intel-2026-03-14.html" class="archive-item">
+        <span class="archive-date">03/14</span>
+        <span class="archive-title">2026年3月14日情报汇总</span>
+      </a>
+    </div>
   </div>
 </main>
 
