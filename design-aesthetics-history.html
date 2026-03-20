@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>设计美学史：从手工艺到人工智能</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue:    #1A73E8;
+      --indigo:  #3B3F9E;
+      --teal:    #00897B;
+      --orange:  #E8711A;
+      --purple:  #6B3FA0;
+      --rose:    #C62828;
+      --light:   #F5F7FA;
+      --dark:    #1C1E2A;
+      --text:    #2D3142;
+      --muted:   #6B7280;
+      --border:  #E2E8F0;
+      --card:    #FFFFFF;
+      --radius:  12px;
+      --shadow:  0 4px 24px rgba(0,0,0,.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.75;
+    }
+    
+    /* 返回主页 */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover { background: var(--card); color: var(--text); transform: translateX(-2px); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse 50% 50% at 20% 30%, rgba(26,115,232,.2) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 80% 70%, rgba(107,63,160,.15) 0%, transparent 50%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 span { color: #7DD6FF; }
+    .hero-sub {
+      font-size: 1.1rem;
+      opacity: .8;
+      max-width: 600px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .hero-meta span { font-size: .9rem; opacity: .7; }
+    .hero-meta strong { 
+      color: #7DD6FF; 
+      font-size: 1.6rem; 
+      display: block; 
+      margin-top: 6px;
+      font-weight: 700;
+    }
+
+    /* TOC */
+    .toc-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+    }
+    .toc-bar ul {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      overflow-x: auto;
+      scrollbar-width: none;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .toc-bar ul::-webkit-scrollbar { display: none; }
+    .toc-bar a {
+      display: block;
+      padding: 16px 20px;
+      font-size: .9rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .toc-bar a:hover { color: var(--blue); border-color: var(--blue); }
+
+    /* Container */
+    .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+    
+    /* Section Header */
+    .section-header { 
+      display: flex; 
+      align-items: center; 
+      gap: 16px; 
+      margin-bottom: 40px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .section-header h2 { font-size: 1.6rem; font-weight: 700; }
+    .section-header p { font-size: .95rem; color: var(--muted); margin-top: 4px; }
+
+    /* Cards */
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,0,0,.12); }
+    .card-accent-blue { border-top: 4px solid var(--blue); }
+    .card-accent-teal { border-top: 4px solid var(--teal); }
+    .card-accent-orange { border-top: 4px solid var(--orange); }
+    .card-accent-purple { border-top: 4px solid var(--purple); }
+    .card-accent-rose { border-top: 4px solid var(--rose); }
+    .card h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 12px; }
+    .card h4 { font-size: 1rem; font-weight: 600; margin: 16px 0 8px; color: var(--text); }
+    .card p { font-size: .95rem; color: var(--muted); line-height: 1.8; }
+    .card ul { padding-left: 20px; margin-top: 12px; }
+    .card li { font-size: .9rem; color: var(--muted); margin-bottom: 6px; line-height: 1.7; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 36px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--blue), var(--teal), var(--orange));
+    }
+    .tl-item { position: relative; margin-bottom: 32px; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -32px; top: 4px;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid #fff;
+      box-shadow: 0 0 0 4px rgba(26,115,232,.15);
+    }
+    .tl-era { 
+      display: inline-block;
+      font-size: .8rem; font-weight: 700;
+      color: #fff;
+      background: var(--blue);
+      border-radius: 6px;
+      padding: 4px 12px;
+      margin-bottom: 8px;
+    }
+    .tl-year {
+      display: inline-block;
+      font-size: .85rem; font-weight: 700;
+      color: var(--blue);
+      background: #EBF2FF;
+      border-radius: 4px;
+      padding: 2px 10px;
+      margin-bottom: 6px;
+    }
+    .tl-item h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .tl-item p { font-size: .92rem; color: var(--muted); line-height: 1.7; }
+
+    /* Character Cards */
+    .char-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .char-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--blue);
+    }
+    .char-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 4px; }
+    .char-card .years { 
+      font-size: .8rem; 
+      color: var(--muted); 
+      margin-bottom: 10px;
+      font-style: italic;
+    }
+    .char-card .role {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      color: var(--blue);
+      background: #EBF2FF;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+    .char-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* Quote Block */
+    .quote-block {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 4px solid var(--blue);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .quote-block blockquote {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .quote-block cite {
+      display: block;
+      margin-top: 12px;
+      font-size: .9rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* Theory Box */
+    .theory-box {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .theory-box h4 { 
+      font-size: 1.1rem; 
+      margin-bottom: 12px;
+      color: #7DD6FF;
+    }
+    .theory-box p { 
+      font-size: .95rem; 
+      opacity: .9;
+      line-height: 1.8;
+    }
+    .theory-formula {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      margin: 12px 0;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 40px 24px;
+      text-align: center;
+    }
+    .footer p { font-size: .9rem; opacity: .7; }
+
+    @media (max-width: 768px) {
+      .hero { padding: 60px 20px 40px; }
+      .container { padding: 32px 20px; }
+      .section-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 返回主页 -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">📚 深度专题报告</div>
+  <h1>设计美学史<br><span>从手工艺到人工智能</span></h1>
+  <p class="hero-sub">跨越三千年的造物智慧 · 探索形式与功能的永恒对话</p>
+  <div class="hero-meta">
+    <span>时间跨度<strong>3000+年</strong></span>
+    <span>关键人物<strong>30+位</strong></span>
+    <span>核心理论<strong>15+个</strong></span>
+  </div>
+</div>
+
+<!-- TOC -->
+<nav class="toc-bar">
+  <ul>
+    <li><a href="#intro">引言</a></li>
+    <li><a href="#pre-industrial">前工业时代</a></li>
+    <li><a href="#aesthetics-birth">美学诞生</a></li>
+    <li><a href="#industrial-age">工业时代</a></li>
+    <li><a href="#modern-design">现代设计</a></li>
+    <li><a href="#digital-age">数字时代</a></li>
+    <li><a href="#characters">关键人物</a></li>
+    <li><a href="#theories">核心理论</a></li>
+  </ul>
+</nav>
+
+<!-- 引言 -->
+<section class="container" id="intro">
+  <div class="section-header">
+    <div class="section-icon" style="background:#EBF2FF;">🎯</div>
+    <div>
+      <h2>引言</h2>
+      <p>设计美学是什么？它如何影响我们身边的每一件物品？</p>
+    </div>
+  </div>
+  
+  <div class="card">
+    <p>设计美学是研究人造物品形式与功能关系的学科，它探讨我们为何觉得某些事物"美"，以及这种美感如何影响我们的使用体验。从古代工匠的手艺传承，到工业革命后的批量生产，再到今天的人工智能辅助设计，人类对"美"的追求从未停止。</p>
+    <p style="margin-top:16px;">本报告将带你穿越三千年的历史长河，认识那些塑造现代设计思维的先驱人物，理解影响至今的核心理论，最终洞察设计美学的未来走向。</p>
+  </div>
+
+  <div class="quote-block">
+    <blockquote>"世界、艺术和自我相互解释：每一个都是对立面的审美统一。"</blockquote>
+    <cite>—— 艾黎·西格尔（Eli Siegel），美学现实主义创始人</cite>
+  </div>
+</section>
+
+<!-- 前工业时代 -->
+<section class="container" id="pre-industrial">
+  <div class="section-header">
+    <div class="section-icon" style="background:#E6F4F1;">⚒️</div>
+    <div>
+      <h2>前工业时代：手艺与传承</h2>
+      <p>从个体工匠到城市工坊，设计的萌芽期</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-era">史前至中世纪</div>
+      <h4>个体工匠时代</h4>
+      <p>在工业化之前，产品形态完全由个体工匠决定。他们根据技能、客户需求、实验经验和传承知识来创造物品。每一件作品都是独一无二的，承载着制作者的个人印记。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-era">中世纪</div>
+      <h4>城市工坊的兴起</h4>
+      <p>随着贸易发展，佛罗伦萨、威尼斯、纽伦堡、布鲁日等城市出现了大型工坊。专业工匠们基于共同训练和技术，开始复制常见的产品形态，设计的标准化雏形初现。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">16世纪初</div>
+      <h4>图案书的诞生</h4>
+      <p>在意大利和德国，竞争压力催生了"图案书"——这是收集装饰形式和图案的版画集，在产品应用之前预先创作。这标志着设计从制作中分离的开始。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-era">文艺复兴时期</div>
+      <h4>绘图指定构造</h4>
+      <p>意大利文艺复兴时期，建筑师和造船师首次发展出用绘图来精确指定构造的方法。这是现代设计文档的远古祖先，让设计意图可以被准确传达和复制。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:32px;">
+    <h4>💡 关键洞察</h4>
+    <p>在前工业时代，"设计"与"制作"是密不可分的。工匠既是设计师也是制造者，这种一体化模式维持了数千年，直到工业革命才发生根本性改变。</p>
+  </div>
+</section>
+
+<!-- 美学诞生 -->
+<section class="container" id="aesthetics-birth" style="background:#f8f9fa;">
+  <div class="section-header">
+    <div class="section-icon" style="background:#F0EBFF;">🎨</div>
+    <div>
+      <h2>美学诞生：从感官到哲学</h2>
+      <p>18世纪，"美学"正式成为一门学科</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">1712年</div>
+      <h4>约瑟夫·艾迪生：《想象的乐趣》</h4>
+      <p>英国散文家约瑟夫·艾迪生在《旁观者》杂志发表系列文章《想象的乐趣》，标志着作为感官感知的美学概念的开端。他将审美体验与感官愉悦联系起来。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1735年</div>
+      <h4>亚历山大·鲍姆加登：创造"美学"一词</h4>
+      <p>德国哲学家鲍姆加登在其博士论文中首次使用"美学"（Aesthetics）一词，赋予其新的含义——强调艺术体验作为一种认知方式。1750年，他在《美学》中的定义被视为现代美学的奠基。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1757年</div>
+      <h4>大卫·休谟：《论品味标准》</h4>
+      <p>苏格兰哲学家休谟探讨了"品味的精致性"，将感官辨别能力与获得愉悦的能力联系起来，为审美判断的主观性与普遍性之争埋下伏笔。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1788年</div>
+      <h4>弗朗西斯·格罗斯：美学地域主义</h4>
+      <p>格罗斯在《漫画绘制规则》中肯定了美学的非普遍性，提出"美学地域主义"——不同文化有不同的审美标准，挑战了审美普遍性的观念。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1790年</div>
+      <h4>伊曼努尔·康德：《判断力批判》</h4>
+      <p>康德在这部巨著中讨论了审美判断，区分了"享受"与"美"。他认为美的判断是感官的、情感的和智性的，并假设这种判断具有普遍有效性——这是美学史上最重要的里程碑之一。</p>
+    </div>
+  </div>
+
+  <div class="theory-box">
+    <h4>📖 核心理论：康德美学</h4>
+    <p>康德提出，审美判断具有四个特征：</p>
+    <ul style="margin-top:12px; padding-left:20px;">
+      <li style="margin-bottom:8px;"><strong>无利害性</strong>：审美不依赖对象的实际存在</li>
+      <li style="margin-bottom:8px;"><strong>无概念性</strong>：美不依赖概念判断</li>
+      <li style="margin-bottom:8px;"><strong>无目的的合目的性</strong>：对象形式符合认知目的但无实际目的</li>
+      <li><strong>必然性</strong>：美应该被所有人认可</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 工业时代 -->
+<section class="container" id="industrial-age">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FFF3E6;">🏭</div>
+    <div>
+      <h2>工业时代：设计职业化</h2>
+      <p>19-20世纪，工业设计正式诞生</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-accent-orange">
+      <div class="tl-year" style="margin-bottom:12px;">1840年9月15日</div>
+      <h3>"工业设计"首次出现</h3>
+      <p>《艺术联盟》杂志可能首次发表了"工业设计"（Industrial Design）这一术语，标志着设计从手工艺向工业化生产的正式转型。</p>
+    </div>
+    
+    <div class="card card-accent-orange">
+      <div class="tl-year" style="margin-bottom:12px;">1859年</div>
+      <h3>达尔文与进化美学</h3>
+      <p>查尔斯·达尔文发表《物种起源》，其进化论思想后来深刻影响了进化美学的发展，帮助我们理解人类审美偏好的生物学根源。</p>
+    </div>
+  </div>
+
+  <div class="timeline" style="margin-top:32px;">
+    <div class="tl-item">
+      <div class="tl-year">19世纪</div>
+      <h4>古斯塔夫·费希纳：实验美学</h4>
+      <p>德国心理学家费希纳创立了实验美学领域，采用基于主体、归纳的方法研究审美体验，开创了用科学方法研究美学的先河。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1907年</div>
+      <h4>德意志制造联盟</h4>
+      <p>彼得·贝伦斯等人创立德意志制造联盟，致力于将传统手工艺与工业大规模生产技术相结合，成为现代工业设计教育的重要起点。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1919年</div>
+      <h4>约瑟夫·克劳德·西奈尔与"工业设计"</h4>
+      <p>工业设计师约瑟夫·克劳德·西奈尔常被归因于首次使用"工业设计"一词（尽管他本人否认），这一术语开始被广泛接受。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1919年</div>
+      <h4>弗洛伊德：《论怪怖》</h4>
+      <p>弗洛伊德发表《论怪怖》（The Uncanny），开创了精神分析学中的美学思考，"怪怖"成为理解审美体验中不安与熟悉交织的重要概念。</p>
+    </div>
+  </div>
+
+  <div class="quote-block">
+    <blockquote>"美即是真，真即是美"</blockquote>
+    <cite>—— 约翰·济慈《希腊古瓮颂》（1819）</cite>
+  </div>
+</section>
+
+<!-- 现代设计 -->
+<section class="container" id="modern-design" style="background:#f8f9fa;">
+  <div class="section-header">
+    <div class="section-icon" style="background:#EBF2FF;">✨</div>
+    <div>
+      <h2>现代设计：黄金年代</h2>
+      <p>20世纪中期的设计大师与经典理论</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-accent-blue">
+      <div class="tl-year" style="margin-bottom:12px;">1928年</div>
+      <h3>伯克霍夫的审美度量</h3>
+      <p>数学家乔治·戴维·伯克霍夫提出审美度量公式：</p>
+      <div class="theory-formula" style="background:#f0f0f0; color:#333;">M = O / C</div>
+      <p style="margin-top:12px;">其中 M 为审美度量，O 为秩序度，C 为复杂度。秩序越高、复杂度越低，审美价值越高。</p>
+    </div>
+    
+    <div class="card card-accent-blue">
+      <div class="tl-year" style="margin-bottom:12px;">1934年</div>
+      <h3>约翰·杜威：《艺术即经验》</h3>
+      <p>杜威提出，审美体验由一个有始有终的整体所界定，强调艺术与生活经验的连续性，对后来的用户体验设计产生深远影响。</p>
+    </div>
+    
+    <div class="card card-accent-blue">
+      <div class="tl-year" style="margin-bottom:12px;">1941年</div>
+      <h3>艾黎·西格尔：美学现实主义</h3>
+      <p>西格尔创立美学现实主义哲学，主张现实本身就是审美的，"世界、艺术和自我相互解释"。</p>
+    </div>
+    
+    <div class="card card-accent-purple">
+      <div class="tl-year" style="margin-bottom:12px;">1951年</div>
+      <h3>雷蒙德·洛伊：MAYA原则</h3>
+      <p>传奇工业设计师雷蒙德·洛伊出版《永不满足于现状》，提出<strong>MAYA原则</strong>（Most Advanced, Yet Acceptable）：</p>
+      <p style="margin-top:12px; font-weight:600; color:var(--purple);">"最先进，但可接受"</p>
+      <p style="margin-top:8px;">这一原则成为20世纪最具影响力的设计准则之一，指导了无数成功产品的诞生。</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:32px;">
+    <h4>🏆 经典设计案例（1930年代）</h4>
+    <div class="grid-2" style="margin-top:16px;">
+      <div>
+        <strong>拉塞尔·赖特（Russel Wright）</strong>
+        <p style="margin-top:6px;">约1935年设计的咖啡壶，体现了美国现代主义设计的简洁与实用。</p>
+      </div>
+      <div>
+        <strong>卢雷尔·吉尔德（Lurelle Guild）</strong>
+        <p style="margin-top:6px;">约1937年设计的吸尘器，将流线型美学融入家用电器。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字时代 -->
+<section class="container" id="digital-age">
+  <div class="section-header">
+    <div class="section-icon" style="background:#E6F4F1;">💻</div>
+    <div>
+      <h2>数字时代：算法与智能</h2>
+      <p>从计算机辅助设计到人工智能美学</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">1975年</div>
+      <h4>盖伊·西塞洛：《美的新理论》</h4>
+      <p>西塞洛出版《美的新理论》，为后来的计算美学奠定哲学基础。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1980年</div>
+      <h4>莱考夫与约翰逊：《我们赖以生存的隐喻》</h4>
+      <p>这部著作承认隐喻在语言之外的广泛应用，为理解设计中的隐喻思维提供了理论基础。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">1990年代</div>
+      <h4>于尔根·施密德胡伯：算法美学理论</h4>
+      <p>德国计算机科学家施密德胡伯提出算法美学理论：在可比较的事物中，能用最短描述编码的观察是最美的。这为机器审美提供了数学框架。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">2003年</div>
+      <h4>MAYA原则的实证验证</h4>
+      <p>赫克特等人在《工业设计中典型性与新颖性作为审美偏好的联合预测因子》中，为MAYA原则提供了实证科学支持。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">2004年</div>
+      <h4>加工流畅性与审美愉悦</h4>
+      <p>雷伯等人发表研究，将加工流畅性与审美愉悦联系起来，提出"美存在于感知者的加工体验中"。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">2006-2010年</div>
+      <h4>计算美学的兴起</h4>
+      <p>计算机视觉、模式识别会议开始大量出现美学分类、图像美感评估的研究，标志着计算美学成为独立研究领域。</p>
+    </div>
+    
+    <div class="tl-item">
+      <div class="tl-year">2023年</div>
+      <h4>工业设计申请量创新高</h4>
+      <p>全球工业设计申请量达到约<strong>119万件</strong>，设计创新持续蓬勃发展。</p>
+    </div>
+  </div>
+
+  <div class="theory-box">
+    <h4>🤖 未来展望：AI与设计美学</h4>
+    <p>随着生成式AI的发展，设计美学正面临新的转折点：</p>
+    <ul style="margin-top:12px; padding-left:20px;">
+      <li style="margin-bottom:8px;">AI可以学习人类审美偏好，生成符合特定风格的设计</li>
+      <li style="margin-bottom:8px;">算法美学理论为机器审美提供了数学基础</li>
+      <li style="margin-bottom:8px;">人机协作设计将成为主流模式</li>
+      <li>但人类的情感、文化理解和价值判断仍不可替代</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 关键人物 -->
+<section class="container" id="characters" style="background:#f8f9fa;">
+  <div class="section-header">
+    <div class="section-icon" style="background:#FFF3E6;">👥</div>
+    <div>
+      <h2>关键人物</h2>
+      <p>塑造设计美学的思想家、设计师与先驱</p>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:20px; color:var(--blue);">🧠 哲学家与思想家</h3>
+  <div class="char-grid">
+    <div class="char-card">
+      <span class="role">美学之父</span>
+      <h4>亚历山大·鲍姆加登</h4>
+      <div class="years">1714-1762 · 德国</div>
+      <p>1735年创造"美学"一词，1750年《美学》被视为现代美学的奠基之作，强调艺术体验作为认知方式。</p>
+    </div>
+    
+    <div class="char-card">
+      <span class="role" style="background:#E6F4F1;color:var(--teal);">批判哲学</span>
+      <h4>伊曼努尔·康德</h4>
+      <div class="years">1724-1804 · 德国</div>
+      <p>《判断力批判》（1790）区分"享受"与"美"，提出审美判断的普遍有效性假设，影响深远。</p>
+    </div>
+    
+    <div class="char-card">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">经验主义</span>
+      <h4>大卫·休谟</h4>
+      <div class="years">1711-1776 · 苏格兰</div>
+      <p>《论品味标准》（1757）探讨品味的精致性，将感官辨别与愉悦能力联系起来。</p>
+    </div>
+    
+    <div class="char-card">
+      <span class="role" style="background:#F0EBFF;color:var(--purple);">精神分析</span>
+      <h4>西格蒙德·弗洛伊德</h4>
+      <div class="years">1856-1939 · 奥地利</div>
+      <p>《论怪怖》（1919）开创精神分析美学，"怪怖"概念成为理解审美体验的重要工具。</p>
+    </div>
+    
+    <div class="char-card">
+      <span class="role" style="background:#FFEBEE;color:var(--rose);">美学现实主义</span>
+      <h4>艾黎·西格尔</h4>
+      <div class="years">1902-1991 · 美国</div>
+      <p>1941年创立美学现实主义，主张"世界、艺术和自我相互解释"，现实本身就是审美的。</p>
+    </div>
+    
+    <div class="char-card">
+      <span class="role">实验心理学</span>
+      <h4>古斯塔夫·费希纳</h4>
+      <div class="years">1801-1887 · 德国</div>
+      <p>19世纪创立实验美学，采用基于主体的归纳方法，开创科学美学研究。</p>
+    </div>
+  </div>
+
+  <h3 style="margin:40px 0 20px; color:var(--orange);">✏️ 设计师与建筑师</h3>
+  <div class="char-grid">
+    <div class="char-card" style="border-left-color:var(--orange);">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">工业设计之父</span>
+      <h4>雷蒙德·洛伊</h4>
+      <div class="years">1893-1986 · 法裔美国</div>
+      <p>设计了壳牌石油、BP的标志性Logo，以及Studebaker汽车等。1951年提出MAYA原则，影响至今。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--orange);">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">德意志制造联盟</span>
+      <h4>彼得·贝伦斯</h4>
+      <div class="years">1868-1940 · 德国</div>
+      <p>1907年创立德意志制造联盟，将手工艺与工业大生产结合，被誉为第一位工业设计师。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--orange);">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">现代建筑大师</span>
+      <h4>阿尔瓦·阿尔托</h4>
+      <div class="years">1898-1976 · 芬兰</div>
+      <p>著名建筑师，同时设计了大量家居用品（椅子、灯具、花瓶），体现北欧设计的温暖与功能主义。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--orange);">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">35mm摄影之父</span>
+      <h4>奥斯卡·巴纳克</h4>
+      <div class="years">1879-1936 · 德国</div>
+      <p>光学工程师，开发了徕卡相机，被誉为"35mm摄影之父"，改变了摄影的历史。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--orange);">
+      <span class="role" style="background:#FFF3E6;color:var(--orange);">独立设计先驱</span>
+      <h4>克里斯托弗·德雷瑟</h4>
+      <div class="years">1834-1904 · 英国</div>
+      <p>被认为是第一位独立的工业设计师，在工业设计职业化之前就开始了专业设计实践。</p>
+    </div>
+  </div>
+
+  <h3 style="margin:40px 0 20px; color:var(--teal);">🔬 学者与研究者</h3>
+  <div class="char-grid">
+    <div class="char-card" style="border-left-color:var(--teal);">
+      <span class="role" style="background:#E6F4F1;color:var(--teal);">设计心理学</span>
+      <h4>保罗·赫克特</h4>
+      <div class="years">代尔夫特理工大学</div>
+      <p>《设计美学：设计中的愉悦原则》作者，主张美学是产品体验的一部分，审美反应具有基于进化原理的"规律模式"。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--teal);">
+      <span class="role" style="background:#E6F4F1;color:var(--teal);">算法美学</span>
+      <h4>于尔根·施密德胡伯</h4>
+      <div class="years">1961- · 德国</div>
+      <p>计算机科学家，1990年代提出算法美学理论，认为最美的观察是可被最短描述编码的观察。</p>
+    </div>
+    
+    <div class="char-card" style="border-left-color:var(--teal);">
+      <span class="role" style="background:#E6F4F1;color:var(--teal);">审美度量</span>
+      <h4>乔治·戴维·伯克霍夫</h4>
+      <div class="years">1884-1944 · 美国</div>
+      <p>数学家，1928年提出审美度量公式 M=O/C，尝试用数学量化审美价值。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 核心理论 -->
+<section class="container" id="theories">
+  <div class="section-header">
+    <div class="section-icon" style="background:#F0EBFF;">📐</div>
+    <div>
+      <h2>核心理论</h2>
+      <p>影响设计实践的重要美学理论</p>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card card-accent-purple">
+      <h3>MAYA原则</h3>
+      <p style="font-size:1.1rem; font-weight:600; color:var(--purple); margin:12px 0;">Most Advanced, Yet Acceptable</p>
+      <p>"最先进，但可接受"——雷蒙德·洛伊1951年提出。成功的设计应该在创新性和熟悉度之间取得平衡：足够新颖以引起兴趣，但又足够熟悉以被接受。2003年得到实证研究支持。</p>
+    </div>
+    
+    <div class="card card-accent-blue">
+      <h3>伯克霍夫审美度量</h3>
+      <div class="theory-formula" style="background:#EBF2FF; color:var(--blue);">M = O / C</div>
+      <p style="margin-top:12px;">审美度量 = 秩序 / 复杂度。秩序越高、复杂度越低，审美价值越高。这是最早的审美数学化尝试之一。</p>
+    </div>
+    
+    <div class="card card-accent-teal">
+      <h3>加工流畅性理论</h3>
+      <p>2004年雷伯等人提出：美存在于感知者的加工体验中。加工越流畅，审美愉悦感越强。这解释了为什么熟悉的事物往往被认为更美。</p>
+    </div>
+    
+    <div class="card card-accent-orange">
+      <h3>最大效果最小手段</h3>
+      <p>1977年马古利斯在象棋问题中证明的原则：以最小的手段达到最大的效果。这一原则广泛应用于设计和艺术创作中。</p>
+    </div>
+    
+    <div class="card card-accent-rose">
+      <h3>美学现实主义</h3>
+      <p>艾黎·西格尔1941年创立：现实本身就是审美的，"世界、艺术和自我相互解释：每一个都是对立面的审美统一"。</p>
+    </div>
+    
+    <div class="card" style="border-top:4px solid var(--indigo);">
+      <h3 style="color:var(--indigo);">算法美学</h3>
+      <p>施密德胡伯1990年代提出：最美的观察是可被最短描述编码的观察。为机器审美和AI设计提供了理论基础。</p>
+    </div>
+  </div>
+
+  <div class="quote-block" style="margin-top:40px;">
+    <blockquote>"典型性和新颖性作为工业设计中审美偏好的联合预测因子"</blockquote>
+    <cite>—— 赫克特等人，2003年（MAYA原则的实证验证）</cite>
+  </div>
+</section>
+
+<!-- 结语 -->
+<section class="container" style="background:linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color:#fff; border-radius:0;">
+  <div style="max-width:800px; margin:0 auto; text-align:center;">
+    <h2 style="margin-bottom:24px;">🐉 龙大仙注记</h2>
+    <p style="font-size:1.15rem; line-height:1.9; opacity:.95;">
+      从古代工匠的手艺传承，到康德的哲学思辨，再到今天的算法美学，人类对"美"的追求贯穿了整部文明史。<strong>MAYA原则</strong>——"最先进，但可接受"——或许是对设计美学最精炼的总结：真正的创新不是颠覆，而是在熟悉与新奇之间找到那个微妙的平衡点。
+    </p>
+    <p style="margin-top:20px; opacity:.8;">
+      在AI时代，这个平衡将变得更加重要。技术可以生成无限的可能，但判断什么是"可接受的"，仍然需要人类的智慧与品味。
+    </p>
+  </div>
+</section>
+
+<!-- Footer -->
+<div class="footer">
+  <p>设计美学史研究报告 · 由龙大仙为谦哥整理制作</p>
+  <p style="margin-top:8px; font-size:.8rem;">参考资料：Google产品设计美学主题策划</p>
+</div>
+
+</body>
+</html>
