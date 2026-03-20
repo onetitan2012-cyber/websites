@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>每日未来情报 · 2026-03-20</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, #050D1A 0%, #0A1628 45%, #091524 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 35%, rgba(26,115,232,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 20% 75%, rgba(107,63,160,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 90%, rgba(0,137,123,.15) 0%, transparent 55%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(26,115,232,.2);
+      border: 1px solid rgba(26,115,232,.4);
+      border-radius: 50px;
+      padding: 4px 18px;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+      letter-spacing: -.01em;
+    }
+    .hero h1 span { color: #7DD6FF; }
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: .65;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .hero-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .85rem;
+      opacity: .85;
+      position: relative;
+    }
+    .hero-date::before { content: '📡'; font-size: 1rem; }
+
+    /* ── BACK HOME ── */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+      border-color: var(--accent1);
+    }
+
+    /* ── NAV ── */
+    .nav-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-list {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-item a {
+      display: block;
+      padding: 14px 18px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .nav-item a:hover, .nav-item a.active {
+      color: var(--accent1);
+      border-color: var(--accent1);
+    }
+
+    /* ── CONTAINER ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 72px; }
+
+    /* ── SECTION ── */
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-header { margin-bottom: 32px; }
+    .section-header .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-header p {
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    /* ── SIGNAL CARDS ── */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .signal-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent1);
+    }
+    .signal-card.accent2::before { background: var(--accent2); }
+    .signal-card.accent3::before { background: var(--accent3); }
+    .signal-card.accent4::before { background: var(--accent4); }
+    .signal-card.accent5::before { background: var(--accent5); }
+    .signal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(0,0,0,.45);
+    }
+    .signal-card .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: .02em;
+    }
+    .tag-ai    { background: rgba(26,115,232,.18);  color: #7BB5FF; }
+    .tag-vr    { background: rgba(0,137,123,.18);   color: #4DB8AE; }
+    .tag-game  { background: rgba(232,113,26,.18);  color: #F4A46A; }
+    .tag-tech  { background: rgba(107,63,160,.18);  color: #B589E0; }
+    .tag-product { background: rgba(198,40,40,.18); color: #F07070; }
+
+    .signal-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .signal-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .signal-source {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: .75rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      transition: color .15s;
+    }
+    .signal-source::before { content: '↗ '; }
+    .signal-source:hover { color: var(--accent1); }
+
+    /* ── HIGHLIGHT NUMBERS ── */
+    .highlight-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: #7DD6FF;
+      display: block;
+      margin: 8px 0 4px;
+      line-height: 1;
+    }
+
+    /* ── FOOTER NOTE ── */
+    .dragon-note {
+      background: linear-gradient(135deg, #0D1B2A 0%, #111827 100%);
+      border: 1px solid rgba(26,115,232,.3);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-top: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .dragon-note::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,115,232,.08) 0%, transparent 70%);
+    }
+    .dragon-note .label {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 10px;
+      position: relative;
+    }
+    .dragon-note blockquote {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text);
+      position: relative;
+      line-height: 1.65;
+    }
+    .dragon-note .signature {
+      margin-top: 12px;
+      font-size: .8rem;
+      color: var(--muted);
+      position: relative;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 36px;
+      position: relative;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: .82rem;
+    }
+    .stat-pill strong { color: #7DD6FF; }
+  </style>
+</head>
+<body>
+
+<!-- 返回主页 -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Intel Report · 第 #0320 期</div>
+  <h1>每日<span>未来情报</span></h1>
+  <p class="hero-sub">扫描世界 · 捕捉信号 · 洞见未来</p>
+  <div class="hero-date">2026年3月20日 · 今日信号 18 条</div>
+  <div class="stats-bar">
+    <div class="stat-pill">🤖 AI趋势 <strong>4</strong></div>
+    <div class="stat-pill">🥽 VR动态 <strong>3</strong></div>
+    <div class="stat-pill">🎮 游戏设计 <strong>4</strong></div>
+    <div class="stat-pill">⚛️ 新科技 <strong>4</strong></div>
+    <div class="stat-pill">📦 新产品 <strong>3</strong></div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#ai">🤖 AI趋势</a></li>
+    <li class="nav-item"><a href="#vr">🥽 VR动态</a></li>
+    <li class="nav-item"><a href="#game">🎮 游戏设计</a></li>
+    <li class="nav-item"><a href="#tech">⚛️ 新科技</a></li>
+    <li class="nav-item"><a href="#product">📦 新产品</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- ── AI 趋势 ── -->
+  <section id="ai">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(26,115,232,.15);">🤖</div>
+      <h2>AI 趋势</h2>
+      <p>大模型、AI应用与行业落地最新进展</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card">
+        <span class="tag tag-ai">战略</span>
+        <h3>NVIDIA GTC 2026：Feynman架构发布，1nm级芯片重构AI算力</h3>
+        <p>黄仁勋主题演讲发布三大核心产品：<strong>Feynman架构</strong>采用台积电A16（1.6nm）工艺，首次大规模引入硅光子光互连，带宽密度提升10倍、传输能耗下降90%。推理性能较Blackwell架构提升5倍，单GPU算力达50 PFLOPS。同日发布的 <strong>Vera Rubin平台</strong> 搭载HBM4显存（288GB），单Token生成成本降至1/10。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/997341449_447547" target="_blank">搜狐IT · 2026-03-17</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">竞争</span>
+        <h3>GPT-5.4 vs Claude Opus 4.5：Agent能力分道扬镳</h3>
+        <p>OpenAI发布 <strong>GPT-5.4</strong>，OSWorld-Verified测试得分75%，号称"最强专业级模型"，但输出价格涨至180美元/百万token（较上代上涨42.9%）。Anthropic <strong>Claude Opus 4.5</strong> 则走企业AI Agent路线，API市场份额已达32%超越OpenAI（25%），年ARR增速600%，大客户数从十几家激增至500+家。</p>
+        <a class="signal-source" href="https://www.36kr.com/p/3725452611320196" target="_blank">36氪·锌财经 · 2026-03-16</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">开源</span>
+        <h3>Qwen3 + OpenClaw 引爆开源AI Agent热潮</h3>
+        <p>通义千问 <strong>Qwen3</strong> 以支持256K上下文、多模态能力和代码生成准确率90%+成为3月最热开源模型，GitHub社区超10000名贡献者。同期 <strong>OpenClaw（龙虾AI）</strong> 作为AI Coding Agent平台，星标突破250K，支持本地部署和跨应用自主执行，正在重新定义开发者工作流。</p>
+        <a class="signal-source" href="https://jishuzhan.net/article/2033007052981862402" target="_blank">技术栈 · 2026-03-15</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">市场</span>
+        <h3>AI Agent市场规模预测达1200-1500亿美元，2026年成关键转型年</h3>
+        <p>GDC 2026行业报告揭示：<strong>36%独立开发者、52%游戏公司</strong> 已正式将AI工具纳入工作流，78%制定了AI使用规范。更宏观层面，各分析机构预测2026年全球AI Agent市场规模将达 <strong>1200-1500亿美元</strong>，AI PC年销量预计达4500万台，端侧AI推理成本较2025年已下降60%+。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260318A01U5M00" target="_blank">indienova·腾讯新闻 · 2026-03-18</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── VR 动态 ── -->
+  <section id="vr">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(0,137,123,.15);">🥽</div>
+      <h2>VR 动态</h2>
+      <p>硬件、软件与市场最新变化</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">硬件</span>
+        <h3>Meta Quest 4 锁定视涯科技 Micro-OLED：单眼 2.5K×2.5K，1800尼特亮度</h3>
+        <p>据 VRCoast 报道，Meta下一代旗舰VR头显 <strong>Quest 4（代号"Phoenix"）</strong> 已确认采用 Micro-OLED 方案，面板由 <strong>视涯科技</strong> 独家供货。规格为单眼 <strong>2560×2560</strong> 分辨率、<strong>1800尼特</strong> 亮度。视涯已清空雷鸟Air 4系列产线全力备产。此前Meta测试的华星光电 Fast-LCD 方案已被放弃。</p>
+        <a class="signal-source" href="https://www.fpdisplay.com/news/show-211762.html" target="_blank">平板显示·IT之家 · 2026-03-19</a>
+      </div>
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">战略</span>
+        <h3>Meta 宣布2026年6月起 Quest 停止访问 Horizon Worlds，元宇宙战略转向AI</h3>
+        <p>Meta正式宣布自 <strong>2026年6月15日</strong> 起，Quest头显将停止对 Horizon Worlds 虚拟世界平台的访问支持，将资源重心向 <strong>AI应用与移动端</strong> 倾斜。这一决策标志着Meta正式放弃"元宇宙社交"原始愿景，战略重心重构为XR+AI的混合现实应用生态。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260319A04O0J00" target="_blank">VRAR星球·腾讯新闻 · 2026-03-19</a>
+      </div>
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">生态</span>
+        <h3>XREAL One Pro AR眼镜亮相AWE：自研X1芯片+谷歌Project Aura，延迟低于3ms</h3>
+        <p>AWE 2026展会上，<strong>XREAL One Pro AR眼镜</strong> 凭借自研X1芯片以延迟低于3ms、10米等效556寸大屏的体验成为焦点，并宣布与 <strong>谷歌 Project Aura</strong> 深度合作，推进"空间智能"生态。同场，雷鸟创新展出 <strong>全球最小全彩MicroLED AR眼镜</strong>，宣布正式进入量产阶段，标志消费级AR进入新赛段。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260316A04BGQ00" target="_blank">腾讯新闻·AI大模型工场 · 2026-03-16</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 游戏设计 ── -->
+  <section id="game">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(232,113,26,.15);">🎮</div>
+      <h2>游戏设计</h2>
+      <p>创新玩法、独立游戏与UX趋势</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">行业报告</span>
+        <h3>GDC 2026：生成式AI全面进入游戏开发，Unity AI支持"文字生成可运行游戏原型"</h3>
+        <p>今年GDC（3月9-13日，旧金山）最大信号：AI工具正式从辅助走向主导开发流程。<strong>Unity AI</strong> 展示通过自然语言直接生成可运行游戏原型；<strong>腾讯 VISVISE</strong> 套件用AI加速3D建模与骨骼动画生成；<strong>Google Genie</strong> 系列"世界模型"已能通过提示词生成可探索开放世界（稳定性维持约1分钟）。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260318A01U5M00" target="_blank">indienova·腾讯新闻 · 2026-03-18</a>
+      </div>
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">奖项</span>
+        <h3>IGF 2026大奖：三消塔防《Titanium Court》；GDCA年度游戏：《光与影：33号远征队》</h3>
+        <p><strong>IGF 2026</strong>"苏马斯·麦克纳利"大奖颁给三消×塔防融合玩法独立游戏 <strong>《Titanium Court》</strong>，印证极简规则+深度策略的设计趋势持续走强。<strong>GDCA 2026</strong> 年度游戏大奖则归属 <strong>《光与影：33号远征队》</strong>，共斩获五项大奖，该游戏以法式回合制RPG+多角色叙事结构获得行业最高认可。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260318A01U5M00" target="_blank">indienova·腾讯新闻 · 2026-03-18</a>
+      </div>
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">发布</span>
+        <h3>《杀戮尖塔2》3月正式上线：标志roguelite牌组构建进化新纪元</h3>
+        <p>备受期待的 <strong>《杀戮尖塔2》（Slay the Spire 2）</strong> 于2026年3月正式发售，是独立游戏roguelite牌组构建类型的重要里程碑。官方定名"究极的牌组构建式Rogue游戏"，新增多个职业、动态地图与更深度的协同效应机制，Steam好评势头强劲。Mega Crit验证了小团队+原创IP商业可行性的标杆价值。</p>
+        <a class="signal-source" href="https://ku.gamersky.com/release/pc_202603/" target="_blank">游民星空 · 2026-03</a>
+      </div>
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">平台</span>
+        <h3>Steam年收入超10万美元独立游戏接近6000款，微软Gaming Copilot实时AI攻略上线</h3>
+        <p>Valve在GDC公布数据：Steam平台年收入超10万美元的独立游戏数量已接近 <strong>6000款</strong>，独立游戏生态进入持续健康增长通道。微软 <strong>Gaming Copilot</strong> 同期上线，支持玩家在游戏中通过语音实时向AI询问关卡/Boss攻略，AI正从开发辅助拓展至游戏交互层，重构"玩家体验"边界。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260318A01U5M00" target="_blank">indienova·腾讯新闻 · 2026-03-18</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 新科技 ── -->
+  <section id="tech">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(107,63,160,.15);">⚛️</div>
+      <h2>新科技</h2>
+      <p>前沿科技、芯片、量子与机器人进展</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">芯片</span>
+        <h3>NVIDIA LPU推理专用芯片：首Token延迟 &lt;0.1秒，推理速度较H100提升10倍</h3>
+        <p>GTC 2026 上黄仁勋发布 <strong>LPU推理专用芯片</strong>（集成Groq技术），内置230MB片上SRAM、带宽80TB/s，首Token延迟低于 <strong>0.1秒</strong>，推理速度是H100的10倍。采用确定性编译执行架构，无需复杂硬件调度。已获OpenAI等企业订单，定位实时AI、智能体、云游戏等低延迟场景，与Feynman训练芯片形成"训练+推理"双芯战略。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/997341449_447547" target="_blank">搜狐IT · 2026-03-17</a>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">机器人</span>
+        <h3>宇树×京东联合推出 R1 JoyInside：全球首款多语态人形机器人量产化尝试</h3>
+        <p>AWE 2026展会上，京东与宇树科技联合亮相 <strong>宇树R1 JoyInside蓝白定制版</strong>——全球首款具备多语态、流式语音对话功能的人形机器人。集成京东JoyAI大模型，可理解自然语言并完成复杂指令执行。这是人形机器人从实验室向消费级"可交互机器人"迈进的关键里程碑。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/tech/discovery/2026-03-14/doc-inhqwkfc7664795.shtml" target="_blank">新浪财经·快科技 · 2026-03-14</a>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">标准化</span>
+        <h3>中国首个人形机器人与具身智能标准体系（2026版）发布，覆盖全产业链</h3>
+        <p>工业和信息化部人形机器人与具身智能标准化技术委员会于2026年2月28日发布 <strong>《人形机器人与具身智能标准体系（2026版）》</strong>，是中国首个覆盖人形机器人与具身智能全产业链、全生命周期的国家级标准体系。2026年政府工作报告明确将"具身智能"列为培育发展的未来产业之一，配套产业扶持政策持续加码。</p>
+        <a class="signal-source" href="https://news.cctv.cn/2026/03/01/ARTIbXD8De5pudw4GuYxCo6S260301.shtml" target="_blank">央视新闻 · 2026-03-01</a>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">量子</span>
+        <h3>CSQIT 2026国际会议3月28日举办：南大主办，量子计算场景化落地成两会共识</h3>
+        <p>由南京大学主办、量旋科技联办的 <strong>CSQIT 2026计算机科学与量子信息技术国际会议</strong> 定于3月28日线上举行，吸引全球量子领域学者参与。政策层面，2026年全国两会政府工作报告明确提出推动 <strong>量子科技场景化落地</strong>，与AI、具身智能、6G并列为国家重点培育未来产业方向，产业资本持续流入。</p>
+        <a class="signal-source" href="https://www.spinq.cn/news-detail/nan-da-qian-tou20260317" target="_blank">量旋科技 · 2026-03-17</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── 新产品 ── -->
+  <section id="product">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(198,40,40,.15);">📦</div>
+      <h2>新产品</h2>
+      <p>消费电子、软件工具与创业新品</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">消费电子</span>
+        <h3>追觅 AURORA 旗舰手机全球首秀：磁吸外挂镜头+百亿AI研发，挑战高端影像市场</h3>
+        <p>AWE 2026上，<strong>追觅科技（Dreame）</strong> 以"史上最大规模参展品牌"身份首发旗舰手机 <strong>AURORA</strong>——搭载磁吸模块化外挂镜头，长焦能力对标微单相机，并宣布投入百亿资金建设AI影像技术体系。追觅由扫地机器人起家，此次正式进军手机赛道，走高端差异化路线，与华为、小米形成新竞争格局。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260316A04BGQ00" target="_blank">腾讯新闻·AI大模型工场 · 2026-03-16</a>
+      </div>
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">AI家电</span>
+        <h3>格力 EAi 芯片获全球首张 TICK-MARK 认证：家电级AI芯片实现低功耗自主控制</h3>
+        <p>AWE 2026上，格力发布 <strong>EAi 芯片</strong>，获全球首张家电AI芯片 <strong>TICK-MARK 认证</strong>，用于节能控制、UI交互等场景，实现断网独立运行能力。配套产品 <strong>AI冷静王柜机</strong> 以此芯片为核心，作为全屋智能中枢支持多设备无感联动；<strong>Star5 AI中央空调</strong> 具备自学习能力，可预判用户习惯并自动优化多房间参数。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260316A04BGQ00" target="_blank">腾讯新闻·AI大模型工场 · 2026-03-16</a>
+      </div>
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">光算力</span>
+        <h3>曦智科技"光跃超节点128"商用版发布：以光代电突破AI算力互连瓶颈</h3>
+        <p>AWE 2026期间，上海曦智科技发布 <strong>"光跃超节点128商用版"</strong>——全球首个光互连光交换技术GPU超节点产品，以光信号替代铜缆电信号解决高密度GPU集群互连瓶颈，大幅降低延迟与能耗。此举与英伟达GTC上Feynman架构的硅光子战略高度呼应，预示"光算力"将成为AI基础设施下一个关键赛道。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/jjxw/2026-03-15/doc-inhrawmm9305932.shtml" target="_blank">新浪财经 · 2026-03-15</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 龙大仙注记 -->
+  <div class="dragon-note">
+    <p class="label">🐉 龙大仙注记</p>
+    <blockquote>
+      今日最重要信号：NVIDIA GTC 2026 一口气发布 Feynman（1nm级训练芯片）+ Vera Rubin（量产算力）+ LPU（推理专用）三件套，AI算力军备竞赛进入全栈纵深化阶段——而与此同时，Meta正在用放弃 Horizon Worlds 的方式，向市场宣告：元宇宙叙事结束，AI才是XR的下半场。
+    </blockquote>
+    <p class="signature">— 龙大仙 扫描世界 · 2026.03.20</p>
+  </div>
+
+</div><!-- /container -->
+
+</body>
+</html>
