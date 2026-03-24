@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-03-23</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #050D1A 0%, #0A1628 45%, #091524 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(26,115,232,.25), transparent 70%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0,137,123,.15), transparent 60%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 2.6rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff 0%, #64B5F6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--accent1);
+      line-height: 1;
+    }
+    .hero-stat .lbl { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+
+    /* NAV */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-list {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-item a {
+      display: block;
+      padding: 8px 16px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      border-radius: 50px;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .nav-item a:hover {
+      background: rgba(26,115,232,.1);
+      color: var(--accent1);
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 48px 24px;
+    }
+
+    /* SECTION */
+    .section {
+      margin-bottom: 56px;
+      scroll-margin-top: 80px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      background: rgba(26,115,232,.15);
+    }
+    .section-title-group { flex: 1; }
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* SIGNAL CARDS */
+    .signal-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .signal-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: all .2s;
+      position: relative;
+    }
+    .signal-card:hover {
+      border-color: rgba(26,115,232,.4);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent1);
+      border-radius: var(--radius) 0 0 var(--radius);
+    }
+    .signal-card.ai::before { background: var(--accent1); }
+    .signal-card.vr::before { background: var(--accent2); }
+    .signal-card.game::before { background: var(--accent3); }
+    .signal-card.tech::before { background: var(--accent4); }
+    .signal-card.product::before { background: var(--accent5); }
+
+    .signal-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      margin-bottom: 12px;
+    }
+    .signal-card.ai .signal-tag { background: rgba(26,115,232,.15); color: var(--accent1); }
+    .signal-card.vr .signal-tag { background: rgba(0,137,123,.15); color: var(--accent2); }
+    .signal-card.game .signal-tag { background: rgba(232,113,26,.15); color: var(--accent3); }
+    .signal-card.tech .signal-tag { background: rgba(107,63,160,.15); color: var(--accent4); }
+    .signal-card.product .signal-tag { background: rgba(198,40,40,.15); color: var(--accent5); }
+
+    .signal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .signal-summary {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .signal-meta {
+      display: flex;
+      gap: 16px;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .signal-meta a {
+      color: var(--accent1);
+      text-decoration: none;
+    }
+    .signal-meta a:hover { text-decoration: underline; }
+
+    /* NOTE CARD */
+    .note-card {
+      background: linear-gradient(135deg, rgba(26,115,232,.1), rgba(0,137,123,.05));
+      border: 1px solid rgba(26,115,232,.3);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-top: 48px;
+    }
+    .note-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .note-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .note-title { font-size: 1.1rem; font-weight: 700; }
+    .note-content {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .note-content strong { color: var(--accent1); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* BACK HOME */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 48px 20px 40px; }
+      .hero-stats { gap: 20px; }
+      .container { padding: 32px 16px; }
+      .section-header { flex-wrap: wrap; }
+      .nav-list { gap: 4px; padding: 10px 16px; }
+      .nav-item a { padding: 6px 12px; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 返回主页 -->
+<a href="index.html" class="back-home">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+  </svg>
+  返回主页
+</a>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>每日未来情报 · 03/23</h1>
+    <p class="subtitle">今日信号：中国开源模型成全球AI底座、MiniMax自我进化模型、宇树计划3年内发布具身基础模型</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">12</div>
+        <div class="lbl">信号总数</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">5</div>
+        <div class="lbl">领域覆盖</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">03/23</div>
+        <div class="lbl">2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NAV -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#ai">AI趋势</a></li>
+    <li class="nav-item"><a href="#vr">VR动态</a></li>
+    <li class="nav-item"><a href="#game">游戏设计</a></li>
+    <li class="nav-item"><a href="#tech">新科技</a></li>
+    <li class="nav-item"><a href="#product">新产品</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- AI趋势 -->
+  <section id="ai" class="section">
+    <div class="section-header">
+      <div class="section-icon">🤖</div>
+      <div class="section-title-group">
+        <div class="section-title">AI趋势</div>
+        <div class="section-desc">大模型、AI应用、行业落地</div>
+      </div>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card ai">
+        <span class="signal-tag">AI模型</span>
+        <div class="signal-title">Cursor"套壳"Kimi K2.5风波大反转：中国开源模型已成全球AI底座</div>
+        <div class="signal-summary">3月20日，Cursor发布Composer 2未提及基座模型来源，开发者发现其底层实为月之暗面开源模型Kimi K2.5。3月21日月之暗面澄清为授权合作。Hugging Face CEO评价"中国开源是塑造全球AI的最大力量"。中国开源模型（如Kimi K2.5）已成为全球AI技术栈核心。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card ai">
+        <span class="signal-tag">AI模型</span>
+        <div class="signal-title">MiniMax发布M2.7：首个支持"自我进化"的大模型</div>
+        <div class="signal-summary">MiniMax发布M2.7模型，首个支持"自我进化"的大模型，可主动反思纠错，编程能力媲美GPT-5。上线后流量激增，已启动API限流。这标志着AI模型从"被动响应"向"主动学习"演进的重要突破。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card ai">
+        <span class="signal-tag">AI应用</span>
+        <div class="signal-title">中国AI周调用量达4.69万亿Token，连续两周超越美国</div>
+        <div class="signal-summary">中国AI周调用量连续第二周超越美国，达到4.69万亿Token。国产模型（如DeepSeek、Qwen）因性价比优势受全球开发者青睐。这标志着中国AI模型在全球市场的竞争力持续提升。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card ai">
+        <span class="signal-tag">AI产品</span>
+        <div class="signal-title">微软发布MAI-Image-2自研文生图模型</div>
+        <div class="signal-summary">微软发布自研文生图模型MAI-Image-2，面向企业级用户。同时微软缩减Windows Copilot入口以降低"AI膨胀"，显示企业对AI工具实用性的重新审视。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VR动态 -->
+  <section id="vr" class="section">
+    <div class="section-header">
+      <div class="section-icon">🥽</div>
+      <div class="section-title-group">
+        <div class="section-title">VR动态</div>
+        <div class="section-desc">硬件、软件、市场</div>
+      </div>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card vr">
+        <span class="signal-tag">VR市场</span>
+        <div class="signal-title">Meta Quest平台2025年独立用户规模创历史新高</div>
+        <div class="signal-summary">2025年Meta Quest平台迎来发展里程碑，独立用户规模创历史新高，打破外界对VR行业"走向消亡"的质疑。平台生态实现突破性发展，超100款应用全年收入突破百万美元，成为VR消费级市场成熟的重要标志。</div>
+        <div class="signal-meta">
+          <span>来源: 搜狐/93913产业周报</span>
+          <a href="https://www.sohu.com/a/999782120_447547" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card vr">
+        <span class="signal-tag">VR硬件</span>
+        <div class="signal-title">视涯科技清空现有产线，全力筹备Meta下一代VR头显</div>
+        <div class="signal-summary">国内Micro-OLED厂商视涯科技清空现有产线，全力筹备Meta下一代VR头显的屏幕供应。这预示着Meta下一代VR设备（可能是Quest Pro 2或Quest 4）即将进入量产阶段，显示技术将迎来重大升级。</div>
+        <div class="signal-meta">
+          <span>来源: 腾讯新闻</span>
+          <a href="https://news.qq.com/rain/a/20260319A04O0J00" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 游戏设计 -->
+  <section id="game" class="section">
+    <div class="section-header">
+      <div class="section-icon">🎮</div>
+      <div class="section-title-group">
+        <div class="section-title">游戏设计</div>
+        <div class="section-desc">创新玩法、独立游戏、UX趋势</div>
+      </div>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card game">
+        <span class="signal-tag">游戏AI</span>
+        <div class="signal-title">2026年游戏AI越过恐怖谷，从辅助工具转变为创作伙伴</div>
+        <div class="signal-summary">2026年AI技术在游戏行业的应用已越过恐怖谷效应，正从简单的辅助工具转变为创作伙伴。多位行业从业者分享了对AI在游戏原型开发、3D模型生成、玩法创新等方面的重要进展的看法。AI正在重塑游戏开发全流程。</div>
+        <div class="signal-meta">
+          <span>来源: 虎嗅网</span>
+          <a href="https://www.huxiu.com/article/4844265.html" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card game">
+        <span class="signal-tag">Steam销量</span>
+        <div class="signal-title">《杀戮尖塔2》连续两周登顶Steam销量榜</div>
+        <div class="signal-summary">《杀戮尖塔2》成功连冠Steam全球/国区销量榜（统计周期3月10日-3月17日）。这款卡牌肉鸽爆款续作自3月5日上线抢先体验版后持续热销，显示出独立游戏精品化路线的市场潜力。</div>
+        <div class="signal-meta">
+          <span>来源: IT之家/机核网</span>
+          <a href="https://news.qq.com/rain/a/20260318A04EDC00" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card game">
+        <span class="signal-tag">AI伦理</span>
+        <div class="signal-title">游戏《Crimson Desert》AI艺术风波：开发商道歉并承诺替换</div>
+        <div class="signal-summary">游戏《Crimson Desert》开发商因使用AI生成素材道歉，承诺替换为人工创作。这一事件引发游戏行业对AI生成内容使用的伦理讨论，显示AI辅助创作与原创性之间的平衡仍是行业关注焦点。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新科技 -->
+  <section id="tech" class="section">
+    <div class="section-header">
+      <div class="section-icon">🔬</div>
+      <div class="section-title-group">
+        <div class="section-title">新科技</div>
+        <div class="section-desc">前沿科技、芯片、量子、机器人</div>
+      </div>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card tech">
+        <span class="signal-tag">人形机器人</span>
+        <div class="signal-title">宇树科技计划3年内发布"通用人形机器人具身基础模型"</div>
+        <div class="signal-summary">根据宇树科技科创板IPO问询函回复，公司计划在3年内发布通用人形机器人具身基础模型。宇树科技2024年销售5500台人形机器人，出货量全球第一，年营收突破10亿元。这标志着具身智能正从硬件走向"软硬一体"的智能化阶段。</div>
+        <div class="signal-meta">
+          <span>来源: 腾讯新闻/福布斯中国</span>
+          <a href="https://news.qq.com/rain/a/20260321A03V6B00" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card tech">
+        <span class="signal-tag">固态电池</span>
+        <div class="signal-title">奇瑞犀牛全固态电池能量密度达400Wh/kg，目标600Wh/kg</div>
+        <div class="signal-summary">奇瑞汽车在2026电池之夜公布全固态电池最新进展，其犀牛全固态电池能量密度已达400Wh/kg，目标为600Wh/kg，未来可实现超1500km续航。宁德时代凝聚态电池2026年大规模量产，供货蔚来ET9。2026年成半固态电池量产元年。</div>
+        <div class="signal-meta">
+          <span>来源: 腾讯新闻/央视新闻</span>
+          <a href="https://news.qq.com/rain/a/20260319A076XI00" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card tech">
+        <span class="signal-tag">AI研究</span>
+        <div class="signal-title">UC Berkeley提出M²RNN新架构挑战Transformer</div>
+        <div class="signal-summary">UC Berkeley提出M²RNN新架构挑战Transformer，在长上下文任务表现更优，内存消耗降低40%。这标志着后Transformer时代架构创新的持续探索，为AI模型效率优化提供新路径。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card tech">
+        <span class="signal-tag">太空科技</span>
+        <div class="signal-title">上海布局"太空数据中心"，推动天基计算实时处理遥感数据</div>
+        <div class="signal-summary">上海布局"太空数据中心"，推动天基计算（卫星在轨数据处理），实现遥感数据实时处理。这标志着太空计算从概念走向应用，为卫星互联网和空天信息产业提供基础设施支撑。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 新产品 -->
+  <section id="product" class="section">
+    <div class="section-header">
+      <div class="section-icon">📦</div>
+      <div class="section-title-group">
+        <div class="section-title">新产品</div>
+        <div class="section-desc">新发布的消费电子、软件工具、创业产品</div>
+      </div>
+    </div>
+    <div class="signal-grid">
+      <div class="signal-card product">
+        <span class="signal-tag">AI产品</span>
+        <div class="signal-title">Adobe Firefly集成Kling 2.5 Turbo视频生成功能</div>
+        <div class="signal-summary">Adobe Firefly平台集成Kling 2.5 Turbo视频生成功能，并开放自定义模型公测。这标志着中国AI视频技术（快手可灵）进入国际主流创意工具平台，显示国产AI技术的全球竞争力。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+      <div class="signal-card product">
+        <span class="signal-tag">AI产品</span>
+        <div class="signal-title">Perplexity AI接入Apple Health等健康数据源</div>
+        <div class="signal-summary">Perplexity AI支持连接Apple Health等数据源，提供个性化健康监测建议。这标志着AI搜索向个性化、场景化方向演进，从通用信息检索转向垂直领域深度服务。</div>
+        <div class="signal-meta">
+          <span>来源: 多课网AI日报</span>
+          <a href="https://duoke360.com/post/46110" target="_blank">查看详情 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 龙大仙注记 -->
+  <div class="note-card">
+    <div class="note-header">
+      <div class="note-avatar">🐉</div>
+      <div class="note-title">龙大仙注记</div>
+    </div>
+    <div class="note-content">
+      <strong>今日核心洞察：</strong>中国开源模型正在成为全球AI基础设施的"底座"。从Cursor使用Kimi K2.5，到Adobe集成Kling视频生成，中国AI技术已从"跟随者"转变为"赋能者"。与此同时，<strong>自我进化模型</strong>（MiniMax M2.7）和<strong>具身基础模型</strong>（宇树3年计划）的出现，标志着AI正从"工具"向"自主系统"跃迁。2026年，AI产业的竞争焦点已从"模型参数"转向"生态构建"和"落地能力"。
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 每日未来情报 · 龙大仙出品</p>
+  <p style="margin-top: 8px; font-size: .75rem;">数据来源：公开网络信息 · 仅供学习参考</p>
+</footer>
+
+</body>
+</html>
