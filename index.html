@@ -313,64 +313,6 @@
     }
     .empty.show { display: block; }
 
-    /* ── ARCHIVE SECTION ── */
-    .archive-section {
-      margin-top: 48px;
-      padding-top: 32px;
-      border-top: 1px solid var(--border);
-    }
-    .archive-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: .85rem;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 16px;
-      letter-spacing: .05em;
-    }
-    .archive-icon {
-      font-size: 1rem;
-    }
-    .archive-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .archive-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 12px 16px;
-      background: rgba(255,255,255,.03);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      text-decoration: none;
-      color: inherit;
-      transition: all .2s;
-    }
-    .archive-item:hover {
-      background: rgba(255,255,255,.06);
-      border-color: rgba(167,139,250,.3);
-      transform: translateX(4px);
-    }
-    .archive-date {
-      font-size: .75rem;
-      font-weight: 600;
-      color: #A78BFA;
-      min-width: 40px;
-    }
-    .archive-title {
-      font-size: .85rem;
-      color: #94a3b8;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    .archive-item:hover .archive-title {
-      color: var(--text);
-    }
-
     /* ── WECHAT SECTION ── */
     .wechat-section {
       display: block;
@@ -532,11 +474,11 @@
       全部
       <span class="count" id="count-all"></span>
     </button>
-    <button class="tab" data-tab="intel">
+    <a href="daily-intel.html" class="tab" style="text-decoration: none;">
       <span class="dot" style="background:var(--c-intel)"></span>
       未来日报
       <span class="count" id="count-intel"></span>
-    </button>
+    </a>
     <button class="tab" data-tab="vr">
       <span class="dot" style="background:var(--c-vr)"></span>
       VR 世界
@@ -570,7 +512,20 @@
   <div class="section-label" id="section-label">全部项目</div>
   <div class="grid" id="grid">
 
-    <!-- 未来日报 · 最新3条 -->
+    <!-- 未来日报 · 最新3条（仅展示近3天） -->
+    <a href="intel-2026-03-25.html" class="card card-latest" data-cat="intel">
+      <div class="card-top">
+        <div class="card-icon">📡</div>
+        <span class="card-tag">未来日报 · 最新</span>
+      </div>
+      <div class="card-title">每日未来情报 · 03/25</div>
+      <div class="card-desc">中国开源模型成全球AI底座；宇树计划3年内发布具身基础模型；固态电池2026量产元年；Meta Quest创历史新高</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-25</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
     <a href="intel-2026-03-24.html" class="card card-latest" data-cat="intel">
       <div class="card-top">
         <div class="card-icon">📡</div>
@@ -593,71 +548,6 @@
       <div class="card-desc">中国开源模型成全球AI底座；MiniMax发布自我进化模型M2.7；宇树计划3年内发布具身基础模型</div>
       <div class="card-footer">
         <span class="card-date">2026-03-23</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-22.html" class="card card-latest" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报 · 最新</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/22</div>
-      <div class="card-desc">英伟达30亿参数模型击败6710亿大模型；宇树科技IPO受理；2026年半固态电池量产元年开启</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-22</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-21.html" class="card card-latest" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报 · 最新</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/21</div>
-      <div class="card-desc">GPT-5.4 vs Claude Opus 4.6大模型激战；GeForce NOW VR串流90 FPS；脑机接口首入政府工作报告</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-21</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-19.html" class="card card-latest" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报 · 最新</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/19</div>
-      <div class="card-desc">小米三款大模型深夜突袭发布；银河通用25亿元融资刷新纪录；Unity 2026报告：73%开发者用AI提效</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-19</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-18.html" class="card card-latest" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报 · 最新</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/18</div>
-      <div class="card-desc">今日科技情报汇总：AI、硬件、前沿技术最新动态</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-18</span>
-        <span class="card-arrow">→</span>
-      </div>
-    </a>
-
-    <a href="intel-2026-03-17.html" class="card card-latest" data-cat="intel">
-      <div class="card-top">
-        <div class="card-icon">📡</div>
-        <span class="card-tag">未来日报 · 最新</span>
-      </div>
-      <div class="card-title">每日未来情报 · 03/17</div>
-      <div class="card-desc">NVIDIA Vera Rubin平台推理成本降至1/10；阿里"悟空"企业级AI Agent；英特尔FHE芯片快5000倍</div>
-      <div class="card-footer">
-        <span class="card-date">2026-03-17</span>
         <span class="card-arrow">→</span>
       </div>
     </a>
@@ -942,44 +832,6 @@
     </a>
 
     <div class="empty" id="empty">该分类暂无内容，敬请期待～</div>
-  </div>
-
-  <!-- 历史日报归档 -->
-  <div class="archive-section" id="archive-section">
-    <div class="archive-header">
-      <span class="archive-icon">📚</span>
-      <span>历史日报归档</span>
-    </div>
-    <div class="archive-list">
-      <a href="intel-2026-03-20.html" class="archive-item">
-        <span class="archive-date">03/20</span>
-        <span class="archive-title">NVIDIA GTC 三件套炸场 · GPT-5.4 vs Claude Opus 4.5</span>
-      </a>
-      <a href="intel-2026-03-19.html" class="archive-item">
-        <span class="archive-date">03/19</span>
-        <span class="archive-title">小米三款大模型深夜突袭 · 银河通用25亿元融资</span>
-      </a>
-      <a href="intel-2026-03-18.html" class="archive-item">
-        <span class="archive-date">03/18</span>
-        <span class="archive-title">阿里"悟空"改写企业AI · 推理需求两年增100万倍</span>
-      </a>
-      <a href="intel-2026-03-17.html" class="archive-item">
-        <span class="archive-date">03/17</span>
-        <span class="archive-title">NVIDIA Vera Rubin推理成本降至1/10 · 阿里"悟空"Agent</span>
-      </a>
-      <a href="intel-2026-03-16.html" class="archive-item">
-        <span class="archive-date">03/16</span>
-        <span class="archive-title">GPT-5.3 & Gemini 3.1 Pro 三强同月爆发</span>
-      </a>
-      <a href="intel-2026-03-15.html" class="archive-item">
-        <span class="archive-date">03/15</span>
-        <span class="archive-title">Gemini 2.5 Ultra 登场、PICO 自研芯片预告</span>
-      </a>
-      <a href="intel-2026-03-14.html" class="archive-item">
-        <span class="archive-date">03/14</span>
-        <span class="archive-title">2026年3月14日情报汇总</span>
-      </a>
-    </div>
   </div>
 </main>
 
