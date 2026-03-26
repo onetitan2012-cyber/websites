@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>游戏设计文档 (GDD)：游戏的蓝图与团队协作的核心</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary:   #8B5CF6;
+      --secondary: #6366F1;
+      --accent:    #EC4899;
+      --success:   #10B981;
+      --warning:   #F59E0B;
+      --light:     #F8FAFC;
+      --dark:      #0F172A;
+      --surface:   #1E293B;
+      --card:      #FFFFFF;
+      --text:      #334155;
+      --muted:     #64748B;
+      --border:    #E2E8F0;
+      --radius:    16px;
+      --shadow:    0 4px 24px rgba(0,0,0,.08);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* 返回主页 */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255,255,255,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+      box-shadow: 0 2px 12px rgba(0,0,0,.1);
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover { background: var(--card); color: var(--text); transform: translateX(-2px); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1E1B4B 50%, #312E81 100%);
+      color: #fff;
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: 
+        radial-gradient(ellipse 60% 60% at 30% 20%, rgba(139,92,246,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 70% 80%, rgba(236,72,153,.15) 0%, transparent 50%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(99,102,241,.2) 0%, transparent 50%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50px;
+      padding: 8px 24px;
+      font-size: .85rem;
+      letter-spacing: .1em;
+      margin-bottom: 28px;
+      position: relative;
+      backdrop-filter: blur(8px);
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 .highlight { 
+      background: linear-gradient(135deg, #C084FC 0%, #F472B6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.15rem;
+      opacity: .85;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    /* 导航 */
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav::-webkit-scrollbar { display: none; }
+    .nav a {
+      padding: 8px 16px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-radius: 50px;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { color: var(--text); background: rgba(139,92,246,.08); }
+    .nav a.active { 
+      color: var(--primary); 
+      background: rgba(139,92,246,.12);
+      font-weight: 600;
+    }
+
+    /* 主内容 */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* 章节标题 */
+    .section {
+      margin-bottom: 64px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-num {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-size: 1.4rem;
+      font-weight: 800;
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+    .section-title-wrap { flex: 1; }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .section-subtitle {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    /* 内容段落 */
+    .content p {
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+    .content p.lead {
+      font-size: 1.15rem;
+      color: var(--dark);
+      font-weight: 500;
+      border-left: 4px solid var(--primary);
+      padding-left: 20px;
+      background: linear-gradient(90deg, rgba(139,92,246,.05), transparent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* 功能卡片 */
+    .feature-grid {
+      display: grid;
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,.12);
+    }
+    .feature-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      font-size: 1.6rem;
+      flex-shrink: 0;
+    }
+    .feature-card:nth-child(1) .feature-icon { background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+    .feature-card:nth-child(2) .feature-icon { background: linear-gradient(135deg, #10B981, #34D399); }
+    .feature-card:nth-child(3) .feature-icon { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+    .feature-card:nth-child(4) .feature-icon { background: linear-gradient(135deg, #EC4899, #F472B6); }
+    .feature-card:nth-child(5) .feature-icon { background: linear-gradient(135deg, #6366F1, #818CF8); }
+    .feature-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+    .feature-en {
+      font-size: .85rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .feature-desc {
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* GDD结构 */
+    .structure-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+    .structure-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      transition: all .2s;
+    }
+    .structure-item:hover {
+      border-color: var(--primary);
+      transform: translateX(4px);
+    }
+    .structure-num {
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+    .structure-content { flex: 1; }
+    .structure-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+    .structure-desc {
+      font-size: .95rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* 案例卡片 */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 32px 0;
+    }
+    .case-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+    .case-card:hover { transform: translateY(-4px); }
+    .case-header {
+      padding: 20px 24px;
+      color: #fff;
+      position: relative;
+    }
+    .case-card:nth-child(1) .case-header { background: linear-gradient(135deg, #7C3AED, #A78BFA); }
+    .case-card:nth-child(2) .case-header { background: linear-gradient(135deg, #DC2626, #F87171); }
+    .case-card:nth-child(3) .case-header { background: linear-gradient(135deg, #1E40AF, #60A5FA); }
+    .case-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .case-year {
+      font-size: .85rem;
+      opacity: .9;
+    }
+    .case-body {
+      padding: 20px 24px;
+    }
+    .case-body p {
+      font-size: .95rem;
+      margin-bottom: 12px;
+    }
+
+    /* 提示框 */
+    .tip-box {
+      background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(99,102,246,.08));
+      border-left: 4px solid var(--primary);
+      padding: 20px 24px;
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+    }
+    .tip-box h4 {
+      font-size: 1.1rem;
+      color: var(--dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tip-box p {
+      margin-bottom: 8px;
+    }
+    .tip-box p:last-child { margin-bottom: 0; }
+
+    /* 最佳实践 */
+    .practice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .practice-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: all .2s;
+    }
+    .practice-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .practice-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(139,92,246,.1), rgba(99,102,246,.1));
+      border-radius: 14px;
+      font-size: 1.8rem;
+    }
+    .practice-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .practice-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* 引用块 */
+    .quote-block {
+      background: linear-gradient(135deg, rgba(139,92,246,.08), rgba(236,72,153,.08));
+      border-left: 4px solid var(--primary);
+      padding: 24px 28px;
+      border-radius: 0 12px 12px 0;
+      margin: 32px 0;
+    }
+    .quote-block p {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .quote-block cite {
+      font-size: .9rem;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    /* 总结区 */
+    .summary-box {
+      background: linear-gradient(135deg, var(--dark), var(--surface));
+      color: #fff;
+      padding: 40px;
+      border-radius: var(--radius);
+      margin-top: 48px;
+    }
+    .summary-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .summary-box p {
+      opacity: .9;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .summary-box p:last-child { margin-bottom: 0; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero { padding: 80px 20px 60px; }
+      .main { padding: 40px 20px 60px; }
+      .section-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .feature-header { flex-direction: column; }
+      .case-grid { grid-template-columns: 1fr; }
+      .practice-grid { grid-template-columns: 1fr; }
+      .summary-box { padding: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 返回主页 -->
+<a href="index.html#original" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M19 12H5M12 19l-7-7 7-7"/>
+  </svg>
+  返回主页
+</a>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-tag">🎮 原创深度报告</div>
+  <h1>游戏设计文档 (GDD)<br><span class="highlight">游戏的蓝图与团队协作的核心</span></h1>
+  <p class="hero-sub">一份面向游戏开发者与学生的专业指南：从GDD的核心价值到写作实践，掌握游戏设计的第一块基石</p>
+</header>
+
+<!-- 导航 -->
+<nav class="nav-wrap">
+  <div class="nav">
+    <a href="#what" class="active">什么是GDD</a>
+    <a href="#importance">核心价值</a>
+    <a href="#structure">文档结构</a>
+    <a href="#cases">经典案例</a>
+    <a href="#practice">最佳实践</a>
+    <a href="#summary">总结</a>
+  </div>
+</nav>
+
+<!-- 主内容 -->
+<main class="main">
+
+  <!-- 第一章：什么是GDD -->
+  <section class="section" id="what">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">什么是游戏设计文档 (GDD)</h2>
+        <p class="section-subtitle">What is Game Design Document?</p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="lead">
+        游戏设计文档（Game Design Document，简称GDD）是一个高度描述性的、持续更新的软件设计文档，用于详细规划视频游戏的设计。它是游戏开发团队的<strong>共同语言</strong>，是连接创意与实现的桥梁，更是整个项目开发过程中的<strong>指导愿景</strong>。
+      </p>
+      <p>
+        GDD由开发团队（包括设计师、艺术家和程序员）协作创建。当游戏由发行商委托开发时，GDD通常会作为协议的附件，开发团队在开发过程中必须遵守GDD的规范。这意味着GDD不仅是一份设计文档，更是一份具有<strong>契约性质</strong>的技术规格书。
+      </p>
+      
+      <div class="quote-block">
+        <p>"GDD有助于形成团队文化，因为每个人都理解愿景。当每个人都作为团队的一部分工作时，团队成员的参与和贡献更有价值。"</p>
+        <cite>— Document360 文档协作平台</cite>
+      </div>
+
+      <p>
+        值得注意的是，GDD不是一成不变的"死文档"。它是一个<strong>"活文档"（Living Document）</strong>，会随着开发过程中的迭代、测试反馈和创意演进不断更新和完善。正如一位Reddit用户在讨论GDD时所说："6年后这条评论仍然像新解决方案一样有帮助！"——这正体现了优秀GDD的持久参考价值。
+      </p>
+    </div>
+  </section>
+
+  <!-- 第二章：GDD的核心价值 -->
+  <section class="section" id="importance">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">GDD的核心价值与作用</h2>
+        <p class="section-subtitle">Why GDD Matters</p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="lead">
+        为什么每个游戏项目都需要GDD？因为它解决了游戏开发中最根本的问题：如何让一群拥有不同技能、背景和思维方式的人，朝着同一个目标高效协作？
+      </p>
+
+      <div class="feature-grid">
+        <!-- 价值1：统一愿景 -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">🎯</div>
+            <div>
+              <div class="feature-name">统一团队愿景</div>
+              <div class="feature-en">Unified Vision</div>
+            </div>
+          </div>
+          <p class="feature-desc">
+            GDD帮助开发团队建立共同的愿景，使每个人都理解游戏的整体方向和主要组成部分。它确保美术、程序、策划在同一个"频道"上沟通，避免"我以为是这样"的误解。
+          </p>
+        </div>
+
+        <!-- 价值2：沟通工具 -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">🤝</div>
+            <div>
+              <div class="feature-name">沟通与协作工具</div>
+              <div class="feature-en">Communication Hub</div>
+            </div>
+          </div>
+          <p class="feature-desc">
+            GDD是设计师、艺术家和程序员之间沟通的核心工具。它将游戏的所有方面（玩法、故事、角色、艺术风格、音效等）系统化地记录下来，确保所有成员都在同一页上。
+          </p>
+        </div>
+
+        <!-- 价值3：开发指导 -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">🧭</div>
+            <div>
+              <div class="feature-name">开发方向指南</div>
+              <div class="feature-en">Development Guide</div>
+            </div>
+          </div>
+          <p class="feature-desc">
+            整个游戏开发过程中，GDD是团队的行动指南，确保开发方向不偏离最初的设计意图。当团队面临技术取舍或设计决策时，GDD提供了判断依据。
+          </p>
+        </div>
+
+        <!-- 价值4：协议基础 -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">📋</div>
+            <div>
+              <div class="feature-name">发行商与开发商的协议基础</div>
+              <div class="feature-en">Contract Foundation</div>
+            </div>
+          </div>
+          <p class="feature-desc">
+            在商业游戏开发中，GDD通常作为合同的附件。它定义了项目的交付标准、功能范围和验收条件，是保护双方权益的重要法律文件。
+          </p>
+        </div>
+
+        <!-- 价值5：活文档 -->
+        <div class="feature-card">
+          <div class="feature-header">
+            <div class="feature-icon">🔄</div>
+            <div>
+              <div class="feature-name">"活文档"的迭代价值</div>
+              <div class="feature-en">Living Document</div>
+            </div>
+          </div>
+          <p class="feature-desc">
+            GDD不是一次性文档，而是随开发进程持续演进的参考。它记录了设计的变更历史、决策原因和迭代方向，是团队知识沉淀的重要载体。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第三章：GDD的文档结构 -->
+  <section class="section" id="structure">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">GDD的标准结构与核心要素</h2>
+        <p class="section-subtitle">GDD Structure & Components</p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="lead">
+        虽然GDD的具体内容会因游戏类型、团队规模和项目阶段而异，但一份专业的GDD通常包含以下核心模块。这些模块构成了从高层概念到技术实现的完整设计蓝图。
+      </p>
+
+      <ol class="structure-list">
+        <li class="structure-item">
+          <div class="structure-num">1</div>
+          <div class="structure-content">
+            <div class="structure-title">高层概念 (High Concept)</div>
+            <div class="structure-desc">用一句话概括游戏的核心体验，定义目标受众、平台、类型和独特卖点（USP）。这是GDD的"电梯演讲"部分。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">2</div>
+          <div class="structure-content">
+            <div class="structure-title">游戏机制 (Game Mechanics)</div>
+            <div class="structure-desc">详细描述核心玩法循环、规则系统、输入控制、胜利/失败条件、难度曲线等。这是GDD最技术性的部分。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">3</div>
+          <div class="structure-content">
+            <div class="structure-title">世界观与叙事 (World & Story)</div>
+            <div class="structure-desc">构建游戏的世界背景、角色设定、主线剧情、任务结构、对话脚本等叙事元素，为玩家提供情感沉浸。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">4</div>
+          <div class="structure-content">
+            <div class="structure-title">艺术风格指南 (Art Style Guide)</div>
+            <div class="structure-desc">定义视觉风格、色彩方案、角色/场景设计规范、UI/UX设计原则、动画风格等，确保美术一致性。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">5</div>
+          <div class="structure-content">
+            <div class="structure-title">音效与音乐 (Audio Design)</div>
+            <div class="structure-desc">规划配乐风格、音效分类、语音需求、音频技术规格等，打造游戏的听觉识别度。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">6</div>
+          <div class="structure-content">
+            <div class="structure-title">技术规范 (Technical Specs)</div>
+            <div class="structure-desc">列出游戏引擎、目标平台、性能指标、网络架构、数据存储等技术细节，是程序团队的开发依据。</div>
+          </div>
+        </li>
+        <li class="structure-item">
+          <div class="structure-num">7</div>
+          <div class="structure-content">
+            <div class="structure-title">开发计划与里程碑 (Development Plan)</div>
+            <div class="structure-desc">制定开发时间线、版本迭代计划、团队职责分工、风险评估等项目管理内容。</div>
+          </div>
+        </li>
+      </ol>
+
+      <div class="tip-box">
+        <h4>💡 写作技巧：从"引子"开始</h4>
+        <p>GDD的第一页应该是一个高度概括的"引子"：</p>
+        <p>• <strong>一行总结：</strong>用一句话精炼描述游戏是什么（例如："一款西幻后启示录Low-poly风格的半俯视角类银河恶魔城游戏"）</p>
+        <p>• <strong>三段式亮点：</strong>用表格列出三个最核心的设计目标，让读者快速抓住项目灵魂</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第四章：经典案例 -->
+  <section class="section" id="cases">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">经典GDD案例与模板资源</h2>
+        <p class="section-subtitle">Classic GDD Examples</p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="lead">
+        学习优秀的GDD案例是提升设计文档写作能力的最佳途径。以下是游戏设计社区中广受推崇的经典范例，它们展示了不同风格、不同详细程度的GDD形式。
+      </p>
+
+      <div class="case-grid">
+        <!-- Doom Bible -->
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">📖 Doom Bible</div>
+            <div class="case-year">《毁灭战士圣经》· 1992</div>
+          </div>
+          <div class="case-body">
+            <p>
+              由John Romero编写的《Doom Bible》是早期游戏设计文档的代表作。虽然最终游戏与文档有出入，但它展示了如何在技术受限的时代用文档规划复杂的FPS游戏体验。
+            </p>
+            <p style="font-size: .85rem; color: var(--muted);">
+              <strong>学习价值：</strong>了解早期GDD的简洁风格，以及如何在文档中平衡创意野心与技术现实。
+            </p>
+          </div>
+        </div>
+
+        <!-- Deus Ex -->
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">🦾 Deus Ex GDD</div>
+            <div class="case-year">《杀出重围》· 2000</div>
+          </div>
+          <div class="case-body">
+            <p>
+              Warren Spector领导的《Deus Ex》拥有业界闻名的详细GDD。它成功地将RPG元素与FPS融合，文档中详细规划了多重解决路径和玩家选择权的设计理念。
+            </p>
+            <p style="font-size: .85rem; color: var(--muted);">
+              <strong>学习价值：</strong>学习如何在GDD中设计复杂的系统交互和玩家agency（能动性）。
+            </p>
+          </div>
+        </div>
+
+        <!-- Silent Hill 2 -->
+        <div class="case-card">
+          <div class="case-header">
+            <div class="case-name">🌫️ Silent Hill 2 GDD</div>
+            <div class="case-year">《寂静岭2》· 2001</div>
+          </div>
+          <div class="case-body">
+            <p>
+              《寂静岭2》的GDD展示了如何用文档营造心理恐怖氛围。它详细描述了"迷雾"技术、音效设计、象征性怪物设计等创新元素。
+            </p>
+            <p style="font-size: .85rem; color: var(--muted);">
+              <strong>学习价值：</strong>理解如何在GDD中规划和传达抽象的情感体验与艺术氛围。
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tip-box">
+        <h4>📋 GDD模板类型</h4>
+        <p>• <strong>一页概念模板：</strong>用于高层级勾勒游戏的主要部分，适合提案阶段</p>
+        <p>• <strong>详细GDD模板：</strong>用于深入规划和细节，适合正式开发阶段</p>
+        <p>• <strong>Wiki式GDD模板：</strong>方便团队协作和实时更新，适合敏捷开发</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 第五章：最佳实践 -->
+  <section class="section" id="practice">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">GDD写作最佳实践</h2>
+        <p class="section-subtitle">Best Practices</p>
+      </div>
+    </div>
+    <div class="content">
+      <p class="lead">
+        掌握GDD的理论知识只是第一步，真正优秀的GDD需要在实践中不断打磨。以下是来自业界资深策划的经验总结，帮助你避开常见陷阱，写出真正有用的设计文档。
+      </p>
+
+      <div class="practice-grid">
+        <div class="practice-card">
+          <div class="practice-icon">✏️</div>
+          <h4 class="practice-title">先搭建再创新</h4>
+          <p class="practice-desc">不要在地基上盲目创新。先参考成熟游戏作为基础框架，再集中精力设计特色机制。</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">🎯</div>
+          <h4 class="practice-title">明确大方向</h4>
+          <p class="practice-desc">作为策划，在GDD中应主要明确美术风格的大方向，将具体实现交给专业成员。</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">🔄</div>
+          <h4 class="practice-title">勇于迭代</h4>
+          <p class="practice-desc">对于过时或不计划实现的内容，明确标注或移至附录，保持主文档的清晰和现时有效性。</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">📏</div>
+          <h4 class="practice-title">控制文档长度</h4>
+          <p class="practice-desc">传统GDD可能长达100多页，但现代敏捷开发更推崇精简文档。只记录必要细节，避免过度复杂化。</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">👥</div>
+          <h4 class="practice-title">为读者而写</h4>
+          <p class="practice-desc">记住GDD的读者是团队成员。使用清晰的结构、图表和示例，避免冗长的文字描述。</p>
+        </div>
+        <div class="practice-card">
+          <div class="practice-icon">🏷️</div>
+          <h4 class="practice-title">版本控制</h4>
+          <p class="practice-desc">大型团队建议使用版本控制（如Git）追踪GDD变更，记录修改历史和决策原因。</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p>"GDD的长度没有标准答案。重要的是它能否有效传达设计意图，帮助团队理解并执行。一份10页但清晰的GDD，远胜于100页但混乱的文档。"</p>
+        <cite>— 游戏设计社区共识</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- 总结 -->
+  <section class="section" id="summary">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <div class="section-title-wrap">
+        <h2 class="section-title">总结：从文档到游戏</h2>
+        <p class="section-subtitle">From Document to Game</p>
+      </div>
+    </div>
+    
+    <div class="summary-box">
+      <h3>🎮 GDD的本质</h3>
+      <p>
+        游戏设计文档不是游戏设计的全部，但它是<strong>设计过程的核心载体</strong>。一份优秀的GDD能够将抽象的创意转化为可执行的计划，将个人的灵感转化为团队的共识，将模糊的概念转化为清晰的规格。
+      </p>
+      <p>
+        对于有志于游戏开发的学生和从业者，掌握GDD写作意味着：
+      </p>
+      <p>• <strong>结构化思维：</strong>学会将复杂的游戏系统拆解为可管理的模块</p>
+      <p>• <strong>沟通表达：</strong>学会用清晰的语言向不同背景的团队成员传达设计意图</p>
+      <p>• <strong>迭代意识：</strong>理解设计是一个持续演进的过程，文档需要随之更新</p>
+      <p>• <strong>协作精神：</strong>认识到游戏是团队产物，文档是协作的基础设施</p>
+      <p style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.1);">
+        <strong>最终，GDD的价值不在于它有多厚，而在于它能否帮助团队创造出伟大的游戏。</strong>当你拿起笔（或打开文档编辑器）开始写GDD时，记住：你正在绘制的不仅是游戏的蓝图，更是团队协作的契约和项目成功的基石。
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Ponghood · 游戏设计文档 (GDD) 专业科普</p>
+  <p style="margin-top: 8px; font-size: .8rem; opacity: .7;">本文面向游戏开发学习者与从业者，旨在传递专业的游戏设计方法论</p>
+</footer>
+
+<script>
+  // 导航高亮
+  const navLinks = document.querySelectorAll('.nav a');
+  const sections = document.querySelectorAll('.section');
+  
+  function updateActiveNav() {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 100) {
+        current = section.getAttribute('id');
+      }
+    });
+    
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateActiveNav);
+  updateActiveNav();
+</script>
+
+</body>
+</html>
