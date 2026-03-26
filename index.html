@@ -226,6 +226,112 @@
     .card[data-cat="football"]::before { background: linear-gradient(90deg, #4ADE80, #16A34A); }
     .card[data-cat="culture"]::before  { background: linear-gradient(90deg, #F472B6, #DB2777); }
 
+    /* ── 未来日报专属区域 ── */
+    .intel-section { margin-top: 32px; }
+    .intel-section.hidden { display: none; }
+    
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+    .intel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .intel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #A78BFA, #7C3AED);
+    }
+    .intel-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(167,139,250,.3);
+      box-shadow: 0 8px 32px rgba(167,139,250,.1);
+    }
+    .intel-tag {
+      display: inline-block;
+      background: rgba(167,139,250,.15);
+      color: #C4B5FD;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .intel-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 10px;
+    }
+    .intel-card-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .intel-card-date {
+      font-size: .8rem;
+      color: var(--muted);
+      opacity: .7;
+    }
+
+    /* 历史归档 */
+    .intel-archive { margin-top: 48px; }
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .archive-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all .2s;
+    }
+    .archive-item:hover {
+      background: rgba(167,139,250,.08);
+      border-color: rgba(167,139,250,.3);
+      transform: translateX(4px);
+    }
+    .archive-date {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      padding: 6px 10px;
+      background: rgba(167,139,250,.15);
+      color: #C4B5FD;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .archive-title {
+      color: var(--text);
+      font-size: .95rem;
+    }
+    .archive-item:hover .archive-title {
+      color: #fff;
+    }
+
     .card-top {
       display: flex;
       align-items: flex-start;
@@ -299,6 +405,9 @@
       transition: transform .2s, border-color .2s, box-shadow .2s, opacity .25s, max-height .3s;
     }
     .card.hidden {
+      display: none;
+    }
+    .grid.hidden {
       display: none;
     }
 
@@ -474,11 +583,11 @@
       全部
       <span class="count" id="count-all"></span>
     </button>
-    <a href="daily-intel.html" class="tab" style="text-decoration: none;">
+    <button class="tab" data-tab="intel">
       <span class="dot" style="background:var(--c-intel)"></span>
       未来日报
       <span class="count" id="count-intel"></span>
-    </a>
+    </button>
     <button class="tab" data-tab="vr">
       <span class="dot" style="background:var(--c-vr)"></span>
       VR 世界
@@ -846,6 +955,89 @@
 
     <div class="empty" id="empty">该分类暂无内容，敬请期待～</div>
   </div>
+
+  <!-- 未来日报专属内容区 -->
+  <div id="intel-section" class="intel-section hidden">
+    <!-- 最新日报 -->
+    <div class="intel-latest">
+      <div class="section-label">
+        <span style="color: var(--c-intel);">🔥</span>
+        最新日报
+        <span style="font-size: .75rem; color: var(--muted); font-weight: 400;">Latest 3 Days</span>
+      </div>
+      <div class="intel-grid">
+        <a href="intel-2026-03-26.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 03/26</div>
+          <div class="intel-card-desc">OpenAI正式关停Sora全力押注智能体；杨植麟称AI将主导AI研发；华为鸿蒙用户突破5000万；中国智能眼镜出货量暴涨87%</div>
+          <div class="intel-card-date">2026-03-26</div>
+        </a>
+        <a href="intel-2026-03-25.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 03/25</div>
+          <div class="intel-card-desc">中国开源模型成全球AI底座；宇树计划3年内发布具身基础模型；固态电池2026量产元年；Meta Quest创历史新高</div>
+          <div class="intel-card-date">2026-03-25</div>
+        </a>
+        <a href="intel-2026-03-24.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 03/24</div>
+          <div class="intel-card-desc">Karpathy宣告彻底停止手写代码；中国AI调用量4.69万亿Token连超美国；宇树科技42亿IPO；马斯克建TeraFab 2nm芯片厂</div>
+          <div class="intel-card-date">2026-03-24</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 历史归档 -->
+    <div class="intel-archive">
+      <div class="section-label">
+        <span style="color: var(--c-intel);">📚</span>
+        历史归档
+        <span style="font-size: .75rem; color: var(--muted); font-weight: 400;">Archive</span>
+      </div>
+      <div class="archive-list">
+        <a href="intel-2026-03-23.html" class="archive-item">
+          <span class="archive-date">03/23</span>
+          <span class="archive-title">中国开源模型成全球AI底座；MiniMax发布自我进化模型M2.7</span>
+        </a>
+        <a href="intel-2026-03-22.html" class="archive-item">
+          <span class="archive-date">03/22</span>
+          <span class="archive-title">英伟达30亿参数击败6710亿大模型 · 宇树IPO受理 · 固态电池量产元年</span>
+        </a>
+        <a href="intel-2026-03-21.html" class="archive-item">
+          <span class="archive-date">03/21</span>
+          <span class="archive-title">GPT-5.4 vs Claude Opus 4.6 · GeForce NOW VR串流90 FPS · 脑机接口入政府工作报告</span>
+        </a>
+        <a href="intel-2026-03-20.html" class="archive-item">
+          <span class="archive-date">03/20</span>
+          <span class="archive-title">NVIDIA GTC三芯发布 · Meta放弃Horizon Worlds转向AI · 杀戮尖塔2上线</span>
+        </a>
+        <a href="intel-2026-03-19.html" class="archive-item">
+          <span class="archive-date">03/19</span>
+          <span class="archive-title">小米三款大模型发布 · 银河通用25亿融资 · Unity 2026报告</span>
+        </a>
+        <a href="intel-2026-03-18.html" class="archive-item">
+          <span class="archive-date">03/18</span>
+          <span class="archive-title">科技情报汇总：AI、硬件、前沿技术最新动态</span>
+        </a>
+        <a href="intel-2026-03-17.html" class="archive-item">
+          <span class="archive-date">03/17</span>
+          <span class="archive-title">NVIDIA Vera Rubin推理成本降至1/10 · 阿里"悟空"Agent</span>
+        </a>
+        <a href="intel-2026-03-16.html" class="archive-item">
+          <span class="archive-date">03/16</span>
+          <span class="archive-title">GPT-5.3 & Gemini 3.1 Pro · 三强同月爆发</span>
+        </a>
+        <a href="intel-2026-03-15.html" class="archive-item">
+          <span class="archive-date">03/15</span>
+          <span class="archive-title">Gemini 2.5 Ultra登场 · PICO自研芯片预告</span>
+        </a>
+        <a href="intel-2026-03-14.html" class="archive-item">
+          <span class="archive-date">03/14</span>
+          <span class="archive-title">2026年3月14日情报汇总</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </main>
 
 <!-- 公众号引流 -->
@@ -877,6 +1069,8 @@
   const cards = document.querySelectorAll('.card[data-cat]');
   const label = document.getElementById('section-label');
   const empty = document.getElementById('empty');
+  const intelSection = document.getElementById('intel-section');
+  const grid = document.getElementById('grid');
 
   const labelMap = {
     all:      '全部项目',
@@ -910,14 +1104,24 @@
     tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === target));
     label.textContent = labelMap[target] || '全部项目';
 
-    let visible = 0;
-    cards.forEach(card => {
-      const show = target === 'all' || card.dataset.cat === target;
-      card.classList.toggle('hidden', !show);
-      if (show) visible++;
-    });
+    // 未来日报特殊处理：显示专属区域，隐藏普通网格
+    if (target === 'intel') {
+      grid.classList.add('hidden');
+      intelSection.classList.remove('hidden');
+      empty.classList.remove('show');
+    } else {
+      grid.classList.remove('hidden');
+      intelSection.classList.add('hidden');
+      
+      let visible = 0;
+      cards.forEach(card => {
+        const show = target === 'all' || card.dataset.cat === target;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      empty.classList.toggle('show', visible === 0);
+    }
 
-    empty.classList.toggle('show', visible === 0);
     history.replaceState(null, '', '#' + target);
   }
 
