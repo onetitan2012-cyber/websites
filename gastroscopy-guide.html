@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>能救你命的大保养：中年人的胃肠镜全流程图文攻略 | 谦言万语汇</title>
+  <meta name="description" content="从挂号到复查的全程实录+可视化攻略。把那些零碎、容易被忽略的步骤、时间点和注意事项，用图文把它讲清楚——省你时间、少你烦恼、稳你心神。">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2D5A4A;
+      --primary-light: #4A7C6F;
+      --accent: #E8B86D;
+      --accent-light: #F5D9A3;
+      --bg: #F8F6F1;
+      --card: #FFFFFF;
+      --text: #2C3E50;
+      --text-light: #5D6D7E;
+      --border: #E0DCD3;
+      --warning: #E74C3C;
+      --success: #27AE60;
+      --timeline: #D4E6E1;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+    
+    /* 返回主页按钮 */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 500;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+    }
+    
+    .back-home:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+      border-color: var(--primary-light);
+    }
+    
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+    
+    /* Hero区 */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      padding: 100px 24px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      color: var(--accent-light);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      border: 1px solid rgba(232,184,109,0.3);
+    }
+    
+    .hero-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.4;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      max-width: 600px;
+    }
+    
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 32px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px;
+    }
+    
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    /* 主内容区 */
+    .main {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    
+    /* 引言卡片 */
+    .intro-card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--accent);
+    }
+    
+    .intro-card p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 2;
+    }
+    
+    .intro-card p:first-child::first-letter {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 3rem;
+      float: left;
+      line-height: 1;
+      margin-right: 12px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    /* 科普提醒 */
+    .tips-section {
+      background: linear-gradient(135deg, #E8F5E9 0%, #F1F8E9 100%);
+      border-radius: 16px;
+      padding: 28px 32px;
+      margin-bottom: 48px;
+      border: 1px solid #C8E6C9;
+    }
+    
+    .tips-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+    
+    .tips-list {
+      list-style: none;
+    }
+    
+    .tips-list li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      color: var(--text-light);
+      font-size: 15px;
+    }
+    
+    .tips-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--success);
+      font-weight: 700;
+    }
+    
+    /* 时间线 */
+    .timeline-section {
+      margin-bottom: 48px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    
+    .section-tag {
+      display: inline-block;
+      background: rgba(45,90,74,0.1);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .section-title {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--primary), var(--accent));
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+    
+    .timeline-item::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -40px;
+      top: 0;
+      width: 26px;
+      height: 26px;
+      background: var(--card);
+      border: 3px solid var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .timeline-content {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+      border: 1px solid var(--border);
+    }
+    
+    .timeline-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .timeline-desc {
+      color: var(--text-light);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    
+    .timeline-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .meta-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 12px;
+      background: var(--bg);
+      border-radius: 6px;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+    
+    .meta-tag.cost {
+      background: rgba(231,76,60,0.08);
+      color: var(--warning);
+    }
+    
+    .meta-tag.time {
+      background: rgba(39,174,96,0.08);
+      color: var(--success);
+    }
+    
+    /* 重点提示 */
+    .highlight-box {
+      background: linear-gradient(135deg, #FFF8E1 0%, #FFECB3 100%);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 20px 0;
+      border-left: 4px solid var(--accent);
+    }
+    
+    .highlight-box strong {
+      color: var(--primary);
+    }
+    
+    /* FAQ区 */
+    .faq-section {
+      margin-bottom: 48px;
+    }
+    
+    .faq-item {
+      background: var(--card);
+      border-radius: 12px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    
+    .faq-question {
+      padding: 20px 24px;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+    
+    .faq-question:hover {
+      background: var(--bg);
+    }
+    
+    .faq-question::before {
+      content: 'Q';
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    
+    .faq-answer {
+      padding: 0 24px 20px 60px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    
+    /* 结语 */
+    .conclusion {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    .conclusion-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+    
+    .conclusion h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    
+    .conclusion p {
+      opacity: 0.9;
+      line-height: 1.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* 公众号原文链接模块 */
+    .wechat-source {
+      background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 40px 0;
+      text-align: center;
+      border: 1px solid #A5D6A7;
+    }
+    
+    .wechat-source h3 {
+      font-family: 'Noto Serif SC', serif;
+      font-size: 1.3rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    
+    .wechat-source p {
+      color: var(--text-light);
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    
+    .wechat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 16px rgba(45,90,74,0.3);
+    }
+    
+    .wechat-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(45,90,74,0.4);
+      background: var(--primary-light);
+    }
+    
+    .wechat-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+    
+    /* 底部 */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--text-light);
+      font-size: 14px;
+    }
+    
+    .footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    /* 响应式 */
+    @media (max-width: 640px) {
+      .hero {
+        padding: 80px 20px 40px;
+      }
+      
+      .main {
+        padding: 40px 20px;
+      }
+      
+      .intro-card {
+        padding: 24px;
+      }
+      
+      .timeline {
+        padding-left: 32px;
+      }
+      
+      .timeline-item::before {
+        left: -32px;
+        width: 22px;
+        height: 22px;
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页 -->
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回主页
+  </a>
+
+  <!-- Hero区 -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">🏥 健康攻略</span>
+      <h1 class="hero-title">能救你命的大保养：中年人的胃肠镜全流程图文攻略</h1>
+      <p class="hero-subtitle">从挂号到复查的全程实录+可视化攻略。把那些零碎、容易被忽略的步骤、时间点和注意事项，用图文把它讲清楚——省你时间、少你烦恼、稳你心神。</p>
+      <div class="hero-meta">
+        <span>✍️ 谦谦静听</span>
+        <span>📅 2025年1月</span>
+        <span>🏥 北京同仁医院</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 主内容 -->
+  <main class="main">
+    <!-- 引言 -->
+    <div class="intro-card">
+      <p>三十而立，四十不惑，人到中年，除了知识和技能在持续做正向积累，但生理已不再像年轻时那般"自带免疫力"。这时候做一次胃肠镜检查，不只是找问题，更像给身体做一次深度维护——把隐形的风险照亮，把未来的自由拉回来。</p>
+      <p style="margin-top: 16px;">这篇文章，是我的亲身经历，从挂号到复查的全程实录＋可视化攻略。把那些零碎、容易被忽略的步骤、时间点和注意事项，用图文把它讲清楚——省你时间、少你烦恼、稳你心神。</p>
+    </div>
+
+    <!-- 科普提醒 -->
+    <div class="tips-section">
+      <div class="tips-title">
+        <span>📋</span>
+        <span>胃肠镜检查专业科普提醒</span>
+      </div>
+      <ul class="tips-list">
+        <li>结肠镜/结直肠筛查的推荐启动年龄已从50岁下调至45岁（癌症协会）</li>
+        <li>胃癌高发地区（如部分中国地区）对50岁及以上人群建议内镜筛查（PMC）</li>
+        <li>肠镜准备需提前低纤饮食、清流质，并按医嘱服泻药（Kaiser Permanente）</li>
+        <li>规律运动对结直肠癌有明确的保护作用（PMC）</li>
+      </ul>
+    </div>
+
+    <!-- 8个关键步骤 -->
+    <section class="timeline-section">
+      <div class="section-header">
+        <span class="section-tag">全流程攻略</span>
+        <h2 class="section-title">作者亲历的8个关键步骤</h2>
+      </div>
+      
+      <div class="timeline">
+        <!-- Step 1 -->
+        <div class="timeline-item" data-step="1">
+          <div class="timeline-content">
+            <h3 class="timeline-title">消化内科挂号，开检查/药单并缴费</h3>
+            <p class="timeline-desc">建议就近选择三甲医院。挂号后问诊，医生开具检查单和药物，完成缴费。</p>
+            <div class="timeline-meta">
+              <span class="meta-tag cost">💰 费用：1720.28元</span>
+              <span class="meta-tag">📍 北京同仁医院</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-item" data-step="2">
+          <div class="timeline-content">
+            <h3 class="timeline-title">预约胃肠镜时间</h3>
+            <p class="timeline-desc">无痛胃肠镜预约周期较长（通常1-2周），也可选择普通检查。问诊后签字确认，完成预约。</p>
+            <div class="timeline-meta">
+              <span class="meta-tag time">⏱️ 示例：1月14日预约 → 1月26日手术</span>
+              <span class="meta-tag">💉 类型：无痛/普通</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-item" data-step="3">
+          <div class="timeline-content">
+            <h3 class="timeline-title">药物领取与随诊材料</h3>
+            <p class="timeline-desc">术前服用：磷酸钠盐散（泻药）、二甲硅油乳剂。手术时携带：达已苏、盐酸奥布卡因凝胶。建议带书包或收纳袋集中存放。</p>
+            <div class="highlight-box">
+              <strong>💡 提示：</strong>所有药物和单据集中存放，避免手术当天手忙脚乱
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-item" data-step="4">
+          <div class="timeline-content">
+            <h3 class="timeline-title">三项检查（空腹采血、心电图、验尿）</h3>
+            <p class="timeline-desc">检查项目包括：血常规、生化常规、凝血四项、免疫四项、心电图、尿沉渣。若挂号当天未空腹，需单独安排抽血。</p>
+            <div class="timeline-meta">
+              <span class="meta-tag">🩸 血常规</span>
+              <span class="meta-tag">📊 生化常规</span>
+              <span class="meta-tag">🩺 心电图</span>
+              <span class="meta-tag">🧪 尿沉渣</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="timeline-item" data-step="5">
+          <div class="timeline-content">
+            <h3 class="timeline-title">麻醉科会诊</h3>
+            <p class="timeline-desc">检查结果出来后，可进行线上会诊（上传结果，视频/短信沟通）。关键：如实告知病史、过敏史，否则可能无法全麻。</p>
+            <div class="highlight-box">
+              <strong>⚠️ 重要：</strong>心肺疾病、凝血异常、发热感染、未如实告知用药史等都可能导致麻醉会诊不通过
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="timeline-item" data-step="6">
+          <div class="timeline-content">
+            <h3 class="timeline-title">提前一周清淡饮食</h3>
+            <p class="timeline-desc">检查前一周开始低纤维饮食，避免高纤维粗粮、含籽水果、油腻食物、牛奶/豆浆等。</p>
+            <div class="timeline-meta">
+              <span class="meta-tag cost">🚫 高纤维粗粮</span>
+              <span class="meta-tag cost">🚫 含籽水果</span>
+              <span class="meta-tag cost">🚫 油腻食物</span>
+              <span class="meta-tag cost">🚫 牛奶/豆浆</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 7 -->
+        <div class="timeline-item" data-step="7">
+          <div class="timeline-content">
+            <h3 class="timeline-title">泻药服用</h3>
+            <p class="timeline-desc">检查前一天和当天上午服用磷酸钠盐散。药味难喝（如玻璃水），需大量饮水，约1小时后开始排泄，体重可减轻约5斤。</p>
+            <div class="highlight-box">
+              <strong>💡 小贴士：</strong>用冷开水稀释，小口分次喝，服后漱口或刷牙可缓解不适
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 8 -->
+        <div class="timeline-item" data-step="8">
+          <div class="timeline-content">
+            <h3 class="timeline-title">手术当天</h3>
+            <p class="timeline-desc">10:00后禁食禁水，必须有家属陪同。流程：服用凝胶→麻醉注射→侧卧手术→半小时全麻沉睡。术后家属接送。</p>
+            <div class="timeline-meta">
+              <span class="meta-tag cost">💰 手术费：400+元</span>
+              <span class="meta-tag cost">💰 累计总费用：约2200+元</span>
+            </div>
+            <div class="highlight-box">
+              <strong>🚗 注意：</strong>全麻后禁止自驾，必须家属接送！
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+      <div class="section-header">
+        <span class="section-tag">常见问题</span>
+        <h2 class="section-title">你可能想知道的</h2>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">泻药难喝怎么办？</div>
+        <div class="faq-answer">用冷开水稀释，小口分次喝，服后漱口或刷牙可缓解不适。</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">能否自驾回家？</div>
+        <div class="faq-answer">全麻后禁止自驾，必须家属接送！麻醉药物会影响反应能力，为了安全请务必遵守。</div>
+      </div>
+      
+      <div class="faq-item">
+        <div class="faq-question">麻醉会诊不通过的常见原因？</div>
+        <div class="faq-answer">心肺疾病、凝血异常、发热感染、未如实告知用药史等都可能导致麻醉会诊不通过，请务必如实告知医生。</div>
+      </div>
+    </section>
+
+    <!-- 术后注意 -->
+    <section class="timeline-section">
+      <div class="section-header">
+        <span class="section-tag">术后恢复</span>
+        <h2 class="section-title">术后注意与复查</h2>
+      </div>
+      
+      <div class="tips-section" style="background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%); border-color: #90CAF9;">
+        <div class="tips-title" style="color: #1565C0;">
+          <span>📝</span>
+          <span>术后注意事项</span>
+        </div>
+        <ul class="tips-list">
+          <li>术后可能出现嗓子不适、腹胀或轻微出血，严重需就医</li>
+          <li>1–3天逐步恢复饮食，戒酒和刺激性饮料</li>
+          <li>长期运动习惯对健康有显著保护作用</li>
+          <li>根据检查结果，遵医嘱定期复查</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 结语 -->
+    <div class="conclusion">
+      <div class="conclusion-icon">🛡️</div>
+      <h3>身体大保养，从现在开始</h3>
+      <p>通过这次检查，我深刻体会到"身体大保养"的重要性。运动、作息规律对健康的长期价值不可忽视。定期进行胃肠镜检查，像保养汽车一样爱护身体，是对自己和家人最大的负责。</p>
+    </div>
+
+    <!-- 公众号原文链接 -->
+    <div class="wechat-source">
+      <h3>📱 喜欢这篇文章？</h3>
+      <p>阅读原文，关注公众号获取更多健康攻略</p>
+      <a href="https://mp.weixin.qq.com/s/UIo1kZKfDNJYJ_UITKW5ZQ" target="_blank" class="wechat-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.047c.134 0 .24-.111.24-.247 0-.06-.023-.12-.038-.177l-.327-1.233a.582.582 0 0 1-.023-.156.49.49 0 0 1 .201-.398C23.024 18.48 24 16.82 24 14.98c0-3.21-2.931-5.837-6.656-6.088V8.89c-.135-.01-.27-.027-.407-.032zm-2.53 3.274c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.969-.982z"/></svg>
+        阅读原文了解更多 →
+      </a>
+    </div>
+  </main>
+
+  <!-- 底部 -->
+  <footer class="footer">
+    <p>本文作者：谦谦静听 | 公众号：谦言万语汇</p>
+    <p style="margin-top: 8px;">原文发布于 <a href="https://mp.weixin.qq.com/s/UIo1kZKfDNJYJ_UITKW5ZQ" target="_blank">微信公众号</a></p>
+  </footer>
+</body>
+</html>
