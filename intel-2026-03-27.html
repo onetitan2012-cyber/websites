@@ -102,96 +102,102 @@
       position: fixed;
       top: 16px;
       left: 16px;
-      z-index: 200;
-      display: flex;
+      z-index: 1000;
+      display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      background: rgba(28,33,40,.95);
+      gap: 6px;
+      background: rgba(13,17,23,.85);
+      backdrop-filter: blur(10px);
       border: 1px solid var(--border);
       border-radius: 50px;
-      font-size: .8rem;
-      color: var(--muted);
+      padding: 8px 16px;
+      font-size: .85rem;
+      color: var(--text);
       text-decoration: none;
-      backdrop-filter: blur(12px);
       transition: all .2s;
     }
-    .back-home svg { width: 16px; height: 16px; }
     .back-home:hover {
-      background: var(--card);
-      color: var(--text);
-      transform: translateX(-2px);
-      border-color: var(--accent1);
+      background: rgba(26,115,232,.2);
+      border-color: rgba(26,115,232,.4);
     }
+    .back-home svg { width: 16px; height: 16px; }
 
     /* NAV */
     .nav-bar {
-      background: var(--card);
-      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
       padding: 0 24px;
       overflow-x: auto;
-      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
     }
-    .nav-bar::-webkit-scrollbar { display: none; }
     .nav-list {
       display: flex;
-      gap: 0;
+      gap: 8px;
       list-style: none;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 12px 0;
+      justify-content: center;
     }
     .nav-item a {
       display: block;
-      padding: 14px 18px;
-      font-size: .85rem;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: .88rem;
       color: var(--muted);
       text-decoration: none;
       white-space: nowrap;
-      border-bottom: 2px solid transparent;
       transition: all .2s;
     }
-    .nav-item a:hover, .nav-item a.active {
-      color: var(--accent1);
-      border-color: var(--accent1);
+    .nav-item a:hover,
+    .nav-item a.active {
+      color: #fff;
+      background: rgba(26,115,232,.15);
+    }
+    .nav-item a.active {
+      box-shadow: inset 0 0 0 1px rgba(26,115,232,.35);
     }
 
     /* CONTAINER */
-    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 72px; }
-
-    /* SECTION */
-    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
-    section:last-of-type { border-bottom: none; }
-    .section-header { margin-bottom: 32px; }
-    .section-header .icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 48px 24px;
     }
-    .section-header h2 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 6px;
+
+    /* SECTION HEADER */
+    .section-header {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .section-header .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+    }
+    .section-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
     }
     .section-header p {
-      font-size: .95rem;
+      margin-left: auto;
+      font-size: .9rem;
       color: var(--muted);
     }
 
     /* SIGNAL CARDS */
     .signal-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 20px;
     }
     .signal-card {
@@ -331,24 +337,24 @@
       </div>
       <div class="signal-grid">
         <div class="signal-card">
-          <span class="tag tag-ai">行业争议</span>
-          <h3>873家中国机构遭AI顶会"封杀"</h3>
-          <p>中国计算机学会（CCF）发布声明，强烈反对某国际AI顶会对华为、商汤等873家中国机构的"封杀"行为。这一事件引发中国学界强烈反应，标志着AI领域的国际竞争与博弈进入新阶段，技术脱钩风险持续升温。</p>
-          <a href="https://k.sina.com.cn/article_7857201856_1d45362c001903n80q.html" class="signal-source" target="_blank">来源：新浪AI热点 →</a>
+          <span class="tag tag-ai">行业标准</span>
+          <h3>具身智能领域首个行业标准正式发布</h3>
+          <p>中国信息通信研究院联合40余家单位共同起草的具身智能领域首个行业标准正式发布，该标准构建了统一的基准测试框架，标志着具身智能评测迈入"有标可依"的新阶段，将于2026年6月1日正式实施。</p>
+          <a href="https://news.cctv.com/2026/03/27/ARTIGixNMr914RhtxhEfutgp260326.shtml" class="signal-source" target="_blank">来源：央视网 →</a>
         </div>
         
         <div class="signal-card accent2">
-          <span class="tag tag-ai">模型评测</span>
-          <h3>2026 AI模型综合实力深度测评发布</h3>
-          <p>太平洋科技发布AI大模型深度测评报告，Gemini 3以94.6分领先，全能表现最佳；ChatGPT创作能力强；Claude在代码生成方面表现突出。测评覆盖六大维度：推理能力、创作能力、代码能力、多模态、安全性和效率。</p>
-          <a href="https://www.pconline.com.cn/ai/article/1549619.html" class="signal-source" target="_blank">来源：太平洋科技 →</a>
+          <span class="tag tag-ai">产业盛会</span>
+          <h3>2026中关村论坛AI主题日聚焦具身智能</h3>
+          <p>2026中关村论坛年会于3月25日至29日在北京举办，主题为"科技创新与产业创新深度融合"。人工智能主题日贯穿全程，来自100多个国家和地区的上千名嘉宾参与，聚焦具身智能、6G、脑机接口等前沿领域。</p>
+          <a href="https://finance.sina.com.cn/jjxw/2026-03-27/doc-inhsmamy2198131.shtml" class="signal-source" target="_blank">来源：新浪财经 →</a>
         </div>
         
         <div class="signal-card accent3">
-          <span class="tag tag-ai">技术发布</span>
-          <h3>OpenAI推出GPT-4o原生图像生成</h3>
-          <p>OpenAI紧急开启直播，推出全新GPT-4o原生图像生成技术，该功能即日起向所有用户开放。与DALL-E不同，新技术实现了文本到图像的端到端生成，在图像质量、文本渲染和风格一致性方面实现重大突破。</p>
-          <a href="https://www.163.com/dy/article/JRJE1ELT0530WJIN.html" class="signal-source" target="_blank">来源：网易科技 →</a>
+          <span class="tag tag-ai">芯片发布</span>
+          <h3>Arm推出首款自研数据中心CPU AGI CPU</h3>
+          <p>Arm正式推出首款自研数据中心CPU AGI CPU，CEO Rene Haas预测到2031年该芯片通过机架级配置每年将为公司创造约150亿美元收入。这标志着Arm从IP授权商向芯片供应商的战略转型。</p>
+          <a href="https://www.itnews.vip/2026/03/27/arm-ceo%E8%87%AA%E4%BF%A1%EF%BC%9Aagi-cpu%E6%98%AFintel-amd%E7%9A%84%E9%BA%BB%E7%83%A6%E3%80%81%E4%B8%8D%E4%BC%9A%E5%BE%97%E7%BD%AAnvidia/" class="signal-source" target="_blank">来源：ITNews →</a>
         </div>
       </div>
     </section>
@@ -362,17 +368,17 @@
       </div>
       <div class="signal-grid">
         <div class="signal-card accent2">
-          <span class="tag tag-vr">市场趋势</span>
-          <h3>Meta保留Horizon Worlds VR支持</h3>
-          <p>Meta首席技术官Andrew Bosworth宣布，公司决定继续为Horizon Worlds提供虚拟现实支持，原定于6月下线的计划取消。这标志着Meta在VR社交领域的战略调整，从全面转向AI回归到VR与AI并重的发展路线。</p>
-          <a href="https://vr.ithome.com/" class="signal-source" target="_blank">来源：IT之家VR →</a>
+          <span class="tag tag-vr">产业观察</span>
+          <h3>中关村论坛展现AI与机器人融合新趋势</h3>
+          <p>2026中关村论坛年会上，机器人不再是孤立的炫技展品，真正实现了从"单机表演"到"场景落地"的转变。AI与机器人的深度融合成为本届论坛最大亮点，预示着具身智能时代的到来。</p>
+          <a href="https://www.news.cn/tech/20260327/a6cabd2df0b54135becce4b1c30a76a2/c.html" class="signal-source" target="_blank">来源：新华网 →</a>
         </div>
         
         <div class="signal-card">
-          <span class="tag tag-vr">产品规划</span>
-          <h3>苹果Vision Pro升级计划曝光</h3>
-          <p>据彭博社报道，苹果计划2026年底推出Vision Pro的升级版本，并持续推进真AR眼镜研发，目标2030年前上市。竞争态势日趋激烈，Meta、苹果、谷歌在XR领域的三足鼎立格局正在形成。</p>
-          <a href="https://www.vrcoast.cn/347025.html" class="signal-source" target="_blank">来源：VRcoast →</a>
+          <span class="tag tag-vr">技术趋势</span>
+          <h3>新科技浪潮加速贴近日常生活</h3>
+          <p>2026中关村论坛年会展示的前沿科技成果表明，以AI、VR/AR、机器人为代表的新科技浪潮正越来越贴近日常生活。从实验室走向产业应用的速度正在加快，技术商业化进入爆发期。</p>
+          <a href="https://news.bjd.com.cn/2026/03/27/11654861.shtml" class="signal-source" target="_blank">来源：北京日报 →</a>
         </div>
       </div>
     </section>
@@ -386,13 +392,6 @@
       </div>
       <div class="signal-grid">
         <div class="signal-card accent3">
-          <span class="tag tag-game">销量数据</span>
-          <h3>《红色沙漠》Steam销量破300万份</h3>
-          <p>Steam最新一周销量榜出炉，《红色沙漠》从本月上线以来销量达到300万份，成功登顶。这款开放世界动作RPG凭借精美的画面和流畅的战斗系统，成为2026年春季最受关注的3A大作之一。</p>
-          <a href="https://www.zzc9.com/a/PCyouxikuaixun/2026/0326/8713.html" class="signal-source" target="_blank">来源：Steam销量榜 →</a>
-        </div>
-        
-        <div class="signal-card accent4">
           <span class="tag tag-game">行业趋势</span>
           <h3>2026年游戏AI越过"恐怖谷"</h3>
           <p>AI技术在游戏行业的应用已越过恐怖谷效应，正从简单的辅助工具转变为创作伙伴。多位行业从业者分享了对AI在游戏原型开发、3D模型生成、玩法创新等方面的重要进展，AI正在重塑游戏开发全流程。</p>
@@ -406,28 +405,21 @@
       <div class="section-header">
         <div class="icon" style="background: rgba(107,63,160,.15);">🔬</div>
         <h2>新科技 <span style="font-size: .7em; color: var(--muted); font-weight: 400;">Emerging Tech</span></h2>
-        <p>机器人、新能源、量子计算与芯片</p>
+        <p>机器人、量子计算、新能源与材料</p>
       </div>
       <div class="signal-grid">
         <div class="signal-card accent4">
-          <span class="tag tag-tech">人形机器人</span>
-          <h3>具身智能开始「清场」</h3>
-          <p>2026年，人形机器人行业迎来淘汰赛。Figure AI创始人Brett Adcock官宣Figure 03是"地球上最先进的人形机器人"，但商业化落地仍面临挑战。宇树科技科创板IPO获受理，420亿估值引发行业热议。</p>
-          <a href="https://www.36kr.com/p/3737718590980355" class="signal-source" target="_blank">来源：36氪 →</a>
+          <span class="tag tag-tech">标准发布</span>
+          <h3>具身智能评测进入"有标可依"新阶段</h3>
+          <p>新发布的具身智能行业标准聚焦人工智能关键基础技术和具身智能基准测试方法，明确了具身智能系统框架和能力要求。标准规范了在仿真环境和真实环境下的测试方法，配套超万条测试任务库。</p>
+          <a href="https://www.ithome.com/0/933/138.htm" class="signal-source" target="_blank">来源：IT之家 →</a>
         </div>
         
-        <div class="signal-card accent2">
-          <span class="tag tag-tech">行业分析</span>
-          <h3>宇树科技招股书透视：中外具身智能竞速</h3>
-          <p>宇树科技科创板IPO申请获上交所正式受理，拟募资42.02亿元。当具身智能从国家战略蓝图走进产业实践，人形与四足机器人两大核心赛道的竞争，已告别实验室"炫技"，迈入商业化"拼杀"的关键阶段。</p>
-          <a href="https://robot.ofweek.com/2026-03/ART-898890-8420-30683547.html" class="signal-source" target="_blank">来源：OFweek →</a>
-        </div>
-        
-        <div class="signal-card accent5">
-          <span class="tag tag-tech">AI趋势</span>
-          <h3>人工智能主题日贯穿中关村论坛</h3>
-          <p>2026中关村论坛年会"人工智能主题日"新闻发布会举行。本届主题日将打造"1+6"活动框架，聚焦"前沿技术"与"国际化"两大核心，以"交融·智享AI新范式下的全球创新"为主题，展示中国AI发展成果。</p>
-          <a href="https://www.xinhuanet.com/tech/20260326/c94e0c98cb0b4580b1ff7921c5833fa5/c.html" class="signal-source" target="_blank">来源：新华网 →</a>
+        <div class="signal-card">
+          <span class="tag tag-tech">产业报告</span>
+          <h3>德勤发布2026全球半导体行业趋势报告</h3>
+          <p>受AI基础设施建设驱动，2026年全球半导体销售额预计将达9750亿美元，创历史新高。然而繁荣之下暗藏隐忧：行业对AI布局高度集中，虽短期策略合理，但仍需前瞻性评估需求放缓风险。</p>
+          <a href="https://www.deloitte.com/cn/zh/Industries/telecom-media-entertainment/perspectives/deloitte-2026-global-semiconductor-industry-outlook.html" class="signal-source" target="_blank">来源：德勤中国 →</a>
         </div>
       </div>
     </section>
@@ -437,21 +429,21 @@
       <div class="section-header">
         <div class="icon" style="background: rgba(198,40,40,.15);">📦</div>
         <h2>新产品 <span style="font-size: .7em; color: var(--muted); font-weight: 400;">New Products</span></h2>
-        <p>消费电子、软件工具与创业产品</p>
+        <p>硬件发布、软件更新与工具推荐</p>
       </div>
       <div class="signal-grid">
         <div class="signal-card accent5">
-          <span class="tag tag-product">行业展会</span>
-          <h3>CFMS MemoryS 2026存储峰会举行</h3>
-          <p>3月27日，CFMS｜MemoryS 2026以"穿越周期，释放价值"为主题在深圳举行。本届峰会汇聚存储、CPU/GPU、AI大模型等产业链百家争鸣，探讨存储技术在AI时代的价值释放。</p>
-          <a href="https://news.qq.com/rain/a/20260323A06KZF00" class="signal-source" target="_blank">来源：腾讯新闻 →</a>
+          <span class="tag tag-product">显卡发布</span>
+          <h3>Intel推出锐炫Pro B70/B65专业显卡</h3>
+          <p>Intel正式推出锐炫Pro B70/B65专业显卡，配备32GB大显存和367TOPS算力，面向AI推理和专业工作站市场。这是Intel在独立显卡领域的又一重要布局，直接挑战NVIDIA和AMD的专业卡市场。</p>
+          <a href="https://zhuanlan.zhihu.com/p/2020626883335725230" class="signal-source" target="_blank">来源：知乎专栏 →</a>
         </div>
         
         <div class="signal-card accent3">
-          <span class="tag tag-product">市场数据</span>
-          <h3>深圳AI眼镜占据全球半壁江山</h3>
-          <p>全球每卖出2副AI眼镜，1副出自深圳。2026年4月25-28日，第17届深圳国际移动电子展(CME)将在深圳国际会展中心盛大启幕。本届展会紧扣"AI驱动+场景赋能"主题，展示中国AI硬件创新实力。</p>
-          <a href="https://www.itbear.com.cn/html/2026-03/1235005.html" class="signal-source" target="_blank">来源：ITBear →</a>
+          <span class="tag tag-product">行业周报</span>
+          <h3>识因AI周报：NVIDIA Vera Rubin平台领衔</h3>
+          <p>本周AI芯片领域热点：NVIDIA推出Vera Rubin平台，七款芯片赋能AI；MiniMax发布M2.7实现自我进化；智谱AI推出GLM-5 Turbo开启模型反思；摩尔线程突破FP8技术提升性能与性价比。</p>
+          <a href="https://www.sohu.com/a/1001885456_121946241" class="signal-source" target="_blank">来源：搜狐科技 →</a>
         </div>
       </div>
     </section>
@@ -459,19 +451,18 @@
     <!-- 今日洞察 -->
     <div class="summary-box">
       <h3>📊 龙大仙今日洞察</h3>
-      <p>2026年3月27日，科技行业呈现出"竞争与博弈"的鲜明特征。国际AI顶会对中国机构的"封杀"事件，标志着技术脱钩风险持续升温；OpenAI与谷歌的"双雄对决"，展现了多模态AI的激烈竞争；具身智能赛道进入淘汰赛，商业化落地成为关键。2026年，AI产业正从"技术炫技"走向"商业拼杀"，谁能穿越周期、释放价值，谁就能在激烈的竞争中脱颖而出。</p>
+      <p>2026年3月27日，科技行业的焦点集中在北京中关村论坛。具身智能领域首个行业标准的发布，标志着这一前沿技术正式进入"有标可依"的规范化发展阶段。Arm推出自研数据中心CPU，宣告其从IP授权商向芯片供应商的战略转型。Intel锐炫Pro系列显卡的发布，则显示出其在AI推理市场的野心。整体来看，AI基础设施建设的竞争正在白热化，从芯片到标准，从硬件到生态，各方势力都在加速布局。</p>
     </div>
   </main>
 
   <footer>
-    <p>© 2026 龙大仙 · 每日未来情报 · 追踪改变世界的科技信号</p>
-    <p style="margin-top: 8px; opacity: .7;">数据来源：公开互联网信息整理 | 仅供学习参考</p>
+    © 2026 <span>PONGHOOD</span> · 每日未来情报 · 龙大仙出品
   </footer>
 
   <script>
     // Nav active state
-    const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-item a');
+    const sections = document.querySelectorAll('section[id]');
     
     window.addEventListener('scroll', () => {
       let current = '';
