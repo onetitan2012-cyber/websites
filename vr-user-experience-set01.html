@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VR用户体验与晕动症：构成因素深度解析 - 龙大仙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #22D3EE;
+      --primary-dark: #0891B2;
+      --accent: #A78BFA;
+      --dark: #0D1117;
+      --card-bg: #1C2128;
+      --border: #30363D;
+      --text: #E6EDF3;
+      --text-secondary: #8B949E;
+      --bg: #0F172A;
+      --gradient-start: #164E63;
+      --gradient-end: #0C4A6E;
+      --success: #4ADE80;
+      --warning: #FB923C;
+      --danger: #F87171;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      padding: 140px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-series {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #22D3EE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+    .hero-meta-item span { color: var(--primary); font-weight: 600; }
+
+    /* Main Content */
+    .main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 32px;
+      padding-top: 24px;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(34, 211, 238, 0.15);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Intro Card */
+    .intro-card {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 48px;
+    }
+    .intro-card p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .intro-card strong { color: var(--primary); }
+
+    /* Biology Diagram */
+    .biology-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .biology-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .biology-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .biology-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+    }
+    .biology-item h4 {
+      color: var(--text);
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .biology-item p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Factor Cards */
+    .factor-section { margin-bottom: 48px; }
+    .factor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      margin-top: 24px;
+    }
+    .factor-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .factor-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+    }
+    .factor-card.hardware { border-left: 4px solid var(--primary); }
+    .factor-card.software { border-left: 4px solid var(--accent); }
+    .factor-card.individual { border-left: 4px solid var(--success); }
+
+    .factor-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .factor-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+    }
+    .factor-card.hardware .factor-icon { background: rgba(34, 211, 238, 0.2); }
+    .factor-card.software .factor-icon { background: rgba(167, 139, 250, 0.2); }
+    .factor-card.individual .factor-icon { background: rgba(74, 222, 128, 0.2); }
+
+    .factor-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .factor-count {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .factor-list {
+      list-style: none;
+      padding: 0;
+    }
+    .factor-list li {
+      padding: 8px 0;
+      padding-left: 20px;
+      position: relative;
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .factor-list li:last-child { border-bottom: none; }
+    .factor-list li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Specs Table */
+    .specs-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    .specs-table th,
+    .specs-table td {
+      padding: 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .specs-table th {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .specs-table td {
+      color: var(--text-secondary);
+    }
+    .specs-table tr:hover td {
+      color: var(--text);
+      background: rgba(255,255,255,0.02);
+    }
+    .spec-value {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .spec-status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+    .spec-status.good {
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--success);
+    }
+    .spec-status.warning {
+      background: rgba(251, 146, 60, 0.15);
+      color: var(--warning);
+    }
+    .spec-status.danger {
+      background: rgba(248, 113, 113, 0.15);
+      color: var(--danger);
+    }
+
+    /* Key Insight */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(167, 139, 250, 0.1) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .key-insight::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      width: 32px;
+      height: 32px;
+      background: var(--bg);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .key-insight::after {
+      content: '●';
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      font-size: 1.2rem;
+      color: var(--primary);
+      z-index: 3;
+    }
+    .key-insight h3 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      margin-top: 8px;
+    }
+    .key-insight p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    /* Research Update */
+    .research-update {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .research-update h4 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .research-update p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* Series Navigation */
+    .series-nav {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 60px;
+    }
+    .series-nav h3 {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .series-list {
+      list-style: none;
+      padding: 0;
+    }
+    .series-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .series-list li:last-child { border-bottom: none; }
+    .series-list .current {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .series-list .current::before {
+      content: '▸';
+      color: var(--primary);
+    }
+    .series-list .upcoming {
+      color: var(--text-secondary);
+    }
+    .series-list .upcoming::before {
+      content: '○';
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* WeChat Source */
+    .wechat-source {
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+      text-align: center;
+      border: 1px solid #7DD3FC;
+    }
+    .wechat-source h3 {
+      color: #0369A1;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .wechat-source p {
+      color: #0C4A6E;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .wechat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--primary-dark);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .wechat-btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .factor-grid { grid-template-columns: 1fr; }
+      .biology-grid { grid-template-columns: 1fr; }
+      .specs-table { font-size: 0.85rem; }
+      .specs-table th, .specs-table td { padding: 12px; }
+    }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- Back to Home -->
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回主页
+  </a>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <span class="hero-series">VR论文系列 · 第1/15篇</span>
+      <h1>[01/15] VR用户体验与晕动症<br>构成因素深度解析</h1>
+      <p class="hero-subtitle">从生物机制到技术参数，系统梳理影响VR体验的42个关键因素</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span>🎓</span> 基于8万字论文精炼</div>
+        <div class="hero-meta-item"><span>📊</span> 42项影响因素</div>
+        <div class="hero-meta-item"><span>🧠</span> 生物-技术交叉分析</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Intro -->
+    <div class="intro-card">
+      <p>
+        VR晕动症（VR-Induced Motion Sickness, VIMS）是制约虚拟现实普及的核心障碍之一。本文从<strong>生物学机制</strong>和<strong>计算机图形学</strong>双重视角，系统分析导致VR晕动症的三大类因素：硬件因素（17项）、软件因素（13项）、个体因素（12项），并结合2025-2026年最新技术进展进行数据更新。
+      </p>
+    </div>
+
+    <!-- Biology Section -->
+    <section class="biology-section">
+      <div class="section-header" style="padding-top: 0;">
+        <span class="section-tag">Biology</span>
+        <h2 class="section-title">晕动症的生物机制</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">
+        VR晕动症的本质是<strong>感官冲突理论（Sensory Conflict Theory）</strong>：当视觉系统感知到的运动与前庭系统感知到的静止状态不一致时，大脑会误判为"中毒"反应，触发呕吐反射。
+      </p>
+      <div class="biology-grid">
+        <div class="biology-item">
+          <div class="biology-icon">👂</div>
+          <h4>半规管</h4>
+          <p>感知角加速度，三个互相垂直的管道检测头部旋转运动</p>
+        </div>
+        <div class="biology-item">
+          <div class="biology-icon">⚖️</div>
+          <h4>椭圆囊 & 球囊</h4>
+          <p>感知线性加速度和重力方向，维持身体平衡</p>
+        </div>
+        <div class="biology-item">
+          <div class="biology-icon">🧠</div>
+          <h4>毛细胞</h4>
+          <p>前庭感受器，"动毛-静毛"偏转产生神经信号</p>
+        </div>
+        <div class="biology-item">
+          <div class="biology-icon">👁️</div>
+          <h4>视觉系统</h4>
+          <p>通过双目视差感知深度和运动，与前庭信号比对</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Insight -->
+    <div class="key-insight">
+      <h3>核心洞察：VAC冲突</h3>
+      <p>
+        <strong>辐辏-调节冲突（Vergence-Accommodation Conflict, VAC）</strong>是当前VR头显的根本性技术瓶颈。人眼在真实世界中，注视距离与晶状体调节距离始终保持一致；但在VR中，屏幕固定在固定焦距（通常1-2米），而双眼辐辏角却随虚拟内容深度变化。这种不一致导致视觉疲劳和晕动症。2025年研究显示，VAC会显著增加视觉聚焦时间，降低交互性能。
+      </p>
+    </div>
+
+    <!-- Research Update -->
+    <div class="research-update">
+      <h4>🔬 2025-2026研究进展</h4>
+      <p>
+        最新研究表明，人眼可分辨的灰度细节分辨率高达<strong>94 PPD（Pixels Per Degree）</strong>，远超当前主流VR头显的20-40 PPD。这意味着要达到"视网膜级"VR显示，需要单眼分辨率超过8K。同时，动态自适应渲染（Adaptive FFR）和视野缩小（FoV Reduction）技术被证实可有效缓解晕动症症状。
+      </p>
+    </div>
+
+    <!-- Factors Section -->
+    <section class="factor-section">
+      <div class="section-header">
+        <span class="section-tag">Factors</span>
+        <h2 class="section-title">影响VR体验的42个因素</h2>
+        <p class="section-desc">三大类因素相互交织，共同决定VR体验的舒适度</p>
+      </div>
+
+      <div class="factor-grid">
+        <!-- Hardware -->
+        <div class="factor-card hardware">
+          <div class="factor-header">
+            <div class="factor-icon">⚙️</div>
+            <div>
+              <div class="factor-title">硬件因素</div>
+              <div class="factor-count">17项关键指标</div>
+            </div>
+          </div>
+          <ul class="factor-list">
+            <li>屏幕刷新率（Refresh Rate）</li>
+            <li>显示帧率（FPS）</li>
+            <li>运动到光子延迟（MTP Latency）</li>
+            <li>视场角（FOV）</li>
+            <li>单眼分辨率 & PPD</li>
+            <li>像素密度（PPI）</li>
+            <li>瞳距调节范围（IPD）</li>
+            <li>屏幕亮度 & 对比度</li>
+            <li>响应时间（GTG）</li>
+            <li>追踪精度 & 延迟</li>
+            <li>头显重量 & 重心</li>
+            <li>面部接触压力分布</li>
+            <li>散热性能</li>
+            <li>透镜畸变控制</li>
+            <li>色差校正</li>
+            <li>纱窗效应（SDE）</li>
+            <li>拖影/鬼影控制</li>
+          </ul>
+        </div>
+
+        <!-- Software -->
+        <div class="factor-card software">
+          <div class="factor-header">
+            <div class="factor-icon">💻</div>
+            <div>
+              <div class="factor-title">软件因素</div>
+              <div class="factor-count">13项设计要素</div>
+            </div>
+          </div>
+          <ul class="factor-list">
+            <li>场景细节复杂度</li>
+            <li>环境逼真度 & 光照</li>
+            <li>镜头运动方式</li>
+            <li>场景比例 & 尺度</li>
+            <li>移动速度控制</li>
+            <li>加速度/减速度曲线</li>
+            <li>视角旋转灵敏度</li>
+            <li>帧率稳定性</li>
+            <li>渲染延迟波动</li>
+            <li>交互响应时间</li>
+            <li>UI/UX设计</li>
+            <li>音效空间定位</li>
+            <li>内容时长设计</li>
+          </ul>
+        </div>
+
+        <!-- Individual -->
+        <div class="factor-card individual">
+          <div class="factor-header">
+            <div class="factor-icon">👤</div>
+            <div>
+              <div class="factor-title">个体因素</div>
+              <div class="factor-count">12项用户特征</div>
+            </div>
+          </div>
+          <ul class="factor-list">
+            <li>VR使用经验</li>
+            <li>游戏/3D经验</li>
+            <li>心理状态 & 焦虑水平</li>
+            <li>年龄 & 性别</li>
+            <li>疲劳程度</li>
+            <li>睡眠质量</li>
+            <li>前庭系统敏感度</li>
+            <li>视力状况 & 屈光度</li>
+            <li>晕动症易感性</li>
+            <li>身体健康状况</li>
+            <li>用药/饮酒情况</li>
+            <li>遗传/家族因素</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Specs Table -->
+    <section class="specs-section">
+      <div class="section-header" style="padding-top: 0;">
+        <span class="section-tag">Specs</span>
+        <h2 class="section-title">关键技术指标（2025-2026更新）</h2>
+      </div>
+      <table class="specs-table">
+        <thead>
+          <tr>
+            <th>技术指标</th>
+            <th>舒适阈值</th>
+            <th>2025主流水平</th>
+            <th>状态</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>刷新率</td>
+            <td class="spec-value">≥90Hz</td>
+            <td>90-120Hz</td>
+            <td><span class="spec-status good">已达标</span></td>
+          </tr>
+          <tr>
+            <td>MTP延迟</td>
+            <td class="spec-value">&lt;20ms</td>
+            <td>15-25ms</td>
+            <td><span class="spec-status warning">接近达标</span></td>
+          </tr>
+          <tr>
+            <td>单眼分辨率</td>
+            <td class="spec-value">≥4K</td>
+            <td>2K-2.5K</td>
+            <td><span class="spec-status danger">差距较大</span></td>
+          </tr>
+          <tr>
+            <td>PPD（角分辨率）</td>
+            <td class="spec-value">≥60</td>
+            <td>20-40</td>
+            <td><span class="spec-status danger">差距较大</span></td>
+          </tr>
+          <tr>
+            <td>视场角（FOV）</td>
+            <td class="spec-value">≥110°</td>
+            <td>100-120°</td>
+            <td><span class="spec-status good">已达标</span></td>
+          </tr>
+          <tr>
+            <td>追踪精度</td>
+            <td class="spec-value">&lt;1mm</td>
+            <td>亚毫米级</td>
+            <td><span class="spec-status good">已达标</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Key Insight 2 -->
+    <div class="key-insight">
+      <h3>技术瓶颈：分辨率与PPD</h3>
+      <p>
+        2025年最新视觉研究表明，人眼平均可分辨的灰度细节分辨率高达<strong>94 PPD</strong>，而当前主流VR头显（Quest 3、PICO 4等）仅达到20-40 PPD。要达到真正的"视网膜级"VR体验，需要单眼分辨率超过8K（约4000×4000像素/眼）。这是当前VR普及的最大硬件瓶颈，也是导致纱窗效应（Screen Door Effect）和视觉疲劳的根本原因。
+      </p>
+    </div>
+
+    <!-- Series Navigation -->
+    <div class="series-nav">
+      <h3>📚 VR用户体验研究系列</h3>
+      <ul class="series-list">
+        <li class="current">SET01：VR用户体验与晕动症构成因素深度解析</li>
+        <li class="upcoming">SET02：硬件技术参数对晕动症的影响机制</li>
+        <li class="upcoming">SET03：软件内容设计对晕动症的影响机制</li>
+        <li class="upcoming">SET04：个体差异与晕动症易感性分析</li>
+        <li class="upcoming">SET05-15：测试方法、解决方案、未来展望...</li>
+      </ul>
+    </div>
+
+    <!-- WeChat Source -->
+    <div class="wechat-source">
+      <h3>📖 论文原文</h3>
+      <p>本文基于谦哥8万字VR论文精炼改写，完整版共15个篇章</p>
+      <a href="https://mp.weixin.qq.com/s/AWn1i4yO8XoAwC0P-0_aEA" target="_blank" class="wechat-btn">
+        <span>阅读原文</span>
+        <span>→</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 龙大仙 · 谦哥的AI精灵</p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <div id="like-component"></div>
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+
+</body>
+</html>

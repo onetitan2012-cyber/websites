@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[03/15] 视场角、分辨率与像素密度对沉浸感的影响 - 龙大仙</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #22D3EE;
+      --primary-dark: #0891B2;
+      --accent: #A78BFA;
+      --dark: #0D1117;
+      --card-bg: #1C2128;
+      --border: #30363D;
+      --text: #E6EDF3;
+      --text-secondary: #8B949E;
+      --bg: #0F172A;
+      --gradient-start: #164E63;
+      --gradient-end: #0C4A6E;
+      --success: #4ADE80;
+      --warning: #FB923C;
+      --danger: #F87171;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--gradient-start) 0%, var(--gradient-end) 100%);
+      padding: 140px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-series {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(34, 211, 238, 0.15);
+      border: 1px solid var(--primary);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, #fff 0%, #22D3EE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+    }
+    .hero-meta-item span { color: var(--primary); font-weight: 600; }
+
+    /* Main Content */
+    .main-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 32px;
+      padding-top: 24px;
+    }
+    .section-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: rgba(34, 211, 238, 0.15);
+      border-radius: 50px;
+      color: var(--primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+
+    /* Intro Card */
+    .intro-card {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.2);
+      border-radius: 16px;
+      padding: 28px;
+      margin-bottom: 48px;
+    }
+    .intro-card p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+    .intro-card strong { color: var(--primary); }
+
+    /* Tech Card */
+    .tech-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+    .tech-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .tech-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+    }
+    .tech-title-group h3 {
+      font-size: 1.4rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .tech-title-group p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    .tech-content {
+      color: var(--text-secondary);
+      line-height: 1.9;
+      margin-bottom: 24px;
+    }
+    .tech-content strong { color: var(--text); }
+
+    /* Visual Diagram */
+    .visual-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .fov-diagram {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .fov-circle {
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      position: relative;
+      background: radial-gradient(circle, rgba(34,211,238,0.3) 0%, rgba(34,211,238,0.1) 30%, rgba(167,139,250,0.1) 60%, rgba(167,139,250,0.05) 100%);
+      border: 2px solid rgba(34,211,238,0.3);
+    }
+    .fov-zone {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .fov-zone.center {
+      width: 60px;
+      height: 60px;
+      background: rgba(34,211,238,0.5);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--dark);
+    }
+    .fov-zone.middle {
+      width: 140px;
+      height: 140px;
+      border: 2px dashed rgba(34,211,238,0.4);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--primary);
+    }
+    .fov-zone.outer {
+      width: 260px;
+      height: 260px;
+      border: 2px dotted rgba(167,139,250,0.3);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: var(--accent);
+    }
+    .fov-labels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+      max-width: 500px;
+    }
+    .fov-label {
+      text-align: center;
+      padding: 16px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+    }
+    .fov-label h4 {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+    .fov-label p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    /* Specs Grid */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .spec-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+    }
+    .spec-label {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .spec-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .spec-unit {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+    .spec-status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-top: 8px;
+    }
+    .spec-status.good {
+      background: rgba(74, 222, 128, 0.15);
+      color: var(--success);
+    }
+    .spec-status.warning {
+      background: rgba(251, 146, 60, 0.15);
+      color: var(--warning);
+    }
+
+    /* Resolution Progress */
+    .resolution-timeline {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .timeline-item {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+    .timeline-year {
+      width: 80px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .timeline-content {
+      flex: 1;
+    }
+    .timeline-content h4 {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .timeline-content p {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .timeline-spec {
+      text-align: right;
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* PPI Comparison */
+    .ppi-section {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 48px;
+    }
+    .ppi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .ppi-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .ppi-item::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 12px 12px 0 0;
+    }
+    .ppi-device {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+    .ppi-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+    .ppi-label {
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      margin-top: 4px;
+    }
+
+    /* Key Insight */
+    .key-insight {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.15) 0%, rgba(167, 139, 250, 0.1) 100%);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .key-insight::before {
+      content: '';
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      width: 32px;
+      height: 32px;
+      background: var(--bg);
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .key-insight::after {
+      content: '●';
+      position: absolute;
+      top: -12px;
+      left: 32px;
+      font-size: 1.2rem;
+      color: var(--primary);
+      z-index: 3;
+    }
+    .key-insight h3 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      margin-top: 8px;
+    }
+    .key-insight p {
+      color: var(--text-secondary);
+      line-height: 1.9;
+    }
+
+    /* Research Update */
+    .research-update {
+      background: linear-gradient(135deg, rgba(167, 139, 250, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0;
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .research-update h4 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .research-update p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+
+    /* Series Navigation */
+    .series-nav {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 60px;
+    }
+    .series-nav h3 {
+      color: var(--text);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .series-list {
+      list-style: none;
+      padding: 0;
+    }
+    .series-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .series-list li:last-child { border-bottom: none; }
+    .series-list .current {
+      color: var(--primary);
+      font-weight: 600;
+    }
+    .series-list .current::before {
+      content: '▸';
+      color: var(--primary);
+    }
+    .series-list .upcoming {
+      color: var(--text-secondary);
+    }
+    .series-list .upcoming::before {
+      content: '○';
+      color: var(--text-secondary);
+      font-size: 0.8rem;
+    }
+
+    /* WeChat Source */
+    .wechat-source {
+      background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 100%);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+      text-align: center;
+      border: 1px solid #7DD3FC;
+    }
+    .wechat-source h3 {
+      color: #0369A1;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+    .wechat-source p {
+      color: #0C4A6E;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .wechat-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--primary-dark);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .wechat-btn:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+    footer p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .specs-grid { grid-template-columns: repeat(2, 1fr); }
+      .fov-circle { width: 240px; height: 240px; }
+      .fov-labels { grid-template-columns: 1fr; }
+      .timeline-item { flex-direction: column; align-items: flex-start; }
+      .timeline-spec { text-align: left; }
+    }
+  </style>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</head>
+<body>
+  <!-- Back to Home -->
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回主页
+  </a>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-container">
+      <span class="hero-series">VR论文系列 · 第3/15篇</span>
+      <h1>[03/15] 视场角、分辨率<br>与像素密度对沉浸感的影响</h1>
+      <p class="hero-subtitle">解析FOV、Resolution、PPI三大视觉参数如何塑造VR沉浸体验</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item"><span>👁️</span> 视场角</div>
+        <div class="hero-meta-item"><span>📐</span> 分辨率</div>
+        <div class="hero-meta-item"><span>🔍</span> 像素密度</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <!-- Intro -->
+    <div class="intro-card">
+      <p>
+        视觉参数是决定VR沉浸感的<strong>核心硬件指标</strong>。本文深入分析三大关键参数——<strong>视场角（FOV）</strong>、<strong>分辨率（Resolution）</strong>和<strong>像素密度（PPI）</strong>，探讨它们如何影响沉浸感、清晰度，以及与晕动症的关联。结合AMD等行业研究，揭示当前技术瓶颈与未来发展方向。
+      </p>
+    </div>
+
+    <!-- FOV Section -->
+    <div class="tech-card">
+      <div class="tech-header">
+        <div class="tech-icon">👁️</div>
+        <div class="tech-title-group">
+          <h3>视场角（FOV）</h3>
+          <p>人眼可感知的视野范围</p>
+        </div>
+      </div>
+      <div class="tech-content">
+        <p>
+          视场角（Field of View）是VR沉浸感的第一道门槛。人眼自然视场角约为<strong>水平210°、垂直130°</strong>，但清晰视域仅约15°。VR设备需要在"足够沉浸"和"技术可行"之间找到平衡点。
+        </p>
+      </div>
+    </div>
+
+    <!-- FOV Diagram -->
+    <section class="visual-section">
+      <div class="section-header" style="padding-top: 0;">
+        <span class="section-tag">Visual</span>
+        <h2 class="section-title">人眼视场角分布</h2>
+      </div>
+      <div class="fov-diagram">
+        <div class="fov-circle">
+          <div class="fov-zone center">15°</div>
+          <div class="fov-zone middle">30°</div>
+          <div class="fov-zone outer">210°</div>
+        </div>
+        <div class="fov-labels">
+          <div class="fov-label">
+            <h4 style="color: var(--primary);">清晰视域</h4>
+            <p>中心15°，黄斑区最高分辨率</p>
+          </div>
+          <div class="fov-label">
+            <h4 style="color: var(--accent);">有效视域</h4>
+            <p>15°-30°，可辨识细节</p>
+          </div>
+          <div class="fov-label">
+            <h4 style="color: var(--text-secondary);">诱导视野</h4>
+            <p>30°-210°，感知运动</p>
+          </div>
+        </div>
+      </div>
+      <div class="specs-grid" style="margin-top: 32px;">
+        <div class="spec-item">
+          <div class="spec-label">人眼自然FOV</div>
+          <div class="spec-value">210°</div>
+          <div class="spec-unit">水平</div>
+          <span class="spec-status warning">理论极限</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">VR舒适标准</div>
+          <div class="spec-value">110°</div>
+          <div class="spec-unit">水平</div>
+          <span class="spec-status good">行业推荐</span>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">主流设备</div>
+          <div class="spec-value">90-120°</div>
+          <div class="spec-unit">水平</div>
+          <span class="spec-status good">当前水平</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resolution Section -->
+    <div class="tech-card">
+      <div class="tech-header">
+        <div class="tech-icon">📐</div>
+        <div class="tech-title-group">
+          <h3>分辨率（Resolution）</h3>
+          <p>显示画面的像素数量</p>
+        </div>
+      </div>
+      <div class="tech-content">
+        <p>
+          VR分辨率分为<strong>显示分辨率</strong>（屏幕物理像素）和<strong>图像分辨率</strong>（渲染输出像素）。由于VR需要为双眼分别渲染，实际计算量是传统显示的2倍以上。分辨率不足会导致"纱窗效应"（Screen Door Effect），严重破坏沉浸感。
+        </p>
+        <p style="margin-top: 16px;">
+          <strong>AMD研究结论：</strong>要实现真正的全沉浸体验，需要达到<strong>单眼8K、双眼16K</strong>分辨率，配合120°水平FOV和≤20ms延迟。这是当前技术的终极目标。
+        </p>
+      </div>
+    </div>
+
+    <!-- Resolution Timeline -->
+    <section class="resolution-timeline">
+      <div class="section-header" style="padding-top: 0;">
+        <span class="section-tag">Evolution</span>
+        <h2 class="section-title">VR分辨率演进路线</h2>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2016</div>
+        <div class="timeline-content">
+          <h4>Oculus Rift / HTC Vive</h4>
+          <p>VR消费级元年，单眼1080×1200</p>
+        </div>
+        <div class="timeline-spec">单眼1.3K</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-content">
+          <h4>HTC Vive Pro</h4>
+          <p>双眼2880×1600，纱窗效应明显改善</p>
+        </div>
+        <div class="timeline-spec">双眼3K</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-content">
+          <h4>Quest 2 / HP Reverb G2</h4>
+          <p>单眼近2K，主流消费级标准</p>
+        </div>
+        <div class="timeline-spec">单眼2K</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2023</div>
+        <div class="timeline-content">
+          <h4>Quest 3 / Vision Pro</h4>
+          <p>单眼2K-4K，Pancake光学普及</p>
+        </div>
+        <div class="timeline-spec">单眼2-4K</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h4>小派 Crystal Super</h4>
+          <p>单眼4K，Micro-OLED+Pancake</p>
+        </div>
+        <div class="timeline-spec">单眼4K</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">目标</div>
+        <div class="timeline-content">
+          <h4>全沉浸标准（AMD）</h4>
+          <p>单眼8K，双眼16K，视网膜级体验</p>
+        </div>
+        <div class="timeline-spec">单眼8K</div>
+      </div>
+    </section>
+
+    <!-- PPI Section -->
+    <section class="ppi-section">
+      <div class="section-header" style="padding-top: 0;">
+        <span class="section-tag">Density</span>
+        <h2 class="section-title">像素密度（PPI）对比</h2>
+      </div>
+      <p style="color: var(--text-secondary); margin-bottom: 20px;">
+        PPI（Pixels Per Inch）衡量单位面积内的像素数量。VR设备需要更高的PPI来消除纱窗效应，因为屏幕通过透镜放大后，像素间隙会被放大显示。
+      </p>
+      <div class="ppi-grid">
+        <div class="ppi-item">
+          <div class="ppi-device">视网膜屏幕</div>
+          <div class="ppi-value">300</div>
+          <div class="ppi-label">PPI @ 30cm</div>
+        </div>
+        <div class="ppi-item">
+          <div class="ppi-device">三星S8</div>
+          <div class="ppi-value">529</div>
+          <div class="ppi-label">PPI 手机VR</div>
+        </div>
+        <div class="ppi-item">
+          <div class="ppi-device">索尼XZP</div>
+          <div class="ppi-value">802</div>
+          <div class="ppi-label">PPI 4K屏</div>
+        </div>
+        <div class="ppi-item">
+          <div class="ppi-device">VR舒适标准</div>
+          <div class="ppi-value">≥500</div>
+          <div class="ppi-label">PPI 推荐值</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Insight -->
+    <div class="key-insight">
+      <h3>纱窗效应：分辨率不足的直观表现</h3>
+      <p>
+        <strong>纱窗效应（Screen Door Effect）</strong>是VR体验中最直观的画质缺陷——用户能清晰看到像素之间的黑色间隙，就像透过纱窗看窗外。其产生原因是屏幕像素被光学透镜放大后，像素间隙（Black Matrix）也被同步放大。只有当PPI达到500以上时，纱窗效应才会基本消失。2025年采用Micro-OLED的VR头显（如Vision Pro）PPI已超过3000，彻底解决了这一问题。
+      </p>
+    </div>
+
+    <!-- Research Update -->
+    <div class="research-update">
+      <h4>🔬 2025-2026技术进展</h4>
+      <p>
+        <strong>Micro-OLED技术突破</strong>正在重塑VR显示标准。苹果Vision Pro采用的Micro-OLED屏幕PPI高达3391，是传统LCD的10倍以上。同时，<strong>PPD（Pixels Per Degree）</strong>成为新的衡量标准——人眼可分辨的灰度细节高达94 PPD，而当前主流VR头显仅20-40 PPD。要达到真正的"视网膜级VR"，需要单眼分辨率超过8K。
+      </p>
+    </div>
+
+    <!-- Key Insight 2 -->
+    <div class="key-insight">
+      <h3>FOV与分辨率的两难困境</h3>
+      <p>
+        VR硬件面临一个<strong>根本性权衡</strong>：扩大FOV会增加边缘畸变和渲染负担；提高分辨率会增加像素数量和带宽需求。当前技术条件下，厂商必须在"更宽的视野"和"更清晰的画面"之间做出选择。小派科技选择了高分辨率路线（Crystal Super单眼4K），而部分设备选择扩展FOV（如StarVR的210°）。理想的解决方案需要<strong>注视点渲染（Foveated Rendering）</strong>——只在人眼注视区域渲染高分辨率画面，大幅降低算力需求。
+      </p>
+    </div>
+
+    <!-- Series Navigation -->
+    <div class="series-nav">
+      <h3>📚 VR用户体验研究系列</h3>
+      <ul class="series-list">
+        <li class="upcoming">SET01：VR用户体验与晕动症构成因素深度解析</li>
+        <li class="upcoming">SET02：硬件技术参数对晕动症的影响机制</li>
+        <li class="current">SET03：视场角、分辨率与像素密度对沉浸感的影响</li>
+        <li class="upcoming">SET04：个体差异与晕动症易感性分析</li>
+        <li class="upcoming">SET05-15：测试方法、解决方案、未来展望...</li>
+      </ul>
+    </div>
+
+    <!-- WeChat Source -->
+    <div class="wechat-source">
+      <h3>📖 论文原文</h3>
+      <p>本文基于谦哥8万字VR论文精炼改写，完整版共15个篇章</p>
+      <a href="https://mp.weixin.qq.com/s/wxMeuMgCbLxNSBSg65SwNg" target="_blank" class="wechat-btn">
+        <span>阅读原文</span>
+        <span>→</span>
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 龙大仙 · 谦哥的AI精灵</p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <div id="like-component"></div>
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+
+</body>
+</html>
