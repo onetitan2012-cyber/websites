@@ -315,6 +315,198 @@
             10%, 30%, 50%, 70%, 90% { transform: translateX(-10px); }
             20%, 40%, 60%, 80% { transform: translateX(10px); }
         }
+
+        /* 移动端控制按钮 */
+        .mobile-controls {
+            display: none;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .mobile-btn {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 32px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-btn:active {
+            background: rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 850px) {
+            .game-wrapper {
+                padding: 10px;
+                justify-content: flex-start;
+                padding-top: 10px;
+            }
+
+            .game-header {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+                padding: 0 5px;
+            }
+
+            .game-title {
+                font-size: 18px;
+            }
+
+            .game-stats {
+                gap: 10px;
+            }
+
+            .stat-box {
+                padding: 6px 12px;
+                min-width: 70px;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .stat-value {
+                font-size: 18px;
+            }
+
+            .game-container {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            #gameCanvas {
+                width: 100%;
+                height: auto;
+                max-width: 800px;
+            }
+
+            .desktop-only {
+                display: none !important;
+            }
+
+            .mobile-controls {
+                display: flex;
+                gap: 60px;
+                margin-top: 15px;
+                margin-bottom: 10px;
+            }
+
+            .mobile-btn {
+                width: 90px;
+                height: 90px;
+                font-size: 36px;
+                background: rgba(255, 215, 0, 0.15);
+                border: 2px solid rgba(255, 215, 0, 0.4);
+            }
+
+            .mobile-btn:active {
+                background: rgba(255, 215, 0, 0.4);
+            }
+
+            .legend {
+                gap: 15px;
+                margin-top: 10px;
+            }
+
+            .legend-item {
+                font-size: 11px;
+            }
+
+            .legend-icon {
+                width: 16px;
+                height: 16px;
+            }
+
+            .overlay-title {
+                font-size: 28px;
+            }
+
+            .overlay-subtitle {
+                font-size: 14px;
+            }
+
+            .overlay-score {
+                font-size: 42px;
+            }
+
+            .btn {
+                padding: 12px 40px;
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-wrapper {
+                padding: 8px;
+            }
+
+            .game-title {
+                font-size: 16px;
+            }
+
+            .stat-box {
+                padding: 5px 10px;
+                min-width: 60px;
+            }
+
+            .stat-value {
+                font-size: 16px;
+            }
+
+            .mobile-controls {
+                gap: 50px;
+            }
+
+            .mobile-btn {
+                width: 80px;
+                height: 80px;
+                font-size: 32px;
+            }
+
+            .legend {
+                gap: 12px;
+            }
+
+            .legend-item span {
+                display: none;
+            }
+
+            .legend-icon {
+                width: 20px;
+                height: 20px;
+            }
+
+            .overlay-title {
+                font-size: 24px;
+            }
+
+            .overlay-score {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 375px) {
+            .mobile-controls {
+                gap: 40px;
+            }
+
+            .mobile-btn {
+                width: 70px;
+                height: 70px;
+                font-size: 28px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -384,9 +576,20 @@
         </div>
 
         <!-- 控制提示 -->
-        <div class="controls-hint">
+        <div class="controls-hint desktop-only">
             <span><span class="key">←</span> <span class="key">→</span> 或 <span class="key">A</span> <span class="key">D</span> 移动</span>
             <span>小车有惯性，提前预判！</span>
+        </div>
+
+        <!-- 移动端控制按钮 -->
+        <div class="mobile-controls">
+            <button class="mobile-btn" id="leftBtn" ontouchstart="return false;">←</button>
+            <button class="mobile-btn" id="rightBtn" ontouchstart="return false;">→</button>
+        </div>
+
+        <!-- 移动端提示 -->
+        <div class="mobile-hint" style="display: none; margin-top: 8px; color: #6b7280; font-size: 12px; text-align: center;">
+            点击按钮或滑动屏幕控制小车
         </div>
     </div>
 
@@ -467,6 +670,19 @@
         const finalScoreLabel = document.getElementById('finalScoreLabel');
         const comboDisplay = document.getElementById('comboDisplay');
 
+        // 响应式画布大小
+        function resizeCanvas() {
+            const containerWidth = gameContainer.clientWidth;
+            const maxWidth = 800;
+            const scale = Math.min(1, containerWidth / maxWidth);
+            
+            canvas.style.width = (maxWidth * scale) + 'px';
+            canvas.style.height = (500 * scale) + 'px';
+        }
+        
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
         // 键盘事件
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') {
@@ -486,7 +702,39 @@
             }
         });
 
-        // 触摸支持
+        // 移动端按钮控制
+        const leftBtn = document.getElementById('leftBtn');
+        const rightBtn = document.getElementById('rightBtn');
+
+        if (leftBtn && rightBtn) {
+            // 左按钮
+            leftBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                keys.left = true;
+            });
+            leftBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                keys.left = false;
+            });
+            leftBtn.addEventListener('mousedown', () => keys.left = true);
+            leftBtn.addEventListener('mouseup', () => keys.left = false);
+            leftBtn.addEventListener('mouseleave', () => keys.left = false);
+
+            // 右按钮
+            rightBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                keys.right = true;
+            });
+            rightBtn.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                keys.right = false;
+            });
+            rightBtn.addEventListener('mousedown', () => keys.right = true);
+            rightBtn.addEventListener('mouseup', () => keys.right = false);
+            rightBtn.addEventListener('mouseleave', () => keys.right = false);
+        }
+
+        // 触摸支持（滑动）
         let touchStartX = 0;
         canvas.addEventListener('touchstart', (e) => {
             touchStartX = e.touches[0].clientX;
@@ -647,14 +895,12 @@
             // 更新位置
             player.x += player.vx;
             
-            // 边界限制
-            if (player.x < 0) {
-                player.x = 0;
-                player.vx = 0;
+            // 穿屏机制 - 从一侧出去从另一侧进来
+            if (player.x < -CONFIG.PLAYER.WIDTH) {
+                player.x = CONFIG.CANVAS_WIDTH;
             }
-            if (player.x > CONFIG.CANVAS_WIDTH - CONFIG.PLAYER.WIDTH) {
-                player.x = CONFIG.CANVAS_WIDTH - CONFIG.PLAYER.WIDTH;
-                player.vx = 0;
+            if (player.x > CONFIG.CANVAS_WIDTH) {
+                player.x = -CONFIG.PLAYER.WIDTH;
             }
         }
 
