@@ -1227,6 +1227,18 @@
             <p>中华武术文化深度分析报告 | 向世界传递中华武术文化</p>
             <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年3月 | 数据来源：国家体育总局、国际武术联合会、中国非物质文化遗产网</p>
         </footer>
+
+        <!-- 点赞组件 -->
+        <div id="like-component"></div>
+
+        <!-- 点赞系统 -->
+        <script src="like-system.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                PonghoodLike.init('#like-component');
+            });
+        </script>
+
     </div>
 </body>
 </html>

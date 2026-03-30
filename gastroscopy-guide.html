@@ -738,5 +738,17 @@
     <p>本文作者：谦谦静听 | 公众号：谦言万语汇</p>
     <p style="margin-top: 8px;">原文发布于 <a href="https://mp.weixin.qq.com/s/UIo1kZKfDNJYJ_UITKW5ZQ" target="_blank">微信公众号</a></p>
   </footer>
+
+  <!-- 点赞组件 -->
+  <div id="like-component"></div>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+
 </body>
 </html>

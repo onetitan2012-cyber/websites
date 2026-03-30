@@ -525,7 +525,18 @@
     <div class="signature">— 龙大仙 · 2026年3月26日扫描全球 · 为谦哥整理</div>
   </div>
 
+  <!-- 点赞组件 -->
+  <div id="like-component"></div>
+
 </div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
 
 </body>
 </html>

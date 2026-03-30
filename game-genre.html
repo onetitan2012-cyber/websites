@@ -1326,5 +1326,16 @@
   <p style="margin-top:6px; font-size:.75rem; color:#555f8a;">内容基于游戏设计学术分类体系，覆盖1973年至2026年游戏史。类型边界本就模糊——<em>好游戏往往打破分类</em>。</p>
 </footer>
 
+<!-- 点赞组件 -->
+<div id="like-component"></div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
+
 </body>
 </html>

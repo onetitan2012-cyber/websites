@@ -585,6 +585,18 @@
     <div class="fn-sign">龙大仙 · 每日未来情报第001期 · 2026.03.14 00:00 自动扫描</div>
   </div>
 
+  <!-- 点赞组件 -->
+  <div id="like-component"></div>
+
 </div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
+
 </body>
 </html>

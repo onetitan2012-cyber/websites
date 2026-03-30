@@ -1321,5 +1321,17 @@
             requestAnimationFrame(loop);
         });
     </script>
+
+    <!-- 点赞组件 -->
+    <div id="like-component"></div>
+
+    <!-- 点赞系统 -->
+    <script src="like-system.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            PonghoodLike.init('#like-component');
+        });
+    </script>
+
 </body>
 </html>

@@ -99,267 +99,428 @@
 
     /* BACK HOME */
     .back-home {
-      position: fixed; top: 18px; left: 18px; z-index: 1000;
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 8px 14px; background: rgba(13,17,23,.85);
-      backdrop-filter: blur(10px); border: 1px solid var(--border);
-      border-radius: 50px; color: var(--text); text-decoration: none;
-      font-size: .85rem; transition: all .2s;
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
     }
-    .back-home:hover { background: var(--card); transform: translateY(-1px); }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+      border-color: var(--accent1);
+    }
+
+    /* NAV */
+    .nav-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-list {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-item a {
+      display: block;
+      padding: 14px 18px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .nav-item a:hover, .nav-item a.active {
+      color: var(--accent1);
+      border-color: var(--accent1);
+    }
 
     /* CONTAINER */
-    .container { max-width: 960px; margin: 0 auto; padding: 40px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 72px; }
 
     /* SECTION */
-    .section { margin-bottom: 48px; }
-    .section-title {
-      display: flex; align-items: center; gap: 12px;
-      font-size: 1.35rem; font-weight: 700;
-      margin-bottom: 22px; padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-    }
-    .section-title .icon { font-size: 1.3rem; }
-    .section-title.ai { color: var(--accent1); border-color: rgba(26,115,232,.35); }
-    .section-title.vr { color: var(--accent2); border-color: rgba(0,137,123,.35); }
-    .section-title.game { color: var(--accent3); border-color: rgba(232,113,26,.35); }
-    .section-title.tech { color: var(--accent4); border-color: rgba(107,63,160,.35); }
-    .section-title.product { color: var(--accent5); border-color: rgba(198,40,40,.35); }
-
-    /* SIGNAL CARD */
-    .signal {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 24px;
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-header { margin-bottom: 32px; }
+    .section-header .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 1.5rem;
       margin-bottom: 16px;
-      transition: transform .15s, box-shadow .15s;
     }
-    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
-    .signal-header {
-      display: flex; align-items: flex-start; gap: 10px;
-      margin-bottom: 10px; flex-wrap: wrap;
+    .section-header h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .signal-tag {
+    .section-header p {
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    /* SIGNAL CARDS */
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .signal-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent1);
+    }
+    .signal-card.accent2::before { background: var(--accent2); }
+    .signal-card.accent3::before { background: var(--accent3); }
+    .signal-card.accent4::before { background: var(--accent4); }
+    .signal-card.accent5::before { background: var(--accent5); }
+    .signal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(0,0,0,.45);
+    }
+    .signal-card .tag {
       display: inline-block;
-      padding: 3px 10px; border-radius: 50px;
-      font-size: .72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .05em;
-      flex-shrink: 0;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: .02em;
     }
-    .signal-tag.ai { background: rgba(26,115,232,.15); color: #64B5F6; }
-    .signal-tag.vr { background: rgba(0,137,123,.15); color: #4DB6AC; }
-    .signal-tag.game { background: rgba(232,113,26,.15); color: #FFB74D; }
-    .signal-tag.tech { background: rgba(107,63,160,.15); color: #BA68C8; }
-    .signal-tag.product { background: rgba(198,40,40,.15); color: #E57373; }
-    .signal-source {
-      font-size: .78rem; color: var(--muted);
-      text-decoration: none; margin-left: auto;
-      display: inline-flex; align-items: center; gap: 4px;
+    .tag-ai    { background: rgba(26,115,232,.18);  color: #7BB5FF; }
+    .tag-vr    { background: rgba(0,137,123,.18);   color: #4DB8AE; }
+    .tag-game  { background: rgba(232,113,26,.18);  color: #F4A46A; }
+    .tag-tech  { background: rgba(107,63,160,.18);  color: #B589E0; }
+    .tag-product { background: rgba(198,40,40,.18); color: #F07070; }
+
+    .signal-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.45;
     }
-    .signal-source:hover { color: var(--accent1); }
-    .signal-source::before { content: '↗'; }
-    .signal-title {
-      font-size: 1.08rem; font-weight: 600;
-      line-height: 1.45; margin-bottom: 8px;
-    }
-    .signal-desc {
-      font-size: .96rem; color: var(--muted);
+    .signal-card p {
+      font-size: .9rem;
+      color: var(--muted);
       line-height: 1.7;
     }
+    .signal-source {
+      display: inline-block;
+      margin-top: 12px;
+      font-size: .75rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      transition: color .15s;
+    }
+    .signal-source::before { content: '↗ '; }
+    .signal-source:hover { color: var(--accent1); }
 
-    /* SUMMARY CARD */
-    .summary {
-      background: linear-gradient(135deg, rgba(26,115,232,.12) 0%, rgba(107,63,160,.12) 100%);
-      border: 1px solid rgba(26,115,232,.25);
+    /* STATS BAR */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 36px;
+      position: relative;
+    }
+    .stat-pill {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: .82rem;
+    }
+    .stat-pill strong { color: #7DD6FF; }
+
+    /* FOOTER NOTE */
+    .dragon-note {
+      background: linear-gradient(135deg, #0D1B2A 0%, #111827 100%);
+      border: 1px solid rgba(26,115,232,.3);
       border-radius: var(--radius);
-      padding: 28px 26px;
-      margin-top: 40px;
+      padding: 28px 32px;
+      margin-top: 48px;
+      position: relative;
+      overflow: hidden;
     }
-    .summary-title {
-      display: flex; align-items: center; gap: 10px;
-      font-size: 1.15rem; font-weight: 700;
-      margin-bottom: 14px; color: #7DD6FF;
+    .dragon-note::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(26,115,232,.08) 0%, transparent 70%);
     }
-    .summary p { font-size: .98rem; line-height: 1.85; opacity: .9; }
-
-    /* FOOTER */
-    footer {
-      text-align: center; padding: 30px 20px 50px;
-      color: var(--muted); font-size: .85rem;
+    .dragon-note .label {
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 10px;
+      position: relative;
     }
-    footer a { color: var(--accent1); text-decoration: none; }
-
-    @media (max-width: 640px) {
-      .hero { padding: 52px 20px 40px; }
-      .container { padding: 28px 16px; }
-      .signal { padding: 18px 20px; }
+    .dragon-note blockquote {
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--text);
+      position: relative;
+      line-height: 1.65;
+    }
+    .dragon-note .signature {
+      margin-top: 12px;
+      font-size: .8rem;
+      color: var(--muted);
+      position: relative;
     }
   </style>
 </head>
 <body>
-  <a href="index.html" class="back-home">← 返回主页</a>
 
-  <header class="hero">
-    <div class="hero-tag">Daily Intelligence</div>
-    <h1>每日未来情报 · <span>2026-03-29</span></h1>
-    <p class="hero-sub">追踪 AI、VR、游戏、新科技与新产品的前沿动态</p>
-    <div class="hero-date">2026年3月29日 星期日</div>
-  </header>
+<!-- 返回主页 -->
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 12L12 3l9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+  </svg>
+  返回主页
+</a>
 
-  <main class="container">
-    <!-- AI趋势 -->
-    <section class="section">
-      <h2 class="section-title ai"><span class="icon">🤖</span> AI趋势</h2>
-      
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag ai">模型发布</span>
-          <a class="signal-source" href="https://news.qq.com/rain/a/20260327A01LYD00" target="_blank">腾讯新闻 · 03/27</a>
-        </div>
-        <div class="signal-title">谷歌发布 Gemini 3.1 Flash Live：实时音频对话AI正式上线</div>
-        <div class="signal-desc">谷歌推出主打实时音视频交互的新模型，支持90种语言对话，低延迟响应，标志着多模态AI竞争向"实时交互"演进。该模型可理解文本、图像、音频和视频输入，生成音频和文本输出。</div>
-      </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-tag">Intel Report · 第 #0329 期</div>
+  <h1>每日<span>未来情报</span></h1>
+  <p class="hero-sub">扫描世界 · 捕捉信号 · 洞见未来</p>
+  <div class="hero-date">2026年3月29日 · 今日信号 13 条</div>
+  <div class="stats-bar">
+    <div class="stat-pill">🤖 AI趋势 <strong>4</strong></div>
+    <div class="stat-pill">🥽 VR动态 <strong>2</strong></div>
+    <div class="stat-pill">🎮 游戏设计 <strong>2</strong></div>
+    <div class="stat-pill">⚛️ 新科技 <strong>3</strong></div>
+    <div class="stat-pill">📦 新产品 <strong>2</strong></div>
+  </div>
+</div>
 
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag ai">音乐生成</span>
-          <a class="signal-source" href="https://www.ithome.com/0/933/546.htm" target="_blank">IT之家 · 03/28</a>
-        </div>
-        <div class="signal-title">Suno v5.5 正式发布：AI音乐进入个性化时代</div>
-        <div class="signal-desc">Suno发布v5.5音乐生成大模型，推出"Voices声音克隆"、"Custom Models自定义模型"、"My Taste品味学习"三大功能，从"生成即完成"转向"生成+编辑"的混合制作系统。</div>
-      </div>
+<!-- NAV -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#ai">🤖 AI趋势</a></li>
+    <li class="nav-item"><a href="#vr">🥽 VR动态</a></li>
+    <li class="nav-item"><a href="#game">🎮 游戏设计</a></li>
+    <li class="nav-item"><a href="#tech">⚛️ 新科技</a></li>
+    <li class="nav-item"><a href="#product">📦 新产品</a></li>
+  </ul>
+</nav>
 
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag ai">视频生成</span>
-          <a class="signal-source" href="https://jimeng.aigc.cc/" target="_blank">即梦AI · 03/28</a>
-        </div>
-        <div class="signal-title">字节即梦 Seedance 2.0 集成剪映国际版：AI视频生成平民化</div>
-        <div class="signal-desc">字节跳动将Dreamina Seedance 2.0 AI视频生成模型集成到CapCut（剪映国际版），提供2K电影级视频生成、卓越运动质量和角色一致性，降低专业视频创作门槛。</div>
-      </div>
+<div class="container">
 
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag ai">神经科学</span>
-          <a class="signal-source" href="https://finance.sina.com.cn/tech/roll/2026-03-28/doc-inhspryw5805997.shtml" target="_blank">新浪财经 · 03/28</a>
-        </div>
-        <div class="signal-title">Meta开源 TRIBE v2：可预测人类大脑多模态反应的AI模型</div>
-        <div class="signal-desc">Meta FAIR团队开源TRIBE v2模型，无需实际脑扫描即可高精度预测人类大脑对图像、声音和文本的反应。该三模态大脑编码器为神经科学研究和脑机接口发展提供新工具。</div>
-      </div>
-    </section>
-
-    <!-- VR动态 -->
-    <section class="section">
-      <h2 class="section-title vr"><span class="icon">🥽</span> VR动态</h2>
-      
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag vr">行业动态</span>
-          <a class="signal-source" href="https://vr.ithome.com/" target="_blank">IT之家VR · 03/28</a>
-        </div>
-        <div class="signal-title">Meta保留Horizon Worlds VR版：元宇宙战略逆转</div>
-        <div class="signal-desc">Meta首席技术官Andrew Bosworth宣布继续为Horizon Worlds提供VR支持，原定6月下线的计划取消。这一决策逆转显示Meta在元宇宙与AI战略间重新平衡。</div>
-      </div>
-
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag vr">硬件预测</span>
-          <a class="signal-source" href="https://www.vrcoast.cn/346851.html" target="_blank">VRcoast · 03/28</a>
-        </div>
-        <div class="signal-title">Meta 2026年新品路线图：超轻VR眼镜+外接计算模块</div>
-        <div class="signal-desc">Meta计划2026年推出搭载外接计算模块的超轻量级Horizon OS头显，以及两款Quest 4（标准版与廉价版）。2027年推出Quest Pro 2对标Apple Vision Pro。</div>
-      </div>
-    </section>
-
-    <!-- 游戏设计 -->
-    <section class="section">
-      <h2 class="section-title game"><span class="icon">🎮</span> 游戏设计</h2>
-      
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag game">独立游戏</span>
-          <a class="signal-source" href="https://www.gamersky.com/handbook/202603/2104378.shtml" target="_blank">游民星空 · 03/28</a>
-        </div>
-        <div class="signal-title">2026必玩Steam独立游戏：10款风格各异的宝藏作品</div>
-        <div class="signal-desc">从《杀戮尖塔2》到创意平台跳跃游戏，独立游戏开发者以惊人创造力打破"免费=氪金"刻板印象，提供极具实验性和艺术性的游戏体验。</div>
-      </div>
-
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag game">行业报告</span>
-          <a class="signal-source" href="https://tsight.io/articles/7184916" target="_blank">TrueSight · 03/28</a>
-        </div>
-        <div class="signal-title">Steam免费游戏创新浪潮：独立开发者打破氪金魔咒</div>
-        <div class="signal-desc">2026年Steam免费游戏领域，独立开发者以惊人创造力打破"免费游戏=氪金"的刻板印象，多款极具创新性和实验性的免费独立游戏涌现。</div>
-      </div>
-    </section>
-
-    <!-- 新科技 -->
-    <section class="section">
-      <h2 class="section-title tech"><span class="icon">🔬</span> 新科技</h2>
-      
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag tech">语音识别</span>
-          <a class="signal-source" href="https://www.sohu.com/a/1001924992_121885030" target="_blank">搜狐科技 · 03/27</a>
-        </div>
-        <div class="signal-title">Cohere发布开源语音模型Transcribe：20亿参数边缘部署</div>
-        <div class="signal-desc">Cohere推出20亿参数开源语音识别模型，专为边缘设备设计，支持14种语言，解决传统语音模型体积过大导致的延迟问题，采用Apache 2.0协议开源。</div>
-      </div>
-
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag tech">量子计算</span>
-          <a class="signal-source" href="https://reportify.cn/reports/1229768131950546944" target="_blank">Reportify · 03/28</a>
-        </div>
-        <div class="signal-title">2026全球量子计算产业展望：2030年市场规模将达1795亿美元</div>
-        <div class="signal-desc">2025年被定义为量子计算工业化落地关键元年，全球产业规模达66.1亿美元，预计2030年激增至1795.2亿美元。产业从理论探索转向工业应用。</div>
-      </div>
-
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag tech">半导体</span>
-          <a class="signal-source" href="https://www.deloitte.com/cn/zh/Industries/telecom-media-entertainment/perspectives/deloitte-2026-global-semiconductor-industry-outlook.html" target="_blank">德勤 · 03/28</a>
-        </div>
-        <div class="signal-title">德勤2026半导体展望：AI推动销售额创9750亿美元新高</div>
-        <div class="signal-desc">受人工智能基础设施热潮推动，2026年全球半导体行业销售额将创下9750亿美元新高。但行业陷入"高利润、低销量"结构性失衡，需警惕产能过剩风险。</div>
-      </div>
-    </section>
-
-    <!-- 新产品 -->
-    <section class="section">
-      <h2 class="section-title product"><span class="icon">📱</span> 新产品</h2>
-      
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag product">科技大会</span>
-          <a class="signal-source" href="https://news.cctv.com/2026/03/28/ARTIAZnk8HxRBSWKzb3MbF4H260327.shtml" target="_blank">央视网 · 03/28</a>
-        </div>
-        <div class="signal-title">2026中关村论坛年会：60场平行论坛发布500余项科技成果</div>
-        <div class="signal-desc">3月25日至29日举办，围绕全球科技治理、基础研究与科技前沿、创新生态等热点议题，其中21场为首次举办，多项前沿科技成果集中发布。</div>
-      </div>
-
-      <div class="signal">
-        <div class="signal-header">
-          <span class="signal-tag product">AI算力</span>
-          <a class="signal-source" href="https://k.sina.cn/article_7857201856_1d45362c001903p39s.html" target="_blank">新浪科技 · 03/28</a>
-        </div>
-        <div class="signal-title">国产AI算力"超级底座"上线：23家企业共建开源生态</div>
-        <div class="signal-desc">2026中关村论坛AI开源前沿论坛上，由23家企业联合共建的国产AI算力"超级底座"正式发布，为更多AI应用场景提供底层支撑。</div>
-      </div>
-    </section>
-
-    <!-- 龙大仙注记 -->
-    <div class="summary">
-      <div class="summary-title">🐉 龙大仙注记</div>
-      <p>今日核心信号：AI实时交互成为新战场——谷歌Gemini 3.1 Flash Live、Suno v5.5个性化音乐、字节即梦视频生成，三家巨头在同一周押注"实时+个性化"AI体验。同时，Meta开源TRIBE v2大脑预测模型，标志着AI开始向神经科学深水区渗透。量子计算和半导体行业数据印证：2026年是AI基础设施规模化落地的关键之年。</p>
+  <!-- AI 趋势 -->
+  <section id="ai">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(26,115,232,.15);">🤖</div>
+      <h2>AI 趋势</h2>
+      <p>大模型、应用落地与产业竞争最新进展</p>
     </div>
-  </main>
+    <div class="signal-grid">
 
-  <footer>
-    <p>© 2026 每日未来情报 · 由龙大仙自动生成</p>
-    <p style="margin-top:6px;">数据来源：公开网络信息 · 仅供参考</p>
-  </footer>
+      <div class="signal-card">
+        <span class="tag tag-ai">模型发布</span>
+        <h3>谷歌发布 Gemini 3.1 Flash Live：实时音频对话AI正式上线</h3>
+        <p>谷歌推出主打<strong>实时音视频交互</strong>的新模型，支持90种语言对话，低延迟响应，标志着多模态AI竞争向"实时交互"演进。该模型可理解文本、图像、音频和视频输入，生成音频和文本输出。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260327A01LYD00" target="_blank">腾讯新闻 · 2026-03-27</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">音乐生成</span>
+        <h3>Suno v5.5 正式发布：AI音乐进入个性化时代</h3>
+        <p>Suno发布v5.5音乐生成大模型，推出<strong>"Voices声音克隆"、"Custom Models自定义模型"、"My Taste品味学习"</strong>三大功能，从"生成即完成"转向"生成+编辑"的混合制作系统。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/933/546.htm" target="_blank">IT之家 · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">视频生成</span>
+        <h3>字节即梦 Seedance 2.0 集成剪映国际版：AI视频生成平民化</h3>
+        <p>字节跳动将Dreamina Seedance 2.0 AI视频生成模型集成到CapCut（剪映国际版），提供<strong>2K电影级视频生成</strong>、卓越运动质量和角色一致性，降低专业视频创作门槛。</p>
+        <a class="signal-source" href="https://jimeng.aigc.cc/" target="_blank">即梦AI · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">神经科学</span>
+        <h3>Meta开源 TRIBE v2：可预测人类大脑多模态反应的AI模型</h3>
+        <p>Meta FAIR团队开源<strong>TRIBE v2模型</strong>，无需实际脑扫描即可高精度预测人类大脑对图像、声音和文本的反应。该三模态大脑编码器为神经科学研究和脑机接口发展提供新工具。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/tech/roll/2026-03-28/doc-inhspryw5805997.shtml" target="_blank">新浪财经 · 2026-03-28</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- VR 动态 -->
+  <section id="vr">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(0,137,123,.15);">🥽</div>
+      <h2>VR 动态</h2>
+      <p>硬件、软件与市场最新变化</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">行业动态</span>
+        <h3>Meta保留Horizon Worlds VR版：元宇宙战略逆转</h3>
+        <p>Meta首席技术官Andrew Bosworth宣布<strong>继续为Horizon Worlds提供VR支持</strong>，原定6月下线的计划取消。这一决策逆转显示Meta在元宇宙与AI战略间重新平衡。</p>
+        <a class="signal-source" href="https://vr.ithome.com/" target="_blank">IT之家VR · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">硬件预测</span>
+        <h3>Meta 2026年新品路线图：超轻VR眼镜+外接计算模块</h3>
+        <p>Meta计划2026年推出搭载<strong>外接计算模块的超轻量级Horizon OS头显</strong>，以及两款Quest 4（标准版与廉价版）。2027年推出Quest Pro 2对标Apple Vision Pro。</p>
+        <a class="signal-source" href="https://www.vrcoast.cn/346851.html" target="_blank">VRcoast · 2026-03-28</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 游戏设计 -->
+  <section id="game">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(232,113,26,.15);">🎮</div>
+      <h2>游戏设计</h2>
+      <p>创新玩法、独立游戏与 AI 改变开发方式</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">独立游戏</span>
+        <h3>2026必玩Steam独立游戏：10款风格各异的宝藏作品</h3>
+        <p>从《杀戮尖塔2》到创意平台跳跃游戏，独立游戏开发者以惊人创造力打破<strong>"免费=氪金"</strong>刻板印象，提供极具实验性和艺术性的游戏体验。</p>
+        <a class="signal-source" href="https://www.gamersky.com/handbook/202603/2104378.shtml" target="_blank">游民星空 · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">行业报告</span>
+        <h3>Steam免费游戏创新浪潮：独立开发者打破氪金魔咒</h3>
+        <p>2026年Steam免费游戏领域，独立开发者以惊人创造力打破<strong>"免费游戏=氪金"</strong>的刻板印象，多款极具创新性和实验性的免费独立游戏涌现。</p>
+        <a class="signal-source" href="https://tsight.io/articles/7184916" target="_blank">TrueSight · 2026-03-28</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 新科技 -->
+  <section id="tech">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(107,63,160,.15);">⚛️</div>
+      <h2>新科技</h2>
+      <p>前沿科技、芯片、量子与机器人最新突破</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">语音识别</span>
+        <h3>Cohere发布开源语音模型Transcribe：20亿参数边缘部署</h3>
+        <p>Cohere推出<strong>20亿参数开源语音识别模型</strong>，专为边缘设备设计，支持14种语言，解决传统语音模型体积过大导致的延迟问题，采用Apache 2.0协议开源。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/1001924992_121885030" target="_blank">搜狐科技 · 2026-03-27</a>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">量子计算</span>
+        <h3>2026全球量子计算产业展望：2030年市场规模将达1795亿美元</h3>
+        <p>2025年被定义为量子计算工业化落地关键元年，全球产业规模达<strong>66.1亿美元</strong>，预计2030年激增至<strong>1795.2亿美元</strong>。产业从理论探索转向工业应用。</p>
+        <a class="signal-source" href="https://reportify.cn/reports/1229768131950546944" target="_blank">Reportify · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">半导体</span>
+        <h3>德勤2026半导体展望：AI推动销售额创9750亿美元新高</h3>
+        <p>受人工智能基础设施热潮推动，2026年全球半导体行业销售额将创下<strong>9750亿美元</strong>新高。但行业陷入"高利润、低销量"结构性失衡，需警惕产能过剩风险。</p>
+        <a class="signal-source" href="https://www.deloitte.com/cn/zh/Industries/telecom-media-entertainment/perspectives/deloitte-2026-global-semiconductor-industry-outlook.html" target="_blank">德勤 · 2026-03-28</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 新产品 -->
+  <section id="product">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(198,40,40,.15);">📦</div>
+      <h2>新产品</h2>
+      <p>新发布的消费电子、软件工具与创业产品</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">科技大会</span>
+        <h3>2026中关村论坛年会：60场平行论坛发布500余项科技成果</h3>
+        <p>3月25日至29日举办，围绕全球科技治理、基础研究与科技前沿、创新生态等热点议题，其中<strong>21场为首次举办</strong>，多项前沿科技成果集中发布。</p>
+        <a class="signal-source" href="https://news.cctv.com/2026/03/28/ARTIAZnk8HxRBSWKzb3MbF4H260327.shtml" target="_blank">央视网 · 2026-03-28</a>
+      </div>
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">AI算力</span>
+        <h3>国产AI算力"超级底座"上线：23家企业共建开源生态</h3>
+        <p>2026中关村论坛AI开源前沿论坛上，由<strong>23家企业联合共建</strong>的国产AI算力"超级底座"正式发布，为更多AI应用场景提供底层支撑。</p>
+        <a class="signal-source" href="https://k.sina.cn/article_7857201856_1d45362c001903p39s.html" target="_blank">新浪科技 · 2026-03-28</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 龙大仙注记 -->
+  <div class="dragon-note">
+    <div class="label">Dragon Note</div>
+    <blockquote>今日核心信号：AI实时交互成为新战场——谷歌Gemini 3.1 Flash Live、Suno v5.5个性化音乐、字节即梦视频生成，三家巨头在同一周押注"实时+个性化"AI体验。同时，Meta开源TRIBE v2大脑预测模型，标志着AI开始向神经科学深水区渗透。量子计算和半导体行业数据印证：2026年是AI基础设施规模化落地的关键之年。</blockquote>
+    <div class="signature">— 龙大仙 · 2026-03-29</div>
+  </div>
+
+  <!-- 点赞组件 -->
+  <div id="like-component"></div>
+
+</div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
+
 </body>
 </html>

@@ -618,9 +618,20 @@
   </div>
 </div>
 
+<!-- 点赞组件 -->
+<div id="like-component"></div>
+
 <footer>
   <p>《每日未来情报》· 2026-03-15 · 由龙大仙自动生成 · 信息来源于公开互联网</p>
 </footer>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
 
 </body>
 </html>

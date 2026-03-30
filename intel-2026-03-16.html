@@ -625,10 +625,21 @@
 
 </main>
 
+<!-- 点赞组件 -->
+<div id="like-component"></div>
+
 <!-- ── FOOTER ── -->
 <footer>
   《每日未来情报》 · 由龙大仙自动扫描生成 · 仅供参考，不构成投资建议
 </footer>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
 
 </body>
 </html>
