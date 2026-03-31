@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>谦哥技能矩阵 | 跨界设计专家</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <style>
+    :root {
+      --primary: #22D3EE;
+      --primary-dark: #0891B2;
+      --dark: #0D1117;
+      --card: #1C2128;
+      --card-hover: #21262D;
+      --border: #30363D;
+      --text: #E6EDF3;
+      --text-secondary: #8B949E;
+      --expert: #FFD700;
+      --advanced: #22D3EE;
+      --intermediate: #A371F7;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    /* Back Button */
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: rgba(30, 41, 59, 0.9);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 10px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    
+    .back-btn:hover {
+      background: var(--primary);
+      color: var(--dark);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(34, 211, 238, 0.3);
+    }
+    
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, #0D1117 0%, #161B22 50%, #0D1117 100%);
+      padding: 100px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 50%, rgba(163, 113, 247, 0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .hero-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--dark);
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+    
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+    }
+    
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    
+    .hero-stat {
+      text-align: center;
+    }
+    
+    .hero-stat-number {
+      display: block;
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--primary);
+    }
+    
+    .hero-stat-label {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+    
+    /* Main Content */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    
+    .section {
+      margin-bottom: 80px;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    
+    .section-tag {
+      display: inline-block;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    
+    .section-desc {
+      color: var(--text-secondary);
+      font-size: 16px;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 24px;
+    }
+    
+    .skill-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .skill-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--advanced));
+    }
+    
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      box-shadow: 0 8px 32px rgba(34, 211, 238, 0.1);
+    }
+    
+    .skill-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    
+    .skill-icon {
+      width: 56px;
+      height: 56px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+    
+    .skill-info h3 {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    
+    .skill-level {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    .level-expert {
+      background: rgba(255, 215, 0, 0.15);
+      color: var(--expert);
+    }
+    
+    .level-advanced {
+      background: rgba(34, 211, 238, 0.15);
+      color: var(--advanced);
+    }
+    
+    .level-intermediate {
+      background: rgba(163, 113, 247, 0.15);
+      color: var(--intermediate);
+    }
+    
+    .skill-desc {
+      color: var(--text-secondary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    
+    /* Category Section */
+    .category-section {
+      margin-bottom: 60px;
+    }
+    
+    .category-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--border);
+    }
+    
+    .category-icon {
+      font-size: 28px;
+    }
+    
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    
+    .service-card {
+      background: linear-gradient(135deg, var(--card) 0%, var(--card-hover) 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--primary);
+    }
+    
+    .service-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+    }
+    
+    .service-card h3 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    .service-tag {
+      display: inline-block;
+      background: rgba(34, 211, 238, 0.1);
+      color: var(--primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background: linear-gradient(135deg, rgba(34, 211, 238, 0.05) 0%, rgba(163, 113, 247, 0.05) 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 60px;
+      text-align: center;
+    }
+    
+    .contact-section h2 {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    
+    .contact-section p {
+      color: var(--text-secondary);
+      font-size: 16px;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .contact-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--dark);
+      padding: 16px 40px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(34, 211, 238, 0.3);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+      
+      .hero-stats {
+        gap: 24px;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-section {
+        padding: 40px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Back Button -->
+  <a href="index.html" class="back-btn" title="返回主页">← 返回主页</a>
+  
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">跨界设计专家</div>
+      <h1>谦哥技能矩阵</h1>
+      <p class="hero-subtitle">10年+ VR/AR行业经验 · 游戏设计硕士 · AI实践先行者<br>从工业设计到AI创作，从专业足球到三皇炮捶</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-number">35+</span>
+          <span class="hero-stat-label">核心技能</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">8</span>
+          <span class="hero-stat-label">专业领域</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">10年+</span>
+          <span class="hero-stat-label">行业经验</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-number">44岁</span>
+          <span class="hero-stat-label">百米13秒</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Main Content -->
+  <div class="container">
+    <!-- Professional Skills -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Professional Skills</span>
+        <h2 class="section-title">专业技能</h2>
+        <p class="section-desc">深耕设计与技术领域，具备全流程专业能力</p>
+      </div>
+      
+      <div class="category-section">
+        <h3 class="category-title"><span class="category-icon">🎨</span>设计领域</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🏭</div>
+              <div class="skill-info">
+                <h3>工业设计</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟练掌握工业设计全流程、全工种专业知识、设计流程、设计管理。具备从概念到量产的全链条能力。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🎮</div>
+              <div class="skill-info">
+                <h3>游戏设计</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">英名校游戏硕士留学背景，熟练掌握全流程、全工种游戏设计专业知识、开发流程、开发管理。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🎬</div>
+              <div class="skill-info">
+                <h3>视频制作与剪辑</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟悉视频制作原理、软件、视频参数效果，以及剪辑原理和相关参数效果应用。具备完整视频创作能力。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">✨</div>
+              <div class="skill-info">
+                <h3>特效设计</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟悉特效制作原理、软件、特效参数效果，能够为视频和交互内容添加专业级视觉特效。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🖼️</div>
+              <div class="skill-info">
+                <h3>图像设计</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟练应用PS、AI等标量矢量软件，具备专业的平面设计和视觉创作能力。</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="category-section">
+        <h3 class="category-title"><span class="category-icon">💻</span>技术领域</h3>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🥽</div>
+              <div class="skill-info">
+                <h3>VR/AR产品技术</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟悉VR/AR产品软硬件技术和行业发展情况，了解产品开发流程、内容生产流程，有实际的VR/AR内容开发项目经验。被ROKID创始人亲自关注交流。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🤖</div>
+              <div class="skill-info">
+                <h3>AI产品</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟悉和熟练使用市面上知名AI产品，对产品能力、边界、产出效果、成本有深入认知和大量使用实践。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">📊</div>
+              <div class="skill-info">
+                <h3>调研分析</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">深入细致专业的调研能力，可快速进入一个新行业新知识和新领域。已完成15篇VR用户体验研究论文。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">🧊</div>
+              <div class="skill-info">
+                <h3>三维软件开发</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟练掌握三维软件开发全流程人员、专业、项目管理、指导。具备从架构设计到落地实施的完整能力。</p>
+          </div>
+          
+          <div class="skill-card">
+            <div class="skill-header">
+              <div class="skill-icon">📱</div>
+              <div class="skill-info">
+                <h3>App/Web开发</h3>
+                <span class="skill-level level-expert">专家级</span>
+              </div>
+            </div>
+            <p class="skill-desc">熟练掌握App软件开发和Web软件开发全流程人员、专业、项目管理、指导。具备全栈技术视野。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- AI Skills -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">AI Capabilities</span>
+        <h2 class="section-title">AI实践能力</h2>
+        <p class="section-desc">3年数百万字AI对话记录，全模态AI创作实践</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">💬</div>
+            <div class="skill-info">
+              <h3>AI文字/提示词</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练使用GPT、Gemini、Grok、DeepSeek、豆包、元宝等国内外语言大模型，3年数百万字GPT问答记录和话题研究。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎨</div>
+            <div class="skill-info">
+              <h3>AI图像</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练使用GPT4o、Gemini Banana等先进AI图像模型进行海量图像视觉创意制作，本地部署SD进行批量生产。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎬</div>
+            <div class="skill-info">
+              <h3>AI视频</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">第一时间接触和熟练使用可灵、即梦、Runway、Sora2等先进AI视频工具进行视频创作。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎵</div>
+            <div class="skill-info">
+              <h3>AI声音与音乐</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">本地部署So-VITS-SVC，完成语音克隆、TTS转换、歌曲音色替换。完成30年前录音带音色复刻复活壮举。了解多款AI作曲软件，完成数十首AI原创音乐。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">✂️</div>
+            <div class="skill-info">
+              <h3>AI全流程剪辑</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">AI创作全流程实践：从文案、脚本、创意，到视觉、动画、视频、音乐音效创作，最后到剪辑成片全流程落地。</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Project Experience -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Project Experience</span>
+        <h2 class="section-title">项目经验</h2>
+        <p class="section-desc">丰富的跨领域项目实战经验</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🏛️</div>
+            <div class="skill-info">
+              <h3>展览展示策划</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练掌握展览展示行业、项目设计人员构架知识、项目管理、设计管理、设计流程、设计执行落地、运营工作。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎭</div>
+            <div class="skill-info">
+              <h3>演出演艺策划</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练掌握演出演艺行业、项目设计人员构架知识、项目管理、设计管理、设计流程、设计执行落地、运营工作。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎬</div>
+            <div class="skill-info">
+              <h3>动画设计</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练掌握动画设计、制作流程，具备从概念到成片的完整动画创作能力。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">📝</div>
+            <div class="skill-info">
+              <h3>剧本设计</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练掌握剧本设计、创作流程，具备专业级剧本创作能力。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎥</div>
+            <div class="skill-info">
+              <h3>短片导演</h3>
+              <span class="skill-level level-expert">专家级</span>
+            </div>
+          </div>
+          <p class="skill-desc">熟练掌握短片创意、制作、导演流程，具备独立短片创作能力。</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Physical Skills -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Physical Capabilities</span>
+        <h2 class="section-title">身体机能</h2>
+        <p class="section-desc">专业体育训练背景，多项运动优于常人</p>
+      </div>
+      
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">⚡</div>
+            <div class="skill-info">
+              <h3>百米冲刺</h3>
+              <span class="skill-level level-advanced">13秒内</span>
+            </div>
+          </div>
+          <p class="skill-desc">44岁百米仍可跑到13秒内，爆发力保持优秀。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🏃</div>
+            <div class="skill-info">
+              <h3>中长跑</h3>
+              <span class="skill-level level-advanced">1000米4分</span>
+            </div>
+          </div>
+          <p class="skill-desc">中长跑锻炼变少，做做恢复训练应能跑4分左右，心肺功能良好。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🥋</div>
+            <div class="skill-info">
+              <h3>武术</h3>
+              <span class="skill-level level-intermediate">童子功</span>
+            </div>
+          </div>
+          <p class="skill-desc">1年半武术功底，能打半套三皇炮捶拳，具备传统武术基础。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">⚽</div>
+            <div class="skill-info">
+              <h3>足球</h3>
+              <span class="skill-level level-advanced">专业训练</span>
+            </div>
+          </div>
+          <p class="skill-desc">2年足球专业训练功底，停传带射均不错，具备专业足球基础。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🏀</div>
+            <div class="skill-info">
+              <h3>篮球</h3>
+              <span class="skill-level level-advanced">优于常人</span>
+            </div>
+          </div>
+          <p class="skill-desc">运球突破、上篮、中投不错，会后仰，远投不行。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🏓</div>
+            <div class="skill-info">
+              <h3>乒乓球</h3>
+              <span class="skill-level level-advanced">优于常人</span>
+            </div>
+          </div>
+          <p class="skill-desc">正手暴力，反手待进步，接发球有待提升，发球尚可。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🏸</div>
+            <div class="skill-info">
+              <h3>羽毛球</h3>
+              <span class="skill-level level-advanced">3.0级别</span>
+            </div>
+          </div>
+          <p class="skill-desc">各种技能基本掌握，尤擅长网前球。</p>
+        </div>
+        
+        <div class="skill-card">
+          <div class="skill-header">
+            <div class="skill-icon">🎱</div>
+            <div class="skill-info">
+              <h3>台球</h3>
+              <span class="skill-level level-advanced">优于常人</span>
+            </div>
+          </div>
+          <p class="skill-desc">最多一杆连进6球。</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Services -->
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Services</span>
+        <h2 class="section-title">咨询服务</h2>
+        <p class="section-desc">可提供的专业咨询服务方向</p>
+      </div>
+      
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">🥽</div>
+          <h3>VR/AR产品咨询</h3>
+          <p>产品选型、技术路线、内容策略、行业趋势分析</p>
+          <span class="service-tag">¥500/小时</span>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🎮</div>
+          <h3>游戏设计咨询</h3>
+          <p>游戏策划、交互设计、产品优化、开发流程梳理</p>
+          <span class="service-tag">¥500/小时</span>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🤖</div>
+          <h3>AI应用咨询</h3>
+          <p>AI工具选型、工作流程优化、提示词工程、AI内容创作</p>
+          <span class="service-tag">¥400/小时</span>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">🎨</div>
+          <h3>设计项目咨询</h3>
+          <p>工业设计、展览展示、演出演艺项目策划与管理</p>
+          <span class="service-tag">¥500/小时</span>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>行业调研报告</h3>
+          <p>定制行业深度调研报告、竞品分析、市场研究</p>
+          <span class="service-tag">¥2000起/份</span>
+        </div>
+        
+        <div class="service-card">
+          <div class="service-icon">✍️</div>
+          <h3>内容策略咨询</h3>
+          <p>公众号运营、深度内容创作、个人IP打造</p>
+          <span class="service-tag">¥300/小时</span>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Contact -->
+    <section class="contact-section">
+      <h2>有项目需要聊聊？</h2>
+      <p>无论是VR/AR产品咨询、游戏设计指导，还是AI创作探索，欢迎与我交流。跨界思维，或许能给你带来不一样的视角。</p>
+      <a href="mailto:onetitan@qq.com" class="contact-btn">联系我</a>
+    </section>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 谦哥 | 跨界设计专家 · 持续进化中</p>
+  </footer>
+  
+  <!-- Like Component -->
+  <div id="like-component"></div>
+  
+  <!-- Like System -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+</body>
+</html>
