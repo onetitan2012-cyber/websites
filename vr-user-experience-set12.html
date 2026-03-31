@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[12/15] 个体因素（二）：疲劳/频率/主视眼 | VR用户体验研究</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --primary: #22D3EE;
+      --primary-dark: #06B6D4;
+      --accent: #A78BFA;
+      --bg: #0D1117;
+      --card-bg: #1C2128;
+      --border: #30363D;
+      --text: #E6EDF3;
+      --text-secondary: #8B949E;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: linear-gradient(135deg, #0D1117 0%, #161B22 50%, #0D1117 100%);
+      padding: 100px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2322D3EE' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; }
+    .series-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(167,139,250,0.2));
+      border: 1px solid rgba(34,211,238,0.3);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      color: var(--primary);
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--text) 0%, var(--primary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p { color: var(--text-secondary); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+    .series-nav {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      max-width: 900px;
+      margin: -30px auto 60px;
+      position: relative;
+      z-index: 10;
+    }
+    .series-nav h3 { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; text-align: center; }
+    .series-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .series-item {
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .series-item.current { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; font-weight: 600; }
+    .series-item.completed { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.3); color: var(--primary); }
+    .series-item.completed:hover { background: rgba(34,211,238,0.2); }
+    .series-item.pending { background: var(--bg); border: 1px solid var(--border); color: var(--text-secondary); cursor: default; }
+    .container { max-width: 800px; margin: 0 auto; padding: 0 24px 80px; }
+    .content-section { margin-bottom: 60px; }
+    .content-section h2 { font-size: 1.5rem; color: var(--primary); margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+    .content-section h3 { font-size: 1.2rem; color: var(--text); margin: 32px 0 16px; }
+    .content-section p { color: var(--text-secondary); margin-bottom: 16px; line-height: 1.9; }
+    .data-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; }
+    .data-table th, .data-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+    .data-table th { background: rgba(34,211,238,0.1); color: var(--primary); font-weight: 600; }
+    .data-table tr:hover { background: rgba(255,255,255,0.02); }
+    .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+    .stat-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+    .stat-number { font-size: 2rem; font-weight: 700; color: var(--primary); display: block; }
+    .stat-label { font-size: 0.85rem; color: var(--text-secondary); margin-top: 8px; }
+    .key-insight {
+      background: linear-gradient(135deg, rgba(34,211,238,0.15) 0%, rgba(167,139,250,0.1) 100%);
+      border: 1px solid rgba(34,211,238,0.3);
+      border-radius: 16px;
+      padding: 32px;
+      margin: 48px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .key-insight::before { content: ''; position: absolute; top: -16px; left: 24px; width: 32px; height: 32px; background: var(--bg); border-radius: 50%; z-index: 2; }
+    .key-insight::after { content: '💡'; position: absolute; top: -12px; left: 28px; font-size: 1.2rem; z-index: 3; }
+    .key-insight h3 { color: var(--primary); font-size: 1.2rem; margin-bottom: 16px; margin-top: 8px; }
+    .key-insight p { color: var(--text-secondary); line-height: 1.9; }
+    .wechat-source {
+      background: linear-gradient(135deg, rgba(7,193,96,0.15) 0%, rgba(7,193,96,0.05) 100%);
+      border: 1px solid rgba(7,193,96,0.3);
+      border-radius: 16px;
+      padding: 32px;
+      margin-top: 60px;
+      text-align: center;
+    }
+    .wechat-source h3 { color: #07C160; font-size: 1.1rem; margin-bottom: 12px; }
+    .wechat-source p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 20px; }
+    .wechat-btn { display: inline-block; padding: 14px 28px; background: rgba(7,193,96,0.2); border: 1px solid rgba(7,193,96,0.5); border-radius: 50px; color: #07C160; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+    .wechat-btn:hover { background: rgba(7,193,96,0.3); transform: translateY(-2px); }
+    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; }
+    footer p { color: var(--text-secondary); font-size: 0.9rem; }
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 2rem; }
+      .stats-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3MRTX1PCP1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3MRTX1PCP1');
+  </script>
+</head>
+<body>
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    返回主页
+  </a>
+  <section class="hero">
+    <div class="hero-content">
+      <span class="series-badge">VR用户体验研究系列 · 第12篇</span>
+      <h1>[12/15] 个体因素（二）</h1>
+      <p>疲劳程度、使用频率与主视眼对VR晕动症的个体差异影响</p>
+    </div>
+  </section>
+  <div class="series-nav">
+    <h3>📚 系列文章导航</h3>
+    <div class="series-grid">
+      <a href="vr-user-experience-set01.html" class="series-item completed">01</a>
+      <a href="vr-user-experience-set02.html" class="series-item completed">02</a>
+      <a href="vr-user-experience-set03.html" class="series-item completed">03</a>
+      <a href="vr-user-experience-set04.html" class="series-item completed">04</a>
+      <a href="vr-user-experience-set05.html" class="series-item completed">05</a>
+      <a href="vr-user-experience-set06.html" class="series-item completed">06</a>
+      <a href="vr-user-experience-set07.html" class="series-item completed">07</a>
+      <a href="vr-user-experience-set08.html" class="series-item completed">08</a>
+      <a href="vr-user-experience-set09.html" class="series-item completed">09</a>
+      <a href="vr-user-experience-set10.html" class="series-item completed">10</a>
+      <a href="vr-user-experience-set11.html" class="series-item completed">11</a>
+      <span class="series-item current">12</span>
+      <span class="series-item pending">13</span>
+      <span class="series-item pending">14</span>
+      <span class="series-item pending">15</span>
+    </div>
+  </div>
+  <div class="container">
+    <section class="content-section">
+      <h2>😴 疲劳程度因素</h2>
+      <p>用户的身体和精神疲劳状态是影响VR晕动症发生的重要个体因素。疲劳会降低前庭系统的耐受性，增加晕动症风险。</p>
+      <h3>疲劳类型与晕动症关系</h3>
+      <table class="data-table">
+        <tr><th>疲劳类型</th><th>晕动症风险</th><th>影响机制</th><th>建议</th></tr>
+        <tr><td>睡眠不足（&lt;6小时）</td><td style="color:#EF4444;">高风险</td><td>前庭系统敏感度增加40%</td><td>避免使用或缩短时长</td></tr>
+        <tr><td>视觉疲劳</td><td style="color:#EF4444;">高风险</td><td>调节能力下降，聚焦困难</td><td>休息20分钟后再使用</td></tr>
+        <tr><td>精神疲劳</td><td style="color:#F59E0B;">中风险</td><td>注意力分散，适应能力下降</td><td>选择轻度体验内容</td></tr>
+        <tr><td>身体疲劳</td><td style="color:#F59E0B;">中风险</td><td>肌肉紧张，姿势不稳</td><td>优先坐姿体验</td></tr>
+      </table>
+      <div class="key-insight">
+        <h3>研究数据</h3>
+        <p>斯坦福大学VR实验室研究发现，睡眠不足的用户晕动症发生率是正常睡眠用户的2.3倍，且恢复时间延长50%。</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <h2>📅 使用频率因素</h2>
+      <p>VR使用频率直接影响用户的适应能力。规律使用可以建立"VR耐受性"，降低晕动症发生率。</p>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-number">首次</span><span class="stat-label">晕动症率：50-60%</span></div>
+        <div class="stat-card"><span class="stat-number">每周1次</span><span class="stat-label">晕动症率：35-45%</span></div>
+        <div class="stat-card"><span class="stat-number">每周3次+</span><span class="stat-label">晕动症率：15-25%</span></div>
+      </div>
+      <h3>适应曲线</h3>
+      <table class="data-table">
+        <tr><th>使用阶段</th><th>累计时长</th><th>晕动症程度</th><th>特征</th></tr>
+        <tr><td>初期适应</td><td>0-2小时</td><td>严重</td><td>大脑学习处理虚拟运动信号</td></tr>
+        <tr><td>快速改善</td><td>2-10小时</td><td>中等</td><td>前庭系统开始适应</td></tr>
+        <tr><td>稳定期</td><td>10-50小时</td><td>轻微</td><td>建立稳定的VR耐受性</td></tr>
+        <tr><td>完全适应</td><td>50小时+</td><td>极少</td><td>仅在极端条件下出现</td></tr>
+      </table>
+      <div class="key-insight">
+        <h3>关键发现</h3>
+        <p>间断使用会导致"适应退化"。停止使用VR超过2周，适应能力会下降30-40%，需要重新适应。</p>
+      </div>
+    </section>
+    <section class="content-section">
+      <h2>👁️ 主视眼因素</h2>
+      <p>主视眼（Dominant Eye）是指大脑优先使用的一只眼睛来获取视觉信息。主视眼与VR显示不匹配可能导致额外的不适。</p>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-number">67%</span><span class="stat-label">右眼为主视眼</span></div>
+        <div class="stat-card"><span class="stat-number">29%</span><span class="stat-label">左眼为主视眼</span></div>
+        <div class="stat-card"><span class="stat-number">4%</span><span class="stat-label">交替主视眼</span></div>
+      </div>
+      <h3>主视眼与VR体验</h3>
+      <table class="data-table">
+        <tr><th>因素</th><th>影响说明</th><th>优化建议</th></tr>
+        <tr><td>瞳距调节</td><td>主视眼决定IPD调节的基准点</td><td>以主视眼为中心调整IPD</td></tr>
+        <tr><td>瞄准精度</td><td>射击/瞄准类游戏依赖主视眼</td><td>提供主视眼选择选项</td></tr>
+        <tr><td>深度感知</td><td>主视眼主导立体视觉处理</td><td>校准双眼显示平衡</td></tr>
+        <tr><td>阅读舒适度</td><td>文字渲染应优先满足主视眼</td><td>UI元素偏向主视眼侧</td></tr>
+      </table>
+      <div class="key-insight">
+        <h3>设计启示</h3>
+        <p>VR应用应允许用户设置主视眼偏好，特别是在瞄准、阅读等精细操作场景中。</p>
+      </div>
+    </section>
+    <div class="wechat-source">
+      <h3>📱 微信公众号原文</h3>
+      <p>本文内容基于公众号研究整理，欢迎关注获取更多VR/AR深度分析</p>
+      <a href="https://mp.weixin.qq.com/s/eTo5rJksp6jo9S4dXziHDA" class="wechat-btn" target="_blank">查看原文</a>
+    </div>
+  </div>
+  <footer><p>© 2026 龙大仙 · VR用户体验研究系列</p></footer>
+  <div id="like-component"></div>
+  <script src="like-system.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', function() { PonghoodLike.init('#like-component'); });</script>
+</body>
+</html>
