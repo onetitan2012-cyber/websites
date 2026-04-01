@@ -9,16 +9,19 @@
 
   // 配置
   const config = {
-    particleCount: 150,       // 粒子数量（大幅增加）
-    particleSize: 1.5,        // 粒子基础大小（变小）
-    particleLife: 2000,       // 粒子生命周期(ms)（延长）
-    spawnRate: 5,             // 每帧生成粒子数（增加）
-    spreadRadius: 300,        // 扩散半径（大幅增加）
-    bgStarCount: 100,         // 背景静态星星数量
-    connectionDistance: 80,   // 连线距离
+    particleCount: 180,       // 粒子数量（略微减少，避免拥挤）
+    particleSize: 1.2,        // 粒子基础大小（更小更细）
+    particleLife: 8000,       // 粒子生命周期(ms)（更长）
+    spawnRate: 1,             // 每帧生成粒子数（极少，稀疏感）
+    spreadRadius: 400,        // 扩散半径（更大范围）
+    bgStarCount: 150,         // 背景静态星星数量（更多更细）
+    connectionDistance: 0,    // 关闭连线
+    followDelay: 0.02,        // 跟随延迟系数（极大延迟，像拖着走）
+    driftSpeed: 0.08,         // 自然漂移速度（极慢）
+    breathSpeed: 0.08,        // 呼吸速度（极慢）
     colors: {
-      dark: ['#5E9CEA', '#7AB8FF', '#9ED0FF', '#64B5F6', '#42A5F5', '#90CAF9'],  // 深色背景配色（蓝系）
-      light: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF8C42', '#9B5DE5', '#F472B6']  // 浅色背景配色（彩系）
+      dark: ['#5E9CEA', '#7AB8FF', '#9ED0FF', '#64B5F6', '#42A5F5', '#90CAF9', '#A8D5FF'],  // 深色背景配色（更多蓝色层次）
+      light: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF8C42', '#9B5DE5', '#F472B6']
     }
   };
 
@@ -32,9 +35,12 @@
       this.mouseY = 0;
       this.lastMouseX = 0;     // 上次鼠标位置
       this.lastMouseY = 0;
+      this.smoothMouseX = 0;   // 平滑后的鼠标位置（延迟跟随）
+      this.smoothMouseY = 0;
       this.isActive = true;
       this.animationId = null;
       this.lastSpawn = 0;
+      this.time = 0;           // 全局时间
       
       // 合并配置
       this.config = { ...config, ...options };
@@ -92,10 +98,12 @@
         this.bgStars.push({
           x: Math.random() * this.canvas.width,
           y: Math.random() * this.canvas.height,
-          size: Math.random() * 1.5 + 0.5,
-          alpha: Math.random() * 0.5 + 0.2,
+          size: Math.random() * 0.8 + 0.2,  // 更小的背景星星
+          alpha: Math.random() * 0.4 + 0.1,
           pulsePhase: Math.random() * Math.PI * 2,
-          pulseSpeed: 0.02 + Math.random() * 0.03
+          pulseSpeed: 0.01 + Math.random() * 0.02,  // 更慢的闪烁
+          driftX: (Math.random() - 0.5) * 0.1,  // 自然漂移
+          driftY: (Math.random() - 0.5) * 0.1
         });
       }
     }
@@ -132,33 +140,53 @@
     createParticle(x, y, bgType) {
       const colors = this.config.colors[bgType];
       const color = colors[Math.floor(Math.random() * colors.length)];
-      
-      // 计算鼠标移动方向
-      const dx = x - this.lastMouseX;
-      const dy = y - this.lastMouseY;
-      const moveAngle = Math.atan2(dy, dx);
-      const moveSpeed = Math.sqrt(dx * dx + dy * dy);
-      
-      // 随机角度和距离，形成大范围扩散
-      const angle = (Math.random() - 0.5) * Math.PI * 2; // 全方向扩散
-      const distance = Math.random() * this.config.spreadRadius;
-      
-      // 根据鼠标移动速度调整扩散范围
-      const speedFactor = Math.min(moveSpeed * 0.5, 50);
-      
+
+      // 随机角度和距离，形成从中心向外的分布
+      const angle = Math.random() * Math.PI * 2;
+      // 使用平方根分布让粒子更均匀
+      const distance = Math.sqrt(Math.random()) * this.config.spreadRadius;
+
+      // 大小不均匀（0.3x ~ 2x），更多小粒子
+      const sizeVariation = 0.3 + Math.random() * 1.7;
+      const baseSize = this.config.particleSize * sizeVariation;
+
+      // 计算从中心向外的方向（用于光芒效果）
+      const centerX = x;
+      const centerY = y;
+      const dirX = Math.cos(angle);
+      const dirY = Math.sin(angle);
+
+      // 每个粒子有独立的"个性"运动参数
+      const driftAngle = Math.random() * Math.PI * 2;
+      const driftSpeed = Math.random() * 0.5 + 0.2;
+
       return {
-        x: x + Math.cos(angle) * distance * 0.5,
-        y: y + Math.sin(angle) * distance * 0.5,
-        vx: Math.cos(angle) * (Math.random() * 3 + 1) + Math.cos(moveAngle) * speedFactor * 0.1,
-        vy: Math.sin(angle) * (Math.random() * 3 + 1) + Math.sin(moveAngle) * speedFactor * 0.1,
-        size: Math.random() * this.config.particleSize + 0.5,
-        baseSize: Math.random() * this.config.particleSize + 0.5,
+        x: x + dirX * distance,
+        y: y + dirY * distance,
+        vx: 0,
+        vy: 0,
+        size: baseSize,
+        baseSize: baseSize,
         color: color,
         life: this.config.particleLife,
         maxLife: this.config.particleLife,
         bgType: bgType,
         pulsePhase: Math.random() * Math.PI * 2,
-        pulseSpeed: 0.03 + Math.random() * 0.04
+        pulseSpeed: 0.015 + Math.random() * 0.02,  // 更慢的呼吸
+        // 从中心向外的方向
+        dirX: dirX,
+        dirY: dirY,
+        distance: distance,
+        // 水母式蠕动参数
+        driftAngle: driftAngle,
+        driftSpeed: driftSpeed,
+        driftPhase: Math.random() * Math.PI * 2,
+        driftAmplitude: Math.random() * 0.5 + 0.3,
+        // 光芒拖尾长度
+        tailLength: Math.random() * 8 + 4,
+        // 独立运动周期
+        cycleX: Math.random() * 100 + 50,
+        cycleY: Math.random() * 100 + 50
       };
     }
 
@@ -178,28 +206,49 @@
         this.lastSpawn = now;
       }
       
+      // 更新时间
+      this.time += 0.016;
+
+      // 平滑鼠标位置（延迟跟随效果）
+      this.smoothMouseX += (this.mouseX - this.smoothMouseX) * this.config.followDelay;
+      this.smoothMouseY += (this.mouseY - this.smoothMouseY) * this.config.followDelay;
+
       // 更新现有粒子
       for (let i = this.particles.length - 1; i >= 0; i--) {
         const p = this.particles[i];
+
+        // 计算粒子相对于中心的位置
+        const dx = p.x - this.smoothMouseX;
+        const dy = p.y - this.smoothMouseY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // 极简运动：只有极缓慢的漂移，没有弹簧拉回
+        // 粒子一旦生成就在自己的轨道上缓慢漂移
         
-        // 更新位置 - 添加漂移感
-        p.x += p.vx;
-        p.y += p.vy;
+        // 极慢的切向漂移（像浮游生物随波逐流）
+        const tangentX = -dy / (distance + 0.001);
+        const tangentY = dx / (distance + 0.001);
+        const drift = Math.sin(this.time * 0.05 + p.driftPhase) * 0.02; // 极慢的正弦漂移
         
-        // 模拟空气阻力，速度逐渐减小
-        p.vx *= 0.98;
-        p.vy *= 0.98;
+        // 极慢的径向呼吸（几乎感觉不到）
+        const breath = Math.sin(this.time * 0.03 + p.pulsePhase) * 0.01;
+        const radialX = (dx / (distance + 0.001)) * breath;
+        const radialY = (dy / (distance + 0.001)) * breath;
         
-        // 添加轻微的随机漂移（呼吸感）
-        p.x += Math.sin(Date.now() * 0.001 + p.pulsePhase) * 0.3;
-        p.y += Math.cos(Date.now() * 0.001 + p.pulsePhase) * 0.2;
+        // 更新位置（极小的位移）
+        p.x += tangentX * drift + radialX;
+        p.y += tangentY * drift + radialY;
         
+        // 极慢的跟随鼠标（像拖着长长的尾巴）
+        p.x += (this.smoothMouseX - p.x) * 0.005;
+        p.y += (this.smoothMouseY - p.y) * 0.005;
+
         // 更新呼吸相位
         p.pulsePhase += p.pulseSpeed;
-        
+
         // 减少生命值
         p.life -= 16;
-        
+
         // 移除死亡粒子
         if (p.life <= 0) {
           this.particles.splice(i, 1);
@@ -221,12 +270,12 @@
           const distance = Math.sqrt(dx * dx + dy * dy);
           
           if (distance < this.config.connectionDistance) {
-            const alpha = (1 - distance / this.config.connectionDistance) * 0.3;
+            const alpha = (1 - distance / this.config.connectionDistance) * this.config.connectionOpacity;
             this.ctx.beginPath();
             this.ctx.moveTo(p1.x, p1.y);
             this.ctx.lineTo(p2.x, p2.y);
             this.ctx.strokeStyle = this.hexToRgba(baseColor, alpha);
-            this.ctx.lineWidth = 0.5;
+            this.ctx.lineWidth = 0.3;
             this.ctx.stroke();
           }
         }
@@ -237,15 +286,25 @@
     drawBgStars(bgType) {
       const colors = this.config.colors[bgType];
       const color = colors[Math.floor(colors.length / 2)];
-      
+
       for (const star of this.bgStars) {
-        // 闪烁效果
-        const pulse = 0.5 + 0.5 * Math.sin(Date.now() * 0.001 + star.pulsePhase);
+        // 缓慢闪烁
+        const pulse = 0.6 + 0.4 * Math.sin(this.time + star.pulsePhase);
         const alpha = star.alpha * pulse;
-        
+
+        // 自然漂移
+        star.x += star.driftX;
+        star.y += star.driftY;
+
+        // 边界循环
+        if (star.x < 0) star.x = this.canvas.width;
+        if (star.x > this.canvas.width) star.x = 0;
+        if (star.y < 0) star.y = this.canvas.height;
+        if (star.y > this.canvas.height) star.y = 0;
+
         this.ctx.beginPath();
         this.ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        this.ctx.fillStyle = this.hexToRgba(color, alpha * 0.5);
+        this.ctx.fillStyle = this.hexToRgba(color, alpha * 0.6);
         this.ctx.fill();
       }
     }
@@ -273,22 +332,43 @@
         // 透明度：生命周期 + 呼吸
         const alpha = progress * (0.5 + 0.3 * Math.sin(p.pulsePhase * 0.5));
         
-        // 绘制发光核心（更亮）
+        // 计算拖尾方向（从圆心向外）
+        // 计算当前位置相对于中心的方向
+        const dx = p.x - this.smoothMouseX;
+        const dy = p.y - this.smoothMouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        const dirX = dx / (dist + 0.001);
+        const dirY = dy / (dist + 0.001);
+        
+        // 拖尾从粒子位置向外延伸
+        const tailX = p.x + dirX * p.tailLength * size;
+        const tailY = p.y + dirY * p.tailLength * size;
+        
+        // 创建渐变（从粒子亮到尾部淡）
+        const gradient = this.ctx.createLinearGradient(p.x, p.y, tailX, tailY);
+        gradient.addColorStop(0, this.hexToRgba(p.color, alpha));
+        gradient.addColorStop(0.5, this.hexToRgba(p.color, alpha * 0.5));
+        gradient.addColorStop(1, this.hexToRgba(p.color, 0));
+        
+        // 绘制光芒线条（从圆心向外）
         this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, size, 0, Math.PI * 2);
-        this.ctx.fillStyle = this.hexToRgba(p.color, alpha);
+        this.ctx.moveTo(p.x, p.y);
+        this.ctx.lineTo(tailX, tailY);
+        this.ctx.strokeStyle = gradient;
+        this.ctx.lineWidth = size;
+        this.ctx.lineCap = 'round';
+        this.ctx.stroke();
+        
+        // 绘制发光核心（圆点）
+        this.ctx.beginPath();
+        this.ctx.arc(p.x, p.y, size * 0.8, 0, Math.PI * 2);
+        this.ctx.fillStyle = this.hexToRgba(p.color, Math.min(alpha * 1.5, 1));
         this.ctx.fill();
         
-        // 绘制内层光晕
+        // 绘制光晕
         this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, size * 3, 0, Math.PI * 2);
-        this.ctx.fillStyle = this.hexToRgba(p.color, alpha * 0.3);
-        this.ctx.fill();
-        
-        // 绘制外层光晕（更淡更广）
-        this.ctx.beginPath();
-        this.ctx.arc(p.x, p.y, size * 6, 0, Math.PI * 2);
-        this.ctx.fillStyle = this.hexToRgba(p.color, alpha * 0.1);
+        this.ctx.arc(p.x, p.y, size * 2, 0, Math.PI * 2);
+        this.ctx.fillStyle = this.hexToRgba(p.color, alpha * 0.25);
         this.ctx.fill();
       }
     }

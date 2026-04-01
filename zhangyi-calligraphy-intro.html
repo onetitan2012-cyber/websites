@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>张毅书法 | 国粹艺术名家介绍</title>
+  <meta name="description" content="张毅，字一丁，号白眉老翁，中国书法家协会会员，师从杨萱庭、苏适、李力生、姚俊卿诸先生，真草隶行诸体皆涉猎，作品风格多姿多彩，古朴隽永。">
+  
+  <style>
+    :root {
+      --primary: #8B4513;
+      --primary-light: #D2691E;
+      --gold: #D4AF37;
+      --dark: #1a1a1a;
+      --card-bg: #2a2a2a;
+      --text: #f5f5f5;
+      --text-secondary: #b0b0b0;
+      --border: #3a3a3a;
+      --ink: #2C3E50;
+      --paper: #F5F5DC;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Serif SC", "Source Han Serif SC", serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* 导航 */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .nav-back {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-back:hover {
+      color: var(--gold);
+    }
+
+    /* Hero区 */
+    .hero {
+      padding: 120px 24px 60px;
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d1810 50%, #1a1a1a 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 3px;
+      margin-bottom: 24px;
+      border-radius: 20px;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      letter-spacing: 8px;
+      background: linear-gradient(135deg, var(--gold) 0%, #fff 50%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      letter-spacing: 4px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* 内容区 */
+    .content {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--gold);
+      display: inline-block;
+      letter-spacing: 4px;
+    }
+
+    .section-content {
+      color: var(--text);
+      font-size: 16px;
+      line-height: 2;
+    }
+
+    .section-content p {
+      margin-bottom: 16px;
+      text-align: justify;
+    }
+
+    /* 信息卡片 */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .info-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .info-card-title {
+      font-size: 14px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+    }
+
+    .info-card-content {
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* 职务列表 */
+    .position-list {
+      list-style: none;
+    }
+
+    .position-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .position-list li:last-child {
+      border-bottom: none;
+    }
+
+    .position-list li::before {
+      content: '◆';
+      color: var(--gold);
+      font-size: 10px;
+    }
+
+    /* 风格特点 */
+    .style-features {
+      display: grid;
+      gap: 16px;
+    }
+
+    .style-item {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 8px;
+      border-left: 3px solid var(--gold);
+    }
+
+    .style-item-title {
+      font-size: 15px;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .style-item-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* 评价引用 */
+    .quote-box {
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(139, 69, 19, 0.1) 100%);
+      border: 1px solid var(--gold);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+    }
+
+    .quote-box::before {
+      content: '"';
+      font-size: 60px;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      font-family: Georgia, serif;
+    }
+
+    .quote-text {
+      font-size: 18px;
+      color: var(--text);
+      line-height: 1.9;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-author {
+      text-align: right;
+      color: var(--gold);
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    /* 返回按钮 */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      transition: all 0.3s;
+      margin-top: 40px;
+    }
+
+    .back-btn:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    /* 页脚 */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .footer-source {
+      margin-top: 8px;
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    /* 艺术家档案区 */
+    .artist-profile {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 40px;
+      align-items: start;
+      margin-bottom: 60px;
+    }
+
+    .artist-photo {
+      position: relative;
+    }
+
+    .artist-photo img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      border: 3px solid var(--gold);
+    }
+
+    .artist-photo::before {
+      content: '';
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      right: -15px;
+      bottom: -15px;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .artist-info h3 {
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+    }
+
+    .artist-timeline {
+      list-style: none;
+    }
+
+    .artist-timeline li {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 20px;
+    }
+
+    .artist-timeline li:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-year {
+      color: var(--gold);
+      font-weight: 600;
+      min-width: 80px;
+      font-size: 14px;
+    }
+
+    .timeline-content {
+      color: var(--text-secondary);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* 代表作品精选 */
+    .featured-works {
+      margin-bottom: 60px;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .featured-item {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      transition: all 0.4s ease;
+      background: var(--card-bg);
+    }
+
+    .featured-item:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+    }
+
+    .featured-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+
+    .featured-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .featured-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 20px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .featured-item:hover .featured-overlay {
+      opacity: 1;
+    }
+
+    .featured-title {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    /* 作品展厅 - 瀑布流布局 */
+    .gallery-section {
+      margin-bottom: 60px;
+    }
+
+    .gallery-grid {
+      column-count: 3;
+      column-gap: 24px;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid var(--border);
+      transition: all 0.4s ease;
+      background: var(--card-bg);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+      box-shadow: 0 16px 32px rgba(212, 175, 55, 0.15);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.03);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-title {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-align: center;
+    }
+
+    /* 灯箱 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox-close:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 50px;
+      background: rgba(212, 175, 55, 0.2);
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      color: var(--gold);
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .lightbox-nav:hover {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .lightbox-prev {
+      left: -80px;
+    }
+
+    .lightbox-next {
+      right: -80px;
+    }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-secondary);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1024px) {
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        column-count: 2;
+        column-gap: 20px;
+      }
+
+      .gallery-item {
+        margin-bottom: 20px;
+      }
+
+      .lightbox-prev {
+        left: 20px;
+      }
+
+      .lightbox-next {
+        right: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 36px;
+        letter-spacing: 4px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .artist-profile {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .artist-photo {
+        max-width: 280px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        font-size: 20px;
+      }
+
+      .featured-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+      }
+
+      .gallery-grid {
+        column-count: 1;
+        column-gap: 0;
+      }
+
+      .gallery-item {
+        margin-bottom: 16px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .quote-box {
+        padding: 24px;
+      }
+
+      .quote-text {
+        font-size: 16px;
+      }
+
+      .lightbox {
+        padding: 20px;
+      }
+
+      .lightbox-nav {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+
+      .lightbox-prev {
+        left: 10px;
+      }
+
+      .lightbox-next {
+        right: 10px;
+      }
+    }
+  </style>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+</head>
+<body>
+  <!-- 导航 -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">张毅书法</a>
+    <a href="index.html" class="nav-back">← 返回主页</a>
+  </nav>
+
+  <!-- Hero区 -->
+  <section class="hero">
+    <div class="hero-content">
+      <span class="hero-tag">国粹艺术名家</span>
+      <h1 class="hero-title">张 毅</h1>
+      <p class="hero-subtitle">字一丁 · 号白眉老翁</p>
+      <p class="hero-desc">中国书法家协会会员，师从杨萱庭、苏适、李力生、姚俊卿诸先生，真草隶行诸体皆涉猎，作品风格多姿多彩，古朴隽永。</p>
+    </div>
+  </section>
+
+  <!-- 内容区 -->
+  <main class="content">
+    <!-- 艺术家档案 -->
+    <section class="section">
+      <h2 class="section-title">艺术家档案</h2>
+      <div class="artist-profile">
+        <div class="artist-photo">
+          <img src="images/zhangyi-calligraphy/zhangyi-figure.jpg" alt="张毅书法家">
+        </div>
+        <div class="artist-info">
+          <h3>艺术年表</h3>
+          <ul class="artist-timeline">
+            <li>
+              <span class="timeline-year">师承</span>
+              <span class="timeline-content">师从杨萱庭、苏适、李力生、姚俊卿诸先生，得名师真传</span>
+            </li>
+            <li>
+              <span class="timeline-year">专长</span>
+              <span class="timeline-content">真、草、隶、行诸体皆涉猎，融会贯通自成一格</span>
+            </li>
+            <li>
+              <span class="timeline-year">风格</span>
+              <span class="timeline-content">作品多姿多彩，古朴隽永，兼具典雅清正与文化底蕴</span>
+            </li>
+            <li>
+              <span class="timeline-year">职务</span>
+              <span class="timeline-content">中国书法家协会会员，中华禅宗书画院秘书长</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 代表作品精选 -->
+    <section class="section featured-works">
+      <h2 class="section-title">代表作品</h2>
+      <div class="featured-grid">
+        <div class="featured-item" onclick="openLightbox(0)">
+          <img src="images/zhangyi-calligraphy/portfolios-04.jpg" alt="舍得">
+          <div class="featured-overlay">
+            <span class="featured-title">舍得</span>
+          </div>
+        </div>
+        <div class="featured-item" onclick="openLightbox(1)">
+          <img src="images/zhangyi-calligraphy/portfolios-05.jpg" alt="艺">
+          <div class="featured-overlay">
+            <span class="featured-title">艺</span>
+          </div>
+        </div>
+        <div class="featured-item" onclick="openLightbox(2)">
+          <img src="images/zhangyi-calligraphy/portfolios-09.jpg" alt="天地人">
+          <div class="featured-overlay">
+            <span class="featured-title">天地人</span>
+          </div>
+        </div>
+        <div class="featured-item" onclick="openLightbox(3)">
+          <img src="images/zhangyi-calligraphy/portfolios-10.jpg" alt="大義">
+          <div class="featured-overlay">
+            <span class="featured-title">大義</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品展厅 -->
+    <section class="section gallery-section">
+      <h2 class="section-title">作品展厅</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="images/zhangyi-calligraphy/portfolios-01.jpg" alt="扇面作品一">
+          <div class="gallery-overlay">
+            <span class="gallery-title">扇面作品</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="images/zhangyi-calligraphy/portfolios-02.jpg" alt="扇面作品二">
+          <div class="gallery-overlay">
+            <span class="gallery-title">扇面作品</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(6)">
+          <img src="images/zhangyi-calligraphy/portfolios-03.jpg" alt="扇面作品三">
+          <div class="gallery-overlay">
+            <span class="gallery-title">扇面作品</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(7)">
+          <img src="images/zhangyi-calligraphy/portfolios-06.jpg" alt="静坐常思">
+          <div class="gallery-overlay">
+            <span class="gallery-title">静坐常思</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(8)">
+          <img src="images/zhangyi-calligraphy/portfolios-07.jpg" alt="仁义礼智信">
+          <div class="gallery-overlay">
+            <span class="gallery-title">仁义礼智信</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(9)">
+          <img src="images/zhangyi-calligraphy/portfolios-08.jpg" alt="行草作品">
+          <div class="gallery-overlay">
+            <span class="gallery-title">行草作品</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(10)">
+          <img src="images/zhangyi-calligraphy/portfolios-11.jpg" alt="般若">
+          <div class="gallery-overlay">
+            <span class="gallery-title">般若</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(11)">
+          <img src="images/zhangyi-calligraphy/portfolios-12.jpg" alt="和为贵">
+          <div class="gallery-overlay">
+            <span class="gallery-title">和为贵</span>
+          </div>
+        </div>
+        <div class="gallery-item" onclick="openLightbox(12)">
+          <img src="images/zhangyi-calligraphy/portfolios-13.jpg" alt="天行健">
+          <div class="gallery-overlay">
+            <span class="gallery-title">天行健</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 个人简介 -->
+    <section class="section">
+      <h2 class="section-title">艺术简介</h2>
+      <div class="section-content">
+        <p>张毅，字一丁，号白眉老翁，是一位在当代书坛颇具影响力的实力派书法家。他先后师从著名书法家杨萱庭、苏适、李力生、姚俊卿诸先生，在诸位名师的悉心指导下，打下了坚实的书法基础。</p>
+        <p>张毅习书尚古，真、草、隶、行诸体皆涉猎。他遍阅历代书谱，兼修法书要论，博览先贤法帖，融会贯通，渐成个人面目。其书法作品风格多姿多彩，既保留了传统书法的典雅清正，又融入了个人独特的艺术理解。</p>
+      </div>
+    </section>
+
+    <!-- 社会职务 -->
+    <section class="section">
+      <h2 class="section-title">社会职务</h2>
+      <ul class="position-list">
+        <li>中国书法家协会会员</li>
+        <li>乌兰夫民族团结理论研究会副秘书长</li>
+        <li>中华禅宗书画院秘书长</li>
+        <li>东方慈善书画院秘书长</li>
+      </ul>
+    </section>
+
+    <!-- 艺术风格 -->
+    <section class="section">
+      <h2 class="section-title">艺术风格</h2>
+      <div class="style-features">
+        <div class="style-item">
+          <div class="style-item-title">风格特点</div>
+          <div class="style-item-desc">作品风格多姿多彩，生动飘逸而又舒展，结体稳健端庄、笔墨流畅自然。格调清新高雅，端庄而又飘逸，古朴而又华美；韵律动感，形态雅致。</div>
+        </div>
+        <div class="style-item">
+          <div class="style-item-title">用笔特色</div>
+          <div class="style-item-desc">用笔灵活多变、酣畅淋漓；线条圆浑凝练，外柔内刚。在传统基础上创新，于法度中追求奇巧，作品兼具典雅清正与深厚的文化底蕴。</div>
+        </div>
+        <div class="style-item">
+          <div class="style-item-title">艺术境界</div>
+          <div class="style-item-desc">追求神采，抒写性灵，把沉稳、精妙、流畅溶于一体。作品被认为是用心灵、感情和热血浇注的精神图腾，做到了思想性、艺术性、观赏性的统一。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 业内评价 -->
+    <section class="section">
+      <h2 class="section-title">业内评价</h2>
+      <div class="quote-box">
+        <p class="quote-text">雍容大器，古朴隽永，气势磅礴，意蕴悠长。显示出娴熟的艺术功底和很高的艺术品味，颇具大家风范。</p>
+        <p class="quote-author">—— 艺术评论</p>
+      </div>
+      <div class="section-content">
+        <p>张毅被认为是当今书坛难得的实力派书法家，其作品是后人临摹、学习的对象。其书法不仅反映一种书法境界，更蕴含对人生百态的领悟。引领文化艺术潮流，影响中国，为人类历史的文明与进步作出了重大贡献。</p>
+      </div>
+    </section>
+
+    <!-- 返回按钮 -->
+    <div style="text-align: center;">
+      <a href="index.html" class="back-btn">← 返回主页</a>
+    </div>
+  </main>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p>张毅书法专栏 | 传承中华文化</p>
+    <p class="footer-source">内容来源：搜狐文化《国粹艺术名家——张毅》</p>
+  </footer>
+
+  <!-- 灯箱 -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content" onclick="event.stopPropagation()">
+      <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="prevImage()">&#8249;</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="nextImage()">&#8250;</button>
+      <div class="lightbox-counter" id="lightbox-counter">1 / 14</div>
+    </div>
+  </div>
+
+  <script>
+    // 图片数据
+    const galleryImages = [
+      { src: 'images/zhangyi-calligraphy/portfolios-04.jpg', title: '舍得' },
+      { src: 'images/zhangyi-calligraphy/portfolios-05.jpg', title: '艺' },
+      { src: 'images/zhangyi-calligraphy/portfolios-09.jpg', title: '天地人' },
+      { src: 'images/zhangyi-calligraphy/portfolios-10.jpg', title: '大義' },
+      { src: 'images/zhangyi-calligraphy/portfolios-01.jpg', title: '扇面作品' },
+      { src: 'images/zhangyi-calligraphy/portfolios-02.jpg', title: '扇面作品' },
+      { src: 'images/zhangyi-calligraphy/portfolios-03.jpg', title: '扇面作品' },
+      { src: 'images/zhangyi-calligraphy/portfolios-06.jpg', title: '静坐常思' },
+      { src: 'images/zhangyi-calligraphy/portfolios-07.jpg', title: '仁义礼智信' },
+      { src: 'images/zhangyi-calligraphy/portfolios-08.jpg', title: '行草作品' },
+      { src: 'images/zhangyi-calligraphy/portfolios-11.jpg', title: '般若' },
+      { src: 'images/zhangyi-calligraphy/portfolios-12.jpg', title: '和为贵' },
+      { src: 'images/zhangyi-calligraphy/portfolios-13.jpg', title: '天行健' },
+      { src: 'images/zhangyi-calligraphy/zhangyi-figure.jpg', title: '张毅老师' }
+    ];
+
+    let currentIndex = 0;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (!event || event.target === lightbox || event.target.classList.contains('lightbox-close')) {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateLightbox() {
+      lightboxImg.src = galleryImages[currentIndex].src;
+      lightboxImg.alt = galleryImages[currentIndex].title;
+      lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+    }
+
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+      updateLightbox();
+    }
+
+    function prevImage() {
+      currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+      updateLightbox();
+    }
+
+    // 键盘导航
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('active')) return;
+      
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    });
+
+    // 触摸滑动支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    lightbox.addEventListener('touchstart', function(e) {
+      touchStartX = e.changedTouches[0].screenX;
+    }, false);
+
+    lightbox.addEventListener('touchend', function(e) {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, false);
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          nextImage();
+        } else {
+          prevImage();
+        }
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -34,6 +34,7 @@
       --c-football: #4ADE80;
       --c-culture:  #F472B6;
       --c-original: #F97316;
+      --c-calligraphy: #D4AF37;
     }
 
     html { scroll-behavior: smooth; }
@@ -569,8 +570,8 @@
     <div class="logo">PONGHOOD</div>
     <div class="tagline">探索技术、文化与未来的个人实验室</div>
     <div class="hero-stats">
-      <div class="hero-stat"><strong id="total-count">50</strong>项目总数</div>
-      <div class="hero-stat"><strong>6</strong>内容分类</div>
+      <div class="hero-stat"><strong id="total-count">51</strong>项目总数</div>
+      <div class="hero-stat"><strong>7</strong>内容分类</div>
       <div class="hero-stat"><strong>2026</strong>持续更新</div>
     </div>
   </div>
@@ -613,6 +614,11 @@
       <span class="dot" style="background:var(--c-original)"></span>
       原创项目
       <span class="count" id="count-original"></span>
+    </button>
+    <button class="tab" data-tab="calligraphy">
+      <span class="dot" style="background:var(--c-calligraphy)"></span>
+      张毅书法
+      <span class="count" id="count-calligraphy"></span>
     </button>
   </div>
 </nav>
@@ -1257,6 +1263,20 @@
       </div>
     </a>
 
+    <!-- 张毅书法 -->
+    <a href="zhangyi-calligraphy-intro.html" class="card" data-cat="calligraphy">
+      <div class="card-top">
+        <div class="card-icon">✒️</div>
+        <span class="card-tag">张毅书法</span>
+      </div>
+      <div class="card-title">张毅书法 | 国粹艺术名家介绍</div>
+      <div class="card-desc">中国书法家协会会员张毅，字一丁，号白眉老翁，师从杨萱庭、苏适、李力生、姚俊卿诸先生，真草隶行诸体皆涉猎</div>
+      <div class="card-footer">
+        <span class="card-date">书法家专栏</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
     <!-- 中华文化 -->
     <a href="wushu-fundamentals.html" class="card" data-cat="culture">
       <div class="card-top">
@@ -1462,6 +1482,7 @@
     football: '足球',
     culture:  '中华文化',
     original: '原创项目',
+    calligraphy: '张毅书法',
   };
 
   // 计算各分类数量
