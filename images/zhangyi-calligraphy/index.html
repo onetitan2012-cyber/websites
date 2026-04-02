@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <script src="cursor-particles.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ponghood — 探索虚拟与现实的边界</title>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg:       #080C18;
+      --surface:  #0F1424;
+      --card:     #141829;
+      --border:   rgba(255,255,255,.07);
+      --border-h: rgba(255,255,255,.15);
+      --text:     #E8EBF4;
+      --muted:    #6B7499;
+      --radius:   16px;
+
+      /* 分类色 */
+      --c-all:      #60A5FA;
+      --c-intel:    #A78BFA;
+      --c-vr:       #22D3EE;
+      --c-game:     #FB923C;
+      --c-football: #4ADE80;
+      --c-culture:  #F472B6;
+      --c-original: #F97316;
+      --c-calligraphy: #D4AF37;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'PingFang SC', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 56px;
+      text-align: center;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(96,165,250,.12) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    .logo {
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+      background: linear-gradient(135deg, #60A5FA 0%, #A78BFA 50%, #22D3EE 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      letter-spacing: .04em;
+      margin-bottom: 32px;
+    }
+    .hero-stats {
+      display: inline-flex;
+      gap: 0;
+      background: rgba(255,255,255,.04);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 6px;
+    }
+    .hero-stat {
+      padding: 6px 20px;
+      font-size: .8rem;
+      color: var(--muted);
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .hero-stat:last-child { border-right: none; }
+    .hero-stat strong { color: var(--text); display: block; font-size: 1rem; font-weight: 700; }
+
+    /* ── TAB BAR ── */
+    .tab-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,12,24,.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .tabs {
+      display: flex;
+      gap: 4px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+
+    .tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: .83rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid transparent;
+      color: var(--muted);
+      background: transparent;
+      transition: all .2s;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .tab:hover { color: var(--text); background: rgba(255,255,255,.05); }
+    .tab.active {
+      color: #fff;
+      border-color: rgba(255,255,255,.15);
+    }
+    .tab .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .tab .count {
+      font-size: .7rem;
+      opacity: .6;
+      font-weight: 400;
+    }
+
+    /* tab active 颜色 */
+    .tab[data-tab="all"].active    { background: rgba(96,165,250,.12);  border-color: rgba(96,165,250,.3);  color: #93C5FD; }
+    .tab[data-tab="intel"].active  { background: rgba(167,139,250,.12); border-color: rgba(167,139,250,.3); color: #C4B5FD; }
+    .tab[data-tab="vr"].active     { background: rgba(34,211,238,.12);  border-color: rgba(34,211,238,.3);  color: #67E8F9; }
+    .tab[data-tab="game"].active   { background: rgba(251,146,60,.12);  border-color: rgba(251,146,60,.3);  color: #FDB678; }
+    .tab[data-tab="football"].active { background: rgba(74,222,128,.12); border-color: rgba(74,222,128,.3); color: #86EFAC; }
+    .tab[data-tab="culture"].active { background: rgba(244,114,182,.12); border-color: rgba(244,114,182,.3); color: #F9A8D4; }
+    .tab[data-tab="original"].active { background: rgba(249,115,22,.12); border-color: rgba(249,115,22,.3); color: #FDBA74; }
+
+    /* ── MAIN GRID ── */
+    .main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .section-label {
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      transition: transform .2s, border-color .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      opacity: 0;
+      transition: opacity .2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-h);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+    }
+    .card:hover::before { opacity: 1; }
+
+    /* 每个分类卡片顶部线条颜色 */
+    .card[data-cat="intel"]::before   { background: linear-gradient(90deg, #A78BFA, #7C3AED); }
+    .card[data-cat="vr"]::before      { background: linear-gradient(90deg, #22D3EE, #0891B2); }
+    .card[data-cat="game"]::before    { background: linear-gradient(90deg, #FB923C, #EA580C); }
+    .card[data-cat="football"]::before { background: linear-gradient(90deg, #4ADE80, #16A34A); }
+    .card[data-cat="culture"]::before  { background: linear-gradient(90deg, #F472B6, #DB2777); }
+
+    /* ── 未来日报专属区域 ── */
+    .intel-section { margin-top: 32px; }
+    .intel-section.hidden { display: none; }
+    
+    .intel-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+    .intel-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      transition: all .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .intel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #A78BFA, #7C3AED);
+    }
+    .intel-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(167,139,250,.3);
+      box-shadow: 0 8px 32px rgba(167,139,250,.1);
+    }
+    .intel-tag {
+      display: inline-block;
+      background: rgba(167,139,250,.15);
+      color: #C4B5FD;
+      padding: 4px 12px;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .intel-card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #F1F5F9;
+      margin-bottom: 10px;
+    }
+    .intel-card-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .intel-card-date {
+      font-size: .8rem;
+      color: var(--muted);
+      opacity: .7;
+    }
+
+    /* 历史归档 */
+    .intel-archive { margin-top: 48px; }
+    .archive-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .archive-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all .2s;
+    }
+    .archive-item:hover {
+      background: rgba(167,139,250,.08);
+      border-color: rgba(167,139,250,.3);
+      transform: translateX(4px);
+    }
+    .archive-date {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 56px;
+      padding: 6px 10px;
+      background: rgba(167,139,250,.15);
+      color: #C4B5FD;
+      border-radius: 6px;
+      font-size: .85rem;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .archive-title {
+      color: var(--text);
+      font-size: .95rem;
+    }
+    .archive-item:hover .archive-title {
+      color: #fff;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .card-icon {
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .card-tag {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 3px 10px;
+      border-radius: 50px;
+      border: 1px solid;
+    }
+    .card[data-cat="intel"]   .card-tag { color: #C4B5FD; border-color: rgba(167,139,250,.3); background: rgba(167,139,250,.1); }
+    .card[data-cat="vr"]      .card-tag { color: #67E8F9; border-color: rgba(34,211,238,.3);  background: rgba(34,211,238,.1); }
+    .card[data-cat="game"]    .card-tag { color: #FDB678; border-color: rgba(251,146,60,.3);  background: rgba(251,146,60,.1); }
+    .card[data-cat="football"] .card-tag { color: #86EFAC; border-color: rgba(74,222,128,.3);  background: rgba(74,222,128,.1); }
+    .card[data-cat="culture"] .card-tag { color: #F9A8D4; border-color: rgba(244,114,182,.3); background: rgba(244,114,182,.1); }
+    .card[data-cat="original"] .card-tag { color: #FDBA74; border-color: rgba(249,115,22,.3); background: rgba(249,115,22,.1); }
+    .card[data-cat="original"]::before { background: linear-gradient(90deg, #F97316, #EA580C); }
+
+    /* 最新日报卡片特殊标识 */
+    .card-latest::before {
+      background: linear-gradient(90deg, #A78BFA, #22D3EE) !important;
+    }
+    .card-latest .card-tag {
+      background: linear-gradient(90deg, rgba(167,139,250,.15), rgba(34,211,238,.15)) !important;
+      border-color: rgba(167,139,250,.4) !important;
+      color: #C4B5FD !important;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #F1F5F9;
+      line-height: 1.3;
+      margin-bottom: 10px;
+    }
+    .card-desc {
+      font-size: .855rem;
+      color: var(--muted);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .card-date {
+      font-size: .75rem;
+      color: #3D4466;
+    }
+    .card-arrow {
+      font-size: .8rem;
+      color: #3D4466;
+      transition: transform .2s, color .2s;
+    }
+    .card:hover .card-arrow { transform: translateX(3px); color: var(--muted); }
+
+    /* ── FILTER ANIMATION ── */
+    .card {
+      transition: transform .2s, border-color .2s, box-shadow .2s, opacity .25s, max-height .3s;
+    }
+    .card.hidden {
+      display: none;
+    }
+    .grid.hidden {
+      display: none;
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 64px 24px;
+      color: var(--muted);
+      font-size: .9rem;
+      display: none;
+    }
+    .empty.show { display: block; }
+
+    /* ── WECHAT SECTION ── */
+    .wechat-section {
+      display: block;
+      padding: 60px 24px;
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(96,165,250,.05) 50%, var(--bg) 100%);
+      border-top: 1px solid var(--border);
+      text-decoration: none;
+      color: inherit;
+      transition: background .3s;
+    }
+    .wechat-section:hover {
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(96,165,250,.08) 50%, var(--bg) 100%);
+    }
+    .wechat-section:hover .wechat-inner {
+      border-color: rgba(96,165,250,.3);
+      box-shadow: 0 12px 40px rgba(0,0,0,.4);
+    }
+    .wechat-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      padding: 40px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      position: relative;
+      overflow: hidden;
+    }
+    .wechat-inner::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, #22D3EE, #A78BFA, #FB923C);
+    }
+    .wechat-content {
+      flex: 1;
+    }
+    .wechat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(34,211,238,.12);
+      border: 1px solid rgba(34,211,238,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #67E8F9;
+      margin-bottom: 16px;
+    }
+    .wechat-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .wechat-desc {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .wechat-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .wechat-feature {
+      padding: 6px 12px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #94a3b8;
+    }
+    .wechat-qrcode {
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .wechat-qrcode img {
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 8px;
+      box-shadow: 0 8px 32px rgba(0,0,0,.3);
+      transition: transform .3s;
+    }
+    .wechat-qrcode img:hover {
+      transform: scale(1.05);
+    }
+    .wechat-tip {
+      display: block;
+      margin-top: 12px;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .wechat-inner {
+        flex-direction: column;
+        text-align: center;
+        gap: 32px;
+        padding: 32px 24px;
+      }
+      .wechat-features {
+        justify-content: center;
+      }
+      .wechat-qrcode img {
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px 48px;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: #2D3355;
+    }
+    footer span { color: #3D4466; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 48px 16px 40px; }
+      .hero-stats { flex-wrap: wrap; border-radius: 12px; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--border); }
+      .hero-stat:last-child { border-bottom: none; }
+      .grid { grid-template-columns: 1fr; }
+      .tabs { padding: 8px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HERO ── -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="logo">PONGHOOD</div>
+    <div class="tagline">探索技术、文化与未来的个人实验室</div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong id="total-count">52</strong>项目总数</div>
+      <div class="hero-stat"><strong>7</strong>内容分类</div>
+      <div class="hero-stat"><strong>2026</strong>持续更新</div>
+    </div>
+  </div>
+</header>
+
+<!-- ── TAB BAR ── -->
+<nav class="tab-wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="all">
+      <span class="dot" style="background:var(--c-all)"></span>
+      全部
+      <span class="count" id="count-all"></span>
+    </button>
+    <button class="tab" data-tab="intel">
+      <span class="dot" style="background:var(--c-intel)"></span>
+      未来日报
+      <span class="count" id="count-intel"></span>
+    </button>
+    <button class="tab" data-tab="vr">
+      <span class="dot" style="background:var(--c-vr)"></span>
+      VR 世界
+      <span class="count" id="count-vr"></span>
+    </button>
+    <button class="tab" data-tab="game">
+      <span class="dot" style="background:var(--c-game)"></span>
+      游戏
+      <span class="count" id="count-game"></span>
+    </button>
+    <button class="tab" data-tab="football">
+      <span class="dot" style="background:var(--c-football)"></span>
+      足球
+      <span class="count" id="count-football"></span>
+    </button>
+    <button class="tab" data-tab="culture">
+      <span class="dot" style="background:var(--c-culture)"></span>
+      中华文化
+      <span class="count" id="count-culture"></span>
+    </button>
+    <button class="tab" data-tab="original">
+      <span class="dot" style="background:var(--c-original)"></span>
+      原创项目
+      <span class="count" id="count-original"></span>
+    </button>
+    <button class="tab" data-tab="calligraphy">
+      <span class="dot" style="background:var(--c-calligraphy)"></span>
+      张毅书法
+      <span class="count" id="count-calligraphy"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── CARDS ── -->
+<main class="main">
+  <div class="section-label" id="section-label">全部项目</div>
+  <div class="grid" id="grid">
+
+    <!-- 未来日报 · 最新3条（仅展示近3天） -->
+    <a href="daily-intel/intel-2026-04-02.html" class="card card-latest" data-cat="intel">
+      <div class="card-top">
+        <div class="card-icon">📡</div>
+        <span class="card-tag">未来日报 · 最新</span>
+      </div>
+      <div class="card-title">每日未来情报 · 04/02</div>
+      <div class="card-desc">微软开源VibeVoice语音AI；Claude Code泄露事件持续发酵；豆包日均Token超120万亿；SpaceX秘密递表冲刺IPO；4月新机OPPO华为荣耀登场</div>
+      <div class="card-footer">
+        <span class="card-date">2026-04-02</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="daily-intel/intel-2026-04-01.html" class="card card-latest" data-cat="intel">
+      <div class="card-top">
+        <div class="card-icon">📡</div>
+        <span class="card-tag">未来日报</span>
+      </div>
+      <div class="card-title">每日未来情报 · 04/01</div>
+      <div class="card-desc">Claude Code源码泄露51万行曝光；索尼PSVR3官宣；特斯拉Robotaxi正式运营；虚幻引擎5.5发布；波士顿动力Atlas新技能</div>
+      <div class="card-footer">
+        <span class="card-date">2026-04-01</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="daily-intel/intel-2026-03-31.html" class="card card-latest" data-cat="intel">
+      <div class="card-top">
+        <div class="card-icon">📡</div>
+        <span class="card-tag">未来日报</span>
+      </div>
+      <div class="card-title">每日未来情报 · 03/31</div>
+      <div class="card-desc">腾讯云发布Agent全景图TokenHub；雷鸟创新27%份额全球AR第一；GTA6冲刺倒计时；NVIDIA NemoClaw开源爆火；华为Mate 80 Pro Max风驰版发布</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-31</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="intel-2026-03-30.html" class="card card-latest" data-cat="intel">
+      <div class="card-top">
+        <div class="card-icon">📡</div>
+        <span class="card-tag">未来日报 · 最新</span>
+      </div>
+      <div class="card-title">每日未来情报 · 03/30</div>
+      <div class="card-desc">中关村论坛闭幕发布21项成果；中国AI大模型调用量首超美国；Anthropic付费用户创新高；人形机器人上市大年开启</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-30</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- Original -->
+    <a href="qian-skills-showcase.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🎯</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">谦哥技能矩阵 | 跨界设计专家</div>
+      <div class="card-desc">35+核心技能、8大专业领域、10年+行业经验，从工业设计到AI创作，从VR/AR到三皇炮捶的完整能力展示</div>
+      <div class="card-footer">
+        <span class="card-date">技能展示</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="tuina-therapy-experience.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🌿</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">AI医疗番外篇 · 命运的推拿术</div>
+      <div class="card-desc">从足跟伤到中医推拿治疗的真实体验，附中医推拿原理、手法与功效深度解析</div>
+      <div class="card-footer">
+        <span class="card-date">中医体验</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="meta-rayban-daily-experience.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">👓</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">解锁未来科技！Meta Ray-Ban智能眼镜日用体验</div>
+      <div class="card-desc">坚持日用一年半真实分享，每天8小时融入生活，附Meta Ray-Ban 2代和Display版产品介绍</div>
+      <div class="card-footer">
+        <span class="card-date">AI眼镜体验</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="rokid-charging-case-review.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🔋</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">ROKID GLASSES充电眼镜盒一手详细体验分享</div>
+      <div class="card-desc">补齐续航短板后的深度评测，4套设备对比测量，详细数据分析，依然对标Meta Ray-Ban</div>
+      <div class="card-footer">
+        <span class="card-date">充电盒评测</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="rokid-glasses-deep-analysis.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🤖</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">我用270+问题解剖国产AI眼镜ROKID GLASSES</div>
+      <div class="card-desc">39页1万6千字深度评测，对比Meta Ray-Ban，发现270+条可优化问题，被ROKID老板亲自关注的硬核分析</div>
+      <div class="card-footer">
+        <span class="card-date">深度评测</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- VR -->
+    <a href="vr-user-experience-set15.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🏁</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[15/15] VR体验影响因素：总结与展望</div>
+      <div class="card-desc">15篇系列论文综合总结，VR晕动症解决方案与未来技术展望</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列15/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set14.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🎓</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[14/15] 个体因素（四）：3D经验/时长/适应</div>
+      <div class="card-desc">探讨三维空间经验、单次使用时长与适应时间对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列14/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set13.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🏥</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[13/15] 个体因素（三）：平衡/健康/接受度</div>
+      <div class="card-desc">探讨平衡能力、感官健康状况与新技术接受能力对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列13/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set12.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">😴</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[12/15] 个体因素（二）：疲劳/频率/主视眼</div>
+      <div class="card-desc">探讨疲劳程度、使用频率与主视眼对VR晕动症的个体差异影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列12/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set11.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">👤</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[11/15] 个体因素（一）：经验/心理/性别年龄</div>
+      <div class="card-desc">探讨经验、心理预期、性别与年龄对VR晕动症的个体差异影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列11/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set10.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">⚡</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[10/15] 运动与参照系因素</div>
+      <div class="card-desc">静态参照系、运动加速度与视线高度对VR晕动症的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列10/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set09.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🌫️</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[09/15] 内容设计因素（三）</div>
+      <div class="card-desc">环境模糊度、环境开阔度与环境特性对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列9/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set08.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🎬</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[08/15] 内容设计因素（二）</div>
+      <div class="card-desc">镜头运动、场景比例与图像色度对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列8/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set07.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🎨</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[07/15] 内容设计因素（一）</div>
+      <div class="card-desc">细节复杂度、环境逼真度与视角类别对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列7/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set06.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🎯</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[06/15] 多感官协调与环境因素</div>
+      <div class="card-desc">探讨视听触觉协调、听觉音量、温湿度对VR体验的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列6/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set05.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">⚖️</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[05/15] 瞳距、亮度、重量与佩戴舒适度</div>
+      <div class="card-desc">探讨VR硬件人体工学设计对用户体验和晕动症的影响</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列5/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set04.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🎮</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[04/15] 体感反馈、焦距与畸变校正</div>
+      <div class="card-desc">深入解析体感失调、焦距不匹配与图像畸变对VR晕动症的影响机制</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列4/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set03.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">👁️</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[03/15] 视场角、分辨率与像素密度对沉浸感的影响</div>
+      <div class="card-desc">解析FOV、Resolution、PPI三大视觉参数，探讨纱窗效应与沉浸体验的关系</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列3/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set02.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">⚡</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[02/15] 硬件技术参数对晕动症的影响机制</div>
+      <div class="card-desc">深入解析刷新率、帧率、MTP时延三大核心指标，结合2025-2026最新硬件技术进展</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列2/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-user-experience-set01.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🧠</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">[01/15] VR用户体验与晕动症：构成因素深度解析</div>
+      <div class="card-desc">基于8万字论文精炼，系统梳理影响VR体验的42个关键因素，结合2025-2026最新技术数据</div>
+      <div class="card-footer">
+        <span class="card-date">论文系列1/15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-sports-guide.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🥽</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">元宇宙运动指南，今天你VR运动了吗？</div>
+      <div class="card-desc">从现实运动到电子游戏再到VR元宇宙，深度评测ETT和FPT两款必玩VR运动游戏</div>
+      <div class="card-footer">
+        <span class="card-date">VR运动</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-tabletennis-report.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🏓</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">VR 乒乓球调研报告</div>
+      <div class="card-desc">2021–2026 年全球 VR 乒乓球产品、市场与用户深度研究，含 ITTF 赛事生态分析</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-13</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="vr-headset-hardware-report.html" class="card" data-cat="vr">
+      <div class="card-top">
+        <div class="card-icon">🥽</div>
+        <span class="card-tag">VR 世界</span>
+      </div>
+      <div class="card-title">VR 一体机硬件报告</div>
+      <div class="card-desc">Quest 2/3、Pico 4/Ultra、Vision Pro 等主流设备横向对比，解析硬件演进路线与未来趋势</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-14</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 游戏 -->
+    <a href="tokimeki-memorial-review.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">💕</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">心跳回忆 Review</div>
+      <div class="card-desc">1994年恋爱游戏鼻祖深度评测：十二位女主角、原创好感度系统、以及对整个游戏行业的深远影响</div>
+      <div class="card-footer">
+        <span class="card-date">1994经典回顾</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="dq7-reimagined-review.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">🐉</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">DQ7 Reimagined Review</div>
+      <div class="card-desc">勇者斗恶龙7重制版深度评测</div>
+    </a>
+
+    <a href="world-of-warcraft-legacy.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">⚔️</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">魔兽世界：二十年传奇</div>
+      <div class="card-desc">勇者斗恶龙7重制版深度评测：当百小时史诗被压缩至一半，是精华浓缩还是失去了灵魂？</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-16</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="grandia2-analysis.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">🗡️</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">格兰蒂亚2：DC末代RPG神作</div>
+      <div class="card-desc">世嘉DreamCast最后的RPG反击，IP槽半即时战斗系统的革新者，仙剑3的深度借鉴对象</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-31</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="jin-yong-heroes-analysis.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">📜</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">金庸群侠传：国产武侠RPG开山鼻祖</div>
+      <div class="card-desc">河洛工作室1996年传奇之作，开放世界武侠先驱，影响后世无数国产游戏</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-31</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="slay-the-spire-analysis.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">🃏</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">杀戮尖塔深度分析</div>
+      <div class="card-desc">卡牌Roguelike的巅峰，独立游戏教科书。1代823万销量，2代首周300万破纪录</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-28</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="game-genre.html" class="card" data-cat="game">
+      <div class="card-top">
+        <div class="card-icon">🎮</div>
+        <span class="card-tag">游戏</span>
+      </div>
+      <div class="card-title">Game Genre 游戏类型全图鉴</div>
+      <div class="card-desc">面向大众的游戏类型科普：RPG、ACT、FPS、RTS、MOBA……11 大类型的鼻祖与集大成者</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 原创项目 -->
+    <a href="alumni-interview-zhangqian.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🎓</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">北科大校友专访 | 张谦：二十年元宇宙初心不改</div>
+      <div class="card-desc">北科大工业设计系优秀校友系列报道：从2000级本科生到XR体验设计先锋，用设计思维改变世界</div>
+    </a>
+
+    <a href="gastroscopy-guide.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🏥</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">能救你命的大保养：胃肠镜全流程攻略</div>
+      <div class="card-desc">从挂号到复查的全程实录，8个关键步骤图文详解——省你时间、少你烦恼、稳你心神</div>
+      <div class="card-footer">
+        <span class="card-date">健康攻略</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="game-design-document.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">📋</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">游戏设计文档 (GDD)：游戏的蓝图</div>
+      <div class="card-desc">面向游戏开发者与学生的专业指南：从GDD的核心价值到写作实践，掌握游戏设计的第一块基石</div>
+      <div class="card-footer">
+        <span class="card-date">游戏设计</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="design-aesthetics-principles.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🧠</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">设计美学风格的形成原理</div>
+      <div class="card-desc">从哲学、心理学、文化、技术和实践五个维度，深度解析苹果风、包豪斯、工业风等经典设计风格背后的科学原理与演化逻辑</div>
+      <div class="card-footer">
+        <span class="card-date">设计理论</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="driving-simulator.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🏎️</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">World-class Simulator？通往驾驶元宇宙之路</div>
+      <div class="card-desc">从游戏模拟到专业驾驶模拟器，探索虚拟驾驶世界的终极形态，三款世界级产品深度解析</div>
+      <div class="card-footer">
+        <span class="card-date">汽车科技</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="crazy-mantis.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🥢</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">疯狂的螳螂</div>
+      <div class="card-desc">参考《疯狂鸽子》玩法，操控螳螂绕树桩爬行，伸出利爪捕捉蝉虫，避开枯叶与蜘蛛陷阱</div>
+      <div class="card-footer">
+        <span class="card-date">Web Game</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="coin-rush-game.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">💰</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">接财宝大作战</div>
+      <div class="card-desc">30秒极限挑战！控制笨重惯性小车，在策略性两难抉择中收集财宝，连击越高分数翻倍</div>
+      <div class="card-footer">
+        <span class="card-date">Web Game</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="gravity-jet-suit.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🚀</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">Gravity Jet Suit：人类飞行梦想</div>
+      <div class="card-desc">公众号 6000+ 阅读热门文章：当钢铁侠的飞行梦照进现实，个人飞行装置如何让我们像鸟儿一样自由翱翔</div>
+      <div class="card-footer">
+        <span class="card-date">科技前沿</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 足球 -->
+    <a href="ronaldinho.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🇧🇷</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">罗纳尔迪尼奥 · 足球精灵</div>
+      <div class="card-desc">从阿雷格里港的贫民窟到世界足坛巅峰，探索小罗的传奇生涯、荣誉殿堂与足球魔法</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="ronaldo.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🇧🇷</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">罗纳尔多 · 外星人</div>
+      <div class="card-desc">从阿雷格里港走出的足球天才，20岁世界足球先生，两届世界杯冠军，永远的R9传奇</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="batistuta.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🇦🇷</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">巴蒂斯图塔 · 战神</div>
+      <div class="card-desc">阿根廷传奇射手，紫百合与罗马的图腾，三届世界杯进球纪录保持者，Batigol永垂不朽</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="david-beckham.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">贝克汉姆 · 圆月弯刀</div>
+      <div class="card-desc">曼联传奇7号，英格兰万人迷，独步天下的任意球大师，从老特拉福德到伯纳乌再到银河的足球偶像</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="casillas.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🇪🇸</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">卡西利亚斯 · 圣伊戈尔</div>
+      <div class="card-desc">皇马青训出品的传奇队长，西班牙黄金一代的守护神，足坛唯一一位集齐世界杯、欧洲杯、欧冠三大荣誉的门将</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="haaland.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">🇳🇴</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">哈兰德 · 魔人布欧</div>
+      <div class="card-desc">曼城当家射手，足坛新一代进球机器，英超单赛季36球纪录保持者，凭借恐怖效率成为当今最令人畏惧的前锋</div>
+      <div class="card-footer">
+        <span class="card-date">球星传奇</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="five-major-leagues.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">⚽</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">欧洲五大联赛完全指南</div>
+      <div class="card-desc">英超、西甲、德甲、意甲、法甲的诞生历史、足球风格、传奇球星与知名教练科普</div>
+      <div class="card-footer">
+        <span class="card-date">足球科普</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="2026世界杯赛程预测.html" class="card" data-cat="football">
+      <div class="card-top">
+        <div class="card-icon">⚽</div>
+        <span class="card-tag">足球</span>
+      </div>
+      <div class="card-title">2026 世界杯赛程预测</div>
+      <div class="card-desc">基于数据模型的世界杯赛事分析与预测报告，覆盖小组赛至决赛完整赛程</div>
+      <div class="card-footer">
+        <span class="card-date">2026 赛事前瞻</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 张毅书法 -->
+    <a href="zhangyi-calligraphy-intro.html" class="card" data-cat="calligraphy">
+      <div class="card-top">
+        <div class="card-icon">✒️</div>
+        <span class="card-tag">张毅书法</span>
+      </div>
+      <div class="card-title">张毅书法 | 国粹艺术名家介绍</div>
+      <div class="card-desc">中国书法家协会会员张毅，字一丁，号白眉老翁，师从杨萱庭、苏适、李力生、姚俊卿诸先生，真草隶行诸体皆涉猎</div>
+      <div class="card-footer">
+        <span class="card-date">书法家专栏</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 中华文化 -->
+    <a href="wushu-fundamentals.html" class="card" data-cat="culture">
+      <div class="card-top">
+        <div class="card-icon">🥋</div>
+        <span class="card-tag">中华文化</span>
+      </div>
+      <div class="card-title">Wushu Fundamentals 武术基本功</div>
+      <div class="card-desc">五大基本步型（弓马虚仆歇）与四大核心腿法（正踢侧踢里合外摆）系统修炼指南</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-16</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="三皇炮捶拳深度调研报告.html" class="card" data-cat="culture">
+      <div class="card-top">
+        <div class="card-icon">👊</div>
+        <span class="card-tag">中华文化</span>
+      </div>
+      <div class="card-title">三皇炮捶拳深度调研</div>
+      <div class="card-desc">历史源流、技术体系、宋派传承与三皇会友武术总会的系统研究</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="chinese-wushu-culture-analysis-report.html" class="card" data-cat="culture">
+      <div class="card-top">
+        <div class="card-icon">🥋</div>
+        <span class="card-tag">中华文化</span>
+      </div>
+      <div class="card-title">中华武术文化深度分析</div>
+      <div class="card-desc">传统武术文化全景研究：少林武当峨眉、哲学内涵、传承现状与当代价值</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-15</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="shaolin-temple-special-report.html" class="card" data-cat="culture">
+      <div class="card-top">
+        <div class="card-icon">🏯</div>
+        <span class="card-tag">中华文化</span>
+      </div>
+      <div class="card-title">少林寺专题报告</div>
+      <div class="card-desc">天下武功出少林：1500年历史、禅宗传承、武术渊源、现代发展与Speed学艺事件</div>
+      <div class="card-footer">
+        <span class="card-date">2026-04-02</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <a href="wudang-mountain-special-report.html" class="card" data-cat="culture">
+      <div class="card-top">
+        <div class="card-icon">☯️</div>
+        <span class="card-tag">中华文化</span>
+      </div>
+      <div class="card-title">武当山专题报告</div>
+      <div class="card-desc">亘古无双胜境：2500年道教圣地、张三丰太极传承、美国传人杰克故事</div>
+      <div class="card-footer">
+        <span class="card-date">2026-04-02</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <!-- 深度专题 -->
+    <a href="design-aesthetics-history.html" class="card" data-cat="original">
+      <div class="card-top">
+        <div class="card-icon">🎨</div>
+        <span class="card-tag">原创项目</span>
+      </div>
+      <div class="card-title">设计美学史：从手工艺到人工智能</div>
+      <div class="card-desc">跨越三千年的造物智慧，探索形式与功能的永恒对话：MAYA原则、康德美学、算法美学</div>
+      <div class="card-footer">
+        <span class="card-date">2026-03-20</span>
+        <span class="card-arrow">→</span>
+      </div>
+    </a>
+
+    <div class="empty" id="empty">该分类暂无内容，敬请期待～</div>
+  </div>
+
+  <!-- 未来日报专属内容区 -->
+  <div id="intel-section" class="intel-section hidden">
+    <!-- 最新日报 -->
+    <div class="intel-latest">
+      <div class="section-label">
+        <span style="color: var(--c-intel);">🔥</span>
+        最新日报
+        <span style="font-size: .75rem; color: var(--muted); font-weight: 400;">Latest 3 Days</span>
+      </div>
+      <div class="intel-grid">
+        <a href="daily-intel/intel-2026-04-02.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 04/02</div>
+          <div class="intel-card-desc">微软开源VibeVoice语音AI；Claude Code泄露事件持续发酵；豆包日均Token超120万亿；SpaceX秘密递表冲刺IPO</div>
+          <div class="intel-card-date">2026-04-02</div>
+        </a>
+        <a href="daily-intel/intel-2026-04-01.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 04/01</div>
+          <div class="intel-card-desc">Claude Code源码泄露51万行；索尼PSVR3官宣；特斯拉Robotaxi正式运营；虚幻引擎5.5发布</div>
+          <div class="intel-card-date">2026-04-01</div>
+        </a>
+
+        <a href="daily-intel/intel-2026-03-31.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 03/31</div>
+          <div class="intel-card-desc">腾讯云发布Agent全景图TokenHub；雷鸟创新27%份额全球AR第一；GTA6冲刺倒计时；NVIDIA NemoClaw开源爆火</div>
+          <div class="intel-card-date">2026-03-31</div>
+        </a>
+        <a href="daily-intel/intel-2026-03-30.html" class="intel-card">
+          <span class="intel-tag">最新</span>
+          <div class="intel-card-title">每日未来情报 · 03/30</div>
+          <div class="intel-card-desc">中关村论坛闭幕发布21项成果；中国AI大模型调用量首超美国；Anthropic付费用户创新高；人形机器人上市大年开启</div>
+          <div class="intel-card-date">2026-03-30</div>
+        </a>
+      </div>
+    </div>
+
+    <!-- 历史归档 -->
+    <div class="intel-archive">
+      <div class="section-label">
+        <span style="color: var(--c-intel);">📚</span>
+        历史归档
+        <span style="font-size: .75rem; color: var(--muted); font-weight: 400;">Archive</span>
+      </div>
+      <div class="archive-list">
+        <a href="daily-intel/intel-2026-04-01.html" class="archive-item">
+          <span class="archive-date">04/01</span>
+          <span class="archive-title">Claude Code源码泄露 · 索尼PSVR3官宣 · 特斯拉Robotaxi运营 · 虚幻引擎5.5发布</span>
+        </a>
+        <a href="daily-intel/intel-2026-03-31.html" class="archive-item">
+          <span class="archive-date">03/31</span>
+          <span class="archive-title">腾讯云TokenHub · 雷鸟创新AR全球第一 · GTA6冲刺倒计时 · NemoClaw开源爆火</span>
+        </a>
+        <a href="daily-intel/intel-2026-03-30.html" class="archive-item">
+          <span class="archive-date">03/30</span>
+          <span class="archive-title">中关村论坛21项成果 · 中国AI调用量首超美国 · 人形机器人上市大年</span>
+        </a>
+        <a href="daily-intel/intel-2026-03-29.html" class="archive-item">
+          <span class="archive-date">03/29</span>
+          <span class="archive-title">谷歌Gemini 3.1 Flash Live · Suno v5.5个性化音乐 · Meta开源TRIBE v2</span>
+        </a>
+        <a href="daily-intel/intel-2026-03-28.html" class="archive-item">
+          <span class="archive-date">03/28</span>
+          <span class="archive-title">博鳌亚洲论坛2026年年会闭幕 · AI产业从"拼参数"转向"拼落地" · 众智FlagOS 2.0开源</span>
+        </a>
+        <a href="intel-2026-03-27.html" class="archive-item">
+          <span class="archive-date">03/27</span>
+          <span class="archive-title">具身智能首个行业标准发布 · 2026中关村论坛聚焦AI · Arm推出自研数据中心CPU</span>
+        </a>
+        <a href="intel-2026-03-26.html" class="archive-item">
+          <span class="archive-date">03/26</span>
+          <span class="archive-title">OpenAI关停Sora押注智能体 · 杨植麟称AI将主导AI研发 · 华为鸿蒙用户破5000万</span>
+        </a>
+        <a href="intel-2026-03-25.html" class="archive-item">
+          <span class="archive-date">03/25</span>
+          <span class="archive-title">中国开源模型成全球AI底座 · 宇树具身模型计划 · 固态电池量产元年</span>
+        </a>
+        <a href="intel-2026-03-23.html" class="archive-item">
+          <span class="archive-date">03/23</span>
+          <span class="archive-title">MiniMax M2.7自我进化模型 · 宇树具身模型计划</span>
+        </a>
+        <a href="intel-2026-03-22.html" class="archive-item">
+          <span class="archive-date">03/22</span>
+          <span class="archive-title">英伟达30亿参数击败6710亿大模型 · 宇树IPO受理 · 固态电池量产元年</span>
+        </a>
+        <a href="intel-2026-03-21.html" class="archive-item">
+          <span class="archive-date">03/21</span>
+          <span class="archive-title">GPT-5.4 vs Claude Opus 4.6 · GeForce NOW VR串流90 FPS · 脑机接口入政府工作报告</span>
+        </a>
+        <a href="intel-2026-03-20.html" class="archive-item">
+          <span class="archive-date">03/20</span>
+          <span class="archive-title">NVIDIA GTC三芯发布 · Meta放弃Horizon Worlds转向AI · 杀戮尖塔2上线</span>
+        </a>
+        <a href="intel-2026-03-19.html" class="archive-item">
+          <span class="archive-date">03/19</span>
+          <span class="archive-title">小米三款大模型发布 · 银河通用25亿融资 · Unity 2026报告</span>
+        </a>
+        <a href="intel-2026-03-18.html" class="archive-item">
+          <span class="archive-date">03/18</span>
+          <span class="archive-title">科技情报汇总：AI、硬件、前沿技术最新动态</span>
+        </a>
+        <a href="intel-2026-03-17.html" class="archive-item">
+          <span class="archive-date">03/17</span>
+          <span class="archive-title">NVIDIA Vera Rubin推理成本降至1/10 · 阿里"悟空"Agent</span>
+        </a>
+        <a href="intel-2026-03-16.html" class="archive-item">
+          <span class="archive-date">03/16</span>
+          <span class="archive-title">GPT-5.3 & Gemini 3.1 Pro · 三强同月爆发</span>
+        </a>
+        <a href="intel-2026-03-15.html" class="archive-item">
+          <span class="archive-date">03/15</span>
+          <span class="archive-title">Gemini 2.5 Ultra登场 · PICO自研芯片预告</span>
+        </a>
+        <a href="intel-2026-03-14.html" class="archive-item">
+          <span class="archive-date">03/14</span>
+          <span class="archive-title">2026年3月14日情报汇总</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- 公众号引流 -->
+<a href="https://mp.weixin.qq.com/s/AWn1i4yO8XoAwC0P-0_aEA" target="_blank" rel="noopener" class="wechat-section">
+  <div class="wechat-inner">
+    <div class="wechat-content">
+      <div class="wechat-badge">📱 关注公众号</div>
+      <h2 class="wechat-title">Ponghood 实验室</h2>
+      <p class="wechat-desc">第一时间获取最新内容推送<br>技术洞察 · 游戏文化 · 足球世界 · 中华武术</p>
+      <div class="wechat-features">
+        <span class="wechat-feature">🔔 新内容提醒</span>
+        <span class="wechat-feature">💬 深度互动</span>
+        <span class="wechat-feature">🎁 独家福利</span>
+      </div>
+    </div>
+    <div class="wechat-qrcode">
+      <img src="images/wechat-qrcode.png" alt="微信公众号二维码">
+      <span class="wechat-tip">扫码关注 · 永不迷路</span>
+    </div>
+  </div>
+</a>
+
+<footer>
+  © 2026 <span>PONGHOOD</span> · 知识与洞察的栖息地
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const cards = document.querySelectorAll('.card[data-cat]');
+  const label = document.getElementById('section-label');
+  const empty = document.getElementById('empty');
+  const intelSection = document.getElementById('intel-section');
+  const grid = document.getElementById('grid');
+
+  const labelMap = {
+    all:      '全部项目',
+    intel:    '未来日报',
+    vr:       'VR 世界',
+    game:     '游戏',
+    football: '足球',
+    culture:  '中华文化',
+    original: '原创项目',
+    calligraphy: '张毅书法',
+  };
+
+  // 计算各分类数量
+  const counts = {};
+  cards.forEach(c => {
+    const cat = c.dataset.cat;
+    counts[cat] = (counts[cat] || 0) + 1;
+  });
+  counts.all = cards.length;
+
+  // 写入 tab 数量
+  Object.keys(counts).forEach(key => {
+    const el = document.getElementById('count-' + key);
+    if (el) el.textContent = counts[key];
+  });
+  document.getElementById('total-count').textContent = counts.all;
+
+  // URL hash 初始化
+  const initTab = location.hash.replace('#', '') || 'all';
+
+  function switchTab(target) {
+    tabs.forEach(t => t.classList.toggle('active', t.dataset.tab === target));
+    label.textContent = labelMap[target] || '全部项目';
+
+    // 未来日报特殊处理：显示专属区域，隐藏普通网格
+    if (target === 'intel') {
+      grid.classList.add('hidden');
+      intelSection.classList.remove('hidden');
+      empty.classList.remove('show');
+    } else {
+      grid.classList.remove('hidden');
+      intelSection.classList.add('hidden');
+      
+      let visible = 0;
+      cards.forEach(card => {
+        const show = target === 'all' || card.dataset.cat === target;
+        card.classList.toggle('hidden', !show);
+        if (show) visible++;
+      });
+      empty.classList.toggle('show', visible === 0);
+    }
+
+    history.replaceState(null, '', '#' + target);
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+  });
+
+  // 初始化
+  switchTab(initTab);
+</script>
+<script>
+  // 鼠标星光粒子效果
+  document.addEventListener('DOMContentLoaded', function() {
+    new CursorParticles();
+  });
+</script>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+  // 在公众号引流下方添加点赞组件
+  document.addEventListener('DOMContentLoaded', function() {
+    const wechatSection = document.querySelector('.wechat-section');
+    if (wechatSection) {
+      const likeContainer = document.createElement('div');
+      likeContainer.id = 'like-component';
+      wechatSection.parentNode.insertBefore(likeContainer, wechatSection.nextSibling);
+      PonghoodLike.init('#like-component');
+    }
+  });
+</script>
+</body>
+</html>

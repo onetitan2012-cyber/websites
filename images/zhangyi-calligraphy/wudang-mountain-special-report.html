@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武当山专题报告 | 亘古无双胜境，天下第一仙山</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'SimSun', '宋体', serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e8e8e8; line-height: 1.8; min-height: 100vh; }
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #D4AF37;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%), linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%); position: relative; overflow: hidden; }
+        .cover-content { position: relative; z-index: 1; padding: 60px; }
+        .cover-badge { display: inline-block; padding: 8px 24px; border: 2px solid #d4af37; color: #d4af37; font-size: 14px; letter-spacing: 4px; margin-bottom: 40px; }
+        .cover-title { font-size: 72px; font-weight: 700; color: #d4af37; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); margin-bottom: 20px; letter-spacing: 8px; }
+        .cover-subtitle { font-size: 28px; color: #c9b037; margin-bottom: 40px; font-weight: 300; letter-spacing: 4px; }
+        .cover-divider { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 40px auto; }
+        .cover-quote { font-size: 28px; color: #d4af37; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { font-size: 16px; color: #888; letter-spacing: 2px; }
+        .content-section { background: rgba(13, 27, 42, 0.8); margin: 40px 0; padding: 60px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-number { font-size: 14px; color: #d4af37; letter-spacing: 4px; margin-bottom: 10px; }
+        .section-title { font-size: 42px; color: #d4af37; margin-bottom: 20px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+        .section-subtitle { font-size: 18px; color: #888; margin-top: 30px; }
+        .intro-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-left: 4px solid #d4af37; padding: 30px 40px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .intro-card p { font-size: 18px; color: #e8e8e8; line-height: 2; }
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(27, 38, 59, 0.8); padding: 30px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timeline-year { font-size: 24px; color: #d4af37; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .timeline-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #d4af37; border-radius: 50%; border: 4px solid #0d1b2a; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .master-grid, .building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .master-card, .building-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .master-card:hover, .building-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
+        .master-header { padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .master-icon, .building-icon { font-size: 48px; margin-bottom: 15px; }
+        .master-name, .building-name { font-size: 28px; color: #d4af37; margin-bottom: 8px; }
+        .master-title { font-size: 14px; color: #888; }
+        .master-body { padding: 30px; }
+        .master-desc, .building-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .building-tag { display: inline-block; padding: 4px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; font-size: 12px; color: #d4af37; margin-top: 15px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 50px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #d4af37; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .wushu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0; }
+        .wushu-card { background: rgba(27, 38, 59, 0.6); padding: 40px 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .wushu-icon { font-size: 48px; margin-bottom: 20px; }
+        .wushu-title { font-size: 24px; color: #d4af37; margin-bottom: 15px; }
+        .wushu-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-item { display: flex; align-items: flex-start; padding: 30px; margin-bottom: 20px; background: rgba(27, 38, 59, 0.6); border-radius: 8px; border-left: 4px solid #d4af37; }
+        .milestone-year { font-size: 24px; color: #d4af37; font-weight: 700; min-width: 100px; }
+        .milestone-content { flex: 1; }
+        .milestone-title { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .milestone-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .future-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); padding: 40px; }
+        .future-icon { font-size: 48px; margin-bottom: 20px; }
+        .future-title { font-size: 24px; color: #d4af37; margin-bottom: 15px; }
+        .future-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .conclusion { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(15, 52, 96, 0.8)); text-align: center; padding: 80px 60px; }
+        .conclusion-text { font-size: 22px; color: #e8e8e8; line-height: 2.2; max-width: 900px; margin: 0 auto 40px; }
+        .conclusion-highlight { color: #d4af37; font-weight: 600; }
+        .conclusion-quote { font-size: 32px; color: #d4af37; font-weight: 600; margin-top: 40px; padding: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .footer { text-align: center; padding: 40px; color: #666; font-size: 14px; border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; }
+        @media (max-width: 768px) {
+            .cover-title { font-size: 42px; } .cover-subtitle { font-size: 20px; } .section-title { font-size: 32px; }
+            .content-section { padding: 30px 20px; } .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .wushu-grid { grid-template-columns: 1fr; } .future-grid { grid-template-columns: 1fr; }
+            .timeline::before { left: 20px; } .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; }
+            .timeline-content { width: calc(100% - 50px); margin-left: 50px; } .timeline-dot { left: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Wudang Mountain Special Report</div>
+            <h1 class="cover-title">武当山</h1>
+            <p class="cover-subtitle">亘古无双胜境 · 天下第一仙山</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">北建故宫，南修武当</p>
+            <p class="cover-meta">世界文化遗产 · 道教圣地 · 太极祖庭</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">INTRODUCTION</div>
+                <h2 class="section-title">引言</h2>
+                <p class="section-subtitle">天下第一仙山的千年传奇</p>
+            </div>
+            <div class="intro-card">
+                <p>武当山，位于湖北省十堰市丹江口市境内，方圆八百里，拥七十二峰，抱三十六岩，挟二十四涧。作为道教名山之首，武当山自古便有"亘古无双胜境，天下第一仙山"的美誉。这里不仅是真武大帝的修炼圣地，更是武当武术的发源地、太极拳的祖庭。1994年，武当山古建筑群被列入《世界文化遗产名录》，联合国教科文组织评价道："武当山是世界上最美的地方之一，因为这里融汇了古代的智慧、历史的建筑和自然的美景。"</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">2500+</div><div class="stat-label">年历史</div></div>
+                <div class="stat-card"><div class="stat-number">53</div><div class="stat-label">处古建筑</div></div>
+                <div class="stat-card"><div class="stat-number">2.7万</div><div class="stat-label">平方米建筑面积</div></div>
+                <div class="stat-card"><div class="stat-number">1994</div><div class="stat-label">列入世界遗产</div></div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">从先秦祭祀到皇室家庙</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">先秦时期</div>
+                        <div class="timeline-title">真武信仰起源</div>
+                        <div class="timeline-desc">真武大帝信仰起源于先秦时期的星辰崇拜。《楚辞》中"玄武，北方神名"的记载，揭示其作为四象之一"镇守北方"的原始职能。当时玄武的形象为龟蛇合体，象征北方与水德。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">627-649年</div>
+                        <div class="timeline-title">唐代建祠</div>
+                        <div class="timeline-desc">唐贞观年间，均州太守姚简在武当山起建五龙祠，这是武当山有记载的最早道教建筑。此后，历代对武当山殿宇都进行了修建，奠定了武当山道教发展的基础。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1119-1125年</div>
+                        <div class="timeline-title">北宋扩建</div>
+                        <div class="timeline-desc">北宋宣和年间，紫霄宫始建，这是武当山现存宫观中规模最大、保存最完整的一座。宋代道教兴盛，武当山道教建筑得到大规模扩建，奠定了"九宫八观"的格局基础。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1412-1424年</div>
+                        <div class="timeline-title">永乐大帝大修武当</div>
+                        <div class="timeline-desc">明成祖朱棣为报答真武大帝"护佑靖难"之恩，下令大修武当山。日役军民夫匠30万人，历时13年，建成八宫、二观、三十六庵堂等宏伟建筑群，形成"北建故宫，南修武当"的旷世壮举。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">1552年</div>
+                        <div class="timeline-title">嘉靖皇帝重修</div>
+                        <div class="timeline-desc">明世宗朱厚熜效法永乐皇帝"北建故宫，南修武当"之举，耗资9万多两白银，调遣工匠夫役近10万人重修武当山。特封武当山为"治世玄岳"，地位超越五岳。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">历代高道</h2>
+                <p class="section-subtitle">道教仙真 · 武术宗师</p>
+            </div>
+            <div class="intro-card">
+                <p>武当山自古便是仙真高道的隐修胜地，历代涌现出众多德高望重的道教宗师。从吕洞宾、陈抟到张三丰，每一位高道都为武当山的发展留下了不可磨灭的印记。</p>
+            </div>
+            <div class="master-grid">
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">☯️</div>
+                        <div class="master-name">张三丰</div>
+                        <div class="master-title">武当派开山祖师 · 太极拳创始人</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">元末明初著名道士，辽东懿州人。张三丰将《易经》和《道德经》的精髓与武术巧妙融合，创造了太极拳、形意拳、八卦掌等内家拳法，开创了武当派。明成祖朱棣多次遣使寻访未果，特在武当山建"遇真宫"供奉。被尊为"武当祖师"，是中国武术史上最具影响力的宗师之一。</div>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🌙</div>
+                        <div class="master-name">陈抟老祖</div>
+                        <div class="master-title">睡仙 · 易学大师</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">唐末五代著名道士，字图南，号扶摇子。陈抟在武当山隐居修炼二十余年，以"睡功"闻名于世，人称"睡仙"。他精通易学，创立"先天图"，对宋代理学影响深远。其《指玄篇》《无极图》等著作是道教内丹学的重要经典。</div>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">⚔️</div>
+                        <div class="master-name">吕洞宾</div>
+                        <div class="master-title">八仙之一 · 纯阳祖师</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">唐代著名道士，号纯阳子，道教八仙之一。传说吕洞宾曾在武当山修炼，被尊为武当山道教的重要祖师。其创立的纯阳派在武当山传承发展，对武当道教影响深远。民间流传大量关于吕洞宾的神话传说。</div>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">📜</div>
+                        <div class="master-name">张守清</div>
+                        <div class="master-title">元代高道 · 清微派宗师</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">元代著名道士，武当山清微派开山祖师。张守清在武当山苦修数十年，精通清微雷法，被元仁宗赐号"体玄妙应太和真人"。他在武当山广收门徒，使清微派成为武当山重要的道教流派之一。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">古建筑群</h2>
+                <p class="section-subtitle">世界文化遗产 · 明代建筑艺术的巅峰</p>
+            </div>
+            <div class="intro-card">
+                <p>武当山古建筑群始建于唐贞观年间，明代达到鼎盛，现存古建筑53处，建筑面积2.7万平方米，建筑遗址9处。1994年被列入《世界文化遗产名录》，被誉为"中国古代建筑成就的博物馆"。</p>
+            </div>
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="building-icon">🏛️</div>
+                    <div class="building-name">紫霄宫</div>
+                    <div class="building-desc">武当山现存宫观中规模最大、保存最完整的一座。始建于北宋宣和年间，明永乐十一年（1413年）重建。殿宇共分四进，紫霄殿是武当山最有代表性的木构建筑，建在三层石台基之上，气势恢宏。</div>
+                    <span class="building-tag">规模最大</span>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">⚱️</div>
+                    <div class="building-name">金殿</div>
+                    <div class="building-desc">位于天柱峰顶端，建于明永乐十四年（1416年），全部构件在北京铸成后运至武当山组装。金殿为铜铸鎏金，重达20吨，是中国现存最大的铜铸鎏金大殿。殿内供奉真武大帝鎏金铜像，为武当山镇山之宝。</div>
+                    <span class="building-tag">铜铸鎏金</span>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">🌟</div>
+                    <div class="building-name">太和宫</div>
+                    <div class="building-desc">位于天柱峰山腰，明永乐十四年（1416年）敕建。太和宫是武当山最重要的宫观之一，建筑依山就势，布局严谨，体现了"天人合一"的建筑理念。宫内有著名的"一柱十二梁"建筑奇观。</div>
+                    <span class="building-tag">一柱十二梁</span>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">🏔️</div>
+                    <div class="building-name">南岩宫</div>
+                    <div class="building-desc">建于元代，明代扩建，位于武当山独阳岩下，依山而建，面临深渊，被誉为"悬崖上的故宫"。南岩宫建筑险峻奇绝，体现了道教"道法自然"的思想。著名的龙头香就在南岩宫。</div>
+                    <span class="building-tag">悬崖上的故宫</span>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">🙏</div>
+                    <div class="building-name">遇真宫</div>
+                    <div class="building-desc">明永乐十五年（1417年）敕建，专为张三丰而建。明成祖朱棣多次遣使寻访张三丰未果，特建此宫供奉张三丰铜像。遇真宫是武当山唯一专门为活人而建的宫观，体现了皇室对张三丰的尊崇。</div>
+                    <span class="building-tag">供奉张三丰</span>
+                </div>
+                <div class="building-card">
+                    <div class="building-icon">🏯</div>
+                    <div class="building-name">玉虚宫</div>
+                    <div class="building-desc">明永乐十一年（1413年）敕建，是武当山规模最大的宫观之一，被誉为"南方故宫"。玉虚宫建筑布局严谨，规模宏大，是明代皇家祭祀真武大帝的重要场所。现存遗址仍可窥见当年的宏伟气势。</div>
+                    <span class="building-tag">南方故宫</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">武当武术</h2>
+                <p class="section-subtitle">天下太极出武当</p>
+            </div>
+            <div class="intro-card">
+                <p>武当武术是中国武术的重要流派，以"内家拳"著称，与少林武术并称"北崇少林，南尊武当"。2007年，武当武术被列入国家级非物质文化遗产名录。武当山作为太极拳的发源地，有"天下太极出武当"之说。</p>
+            </div>
+            <div class="wushu-grid">
+                <div class="wushu-card">
+                    <div class="wushu-icon">☯️</div>
+                    <div class="wushu-title">太极拳</div>
+                    <div class="wushu-desc">武当太极拳由张三丰祖师创立，以"以柔克刚"、"四两拨千斤"为核心理念。动作柔和缓慢，讲究"以意领气，以气运身"。2020年太极拳被列入联合国人类非物质文化遗产代表作名录。</div>
+                </div>
+                <div class="wushu-card">
+                    <div class="wushu-icon">🐻</div>
+                    <div class="wushu-title">形意拳</div>
+                    <div class="wushu-desc">形意拳模仿十二种动物的捕食和自卫动作，以"劈、崩、钻、炮、横"五行为基本拳法。特点是直进直退，身法迅疾，劲力刚猛，是武当内家拳的重要组成部分。</div>
+                </div>
+                <div class="wushu-card">
+                    <div class="wushu-icon">🌀</div>
+                    <div class="wushu-title">八卦掌</div>
+                    <div class="wushu-desc">八卦掌以绕圆走转为基本运动形式，步法灵活多变，掌法丰富。特点是"形如游龙，视若猿守"，讲究走化与击打相结合，与太极拳、形意拳并称"内家三拳"。</div>
+                </div>
+            </div>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">200+</div><div class="stat-label">武当拳种套路</div></div>
+                <div class="stat-card"><div class="stat-number">2007</div><div class="stat-label">列入国家级非遗</div></div>
+                <div class="stat-card"><div class="stat-number">3亿+</div><div class="stat-label">全球太极习练者</div></div>
+                <div class="stat-card"><div class="stat-number">700</div><div class="stat-label">年武术传承</div></div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">现代发展与旅游</h2>
+                <p class="section-subtitle">从深山古刹到世界级旅游景区</p>
+            </div>
+            <div class="intro-card">
+                <p>改革开放以来，特别是1994年列入世界遗产后，武当山迎来了新的发展机遇。近年来，武当山特区提出建设"世界级旅游景区"的目标，在文物保护、旅游开发、文化传承等方面取得了显著成就。</p>
+            </div>
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家重点风景名胜区</div>
+                        <div class="milestone-desc">武当山被国务院公布为第一批国家重点风景名胜区，标志着武当山旅游开发进入新阶段。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1994</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入世界文化遗产</div>
+                        <div class="milestone-desc">武当山古建筑群被联合国教科文组织列入《世界文化遗产名录》，成为湖北省首个世界文化遗产。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2007</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">武当武术列入国家级非遗</div>
+                        <div class="milestone-desc">武当武术被列入第二批国家级非物质文化遗产名录，标志着武当武术得到国家层面的文化认定与保护。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2024</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">少林文化数字化工程</div>
+                        <div class="milestone-desc">武当山管理局联合北京大学考古团队公布重大发现，确认武当山为太极拳核心理论发祥地，进一步巩固了武当山作为"太极祖庭"的地位。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">建设世界级旅游景区</div>
+                        <div class="milestone-desc">武当山特区召开旅游高质量发展大会，提出2025年游客量突破1400万人次，2026年突破1800万人次的目标，实施《平安武当三年行动计划》，全面提升文化遗产保护水平。</div>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="highlight-story" style="margin-top: 50px; background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 100%); border: 1px solid rgba(212,175,55,0.3); border-radius: 16px; padding: 40px;">
+                <div style="display: flex; align-items: flex-start; gap: 30px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 300px;">
+                        <div style="font-size: 14px; color: #D4AF37; font-weight: 600; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px;">★ 传奇故事</div>
+                        <h3 style="font-size: 24px; color: #E6EDF3; margin-bottom: 15px;">美国青年杰克的武当之路</h3>
+                        <p style="color: #8B949E; line-height: 1.8; margin-bottom: 15px;">
+                            2010年，20岁的美国伊利诺伊州青年<strong style="color: #D4AF37;">杰克·平尼克（Jake Pinnick）</strong>怀揣功夫梦来到武当山。从最初连筷子都用不好的"洋弟子"，到2012年正式成为<strong style="color: #D4AF37;">武当三丰派第16代传人</strong>（道号：平懋资根），杰克用了整整14年时间。
+                        </p>
+                        <p style="color: #8B949E; line-height: 1.8; margin-bottom: 15px;">
+                            他不仅精通太极拳、武当剑、洞箫等技艺，更娶了一位中国女道友为妻，在武当山下开馆授徒，学生遍布世界各地。2025年4月，杰克获得中国永久居留权，成为<strong style="color: #D4AF37;">武当山历史上第一位外籍武术传人</strong>。
+                        </p>
+                        <p style="color: #8B949E; line-height: 1.8;">
+                            杰克的故事被央视、《参考消息》等权威媒体报道，全网拥有近百万粉丝。他说：<em style="color: #E6EDF3;">"我不想当普通的教练，我想当师父、收武当三丰派第17代弟子，将武当文化和门派传承下去。"</em>
+                        </p>
+                    </div>
+                    <div style="flex: 0 0 200px; text-align: center;">
+                        <div style="width: 180px; height: 180px; background: linear-gradient(135deg, #D4AF37 0%, #B8941F 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 72px;">🥋</div>
+                        <div style="font-size: 14px; color: #8B949E;">杰克·平尼克<br><span style="color: #D4AF37;">武当三丰派第16代传人</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">1400万</div><div class="stat-label">2025年目标游客</div></div>
+                <div class="stat-card"><div class="stat-number">140亿</div><div class="stat-label">2025年目标收入</div></div>
+                <div class="stat-card"><div class="stat-number">109</div><div class="stat-label">平安武当项目</div></div>
+                <div class="stat-card"><div class="stat-number">18</div><div class="stat-label">2025年签约项目</div></div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">世界级旅游景区的宏伟蓝图</p>
+            </div>
+            <div class="intro-card">
+                <p>站在新的历史起点上，武当山面临着传承与发展的双重使命。如何在保护世界文化遗产的同时实现可持续发展，如何在现代化进程中坚守道教文化初心，是武当山未来发展需要回答的重要课题。</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">世界级旅游目的地</div>
+                    <div class="future-desc">按照"山上增辉添彩，山下腾笼换鸟"的发展策略，建设世界级旅游景区。完善旅游基础设施，提升服务质量，打造集文化体验、生态观光、康养度假于一体的综合性旅游目的地。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <div class="future-title">文化遗产保护</div>
+                    <div class="future-desc">实施《平安武当三年行动计划》，启动11类109个项目，全面提升武当山文化遗产保护、展示和传承水平。坚持"保护第一"原则，留存文物原真性。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">☯️</div>
+                    <div class="future-title">太极文化传播</div>
+                    <div class="future-desc">加快建设武当山国际太极文化传播中心，积极对接联合国教科文组织。举办世界武当太极大会，推动太极拳全球传播，打造"世界太极之都"。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🎭</div>
+                    <div class="future-title">文旅融合发展</div>
+                    <div class="future-desc">坚持"以文塑旅、以旅彰文、文旅融合"理念，开发文创产品，打造实景演艺，发展研学旅游。推动武当文化与旅游深度融合，提升旅游文化内涵。</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">先秦时期的星辰崇拜</span>，到<span class="conclusion-highlight">唐代的五龙祠</span>；从<span class="conclusion-highlight">明代的"北建故宫，南修武当"</span>，到<span class="conclusion-highlight">当代的世界文化遗产</span>——武当山的2500年历史，是一部<span class="conclusion-highlight">融合道教文化、建筑艺术与武术精髓</span>的宏大史诗。
+            </p>
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"亘古无双胜境，天下第一仙山"</span>不仅是一句赞誉，更是中华文化的自信表达。张三丰祖师在此创立的武当武术，以<span class="conclusion-highlight">"以柔克刚"</span>的哲学思想影响了世界；明代皇家敕建的宏伟宫观，以<span class="conclusion-highlight">"天人合一"</span>的建筑理念惊艳了时光。
+            </p>
+            <div class="conclusion-quote">
+                道法自然 · 天人合一 · 太极无极
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>武当山专题报告 | 亘古无双胜境 · 天下第一仙山</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：武当山旅游经济特区管理委员会、联合国教科文组织、国家文物局</p>
+        </footer>
+    </div>
+</body>
+</html>
