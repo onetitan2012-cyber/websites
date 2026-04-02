@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>少林寺专题报告 | 天下武功出少林</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #D4AF37;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        /* 封面样式 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: 
+                radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%),
+                linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            padding: 60px;
+        }
+        
+        .cover-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            font-size: 14px;
+            letter-spacing: 4px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+        
+        .cover-title {
+            font-size: 72px;
+            font-weight: 700;
+            color: #d4af37;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.3);
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+        }
+        
+        .cover-subtitle {
+            font-size: 28px;
+            color: #c9b037;
+            margin-bottom: 40px;
+            font-weight: 300;
+            letter-spacing: 4px;
+        }
+        
+        .cover-divider {
+            width: 200px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            margin: 40px auto;
+        }
+        
+        .cover-quote {
+            font-size: 32px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .cover-meta {
+            font-size: 16px;
+            color: #888;
+            letter-spacing: 2px;
+        }
+        
+        /* 内容区域 */
+        .content-section {
+            background: rgba(13, 27, 42, 0.8);
+            margin: 40px 0;
+            padding: 60px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-number {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            color: #d4af37;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: #888;
+            margin-top: 30px;
+        }
+        
+        /* 引言卡片 */
+        .intro-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border-left: 4px solid #d4af37;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .intro-card p {
+            font-size: 18px;
+            color: #e8e8e8;
+            line-height: 2;
+        }
+        
+        /* 时间轴 */
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, transparent, #d4af37, transparent);
+        }
+        
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+        
+        .timeline-content {
+            width: 45%;
+            background: rgba(27, 38, 59, 0.8);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        .timeline-year {
+            font-size: 24px;
+            color: #d4af37;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .timeline-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #d4af37;
+            border-radius: 50%;
+            border: 4px solid #0d1b2a;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+        
+        /* 高僧卡片 */
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .master-card {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .master-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+        
+        .master-header {
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05));
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .master-number {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+        
+        .master-name {
+            font-size: 28px;
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+        
+        .master-title {
+            font-size: 14px;
+            color: #888;
+        }
+        
+        .master-body {
+            padding: 30px;
+        }
+        
+        .master-desc {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        /* 事件卡片 */
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .event-card {
+            background: rgba(27, 38, 59, 0.6);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .event-card:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .event-year {
+            font-size: 14px;
+            color: #d4af37;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .event-title {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        
+        .event-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        .event-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #d4af37;
+            margin-top: 15px;
+        }
+        
+        /* 统计数据 */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            padding: 40px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* 武术流派 */
+        .wushu-section {
+            background: linear-gradient(135deg, rgba(15, 52, 96, 0.8), rgba(13, 27, 42, 0.9));
+        }
+        
+        .wushu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .wushu-card {
+            background: rgba(27, 38, 59, 0.6);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+        
+        .wushu-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .wushu-title {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .wushu-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* 现代发展 */
+        .modern-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), rgba(15, 52, 96, 0.8));
+        }
+        
+        .milestone-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .milestone-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 30px;
+            margin-bottom: 20px;
+            background: rgba(27, 38, 59, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+        
+        .milestone-year {
+            font-size: 24px;
+            color: #d4af37;
+            font-weight: 700;
+            min-width: 100px;
+        }
+        
+        .milestone-content {
+            flex: 1;
+        }
+        
+        .milestone-title {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-desc {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+        }
+        
+        /* 未来展望 */
+        .future-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .future-card {
+            background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9));
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 40px;
+        }
+        
+        .future-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .future-title {
+            font-size: 24px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+        
+        .future-desc {
+            font-size: 15px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        /* 结语 */
+        .conclusion {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(15, 52, 96, 0.8));
+            text-align: center;
+            padding: 80px 60px;
+        }
+        
+        .conclusion-text {
+            font-size: 22px;
+            color: #e8e8e8;
+            line-height: 2.2;
+            max-width: 900px;
+            margin: 0 auto 40px;
+        }
+        
+        .conclusion-highlight {
+            color: #d4af37;
+            font-weight: 600;
+        }
+        
+        .conclusion-quote {
+            font-size: 32px;
+            color: #d4af37;
+            font-weight: 600;
+            margin-top: 40px;
+            padding: 30px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+        
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-size: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 60px;
+        }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover-title {
+                font-size: 42px;
+            }
+            
+            .cover-subtitle {
+                font-size: 20px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .content-section {
+                padding: 30px 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .wushu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .future-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-item,
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 50px);
+                margin-left: 50px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Shaolin Temple Special Report</div>
+            <h1 class="cover-title">少林寺</h1>
+            <p class="cover-subtitle">禅宗祖庭 · 功夫圣地</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">天下武功出少林</p>
+            <p class="cover-meta">1500年沧桑巨变 · 从深山古刹到世界名片</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 引言 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">INTRODUCTION</div>
+                <h2 class="section-title">引言</h2>
+                <p class="section-subtitle">千年古刹的沧桑与辉煌</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>少林寺，始建于北魏太和十九年（公元495年），坐落于河南省登封市嵩山少室山北麓，是中国佛教禅宗祖庭和少林武术的发源地。这座拥有1500多年历史的古刹，历经沧桑巨变，从一座寂寂无名的山间寺院，发展成为享誉世界的文化符号。"天下武功出少林"的美誉，不仅道出了少林武术在中华武术中的崇高地位，更承载着中华民族深厚的文化底蕴与精神追求。</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">1531</div>
+                    <div class="stat-label">年历史</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">武术套路</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">33</div>
+                    <div class="stat-label">代方丈传承</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60+</div>
+                    <div class="stat-label">国家巡演</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 起源与诞生 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">北魏太和十九年（495年）· 禅宗祖庭的诞生</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">495年</div>
+                        <div class="timeline-title">少林寺创建</div>
+                        <div class="timeline-desc">北魏孝文帝拓跋宏为安置印度高僧跋陀（佛陀禅师），在嵩山少室山北麓敕建少林寺。跋陀是少林寺首任住持，将印度小乘佛教传入中国，少林寺由此诞生。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">506年</div>
+                        <div class="timeline-title">译经重镇</div>
+                        <div class="timeline-desc">印度高僧勒拿摩提与菩提流支在少林寺设立译经场，翻译《十地经论》等重要佛经，使少林寺成为北朝佛教翻译中心之一，佛学界地位迅速提升。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">527年</div>
+                        <div class="timeline-title">达摩面壁</div>
+                        <div class="timeline-desc">印度高僧菩提达摩（达摩祖师）一苇渡江来到少林寺，在少室山五乳峰中峰的天然石洞中面壁九年，悟出禅宗真谛，创立中国禅宗，被尊为禅宗初祖。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">620年</div>
+                        <div class="timeline-title">棍僧救唐王</div>
+                        <div class="timeline-desc">隋末唐初，少林寺十三棍僧助唐王李世民平定王世充，立下赫赫战功。唐太宗李世民亲书匾额嘉奖，赐田千顷，少林寺自此获得皇家庇护，声名大振。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 历代高僧 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">历代高僧</h2>
+                <p class="section-subtitle">禅宗传承 · 高僧大德</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>少林寺历经1500余年，涌现出众多德高望重的高僧大德。从达摩祖师开创禅宗，到历代方丈传承法脉，每一位高僧都为少林寺的发展留下了不可磨灭的印记。</p>
+            </div>
+            
+            <div class="master-grid">
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">初祖</div>
+                        <div class="master-name">菩提达摩</div>
+                        <div class="master-title">禅宗初祖 · 面壁九年</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">南天竺国香至王三王子，印度禅宗第二十八代祖师。北魏时期来到中国，一苇渡江至少林寺，面壁九年创立中国禅宗。传衣钵于慧可，开启禅宗千年传承。被尊为"东土禅宗初祖"。</div>
+                    </div>
+                </div>
+                
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">二祖</div>
+                        <div class="master-name">慧可大师</div>
+                        <div class="master-title">断臂求法 · 承继禅宗</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">俗姓姬，虎牢人。年约四十岁时拜达摩为师，为表求法决心，自断左臂。达摩传其衣钵，成为禅宗二祖。后传法于僧璨，为禅宗法脉延续奠定基础。</div>
+                    </div>
+                </div>
+                
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">三祖</div>
+                        <div class="master-name">僧璨大师</div>
+                        <div class="master-title">隐世传法 · 三祖僧璨</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">禅宗三祖，生平事迹记载较少，以隐世传法著称。传法于道信，继续禅宗法脉传承。其《信心铭》是禅宗重要文献，阐述了禅宗"至道无难，唯嫌拣择"的核心思想。</div>
+                    </div>
+                </div>
+                
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">四祖</div>
+                        <div class="master-name">道信大师</div>
+                        <div class="master-title">定居传法 · 农禅并重</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">禅宗四祖，首次改变禅宗游方传法的传统，在黄梅双峰山定居传法，建立固定道场。提倡"农禅并重"，使禅宗从游僧集团转变为有固定居所的寺院佛教。</div>
+                    </div>
+                </div>
+                
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">五祖</div>
+                        <div class="master-name">弘忍大师</div>
+                        <div class="master-title">东山法门 · 分灯南北</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">禅宗五祖，在黄梅东山建立道场，创立"东山法门"。门下弟子众多，最著名者有神秀与惠能。弘忍传法时，禅宗分为南宗惠能与北宗神秀，形成"南能北秀"格局。</div>
+                    </div>
+                </div>
+                
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-number">六祖</div>
+                        <div class="master-name">惠能大师</div>
+                        <div class="master-title">顿悟成佛 · 六祖坛经</div>
+                    </div>
+                    <div class="master-body">
+                        <div class="master-desc">禅宗六祖，中国佛教史上最具影响力的禅师之一。主张"顿悟成佛"，与神秀的"渐悟"相对。《六祖坛经》是唯一一部由中国僧人撰写的佛教经典，对东亚佛教影响深远。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 历史动荡 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">历史中的动荡</h2>
+                <p class="section-subtitle">三起三落 · 涅槃重生</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>在1500年的历史长河中，少林寺历经多次劫难。北周武帝灭佛、会昌法难、民国战火、文革冲击……每一次劫难都是对少林寺的考验，而少林寺总能浴火重生，展现出强大的生命力。</p>
+            </div>
+            
+            <div class="event-grid">
+                <div class="event-card">
+                    <div class="event-year">574年 · 北周武帝灭佛</div>
+                    <div class="event-title">第一次法难</div>
+                    <div class="event-desc">北周武帝宇文邕颁布禁令取缔佛教，少林寺在此次运动中遭受重创，寺院被毁，僧众离散。这是少林寺历史上的第一次重大劫难。</div>
+                    <span class="event-tag">寺院被毁</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">845年 · 会昌毁佛</div>
+                    <div class="event-title">第二次法难</div>
+                    <div class="event-desc">唐武宗李炎推行灭佛政策，史称"会昌法难"。少林寺再次遭受打击，但凭借深厚的根基和皇家背景，得以较快恢复。</div>
+                    <span class="event-tag">佛教劫难</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">1928年 · 石友三火烧少林寺</div>
+                    <div class="event-title">最为惨烈的一次劫难</div>
+                    <div class="event-desc">民国军阀石友三下令火烧少林寺，大火持续40天，天王殿、大雄宝殿、法堂等主体建筑被毁，200多名僧侣丧生，历代传承的珍贵经书化为灰烬，损失惨重。</div>
+                    <span class="event-tag">千年古刹几乎毁灭</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">1950年代 · 土改运动</div>
+                    <div class="event-title">土地改革冲击</div>
+                    <div class="event-desc">土改中，少林寺因拥有大量土地（民国时期达1370余亩）被定性为"庙产地主阶级"。僧人被划分成分，部分僧人还俗，寺院功能基本停滞。</div>
+                    <span class="event-tag">社会变革</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">1966-1976年 · 文化大革命</div>
+                    <div class="event-title">文革浩劫</div>
+                    <div class="event-desc">文革期间，少林寺遭受严重破坏，佛像被砸，经书被焚，僧众被迫还俗或离开寺院。千年古刹几近荒废，仅余残垣断壁。</div>
+                    <span class="event-tag">文化浩劫</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">1982年至今 · 复兴之路</div>
+                    <div class="event-title">涅槃重生</div>
+                    <div class="event-desc">改革开放后，特别是1982年电影《少林寺》上映后，少林寺开始复兴。在释行正、释永信等方丈的带领下，少林寺从废墟中重建，焕发新生。</div>
+                    <span class="event-tag">浴火重生</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 武术渊源 -->
+        <section class="content-section wushu-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">武术渊源</h2>
+                <p class="section-subtitle">禅武合一 · 天下武功出少林</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>少林武术起源于僧众为护寺而习武，后在长期发展中形成了独特的"武术禅"体系。达摩祖师面壁九年，创编《易筋经》《洗髓经》，奠定少林武术内功基础。历经千年发展，少林武术成为中华武术中范围最广、历史最长、拳种最多的门派。</p>
+            </div>
+            
+            <div class="wushu-grid">
+                <div class="wushu-card">
+                    <div class="wushu-icon">🧘</div>
+                    <div class="wushu-title">禅武合一</div>
+                    <div class="wushu-desc">少林武术以"禅入武，习武修禅"为核心理念，将佛教禅宗思想融入武术修炼，形成独特的"武术禅"文化。练武即是修禅，通过武术修炼达到身心合一的境界。</div>
+                </div>
+                
+                <div class="wushu-card">
+                    <div class="wushu-icon">📚</div>
+                    <div class="wushu-title">套路体系</div>
+                    <div class="wushu-desc">少林武术套路高达700余种，涵盖拳术、器械、对练等多个门类。代表套路有少林大洪拳、小洪拳、罗汉拳、七星拳等，器械有少林棍、梅花刀、达摩剑等。</div>
+                </div>
+                
+                <div class="wushu-card">
+                    <div class="wushu-icon">⚔️</div>
+                    <div class="wushu-title">七十二绝技</div>
+                    <div class="wushu-desc">少林七十二绝技包括铁砂掌、一指禅、金钟罩、铁布衫等硬气功，以及轻功、点穴等特殊技法，体现了少林武术的深厚底蕴和实战价值。</div>
+                </div>
+            </div>
+            
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card">
+                    <div class="stat-number">700+</div>
+                    <div class="stat-label">武术套路</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72</div>
+                    <div class="stat-label">绝技功法</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">般兵器</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2006</div>
+                    <div class="stat-label">列入国家级非遗</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 近半个世纪的发展 -->
+        <section class="content-section modern-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">近半个世纪的发展</h2>
+                <p class="section-subtitle">从废墟到世界名片 · 明星事件与里程碑</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>1982年，一部电影《少林寺》横空出世，以1毛钱的平均票价创下1.61亿元的票房纪录，让沉寂多年的少林寺重新走进公众视野。此后，少林寺在商业化、国际化道路上不断探索，成为中华文化的世界名片。</p>
+            </div>
+            
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">电影《少林寺》上映</div>
+                        <div class="milestone-desc">李连杰主演的电影《少林寺》上映，以1毛钱票价创下1.61亿元票房神话。影片在香港票房达1616万港元，打破功夫片纪录。少林寺由此名扬海内外，开启复兴之路。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">1987</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">释行正圆寂 · 释永信接班</div>
+                        <div class="milestone-desc">第29代方丈释行正圆寂，其弟子释永信（时年22岁）进入少林寺民主管理委员会，开始参与寺务管理。1981年，16岁的释永信拜释行正为师，剃度出家。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">1997</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">少林武僧团国际巡演</div>
+                        <div class="milestone-desc">依托电影余热成立少林武僧团，在全国及海外巡演，足迹覆盖60多个国家。功夫演出成为少林寺早期主要收入来源，同时带动了登封市的旅游经济。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">1999</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">释永信升座方丈</div>
+                        <div class="milestone-desc">释永信正式升座为少林寺第30代方丈，成为少林寺历史上最年轻的方丈之一。此后，少林寺开始了轰轰烈烈的"现代化改造"。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2006</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">功夫之星全球电视大赛</div>
+                        <div class="milestone-desc">首届"中国功夫之星全球电视大赛"启动，在全球海选"李连杰接班人"。大赛在海外设立美国、澳大利亚、英国、新加坡、韩国、马来西亚等赛区，引发全球关注。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2006</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家级非遗名录</div>
+                        <div class="milestone-desc">少林功夫列入首批国家级非物质文化遗产名录，标志着少林武术获得国家层面的文化认定与保护。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2010</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">"天地之中"历史建筑群申遗成功</div>
+                        <div class="milestone-desc">包括少林寺在内的"天地之中"历史建筑群被列入《世界遗产名录》，少林寺成为世界级文化遗产。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2024</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">少林文化数字化工程启动</div>
+                        <div class="milestone-desc">少林寺与中国数字图书馆、央视频达成战略合作，启动中国少林文化数字化工程。运用XR技术打造沉浸式体验，让传统文化焕发新生机。</div>
+                    </div>
+                </li>
+                
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">美国网红Speed少林学艺</div>
+                        <div class="milestone-desc">3月28日，美国顶流网红"甲亢哥"（IShowSpeed，坐拥3700万粉丝）现身河南嵩山少林寺，开启了一场引发全球关注的功夫学习之旅。Speed以标志性的光头造型拜师学艺，在学习少林功夫的过程中展现出"痛苦面具"等夸张表情，直播视频在社交平台迅速传播。Speed表示"少林寺是我心中的第一名"，这一事件成为少林文化国际传播的里程碑，让更多全球年轻人认识和了解少林功夫。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">少林文化周走向世界</div>
+                        <div class="milestone-desc">少林文化周在奥地利维也纳开幕，向欧洲观众展示少林禅武文化。少林寺代表团赴韩国、日本等地交流，持续推动少林文化国际传播。</div>
+                    </div>
+                </li>
+            </ul>
+            
+            <div class="event-grid" style="margin-top: 50px;">
+                <div class="event-card">
+                    <div class="event-year">功夫明星</div>
+                    <div class="event-title">从少林寺走出的功夫巨星</div>
+                    <div class="event-desc">李连杰（1980年主演《少林寺》）、释小龙（童星出道，被称为"功夫小子"）、王宝强（8岁入少林寺习武）等众多功夫明星均与少林寺渊源深厚，成为少林文化的传播使者。</div>
+                    <span class="event-tag">文化传播</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">商业版图</div>
+                    <div class="event-title">少林寺的商业化探索</div>
+                    <div class="event-desc">从门票经济到全球IP输出，少林寺建立了庞大的商业版图：门票与香火、武僧表演、文化IP运营、商标授权、海外分寺等。"少林"二字已成为价值数十亿的文化品牌。</div>
+                    <span class="event-tag">商业模式</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 未来发展展望 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">千年古刹的新时代使命</p>
+            </div>
+            
+            <div class="intro-card">
+                <p>站在新的历史起点上，少林寺面临着传承与创新的双重使命。如何在保持佛教清净本质的同时，适应现代社会发展；如何在商业化的浪潮中坚守文化初心；如何在数字化时代实现传统文化的创造性转化——这些都是少林寺未来发展需要回答的课题。</p>
+            </div>
+            
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">国际化传播</div>
+                    <div class="future-desc">继续推动少林文化走向世界，在已有60多个国家巡演的基础上，加强与"一带一路"沿线国家的文化交流。建立更多海外少林文化中心，让少林禅武文化成为连接东西方文明的桥梁。</div>
+                </div>
+                
+                <div class="future-card">
+                    <div class="future-icon">💻</div>
+                    <div class="future-title">数字化转型</div>
+                    <div class="future-desc">充分利用XR、VR、AI等现代科技手段，打造沉浸式少林文化体验。推进少林文化数字化工程，建立数字档案库，让千年古刹的文化遗产得到永久保存与全球共享。</div>
+                </div>
+                
+                <div class="future-card">
+                    <div class="future-icon">📜</div>
+                    <div class="future-title">制度化传承</div>
+                    <div class="future-desc">制定《少林文化传承发展纲要》，建立可持续传承框架。完善僧团制度，加强青年僧才培养，确保禅宗法脉与武术技艺代代相传。</div>
+                </div>
+                
+                <div class="future-card">
+                    <div class="future-icon">🎓</div>
+                    <div class="future-title">文化教育与研学</div>
+                    <div class="future-desc">发展少林文化研学旅游，建立系统的武术教育体系。推动少林武术进校园，培养青少年对传统文化的兴趣。加强与国际教育机构的合作，开设少林文化课程。</div>
+                </div>
+            </div>
+            
+            <div class="event-grid" style="margin-top: 50px;">
+                <div class="event-card">
+                    <div class="event-year">挑战与机遇</div>
+                    <div class="event-title">平衡传统与现代</div>
+                    <div class="event-desc">如何在商业化与文化传承之间找到平衡点，是少林寺面临的核心挑战。需要在保持佛教清净本质的前提下，探索可持续的发展模式，避免过度商业化对寺院形象的损害。</div>
+                    <span class="event-tag">核心挑战</span>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-year">使命与愿景</div>
+                    <div class="event-title">中华文化的世界名片</div>
+                    <div class="event-desc">少林寺承载着向世界传播中华文化的重要使命。未来应继续发挥"禅武合一"的独特优势，成为展示中华文化魅力的重要窗口，为构建人类命运共同体贡献东方智慧。</div>
+                    <span class="event-tag">文化使命</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">北魏太和十九年</span>的敕建寺院，到<span class="conclusion-highlight">禅宗祖庭</span>的确立；从<span class="conclusion-highlight">十三棍僧救唐王</span>的赫赫战功，到<span class="conclusion-highlight">1928年石友三火烧少林寺</span>的惨痛劫难；从<span class="conclusion-highlight">1982年电影《少林寺》</span>的票房神话，到<span class="conclusion-highlight">2024年数字化工程</span>的启动——少林寺的1500年历史，是一部<span class="conclusion-highlight">融合宗教、武术、政治与文化的宏大史诗</span>。
+            </p>
+            
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"天下武功出少林"</span>不仅是一句赞誉，更是中华文化自信的象征。在新时代，少林寺肩负着<span class="conclusion-highlight">传承禅宗法脉、弘扬武术文化、促进国际交流</span>的重要使命。愿这座千年古刹在守正创新中继续前行，让<span class="conclusion-highlight">禅武文化</span>在世界舞台上绽放更加璀璨的光芒。
+            </p>
+            
+            <div class="conclusion-quote">
+                禅武合一 · 止戈为武 · 以德服人
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="footer">
+            <p>少林寺专题报告 | 天下武功出少林</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：少林寺官方网站、国家文物局、国际武术联合会</p>
+        </footer>
+    </div>
+</body>
+</html>
