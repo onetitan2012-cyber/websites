@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>华山专题报告 | 奇险天下第一山，西岳道教圣地</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'SimSun', '宋体', serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e8e8e8; line-height: 1.8; min-height: 100vh; }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 200; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(28,33,40,.95); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; font-size: .8rem; color: #8B949E; text-decoration: none; backdrop-filter: blur(12px); transition: all .2s; font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif; }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover { background: rgba(40,45,55,.95); color: #E6EDF3; transform: translateX(-2px); border-color: #D4AF37; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%), linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%); position: relative; overflow: hidden; }
+        .cover-content { position: relative; z-index: 1; padding: 60px; }
+        .cover-badge { display: inline-block; padding: 8px 24px; border: 2px solid #d4af37; color: #d4af37; font-size: 14px; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase; }
+        .cover-title { font-size: 72px; font-weight: 700; color: #d4af37; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); margin-bottom: 20px; letter-spacing: 8px; }
+        .cover-subtitle { font-size: 28px; color: #c9b037; margin-bottom: 40px; font-weight: 300; letter-spacing: 4px; }
+        .cover-divider { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 40px auto; }
+        .cover-quote { font-size: 28px; color: #d4af37; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { font-size: 16px; color: #888; letter-spacing: 2px; }
+        .content-section { background: rgba(13, 27, 42, 0.8); margin: 40px 0; padding: 60px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-number { font-size: 14px; color: #d4af37; letter-spacing: 4px; margin-bottom: 10px; }
+        .section-title { font-size: 42px; color: #d4af37; margin-bottom: 20px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+        .section-subtitle { font-size: 18px; color: #888; margin-top: 30px; }
+        .intro-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-left: 4px solid #d4af37; padding: 30px 40px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .intro-card p { font-size: 18px; color: #e8e8e8; line-height: 2; }
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(27, 38, 59, 0.8); padding: 30px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timeline-year { font-size: 24px; color: #d4af37; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .timeline-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #d4af37; border-radius: 50%; border: 4px solid #0d1b2a; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .master-grid, .building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .master-card, .building-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .master-card:hover, .building-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
+        .master-header { padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .master-icon, .building-icon { font-size: 48px; margin-bottom: 15px; }
+        .master-name, .building-name { font-size: 28px; color: #d4af37; margin-bottom: 8px; }
+        .master-title { font-size: 14px; color: #888; }
+        .master-body { padding: 30px; }
+        .master-desc, .building-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .building-tag { display: inline-block; padding: 4px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; font-size: 12px; color: #d4af37; margin-top: 15px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 50px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #d4af37; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-item { display: flex; gap: 30px; padding: 30px; background: rgba(27, 38, 59, 0.6); border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #d4af37; transition: all 0.3s ease; }
+        .milestone-item:hover { background: rgba(27, 38, 59, 0.8); transform: translateX(10px); }
+        .milestone-year { font-size: 24px; font-weight: 700; color: #d4af37; min-width: 100px; }
+        .milestone-content { flex: 1; }
+        .milestone-title { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .milestone-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .danger-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .danger-card { background: linear-gradient(135deg, rgba(139, 0, 0, 0.2), rgba(27, 38, 59, 0.9)); padding: 40px 30px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.3); text-align: center; }
+        .danger-icon { font-size: 48px; margin-bottom: 20px; }
+        .danger-name { font-size: 24px; color: #d4af37; margin-bottom: 15px; }
+        .danger-desc { font-size: 14px; color: #aaa; line-height: 1.8; }
+        .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .future-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.8), rgba(13, 27, 42, 0.8)); padding: 40px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .future-icon { font-size: 40px; margin-bottom: 20px; }
+        .future-title { font-size: 22px; color: #d4af37; margin-bottom: 15px; }
+        .future-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .conclusion { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); }
+        .conclusion-text { font-size: 18px; color: #ccc; line-height: 2; margin-bottom: 30px; text-align: center; }
+        .conclusion-highlight { color: #d4af37; font-weight: 600; }
+        .conclusion-quote { font-size: 32px; color: #d4af37; text-align: center; font-weight: 600; letter-spacing: 8px; margin-top: 50px; padding: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .footer { text-align: center; padding: 60px 40px; background: rgba(13, 27, 42, 0.9); border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; }
+        .footer p { color: #888; font-size: 14px; letter-spacing: 2px; }
+        @media (max-width: 768px) {
+            .cover-title { font-size: 48px; }
+            .cover-subtitle { font-size: 20px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .danger-grid { grid-template-columns: 1fr; }
+            .future-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Mount Hua Special Report</div>
+            <h1 class="cover-title">华山</h1>
+            <p class="cover-subtitle">奇险天下第一山 · 西岳道教圣地</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">"自古华山一条路"</p>
+            <p class="cover-meta">国家5A级旅游景区 | 中国道教第四洞天</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 章节1：起源与诞生 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">从华夏文明发祥地到道教第四洞天</p>
+            </div>
+            <div class="intro-card">
+                <p>华山位于陕西省渭南市华阴市，古称"西岳"，雅称"太华山"，是中国著名的五岳之一。华山以"奇险天下第一山"著称，主峰南峰海拔2154.9米，为五岳最高峰。华山不仅是自然风光的杰作，更是华夏文明的重要发祥地，承载着深厚的历史文化底蕴。</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">远古时期</div>
+                        <div class="timeline-title">华夏文明的发祥地</div>
+                        <div class="timeline-desc">华山地区是中华民族的重要发祥地之一。相传黄帝曾巡游华山，尧舜禹三代帝王在此祭祀。华山之名源于《山海经》："太华之山，削成而四方，其高五千仞，其广十里。"</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">秦汉时期</div>
+                        <div class="timeline-title">帝王祭祀圣地</div>
+                        <div class="timeline-desc">秦始皇、汉武帝都曾巡游华山，祭祀西岳。汉武帝在华山脚下创建集灵宫，开创官方祭祀华山的先河。华山作为"西岳"的地位正式确立，成为国家祭祀体系的重要组成部分。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">魏晋南北朝</div>
+                        <div class="timeline-title">道教圣地形成</div>
+                        <div class="timeline-desc">道教兴起后，华山成为重要的修仙圣地。北魏时期，道士开始在华山上修建道观。华山被道教列为"第四洞天"，成为全真派的重要活动场所，吸引了众多高道在此修炼。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">唐宋时期</div>
+                        <div class="timeline-title">道教鼎盛时代</div>
+                        <div class="timeline-desc">唐代皇室尊崇道教，华山道教进入鼎盛时期。唐玄宗天宝九年（750年）欲封禅华山，命人开凿华山路。宋代陈抟老祖在华山创立"老华山派"，其"睡功"与易学思想影响深远。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">明清时期</div>
+                        <div class="timeline-title">宫观建设高峰</div>
+                        <div class="timeline-desc">明代修建玉泉院、镇岳宫等重要宫观。清代顺治、康熙、乾隆等皇帝多次巡游华山，赐匾题诗。全山道观达数十座，道士数百人，华山道教文化达到新的高峰。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节2：历代高道 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">历代高道</h2>
+                <p class="section-subtitle">修仙问道的道教宗师</p>
+            </div>
+            <div class="intro-card">
+                <p>华山作为道教第四洞天，自古高道辈出。从宋代的陈抟老祖到元代的贺志真，再到明清时期的各位道长，他们在华山修炼弘法，留下了丰富的道教文化遗产，使华山成为道教全真派的重要圣地。</p>
+            </div>
+            <div class="master-grid">
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">☯️</div>
+                        <div class="master-name">陈抟老祖</div>
+                        <div class="master-title">北宋高道 · 老华山派创始人</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">陈抟（871-989），字图南，号扶摇子，北宋著名道士。曾在华山隐居修炼四十余年，创立"老华山派"。精通易学，著有《先天图》《无极图》等，其"睡功"闻名天下。宋太祖赵匡胤曾与陈抟对弈，留下"赵匡胤输华山"的佳话。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🏔️</div>
+                        <div class="master-name">贺志真</div>
+                        <div class="master-title">元代高道 · 长空栈道开凿者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">贺志真，元代全真教高道。为弘扬道教，历时40年在华山悬崖峭壁上开凿72个洞窟，修建长空栈道，将道教"天人合一"思想融入险峻山势之中。长空栈道至今仍是华山最惊险的景观之一。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">📿</div>
+                        <div class="master-name">贾得升</div>
+                        <div class="master-title">北宋道士 · 玉泉院创建者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">贾得升，北宋道士，陈抟老祖的弟子。宋神宗皇祐年间（1049-1051年）为师父陈抟创建希夷祠（后改名玉泉院），成为华山道教活动的主要场所。玉泉院至今仍是华山最大的道教宫观。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🧘</div>
+                        <div class="master-name">金仙公主</div>
+                        <div class="master-title">唐代公主 · 镇岳宫修道者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">金仙公主，唐睿宗之女，唐玄宗之妹。出家为道士后，在华山镇岳宫修道。相传她在镇岳宫玉井中汲水洗头时，不慎将玉簪掉入水中，却在山下玉泉院找到，方知两泉相通，玉泉院因此得名。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节3：道教宫观 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">道教宫观</h2>
+                <p class="section-subtitle">悬崖峭壁上的建筑奇迹</p>
+            </div>
+            <div class="intro-card">
+                <p>华山现有道观20余座，其中玉泉院、镇岳宫、东道院、西岳庙等最为著名。这些宫观依山而建，或隐于密林，或悬于峭壁，充分体现了道教"天人合一"的思想和古代建筑工匠的高超技艺。</p>
+            </div>
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏛️</div>
+                        <div class="building-name">玉泉院</div>
+                        <div class="master-title">华山道教中心 · 登山起点</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">始建于北宋皇祐年间（1049-1051年），原名希夷祠，为陈抟老祖而建。因院内玉泉与山上玉井相通而得名。玉泉院是华山最大的道教宫观，也是游客登华山的必经之地，被誉为"华山门户"。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">⛩️</div>
+                        <div class="building-name">镇岳宫</div>
+                        <div class="master-title">东、西、南三峰中央 · 全真道场</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于华山东、西、南三峰中央，是全真道教的主要活动场所。唐代金仙公主曾在此修道。镇岳宫与玉泉院、西岳庙合为华山三大国家级重点文物保护单位，历代华山派主持、高道隐逸事甚多。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🌄</div>
+                        <div class="building-name">东道院</div>
+                        <div class="master-title">朝阳峰顶 · 观日出圣地</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于华山朝阳峰（东峰）顶，是华山观日出的最佳地点。东道院建筑险峻，背靠悬崖，面临深渊，充分体现了华山"奇险"的特色。院内供奉玉皇大帝，是华山重要的道教祭祀场所。</p>
+                        <span class="building-tag">华山观日出最佳地点</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏯</div>
+                        <div class="building-name">西岳庙</div>
+                        <div class="master-title">陕西故宫 · 帝王祭祀之所</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于华山脚下，是历代帝王祭祀华山之神的场所。始建于汉武帝时期，现存建筑多为明清所建。西岳庙规模宏大，建筑精美，有"陕西故宫"之称，是华山道教文化的重要载体。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节4：奇险景观 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">奇险景观</h2>
+                <p class="section-subtitle">"奇险天下第一山"的险峻奇观</p>
+            </div>
+            <div class="intro-card">
+                <p>华山以"奇险"著称于世，有"自古华山一条路"之说。千尺幢、百尺峡、长空栈道、鹞子翻身等险峻景观，不仅是大自然的鬼斧神工，更是古代工匠在悬崖峭壁上开凿的建筑奇迹，充分体现了中华民族勇于攀登、不畏艰险的精神。</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2154.9米</div>
+                    <div class="stat-label">南峰海拔</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">370级</div>
+                    <div class="stat-label">千尺幢台阶</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">110米</div>
+                    <div class="stat-label">长空栈道长度</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72个</div>
+                    <div class="stat-label">贺志真开凿洞窟</div>
+                </div>
+            </div>
+            <div class="danger-grid">
+                <div class="danger-card">
+                    <div class="danger-icon">🪜</div>
+                    <div class="danger-name">千尺幢</div>
+                    <div class="danger-desc">华山第一险，裂隙状陡峭石梯，全长370余级，坡度达70度，两侧铁索为唯一扶手，上下仅容一人通行。</div>
+                </div>
+                <div class="danger-card">
+                    <div class="danger-icon">⛰️</div>
+                    <div class="danger-name">百尺峡</div>
+                    <div class="danger-desc">紧接千尺幢，两壁高耸，中间夹有一块从天而降的巨石"惊心石"，游人需从石下穿过，惊险异常。</div>
+                </div>
+                <div class="danger-card">
+                    <div class="danger-icon">🌉</div>
+                    <div class="danger-name">长空栈道</div>
+                    <div class="danger-desc">元代贺志真开凿，全长110米，栈道悬于海拔2000多米的悬崖峭壁上，游人需面壁贴腹，屏气挪步。</div>
+                </div>
+                <div class="danger-card">
+                    <div class="danger-icon">🦅</div>
+                    <div class="danger-name">鹞子翻身</div>
+                    <div class="danger-desc">东峰险道，游人需双手抓索，双脚蹬壁，身体悬空翻转，如鹞子翻身，是华山最惊险的路段之一。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节5：现代发展与旅游 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">现代发展与旅游</h2>
+                <p class="section-subtitle">国家5A级景区的当代价值</p>
+            </div>
+            <div class="intro-card">
+                <p>华山是国家5A级旅游景区、国家重点风景名胜区。近年来，华山在遗产保护、旅游开发、基础设施建设等方面取得了显著成就。西峰索道的建成使游客可以更加便捷地登顶华山，欣赏"奇险天下第一山"的壮丽景观。</p>
+            </div>
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家重点风景名胜区</div>
+                        <div class="milestone-desc">华山被国务院公布为第一批国家重点风景名胜区，标志着华山旅游开发进入新阶段。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1996</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">华山索道建成</div>
+                        <div class="milestone-desc">北峰索道建成运营，结束了"自古华山一条路"的历史，使更多游客能够登顶华山，欣赏壮丽景观。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2013</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">西峰索道建成</div>
+                        <div class="milestone-desc">西峰索道建成运营，这是世界上第一条采取崖壁开凿硐室站房、起伏式走向、设中间站的单线循环脱挂式索道。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2011</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">晋升国家5A级景区</div>
+                        <div class="milestone-desc">华山景区正式晋升为国家5A级旅游景区，标志着华山旅游服务质量达到国内最高标准。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">文旅融合发展</div>
+                        <div class="milestone-desc">华山旅游集团推进文旅深度融合，举办"华山杯"文创产品征集活动，开发数字文旅产品，打造世界级旅游目的地。</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">5A</div><div class="stat-label">景区级别</div></div>
+                <div class="stat-card"><div class="stat-number">20+</div><div class="stat-label">现存道观</div></div>
+                <div class="stat-card"><div class="stat-number">3条</div><div class="stat-label">登山索道</div></div>
+                <div class="stat-card"><div class="stat-number">300万+</div><div class="stat-label">年游客量</div></div>
+            </div>
+        </section>
+
+        <!-- 章节6：未来发展展望 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">世界级旅游目的地的宏伟蓝图</p>
+            </div>
+            <div class="intro-card">
+                <p>站在新的历史起点上，华山面临着保护与发展并重的双重使命。如何在保护险峻自然景观和道教文化遗产的同时，提升旅游服务质量，打造世界级旅游目的地，是华山未来发展需要回答的重要课题。</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <div class="future-title">遗产保护强化</div>
+                    <div class="future-desc">加强华山险峻地貌和道教文化遗产的保护，运用现代科技手段监测地质变化，确保长空栈道等险峻景观的安全。保护好"奇险天下第一山"的独特自然风貌。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">世界级旅游目的地</div>
+                    <div class="future-desc">完善旅游基础设施，提升服务质量，打造集文化体验、生态观光、极限挑战、道教研修于一体的综合性旅游目的地。推进智慧景区建设，提升游客体验。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">☯️</div>
+                    <div class="future-title">道教文化传承</div>
+                    <div class="future-desc">深入挖掘华山道教文化内涵，修复和保护玉泉院、镇岳宫等重要宫观。举办道教文化活动，推动华山道教文化走向世界，打造"华山道教"国际品牌。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🎭</div>
+                    <div class="future-title">文旅融合发展</div>
+                    <div class="future-desc">开发文创产品，打造实景演艺，发展研学旅游。举办"华山杯"系列文化活动，推动华山文化与旅游深度融合，提升旅游文化内涵。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">远古时期的华夏文明发祥地</span>，到<span class="conclusion-highlight">秦汉时期的帝王祭祀圣地</span>；从<span class="conclusion-highlight">宋代的道教鼎盛</span>，到<span class="conclusion-highlight">当代的国家5A景区</span>——华山的五千年历史，是一部<span class="conclusion-highlight">融合自然奇观、道教文化与民族精神</span>的宏大史诗。
+            </p>
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"奇险天下第一山"</span>不仅是一句赞誉，更是中华民族精神的象征。陈抟老祖在此创立老华山派，贺志真在此开凿长空栈道，历代高道在此修仙问道——<span class="conclusion-highlight">道教第四洞天</span>的美誉实至名归。
+            </p>
+            <p class="conclusion-text">
+                在新时代，华山肩负着<span class="conclusion-highlight">保护世界自然遗产、传承道教文化、弘扬民族精神</span>的重要使命。愿这座"奇险天下第一山"在守正创新中继续前行，让<span class="conclusion-highlight">华山精神</span>在世界舞台上绽放更加璀璨的光芒。
+            </p>
+            <div class="conclusion-quote">
+                奇险天下第一 · 道教第四洞天 · 华夏文明之根
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>华山专题报告 | 奇险天下第一山 · 西岳道教圣地</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：华山旅游集团、国家文物局、中国道教协会</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>泰山专题报告 | 五岳独尊，天下第一山</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'SimSun', '宋体', serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e8e8e8; line-height: 1.8; min-height: 100vh; }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 200; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(28,33,40,.95); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; font-size: .8rem; color: #8B949E; text-decoration: none; backdrop-filter: blur(12px); transition: all .2s; font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif; }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover { background: rgba(40,45,55,.95); color: #E6EDF3; transform: translateX(-2px); border-color: #D4AF37; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%), linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%); position: relative; overflow: hidden; }
+        .cover-content { position: relative; z-index: 1; padding: 60px; }
+        .cover-badge { display: inline-block; padding: 8px 24px; border: 2px solid #d4af37; color: #d4af37; font-size: 14px; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase; }
+        .cover-title { font-size: 72px; font-weight: 700; color: #d4af37; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); margin-bottom: 20px; letter-spacing: 8px; }
+        .cover-subtitle { font-size: 28px; color: #c9b037; margin-bottom: 40px; font-weight: 300; letter-spacing: 4px; }
+        .cover-divider { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 40px auto; }
+        .cover-quote { font-size: 28px; color: #d4af37; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { font-size: 16px; color: #888; letter-spacing: 2px; }
+        .content-section { background: rgba(13, 27, 42, 0.8); margin: 40px 0; padding: 60px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-number { font-size: 14px; color: #d4af37; letter-spacing: 4px; margin-bottom: 10px; }
+        .section-title { font-size: 42px; color: #d4af37; margin-bottom: 20px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+        .section-subtitle { font-size: 18px; color: #888; margin-top: 30px; }
+        .intro-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-left: 4px solid #d4af37; padding: 30px 40px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .intro-card p { font-size: 18px; color: #e8e8e8; line-height: 2; }
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(27, 38, 59, 0.8); padding: 30px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timeline-year { font-size: 24px; color: #d4af37; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .timeline-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #d4af37; border-radius: 50%; border: 4px solid #0d1b2a; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .master-grid, .building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .master-card, .building-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .master-card:hover, .building-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
+        .master-header { padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .master-icon, .building-icon { font-size: 48px; margin-bottom: 15px; }
+        .master-name, .building-name { font-size: 28px; color: #d4af37; margin-bottom: 8px; }
+        .master-title { font-size: 14px; color: #888; }
+        .master-body { padding: 30px; }
+        .master-desc, .building-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .building-tag { display: inline-block; padding: 4px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; font-size: 12px; color: #d4af37; margin-top: 15px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 50px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #d4af37; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-item { display: flex; gap: 30px; padding: 30px; background: rgba(27, 38, 59, 0.6); border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #d4af37; transition: all 0.3s ease; }
+        .milestone-item:hover { background: rgba(27, 38, 59, 0.8); transform: translateX(10px); }
+        .milestone-year { font-size: 24px; font-weight: 700; color: #d4af37; min-width: 100px; }
+        .milestone-content { flex: 1; }
+        .milestone-title { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .milestone-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .future-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.8), rgba(13, 27, 42, 0.8)); padding: 40px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .future-icon { font-size: 40px; margin-bottom: 20px; }
+        .future-title { font-size: 22px; color: #d4af37; margin-bottom: 15px; }
+        .future-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .conclusion { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); }
+        .conclusion-text { font-size: 18px; color: #ccc; line-height: 2; margin-bottom: 30px; text-align: center; }
+        .conclusion-highlight { color: #d4af37; font-weight: 600; }
+        .conclusion-quote { font-size: 32px; color: #d4af37; text-align: center; font-weight: 600; letter-spacing: 8px; margin-top: 50px; padding: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .footer { text-align: center; padding: 60px 40px; background: rgba(13, 27, 42, 0.9); border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; }
+        .footer p { color: #888; font-size: 14px; letter-spacing: 2px; }
+        @media (max-width: 768px) {
+            .cover-title { font-size: 48px; }
+            .cover-subtitle { font-size: 20px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .future-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Mount Tai Special Report</div>
+            <h1 class="cover-title">泰山</h1>
+            <p class="cover-subtitle">五岳独尊 · 天下第一山</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">"泰山安，四海皆安"</p>
+            <p class="cover-meta">世界文化与自然双重遗产 | 中国首个世界双遗产</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 章节1：起源与诞生 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">从远古崇拜到封禅圣地的文明演进</p>
+            </div>
+            <div class="intro-card">
+                <p>泰山位于山东省中部，主峰玉皇顶海拔1545米。泰山被古人视为"直通帝座"的天堂，成为百姓崇拜、帝王告祭的神山。自秦始皇开始到清代，先后有13代帝王亲登泰山封禅或祭祀，另有24代帝王遣官祭祀72次。泰山是中华文明的重要象征，被誉为"五岳独尊"。</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">远古时期</div>
+                        <div class="timeline-title">泰山崇拜的起源</div>
+                        <div class="timeline-desc">泰山崇拜起源于远古时代。作为鲁国境内最高的山峰，泰山在当地受到崇拜。《诗经》有言："泰山岩岩，鲁邦所瞻。"远古先民燃柴祭天、祈盼风调雨顺，形成了原始的泰山祭祀文化。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">先秦时期</div>
+                        <div class="timeline-title">五岳体系形成</div>
+                        <div class="timeline-desc">春秋战国时期，五岳观念逐渐形成。泰山因地处东方，东方在传统文化中象征万物交替、初春发生之地，被视为"五岳之首"。孔子"登泰山而小天下"，更使泰山声名远播。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">秦始皇时期</div>
+                        <div class="timeline-title">封禅大典开创</div>
+                        <div class="timeline-desc">公元前219年，秦始皇统一六国后东巡，在泰山举行封禅大典，成为中国历史上第一位举行封禅的帝王。封禅成为帝王受命于天、昭示天下太平的最高礼仪，奠定了泰山的神圣地位。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">汉武帝时期</div>
+                        <div class="timeline-title">封禅制度完善</div>
+                        <div class="timeline-desc">汉武帝刘彻先后8次登临泰山封禅，是历史上封禅次数最多的帝王。他在泰山建立明堂、修建道路，完善封禅制度，使泰山祭祀成为国家最高礼仪制度的重要组成部分。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">唐宋时期</div>
+                        <div class="timeline-title">封禅文化鼎盛</div>
+                        <div class="timeline-desc">唐高宗、唐玄宗、宋真宗等帝王相继举行封禅大典。宋真宗大中祥符元年（1008年）封禅泰山，规模空前，并创建碧霞祠，供奉碧霞元君，使泰山道教文化达到鼎盛。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节2：封禅文化 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">封禅文化</h2>
+                <p class="section-subtitle">帝王受命于天的最高礼仪</p>
+            </div>
+            <div class="intro-card">
+                <p>封禅是中国古代帝王最隆重的祭祀仪式。按照《史记·封禅书》解释："此泰山上筑土为坛以祭天，报天之功，故曰封。此泰山下小山上除地，报地之功，故曰禅。"封禅泰山是帝王受命于天、昭示天下太平的最高礼仪，只有建立盖世功业的帝王才有资格举行。</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">13代</div>
+                    <div class="stat-label">帝王亲登封禅</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">72次</div>
+                    <div class="stat-label">遣官祭祀</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6位</div>
+                    <div class="stat-label">实现封禅的帝王</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2000年</div>
+                    <div class="stat-label">封禅历史</div>
+                </div>
+            </div>
+            <div class="master-grid">
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">👑</div>
+                        <div class="master-name">秦始皇</div>
+                        <div class="master-title">首位封禅帝王 · 开创先河</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">公元前219年，秦始皇统一六国后东巡泰山，举行封禅大典。他命李斯撰写《泰山刻石》，颂扬秦德。秦始皇封禅开创了帝王封禅的先河，奠定了泰山作为封禅圣地的地位。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">⚔️</div>
+                        <div class="master-name">汉武帝</div>
+                        <div class="master-title">封禅次数最多 · 8次登临</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">汉武帝刘彻在位54年，先后8次登临泰山封禅，是历史上封禅次数最多的帝王。他在泰山建立明堂、修建道路，完善封禅制度，使泰山祭祀成为国家最高礼仪。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">📜</div>
+                        <div class="master-name">唐玄宗</div>
+                        <div class="master-title">开元盛世封禅 · 规模空前</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">唐玄宗开元十三年（725年）封禅泰山，是唐代最盛大的封禅大典。玄宗亲自撰写《纪泰山铭》，刻于泰山大观峰，至今犹存。此次封禅标志着开元盛世达到顶峰。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🏛️</div>
+                        <div class="master-name">宋真宗</div>
+                        <div class="master-title">大中祥符封禅 · 创建碧霞祠</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">宋真宗大中祥符元年（1008年）封禅泰山，规模空前。真宗在泰山极顶创建碧霞祠，供奉碧霞元君，使泰山道教文化达到鼎盛。这是中国古代最后一次封禅大典。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节3：宗教文化 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">宗教文化</h2>
+                <p class="section-subtitle">佛道共存的神圣空间</p>
+            </div>
+            <div class="intro-card">
+                <p>泰山是道教和佛教共存的神圣空间。道教视泰山为"群山之祖，五岳之宗"，碧霞元君信仰影响深远；佛教在泰山也有悠久历史，普照寺等寺院香火鼎盛。儒释道三教在泰山和谐共存，体现了中华文化的包容性。</p>
+            </div>
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🛕</div>
+                        <div class="building-name">碧霞祠</div>
+                        <div class="master-title">碧霞元君祖庭 · 泰山极顶</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于泰山极顶南侧，始建于北宋大中祥符元年（1008年）。碧霞祠是道教著名女神碧霞元君的祖庭，为全国21处重点道观之一。碧霞元君被尊为"泰山老奶奶"，信仰影响遍及全国。</p>
+                        <span class="building-tag">全国重点道观</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏯</div>
+                        <div class="building-name">岱庙</div>
+                        <div class="master-title">帝王祭祀之所 · 泰山第一行宫</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于泰山南麓，始建于汉代，是历代帝王封禅泰山时居住和举行大典的地方。岱庙建筑规模宏大，与北京故宫、山东曲阜三孔、承德避暑山庄并称中国四大古建筑群。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🌸</div>
+                        <div class="building-name">王母池</div>
+                        <div class="master-title">古称瑶池 · 女道修行圣地</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于泰山南麓，古称群玉庵，唐称瑶池。创建于宋代，祀奉西王母。王母池是泰山重要的道教宫观，也是女道修行的重要场所，环境清幽，泉水甘冽。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">☸️</div>
+                        <div class="building-name">普照寺</div>
+                        <div class="master-title">泰山佛教名刹 · 六朝古刹</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于泰山南麓，创建于六朝时期，是泰山最古老的佛教寺院之一。普照寺历经多次重修，现存建筑多为明清所建。寺内古木参天，环境清幽，是泰山佛教文化的重要载体。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节4：现代发展与旅游 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">现代发展与旅游</h2>
+                <p class="section-subtitle">中国首个世界双遗产的当代价值</p>
+            </div>
+            <div class="intro-card">
+                <p>1987年，泰山被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为中国首个世界双遗产。泰山以其独特的历史文化、自然风光和地质奇观，成为世界遗产保护的典范。近年来，泰安市推进"泰山+"集成改革，激活文旅消费新动能。</p>
+            </div>
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家重点风景名胜区</div>
+                        <div class="milestone-desc">泰山被国务院公布为第一批国家重点风景名胜区，标志着泰山旅游开发进入新阶段。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1987</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">中国首个世界双遗产</div>
+                        <div class="milestone-desc">泰山被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为中国首个世界文化与自然双重遗产，也是世界首个文化与自然双重遗产。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2006</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">世界地质公园</div>
+                        <div class="milestone-desc">泰山被联合国教科文组织批准为世界地质公园，其独特的地质构造和地貌景观得到国际认可。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2011</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">晋升国家5A级景区</div>
+                        <div class="milestone-desc">泰山景区正式晋升为国家5A级旅游景区，标志着泰山旅游服务质量达到国内最高标准。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">"泰山+"集成改革</div>
+                        <div class="milestone-desc">泰安市推进"泰山+"集成改革，以系统集成改革重塑文旅发展生态，激活文旅消费新动能，建设世界级旅游目的地。</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">1545米</div><div class="stat-label">主峰海拔</div></div>
+                <div class="stat-card"><div class="stat-number">首个</div><div class="stat-label">世界双遗产</div></div>
+                <div class="stat-card"><div class="stat-number">5A</div><div class="stat-label">景区级别</div></div>
+                <div class="stat-card"><div class="stat-number">600万+</div><div class="stat-label">年游客量</div></div>
+            </div>
+        </section>
+
+        <!-- 章节5：未来发展展望 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">世界级旅游目的地的宏伟蓝图</p>
+            </div>
+            <div class="intro-card">
+                <p>站在新的历史起点上，泰山面临着保护与发展并重的双重使命。如何在保护世界双遗产的同时，传承封禅文化、弘扬泰山精神，打造世界级旅游目的地，是泰山未来发展需要回答的重要课题。</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <div class="future-title">遗产保护强化</div>
+                    <div class="future-desc">加强泰山世界双遗产的保护，修缮碧霞祠、王母池、斗母宫和普照寺等古建筑群。运用现代科技手段监测地质变化，保护好泰山的自然风貌和文化遗产。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">世界级旅游目的地</div>
+                    <div class="future-desc">推进"泰山+"集成改革，完善旅游基础设施，提升服务质量。打造集文化体验、生态观光、封禅文化研学于一体的综合性旅游目的地。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">📜</div>
+                    <div class="future-title">封禅文化传承</div>
+                    <div class="future-desc">深入挖掘封禅文化内涵，建设封禅文化博物馆。举办封禅文化论坛和国际交流活动，推动泰山封禅文化走向世界，打造"泰山封禅"国际品牌。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🎭</div>
+                    <div class="future-title">文旅融合发展</div>
+                    <div class="future-desc">开发文创产品，打造实景演艺《中华泰山·封禅大典》，发展研学旅游。推动泰山文化与旅游深度融合，提升旅游文化内涵。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">远古时期的泰山崇拜</span>，到<span class="conclusion-highlight">秦始皇的开创封禅</span>；从<span class="conclusion-highlight">汉武帝的八次登临</span>，到<span class="conclusion-highlight">当代的世界双遗产</span>——泰山的五千年历史，是一部<span class="conclusion-highlight">融合帝王封禅、宗教文化与民族精神</span>的宏大史诗。
+            </p>
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"五岳独尊"</span>不仅是一句赞誉，更是中华文化的自信表达。13代帝王封禅、72次遣官祭祀，<span class="conclusion-highlight">"泰山安，四海皆安"</span>的理念深入人心——泰山早已成为中华民族的精神图腾。
+            </p>
+            <p class="conclusion-text">
+                在新时代，泰山肩负着<span class="conclusion-highlight">保护世界双遗产、传承封禅文化、弘扬民族精神</span>的重要使命。愿这座"天下第一山"在守正创新中继续前行，让<span class="conclusion-highlight">泰山精神</span>在世界舞台上绽放更加璀璨的光芒。
+            </p>
+            <div class="conclusion-quote">
+                五岳独尊 · 天下第一山 · 中华民族之魂
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>泰山专题报告 | 五岳独尊 · 天下第一山</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：泰山风景名胜区管理委员会、 UNESCO世界遗产中心、国家文物局</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>峨眉山专题报告 | 震旦第一山，普贤菩萨道场</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'SimSun', '宋体', serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e8e8e8; line-height: 1.8; min-height: 100vh; }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 200; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(28,33,40,.95); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; font-size: .8rem; color: #8B949E; text-decoration: none; backdrop-filter: blur(12px); transition: all .2s; font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif; }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover { background: rgba(40,45,55,.95); color: #E6EDF3; transform: translateX(-2px); border-color: #D4AF37; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%), linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%); position: relative; overflow: hidden; }
+        .cover-content { position: relative; z-index: 1; padding: 60px; }
+        .cover-badge { display: inline-block; padding: 8px 24px; border: 2px solid #d4af37; color: #d4af37; font-size: 14px; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase; }
+        .cover-title { font-size: 72px; font-weight: 700; color: #d4af37; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); margin-bottom: 20px; letter-spacing: 8px; }
+        .cover-subtitle { font-size: 28px; color: #c9b037; margin-bottom: 40px; font-weight: 300; letter-spacing: 4px; }
+        .cover-divider { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 40px auto; }
+        .cover-quote { font-size: 28px; color: #d4af37; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { font-size: 16px; color: #888; letter-spacing: 2px; }
+        .content-section { background: rgba(13, 27, 42, 0.8); margin: 40px 0; padding: 60px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-number { font-size: 14px; color: #d4af37; letter-spacing: 4px; margin-bottom: 10px; }
+        .section-title { font-size: 42px; color: #d4af37; margin-bottom: 20px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+        .section-subtitle { font-size: 18px; color: #888; margin-top: 30px; }
+        .intro-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-left: 4px solid #d4af37; padding: 30px 40px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .intro-card p { font-size: 18px; color: #e8e8e8; line-height: 2; }
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(27, 38, 59, 0.8); padding: 30px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timeline-year { font-size: 24px; color: #d4af37; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .timeline-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #d4af37; border-radius: 50%; border: 4px solid #0d1b2a; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .master-grid, .building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .master-card, .building-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .master-card:hover, .building-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
+        .master-header { padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .master-icon, .building-icon { font-size: 48px; margin-bottom: 15px; }
+        .master-name, .building-name { font-size: 28px; color: #d4af37; margin-bottom: 8px; }
+        .master-title { font-size: 14px; color: #888; }
+        .master-body { padding: 30px; }
+        .master-desc, .building-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .building-tag { display: inline-block; padding: 4px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; font-size: 12px; color: #d4af37; margin-top: 15px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 50px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #d4af37; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-item { display: flex; gap: 30px; padding: 30px; background: rgba(27, 38, 59, 0.6); border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #d4af37; transition: all 0.3s ease; }
+        .milestone-item:hover { background: rgba(27, 38, 59, 0.8); transform: translateX(10px); }
+        .milestone-year { font-size: 24px; font-weight: 700; color: #d4af37; min-width: 100px; }
+        .milestone-content { flex: 1; }
+        .milestone-title { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .milestone-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .wushu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin: 40px 0; }
+        .wushu-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); padding: 40px 30px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .wushu-card:hover { transform: translateY(-10px); border-color: rgba(212, 175, 55, 0.5); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2); }
+        .wushu-icon { font-size: 48px; margin-bottom: 20px; }
+        .wushu-name { font-size: 24px; color: #d4af37; margin-bottom: 15px; }
+        .wushu-desc { font-size: 14px; color: #aaa; line-height: 1.8; }
+        .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .future-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.8), rgba(13, 27, 42, 0.8)); padding: 40px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .future-icon { font-size: 40px; margin-bottom: 20px; }
+        .future-title { font-size: 22px; color: #d4af37; margin-bottom: 15px; }
+        .future-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .conclusion { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); }
+        .conclusion-text { font-size: 18px; color: #ccc; line-height: 2; margin-bottom: 30px; text-align: center; }
+        .conclusion-highlight { color: #d4af37; font-weight: 600; }
+        .conclusion-quote { font-size: 32px; color: #d4af37; text-align: center; font-weight: 600; letter-spacing: 8px; margin-top: 50px; padding: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .footer { text-align: center; padding: 60px 40px; background: rgba(13, 27, 42, 0.9); border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; }
+        .footer p { color: #888; font-size: 14px; letter-spacing: 2px; }
+        @media (max-width: 768px) {
+            .cover-title { font-size: 48px; }
+            .cover-subtitle { font-size: 20px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .wushu-grid { grid-template-columns: 1fr; }
+            .future-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Mount Emei Special Report</div>
+            <h1 class="cover-title">峨眉山</h1>
+            <p class="cover-subtitle">震旦第一山 · 普贤菩萨道场</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">"高出五岳，秀甲九州"</p>
+            <p class="cover-meta">世界文化与自然双重遗产 | 中国佛教四大名山之一</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 章节1：起源与诞生 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">从道教仙山到普贤道场的千年演变</p>
+            </div>
+            <div class="intro-card">
+                <p>峨眉山位于四川省乐山市境内，是中国四大佛教名山之一，也是世界文化与自然双重遗产。其名称源于《水经注》所载："去成都千里，然秋日清澄，望见两山相峙如蛾眉焉。"山体雄伟险峻，主峰万佛顶海拔3099米，素有"高出五岳，秀甲九州"之美誉。</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">先秦时期</div>
+                        <div class="timeline-title">道教仙山的起源</div>
+                        <div class="timeline-desc">峨眉山最初是道教名山，被称为"第七洞天"。相传天皇真人曾在此修炼，葛洪《抱朴子》亦将其列为道教圣地。先秦时期，峨眉山就是巴蜀先民崇拜的神山。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">东汉时期</div>
+                        <div class="timeline-title">佛教初传峨眉山</div>
+                        <div class="timeline-desc">据《峨眉山志》记载，佛教于东汉永平年间（58-75年）传入峨眉山，建立了首座寺庙普光殿。魏晋南北朝时期，佛教与本地巫文化融合，开始了佛道共存的格局。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">东晋隆安五年</div>
+                        <div class="timeline-title">普贤寺创建</div>
+                        <div class="timeline-desc">公元401年，高僧慧持入山创建普贤寺，标志着峨眉山正式成为普贤菩萨道场。慧持是庐山慧远大师的弟弟，他选择峨眉山作为弘法之地，奠定了峨眉山作为普贤道场的地位。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">唐宋时期</div>
+                        <div class="timeline-title">普贤信仰的兴盛</div>
+                        <div class="timeline-desc">唐代重建白水普贤寺，宋代铸造重达62吨的普贤骑象铜像。随着《华严经》的广泛传播，峨眉山作为普贤菩萨道场的地位日益巩固，成为与五台山、普陀山、九华山并列的中国佛教四大名山。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">明清时期</div>
+                        <div class="timeline-title">佛教鼎盛时代</div>
+                        <div class="timeline-desc">明代万历年间创建报国寺，清代康熙、乾隆多次巡幸峨眉山，赐匾题诗。全山寺院达百余座，僧众数千人，成为名副其实的"佛国天堂"。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节2：历代高僧 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">历代高僧</h2>
+                <p class="section-subtitle">弘法利生的佛门龙象</p>
+            </div>
+            <div class="intro-card">
+                <p>峨眉山作为普贤菩萨道场，近两千年来高僧辈出。从东晋慧持开山建寺，到唐代慧通重建，再到明清时期的兴盛，历代高僧在此修行弘法，留下了丰富的佛教文化遗产。</p>
+            </div>
+            <div class="master-grid">
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🧘</div>
+                        <div class="master-name">慧持大师</div>
+                        <div class="master-title">东晋高僧 · 峨眉山开山祖师</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">慧持（337-412），东晋高僧，庐山慧远大师之弟。公元401年入峨眉山创建普贤寺，是峨眉山佛教的开山祖师。他精通《法华经》《华严经》，奠定了峨眉山作为普贤菩萨道场的理论基础。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">🙏</div>
+                        <div class="master-name">慧通禅师</div>
+                        <div class="master-title">唐代高僧 · 白水寺重建者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">慧通禅师，唐代高僧。公元876年重建白水寺（今万年寺前身），并扩建寺院规模。他在峨眉山弘法数十年，使峨眉山佛教在唐代得到重大发展，奠定了万年寺作为峨眉山核心寺院的地位。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">📿</div>
+                        <div class="master-name">无穷禅师</div>
+                        <div class="master-title">明代高僧 · 报国寺创建者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">无穷禅师，明代万历年间高僧。公元1573-1619年间创建报国寺（原名会宗堂），取儒释道三教合一之意。报国寺成为峨眉山入山第一寺，也是山中第一大寺，标志着峨眉山佛教进入鼎盛时期。</p>
+                    </div>
+                </div>
+                <div class="master-card">
+                    <div class="master-header">
+                        <div class="master-icon">☸️</div>
+                        <div class="master-name">别传禅师</div>
+                        <div class="master-title">清代高僧 · 伏虎寺中兴者</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="master-desc">别传禅师，清代高僧。康熙年间中兴伏虎寺，使其成为峨眉山重要寺院之一。伏虎寺以"密林藏伏虎"著称，是峨眉山最大的比丘尼寺院，也是全国重点寺院。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节3：古刹名寺 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">古刹名寺</h2>
+                <p class="section-subtitle">佛国天堂的建筑瑰宝</p>
+            </div>
+            <div class="intro-card">
+                <p>峨眉山现有寺庙30余座，其中报国寺、万年寺、伏虎寺、清音阁、洪椿坪、洗象池、金顶华藏寺等最为著名。这些寺院依山而建，错落有致，与自然景观完美融合，体现了"天人合一"的东方智慧。</p>
+            </div>
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏛️</div>
+                        <div class="building-name">报国寺</div>
+                        <div class="master-title">入山第一寺 · 山中第一大寺</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">始建于明万历年间（1573-1619年），原名会宗堂，取儒释道三教合一之意。清康熙帝赐名"报国寺"。寺内供奉弥勒佛、韦驮、四大天王等，是峨眉山佛教活动的中心。</p>
+                        <span class="building-tag">全国重点寺院</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🐘</div>
+                        <div class="building-name">万年寺</div>
+                        <div class="master-title">普贤道场核心 · 千年古刹</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">始建于东晋隆安五年（401年），原名普贤寺。寺内供奉北宋太平兴国五年（980年）铸造的普贤骑象铜像，高7.35米，重62吨，是中国现存最大的古代铜佛像之一。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🌅</div>
+                        <div class="building-name">金顶华藏寺</div>
+                        <div class="master-title">海拔3079米 · 云海佛国</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于峨眉山最高峰金顶，海拔3079米。始建于唐代，明代万历年间重建。寺内供奉十方普贤菩萨像，高48米，重达660吨，是世界上最高的金佛。金顶云海、日出、佛光、圣灯为四大奇观。</p>
+                        <span class="building-tag">世界海拔最高佛教寺院</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🐯</div>
+                        <div class="building-name">伏虎寺</div>
+                        <div class="master-title">密林藏伏虎 · 比丘尼道场</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">始建于唐代，宋代重建，清代康熙年间中兴。因寺后山形似伏虎而得名。伏虎寺是峨眉山最大的比丘尼寺院，以"密林藏伏虎"的奇特景观著称，寺周楠木参天，环境清幽。</p>
+                        <span class="building-tag">全国重点寺院</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节4：峨眉武术 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">峨眉武术</h2>
+                <p class="section-subtitle">亦刚亦柔的武林奇葩</p>
+            </div>
+            <div class="intro-card">
+                <p>峨眉武术是中国武术三大流派之一（与少林、武当并列），发源于峨眉山，已有近3000年历史。峨眉武术讲究刚柔相济、内外兼修，动作似快而慢，既有佛家禅意，又具道家神韵，被誉为"中华武术瑰宝"。</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">3000年</div>
+                    <div class="stat-label">武术历史</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">80+</div>
+                    <div class="stat-label">武术门派</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">2007</div>
+                    <div class="stat-label">列入国家级非遗</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">拳种套路</div>
+                </div>
+            </div>
+            <div class="wushu-grid">
+                <div class="wushu-card">
+                    <div class="wushu-icon">🐒</div>
+                    <div class="wushu-name">峨眉通臂拳</div>
+                    <div class="wushu-desc">相传为春秋战国时期司徒玄空（号动灵子）所创，仿山中灵猴姿态创编，被尊为"白猿祖师"，是峨眉武术的源头。</div>
+                </div>
+                <div class="wushu-card">
+                    <div class="wushu-icon">⚔️</div>
+                    <div class="wushu-name">峨眉剑法</div>
+                    <div class="wushu-desc">以"猿公剑法"最为著名，剑法轻灵飘逸，如行云流水，讲究"剑走偏锋"，是峨眉武术的代表性技艺。</div>
+                </div>
+                <div class="wushu-card">
+                    <div class="wushu-icon">🌸</div>
+                    <div class="wushu-name">峨眉刺</div>
+                    <div class="wushu-desc">峨眉派独门兵器，双刺并用，招式精妙，攻守兼备，是峨眉武术中极具特色的短兵器技法。</div>
+                </div>
+            </div>
+            <div class="intro-card" style="margin-top: 40px;">
+                <p><strong style="color: #d4af37;">武术特点：</strong>峨眉武术讲究"刚柔相济、内外兼修"，既有少林的刚猛，又有武当的柔韧，形成了独特的"亦刚亦柔"风格。其动作舒展大方，身法灵活多变，讲究"以静制动、以柔克刚"，充分体现了佛家禅意与道家神韵的融合。</p>
+            </div>
+        </section>
+
+        <!-- 章节5：现代发展与旅游 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">现代发展与旅游</h2>
+                <p class="section-subtitle">世界双遗产的当代价值</p>
+            </div>
+            <div class="intro-card">
+                <p>1996年12月6日，峨眉山-乐山大佛被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为全球首批世界双遗产之一。近年来，峨眉山在遗产保护、旅游开发、文化传承等方面取得了显著成就。</p>
+            </div>
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家重点风景名胜区</div>
+                        <div class="milestone-desc">峨眉山被国务院公布为第一批国家重点风景名胜区，标志着峨眉山旅游开发进入新阶段。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1996</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">世界文化与自然双重遗产</div>
+                        <div class="milestone-desc">峨眉山-乐山大佛被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为全球首批世界双遗产之一，也是中国仅有的四项世界双遗产之一。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2007</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">峨眉武术列入国家级非遗</div>
+                        <div class="milestone-desc">峨眉武术被列入第一批国家级非物质文化遗产名录，标志着峨眉武术得到国家层面的文化认定与保护。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">世界遗产保护最高评级</div>
+                        <div class="milestone-desc">世界自然保护联盟（IUCN）发布第四轮《世界遗产展望》评估报告，峨眉山-乐山大佛四度蝉联世界遗产保护最高评级，成为全球遗产保护的典范。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">建设世界重要旅游目的地</div>
+                        <div class="milestone-desc">峨眉山市委提出推进文化和旅游深度融合发展，奋力建设世界重要旅游目的地的战略目标，实施遗产保护"黑科技"，推动文旅新体验。</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">3099米</div><div class="stat-label">主峰海拔</div></div>
+                <div class="stat-card"><div class="stat-number">30+</div><div class="stat-label">现存寺院</div></div>
+                <div class="stat-card"><div class="stat-number">4度</div><div class="stat-label">IUCN最高评级</div></div>
+                <div class="stat-card"><div class="stat-number">全球首批</div><div class="stat-label">世界双遗产</div></div>
+            </div>
+        </section>
+
+        <!-- 章节6：未来发展展望 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 06</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">世界重要旅游目的地的宏伟蓝图</p>
+            </div>
+            <div class="intro-card">
+                <p>站在新的历史起点上，峨眉山面临着传承与发展的双重使命。如何在保护世界双遗产的同时实现可持续发展，如何在现代化进程中坚守佛教文化初心，是峨眉山未来发展需要回答的重要课题。</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <div class="future-title">遗产保护创新</div>
+                    <div class="future-desc">运用数字化、智能化技术加强遗产监测与保护，实施"黑科技"保护方案。建立遗产保护大数据平台，实现文物、古建筑、生态环境的实时监测与预警。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">世界旅游目的地</div>
+                    <div class="future-desc">按照建设"世界重要旅游目的地"的战略目标，完善旅游基础设施，提升服务质量。打造集文化体验、生态观光、康养度假、武术研修于一体的综合性旅游目的地。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">☸️</div>
+                    <div class="future-title">普贤文化传播</div>
+                    <div class="future-desc">深入挖掘普贤菩萨"十大愿王"文化内涵，举办国际佛教文化交流活动。推动普贤文化走向世界，打造"普贤文化"国际品牌，促进中外文化交流互鉴。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">⚔️</div>
+                    <div class="future-title">武术文化传承</div>
+                    <div class="future-desc">建设峨眉武术传承基地，培养武术人才。举办世界传统武术锦标赛等国际赛事，推动峨眉武术全球传播。开发武术研学旅游产品，让更多人体验峨眉武术魅力。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">先秦时期的道教仙山</span>，到<span class="conclusion-highlight">东晋的普贤道场</span>；从<span class="conclusion-highlight">唐宋的佛教兴盛</span>，到<span class="conclusion-highlight">当代的世界双遗产</span>——峨眉山的2500年历史，是一部<span class="conclusion-highlight">融合佛道文化、武术精髓与自然奇观</span>的宏大史诗。
+            </p>
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"高出五岳，秀甲九州"</span>不仅是一句赞誉，更是中华文化的自信表达。慧持大师在此开创普贤道场，司徒玄空在此创立峨眉武术，历代高僧在此弘法利生——<span class="conclusion-highlight">佛国天堂</span>的美誉实至名归。
+            </p>
+            <p class="conclusion-text">
+                在新时代，峨眉山肩负着<span class="conclusion-highlight">保护世界双遗产、传承普贤文化、弘扬峨眉武术</span>的重要使命。愿这座"震旦第一山"在守正创新中继续前行，让<span class="conclusion-highlight">佛国文化</span>在世界舞台上绽放更加璀璨的光芒。
+            </p>
+            <div class="conclusion-quote">
+                佛国天堂 · 普贤道场 · 武术瑰宝
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>峨眉山专题报告 | 震旦第一山 · 普贤菩萨道场</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：峨眉山佛教网、 UNESCO世界遗产中心、国家文物局</p>
+        </footer>
+    </div>
+</body>
+</html>

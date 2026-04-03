@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黄山专题报告 | 天下第一奇山，山水画境</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Serif SC', 'SimSun', '宋体', serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%); color: #e8e8e8; line-height: 1.8; min-height: 100vh; }
+        .back-home { position: fixed; top: 16px; left: 16px; z-index: 200; display: flex; align-items: center; gap: 8px; padding: 10px 16px; background: rgba(28,33,40,.95); border: 1px solid rgba(255,255,255,.1); border-radius: 50px; font-size: .8rem; color: #8B949E; text-decoration: none; backdrop-filter: blur(12px); transition: all .2s; font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif; }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover { background: rgba(40,45,55,.95); color: #E6EDF3; transform: translateX(-2px); border-color: #D4AF37; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%), linear-gradient(180deg, #0d1b2a 0%, #1b263b 100%); position: relative; overflow: hidden; }
+        .cover-content { position: relative; z-index: 1; padding: 60px; }
+        .cover-badge { display: inline-block; padding: 8px 24px; border: 2px solid #d4af37; color: #d4af37; font-size: 14px; letter-spacing: 4px; margin-bottom: 40px; text-transform: uppercase; }
+        .cover-title { font-size: 72px; font-weight: 700; color: #d4af37; text-shadow: 0 0 40px rgba(212, 175, 55, 0.3); margin-bottom: 20px; letter-spacing: 8px; }
+        .cover-subtitle { font-size: 28px; color: #c9b037; margin-bottom: 40px; font-weight: 300; letter-spacing: 4px; }
+        .cover-divider { width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #d4af37, transparent); margin: 40px auto; }
+        .cover-quote { font-size: 28px; color: #d4af37; font-weight: 600; margin-bottom: 20px; }
+        .cover-meta { font-size: 16px; color: #888; letter-spacing: 2px; }
+        .content-section { background: rgba(13, 27, 42, 0.8); margin: 40px 0; padding: 60px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.2); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-number { font-size: 14px; color: #d4af37; letter-spacing: 4px; margin-bottom: 10px; }
+        .section-title { font-size: 42px; color: #d4af37; margin-bottom: 20px; position: relative; display: inline-block; }
+        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: linear-gradient(90deg, transparent, #d4af37, transparent); }
+        .section-subtitle { font-size: 18px; color: #888; margin-top: 30px; }
+        .intro-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); border-left: 4px solid #d4af37; padding: 30px 40px; margin: 40px 0; border-radius: 0 8px 8px 0; }
+        .intro-card p { font-size: 18px; color: #e8e8e8; line-height: 2; }
+        .timeline { position: relative; padding: 40px 0; }
+        .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: linear-gradient(180deg, transparent, #d4af37, transparent); }
+        .timeline-item { display: flex; margin-bottom: 60px; position: relative; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-content { width: 45%; background: rgba(27, 38, 59, 0.8); padding: 30px; border-radius: 8px; border: 1px solid rgba(212, 175, 55, 0.3); }
+        .timeline-year { font-size: 24px; color: #d4af37; font-weight: 700; margin-bottom: 10px; }
+        .timeline-title { font-size: 20px; color: #fff; margin-bottom: 15px; }
+        .timeline-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .timeline-dot { position: absolute; left: 50%; transform: translateX(-50%); width: 20px; height: 20px; background: #d4af37; border-radius: 50%; border: 4px solid #0d1b2a; box-shadow: 0 0 20px rgba(212, 175, 55, 0.5); }
+        .master-grid, .building-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 40px 0; }
+        .master-card, .building-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); border-radius: 12px; overflow: hidden; border: 1px solid rgba(212, 175, 55, 0.2); transition: all 0.3s ease; }
+        .master-card:hover, .building-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15); border-color: rgba(212, 175, 55, 0.4); }
+        .master-header { padding: 30px; background: linear-gradient(135deg, rgba(212, 175, 55, 0.15), rgba(212, 175, 55, 0.05)); border-bottom: 1px solid rgba(212, 175, 55, 0.2); }
+        .master-icon, .building-icon { font-size: 48px; margin-bottom: 15px; }
+        .master-name, .building-name { font-size: 28px; color: #d4af37; margin-bottom: 8px; }
+        .master-title { font-size: 14px; color: #888; }
+        .master-body { padding: 30px; }
+        .master-desc, .building-desc { font-size: 15px; color: #ccc; line-height: 1.8; }
+        .building-tag { display: inline-block; padding: 4px 12px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 20px; font-size: 12px; color: #d4af37; margin-top: 15px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin: 50px 0; }
+        .stat-card { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); padding: 40px 20px; border-radius: 12px; text-align: center; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .stat-number { font-size: 48px; font-weight: 700; color: #d4af37; margin-bottom: 10px; }
+        .stat-label { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 2px; }
+        .milestone-list { list-style: none; padding: 0; }
+        .milestone-item { display: flex; gap: 30px; padding: 30px; background: rgba(27, 38, 59, 0.6); border-radius: 12px; margin-bottom: 20px; border-left: 4px solid #d4af37; transition: all 0.3s ease; }
+        .milestone-item:hover { background: rgba(27, 38, 59, 0.8); transform: translateX(10px); }
+        .milestone-year { font-size: 24px; font-weight: 700; color: #d4af37; min-width: 100px; }
+        .milestone-content { flex: 1; }
+        .milestone-title { font-size: 20px; color: #fff; margin-bottom: 10px; }
+        .milestone-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .wonder-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .wonder-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.9), rgba(13, 27, 42, 0.9)); padding: 40px 30px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); text-align: center; }
+        .wonder-icon { font-size: 56px; margin-bottom: 20px; }
+        .wonder-name { font-size: 26px; color: #d4af37; margin-bottom: 15px; }
+        .wonder-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .future-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin: 40px 0; }
+        .future-card { background: linear-gradient(135deg, rgba(27, 38, 59, 0.8), rgba(13, 27, 42, 0.8)); padding: 40px; border-radius: 12px; border: 1px solid rgba(212, 175, 55, 0.2); }
+        .future-icon { font-size: 40px; margin-bottom: 20px; }
+        .future-title { font-size: 22px; color: #d4af37; margin-bottom: 15px; }
+        .future-desc { font-size: 15px; color: #aaa; line-height: 1.8; }
+        .conclusion { background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05)); }
+        .conclusion-text { font-size: 18px; color: #ccc; line-height: 2; margin-bottom: 30px; text-align: center; }
+        .conclusion-highlight { color: #d4af37; font-weight: 600; }
+        .conclusion-quote { font-size: 32px; color: #d4af37; text-align: center; font-weight: 600; letter-spacing: 8px; margin-top: 50px; padding: 30px; border-top: 1px solid rgba(212, 175, 55, 0.3); border-bottom: 1px solid rgba(212, 175, 55, 0.3); }
+        .footer { text-align: center; padding: 60px 40px; background: rgba(13, 27, 42, 0.9); border-top: 1px solid rgba(212, 175, 55, 0.2); margin-top: 60px; }
+        .footer p { color: #888; font-size: 14px; letter-spacing: 2px; }
+        @media (max-width: 768px) {
+            .cover-title { font-size: 48px; }
+            .cover-subtitle { font-size: 20px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { flex-direction: column !important; }
+            .timeline-content { width: 100%; margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .wonder-grid { grid-template-columns: 1fr; }
+            .future-grid { grid-template-columns: 1fr; }
+            .content-section { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-badge">Mount Huangshan Special Report</div>
+            <h1 class="cover-title">黄山</h1>
+            <p class="cover-subtitle">天下第一奇山 · 山水画境</p>
+            <div class="cover-divider"></div>
+            <p class="cover-quote">"五岳归来不看山，黄山归来不看岳"</p>
+            <p class="cover-meta">世界文化与自然双重遗产 | 世界地质公园</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- 章节1：起源与诞生 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 01</div>
+                <h2 class="section-title">起源与诞生</h2>
+                <p class="section-subtitle">从黄帝炼丹到唐玄宗赐名的千年传奇</p>
+            </div>
+            <div class="intro-card">
+                <p>黄山位于安徽省南部，原名"黟山"，因峰岩青黑、遥望苍黛而得名。相传轩辕黄帝曾在此采药炼丹，得道成仙。唐玄宗天宝六年（公元747年），诏改黟山为"黄山"，由此得名。黄山以奇松、怪石、云海、温泉、冬雪"五绝"著称于世，被誉为"天下第一奇山"。</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">先秦时期</div>
+                        <div class="timeline-title">黟山之名</div>
+                        <div class="timeline-desc">黄山原名"黟山"，因山体岩石青黑如墨而得名。"黟"字在古代汉语中意为黑色，这与黄山花岗岩的自然色泽相符。先秦时期，黄山就是当地居民崇拜的神山。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">黄帝传说</div>
+                        <div class="timeline-title">黄帝炼丹得道</div>
+                        <div class="timeline-desc">相传轩辕黄帝曾带着术士容成子和仙人浮丘公来到黟山采药炼丹。他们感受到仙气缭绕，是炼丹修行的绝佳之地。最终黄帝得道成仙，乘龙升天。这一传说为黄山增添了神秘色彩。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">唐天宝六年</div>
+                        <div class="timeline-title">唐玄宗赐名黄山</div>
+                        <div class="timeline-desc">公元747年，唐玄宗李隆基笃信道教，受黄帝炼丹传说影响，下诏将黟山改名为"黄山"，以纪念轩辕黄帝。从此"黄山"之名流传至今，成为中华文化的瑰宝。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-year">明清时期</div>
+                        <div class="timeline-title">黄山画派兴起</div>
+                        <div class="timeline-desc">明清时期，以渐江、石涛、梅清为代表的"黄山画派"兴起，他们以黄山为题材，创作了大量传世名作。徐霞客两次游历黄山，留下"五岳归来不看山，黄山归来不看岳"的千古名句。</div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节2：黄山五绝 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 02</div>
+                <h2 class="section-title">黄山五绝</h2>
+                <p class="section-subtitle">大自然的鬼斧神工</p>
+            </div>
+            <div class="intro-card">
+                <p>黄山以奇松、怪石、云海、温泉、冬雪"五绝"闻名于世。这五种独特的自然景观，是亿万年地质演化与气候作用的结果，构成了黄山"无处不石，无石不松，无松不奇"的独特景观，被誉为"震旦国中第一奇山"。</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">88座</div>
+                    <div class="stat-label">千米以上高峰</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1864米</div>
+                    <div class="stat-label">莲花峰海拔</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">300+</div>
+                    <div class="stat-label">摩崖石刻</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1200km²</div>
+                    <div class="stat-label">风景区面积</div>
+                </div>
+            </div>
+            <div class="wonder-grid">
+                <div class="wonder-card">
+                    <div class="wonder-icon">🌲</div>
+                    <div class="wonder-name">奇松</div>
+                    <div class="wonder-desc">黄山松是黄山"五绝"之首，"无处不石，无石不松，无松不奇"。著名的迎客松、卧龙松、黑虎松、麒麟松、蒲团松等，扎根悬崖峭壁，枝干虬劲，展现顽强的生命力。</div>
+                </div>
+                <div class="wonder-card">
+                    <div class="wonder-icon">🪨</div>
+                    <div class="wonder-name">怪石</div>
+                    <div class="wonder-desc">黄山怪石星罗棋布，形态各异。飞来石、猴子观海、仙人指路、梦笔生花等，惟妙惟肖，令人叹为观止。这些怪石是花岗岩风化与冰川作用的杰作。</div>
+                </div>
+                <div class="wonder-card">
+                    <div class="wonder-icon">☁️</div>
+                    <div class="wonder-name">云海</div>
+                    <div class="wonder-desc">黄山云海波澜壮阔，变幻莫测。依云海分布方位，可分为东海、南海、西海、北海和天海。云海与奇松、怪石相映成趣，构成如诗如画的仙境。</div>
+                </div>
+                <div class="wonder-card">
+                    <div class="wonder-icon">♨️</div>
+                    <div class="wonder-name">温泉</div>
+                    <div class="wonder-desc">黄山温泉古称汤泉，源出海拔850米的紫云峰下，水质以含重碳酸为主，常年不息。传说轩辕黄帝就是在此沐浴七七四十九日得道升天的。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节3：宗教文化 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 03</div>
+                <h2 class="section-title">宗教文化</h2>
+                <p class="section-subtitle">佛道共存的圣地</p>
+            </div>
+            <div class="intro-card">
+                <p>黄山是道教和佛教共存的神圣空间。道教视黄山为修仙圣地，传说黄帝在此炼丹成仙；佛教在黄山也有悠久历史，慈光阁、祥符寺等寺院香火鼎盛。儒释道三教在黄山和谐共存，体现了中华文化的包容性。</p>
+            </div>
+            <div class="building-grid">
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏛️</div>
+                        <div class="building-name">慈光阁</div>
+                        <div class="master-title">黄山四大丛林之首 · 明代古寺</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于黄山朱砂峰下，始建于明嘉靖年间（1522-1566年），初名朱砂庵。1606年改称法海禅院，1610年获万历帝赐额"护国慈光寺"。康熙帝御书"黄海仙都"，现为黄山风景区博物馆。</p>
+                        <span class="building-tag">全国重点文物保护单位</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">☸️</div>
+                        <div class="building-name">祥符寺</div>
+                        <div class="master-title">唐代古刹 · 黄山最早佛教寺院</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">始建于唐代，由志满法师创建于黄山佛子岭，是黄山风景区最早的佛教寺院之一。明清时期与慈光寺、掷钵禅院等同列为黄山南路四大丛林，形成寺院群落。</p>
+                        <span class="building-tag">黄山五大丛林之一</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">⛩️</div>
+                        <div class="building-name">云谷寺</div>
+                        <div class="master-title">明代寺院 · 后山登山起点</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于黄山后山云谷峰下，始建于明代。云谷寺是黄山后山登山的起点，环境清幽，古木参天。寺周有千年银杏、古柏等名木，是黄山重要的佛教活动场所。</p>
+                        <span class="building-tag">黄山五大丛林之一</span>
+                    </div>
+                </div>
+                <div class="building-card">
+                    <div class="master-header">
+                        <div class="building-icon">🏔️</div>
+                        <div class="building-name">炼丹峰</div>
+                        <div class="master-title">黄帝炼丹传说 · 道教圣地</div>
+                    </div>
+                    <div class="master-body">
+                        <p class="building-desc">位于黄山天都峰下，相传为轩辕黄帝炼丹之处。峰上有炼丹台、炼丹井等遗迹，是黄山道教文化的重要载体。炼丹峰与温泉景区相连，构成黄山道教文化核心区。</p>
+                        <span class="building-tag">道教文化遗址</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 章节4：现代发展与旅游 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 04</div>
+                <h2 class="section-title">现代发展与旅游</h2>
+                <p class="section-subtitle">世界双遗产的保护与传承</p>
+            </div>
+            <div class="intro-card">
+                <p>1990年12月，黄山被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为世界文化与自然双重遗产。黄山以其独特的花岗岩峰林地貌、丰富的生物多样性和深厚的文化底蕴，成为世界遗产保护的典范。</p>
+            </div>
+            <ul class="milestone-list">
+                <li class="milestone-item">
+                    <div class="milestone-year">1982</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">列入国家重点风景名胜区</div>
+                        <div class="milestone-desc">黄山被国务院公布为第一批国家重点风景名胜区，标志着黄山旅游开发进入新阶段。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1985</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">入选中国十大风景名胜</div>
+                        <div class="milestone-desc">黄山以唯一的山岳风光入选中国十大风景名胜，成为中华文化的代表性景观。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">1990</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">世界文化与自然双重遗产</div>
+                        <div class="milestone-desc">黄山被联合国教科文组织列入《世界文化与自然双重遗产名录》，成为中国第三项世界双遗产。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2004</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">世界地质公园</div>
+                        <div class="milestone-desc">黄山被联合国教科文组织批准为世界地质公园，其独特的花岗岩峰林地貌得到国际认可。</div>
+                    </div>
+                </li>
+                <li class="milestone-item">
+                    <div class="milestone-year">2025</div>
+                    <div class="milestone-content">
+                        <div class="milestone-title">申遗成功35周年</div>
+                        <div class="milestone-desc">纪念黄山申遗成功35周年，黄山以系统韧性守护人类瑰宝，持续加强文化和自然遗产传承利用工作。</div>
+                    </div>
+                </li>
+            </ul>
+            <div class="stats-grid" style="margin-top: 50px;">
+                <div class="stat-card"><div class="stat-number">3座</div><div class="stat-label">主峰（莲花/光明顶/天都）</div></div>
+                <div class="stat-card"><div class="stat-number">1990</div><div class="stat-label">世界双遗产</div></div>
+                <div class="stat-card"><div class="stat-number">5A</div><div class="stat-label">景区级别</div></div>
+                <div class="stat-card"><div class="stat-number">400万+</div><div class="stat-label">年游客量</div></div>
+            </div>
+        </section>
+
+        <!-- 章节5：未来发展展望 -->
+        <section class="content-section">
+            <div class="section-header">
+                <div class="section-number">CHAPTER 05</div>
+                <h2 class="section-title">未来发展展望</h2>
+                <p class="section-subtitle">世界级旅游目的地建设</p>
+            </div>
+            <div class="intro-card">
+                <p>站在新的历史起点上，黄山面临着保护与发展并重的双重使命。如何在保护世界双遗产的同时，传承黄山文化、弘扬黄山精神，打造世界级旅游目的地，是黄山未来发展需要回答的重要课题。</p>
+            </div>
+            <div class="future-grid">
+                <div class="future-card">
+                    <div class="future-icon">🛡️</div>
+                    <div class="future-title">遗产保护创新</div>
+                    <div class="future-desc">加强黄山世界双遗产的保护，以系统韧性守护人类瑰宝。运用现代科技手段监测地质变化和生态环境，保护好迎客松等珍贵景观，确保遗产的永续传承。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🌐</div>
+                    <div class="future-title">世界级旅游目的地</div>
+                    <div class="future-desc">完善旅游基础设施，提升服务质量。打造集文化体验、生态观光、摄影创作、康养度假于一体的综合性旅游目的地，建设世界级旅游景区。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🎨</div>
+                    <div class="future-title">黄山画派传承</div>
+                    <div class="future-desc">深入挖掘黄山画派文化内涵，建设黄山画派博物馆。举办国际摄影节和书画交流活动，推动黄山文化走向世界，打造"黄山画派"国际品牌。</div>
+                </div>
+                <div class="future-card">
+                    <div class="future-icon">🎭</div>
+                    <div class="future-title">文旅融合发展</div>
+                    <div class="future-desc">开发文创产品，打造实景演艺，发展研学旅游。推动黄山文化与旅游深度融合，提升旅游文化内涵，让黄山文化在新时代焕发新活力。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 结语 -->
+        <section class="content-section conclusion">
+            <div class="section-header">
+                <div class="section-number">CONCLUSION</div>
+                <h2 class="section-title">结语</h2>
+            </div>
+            <p class="conclusion-text">
+                从<span class="conclusion-highlight">远古时期的黟山崇拜</span>，到<span class="conclusion-highlight">黄帝炼丹的传说</span>；从<span class="conclusion-highlight">唐玄宗的赐名</span>，到<span class="conclusion-highlight">当代的世界双遗产</span>——黄山的三千年历史，是一部<span class="conclusion-highlight">融合自然奇观、宗教文化与艺术精神</span>的宏大史诗。
+            </p>
+            <p class="conclusion-text">
+                <span class="conclusion-highlight">"五岳归来不看山，黄山归来不看岳"</span>不仅是一句赞誉，更是中华文化的自信表达。奇松、怪石、云海、温泉、冬雪——<span class="conclusion-highlight">黄山五绝</span>展现了大自然的鬼斧神工；黄山画派、摩崖石刻——<span class="conclusion-highlight">人文瑰宝</span>彰显了中华文明的博大精深。
+            </p>
+            <p class="conclusion-text">
+                在新时代，黄山肩负着<span class="conclusion-highlight">保护世界双遗产、传承黄山文化、弘扬民族精神</span>的重要使命。愿这座"天下第一奇山"在守正创新中继续前行，让<span class="conclusion-highlight">黄山精神</span>在世界舞台上绽放更加璀璨的光芒。
+            </p>
+            <div class="conclusion-quote">
+                天下第一奇山 · 山水画境 · 世界双遗产
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>黄山专题报告 | 天下第一奇山 · 山水画境</p>
+            <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：黄山风景区管理委员会、 UNESCO世界遗产中心、国家文物局</p>
+        </footer>
+    </div>
+</body>
+</html>
