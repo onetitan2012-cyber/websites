@@ -19,6 +19,8 @@
     followDelay: 0.02,        // 跟随延迟系数（极大延迟，像拖着走）
     driftSpeed: 0.08,         // 自然漂移速度（极慢）
     breathSpeed: 0.08,        // 呼吸速度（极慢）
+    idleTimeout: 5000,        // 鼠标静止5秒后暂停动画
+    lowPowerMode: false,      // 是否启用低功耗模式
     colors: {
       dark: ['#5E9CEA', '#7AB8FF', '#9ED0FF', '#64B5F6', '#42A5F5', '#90CAF9', '#A8D5FF'],  // 深色背景配色（更多蓝色层次）
       light: ['#FF6B6B', '#4ECDC4', '#FFE66D', '#FF8C42', '#9B5DE5', '#F472B6']
@@ -41,11 +43,50 @@
       this.animationId = null;
       this.lastSpawn = 0;
       this.time = 0;           // 全局时间
+      this.lastMouseMove = Date.now();  // 上次鼠标移动时间
+      this.isIdle = false;     // 是否处于空闲状态
+      this.frameCount = 0;     // 帧计数器（用于降低帧率）
+      this.targetFPS = 60;     // 目标帧率
       
       // 合并配置
       this.config = { ...config, ...options };
       
+      // 检测设备性能并调整配置
+      this.detectDeviceCapabilities();
+      
       this.init();
+    }
+
+    // 检测设备性能（E方案：设备适配）
+    detectDeviceCapabilities() {
+      // 检测是否为低端设备
+      const isLowEnd = (
+        navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+      );
+      
+      // 检测是否省电模式（部分浏览器支持）
+      const isSaveData = navigator.connection && navigator.connection.saveData;
+      const isLowPower = navigator.getBattery ? false : false; // 异步检测，先设为false
+      
+      if (isLowEnd || isSaveData) {
+        this.config.lowPowerMode = true;
+        this.targetFPS = 30;
+        this.config.particleCount = 100;
+        this.config.bgStarCount = 80;
+        console.log('[CursorParticles] 低功耗模式已启用');
+      }
+      
+      // 检测电池状态
+      if (navigator.getBattery) {
+        navigator.getBattery().then(battery => {
+          if (battery.level < 0.2 && !battery.charging) {
+            this.config.lowPowerMode = true;
+            this.targetFPS = 30;
+            console.log('[CursorParticles] 低电量模式已启用');
+          }
+        });
+      }
     }
 
     init() {
@@ -75,6 +116,13 @@
         this.lastMouseY = this.mouseY;
         this.mouseX = e.clientX;
         this.mouseY = e.clientY;
+        this.lastMouseMove = Date.now();
+        
+        // 从空闲状态恢复
+        if (this.isIdle) {
+          this.isIdle = false;
+          this.animate();
+        }
       });
       
       // 监听触摸移动
@@ -82,6 +130,27 @@
         if (e.touches.length > 0) {
           this.mouseX = e.touches[0].clientX;
           this.mouseY = e.touches[0].clientY;
+          this.lastMouseMove = Date.now();
+          
+          if (this.isIdle) {
+            this.isIdle = false;
+            this.animate();
+          }
+        }
+      });
+      
+      // 监听页面可见性变化（D方案：智能暂停）
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          this.isIdle = true;
+          if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+            this.animationId = null;
+          }
+        } else {
+          this.isIdle = false;
+          this.lastMouseMove = Date.now();
+          this.animate();
         }
       });
       
@@ -383,10 +452,26 @@
 
     // 动画循环
     animate() {
-      if (!this.isActive) return;
+      if (!this.isActive || this.isIdle) return;
       
-      this.updateParticles();
-      this.drawParticles();
+      // D方案：智能暂停 - 检测鼠标静止时间
+      const now = Date.now();
+      if (now - this.lastMouseMove > this.config.idleTimeout) {
+        this.isIdle = true;
+        // 清空粒子，释放资源
+        this.particles = [];
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        return;
+      }
+      
+      // E方案：设备适配 - 降低帧率
+      this.frameCount++;
+      const frameSkip = this.targetFPS === 30 ? 2 : 1;
+      
+      if (this.frameCount % frameSkip === 0) {
+        this.updateParticles();
+        this.drawParticles();
+      }
       
       this.animationId = requestAnimationFrame(() => this.animate());
     }
