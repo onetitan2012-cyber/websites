@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南拳北腿 | 中华武术南北流派专题</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #D4AF37;
+        }
+
+        /* 封面 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(139,69,19,0.1) 50%, rgba(212,175,55,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; max-width: 900px; }
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(212,175,55,0.5);
+        }
+        .cover h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .cover-subtitle {
+            font-size: 24px;
+            color: #B8941F;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+        .cover-desc {
+            font-size: 18px;
+            color: #8B949E;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 2;
+        }
+        .cover-features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .cover-feature {
+            text-align: center;
+        }
+        .cover-feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .cover-feature-text {
+            font-size: 14px;
+            color: #8B949E;
+        }
+
+        /* 章节通用样式 */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(212,175,55,0.15);
+            border: 1px solid rgba(212,175,55,0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #D4AF37;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 36px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-desc {
+            font-size: 16px;
+            color: #8B949E;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 南北对比卡片 */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .compare-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            transition: all 0.3s ease;
+        }
+        .compare-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(212,175,55,0.3);
+            transform: translateY(-5px);
+        }
+        .compare-card.north { border-top: 4px solid #8B4513; }
+        .compare-card.south { border-top: 4px solid #D4AF37; }
+        .compare-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        .compare-title {
+            font-size: 28px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .compare-subtitle {
+            font-size: 14px;
+            color: #8B949E;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .compare-list {
+            list-style: none;
+        }
+        .compare-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .compare-list li:last-child { border-bottom: none; }
+        .compare-list .icon {
+            color: #D4AF37;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .compare-list .text {
+            color: #8B949E;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* 内容区块 */
+        .content-block {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .content-block h3 {
+            font-size: 22px;
+            color: #D4AF37;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(212,175,55,0.3);
+        }
+        .content-block p {
+            color: #8B949E;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        .content-block strong {
+            color: #E6EDF3;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #D4AF37 0%, rgba(212,175,55,0.2) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: #D4AF37;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(212,175,55,0.5);
+        }
+        .timeline-year {
+            font-size: 14px;
+            color: #D4AF37;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 15px;
+            color: #8B949E;
+            line-height: 1.8;
+        }
+
+        /* 流派展示 */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .style-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .style-card:hover {
+            background: rgba(212,175,55,0.1);
+            border-color: rgba(212,175,55,0.3);
+            transform: translateY(-3px);
+        }
+        .style-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .style-name {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .style-desc {
+            font-size: 13px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 核心概念 */
+        .concept-box {
+            background: linear-gradient(135deg, rgba(212,175,55,0.1) 0%, rgba(139,69,19,0.1) 100%);
+            border: 1px solid rgba(212,175,55,0.2);
+            border-radius: 16px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        .concept-title {
+            font-size: 20px;
+            color: #D4AF37;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .concept-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .concept-item h4 {
+            font-size: 16px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .concept-item p {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.7;
+        }
+
+        /* 引用 */
+        .quote-block {
+            background: rgba(212,175,55,0.05);
+            border-left: 4px solid #D4AF37;
+            padding: 30px;
+            margin: 40px 0;
+            font-style: italic;
+        }
+        .quote-block p {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .quote-block cite {
+            font-size: 14px;
+            color: #8B949E;
+            font-style: normal;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer p {
+            color: #8B949E;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 36px; letter-spacing: 4px; }
+            .cover-subtitle { font-size: 18px; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .concept-content { grid-template-columns: 1fr; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-icon">🥋</div>
+            <h1>南拳北腿</h1>
+            <p class="cover-subtitle">中华武术南北流派之辨</p>
+            <p class="cover-desc">
+                "南拳北腿"是中国武术界流传千年的经典概括。它并非简单的地域划分，而是中华文明在漫长历史进程中，因地理环境、气候条件、人文传统而形成的两种截然不同的武术风格。南方拳法贴身短打、桥手稳固；北方腿法放长击远、大开大合。二者相辅相成，共同构成了中华武术的完整图景。
+            </p>
+            <div class="cover-features">
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">👊</div>
+                    <div class="cover-feature-text">南拳：拳打卧牛之地</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">🦵</div>
+                    <div class="cover-feature-text">北腿：放长击远制敌</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">⚖️</div>
+                    <div class="cover-feature-text">殊途同归：武道合一</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 南北对比概览 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">CONCEPT OVERVIEW</span>
+            <h2 class="section-title">南北之分：地理与文化的双重塑造</h2>
+            <p class="section-desc">以长江为界，中国武术形成了鲜明的南北差异。这种差异源于地理环境、气候条件、人文传统的长期影响。</p>
+        </div>
+
+        <div class="compare-grid">
+            <div class="compare-card south">
+                <div class="compare-icon">🌊</div>
+                <h3 class="compare-title">南拳</h3>
+                <p class="compare-subtitle">长江流域及以南地区</p>
+                <ul class="compare-list">
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>地理特征：</strong>水网密布、丘陵起伏、气候湿热，场地受限</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>技术特点：</strong>手法多变、桥手稳固、贴身短打、发声助力</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>代表拳种：</strong>洪拳、咏春拳、蔡李佛拳、永春白鹤拳、南少林拳</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>核心口诀：</strong>"拳打卧牛之地"——方寸之间见功夫</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="compare-card north">
+                <div class="compare-icon">🏔️</div>
+                <h3 class="compare-title">北腿</h3>
+                <p class="compare-subtitle">黄河流域及以北地区</p>
+                <ul class="compare-list">
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>地理特征：</strong>平原广阔、地势平坦、气候寒冷，场地开阔</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>技术特点：</strong>腿法见长、放长击远、蹿纵跳跃、舒展大方</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>代表拳种：</strong>戳脚、弹腿、查拳、华拳、少林拳、形意拳</span>
+                    </li>
+                    <li>
+                        <span class="icon">◆</span>
+                        <span class="text"><strong>核心口诀：</strong>"手是两扇门，全凭脚打人"</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <p>"日出于泰山之巅，空旷间，大开大合，蹿纵跳跃，舒展大方，这是北派武术的特点；月悬于小桥之上，竹林间，短桥寸劲，阔幅沉马，迅疾紧凑，这是南派武术的风格。"</p>
+            <cite>—— 武术界传统说法</cite>
+        </div>
+    </section>
+
+    <!-- 南拳篇 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">SOUTHERN FIST</span>
+            <h2 class="section-title">南拳：岭南大地的武术瑰宝</h2>
+            <p class="section-desc">南拳起源于岭南地区，以福建南少林为精神源头，在明清时期发展成熟，是中国南方武术的统称。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>📜 起源与发展</h3>
+            <p>南拳的历史可追溯至<strong>明清时期</strong>。关于其起源，学界普遍认为与福建少林寺（传说中的南少林）有密切关系。明末清初，随着反清复明运动的兴起，南方民间秘密结社（如洪门、天地会）以练习武艺为名发展组织，南拳由此在岭南地区广泛传播。</p>
+            <p>清代<strong>"广东五大名拳"</strong>（洪、刘、蔡、李、莫）的形成，标志着南拳体系的成熟。这五大名拳各具特色，共同构成了南拳的主体框架。其中，洪拳影响最大，传播最广，成为南拳的代表。</p>
+            <p>19世纪末至20世纪初，随着华人移民潮，南拳传播至东南亚及世界各地。黄飞鸿、叶问等武术宗师的出现，使南拳在海内外声名远播。2006年，洪拳被列入国家级非物质文化遗产名录。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎯 技术特点</h3>
+            <p><strong>桥手稳固：</strong>南拳讲究"桥手"（前臂）的运用，要求桥手如铁，稳固有力。通过长期的桥手训练，练习者的小臂坚硬如铁，攻防兼备。</p>
+            <p><strong>贴身短打：</strong>南方水网密布，场地受限，南拳形成了"拳打卧牛之地"的特点。动作紧凑，步法灵活，强调在狭小空间内的攻防转换。</p>
+            <p><strong>发声助力：</strong>南拳练习时常配合发声（如"哈""嘿"），以气催力，增强打击效果。这种发声不是简单的喊叫，而是内功修炼的一部分。</p>
+            <p><strong>硬桥硬马：</strong>南拳讲究桩功，马步沉稳，下盘扎实。"未学拳，先扎三年马"是南拳训练的传统要求。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🏛️ 主要流派</h3>
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-icon">🔥</div>
+                    <h4 class="style-name">洪拳</h4>
+                    <p class="style-desc">广东五大名拳之首，刚猛迅疾，气势磅礴，黄飞鸿为其代表人物</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🌊</div>
+                    <h4 class="style-name">咏春拳</h4>
+                    <p class="style-desc">以中线理论为核心，贴身短打，叶问、李小龙为其代表人物</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">⚡</div>
+                    <h4 class="style-name">蔡李佛拳</h4>
+                    <p class="style-desc">融合蔡家、李家、佛家三家之长，长桥大马，长攻短打</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🦅</div>
+                    <h4 class="style-name">永春白鹤拳</h4>
+                    <p class="style-desc">仿生鹤形，刚柔相济，以柔克刚，福建永春发源</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🐉</div>
+                    <h4 class="style-name">南少林拳</h4>
+                    <p class="style-desc">以福建少林寺为源头，手法多变，腿法较少，注重实战</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🦁</div>
+                    <h4 class="style-name">刘家拳</h4>
+                    <p class="style-desc">广东五大名拳之一，以灵为主，步走四面，拳打八方</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 北腿篇 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">NORTHERN LEG</span>
+            <h2 class="section-title">北腿：中原大地的腿法绝技</h2>
+            <p class="section-desc">北腿是北方武术的统称，以腿法见长，放长击远，被誉为"北腿之杰"的戳脚是其代表。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>📜 起源与发展</h3>
+            <p>北腿的历史可追溯至<strong>宋代</strong>。相传宋太祖赵匡胤创编"太祖长拳"，奠定了北派武术的基础。戳脚作为北腿的代表，相传起源于宋代，盛行于清代。</p>
+            <p>清代<strong>天理教起义</strong>（1813年）是戳脚流派正式形成的重要契机。起义领袖冯克善、杨景、唐有义等人将古传戳脚与太极、地躺、八卦、形意等流派融合，丰富了戳脚的技术体系，形成了完整的戳脚拳派。</p>
+            <p>北腿在华北地区广泛流传，形成了戳脚、弹腿、查拳、华拳等多个流派。2011年，戳脚被列入国家级非物质文化遗产名录。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎯 技术特点</h3>
+            <p><strong>腿法见长：</strong>北腿以腿法为主要攻击手段，有"手是两扇门，全凭脚打人"之说。腿法灵活多变，包括踢、蹬、踹、扫、摆等多种技法。</p>
+            <p><strong>放长击远：</strong>北方平原广阔，场地开阔，北腿形成了放长击远的特点。动作舒展大方，步法灵活，强调远距离攻击。</p>
+            <p><strong>蹿纵跳跃：</strong>北腿讲究身法的灵活，蹿纵跳跃，闪展腾挪，如"鹞子翻身""燕子穿林"等动作，体现了北方武术的灵动。</p>
+            <p><strong>手脚并重：</strong>虽然以腿法见长，但北腿并非只练腿不练手。手法与腿法相互配合，形成完整的攻防体系。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🏛️ 主要流派</h3>
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-icon">🦶</div>
+                    <h4 class="style-name">戳脚</h4>
+                    <p class="style-desc">"北腿之杰"，以腿脚功夫为主，动作舒展，攻防明显</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🌪️</div>
+                    <h4 class="style-name">弹腿</h4>
+                    <p class="style-desc">腿法如弹，快速有力，以弹踢为主要技法，流传广泛</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">📿</div>
+                    <h4 class="style-name">查拳</h4>
+                    <p class="style-desc">回族武术代表，姿势舒展，动作紧凑，节奏鲜明</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🌸</div>
+                    <h4 class="style-name">华拳</h4>
+                    <p class="style-desc">姿势优美，动作舒展，如行云流水，富有美感</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🔥</div>
+                    <h4 class="style-name">炮拳</h4>
+                    <p class="style-desc">动作刚猛，发力如炮，短打近攻，以爆发力见长</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🐉</div>
+                    <h4 class="style-name">太祖长拳</h4>
+                    <p class="style-desc">相传宋太祖赵匡胤创编，架势舒展，动作大方</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说法的由来与演变 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">HISTORICAL EVOLUTION</span>
+            <h2 class="section-title">"南拳北腿"说法的由来与演变</h2>
+            <p class="section-desc">这一说法并非简单的地域划分，而是中华武术在漫长历史中自然形成的风格概括。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>📖 说法的起源</h3>
+            <p>"南拳北腿"的说法最早可追溯至<strong>明清时期</strong>。当时，随着武术流派的成熟和地域传播，人们逐渐发现南方武术与北方武术在风格上存在显著差异。</p>
+            <p>这一说法的流行，与<strong>武侠小说</strong>的传播密切相关。清末民初，武侠小说兴起，"南拳北腿"成为描述武术差异的通俗说法，被广泛传播。但需要注意的是，这一说法是对武术风格的概括，而非严格的流派划分。</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">先秦-秦汉</div>
+                <div class="timeline-title">武术萌芽期</div>
+                <div class="timeline-desc">武术作为军事技能存在，尚未形成明显的地域风格差异。但随着南北地理环境的差异，武术开始呈现不同的发展方向。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">魏晋-唐宋</div>
+                <div class="timeline-title">武术发展期</div>
+                <div class="timeline-desc">武术逐渐从军事技能向民间体育转变。少林寺武术兴起，奠定了北方武术的基础；南方武术也在民间悄然发展。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">明清时期</div>
+                <div class="timeline-title">流派成熟期</div>
+                <div class="timeline-desc">南拳北腿的体系基本形成。广东五大名拳、福建南少林拳在南方成熟；戳脚、弹腿、查拳在北方发展。"南拳北腿"的说法开始出现。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">清末民初</div>
+                <div class="timeline-title">说法普及期</div>
+                <div class="timeline-desc">随着武侠小说的流行，"南拳北腿"成为描述武术差异的通俗说法。黄飞鸿、霍元甲等武术宗师的出现，使南北武术在海内外声名远播。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">20世纪至今</div>
+                <div class="timeline-title">现代发展期</div>
+                <div class="timeline-desc">武术进入体育化、规范化发展阶段。2006年，洪拳被列入国家级非遗；2011年，戳脚被列入国家级非遗。"南拳北腿"成为中华武术文化的重要符号。</div>
+            </div>
+        </div>
+
+        <div class="concept-box">
+            <h3 class="concept-title">💡 如何正确理解"南拳北腿"</h3>
+            <div class="concept-content">
+                <div class="concept-item">
+                    <h4>不是绝对划分</h4>
+                    <p>南拳中也有腿法，北腿中也有拳法。这一说法是对武术风格的概括，而非严格的流派划分。</p>
+                </div>
+                <div class="concept-item">
+                    <h4>不是优劣之分</h4>
+                    <p>南拳北腿各有特色，没有优劣之分。正如"文无第一，武无第二"，不同风格适合不同的人和场合。</p>
+                </div>
+                <div class="concept-item">
+                    <h4>不是固定不变</h4>
+                    <p>随着人口流动和文化交流，南北武术也在相互融合。现代武术已经很难严格区分南北。</p>
+                </div>
+                <div class="concept-item">
+                    <h4>是文化符号</h4>
+                    <p>"南拳北腿"已经成为中华武术文化的重要符号，代表着中华武术的多样性和包容性。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 现代价值与传承 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">MODERN VALUE</span>
+            <h2 class="section-title">现代价值与传承发展</h2>
+            <p class="section-desc">在当代社会，南拳北腿不仅是武术技艺，更是中华文化的重要载体。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎭 文化价值</h3>
+            <p><strong>非物质文化遗产：</strong>2006年，洪拳被列入第一批国家级非物质文化遗产名录；2011年，戳脚被列入第三批国家级非物质文化遗产名录。这标志着南拳北腿作为中华传统文化的重要组成部分，得到了国家的认可和保护。</p>
+            <p><strong>影视文化传播：</strong>从黄飞鸿系列电影到《叶问》，从《少林寺》到《卧虎藏龙》，南拳北腿通过影视作品传播至世界各地，成为中华文化的名片。</p>
+            <p><strong>国际交流：</strong>随着华人移民潮，南拳北腿传播至东南亚、欧美等地。如今，全球有数千万人练习中国武术，南拳北腿成为连接海内外华人的文化纽带。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🏃 健身价值</h3>
+            <p><strong>全民健身：</strong>南拳北腿作为传统体育项目，被列入全民健身计划。其动作规范、节奏鲜明，适合不同年龄、不同体质的人群练习。</p>
+            <p><strong>竞技体育：</strong>武术已成为亚运会正式比赛项目，南拳、南刀、长拳、刀术等项目在国际赛场上展现中华武术的魅力。</p>
+            <p><strong>身心健康：</strong>南拳北腿强调内外兼修，不仅锻炼身体，更修炼心性。"未曾习武先习德"是武术界的传统，体现了中华武术的文化内涵。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🌟 传承展望</h3>
+            <p>在当代社会，南拳北腿的传承面临新的机遇与挑战。一方面，国家大力支持非物质文化遗产保护，武术进校园、进社区活动广泛开展；另一方面，现代生活方式的改变，使传统武术的传承面临人才断层、商业化过度等问题。</p>
+            <p>未来，南拳北腿的传承需要在<strong>保护传统</strong>与<strong>创新发展</strong>之间找到平衡。既要保持传统武术的核心技法和文化内涵，又要适应现代社会的需求，让更多人了解、喜爱、传承这一中华文化的瑰宝。</p>
+        </div>
+
+        <div class="quote-block">
+            <p>"南拳北腿，东枪西棍"——这不仅是武术的技法分类，更是中华文明多元一体的生动写照。无论南北，殊途同归，皆归于武道合一、身心兼修的最高境界。</p>
+            <cite>—— 武术界共识</cite>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>南拳北腿专题报告 | 中华武术南北流派之辨</p>
+        <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：国家体育总局、中国武术协会、国家级非物质文化遗产名录</p>
+    </footer>
+</body>
+</html>
