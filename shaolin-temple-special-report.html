@@ -1082,6 +1082,17 @@
             <p>少林寺专题报告 | 天下武功出少林</p>
             <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：少林寺官方网站、国家文物局、国际武术联合会</p>
         </footer>
+        
+        <!-- 点赞组件 -->
+        <div id="like-component"></div>
+        
+        <!-- 点赞系统 -->
+        <script src="like-system.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                PonghoodLike.init('#like-component');
+            });
+        </script>
     </div>
 </body>
 </html>

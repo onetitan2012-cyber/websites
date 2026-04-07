@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中华剑法 | 百兵之祖专题报告</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #C0C0C0;
+        }
+
+        /* 封面 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(25,25,112,0.2) 50%, rgba(192,192,192,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C0C0C0' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; max-width: 900px; }
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(192,192,192,0.5);
+        }
+        .cover h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #C0C0C0;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .cover-subtitle {
+            font-size: 24px;
+            color: #A9A9A9;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+        .cover-desc {
+            font-size: 18px;
+            color: #8B949E;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 2;
+        }
+        .cover-features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .cover-feature {
+            text-align: center;
+        }
+        .cover-feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .cover-feature-text {
+            font-size: 14px;
+            color: #8B949E;
+        }
+
+        /* 章节通用样式 */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(192,192,192,0.15);
+            border: 1px solid rgba(192,192,192,0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #C0C0C0;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 36px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-desc {
+            font-size: 16px;
+            color: #8B949E;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 内容区块 */
+        .content-block {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .content-block h3 {
+            font-size: 22px;
+            color: #C0C0C0;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(192,192,192,0.3);
+        }
+        .content-block p {
+            color: #8B949E;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        .content-block strong {
+            color: #E6EDF3;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #C0C0C0 0%, rgba(192,192,192,0.2) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: #C0C0C0;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(192,192,192,0.5);
+        }
+        .timeline-year {
+            font-size: 14px;
+            color: #C0C0C0;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 15px;
+            color: #8B949E;
+            line-height: 1.8;
+        }
+
+        /* 名剑展示 */
+        .sword-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .sword-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .sword-card:hover {
+            background: rgba(192,192,192,0.1);
+            border-color: rgba(192,192,192,0.3);
+            transform: translateY(-3px);
+        }
+        .sword-rank {
+            font-size: 12px;
+            color: #C0C0C0;
+            margin-bottom: 10px;
+        }
+        .sword-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .sword-owner {
+            font-size: 14px;
+            color: #A9A9A9;
+            margin-bottom: 15px;
+        }
+        .sword-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 流派展示 */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .style-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .style-card:hover {
+            background: rgba(192,192,192,0.1);
+            border-color: rgba(192,192,192,0.3);
+            transform: translateY(-3px);
+        }
+        .style-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .style-name {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .style-desc {
+            font-size: 13px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 人物卡片 */
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .master-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+        .master-card:hover {
+            background: rgba(192,192,192,0.05);
+            border-color: rgba(192,192,192,0.3);
+        }
+        .master-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #C0C0C0 0%, #808080 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .master-info {
+            flex: 1;
+        }
+        .master-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 5px;
+        }
+        .master-title {
+            font-size: 14px;
+            color: #C0C0C0;
+            margin-bottom: 15px;
+        }
+        .master-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.7;
+        }
+
+        /* 引用 */
+        .quote-block {
+            background: rgba(192,192,192,0.05);
+            border-left: 4px solid #C0C0C0;
+            padding: 30px;
+            margin: 40px 0;
+            font-style: italic;
+        }
+        .quote-block p {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .quote-block cite {
+            font-size: 14px;
+            color: #8B949E;
+            font-style: normal;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer p {
+            color: #8B949E;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 36px; letter-spacing: 4px; }
+            .cover-subtitle { font-size: 18px; }
+            .sword-grid { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .master-grid { grid-template-columns: 1fr; }
+            .master-card { flex-direction: column; text-align: center; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页 -->
+    <a href="index.html" class="back-home">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+        </svg>
+        返回主页
+    </a>
+
+    <!-- 封面 -->
+    <section class="cover">
+        <div class="cover-content">
+            <div class="cover-icon">⚔️</div>
+            <h1>中华剑法</h1>
+            <p class="cover-subtitle">百兵之祖 · 百兵之君</p>
+            <p class="cover-desc">
+                剑，古之圣品也，至尊至贵，人神咸崇。剑乃短兵之祖，近搏之器，以道艺精深，遂入玄传奇。剑因其携之轻便、佩之神采、用之迅捷，故成为历朝历代王公帝侯、文士侠客、商贾庶民所追捧的对象。
+            </p>
+            <div class="cover-features">
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">🗡️</div>
+                    <div class="cover-feature-text">短兵之祖</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">👑</div>
+                    <div class="cover-feature-text">百兵之君</div>
+                </div>
+                <div class="cover-feature">
+                    <div class="cover-feature-icon">⚡</div>
+                    <div class="cover-feature-text">君子之风</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 起源与诞生 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">ORIGIN & BIRTH</span>
+            <h2 class="section-title">起源与诞生</h2>
+            <p class="section-desc">从黄帝采首山之铜铸剑，到吴越青铜剑的巅峰，中华剑文化历经数千年的发展演变。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>📜 剑之起源</h3>
+            <p>剑的历史可追溯至<strong>远古时期</strong>。据《史记·黄帝本纪》记载："帝采首山之铜铸剑，以天文古字铭之。"这是关于剑的最早传说。黄帝采首山之铜，铸造了第一把剑，开启了中华剑文化的序幕。</p>
+            <p>考古发现表明，中国最早的剑出现于<strong>商代</strong>，当时的剑为青铜铸造，长度普遍在20-30厘米之间，主要用于刺杀。西周时期，剑逐渐从实用兵器向礼仪用器转变，成为身份地位的象征。</p>
+            <p>春秋战国时期是青铜剑发展的<strong>黄金时代</strong>。吴越地区水网纵横，军队作战以步兵为主，短剑成为主要兵器。吴越铸剑技术独步天下，欧冶子、干将、莫邪等铸剑大师相继涌现，创造了中国古代铸剑史上的巅峰之作。</p>
+        </div>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-year">远古传说</div>
+                <div class="timeline-title">黄帝铸剑</div>
+                <div class="timeline-desc">据《史记》记载，黄帝采首山之铜铸剑，以天文古字铭之，开启了中华剑文化的序幕。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">商周时期</div>
+                <div class="timeline-title">青铜剑的诞生</div>
+                <div class="timeline-desc">商代出现最早的青铜剑，西周时期剑逐渐成为身份地位的象征，士人必佩剑。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">春秋战国</div>
+                <div class="timeline-title">吴越铸剑巅峰</div>
+                <div class="timeline-desc">吴越地区水战频繁，短剑成为主要兵器。欧冶子、干将、莫邪等铸剑大师创造了青铜剑的巅峰之作。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">秦汉时期</div>
+                <div class="timeline-title">铁剑取代青铜剑</div>
+                <div class="timeline-desc">随着冶铁技术的发展，铁剑逐渐取代青铜剑。汉代剑身更长，可达1米以上，剑术也随之发展。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">魏晋唐宋</div>
+                <div class="timeline-title">剑术与文化的融合</div>
+                <div class="timeline-desc">剑逐渐从实战兵器向文化符号转变。李白、裴旻等剑术名家将剑术与诗歌、舞蹈相结合，形成独特的剑文化。</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">明清至今</div>
+                <div class="timeline-title">剑术的系统化</div>
+                <div class="timeline-desc">武当剑、峨眉剑、昆仑剑等流派形成完整的剑术体系。剑术成为中华武术的重要组成部分。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 十大名剑 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">TEN FAMOUS SWORDS</span>
+            <h2 class="section-title">中国古代十大名剑</h2>
+            <p class="section-desc">十大名剑的记载多见于古籍或上古传说，如《史记》《越绝书》《列子》等，代表着中国古代铸剑工艺的最高水平。</p>
+        </div>
+
+        <div class="sword-grid">
+            <div class="sword-card">
+                <div class="sword-rank">NO.1 圣道之剑</div>
+                <h4 class="sword-name">轩辕剑</h4>
+                <p class="sword-owner">持有者：黄帝</p>
+                <p class="sword-desc">传说中的神兵，又名轩辕夏禹剑，是一把圣道之剑。由众神采首山之铜为黄帝所铸，后传与夏禹。剑身一面刻日月星辰，一面刻山川草木。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.2 仁道之剑</div>
+                <h4 class="sword-name">湛卢剑</h4>
+                <p class="sword-owner">持有者：越王勾践、岳飞</p>
+                <p class="sword-desc">春秋时期欧冶子所铸，通体黑色，浑然无迹，让人感到的不是它的锋利，而是它的宽厚和慈祥。此剑后为岳飞所得。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.3 帝道之剑</div>
+                <h4 class="sword-name">赤霄剑</h4>
+                <p class="sword-owner">持有者：汉高祖刘邦</p>
+                <p class="sword-desc">汉高祖刘邦所得，剑身镌刻两个篆字：赤霄。大泽乡斩白蛇起义，刘邦凭此剑开创大汉帝国，为帝道之剑。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.4 威道之剑</div>
+                <h4 class="sword-name">泰阿剑</h4>
+                <p class="sword-owner">持有者：楚王</p>
+                <p class="sword-desc">欧冶子和干将两大剑师联手所铸。相传剑成时，晋郑王围攻楚国，楚王持此剑指挥三军，晋军大败。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.5 诚信高洁之剑</div>
+                <h4 class="sword-name">七星龙渊剑</h4>
+                <p class="sword-owner">持有者：伍子胥</p>
+                <p class="sword-desc">欧冶子和干将为铸此剑，凿开茨山，放出山中溪水，引至铸剑炉旁成北斗七星环列的七个池中。剑成后，俯视剑身，如登高山而下望深渊。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.6-7 挚情之剑</div>
+                <h4 class="sword-name">干将·莫邪</h4>
+                <p class="sword-owner">持有者：吴王阖闾</p>
+                <p class="sword-desc">干将是雄剑，莫邪是雌剑。干将为吴王铸剑时，莫邪跳入炉中，以血融金，遂成此双剑。象征着至死不渝的爱情。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.8 勇绝之剑</div>
+                <h4 class="sword-name">鱼肠剑</h4>
+                <p class="sword-owner">持有者：专诸</p>
+                <p class="sword-desc">欧冶子为越王所铸，剑身纹路如鱼肠。专诸以此剑刺杀吴王僚，剑藏鱼腹之中，故称鱼肠剑，为勇绝之剑。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.9 尊贵无双之剑</div>
+                <h4 class="sword-name">纯钧剑</h4>
+                <p class="sword-owner">持有者：越王勾践</p>
+                <p class="sword-desc">欧冶子所铸，为越王勾践佩剑。相传此剑铸成后，有富豪愿以千金购买，越王不肯。此剑尊贵无双，价值连城。</p>
+            </div>
+            <div class="sword-card">
+                <div class="sword-rank">NO.10 精致优雅之剑</div>
+                <h4 class="sword-name">承影剑</h4>
+                <p class="sword-owner">持有者：商天子</p>
+                <p class="sword-desc">商代名剑，有影无形。在黎明或黄昏时分，面对北方，当光线特定角度照射时，可见淡淡的剑影，却不见剑身。</p>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <p>"越王勾践剑，出土时寒光闪闪，剑身布满黑色菱形暗格花纹，剑格正面嵌蓝色琉璃，背面嵌绿松石。历经两千余年，依然锋利无比，可一次划破二十余层纸。"</p>
+            <cite>—— 湖北省博物馆藏品介绍</cite>
+        </div>
+    </section>
+
+    <!-- 剑术流派 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">SWORDSMANSHIP STYLES</span>
+            <h2 class="section-title">中华剑术流派</h2>
+            <p class="section-desc">中华剑术流派众多，各具特色，其中以武当剑、峨眉剑、昆仑剑等最为著名。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🗡️ 主要剑术流派</h3>
+            <div class="style-grid">
+                <div class="style-card">
+                    <div class="style-icon">☯️</div>
+                    <h4 class="style-name">武当剑</h4>
+                    <p class="style-desc">武当派剑术，以柔克刚，后发先制，讲究"剑走轻灵"，与太极拳理相通。</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🏔️</div>
+                    <h4 class="style-name">峨眉剑</h4>
+                    <p class="style-desc">峨眉派剑术，亦刚亦柔，动作优美，如行云流水，有"峨眉剑舞"之称。</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🏔️</div>
+                    <h4 class="style-name">昆仑剑</h4>
+                    <p class="style-desc">昆仑派剑术，大开大合，气势磅礴，以刚猛见长，有"昆仑剑出，山河震动"之说。</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🐉</div>
+                    <h4 class="style-name">少林剑</h4>
+                    <p class="style-desc">少林派剑术，禅武合一，动作朴实，讲究实用，以实战见长。</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">🌊</div>
+                    <h4 class="style-name">八卦剑</h4>
+                    <p class="style-desc">八卦掌剑术，步走八卦，剑走偏锋，身法灵活，变化莫测。</p>
+                </div>
+                <div class="style-card">
+                    <div class="style-icon">⚡</div>
+                    <h4 class="style-name">形意剑</h4>
+                    <p class="style-desc">形意拳剑术，以意领剑，刚柔并济，动作简洁，发力迅猛。</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-block">
+            <h3>📖 剑术基本技法</h3>
+            <p><strong>刺剑：</strong>剑尖向前直刺，力达剑尖，是剑术中最基本的攻击技法。</p>
+            <p><strong>劈剑：</strong>剑身由上向下劈砍，力达剑身，如闪电下击。</p>
+            <p><strong>撩剑：</strong>剑身由下向上撩起，如海底捞月，可攻可守。</p>
+            <p><strong>挂剑：</strong>剑身由前向后挂，如倒挂金钟，用于防守。</p>
+            <p><strong>点剑：</strong>剑尖向前点击，力达剑尖，如蜻蜓点水。</p>
+            <p><strong>崩剑：</strong>剑身由下向上崩起，力达剑尖，如弹簧弹射。</p>
+            <p><strong>云剑：</strong>剑身在头顶或身体周围环绕，如行云流水，用于防守。</p>
+            <p><strong>抹剑：</strong>剑身平抹，力达剑刃，如春风拂面。</p>
+        </div>
+    </section>
+
+    <!-- 剑术名家 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">FAMOUS MASTERS</span>
+            <h2 class="section-title">历史上著名的剑术名家</h2>
+            <p class="section-desc">从越女论剑到李白学剑，从裴旻剑舞到公孙大娘，中华剑术史上涌现出众多传奇人物。</p>
+        </div>
+
+        <div class="master-grid">
+            <div class="master-card">
+                <div class="master-avatar">🗡️</div>
+                <div class="master-info">
+                    <h4 class="master-name">越女</h4>
+                    <p class="master-title">春秋时期剑术宗师</p>
+                    <p class="master-desc">《吴越春秋》记载，越女精于剑术，被越王勾践请去教授士兵。她论剑时说："凡手战之道，内实精神，外示安仪，见之似好妇，夺之似惧虎。"</p>
+                </div>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">🎭</div>
+                <div class="master-info">
+                    <h4 class="master-name">裴旻</h4>
+                    <p class="master-title">唐代剑圣</p>
+                    <p class="master-desc">唐代剑术高手，官居左金吾大将军。唐文宗时，李白的诗、张旭的草书、裴旻的剑舞并称为"唐代三绝"，裴旻被尊为"剑圣"。</p>
+                </div>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">🍶</div>
+                <div class="master-info">
+                    <h4 class="master-name">李白</h4>
+                    <p class="master-title">诗仙、剑侠</p>
+                    <p class="master-desc">"十五好剑术，遍干诸侯。"李白不仅诗才横溢，还精通剑术。他曾师从裴旻学剑，其诗中多有剑的意象，如"十步杀一人，千里不留行"。</p>
+                </div>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">💃</div>
+                <div class="master-info">
+                    <h4 class="master-name">公孙大娘</h4>
+                    <p class="master-title">唐代剑舞名家</p>
+                    <p class="master-desc">唐代开元年间著名舞者，以舞剑闻名。杜甫《观公孙大娘弟子舞剑器行》诗："昔有佳人公孙氏，一舞剑器动四方。观者如山色沮丧，天地为之久低昂。"</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote-block">
+            <p>"昔有佳人公孙氏，一舞剑器动四方。观者如山色沮丧，天地为之久低昂。㸌如羿射九日落，矫如群帝骖龙翔。来如雷霆收震怒，罢如江海凝清光。"</p>
+            <cite>—— 杜甫《观公孙大娘弟子舞剑器行》</cite>
+        </div>
+    </section>
+
+    <!-- 剑文化 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">SWORD CULTURE</span>
+            <h2 class="section-title">剑文化：从兵器到精神象征</h2>
+            <p class="section-desc">剑在中国文化中不仅是兵器，更是一种精神象征，代表着正义、勇气、智慧和高洁。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎭 剑的文化内涵</h3>
+            <p><strong>君子之器：</strong>《礼记·玉藻》记载："君子无故，玉不去身。"剑与玉一样，成为君子品德的象征。佩剑不仅是身份的标志，更是品德修养的体现。</p>
+            <p><strong>正义之剑：</strong>剑在中国文化中常与正义联系在一起。包青天的三口铡刀、尚方宝剑等，都是正义的象征，代表着惩恶扬善的精神。</p>
+            <p><strong>侠义精神：</strong>"十年磨一剑，霜刃未曾试。今日把示君，谁有不平事？"剑是侠客的标志，代表着路见不平、拔刀相助的侠义精神。</p>
+            <p><strong>文人雅趣：</strong>琴棋书画剑，是文人雅士的必修课。李白"十五好剑术"，辛弃疾"醉里挑灯看剑"，剑成为文人抒发豪情壮志的载体。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>📚 剑与文学</h3>
+            <p>剑在中国文学中占有重要地位。从《诗经》的"修我戈矛"，到屈原的"带长铗之陆离兮"，从李白的"十步杀一人"，到辛弃疾的"醉里挑灯看剑"，剑的意象贯穿中国文学史。</p>
+            <p>武侠小说更是将剑文化推向高峰。金庸《笑傲江湖》中的独孤九剑、古龙《陆小凤》中的灵犀一指，虽然是虚构，却深深影响了人们对剑的认知。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎨 剑与艺术</h3>
+            <p>剑舞是中国传统舞蹈的重要形式。公孙大娘的剑器舞、唐代的剑舞、宋代的剑器舞，都是中国舞蹈史上的瑰宝。剑舞将武术与舞蹈相结合，刚柔并济，美轮美奂。</p>
+            <p>剑也是中国传统绘画的重要题材。从汉代的画像石，到唐代的壁画，从宋代的院体画，到明清的文人画，剑的形象随处可见。</p>
+        </div>
+    </section>
+
+    <!-- 现代传承 -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-tag">MODERN HERITAGE</span>
+            <h2 class="section-title">现代传承与发展</h2>
+            <p class="section-desc">在当代社会，中华剑术作为非物质文化遗产，正得到越来越多的关注和保护。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🌟 非遗保护</h3>
+            <p>2006年，武当武术被列入第一批国家级非物质文化遗产名录，武当剑作为武当武术的重要组成部分，得到了系统的保护和传承。</p>
+            <p>2011年，昆仑剑、峨眉剑等传统剑术也陆续被列入各级非物质文化遗产名录，中华剑术的传承进入了新的阶段。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🏆 竞技体育</h3>
+            <p>剑术已成为武术比赛的重要项目。在亚运会、全运会等大型赛事中，剑术比赛吸引了众多选手参与。竞赛剑术在保留传统技法的基础上，更加注重观赏性和规范性。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🎬 影视传播</h3>
+            <p>从《少林寺》到《卧虎藏龙》，从《英雄》到《剑雨》，中华剑术通过影视作品传播至世界各地。这些作品不仅展示了中华剑术的技法，更传播了中华剑文化的内涵。</p>
+        </div>
+
+        <div class="content-block">
+            <h3>🌏 国际传播</h3>
+            <p>随着中国文化走出去战略的实施，中华剑术在海外的传播越来越广泛。世界各地的武术爱好者学习中华剑术，中华剑文化正在成为连接中国与世界的文化纽带。</p>
+        </div>
+
+        <div class="quote-block">
+            <p>"剑，古之圣品也，至尊至贵，人神咸崇。乃短兵之祖，近搏之器，以道艺精深，遂入玄传奇。"</p>
+            <cite>—— 《古今刀剑录》</cite>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <p>中华剑法专题报告 | 百兵之祖 · 百兵之君</p>
+        <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：《史记》《越绝书》《吴越春秋》、国家体育总局、中国武术协会</p>
+    </footer>
+    
+    <!-- 点赞组件 -->
+    <div id="like-component"></div>
+    
+    <!-- 点赞系统 -->
+    <script src="like-system.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            PonghoodLike.init('#like-component');
+        });
+    </script>
+</body>
+</html>

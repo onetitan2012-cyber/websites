@@ -440,6 +440,17 @@
             <p>华山专题报告 | 奇险天下第一山 · 西岳道教圣地</p>
             <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：华山旅游集团、国家文物局、中国道教协会</p>
         </footer>
+        
+        <!-- 点赞组件 -->
+        <div id="like-component"></div>
+        
+        <!-- 点赞系统 -->
+        <script src="like-system.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                PonghoodLike.init('#like-component');
+            });
+        </script>
     </div>
 </body>
 </html>

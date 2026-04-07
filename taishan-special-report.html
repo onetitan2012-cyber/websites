@@ -400,6 +400,17 @@
             <p>泰山专题报告 | 五岳独尊 · 天下第一山</p>
             <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：泰山风景名胜区管理委员会、 UNESCO世界遗产中心、国家文物局</p>
         </footer>
+        
+        <!-- 点赞组件 -->
+        <div id="like-component"></div>
+        
+        <!-- 点赞系统 -->
+        <script src="like-system.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                PonghoodLike.init('#like-component');
+            });
+        </script>
     </div>
 </body>
 </html>

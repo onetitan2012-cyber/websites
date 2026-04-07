@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>中华枪法 | 百兵之王专题报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #4169E1;
+        }
+
+        /* 封面 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(65,105,225,0.1) 0%, rgba(25,25,112,0.2) 50%, rgba(65,105,225,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234169E1' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; max-width: 900px; }
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(65,105,225,0.5);
+        }
+        .cover h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #4169E1;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .cover-subtitle {
+            font-size: 24px;
+            color: #6495ED;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+        .cover-desc {
+            font-size: 18px;
+            color: #8B949E;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 2;
+        }
+        .cover-features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .cover-feature {
+            text-align: center;
+        }
+        .cover-feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .cover-feature-text {
+            font-size: 14px;
+            color: #8B949E;
+        }
+
+        /* 章节通用样式 */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(65,105,225,0.15);
+            border: 1px solid rgba(65,105,225,0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #4169E1;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 36px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-desc {
+            font-size: 16px;
+            color: #8B949E;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 内容区块 */
+        .content-block {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .content-block h3 {
+            font-size: 22px;
+            color: #4169E1;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(65,105,225,0.3);
+        }
+        .content-block p {
+            color: #8B949E;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        .content-block strong {
+            color: #E6EDF3;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #4169E1 0%, rgba(65,105,225,0.2) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: #4169E1;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(65,105,225,0.5);
+        }
+        .timeline-year {
+            font-size: 14px;
+            color: #4169E1;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 15px;
+            color: #8B949E;
+            line-height: 1.8;
+        }
+
+        /* 名枪展示 */
+        .spear-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .spear-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .spear-card:hover {
+            background: rgba(65,105,225,0.1);
+            border-color: rgba(65,105,225,0.3);
+            transform: translateY(-3px);
+        }
+        .spear-rank {
+            font-size: 12px;
+            color: #4169E1;
+            margin-bottom: 10px;
+        }
+        .spear-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .spear-owner {
+            font-size: 14px;
+            color: #6495ED;
+            margin-bottom: 15px;
+        }
+        .spear-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 流派展示 */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .style-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .style-card:hover {
+            background: rgba(65,105,225,0.1);
+            border-color: rgba(65,105,225,0.3);
+            transform: translateY(-3px);
+        }
+        .style-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .style-name {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .style-desc {
+            font-size: 13px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 人物卡片 */
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .master-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+        .master-card:hover {
+            background: rgba(65,105,225,0.05);
+            border-color: rgba(65,105,225,0.3);
+        }
+        .master-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4169E1 0%, #0000CD 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .master-info {
+            flex: 1;
+        }
+        .master-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 5px;
+        }
+        .master-title {
+            font-size: 14px;
+            color: #4169E1;
+            margin-bottom: 15px;
+        }
+        .master-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.7;
+        }
+
+        /* 引用 */
+        .quote-block {
+            background: rgba(65,105,225,0.05);
+            border-left: 4px solid #4169E1;
+            padding: 30px;
+            margin: 40px 0;
+            font-style: italic;
+        }
+        .quote-block p {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .quote-block cite {
+            font-size: 14px;
+            color: #8B949E;
+            font-style: normal;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer p {
+            color: #8B949E;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 36px; letter-spacing: 4px; }
+            .cover-subtitle { font-size: 18px; }
+            .spear-grid { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .master-grid { grid-template-columns: 1fr; }
+            .master-card { flex-direction: column; text-align: center; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+<!-- 返回主页 -->
+<a class="back-home" href="index.html">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"></path>
+</svg>
+        返回主页
+    </a>
+<!-- 封面 -->
+<section class="cover">
+<div class="cover-content">
+<div class="cover-icon">🔱</div>
+<h1>中华枪法</h1>
+<p class="cover-subtitle">百兵之王 · 百兵之祖</p>
+<p class="cover-desc">
+                枪，古代兵器之一，被誉为"百兵之王"。枪长而锋利尖锐，使用灵便，枪头刃可刺可斩，可刺穿盔甲；枪杆抓住，可格挡兵器，也可棒打或投掷杀敌。枪由古代兵器矛演变而来，是矛的升级版，在战场上使用广泛，是冷兵器时代最具威力的长兵器之一。
+            </p>
+<div class="cover-features">
+<div class="cover-feature">
+<div class="cover-feature-icon">👑</div>
+<div class="cover-feature-text">百兵之王</div>
+</div>
+<div class="cover-feature">
+<div class="cover-feature-icon">⚔️</div>
+<div class="cover-feature-text">一寸长一寸强</div>
+</div>
+<div class="cover-feature">
+<div class="cover-feature-icon">🐉</div>
+<div class="cover-feature-text">枪出如龙</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 起源与诞生 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">ORIGIN &amp; BIRTH</span>
+<h2 class="section-title">起源与诞生</h2>
+<p class="section-desc">从原始社会的木矛，到商周的青铜矛，再到汉唐的铁枪，中华枪文化历经数千年的发展演变。</p>
+</div>
+<div class="content-block">
+<h3>📜 枪之起源</h3>
+<p>
+                    枪的历史可追溯至
+                    <strong>原始社会</strong>
+                    。早在旧石器时代，人类就开始使用削尖的木棍进行狩猎，这就是矛的雏形。新石器时代，磨制石矛出现，成为人类狩猎和战争的重要兵器。
+                </p>
+<p>
+<strong>商周时期</strong>
+                    ，青铜冶炼技术成熟，青铜矛开始出现。商代的青铜矛主要用于车战，矛身较长，矛刃锋利。西周时期，矛逐渐成为战场上的主力兵器，车战中的长矛阵威力巨大。
+                </p>
+<p>
+<strong>春秋战国时期</strong>
+                    ，铁器开始出现，铁矛逐渐取代青铜矛。汉代是铁矛发展的黄金时代，骑兵兴起，马槊（骑兵用的长矛）成为骑兵的标准装备。
+                </p>
+<p>
+<strong>晋代开始</strong>
+                    ，长矛逐渐演变为枪。枪与矛的区别在于：枪的枪头更短，枪杆更轻，使用更加灵活。唐代基本完成由矛到枪的演变，枪成为战场上的主力兵器。
+                </p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">原始社会</div>
+<div class="timeline-title">木矛的诞生</div>
+<div class="timeline-desc">旧石器时代，人类使用削尖的木棍狩猎；新石器时代，磨制石矛出现。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">商周时期</div>
+<div class="timeline-title">青铜矛的出现</div>
+<div class="timeline-desc">青铜冶炼技术成熟，青铜矛用于车战，成为战场上的主力兵器。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">春秋战国</div>
+<div class="timeline-title">铁矛的兴起</div>
+<div class="timeline-desc">铁器开始出现，铁矛逐渐取代青铜矛，更加锋利耐用。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">汉代</div>
+<div class="timeline-title">马槊的辉煌</div>
+<div class="timeline-desc">骑兵兴起，马槊成为骑兵的标准装备，在对抗匈奴的战争中发挥重要作用。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">晋代</div>
+<div class="timeline-title">枪的演变</div>
+<div class="timeline-desc">长矛逐渐演变为枪，枪头更短，枪杆更轻，使用更加灵活。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">唐宋时期</div>
+<div class="timeline-title">枪法的系统化</div>
+<div class="timeline-desc">枪成为战场上的主力兵器，杨家枪、岳家枪等流派形成，枪法系统化。</div>
+</div>
+</div>
+</section>
+<!-- 十大名枪 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">TEN FAMOUS SPEARS</span>
+<h2 class="section-title">中国古代十大名枪</h2>
+<p class="section-desc">中国古代名枪众多，每一把都承载着一段传奇历史，代表着中国古代枪法工艺的最高水平。</p>
+</div>
+<div class="spear-grid">
+<div class="spear-card">
+<div class="spear-rank">NO.1 霸王枪</div>
+<h4 class="spear-name">霸王枪</h4>
+<p class="spear-owner">持有者：项羽</p>
+<p class="spear-desc">精钢黄金混铸而成，霸气十足。枪身乃混铁精钢打造，长一丈二尺九寸，重九九八十一斤，枪锋锐利，点到必死，扫到必亡。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.2 龙胆亮银枪</div>
+<h4 class="spear-name">龙胆亮银枪</h4>
+<p class="spear-owner">持有者：赵云</p>
+<p class="spear-desc">三国时期蜀汉名将赵云的佩枪。枪身银白，锋利无比。赵云持此枪长坂坡七进七出，单骑救主，威震天下。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.3 火龙枪</div>
+<h4 class="spear-name">火龙枪</h4>
+<p class="spear-owner">持有者：苏护</p>
+<p class="spear-desc">《封神演义》中苏护的佩枪。枪身赤红，如火焰燃烧，威力巨大。传说此枪由火龙之骨打造，故名火龙枪。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.4 梅花枪</div>
+<h4 class="spear-name">梅花枪</h4>
+<p class="spear-owner">持有者：霍去病</p>
+<p class="spear-desc">西汉名将霍去病的佩枪。霍去病持此枪北击匈奴，封狼居胥，立下赫赫战功。枪法如梅花绽放，变化多端。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.5 沥泉枪</div>
+<h4 class="spear-name">沥泉枪</h4>
+<p class="spear-owner">持有者：岳飞</p>
+<p class="spear-desc">南宋名将岳飞的佩枪。传说此枪由沥泉山神蛇所化，锋利无比。岳飞持此枪抗击金兵，精忠报国。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.6 虎头湛金枪</div>
+<h4 class="spear-name">虎头湛金枪</h4>
+<p class="spear-owner">持有者：马超</p>
+<p class="spear-desc">三国时期蜀汉名将马超的佩枪。枪身镀金，枪头为虎头形状，威猛无比。马超持此枪与曹操大战，威震西凉。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.7 神威烈水枪</div>
+<h4 class="spear-name">神威烈水枪</h4>
+<p class="spear-owner">持有者：戚继光</p>
+<p class="spear-desc">明代抗倭名将戚继光的佩枪。戚继光持此枪抗击倭寇，创立戚家枪法，威震东南沿海。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.8 五虎断魂枪</div>
+<h4 class="spear-name">五虎断魂枪</h4>
+<p class="spear-owner">持有者：罗成</p>
+<p class="spear-desc">隋唐名将罗成的佩枪。罗家枪法精妙绝伦，五虎断魂枪更是其中的绝技，枪出如龙，势不可挡。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.9 绿沉枪</div>
+<h4 class="spear-name">绿沉枪</h4>
+<p class="spear-owner">持有者：姜维</p>
+<p class="spear-desc">三国时期蜀汉名将姜维的佩枪。枪身墨绿，沉重无比。姜维持此枪继承诸葛亮遗志，九伐中原。</p>
+</div>
+<div class="spear-card">
+<div class="spear-rank">NO.10 芦叶枪</div>
+<h4 class="spear-name">芦叶枪</h4>
+<p class="spear-owner">持有者：杨延昭</p>
+<p class="spear-desc">北宋名将杨延昭的佩枪。枪身细长，如芦叶般轻盈，但锋利无比。杨延昭持此枪镇守边关，威震辽国。</p>
+</div>
+</div>
+<div class="quote-block">
+<p>"枪为百兵之王，长而锋利，使用灵便，取胜之法，精微独到，其他兵器难与匹敌。"</p>
+<cite>—— 《武经总要》</cite>
+</div>
+</section>
+<!-- 枪法流派 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">SPEAR TECHNIQUES</span>
+<h2 class="section-title">中华枪法流派</h2>
+<p class="section-desc">中华枪法流派众多，各具特色，其中以杨家枪、岳家枪、少林枪、赵家枪等最为著名。</p>
+</div>
+<div class="content-block">
+<h3>🔱 主要枪法流派</h3>
+<div class="style-grid">
+<div class="style-card">
+<div class="style-icon">🌸</div>
+<h4 class="style-name">杨家枪</h4>
+<p class="style-desc">北宋杨家将所创，被誉为"武林界第一名枪"。枪法如梨花摇摆，刺时如柳叶穿眉，变化多端。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">⚔️</div>
+<h4 class="style-name">岳家枪</h4>
+<p class="style-desc">南宋岳飞所创，以实战为主，招招制敌。岳家枪法讲究"快、准、狠"，是军事枪法的代表。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🐉</div>
+<h4 class="style-name">少林枪</h4>
+<p class="style-desc">少林派枪法，勇猛刚烈，以扎刺为主，动作朴实，讲究实战，有"少林枪，不可挡"之说。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🦅</div>
+<h4 class="style-name">赵家枪</h4>
+<p class="style-desc">三国赵云所创，以"百鸟朝凤枪"为基础，后发展为"盘蛇七探枪"，枪出如龙，变化莫测。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🔥</div>
+<h4 class="style-name">罗家枪</h4>
+<p class="style-desc">隋唐罗成所创，以"五虎断魂枪"闻名。枪法精妙绝伦，枪出如龙，势不可挡。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">⚡</div>
+<h4 class="style-name">高家枪</h4>
+<p class="style-desc">《说岳全传》中高宠所创，以力量见长，枪法刚猛，威力巨大，"高宠一枪挑滑车"威震天下。</p>
+</div>
+</div>
+</div>
+<div class="content-block">
+<h3>📖 枪法基本技法</h3>
+<p>
+<strong>扎枪：</strong>
+                    枪尖向前直刺，力达枪尖，如毒蛇出洞，是枪法中最基本的攻击技法。
+                </p>
+<p>
+<strong>崩枪：</strong>
+                    枪身由下向上崩起，力达枪尖，如弹簧弹射，常用于反击。
+                </p>
+<p>
+<strong>劈枪：</strong>
+                    枪身由上向下劈砸，力达枪身，如闪电下击，威力巨大。
+                </p>
+<p>
+<strong>扫枪：</strong>
+                    枪身横向扫击，力达枪身，如秋风扫落叶，攻击范围大。
+                </p>
+<p>
+<strong>撩枪：</strong>
+                    枪身由下向上撩起，如海底捞月，可攻可守。
+                </p>
+<p>
+<strong>挑枪：</strong>
+                    枪尖由下向上挑起，力达枪尖，如蛟龙出海，常用于挑开对方兵器。
+                </p>
+<p>
+<strong>圈枪：</strong>
+                    枪尖在身体周围环绕，如游龙戏珠，用于防守和蓄势。
+                </p>
+<p>
+<strong>拦枪：</strong>
+                    枪身横挡，力达枪身，如铁锁横江，用于防守。
+                </p>
+</div>
+</section>
+<!-- 枪法名家 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">FAMOUS MASTERS</span>
+<h2 class="section-title">历史上著名的枪法名家</h2>
+<p class="section-desc">从项羽的霸王枪到赵云的龙胆亮银枪，从岳飞的沥泉枪到戚继光的神威烈水枪，中华枪法史上涌现出众多传奇人物。</p>
+</div>
+<div class="master-grid">
+<div class="master-card">
+<div class="master-avatar">👑</div>
+<div class="master-info">
+<h4 class="master-name">项羽</h4>
+<p class="master-title">西楚霸王</p>
+<p class="master-desc">秦末起义军领袖，手持霸王枪，力能扛鼎。巨鹿之战破釜沉舟，彭城之战以少胜多，是中国历史上最著名的枪法高手之一。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">🐉</div>
+<div class="master-info">
+<h4 class="master-name">赵云</h4>
+<p class="master-title">常山赵子龙</p>
+<p class="master-desc">三国时期蜀汉名将，手持龙胆亮银枪。长坂坡七进七出，单骑救主，威震天下。其枪法"百鸟朝凤"变化莫测。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">⚔️</div>
+<div class="master-info">
+<h4 class="master-name">岳飞</h4>
+<p class="master-title">南宋抗金名将</p>
+<p class="master-desc">南宋抗金名将，民族英雄，手持沥泉枪。创"岳家枪"，枪法精湛，以实战为主。其"满江红"气壮山河。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">🔱</div>
+<div class="master-info">
+<h4 class="master-name">戚继光</h4>
+<p class="master-title">明代抗倭名将</p>
+<p class="master-desc">明代抗倭名将，手持神威烈水枪。创立"戚家枪法"，抗击倭寇，威震东南沿海。著有《纪效新书》。</p>
+</div>
+</div>
+</div>
+<div class="quote-block">
+<p>"枪为百兵之王，长而锋利，使用灵便，取胜之法，精微独到。一寸长，一寸强；一寸短，一寸险。"</p>
+<cite>—— 武术界传统说法</cite>
+</div>
+</section>
+<!-- 枪文化 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">SPEAR CULTURE</span>
+<h2 class="section-title">枪文化：从兵器到精神象征</h2>
+<p class="section-desc">枪在中国文化中不仅是兵器，更是一种精神象征，代表着勇猛、正义、力量和担当。</p>
+</div>
+<div class="content-block">
+<h3>🎭 枪的文化内涵</h3>
+<p>
+<strong>王者之气：</strong>
+                    枪被誉为"百兵之王"，长而锋利，使用灵便，在战场上具有无可比拟的优势。枪代表着王者之气，是力量和威严的象征。
+                </p>
+<p>
+<strong>勇猛之器：</strong>
+                    枪以扎刺为主要技法，勇猛刚烈，气势如虹。枪是战场上的主力兵器，代表着勇往直前、无所畏惧的精神。
+                </p>
+<p>
+<strong>正义之枪：</strong>
+                    枪在中国文化中常与正义联系在一起。岳飞的沥泉枪、戚继光的神威烈水枪，都是正义的象征，代表着保家卫国、抗击外敌的精神。
+                </p>
+<p>
+<strong>英雄气概：</strong>
+                    "枪出如龙"，枪是英雄的标志。项羽、赵云、岳飞等英雄人物，都是持枪征战，立下赫赫战功，成为后世的楷模。
+                </p>
+</div>
+<div class="content-block">
+<h3>📚 枪与文学</h3>
+<p>枪在中国文学中占有重要地位。《三国演义》中赵云的长坂坡七进七出、《水浒传》中林冲的丈八蛇矛、《说岳全传》中岳飞的沥泉枪，都是文学史上的经典形象。</p>
+<p>武侠小说更是将枪文化推向高峰。金庸《射雕英雄传》中的杨家枪、古龙《多情剑客无情剑》中的枪法，虽然是虚构，但也体现了枪文化的精髓。</p>
+</div>
+<div class="content-block">
+<h3>🎨 枪与艺术</h3>
+<p>枪也是中国传统艺术的重要题材。京剧中的武生、武旦，都以枪为主要道具。枪舞是中国传统舞蹈的重要形式，将武术与舞蹈相结合，刚柔并济，美轮美奂。</p>
+<p>中国传统绘画中，枪也是常见的题材。从汉代的画像石，到唐代的壁画，从宋代的院体画，到明清的文人画，枪的形象随处可见。</p>
+</div>
+</section>
+<!-- 现代传承 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">MODERN HERITAGE</span>
+<h2 class="section-title">现代传承与发展</h2>
+<p class="section-desc">在当代社会，中华枪法作为非物质文化遗产，正得到越来越多的关注和保护。</p>
+</div>
+<div class="content-block">
+<h3>🌟 非遗保护</h3>
+<p>2006年，少林武术被列入第一批国家级非物质文化遗产名录，少林枪作为少林武术的重要组成部分，得到了系统的保护和传承。</p>
+<p>2011年，杨家枪、岳家枪等传统枪法也陆续被列入各级非物质文化遗产名录，中华枪法的传承进入了新的阶段。</p>
+</div>
+<div class="content-block">
+<h3>🏆 竞技体育</h3>
+<p>枪术已成为武术比赛的重要项目。在亚运会、全运会等大型赛事中，枪术比赛吸引了众多选手参与。竞赛枪术在保留传统技法的基础上，更加注重观赏性和规范性。</p>
+</div>
+<div class="content-block">
+<h3>🎬 影视传播</h3>
+<p>从《三国演义》到《水浒传》，从《英雄》到《赤壁》，中华枪法通过影视作品传播至世界各地。这些作品不仅展示了中华枪法的技法，更传播了中华枪文化的内涵。</p>
+</div>
+<div class="content-block">
+<h3>🌏 国际传播</h3>
+<p>随着中国文化走出去战略的实施，中华枪法在海外的传播越来越广泛。世界各地的武术爱好者学习中华枪法，中华枪文化正在成为连接中国与世界的文化纽带。</p>
+</div>
+<div class="quote-block">
+<p>"枪为百兵之王，长而锋利，使用灵便，取胜之法，精微独到。枪是战场上的主力兵器，也是中华武术的重要组成部分。"</p>
+<cite>—— 《中华武术概论》</cite>
+</div>
+</section>
+<!-- 页脚 -->
+<footer class="footer">
+<p>中华枪法专题报告 | 百兵之王 · 百兵之祖</p>
+<p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：《武经总要》《三国演义》《说岳全传》、国家体育总局、中国武术协会</p>
+</footer>
+
+<!-- 点赞组件 -->
+<div id="like-component"></div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        PonghoodLike.init('#like-component');
+    });
+</script>
+</body>
+</html>

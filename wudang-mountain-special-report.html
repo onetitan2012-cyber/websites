@@ -457,6 +457,17 @@
             <p>武当山专题报告 | 亘古无双胜境 · 天下第一仙山</p>
             <p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：武当山旅游经济特区管理委员会、联合国教科文组织、国家文物局</p>
         </footer>
+        
+        <!-- 点赞组件 -->
+        <div id="like-component"></div>
+        
+        <!-- 点赞系统 -->
+        <script src="like-system.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                PonghoodLike.init('#like-component');
+            });
+        </script>
     </div>
 </body>
 </html>

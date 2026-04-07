@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>中华刀法 | 百兵之胆专题报告</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Serif SC', 'SimSun', '宋体', serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e8e8e8;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+        
+        /* 返回主页按钮 */
+        .back-home {
+            position: fixed;
+            top: 16px;
+            left: 16px;
+            z-index: 200;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: rgba(28,33,40,.95);
+            border: 1px solid rgba(255,255,255,.1);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: #8B949E;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all .2s;
+            font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+        }
+        .back-home svg { width: 16px; height: 16px; }
+        .back-home:hover {
+            background: rgba(40,45,55,.95);
+            color: #E6EDF3;
+            transform: translateX(-2px);
+            border-color: #B22222;
+        }
+
+        /* 封面 */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgba(178,34,34,0.1) 0%, rgba(25,25,112,0.2) 50%, rgba(178,34,34,0.1) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23B22222' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; max-width: 900px; }
+        .cover-icon {
+            font-size: 80px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 40px rgba(178,34,34,0.5);
+        }
+        .cover h1 {
+            font-size: 56px;
+            font-weight: 700;
+            color: #B22222;
+            margin-bottom: 20px;
+            letter-spacing: 8px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .cover-subtitle {
+            font-size: 24px;
+            color: #CD5C5C;
+            margin-bottom: 40px;
+            letter-spacing: 4px;
+        }
+        .cover-desc {
+            font-size: 18px;
+            color: #8B949E;
+            max-width: 700px;
+            margin: 0 auto 50px;
+            line-height: 2;
+        }
+        .cover-features {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+        .cover-feature {
+            text-align: center;
+        }
+        .cover-feature-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+        .cover-feature-text {
+            font-size: 14px;
+            color: #8B949E;
+        }
+
+        /* 章节通用样式 */
+        .section {
+            padding: 80px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-tag {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(178,34,34,0.15);
+            border: 1px solid rgba(178,34,34,0.3);
+            border-radius: 20px;
+            font-size: 12px;
+            color: #B22222;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 36px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .section-desc {
+            font-size: 16px;
+            color: #8B949E;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* 内容区块 */
+        .content-block {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        .content-block h3 {
+            font-size: 22px;
+            color: #B22222;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(178,34,34,0.3);
+        }
+        .content-block p {
+            color: #8B949E;
+            margin-bottom: 15px;
+            line-height: 1.9;
+        }
+        .content-block strong {
+            color: #E6EDF3;
+        }
+
+        /* 时间线 */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, #B22222 0%, rgba(178,34,34,0.2) 100%);
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 40px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 10px;
+            height: 10px;
+            background: #B22222;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(178,34,34,0.5);
+        }
+        .timeline-year {
+            font-size: 14px;
+            color: #B22222;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .timeline-desc {
+            font-size: 15px;
+            color: #8B949E;
+            line-height: 1.8;
+        }
+
+        /* 名刀展示 */
+        .blade-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+        .blade-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+        .blade-card:hover {
+            background: rgba(178,34,34,0.1);
+            border-color: rgba(178,34,34,0.3);
+            transform: translateY(-3px);
+        }
+        .blade-rank {
+            font-size: 12px;
+            color: #B22222;
+            margin-bottom: 10px;
+        }
+        .blade-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .blade-owner {
+            font-size: 14px;
+            color: #CD5C5C;
+            margin-bottom: 15px;
+        }
+        .blade-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 流派展示 */
+        .style-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        .style-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .style-card:hover {
+            background: rgba(178,34,34,0.1);
+            border-color: rgba(178,34,34,0.3);
+            transform: translateY(-3px);
+        }
+        .style-icon {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        .style-name {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 10px;
+        }
+        .style-desc {
+            font-size: 13px;
+            color: #8B949E;
+            line-height: 1.6;
+        }
+
+        /* 人物卡片 */
+        .master-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .master-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 35px;
+            display: flex;
+            gap: 25px;
+            transition: all 0.3s ease;
+        }
+        .master-card:hover {
+            background: rgba(178,34,34,0.05);
+            border-color: rgba(178,34,34,0.3);
+        }
+        .master-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #B22222 0%, #8B0000 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            flex-shrink: 0;
+        }
+        .master-info {
+            flex: 1;
+        }
+        .master-name {
+            font-size: 20px;
+            color: #E6EDF3;
+            margin-bottom: 5px;
+        }
+        .master-title {
+            font-size: 14px;
+            color: #B22222;
+            margin-bottom: 15px;
+        }
+        .master-desc {
+            font-size: 14px;
+            color: #8B949E;
+            line-height: 1.7;
+        }
+
+        /* 引用 */
+        .quote-block {
+            background: rgba(178,34,34,0.05);
+            border-left: 4px solid #B22222;
+            padding: 30px;
+            margin: 40px 0;
+            font-style: italic;
+        }
+        .quote-block p {
+            font-size: 18px;
+            color: #E6EDF3;
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+        .quote-block cite {
+            font-size: 14px;
+            color: #8B949E;
+            font-style: normal;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0,0,0,0.3);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        .footer p {
+            color: #8B949E;
+            font-size: 14px;
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .cover h1 { font-size: 36px; letter-spacing: 4px; }
+            .cover-subtitle { font-size: 18px; }
+            .blade-grid { grid-template-columns: 1fr; }
+            .style-grid { grid-template-columns: 1fr; }
+            .master-grid { grid-template-columns: 1fr; }
+            .master-card { flex-direction: column; text-align: center; }
+            .section-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+<!-- 返回主页 -->
+<a class="back-home" href="index.html">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"></path>
+</svg>
+        返回主页
+    </a>
+<!-- 封面 -->
+<section class="cover">
+<div class="cover-content">
+<div class="cover-icon">🔪</div>
+<h1>中华刀法</h1>
+<p class="cover-subtitle">百兵之胆 · 百兵之帅</p>
+<p class="cover-desc">
+                刀，十八般兵器之首，有"百兵之胆"的美誉。刀为单面长刃的短兵器，以劈砍为主要技法，勇猛刚烈，气势如虹。自古以来，刀就是战场上的主力兵器，从关公的青龙偃月刀到岳飞的破阵刀法，刀在中国武术史上占有举足轻重的地位。
+            </p>
+<div class="cover-features">
+<div class="cover-feature">
+<div class="cover-feature-icon">⚔️</div>
+<div class="cover-feature-text">十八般兵器之首</div>
+</div>
+<div class="cover-feature">
+<div class="cover-feature-icon">🔥</div>
+<div class="cover-feature-text">百兵之胆</div>
+</div>
+<div class="cover-feature">
+<div class="cover-feature-icon">⚡</div>
+<div class="cover-feature-text">勇猛刚烈</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 起源与诞生 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">ORIGIN &amp; BIRTH</span>
+<h2 class="section-title">起源与诞生</h2>
+<p class="section-desc">从原始社会的石刀，到商周的青铜刀，再到汉唐的铁刀，中华刀文化历经数千年的发展演变。</p>
+</div>
+<div class="content-block">
+<h3>📜 刀之起源</h3>
+<p>
+                    刀的历史可追溯至
+                    <strong>原始社会</strong>
+                    。早在旧石器时代，人类就开始使用石刀进行切割、狩猎。新石器时代，磨制石刀出现，成为人类生产生活的重要工具。
+                </p>
+<p>
+<strong>商周时期</strong>
+                    ，青铜冶炼技术成熟，青铜刀开始出现。商代的青铜刀主要用于祭祀和礼仪，刀身较短，刀背较厚。西周时期，刀逐渐成为实战兵器，刀身加长，刀刃锋利。
+                </p>
+<p>
+<strong>春秋战国时期</strong>
+                    ，铁器开始出现，铁刀逐渐取代青铜刀。汉代是铁刀发展的黄金时代，环首刀成为军队制式装备。汉代环首刀刀身修长，刀刃锋利，劈砍威力巨大，在与匈奴的战争中发挥了重要作用。
+                </p>
+<p>
+<strong>唐宋时期</strong>
+                    ，刀的种类更加丰富，出现了陌刀、横刀、朴刀等多种类型。唐代陌刀是长柄大刀，威力巨大，"陌刀阵"是唐军的杀手锏。宋代兵器制造业发达，出现了各种精美的刀剑。
+                </p>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-year">原始社会</div>
+<div class="timeline-title">石刀的诞生</div>
+<div class="timeline-desc">旧石器时代，人类使用打制石刀；新石器时代，磨制石刀出现，成为生产生活的重要工具。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">商周时期</div>
+<div class="timeline-title">青铜刀的出现</div>
+<div class="timeline-desc">青铜冶炼技术成熟，青铜刀用于祭祀、礼仪和实战。商代刀身较短，西周刀身逐渐加长。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">春秋战国</div>
+<div class="timeline-title">铁刀的兴起</div>
+<div class="timeline-desc">铁器开始出现，铁刀逐渐取代青铜刀。铁刀更加锋利耐用，成为战场上的主力兵器。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">汉代</div>
+<div class="timeline-title">环首刀的辉煌</div>
+<div class="timeline-desc">汉代环首刀成为军队制式装备，刀身修长，劈砍威力巨大，在与匈奴的战争中立下赫赫战功。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">唐代</div>
+<div class="timeline-title">陌刀的诞生</div>
+<div class="timeline-desc">唐代陌刀是长柄大刀，威力巨大。李嗣业以陌刀大破敌军，"当嗣业刀者，人马俱碎"。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-year">宋元明清</div>
+<div class="timeline-title">刀法的系统化</div>
+<div class="timeline-desc">刀法逐渐系统化，形成了少林刀、八卦刀、太极刀等多种流派，刀术成为中华武术的重要组成部分。</div>
+</div>
+</div>
+</section>
+<!-- 十大名刀 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">TEN FAMOUS BLADES</span>
+<h2 class="section-title">中国古代十大名刀</h2>
+<p class="section-desc">中国古代名刀众多，每一把都承载着一段传奇历史，代表着中国古代铸刀工艺的最高水平。</p>
+</div>
+<div class="blade-grid">
+<div class="blade-card">
+<div class="blade-rank">NO.1 中华刀祖</div>
+<h4 class="blade-name">鸣鸿刀</h4>
+<p class="blade-owner">传说持有者：黄帝</p>
+<p class="blade-desc">相传轩辕黄帝的金剑出炉时，剩余原料自发形成此刀。刀身布满红色纹路，散发着强烈的戾气，被黄帝封印。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.2 天下第一刀</div>
+<h4 class="blade-name">苗刀之祖</h4>
+<p class="blade-owner">传说持有者：蚩尤</p>
+<p class="blade-desc">上古九黎族首领蚩尤的佩刀，据说是由陨铁打造，锋利无比。后世苗刀即源于此刀。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.3 武圣之刀</div>
+<h4 class="blade-name">青龙偃月刀</h4>
+<p class="blade-owner">持有者：关羽</p>
+<p class="blade-desc">重八十二斤，刀身绘有青龙图案。关羽持此刀斩颜良、诛文丑、过五关斩六将，威震华夏。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.4 新亭侯</div>
+<h4 class="blade-name">张飞佩刀</h4>
+<p class="blade-owner">持有者：张飞</p>
+<p class="blade-desc">汉末名将张飞初拜为新亭侯时，命铁匠取炼赤珠山铁打造此刀。刀铭"新亭侯"，后随张飞征战四方。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.5 毒匕寒月刃</div>
+<h4 class="blade-name">徐夫人匕首</h4>
+<p class="blade-owner">持有者：荆轲</p>
+<p class="blade-desc">战国时期赵国徐夫人所铸，锋利无比，且淬有剧毒。荆轲刺秦王时所用，"图穷匕见"即指此刀。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.6 七星宝刀</div>
+<h4 class="blade-name">王允宝刀</h4>
+<p class="blade-owner">持有者：曹操、王允</p>
+<p class="blade-desc">刀身镶嵌七颗宝石，锋利无比。曹操曾持此刀刺杀董卓，虽未成功，但此刀因此名扬天下。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.7 大夏龙雀</div>
+<h4 class="blade-name">夏朝名刀</h4>
+<p class="blade-owner">传说持有者：夏桀</p>
+<p class="blade-desc">夏朝君主桀所铸，刀身刻有龙雀图案。此刀制作精良，是古代名刀的代表作之一。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.8 虎翼刀</div>
+<h4 class="blade-name">北宋名刀</h4>
+<p class="blade-owner">持有者：包拯</p>
+<p class="blade-desc">北宋名臣包拯的三口铡刀之一，与龙头铡、狗头铡并列。虎翼铡专斩贪官污吏，象征正义。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.9 昆吾刀</div>
+<h4 class="blade-name">周穆王佩刀</h4>
+<p class="blade-owner">持有者：周穆王</p>
+<p class="blade-desc">周穆王西征时所得，用昆吾石冶炼成铁制作。此刀锋利无比，切玉如泥，是古代名刀中的珍品。</p>
+</div>
+<div class="blade-card">
+<div class="blade-rank">NO.10 庖丁菜刀</div>
+<h4 class="blade-name">庖丁解牛刀</h4>
+<p class="blade-owner">持有者：庖丁</p>
+<p class="blade-desc">《庄子》中记载的庖丁解牛所用之刀。庖丁以此刀十九年解数千牛而刀刃若新发于硎。</p>
+</div>
+</div>
+<div class="quote-block">
+<p>"关王偃月刀，刀势既大，其三十六刀法，兵仗遇之，无不屈者。刀类中以此为第一。"</p>
+<cite>—— 《武经总要》</cite>
+</div>
+</section>
+<!-- 刀法流派 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">BLADE TECHNIQUES</span>
+<h2 class="section-title">中华刀法流派</h2>
+<p class="section-desc">中华刀法流派众多，各具特色，其中以少林刀、八卦刀、太极刀、苗刀等最为著名。</p>
+</div>
+<div class="content-block">
+<h3>🗡️ 主要刀法流派</h3>
+<div class="style-grid">
+<div class="style-card">
+<div class="style-icon">🐉</div>
+<h4 class="style-name">少林刀</h4>
+<p class="style-desc">少林派刀法，勇猛刚烈，以劈砍为主，动作朴实，讲究实战，有"少林刀，不可挡"之说。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">☯️</div>
+<h4 class="style-name">八卦刀</h4>
+<p class="style-desc">八卦掌刀法，步走八卦，刀走偏锋，身法灵活，变化莫测，与八卦掌相辅相成。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🌊</div>
+<h4 class="style-name">太极刀</h4>
+<p class="style-desc">太极拳刀法，以柔克刚，后发先制，动作圆活，连绵不断，与太极拳理相通。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🎋</div>
+<h4 class="style-name">苗刀</h4>
+<p class="style-desc">源于明代戚继光所创的戚家刀，刀身修长，技法独特，集刀枪之长，威力巨大。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">⚡</div>
+<h4 class="style-name">形意刀</h4>
+<p class="style-desc">形意拳刀法，以意领刀，刚柔并济，动作简洁，发力迅猛，讲究"刀如猛虎"。</p>
+</div>
+<div class="style-card">
+<div class="style-icon">🌸</div>
+<h4 class="style-name">梅花刀</h4>
+<p class="style-desc">因刀法路线如梅花五点而得名，步法灵活，刀法多变，攻防兼备，流传广泛。</p>
+</div>
+</div>
+</div>
+<div class="content-block">
+<h3>📖 刀法基本技法</h3>
+<p>
+<strong>劈刀：</strong>
+                    刀身由上向下劈砍，力达刀刃，如闪电下击，是刀法中最基本的攻击技法。
+                </p>
+<p>
+<strong>砍刀：</strong>
+                    刀身斜向砍击，可砍头、砍肩、砍腰，是刀法中最常用的攻击技法。
+                </p>
+<p>
+<strong>撩刀：</strong>
+                    刀身由下向上撩起，如海底捞月，可攻可守，常用于反击。
+                </p>
+<p>
+<strong>扎刀：</strong>
+                    刀尖向前直刺，力达刀尖，如毒蛇出洞，是刀法中的突袭技法。
+                </p>
+<p>
+<strong>抹刀：</strong>
+                    刀身平抹，力达刀刃，如春风拂面，常用于割喉、抹颈。
+                </p>
+<p>
+<strong>斩刀：</strong>
+                    刀身横向斩击，力达刀刃，如腰斩，威力巨大。
+                </p>
+<p>
+<strong>云刀：</strong>
+                    刀身在头顶或身体周围环绕，如行云流水，用于防守和蓄势。
+                </p>
+<p>
+<strong>扫刀：</strong>
+                    刀身横向扫击，力达刀刃，如秋风扫落叶，攻击下盘。
+                </p>
+</div>
+</section>
+<!-- 刀法名家 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">FAMOUS MASTERS</span>
+<h2 class="section-title">历史上著名的刀法名家</h2>
+<p class="section-desc">从关羽的青龙偃月刀到岳飞的破阵刀法，从李嗣业的陌刀阵到王五的大刀，中华刀法史上涌现出众多传奇人物。</p>
+</div>
+<div class="master-grid">
+<div class="master-card">
+<div class="master-avatar">🐉</div>
+<div class="master-info">
+<h4 class="master-name">关羽</h4>
+<p class="master-title">武圣、汉寿亭侯</p>
+<p class="master-desc">三国时期蜀汉名将，被后世尊为"武圣"。手持青龙偃月刀，斩颜良、诛文丑、过五关斩六将，威震华夏。其刀法大开大合，威猛无比。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">⚔️</div>
+<div class="master-info">
+<h4 class="master-name">岳飞</h4>
+<p class="master-title">南宋抗金名将</p>
+<p class="master-desc">南宋抗金名将，民族英雄。创"岳家刀"，刀法精湛，以破阵刀法闻名。其刀法讲究实战，招招制敌，是军事刀法的代表。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">🔥</div>
+<div class="master-info">
+<h4 class="master-name">李嗣业</h4>
+<p class="master-title">唐代陌刀将</p>
+<p class="master-desc">唐代名将，以善用陌刀著称。安史之乱中，李嗣业率陌刀队大破叛军，"当嗣业刀者，人马俱碎"，威名远扬。</p>
+</div>
+</div>
+<div class="master-card">
+<div class="master-avatar">⚡</div>
+<div class="master-info">
+<h4 class="master-name">王五</h4>
+<p class="master-title">大刀王五、清末侠客</p>
+<p class="master-desc">清末著名镖师、侠客，人称"大刀王五"。一生行侠仗义，支持维新变法，是谭嗣同的保镖。其刀法刚猛，威震江湖。</p>
+</div>
+</div>
+</div>
+<div class="quote-block">
+<p>"刀如猛虎，剑如游龙。刀法以劈砍为主，勇猛刚烈，气势如虹；剑法以刺击为主，轻灵飘逸，变化莫测。"</p>
+<cite>—— 武术界传统说法</cite>
+</div>
+</section>
+<!-- 刀文化 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">BLADE CULTURE</span>
+<h2 class="section-title">刀文化：从兵器到精神象征</h2>
+<p class="section-desc">刀在中国文化中不仅是兵器，更是一种精神象征，代表着勇猛、正义、力量和担当。</p>
+</div>
+<div class="content-block">
+<h3>🎭 刀的文化内涵</h3>
+<p>
+<strong>勇猛之器：</strong>
+                    刀以劈砍为主要技法，勇猛刚烈，气势如虹。刀是战场上的主力兵器，代表着勇往直前、无所畏惧的精神。
+                </p>
+<p>
+<strong>正义之刀：</strong>
+                    刀在中国文化中常与正义联系在一起。包青天的三口铡刀、关羽的青龙偃月刀，都是正义的象征，代表着惩恶扬善、除暴安良的精神。
+                </p>
+<p>
+<strong>侠义精神：</strong>
+                    "路见不平，拔刀相助"，刀是侠客的标志，代表着路见不平、拔刀相助的侠义精神。大刀王五、霍元甲等侠客，都是刀文化的代表。
+                </p>
+<p>
+<strong>责任担当：</strong>
+                    刀是责任的象征。古代将军佩刀，代表着保家卫国的责任；现代警察佩刀，代表着维护社会治安的责任。
+                </p>
+</div>
+<div class="content-block">
+<h3>📚 刀与文学</h3>
+<p>刀在中国文学中占有重要地位。《水浒传》中李逵的双板斧、林冲的朴刀，《三国演义》中关羽的青龙偃月刀、张飞的丈八蛇矛，都是文学史上的经典形象。</p>
+<p>武侠小说更是将刀文化推向高峰。金庸《笑傲江湖》中的独孤九剑虽然是剑法，但其中的"破刀式"专门破解刀法；古龙《小李飞刀》中的飞刀，虽然是暗器，但也体现了刀文化的精髓。</p>
+</div>
+<div class="content-block">
+<h3>🎨 刀与艺术</h3>
+<p>刀也是中国传统艺术的重要题材。京剧中的刀马旦、武生，都以刀为主要道具。刀舞是中国传统舞蹈的重要形式，将武术与舞蹈相结合，刚柔并济，美轮美奂。</p>
+<p>中国传统绘画中，刀也是常见的题材。从汉代的画像石，到唐代的壁画，从宋代的院体画，到明清的文人画，刀的形象随处可见。</p>
+</div>
+</section>
+<!-- 现代传承 -->
+<section class="section">
+<div class="section-header">
+<span class="section-tag">MODERN HERITAGE</span>
+<h2 class="section-title">现代传承与发展</h2>
+<p class="section-desc">在当代社会，中华刀法作为非物质文化遗产，正得到越来越多的关注和保护。</p>
+</div>
+<div class="content-block">
+<h3>🌟 非遗保护</h3>
+<p>2006年，少林武术被列入第一批国家级非物质文化遗产名录，少林刀作为少林武术的重要组成部分，得到了系统的保护和传承。</p>
+<p>2011年，苗刀、八卦刀等传统刀法也陆续被列入各级非物质文化遗产名录，中华刀法的传承进入了新的阶段。</p>
+</div>
+<div class="content-block">
+<h3>🏆 竞技体育</h3>
+<p>刀术已成为武术比赛的重要项目。在亚运会、全运会等大型赛事中，刀术比赛吸引了众多选手参与。竞赛刀术在保留传统技法的基础上，更加注重观赏性和规范性。</p>
+</div>
+<div class="content-block">
+<h3>🎬 影视传播</h3>
+<p>从《少林寺》到《卧虎藏龙》，从《英雄》到《绣春刀》，中华刀法通过影视作品传播至世界各地。这些作品不仅展示了中华刀法的技法，更传播了中华刀文化的内涵。</p>
+</div>
+<div class="content-block">
+<h3>🌏 国际传播</h3>
+<p>随着中国文化走出去战略的实施，中华刀法在海外的传播越来越广泛。世界各地的武术爱好者学习中华刀法，中华刀文化正在成为连接中国与世界的文化纽带。</p>
+</div>
+<div class="quote-block">
+<p>"刀，十八般兵器之首，百兵之胆。刀法以劈砍为主，勇猛刚烈，气势如虹。刀是战场上的主力兵器，也是中华武术的重要组成部分。"</p>
+<cite>—— 《中华武术概论》</cite>
+</div>
+</section>
+<!-- 页脚 -->
+<footer class="footer">
+<p>中华刀法专题报告 | 百兵之胆 · 百兵之帅</p>
+<p style="margin-top: 10px; font-size: 12px;">报告编制日期：2026年4月 | 数据来源：《武经总要》《三国演义》《水浒传》、国家体育总局、中国武术协会</p>
+</footer>
+
+<!-- 点赞组件 -->
+<div id="like-component"></div>
+
+<!-- 点赞系统 -->
+<script src="like-system.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        PonghoodLike.init('#like-component');
+    });
+</script>
+</body>
+</html>
