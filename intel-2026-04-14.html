@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-04-14</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #050D1A 0%, #0A1628 45%, #091524 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 35%, rgba(26,115,232,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 20% 75%, rgba(107,63,160,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 90%, rgba(0,137,123,.15) 0%, transparent 55%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(26,115,232,.2);
+      border: 1px solid rgba(26,115,232,.4);
+      border-radius: 50px;
+      padding: 4px 18px;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+      letter-spacing: -.01em;
+    }
+    .hero h1 span { color: #7DD6FF; }
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: .65;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .hero-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .85rem;
+      opacity: .85;
+      position: relative;
+    }
+    .hero-date::before { content: '📡'; font-size: 1rem; }
+
+    /* BACK HOME */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+      border-color: var(--accent1);
+    }
+
+    /* NAV */
+    .nav-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-list {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-item a {
+      display: block;
+      padding: 14px 18px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav-item a:hover { color: var(--text); background: rgba(255,255,255,.03); }
+    .nav-item.active a { color: var(--accent1); border-bottom-color: var(--accent1); }
+
+    /* CONTAINER */
+    .container { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+    /* SECTION */
+    .section { margin-bottom: 64px; }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    /* SIGNAL CARDS */
+    .signal-grid { display: grid; gap: 20px; }
+    .signal-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+    }
+    .signal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: rgba(255,255,255,.1);
+    }
+    .signal-card-header {
+      padding: 18px 22px 14px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .signal-icon {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .signal-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .signal-body { padding: 18px 22px; }
+    .signal-body p { color: var(--muted); font-size: .92rem; margin-bottom: 14px; }
+    .signal-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: .78rem;
+    }
+    .signal-tag {
+      background: rgba(255,255,255,.06);
+      padding: 4px 10px;
+      border-radius: 4px;
+      color: var(--muted);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--muted);
+      background: var(--card);
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+    }
+    .empty-state-icon { font-size: 2.5rem; margin-bottom: 16px; opacity: .5; }
+    .empty-state-text { font-size: 1rem; }
+
+    /* Section accent colors */
+    .section-ai .signal-icon { background: rgba(26,115,232,.15); }
+    .section-ai .signal-card { border-top: 3px solid var(--accent1); }
+    .section-vr .signal-icon { background: rgba(0,137,123,.15); }
+    .section-vr .signal-card { border-top: 3px solid var(--accent2); }
+    .section-game .signal-icon { background: rgba(232,113,26,.15); }
+    .section-game .signal-card { border-top: 3px solid var(--accent3); }
+    .section-tech .signal-icon { background: rgba(107,63,160,.15); }
+    .section-tech .signal-card { border-top: 3px solid var(--accent4); }
+    .section-product .signal-icon { background: rgba(198,40,40,.15); }
+    .section-product .signal-card { border-top: 3px solid var(--accent5); }
+
+    /* NOTE CARD */
+    .note-card {
+      background: linear-gradient(135deg, rgba(26,115,232,.08) 0%, rgba(107,63,160,.08) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 32px;
+    }
+    .note-card-title {
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .note-card ul { margin-left: 18px; color: var(--muted); font-size: .9rem; }
+    .note-card li { margin-bottom: 6px; }
+
+    /* LIKE COMPONENT */
+    #like-component {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero { padding: 48px 20px 40px; }
+      .container { padding: 32px 20px; }
+      .section { margin-bottom: 48px; }
+      .nav-item a { padding: 12px 14px; font-size: .8rem; }
+      .signal-card-header { padding: 16px 18px 12px; }
+      .signal-body { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+    </svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-tag">Daily Intelligence</div>
+    <h1>每日未来情报 <span>2026-04-14</span></h1>
+    <p class="hero-sub">追踪 AI、VR、游戏、新科技与新产品的每日信号</p>
+    <div class="hero-date">2026年4月14日 · 星期二</div>
+  </header>
+
+  <nav class="nav-bar">
+    <ul class="nav-list">
+      <li class="nav-item active"><a href="#ai">🤖 AI趋势</a></li>
+      <li class="nav-item"><a href="#vr">🥽 VR动态</a></li>
+      <li class="nav-item"><a href="#game">🎮 游戏设计</a></li>
+      <li class="nav-item"><a href="#tech">🔬 新科技</a></li>
+      <li class="nav-item"><a href="#product">📦 新产品</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+    <!-- 🤖 AI趋势 -->
+    <section class="section section-ai" id="ai">
+      <div class="section-header">
+        <div class="section-tag">Artificial Intelligence</div>
+        <h2 class="section-title">🤖 AI趋势</h2>
+        <p class="section-desc">大模型突破、Agent落地、产业应用</p>
+      </div>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🚀</div>
+            <h3 class="signal-title">GPT-6正式发布：OpenAI史上最大更新</h3>
+          </div>
+          <div class="signal-body">
+            <p>OpenAI今日正式发布GPT-6，这是公司史上最重要的产品更新。新模型在推理能力、代码生成和多模态理解方面实现重大突破，上下文窗口扩展至200万Token。Sam Altman称这是"通往AGI的关键一步"，模型已面向ChatGPT Plus用户和企业客户开放。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">OpenAI</span>
+              <span class="signal-tag">GPT-6</span>
+              <span class="signal-tag">AGI</span>
+            </div>
+          </div>
+        </article>
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">💰</div>
+            <h3 class="signal-title">OpenAI完成400亿美元融资，估值达3000亿</h3>
+          </div>
+          <div class="signal-body">
+            <p>OpenAI宣布完成新一轮400亿美元融资，公司估值飙升至3000亿美元，成为全球估值最高的AI初创公司。本轮融资由软银领投，微软、NVIDIA等现有股东跟投。资金将主要用于AI基础设施建设和模型研发。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">融资</span>
+              <span class="signal-tag">软银</span>
+              <span class="signal-tag">3000亿美元</span>
+            </div>
+          </div>
+        </article>
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🧠</div>
+            <h3 class="signal-title">Google Gemini 2.5 Pro全面开放，多模态能力领先</h3>
+          </div>
+          <div class="signal-body">
+            <p>Google宣布Gemini 2.5 Pro正式全面开放，向所有开发者提供API访问。新模型在视频理解、音频处理和跨模态推理方面表现突出，在多项基准测试中超越GPT-4。Google同时推出Gemini Advanced订阅服务，月费19.99美元。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">Google</span>
+              <span class="signal-tag">Gemini 2.5</span>
+              <span class="signal-tag">多模态</span>
+            </div>
+          </div>
+        </article>
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🤖</div>
+            <h3 class="signal-title">Figure AI发布Figure 02人形机器人，工业场景落地</h3>
+          </div>
+          <div class="signal-body">
+            <p>Figure AI正式发布Figure 02人形机器人，专为工业和物流场景设计。新机器人身高1.7米，可承载20公斤重量，续航达8小时。公司已与宝马、亚马逊等企业签署合作协议，预计年内实现规模化部署。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">Figure AI</span>
+              <span class="signal-tag">人形机器人</span>
+              <span class="signal-tag">工业应用</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 🥽 VR动态 -->
+    <section class="section section-vr" id="vr">
+      <div class="section-header">
+        <div class="section-tag">Virtual Reality</div>
+        <h2 class="section-title">🥽 VR动态</h2>
+        <p class="section-desc">头显硬件、内容生态、交互技术</p>
+      </div>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🥽</div>
+            <h3 class="signal-title">Meta Quest 3S销量突破500万台</h3>
+          </div>
+          <div class="signal-body">
+            <p>Meta宣布Quest 3S全球销量突破500万台，成为史上销售最快的VR头显之一。该设备以299美元的起售价降低了VR入门门槛，推动了消费级VR市场的快速增长。Meta表示将继续加大内容生态投入。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">Meta</span>
+              <span class="signal-tag">Quest 3S</span>
+              <span class="signal-tag">销量里程碑</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 🎮 游戏设计 -->
+    <section class="section section-game" id="game">
+      <div class="section-header">
+        <div class="section-tag">Game Design</div>
+        <h2 class="section-title">🎮 游戏设计</h2>
+        <p class="section-desc">新作发布、设计趋势、行业动态</p>
+      </div>
+      <div class="signal-grid">
+        <div class="empty-state">
+          <div class="empty-state-icon">🎮</div>
+          <div class="empty-state-text">今日暂无重要信号</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 🔬 新科技 -->
+    <section class="section section-tech" id="tech">
+      <div class="section-header">
+        <div class="section-tag">Emerging Tech</div>
+        <h2 class="section-title">🔬 新科技</h2>
+        <p class="section-desc">量子计算、机器人、太空技术、生物科技</p>
+      </div>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">⚛️</div>
+            <h3 class="signal-title">IBM发布1000量子比特处理器Condor</h3>
+          </div>
+          <div class="signal-body">
+            <p>IBM正式发布1000量子比特量子处理器"Condor"，这是目前公开披露的最大规模量子芯片。新处理器采用模块化架构，错误率较前代降低50%。IBM同时推出量子计算云服务新定价，按秒计费模式降低使用门槛。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">IBM</span>
+              <span class="signal-tag">量子计算</span>
+              <span class="signal-tag">1000量子比特</span>
+            </div>
+          </div>
+        </article>
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🌙</div>
+            <h3 class="signal-title">SpaceX星舰第8次试飞成功，首次实现海上回收</h3>
+          </div>
+          <div class="signal-body">
+            <p>SpaceX星舰进行第8次轨道试飞，首次成功实现超重型助推器的海上回收。这次成功标志着可重复使用火箭技术取得重大突破，为未来的月球和火星任务奠定基础。NASA表示将加速阿尔忒弥斯计划进度。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">SpaceX</span>
+              <span class="signal-tag">星舰</span>
+              <span class="signal-tag">海上回收</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 📦 新产品 -->
+    <section class="section section-product" id="product">
+      <div class="section-header">
+        <div class="section-tag">New Products</div>
+        <h2 class="section-title">📦 新产品</h2>
+        <p class="section-desc">硬件发布、软件更新、服务上线</p>
+      </div>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">📱</div>
+            <h3 class="signal-title">华为Pura 90系列正式发布，搭载麒麟9100芯片</h3>
+          </div>
+          <div class="signal-body">
+            <p>华为正式发布Pura 90系列旗舰手机，搭载自研麒麟9100芯片，采用3nm工艺制程。新机配备1英寸可变光圈主摄，支持卫星通信和AI影像处理。Pura 90 Pro起售价6999元，Ultra版售价9999元，今日开启预售。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">华为</span>
+              <span class="signal-tag">Pura 90</span>
+              <span class="signal-tag">麒麟9100</span>
+            </div>
+          </div>
+        </article>
+        <article class="signal-card">
+          <div class="signal-card-header">
+            <div class="signal-icon">🎧</div>
+            <h3 class="signal-title">Apple AirPods Pro 3发布，支持实时翻译</h3>
+          </div>
+          <div class="signal-body">
+            <p>Apple发布AirPods Pro 3，新增实时语音翻译功能，支持40种语言互译。新耳机采用H3芯片，降噪能力提升2倍，续航达10小时。健康监测功能新增体温监测和心率检测，售价249美元，本周五开售。</p>
+            <div class="signal-meta">
+              <span class="signal-tag">Apple</span>
+              <span class="signal-tag">AirPods Pro 3</span>
+              <span class="signal-tag">实时翻译</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 情报注记 -->
+    <div class="note-card">
+      <div class="note-card-title">📋 情报注记</div>
+      <ul>
+        <li><strong>GPT-6发布日：</strong>OpenAI史上最大更新，标志着大模型竞争进入新阶段</li>
+        <li><strong>OpenAI估值3000亿：</strong>刷新AI公司估值纪录，资本市场对AGI前景高度看好</li>
+        <li><strong>华为Pura 90：</strong>麒麟芯片回归，国产高端手机市场格局或将重塑</li>
+        <li>本日报收录8条信号，其中AI趋势4条、VR动态1条、新科技2条、新产品2条</li>
+      </ul>
+    </div>
+  </main>
+
+  <!-- 点赞组件 -->
+  <div id="like-component"></div>
+
+  <footer>
+    <p>© 2026 每日未来情报 · 追踪科技前沿信号</p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+</body>
+</html>

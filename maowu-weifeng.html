@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>《茅屋为秋风所破歌》句读解读</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* 古典配色 */
+      --ink-black: #1a1a1a;
+      --ink-light: #4a4a4a;
+      --paper-beige: #f5f0e6;
+      --paper-warm: #ebe5d8;
+      --cinnabar: #a53e2e;
+      --cinnabar-light: #c45b4a;
+      --jade-green: #5a7a6a;
+      --gold-accent: #b8956b;
+      --border-brown: #8b7355;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', 'SimSun', 'STSong', serif;
+      background: var(--paper-beige);
+      color: var(--ink-black);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* 宣纸纹理背景 */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      opacity: 0.03;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* 主容器 - 16:9 固定比例 */
+    .presentation {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background: var(--paper-beige);
+    }
+
+    /* 幻灯片容器 */
+    .slides-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* 单页幻灯片 - 绝对定位 */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 60px;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* 16:9 内容卡片 */
+    .slide-content-wrapper {
+      width: 100%;
+      max-width: 1280px;
+      aspect-ratio: 16/9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* 内容卡片 */
+    .content-card {
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid var(--border-brown);
+      padding: 50px 70px;
+      position: relative;
+      box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.05),
+        inset 0 0 0 1px rgba(139, 115, 85, 0.1);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* 带图片的内容卡片布局 */
+    .content-card.with-image {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 40px;
+    }
+
+    .content-card.with-image .content-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .content-card.with-image .content-right {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* 图片显示区域 */
+    .slide-image {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .slide-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .image-error {
+      width: 100%;
+      height: 100%;
+      min-height: 280px;
+      background: linear-gradient(135deg, rgba(139, 115, 85, 0.1) 0%, rgba(139, 115, 85, 0.05) 100%);
+      border: 2px dashed var(--border-brown);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--border-brown);
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    /* 四角装饰 */
+    .content-card::before,
+    .content-card::after {
+      content: '';
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--cinnabar);
+    }
+
+    .content-card::before {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .content-card::after {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .corner-tr, .corner-bl {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border: 2px solid var(--cinnabar);
+    }
+
+    .corner-tr {
+      top: 20px;
+      right: 20px;
+      border-left: none;
+      border-bottom: none;
+    }
+
+    .corner-bl {
+      bottom: 20px;
+      left: 20px;
+      border-right: none;
+      border-top: none;
+    }
+
+    /* 封面样式 */
+    .slide-cover .content-card {
+      text-align: center;
+      justify-content: center;
+      background: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(245,240,230,0.9) 100%);
+    }
+
+    .cover-tag {
+      display: inline-block;
+      padding: 8px 24px;
+      border: 1px solid var(--cinnabar);
+      color: var(--cinnabar);
+      font-size: 14px;
+      letter-spacing: 4px;
+      margin-bottom: 40px;
+    }
+
+    .cover-title {
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--ink-black);
+      margin-bottom: 20px;
+      letter-spacing: 8px;
+      line-height: 1.4;
+    }
+
+    .cover-subtitle {
+      font-size: 22px;
+      color: var(--ink-light);
+      margin-bottom: 60px;
+      font-weight: 400;
+    }
+
+    .cover-divider {
+      width: 120px;
+      height: 2px;
+      background: var(--cinnabar);
+      margin: 0 auto 40px;
+    }
+
+    .cover-author {
+      font-size: 16px;
+      color: var(--border-brown);
+      letter-spacing: 2px;
+    }
+
+    /* 内容页标题 */
+    .page-header {
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border-brown);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .page-header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 80px;
+      height: 2px;
+      background: var(--cinnabar);
+    }
+
+    .page-number {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      background: var(--cinnabar);
+      color: white;
+      font-size: 14px;
+      line-height: 36px;
+      text-align: center;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+
+    .page-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--ink-black);
+      margin-bottom: 8px;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--ink-light);
+      font-style: italic;
+    }
+
+    /* 正文内容 */
+    .page-content {
+      font-size: 16px;
+      line-height: 1.9;
+      color: var(--ink-black);
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .page-content p {
+      margin-bottom: 16px;
+      text-indent: 2em;
+    }
+
+    .page-content p:first-child {
+      text-indent: 0;
+    }
+
+    /* 强调文字 */
+    .highlight {
+      color: var(--cinnabar);
+      font-weight: 600;
+    }
+
+    .quote-box {
+      background: var(--paper-warm);
+      border-left: 3px solid var(--cinnabar);
+      padding: 16px 24px;
+      margin: 16px 0;
+      font-style: italic;
+      color: var(--ink-light);
+      font-size: 15px;
+    }
+
+    /* 演讲提示 */
+    .speech-tip {
+      margin-top: 20px;
+      padding: 16px 20px;
+      background: rgba(90, 122, 106, 0.1);
+      border: 1px dashed var(--jade-green);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .speech-tip::before {
+      content: '演讲提示';
+      position: absolute;
+      top: -12px;
+      left: 20px;
+      background: var(--paper-beige);
+      padding: 0 12px;
+      font-size: 13px;
+      color: var(--jade-green);
+      letter-spacing: 2px;
+    }
+
+    .speech-tip p {
+      text-indent: 0;
+      margin: 0;
+      color: var(--jade-green);
+      font-size: 16px;
+    }
+
+    /* 诗句特写页 */
+    .poem-highlight {
+      text-align: center;
+      padding: 30px;
+      margin: 20px 0;
+      background: var(--paper-warm);
+      border: 1px solid var(--border-brown);
+    }
+
+    .poem-line {
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--cinnabar);
+      letter-spacing: 4px;
+      line-height: 1.8;
+    }
+
+    /* 细节描写框 */
+    .detail-box {
+      background: linear-gradient(135deg, rgba(245,240,230,0.9) 0%, rgba(235,229,216,0.9) 100%);
+      border: 1px solid var(--border-brown);
+      padding: 24px;
+      margin: 16px 0;
+      position: relative;
+    }
+
+    .detail-box::before {
+      content: '细节描写';
+      position: absolute;
+      top: -12px;
+      left: 24px;
+      background: var(--paper-beige);
+      padding: 2px 12px;
+      font-size: 13px;
+      color: var(--cinnabar);
+      letter-spacing: 2px;
+      border: 1px solid var(--border-brown);
+    }
+
+    .detail-box p {
+      text-indent: 2em;
+      margin-bottom: 12px;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    /* 解读要点 */
+    .key-points {
+      margin-top: 16px;
+    }
+
+    .key-points h4 {
+      font-size: 16px;
+      color: var(--cinnabar);
+      margin-bottom: 12px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(165, 62, 46, 0.3);
+    }
+
+    .key-points ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .key-points li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .key-points li::before {
+      content: '◆';
+      position: absolute;
+      left: 0;
+      color: var(--cinnabar);
+      font-size: 12px;
+    }
+
+    /* 时间线页 */
+    .timeline {
+      position: relative;
+      padding: 10px 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 100px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--border-brown);
+    }
+
+    .timeline-item {
+      display: flex;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .timeline-year {
+      width: 80px;
+      text-align: right;
+      padding-right: 32px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--cinnabar);
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 91px;
+      top: 4px;
+      width: 18px;
+      height: 18px;
+      background: var(--cinnabar);
+      border-radius: 50%;
+      border: 3px solid var(--paper-beige);
+    }
+
+    .timeline-content {
+      flex: 1;
+      padding-left: 32px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .timeline-content strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 2px;
+      color: var(--ink-black);
+    }
+
+    /* 导航按钮 */
+    .nav-btn {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50px;
+      height: 80px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border-brown);
+      cursor: pointer;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .nav-btn:hover {
+      background: var(--cinnabar);
+      border-color: var(--cinnabar);
+    }
+
+    .nav-btn:hover svg {
+      stroke: white;
+    }
+
+    .nav-btn.prev {
+      left: 30px;
+    }
+
+    .nav-btn.next {
+      right: 30px;
+    }
+
+    .nav-btn svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--border-brown);
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* 页码指示器 */
+    .page-indicator {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 12px;
+      z-index: 100;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(139, 115, 85, 0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .dot.active {
+      background: var(--cinnabar);
+      transform: scale(1.3);
+    }
+
+    /* 进度条 */
+    .progress-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: var(--cinnabar);
+      transition: width 0.3s ease;
+      z-index: 101;
+    }
+
+    /* 键盘提示 */
+    .keyboard-hint {
+      position: fixed;
+      bottom: 70px;
+      right: 30px;
+      font-size: 12px;
+      color: var(--border-brown);
+      opacity: 0.6;
+    }
+
+    /* 返回主页 */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-brown);
+      font-size: 14px;
+      color: var(--ink-light);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .back-home:hover {
+      background: var(--cinnabar);
+      color: white;
+      border-color: var(--cinnabar);
+    }
+
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1280px) {
+      .slide {
+        padding: 30px 40px;
+      }
+      
+      .slide-content-wrapper {
+        max-width: 100%;
+      }
+      
+      .content-card {
+        padding: 40px;
+      }
+      
+      .content-card.with-image {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      
+      .content-card.with-image .content-right {
+        order: -1;
+        height: 200px;
+      }
+      
+      .slide-image, .image-error {
+        min-height: 180px;
+      }
+      
+      .cover-title {
+        font-size: 40px;
+      }
+      
+      .page-title {
+        font-size: 24px;
+      }
+    }
+
+    @media (max-width: 1024px) {
+      .slide {
+        padding: 24px 32px;
+      }
+      
+      .content-card {
+        padding: 32px;
+      }
+      
+      .cover-title {
+        font-size: 32px;
+      }
+      
+      .page-title {
+        font-size: 22px;
+      }
+      
+      .nav-btn {
+        display: none;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .slide {
+        padding: 16px 20px;
+      }
+      
+      .slide-content-wrapper {
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 100%;
+      }
+      
+      .content-card {
+        padding: 24px;
+        height: auto;
+        min-height: calc(100vh - 40px);
+      }
+      
+      .content-card.with-image {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .content-card.with-image .content-right {
+        height: 160px;
+        order: -1;
+      }
+      
+      .cover-title {
+        font-size: 24px;
+        letter-spacing: 4px;
+      }
+      
+      .cover-subtitle {
+        font-size: 14px;
+      }
+      
+      .page-title {
+        font-size: 18px;
+      }
+      
+      .page-content {
+        font-size: 14px;
+      }
+      
+      .poem-line {
+        font-size: 18px;
+      }
+      
+      .detail-box p {
+        font-size: 13px;
+      }
+      
+      .timeline::before {
+        left: 60px;
+      }
+      
+      .timeline-year {
+        width: 50px;
+        padding-right: 20px;
+        font-size: 14px;
+      }
+      
+      .timeline-dot {
+        left: 51px;
+      }
+      
+      .timeline-content {
+        padding-left: 20px;
+        font-size: 13px;
+      }
+    }
+
+    /* 入场动画 */
+    .slide.active .content-card {
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页 -->
+  <a href="index.html" class="back-home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M19 12H5M12 19l-7-7 7-7"/>
+    </svg>
+    返回主页
+  </a>
+
+  <!-- 主容器 -->
+  <div class="presentation">
+    <div class="slides-container" id="slidesContainer">
+      
+      <!-- 第0页：封面 -->
+      <div class="slide slide-cover" data-index="0">
+        <div class="slide-content-wrapper">
+          <div class="content-card">
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            <div class="cover-tag">杜 甫 诗 作 解 读</div>
+            <h1 class="cover-title">《茅屋为秋风所破歌》<br>句读解读</h1>
+            <div class="cover-divider"></div>
+            <p class="cover-subtitle">从"群童抱茅"看杜甫的时代与情怀</p>
+            <p class="cover-author">诗圣杜甫 · 唐</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第1页：成诗时期 -->
+      <div class="slide" data-index="1">
+        <div class="slide-content-wrapper">
+          <div class="content-card">
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            
+            <div class="page-header">
+              <div class="page-number">壹</div>
+              <h2 class="page-title">成诗时期——时代为什么这么苦</h2>
+              <p class="page-subtitle">安史之乱后的唐朝，风吹的不只是茅草</p>
+            </div>
+            
+            <div class="page-content">
+              <p>《茅屋为秋风所破歌》大约写于<span class="highlight">公元761年秋天</span>，当时正是安史之乱后不久。唐朝已经从盛世走向衰败，战乱让很多百姓流离失所，生活困苦。杜甫本人也长期漂泊，亲眼见过社会动荡和人民的苦难。</p>
+              
+              <div class="quote-box">
+                "这首诗表面写的是'茅屋被吹破'，其实背后连着整个时代的伤口。"
+              </div>
+              
+              <p>安史之乱（755-763年）是唐朝由盛转衰的转折点。八年的战乱，让曾经繁华的大唐帝国满目疮痍。人口锐减、经济崩溃、社会动荡，无数百姓流离失所。杜甫亲身经历了这一切，他的诗歌成为了那个时代的真实写照。</p>
+            </div>
+            
+            <div class="speech-tip">
+              <p>可以强调：杜甫不是在写天气，而是在写战乱之后普通人怎么活。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第2页：诗人状态 -->
+      <div class="slide" data-index="2">
+        <div class="slide-content-wrapper">
+          <div class="content-card">
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            
+            <div class="page-header">
+              <div class="page-number">贰</div>
+              <h2 class="page-title">诗人状态——杜甫当时过得怎样</h2>
+              <p class="page-subtitle">诗圣也会穷，也会老，也会无能为力</p>
+            </div>
+            
+            <div class="page-content">
+              <p>写这首诗时，杜甫已<span class="highlight">接近五十岁</span>，身体衰弱，生活贫困，住在成都草堂的简陋茅屋里。<span class="highlight">长期漂泊</span>和战乱创伤，让他身心俱疲。</p>
+              
+              <div class="quote-box">
+                他不是一个高高在上的"诗圣"，而是一个有血有肉、会痛会累的普通人。
+              </div>
+              
+              <p>此时的杜甫正值<span class="highlight">贫病交加</span>之年。多年的流离失所耗尽了他的积蓄，简陋的茅屋无法遮风挡雨，<span class="highlight">睡眠不安</span>成为常态。夜雨来袭时，床榻潮湿，难以入眠；秋风呼啸时，屋顶漏风，瑟瑟发抖。</p>
+              
+              <p>从青年时期的意气风发到此时的困顿潦倒，杜甫的人生轨迹就是那个时代文人命运的缩影。他有着文人的敏感与才华，却承受着战乱年代最残酷的生存考验。</p>
+            </div>
+            
+            <div class="speech-tip">
+              <p>这一页要讲出：杜甫不是高高在上的"古代名人"，他那时就是一个又老又穷、很狼狈的人。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第3页：句子特写（带工笔画配图） -->
+      <div class="slide" data-index="3">
+        <div class="slide-content-wrapper">
+          <div class="content-card with-image">
+            <div class="content-left">
+              <div class="page-header" style="border-bottom: none; margin-bottom: 16px;">
+                <div class="page-number">叁</div>
+                <h2 class="page-title">句子特写——"南村群童欺我老无力……"</h2>
+                <p class="page-subtitle">一群孩子抢的不是茅草，是一个老人的无奈</p>
+              </div>
+              
+              <div class="detail-box" style="margin: 0;">
+                <p>秋风刚把屋顶的茅草卷走，杜甫还来不及喘息，南村的几个孩子就一拥而上，把散落的茅草抱走了。</p>
+                <p>他不是不想追，而是年老体弱，跑不动，喊久了连嘴唇都发干了，只能拄着手杖无奈叹息。</p>
+                <p>"<span class="highlight">忍能对面为盗贼</span>"并不是说孩子真的十恶不赦，而是写出了杜甫当时被逼到极处的愤懑和委屈。</p>
+              </div>
+              
+              <div class="key-points" style="margin-top: 12px;">
+                <h4>解读重点</h4>
+                <ul>
+                  <li>这是非常有画面感的一幕——老人追不上孩子，只能在风中叹息</li>
+                  <li>"欺我老无力"写的是身体衰弱，更是心理上的无力感</li>
+                  <li>更深层写的是时代贫穷，不只是孩子顽皮</li>
+                </ul>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="slide-image">
+                <img src="images/maowu-gongbi.jpg" alt="南村群童欺我老无力 工笔画" onerror="this.parentElement.innerHTML='<div class=\'image-error\'>图片加载失败<br>images/maowu-gongbi.png</div>'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第4页：地址境遇（带草堂照片） -->
+      <div class="slide" data-index="4">
+        <div class="slide-content-wrapper">
+          <div class="content-card with-image">
+            <div class="content-left">
+              <div class="page-header" style="border-bottom: none; margin-bottom: 16px;">
+                <div class="page-number">肆</div>
+                <h2 class="page-title">地址和境遇——成都草堂的"今昔对比"</h2>
+                <p class="page-subtitle">同一片草堂，不同的时空温度</p>
+              </div>
+              
+              <div class="page-content" style="font-size: 15px;">
+                <p>杜甫当年在<span class="highlight">成都浣花溪边</span>搭建草堂，本想有一个暂时安身之所。但草屋简陋，经不起秋风暴雨。</p>
+                
+                <div class="quote-box" style="font-size: 14px; padding: 12px 16px;">
+                  我们去年去过成都杜甫草堂，如今那里古木清幽、院落安静，是纪念诗人的文化圣地；可在761年的秋夜，那里的真实场景却是风卷茅飞、屋漏床湿、夜雨难眠。
+                </div>
+                
+                <p><span class="highlight">今天的草堂，是被后人珍藏的记忆；当年的草堂，却是杜甫真实受苦的地方。</span></p>
+              </div>
+              
+              <div class="speech-tip" style="margin-top: 12px;">
+                <p>这一页很好做"虚实对比"："我们看到的是景点，杜甫经历的是苦难。"</p>
+              </div>
+            </div>
+            
+            <div class="content-right">
+              <div class="slide-image">
+                <img src="images/dufu-caotang.jpg" alt="杜甫草堂" onerror="this.parentElement.innerHTML='<div class=\'image-error\'>图片加载失败<br>images/dufu-caotang.jpg</div>'">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第5页：读者感悟 -->
+      <div class="slide" data-index="5">
+        <div class="slide-content-wrapper">
+          <div class="content-card">
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            
+            <div class="page-header">
+              <div class="page-number">伍</div>
+              <h2 class="page-title">读者感悟——为什么这句诗这么打动人</h2>
+              <p class="page-subtitle">他写自己受苦，却让我们看见天下人的苦</p>
+            </div>
+            
+            <div class="page-content">
+              <p>这句诗最打动人的地方，不只是场面真实，而是它让我们看到一个伟大诗人的<span class="highlight">脆弱时刻</span>。杜甫也会委屈，也会愤怒，也会无能为力。</p>
+              
+              <div class="poem-highlight">
+                <p class="poem-line">"安得广厦千万间<br>大庇天下寒士俱欢颜"</p>
+              </div>
+              
+              <p>但更可贵的是，他没有只停留在个人遭遇上，最后写出了这样胸怀天下的理想。</p>
+              
+              <div class="quote-box">
+                真正伟大的人，不是从不受苦，而是在受苦之后，仍然想着别人。
+              </div>
+              
+              <p>我读到这句诗时，仿佛看见一个在风雨中无助的老人，也明白了杜甫为什么被称为"诗圣"。因为他写的不只是自己的屋子，更是那个时代无数贫苦百姓的<span class="highlight">命运</span>。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第6页：杜甫时间线 -->
+      <div class="slide" data-index="6">
+        <div class="slide-content-wrapper">
+          <div class="content-card">
+            <div class="corner-tr"></div>
+            <div class="corner-bl"></div>
+            
+            <div class="page-header">
+              <div class="page-number">陆</div>
+              <h2 class="page-title">杜甫时间线</h2>
+              <p class="page-subtitle">从盛唐理想，到乱世忧思——杜甫的人生线</p>
+            </div>
+            
+            <div class="timeline">
+              <div class="timeline-item">
+                <div class="timeline-year">712年</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>杜甫出生</strong>
+                  出生于河南巩县，字子美，自号少陵野老
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year">青年</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>怀抱理想</strong>
+                  游历吴越、齐赵，渴望建功立业，胸怀"致君尧舜上"的抱负
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year">755年</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>安史之乱爆发</strong>
+                  唐朝由盛转衰，杜甫开始流离失所的生涯
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year">战乱</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>流离失所</strong>
+                  见尽民生疾苦，写下"三吏""三别"等现实主义杰作
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year">759年</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>入蜀避难</strong>
+                  来到成都，在浣花溪边搭建草堂
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year" style="color: var(--cinnabar); font-weight: 700;">761年秋</div>
+                <div class="timeline-dot" style="background: var(--cinnabar); transform: scale(1.3);"></div>
+                <div class="timeline-content">
+                  <strong>《茅屋为秋风所破歌》</strong>
+                  草堂遭秋风吹破，写下这首千古名篇
+                </div>
+              </div>
+              
+              <div class="timeline-item">
+                <div class="timeline-year">后世</div>
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                  <strong>诗圣之名</strong>
+                  因深切关怀百姓疾苦，被称为"诗圣"，其诗被称为"诗史"
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 导航按钮 -->
+    <button class="nav-btn prev" id="prevBtn" onclick="goToSlide(currentSlide - 1)">
+      <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <button class="nav-btn next" id="nextBtn" onclick="goToSlide(currentSlide + 1)">
+      <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+
+    <!-- 页码指示器 -->
+    <div class="page-indicator" id="pageIndicator">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
+      <div class="dot" onclick="goToSlide(3)"></div>
+      <div class="dot" onclick="goToSlide(4)"></div>
+      <div class="dot" onclick="goToSlide(5)"></div>
+      <div class="dot" onclick="goToSlide(6)"></div>
+    </div>
+
+    <!-- 进度条 -->
+    <div class="progress-bar" id="progressBar" style="width: 14.29%;"></div>
+
+    <!-- 键盘提示 -->
+    <div class="keyboard-hint">← → 或点击翻页</div>
+  </div>
+
+  <script>
+    let currentSlide = 0;
+    const totalSlides = 7;
+    const container = document.getElementById('slidesContainer');
+    const dots = document.querySelectorAll('.dot');
+    const progressBar = document.getElementById('progressBar');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function goToSlide(index) {
+      if (index < 0 || index >= totalSlides) return;
+      
+      // 移除当前slide的active
+      const slides = document.querySelectorAll('.slide');
+      slides[currentSlide].classList.remove('active');
+      
+      currentSlide = index;
+      
+      // 添加新slide的active
+      slides[currentSlide].classList.add('active');
+      
+      // 更新指示器
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+      });
+      
+      // 更新进度条
+      progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+      
+      // 更新按钮状态
+      prevBtn.style.opacity = currentSlide === 0 ? '0.3' : '1';
+      prevBtn.style.pointerEvents = currentSlide === 0 ? 'none' : 'auto';
+      nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.3' : '1';
+      nextBtn.style.pointerEvents = currentSlide === totalSlides - 1 ? 'none' : 'auto';
+    }
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') goToSlide(currentSlide - 1);
+      if (e.key === 'ArrowRight') goToSlide(currentSlide + 1);
+    });
+
+    // 触摸滑动支持
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+    
+    function handleSwipe() {
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) goToSlide(currentSlide + 1);
+        else goToSlide(currentSlide - 1);
+      }
+    }
+    
+    // 初始化 - 确保显示第一页
+    window.addEventListener('load', function() {
+      goToSlide(0);
+    });
+    
+    // 立即设置初始状态
+    goToSlide(0);
+  </script>
+
+  <!-- 点赞系统 -->
+  <div id="like-component"></div>
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      PonghoodLike.init('#like-component');
+    });
+  </script>
+</body>
+</html>
