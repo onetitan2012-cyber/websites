@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>诗人三缺一 - 雅士麻将</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #1a1a2e;
+      --bg-light: #16213e;
+      --accent: #e94560;
+      --gold: #d4a574;
+      --green: #2d5016;
+      --green-light: #4a7c2e;
+      --text: #f5f5f5;
+      --text-dim: #a0a0a0;
+      --table: #0f5132;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* 标题 */
+    .game-header {
+      text-align: center;
+      padding: 15px;
+      background: rgba(0,0,0,0.3);
+      border-bottom: 2px solid var(--gold);
+    }
+
+    .game-title {
+      font-size: 28px;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      letter-spacing: 4px;
+    }
+
+    .game-subtitle {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-top: 5px;
+    }
+
+    /* 主游戏区 */
+    .game-container {
+      display: flex;
+      height: calc(100vh - 80px);
+    }
+
+    /* 左侧信息栏 */
+    .side-panel {
+      width: 280px;
+      padding: 20px;
+      background: rgba(0,0,0,0.2);
+      overflow-y: auto;
+    }
+
+    .poet-info {
+      background: rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: 1px solid rgba(212,165,116,0.3);
+    }
+
+    .poet-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #8b6914);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 10px;
+      border: 3px solid var(--gold);
+    }
+
+    .poet-name {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .poet-style {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 5px;
+    }
+
+    .poem-display {
+      margin-top: 10px;
+      padding: 10px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 8px;
+      font-size: 13px;
+      line-height: 1.6;
+      font-style: italic;
+      color: #ffd700;
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    /* 麻将桌 */
+    .table-area {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .mahjong-table {
+      flex: 1;
+      background: linear-gradient(135deg, var(--table) 0%, #1a3d2e 100%);
+      border-radius: 20px;
+      border: 4px solid var(--gold);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    /* 玩家区域 */
+    .player-area {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .player-area.top {
+      flex: 1;
+    }
+
+    .player-area.middle {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 50px;
+    }
+
+    .player-area.bottom {
+      flex: 1;
+    }
+
+    .player-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .player-tag {
+      background: rgba(0,0,0,0.5);
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: var(--gold);
+    }
+
+    /* 漫画式诗句气泡 */
+    .poem-bubble {
+      position: relative;
+      background: linear-gradient(135deg, #fff9e6 0%, #fff5d6 100%);
+      border: 2px solid #d4a574;
+      border-radius: 15px;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      max-width: 200px;
+      font-size: 13px;
+      line-height: 1.5;
+      color: #5c4033;
+      font-style: italic;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      opacity: 0;
+      transform: translateY(10px) scale(0.9);
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+
+    .poem-bubble.show {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+
+    .poem-bubble::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 10px 10px 0;
+      border-style: solid;
+      border-color: #d4a574 transparent transparent;
+    }
+
+    .poem-bubble::before {
+      content: '';
+      position: absolute;
+      bottom: -7px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8px 8px 0;
+      border-style: solid;
+      border-color: #fff9e6 transparent transparent;
+      z-index: 1;
+    }
+
+    /* 手牌区域 */
+    .hand-tiles {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      justify-content: center;
+      max-width: 600px;
+    }
+
+    .tile {
+      width: 55px;
+      height: 75px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+      border-radius: 8px;
+      border: 2px solid #999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+      position: relative;
+    }
+
+    .tile:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+      border-color: var(--accent);
+    }
+
+    .tile.selected {
+      transform: translateY(-10px);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent);
+    }
+
+    .tile-back {
+      background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%);
+      border-color: #3b82f6;
+    }
+
+    .tile-suit {
+      font-size: 26px;
+      font-weight: bold;
+    }
+
+    .tile-number {
+      font-size: 18px;
+      color: #666;
+    }
+
+    /* 花色颜色 */
+    .tile.wan { color: #d32f2f; }
+    .tile.tong { color: #1976d2; }
+    .tile.tiao { color: #388e3c; }
+    .tile.zi { color: #424242; }
+
+    /* 牌河 */
+    .discard-area {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .discard-pile {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 3px;
+      max-width: 500px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+
+    .discard-tile {
+      width: 30px;
+      height: 40px;
+      background: linear-gradient(180deg, #f5f5f5 0%, #e8e8e8 100%);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      border: 1px solid #999;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+
+    .discard-tile .tile-suit {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1;
+    }
+
+    .discard-tile .tile-number {
+      font-size: 10px;
+      color: #666;
+      line-height: 1;
+    }
+
+    .discard-tile.wan { color: #d32f2f; }
+    .discard-tile.tong { color: #1976d2; }
+    .discard-tile.tiao { color: #388e3c; }
+    .discard-tile.zi { color: #424242; }
+
+    /* 按钮 */
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #c73e54);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 20px rgba(233,69,96,0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: var(--gold);
+      border: 2px solid var(--gold);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(212,165,116,0.2);
+    }
+
+    /* 开始界面 */
+    .start-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--bg) 0%, var(--bg-light) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .start-screen.hidden {
+      display: none;
+    }
+
+    .start-title {
+      font-size: 48px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+      letter-spacing: 8px;
+    }
+
+    .start-subtitle {
+      font-size: 18px;
+      color: var(--text-dim);
+      margin-bottom: 50px;
+    }
+
+    .poet-select {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .poet-option {
+      width: 150px;
+      padding: 20px;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid transparent;
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .poet-option:hover {
+      border-color: var(--gold);
+      background: rgba(212,165,116,0.1);
+      transform: translateY(-5px);
+    }
+
+    .poet-option.selected {
+      border-color: var(--accent);
+      background: rgba(233,69,96,0.1);
+    }
+
+    .poet-option .avatar {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .poet-option .name {
+      font-size: 20px;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    .poet-option .style {
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-top: 5px;
+    }
+
+    /* 返回按钮 */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid var(--gold);
+      border-radius: 25px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .back-home:hover {
+      background: rgba(212,165,116,0.2);
+    }
+
+    /* 响应式 */
+    @media (max-width: 1200px) {
+      .side-panel {
+        width: 200px;
+      }
+      .tile {
+        width: 35px;
+        height: 48px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页 -->
+  <a href="index.html" class="back-home">← 返回主页</a>
+
+  <!-- 开始界面 -->
+  <div class="start-screen" id="startScreen">
+    <h1 class="start-title">诗人三缺一</h1>
+    <p class="start-subtitle">与古今诗人对弈，听雅士吟诗作对</p>
+    
+    <div class="poet-select">
+      <div class="poet-option selected" data-poet="libai">
+        <div class="avatar">🍶</div>
+        <div class="name">李白</div>
+        <div class="style">豪放浪漫</div>
+      </div>
+      <div class="poet-option" data-poet="dufu">
+        <div class="avatar">📜</div>
+        <div class="name">杜甫</div>
+        <div class="style">沉郁现实</div>
+      </div>
+      <div class="poet-option" data-poet="sushi">
+        <div class="avatar">🍖</div>
+        <div class="name">苏轼</div>
+        <div class="style">豁达乐观</div>
+      </div>
+      <div class="poet-option" data-poet="liqingzhao">
+        <div class="avatar">🌸</div>
+        <div class="name">李清照</div>
+        <div class="style">婉约细腻</div>
+      </div>
+    </div>
+    
+    <button class="btn btn-primary" onclick="startGame()">开始游戏</button>
+  </div>
+
+  <!-- 游戏头部 -->
+  <div class="game-header">
+    <h1 class="game-title">诗人三缺一</h1>
+    <p class="game-subtitle">与李白、杜甫、苏轼一起打麻将</p>
+  </div>
+
+  <!-- 游戏主界面 -->
+  <div class="game-container" id="gameContainer" style="display: none;">
+    <!-- 左侧信息栏 -->
+    <div class="side-panel">
+      <div class="poet-info">
+        <div class="poet-avatar" id="playerAvatar">🍶</div>
+        <div class="poet-name" id="playerName">李白</div>
+        <div class="poet-style" id="playerStyle">豪放浪漫</div>
+        <div class="poem-display" id="playerPoem">点击开始游戏...</div>
+      </div>
+      
+      <div class="poet-info">
+        <div class="poet-avatar">📜</div>
+        <div class="poet-name">杜甫</div>
+        <div class="poet-style">沉郁现实</div>
+        <div class="poem-display" id="dufuPoem">...</div>
+      </div>
+      
+      <div class="poet-info">
+        <div class="poet-avatar">🍖</div>
+        <div class="poet-name">苏轼</div>
+        <div class="poet-style">豁达乐观</div>
+        <div class="poem-display" id="sushiPoem">...</div>
+      </div>
+    </div>
+
+    <!-- 麻将桌 -->
+    <div class="table-area">
+      <div class="mahjong-table">
+        <!-- 上方玩家 -->
+        <div class="player-area top">
+          <div class="player-section">
+            <div class="poem-bubble" id="dufuBubble"></div>
+            <div class="player-tag">杜甫</div>
+            <div class="hand-tiles" id="topHand">
+              <!-- AI手牌背面 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 中间区域 -->
+        <div class="player-area middle">
+          <div class="player-section">
+            <div class="poem-bubble" id="sushiBubble"></div>
+            <div class="player-tag">苏轼</div>
+            <div class="hand-tiles" id="leftHand">
+              <!-- AI手牌背面 -->
+            </div>
+          </div>
+          
+          <!-- 牌河 -->
+          <div class="discard-area">
+            <div class="discard-pile" id="discardPile">
+              <!-- 打出的牌 -->
+            </div>
+          </div>
+          
+          <div class="player-section">
+            <div class="poem-bubble" id="liqingzhaoBubble"></div>
+            <div class="player-tag">李清照</div>
+            <div class="hand-tiles" id="rightHand">
+              <!-- AI手牌背面 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- 下方玩家 -->
+        <div class="player-area bottom">
+          <div class="player-section">
+            <div class="poem-bubble" id="playerBubble"></div>
+            <div class="player-tag">你的手牌</div>
+            <div class="hand-tiles" id="playerHand">
+              <!-- 玩家手牌 -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 操作按钮 -->
+      <div class="action-buttons">
+        <button class="btn btn-primary" id="drawBtn" onclick="drawTile()">摸牌</button>
+        <button class="btn btn-secondary" id="discardBtn" onclick="playerDiscard()" disabled>打出</button>
+        <button class="btn btn-secondary" id="chiBtn" onclick="chiTile()" disabled>吃</button>
+        <button class="btn btn-secondary" id="pengBtn" onclick="pengTile()" disabled>碰</button>
+        <button class="btn btn-secondary" id="gangBtn" onclick="gangTile()" disabled>杠</button>
+        <button class="btn btn-primary" id="huBtn" onclick="huTile()" disabled>胡</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 诗人数据
+    const poets = {
+      libai: {
+        name: '李白',
+        avatar: '🍶',
+        style: '豪放浪漫',
+        poems: {
+          draw: ['天生我材必有用，千金散尽还复来', '长风破浪会有时，直挂云帆济沧海', '仰天大笑出门去，我辈岂是蓬蒿人'],
+          discard: ['抽刀断水水更流，举杯消愁愁更愁', '人生得意须尽欢，莫使金樽空对月', '飞流直下三千尺，疑是银河落九天'],
+          chi: ['君不见黄河之水天上来', '蜀道之难，难于上青天', '两岸猿声啼不住，轻舟已过万重山'],
+          peng: ['举杯邀明月，对影成三人', '桃花潭水深千尺，不及汪伦送我情', '浮云游子意，落日故人情'],
+          gang: ['大鹏一日同风起，扶摇直上九万里', '十步杀一人，千里不留行', '且乐生前一杯酒，何须身后千载名'],
+          hu: ['会须一饮三百杯！', '与尔同销万古愁！', '我醉欲眠卿且去，明朝有意抱琴来'],
+          listen: ['行路难，行路难，多歧路，今安在', '白发三千丈，缘愁似个长', '总为浮云能蔽日，长安不见使人愁']
+        }
+      },
+      dufu: {
+        name: '杜甫',
+        avatar: '📜',
+        style: '沉郁现实',
+        poems: {
+          draw: ['国破山河在，城春草木深', '万里悲秋常作客，百年多病独登台', '安得广厦千万间，大庇天下寒士俱欢颜'],
+          discard: ['出师未捷身先死，长使英雄泪满襟', '无边落木萧萧下，不尽长江滚滚来', '飘飘何所似，天地一沙鸥'],
+          chi: ['烽火连三月，家书抵万金', '朱门酒肉臭，路有冻死骨', '三吏三别，尽是人间疾苦'],
+          peng: ['感时花溅泪，恨别鸟惊心', '正是江南好风景，落花时节又逢君', '人生不相见，动如参与商'],
+          gang: ['会当凌绝顶，一览众山小', '读书破万卷，下笔如有神', '语不惊人死不休'],
+          hu: ['却看妻子愁何在，漫卷诗书喜欲狂！', '白日放歌须纵酒，青春作伴好还乡！', '即从巴峡穿巫峡，便下襄阳向洛阳！'],
+          listen: ['床头屋漏无干处，雨脚如麻未断绝', '艰难苦恨繁霜鬓，潦倒新停浊酒杯', '冠盖满京华，斯人独憔悴']
+        }
+      },
+      sushi: {
+        name: '苏轼',
+        avatar: '🍖',
+        style: '豁达乐观',
+        poems: {
+          draw: ['大江东去，浪淘尽，千古风流人物', '不识庐山真面目，只缘身在此山中', '欲把西湖比西子，淡妆浓抹总相宜'],
+          discard: ['人有悲欢离合，月有阴晴圆缺', '竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生', '回首向来萧瑟处，归去，也无风雨也无晴'],
+          chi: ['但愿人长久，千里共婵娟', '一年好景君须记，最是橙黄橘绿时', '横看成岭侧成峰，远近高低各不同'],
+          peng: ['十年生死两茫茫，不思量，自难忘', '小舟从此逝，江海寄余生', '人生到处知何似，应似飞鸿踏雪泥'],
+          gang: ['老夫聊发少年狂，左牵黄，右擎苍', '一点浩然气，千里快哉风', '日啖荔枝三百颗，不辞长作岭南人'],
+          hu: ['一蓑烟雨任平生！', '也无风雨也无晴！', '此心安处是吾乡！'],
+          listen: ['拣尽寒枝不肯栖，寂寞沙洲冷', '世事一场大梦，人生几度秋凉', '长恨此身非我有，何时忘却营营']
+        }
+      },
+      liqingzhao: {
+        name: '李清照',
+        avatar: '🌸',
+        style: '婉约细腻',
+        poems: {
+          draw: ['寻寻觅觅，冷冷清清，凄凄惨惨戚戚', '花自飘零水自流，一种相思，两处闲愁', '莫道不销魂，帘卷西风，人比黄花瘦'],
+          discard: ['物是人非事事休，欲语泪先流', '只恐双溪舴艋舟，载不动许多愁', '梧桐更兼细雨，到黄昏、点点滴滴'],
+          chi: ['知否，知否？应是绿肥红瘦', '云中谁寄锦书来，雁字回时，月满西楼', '此情无计可消除，才下眉头，却上心头'],
+          peng: ['争渡，争渡，惊起一滩鸥鹭', '和羞走，倚门回首，却把青梅嗅', '东篱把酒黄昏后，有暗香盈袖'],
+          gang: ['生当作人杰，死亦为鬼雄', '九万里风鹏正举，风休住，蓬舟吹取三山去', '我报路长嗟日暮，学诗谩有惊人句'],
+          hu: ['沉醉不知归路！', '应是绿肥红瘦！', '人比黄花瘦！'],
+          listen: ['乍暖还寒时候，最难将息', '满地黄花堆积，憔悴损，如今有谁堪摘', '守着窗儿，独自怎生得黑']
+        }
+      }
+    };
+
+    // 游戏状态
+    let gameState = {
+      playerPoet: 'libai',
+      currentPlayer: 0,
+      hands: [[], [], [], []],
+      discardPile: [],
+      deck: [],
+      selectedTile: null,
+      gameStarted: false,
+      pendingTile: null,
+      pendingActions: null
+    };
+
+    // 初始化牌组
+    function initDeck() {
+      const suits = ['wan', 'tong', 'tiao'];
+      const suitNames = {wan: '万', tong: '筒', tiao: '条'};
+      const deck = [];
+      
+      // 序数牌 1-9，各4张
+      for (let suit of suits) {
+        for (let num = 1; num <= 9; num++) {
+          for (let i = 0; i < 4; i++) {
+            deck.push({
+              suit: suit,
+              number: num,
+              name: num + suitNames[suit],
+              type: 'number'
+            });
+          }
+        }
+      }
+      
+      // 字牌
+      const zis = [
+        {name: '东', emoji: '🀀'},
+        {name: '南', emoji: '🀁'},
+        {name: '西', emoji: '🀂'},
+        {name: '北', emoji: '🀃'},
+        {name: '中', emoji: '🀄'},
+        {name: '发', emoji: '🀅'},
+        {name: '白', emoji: '🀆'}
+      ];
+      
+      for (let zi of zis) {
+        for (let i = 0; i < 4; i++) {
+          deck.push({
+            suit: 'zi',
+            name: zi.name,
+            emoji: zi.emoji,
+            type: 'zi'
+          });
+        }
+      }
+      
+      // 洗牌
+      for (let i = deck.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [deck[i], deck[j]] = [deck[j], deck[i]];
+      }
+      
+      return deck;
+    }
+
+    // 选择诗人
+    document.querySelectorAll('.poet-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.poet-option').forEach(o => o.classList.remove('selected'));
+        this.classList.add('selected');
+        gameState.playerPoet = this.dataset.poet;
+      });
+    });
+
+    // 开始游戏
+    function startGame() {
+      document.getElementById('startScreen').classList.add('hidden');
+      document.getElementById('gameContainer').style.display = 'flex';
+      
+      // 更新玩家信息
+      const poet = poets[gameState.playerPoet];
+      document.getElementById('playerAvatar').textContent = poet.avatar;
+      document.getElementById('playerName').textContent = poet.name;
+      document.getElementById('playerStyle').textContent = poet.style;
+      
+      // 初始化游戏
+      gameState.deck = initDeck();
+      gameState.hands = [[], [], [], []];
+      gameState.discardPile = [];
+      gameState.gameStarted = true;
+      
+      // 发牌（每人13张）
+      for (let i = 0; i < 13; i++) {
+        for (let j = 0; j < 4; j++) {
+          gameState.hands[j].push(gameState.deck.pop());
+        }
+      }
+      
+      // 排序玩家手牌
+      sortHand(0);
+      
+      // 显示手牌
+      renderHands();
+      
+      // 诗人开场白
+      showPoem(0, 'draw');
+      setTimeout(() => showPoem(1, 'draw'), 1000);
+      setTimeout(() => showPoem(2, 'draw'), 2000);
+      
+      // 庄家摸牌
+      setTimeout(() => {
+        drawTile();
+      }, 3000);
+    }
+
+    // 排序手牌
+    function sortHand(playerIndex) {
+      const hand = gameState.hands[playerIndex];
+      const suitOrder = {wan: 0, tong: 1, tiao: 2, zi: 3};
+      
+      hand.sort((a, b) => {
+        if (suitOrder[a.suit] !== suitOrder[b.suit]) {
+          return suitOrder[a.suit] - suitOrder[b.suit];
+        }
+        return (a.number || 0) - (b.number || 0);
+      });
+    }
+
+    // 显示诗句（漫画式气泡）
+    function showPoem(playerIndex, action) {
+      const poetIds = [gameState.playerPoet, 'dufu', 'sushi', 'liqingzhao'];
+      const poetId = poetIds[playerIndex];
+      const poet = poets[poetId];
+      const poems = poet.poems[action];
+      const poem = poems[Math.floor(Math.random() * poems.length)];
+      
+      const bubbleIds = ['playerBubble', 'dufuBubble', 'sushiBubble', 'liqingzhaoBubble'];
+      const bubble = document.getElementById(bubbleIds[playerIndex]);
+      
+      if (bubble) {
+        bubble.textContent = poem;
+        bubble.classList.add('show');
+        
+        // 3秒后淡出
+        setTimeout(() => {
+          bubble.classList.remove('show');
+        }, 3000);
+      }
+      
+      // 同时更新侧边栏（保留备用）
+      if (playerIndex === 0) {
+        document.getElementById('playerPoem').textContent = poem;
+      } else if (playerIndex === 1) {
+        document.getElementById('dufuPoem').textContent = poem;
+      } else if (playerIndex === 2) {
+        document.getElementById('sushiPoem').textContent = poem;
+      }
+    }
+
+    // 渲染手牌
+    function renderHands() {
+      // 玩家手牌
+      const playerHandEl = document.getElementById('playerHand');
+      playerHandEl.innerHTML = '';
+      gameState.hands[0].forEach((tile, index) => {
+        const tileEl = document.createElement('div');
+        tileEl.className = `tile ${tile.suit} ${index === gameState.selectedTile ? 'selected' : ''}`;
+        tileEl.innerHTML = `
+          <div class="tile-suit">${tile.emoji || tile.name}</div>
+          ${tile.number ? `<div class="tile-number">${tile.number}</div>` : ''}
+        `;
+        tileEl.onclick = () => selectTile(index);
+        playerHandEl.appendChild(tileEl);
+      });
+      
+      // AI手牌（背面）
+      ['topHand', 'leftHand', 'rightHand'].forEach((id, idx) => {
+        const el = document.getElementById(id);
+        el.innerHTML = '';
+        for (let i = 0; i < gameState.hands[idx + 1].length; i++) {
+          const tileEl = document.createElement('div');
+          tileEl.className = 'tile tile-back';
+          el.appendChild(tileEl);
+        }
+      });
+      
+      // 牌河
+      const discardEl = document.getElementById('discardPile');
+      discardEl.innerHTML = '';
+      gameState.discardPile.forEach(tile => {
+        const tileEl = document.createElement('div');
+        tileEl.className = `discard-tile ${tile.suit}`;
+        tileEl.innerHTML = `
+          <div class="tile-suit">${tile.emoji || tile.name}</div>
+          ${tile.number ? `<div class="tile-number">${tile.number}</div>` : ''}
+        `;
+        discardEl.appendChild(tileEl);
+      });
+    }
+
+    // 选择牌
+    function selectTile(index) {
+      if (gameState.currentPlayer !== 0) return;
+      if (gameState.hands[0].length !== 14) {
+        alert('请先摸牌！');
+        return;
+      }
+      gameState.selectedTile = index;
+      renderHands();
+    }
+
+    // 玩家打牌
+    function playerDiscard() {
+      if (gameState.selectedTile === null) {
+        alert('请先选择一张要打的牌！');
+        return;
+      }
+      
+      discardTile(0, gameState.selectedTile);
+      gameState.selectedTile = null;
+      document.getElementById('discardBtn').disabled = true;
+    }
+
+    // 音效生成器
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    
+    function playDiscardSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      
+      // 创建一个短促的"啪"声
+      oscillator.frequency.setValueAtTime(800, audioCtx.currentTime);
+      oscillator.frequency.exponentialRampToValueAtTime(200, audioCtx.currentTime + 0.1);
+      
+      gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      
+      oscillator.start(audioCtx.currentTime);
+      oscillator.stop(audioCtx.currentTime + 0.1);
+    }
+    
+    function playWinSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      
+      // 胜利的音调
+      oscillator.frequency.setValueAtTime(440, audioCtx.currentTime);
+      oscillator.frequency.setValueAtTime(554, audioCtx.currentTime + 0.1);
+      oscillator.frequency.setValueAtTime(659, audioCtx.currentTime + 0.2);
+      
+      gainNode.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+      
+      oscillator.start(audioCtx.currentTime);
+      oscillator.stop(audioCtx.currentTime + 0.5);
+    }
+
+    // 摸牌
+    function drawTile() {
+      if (gameState.deck.length === 0) {
+        alert('牌堆已空，流局！');
+        return;
+      }
+      
+      // 重置选择状态
+      gameState.selectedTile = null;
+      
+      const tile = gameState.deck.pop();
+      gameState.hands[0].push(tile);
+      sortHand(0);
+      renderHands();
+      
+      showPoem(0, 'draw');
+      
+      // 摸牌后禁用摸牌按钮，提示玩家选择一张牌打出
+      document.getElementById('drawBtn').disabled = true;
+      document.getElementById('discardBtn').disabled = false;
+      
+      // 检查是否胡牌
+      if (checkHu(0)) {
+        document.getElementById('huBtn').disabled = false;
+        showPoem(0, 'listen');
+      }
+    }
+
+    // 打牌
+    function discardTile(playerIndex, tileIndex) {
+      const tile = gameState.hands[playerIndex].splice(tileIndex, 1)[0];
+      gameState.discardPile.push(tile);
+      
+      // 播放打牌音效
+      playDiscardSound();
+      
+      renderHands();
+      showPoem(playerIndex, 'discard');
+      
+      // 禁用所有按钮
+      document.getElementById('huBtn').disabled = true;
+      document.getElementById('discardBtn').disabled = true;
+      
+      // 切换玩家
+      gameState.currentPlayer = (gameState.currentPlayer + 1) % 4;
+      
+      if (gameState.currentPlayer === 0) {
+        // 检查玩家是否可以吃碰这张牌（AI打出的牌）
+        if (playerIndex !== 0) {
+          setTimeout(() => {
+            promptChiPeng(tile);
+          }, 500);
+        }
+        document.getElementById('drawBtn').disabled = false;
+      } else {
+        // AI回合
+        setTimeout(aiTurn, 2000);
+      }
+    }
+
+    // AI回合
+    function aiTurn() {
+      const playerIdx = gameState.currentPlayer;
+      
+      // 简单AI：随机摸牌或打牌
+      if (gameState.hands[playerIdx].length < 14) {
+        // 摸牌
+        if (gameState.deck.length > 0) {
+          const tile = gameState.deck.pop();
+          gameState.hands[playerIdx].push(tile);
+          sortHand(playerIdx);
+          renderHands();
+          showPoem(playerIdx, 'draw');
+          
+          // 检查是否可以胡
+          if (checkHu(playerIdx)) {
+            playWinSound();
+            setTimeout(() => {
+              showPoem(playerIdx, 'hu');
+              setTimeout(() => {
+                alert(`${poets[playerIdx === 1 ? 'dufu' : playerIdx === 2 ? 'sushi' : 'liqingzhao'].name} 胡了！`);
+                location.reload();
+              }, 1000);
+            }, 500);
+            return;
+          }
+          
+          setTimeout(() => {
+            // 随机打一张牌
+            const discardIdx = Math.floor(Math.random() * gameState.hands[playerIdx].length);
+            discardTile(playerIdx, discardIdx);
+          }, 1000);
+        }
+      }
+    }
+
+    // 检查是否可以胡（标准麻将规则：4面子+1对子）
+    function checkHu(playerIndex) {
+      const hand = gameState.hands[playerIndex];
+      if (hand.length !== 14) return false;
+      
+      // 统计每种牌的数量
+      const counts = new Map();
+      hand.forEach(tile => {
+        const key = `${tile.suit}_${tile.name || tile.emoji}`;
+        const num = tile.number || 0;
+        if (!counts.has(tile.suit)) {
+          counts.set(tile.suit, new Map());
+        }
+        counts.get(tile.suit).set(num, (counts.get(tile.suit).get(num) || 0) + 1);
+      });
+      
+      // 尝试每个可能的对子
+      for (const [suit, suitCounts] of counts) {
+        for (const [num, count] of suitCounts) {
+          if (count >= 2) {
+            // 复制计数器
+            const testCounts = new Map();
+            for (const [s, sc] of counts) {
+              testCounts.set(s, new Map(sc));
+            }
+            
+            // 移除对子
+            testCounts.get(suit).set(num, testCounts.get(suit).get(num) - 2);
+            if (testCounts.get(suit).get(num) === 0) {
+              testCounts.get(suit).delete(num);
+            }
+            
+            // 检查是否能组成4个面子
+            if (canFormMelds(testCounts, 4)) {
+              return true;
+            }
+          }
+        }
+      }
+      
+      return false;
+    }
+    
+    // 检查是否能组成指定数量的面子（顺子或刻子）
+    function canFormMelds(counts, meldsNeeded) {
+      if (meldsNeeded === 0) {
+        // 检查是否所有牌都被用完
+        for (const suitCounts of counts.values()) {
+          if (suitCounts.size > 0) return false;
+        }
+        return true;
+      }
+      
+      // 找第一个有牌的
+      for (const [suit, suitCounts] of counts) {
+        if (suitCounts.size === 0) continue;
+        
+        const nums = Array.from(suitCounts.keys()).sort((a, b) => a - b);
+        const num = nums[0];
+        const count = suitCounts.get(num);
+        
+        // 尝试刻子（3张相同）
+        if (count >= 3) {
+          const newCounts = copyCounts(counts);
+          newCounts.get(suit).set(num, newCounts.get(suit).get(num) - 3);
+          if (newCounts.get(suit).get(num) === 0) {
+            newCounts.get(suit).delete(num);
+          }
+          if (canFormMelds(newCounts, meldsNeeded - 1)) return true;
+        }
+        
+        // 尝试顺子（只适用于万、筒、条，且数字连续）
+        if (suit !== 'zi' && num <= 7) {
+          const num2 = num + 1;
+          const num3 = num + 2;
+          if (suitCounts.has(num2) && suitCounts.has(num3)) {
+            const newCounts = copyCounts(counts);
+            // 移除顺子的三张牌
+            newCounts.get(suit).set(num, newCounts.get(suit).get(num) - 1);
+            newCounts.get(suit).set(num2, newCounts.get(suit).get(num2) - 1);
+            newCounts.get(suit).set(num3, newCounts.get(suit).get(num3) - 1);
+            // 清理为0的项
+            [num, num2, num3].forEach(n => {
+              if (newCounts.get(suit).get(n) === 0) {
+                newCounts.get(suit).delete(n);
+              }
+            });
+            if (canFormMelds(newCounts, meldsNeeded - 1)) return true;
+          }
+        }
+        
+        // 如果上面的尝试都失败了，且还有牌，说明无法胡
+        return false;
+      }
+      
+      return false;
+    }
+    
+    // 复制计数器
+    function copyCounts(counts) {
+      const newCounts = new Map();
+      for (const [suit, suitCounts] of counts) {
+        newCounts.set(suit, new Map(suitCounts));
+      }
+      return newCounts;
+    }
+
+    // 检查可操作
+    function checkActions() {
+      const huBtn = document.getElementById('huBtn');
+      huBtn.disabled = !checkHu(0);
+    }
+    
+    // 检查是否可以碰（手中有2张相同的牌）
+    function canPeng(tile) {
+      const hand = gameState.hands[0];
+      let count = 0;
+      for (let t of hand) {
+        if (t.suit === tile.suit && (t.name || t.emoji) === (tile.name || tile.emoji)) {
+          count++;
+        }
+      }
+      return count >= 2;
+    }
+    
+    // 检查是否可以吃（只能是万筒条，且能组成连续3张）
+    function canChi(tile) {
+      if (tile.suit === 'zi') return false; // 字牌不能吃
+      
+      const hand = gameState.hands[0];
+      const num = tile.number;
+      const suit = tile.suit;
+      
+      // 检查手牌中是否有可以组成顺子的牌
+      const hasNum = (n) => hand.some(t => t.suit === suit && t.number === n);
+      
+      // 可能的顺子组合：(n-2, n-1, n), (n-1, n, n+1), (n, n+1, n+2)
+      const combinations = [
+        [num - 2, num - 1], // 吃这张牌作为顺子的最后一张
+        [num - 1, num + 1], // 吃这张牌作为顺子的中间一张
+        [num + 1, num + 2]  // 吃这张牌作为顺子的第一张
+      ];
+      
+      for (let combo of combinations) {
+        if (combo[0] >= 1 && combo[0] <= 9 && combo[1] >= 1 && combo[1] <= 9) {
+          if (hasNum(combo[0]) && hasNum(combo[1])) {
+            return true;
+          }
+        }
+      }
+      return false;
+    }
+    
+    // 提示玩家可以吃碰
+    function promptChiPeng(tile) {
+      const canPengResult = canPeng(tile);
+      const canChiResult = canChi(tile);
+      
+      if (canPengResult || canChiResult) {
+        let message = '';
+        if (canPengResult && canChiResult) {
+          message = `可以碰或吃这张${tile.name || tile.emoji}！`;
+        } else if (canPengResult) {
+          message = `可以碰这张${tile.name || tile.emoji}！`;
+        } else {
+          message = `可以吃这张${tile.name || tile.emoji}！`;
+        }
+        
+        // 显示提示气泡
+        showActionPrompt(message, canPengResult, canChiResult, tile);
+      }
+    }
+    
+    // 显示操作提示
+    function showActionPrompt(message, canPeng, canChi, tile) {
+      // 创建提示框
+      const promptDiv = document.createElement('div');
+      promptDiv.id = 'actionPrompt';
+      promptDiv.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        border: 3px solid #d4a574;
+        border-radius: 20px;
+        padding: 30px;
+        text-align: center;
+        z-index: 1000;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        min-width: 300px;
+      `;
+      
+      promptDiv.innerHTML = `
+        <h3 style="color: #d4a574; margin-bottom: 15px; font-size: 20px;">🎴 操作提示</h3>
+        <p style="color: #f5f5f5; margin-bottom: 20px; font-size: 16px;">${message}</p>
+        <div style="display: flex; gap: 10px; justify-content: center;">
+          ${canPeng ? `<button class="btn btn-primary" onclick="doPeng()">碰</button>` : ''}
+          ${canChi ? `<button class="btn btn-primary" onclick="doChi()">吃</button>` : ''}
+          <button class="btn btn-secondary" onclick="skipAction()">跳过</button>
+        </div>
+      `;
+      
+      document.body.appendChild(promptDiv);
+      
+      // 保存当前可以操作的牌
+      gameState.pendingTile = tile;
+      gameState.pendingActions = { canPeng, canChi };
+    }
+    
+    // 执行碰
+    function doPeng() {
+      const tile = gameState.pendingTile;
+      const hand = gameState.hands[0];
+      
+      // 从手牌中移除两张相同的牌
+      let removed = 0;
+      for (let i = hand.length - 1; i >= 0 && removed < 2; i--) {
+        if (hand[i].suit === tile.suit && (hand[i].name || hand[i].emoji) === (tile.name || tile.emoji)) {
+          hand.splice(i, 1);
+          removed++;
+        }
+      }
+      
+      // 从牌河移除刚打出的牌
+      gameState.discardPile.pop();
+      
+      // 添加到玩家吃碰区（简化处理：直接加入手牌）
+      hand.push(tile);
+      hand.push({...tile});
+      hand.push({...tile});
+      
+      sortHand(0);
+      renderHands();
+      showPoem(0, 'peng');
+      
+      closeActionPrompt();
+      
+      // 碰后需要打出一张牌
+      document.getElementById('discardBtn').disabled = false;
+    }
+    
+    // 执行吃
+    function doChi() {
+      const tile = gameState.pendingTile;
+      const hand = gameState.hands[0];
+      const num = tile.number;
+      const suit = tile.suit;
+      
+      // 找出可以吃的组合
+      const hasNum = (n) => hand.findIndex(t => t.suit === suit && t.number === n);
+      
+      const combinations = [
+        { nums: [num - 2, num - 1], name: `${num-2}-${num-1}-${num}` },
+        { nums: [num - 1, num + 1], name: `${num-1}-${num}-${num+1}` },
+        { nums: [num + 1, num + 2], name: `${num}-${num+1}-${num+2}` }
+      ];
+      
+      for (let combo of combinations) {
+        const idx1 = hasNum(combo.nums[0]);
+        const idx2 = hasNum(combo.nums[1]);
+        if (idx1 !== -1 && idx2 !== -1) {
+          // 移除手牌中的两张
+          hand.splice(Math.max(idx1, idx2), 1);
+          hand.splice(Math.min(idx1, idx2), 1);
+          break;
+        }
+      }
+      
+      // 从牌河移除刚打出的牌
+      gameState.discardPile.pop();
+      
+      // 添加到玩家吃牌区
+      hand.push(tile);
+      
+      sortHand(0);
+      renderHands();
+      showPoem(0, 'chi');
+      
+      closeActionPrompt();
+      
+      // 吃后需要打出一张牌
+      document.getElementById('discardBtn').disabled = false;
+    }
+    
+    // 跳过操作
+    function skipAction() {
+      closeActionPrompt();
+      // 继续正常流程
+    }
+    
+    // 关闭操作提示
+    function closeActionPrompt() {
+      const prompt = document.getElementById('actionPrompt');
+      if (prompt) {
+        prompt.remove();
+      }
+      gameState.pendingTile = null;
+      gameState.pendingActions = null;
+    }
+
+    // 吃
+    function chiTile() {
+      alert('吃牌功能开发中...');
+    }
+
+    // 碰
+    function pengTile() {
+      alert('碰牌功能开发中...');
+    }
+
+    // 杠
+    function gangTile() {
+      alert('杠牌功能开发中...');
+    }
+
+    // 胡
+    function huTile() {
+      if (checkHu(0)) {
+        playWinSound();
+        showPoem(0, 'hu');
+        setTimeout(() => {
+          alert('恭喜你胡了！');
+          location.reload();
+        }, 1000);
+      }
+    }
+  </script>
+</body>
+</html>
