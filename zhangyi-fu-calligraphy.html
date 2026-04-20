@@ -536,7 +536,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-01.jpg" alt="福字一品">
           <div class="gallery-info">
             <div class="gallery-number">一品</div>
-            <div class="gallery-style">篆书之福</div>
             <div class="gallery-desc">古朴庄重 源远流长</div>
           </div>
         </div>
@@ -545,7 +544,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-02.jpg" alt="福字二品">
           <div class="gallery-info">
             <div class="gallery-number">二品</div>
-            <div class="gallery-style">隶书之福</div>
             <div class="gallery-desc">蚕头燕尾 端庄大方</div>
           </div>
         </div>
@@ -554,7 +552,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-03.jpg" alt="福字三品">
           <div class="gallery-info">
             <div class="gallery-number">三品</div>
-            <div class="gallery-style">楷书之福</div>
             <div class="gallery-desc">方正严谨 法度森严</div>
           </div>
         </div>
@@ -563,7 +560,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-04.jpg" alt="福字四品">
           <div class="gallery-info">
             <div class="gallery-number">四品</div>
-            <div class="gallery-style">行书之福</div>
             <div class="gallery-desc">行云流水 潇洒自如</div>
           </div>
         </div>
@@ -572,7 +568,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-05.jpg" alt="福字五品">
           <div class="gallery-info">
             <div class="gallery-number">五品</div>
-            <div class="gallery-style">草书之福</div>
             <div class="gallery-desc">龙飞凤舞 气势恢宏</div>
           </div>
         </div>
@@ -581,7 +576,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-06.jpg" alt="福字六品">
           <div class="gallery-info">
             <div class="gallery-number">六品</div>
-            <div class="gallery-style">魏碑之福</div>
             <div class="gallery-desc">方劲雄强 骨力洞达</div>
           </div>
         </div>
@@ -590,7 +584,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-07.jpg" alt="福字七品">
           <div class="gallery-info">
             <div class="gallery-number">七品</div>
-            <div class="gallery-style">瘦金之福</div>
             <div class="gallery-desc">铁画银钩 锋芒毕露</div>
           </div>
         </div>
@@ -599,7 +592,6 @@
           <img src="images/zhangyi-calligraphy/portfolios-fu-08.jpg" alt="福字八品">
           <div class="gallery-info">
             <div class="gallery-number">八品</div>
-            <div class="gallery-style">创意之福</div>
             <div class="gallery-desc">融会贯通 自成一格</div>
           </div>
         </div>
@@ -641,6 +633,9 @@
     </div>
   </section>
 
+  <!-- 点赞区域 -->
+  <div id="like-component" style="padding: 40px 20px; background: linear-gradient(180deg, #EDE8DA 0%, var(--paper) 100%);"></div>
+
   <!-- 页脚 -->
   <footer class="footer">
     <div class="footer-fu">福</div>
@@ -649,14 +644,14 @@
 
   <script>
     const images = [
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-01.jpg', title: '篆书之福 - 古朴庄重 源远流长' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-02.jpg', title: '隶书之福 - 蚕头燕尾 端庄大方' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-03.jpg', title: '楷书之福 - 方正严谨 法度森严' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-04.jpg', title: '行书之福 - 行云流水 潇洒自如' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-05.jpg', title: '草书之福 - 龙飞凤舞 气势恢宏' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-06.jpg', title: '魏碑之福 - 方劲雄强 骨力洞达' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-07.jpg', title: '瘦金之福 - 铁画银钩 锋芒毕露' },
-      { src: 'images/zhangyi-calligraphy/portfolios-fu-08.jpg', title: '创意之福 - 融会贯通 自成一格' }
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-01.jpg', title: '福字一品 - 古朴庄重 源远流长' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-02.jpg', title: '福字二品 - 蚕头燕尾 端庄大方' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-03.jpg', title: '福字三品 - 方正严谨 法度森严' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-04.jpg', title: '福字四品 - 行云流水 潇洒自如' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-05.jpg', title: '福字五品 - 龙飞凤舞 气势恢宏' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-06.jpg', title: '福字六品 - 方劲雄强 骨力洞达' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-07.jpg', title: '福字七品 - 铁画银钩 锋芒毕露' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-08.jpg', title: '福字八品 - 融会贯通 自成一格' }
     ];
 
     let currentIndex = 0;
@@ -700,6 +695,16 @@
       } else if (e.key === 'ArrowRight') {
         currentIndex = (currentIndex + 1) % images.length;
         updateLightbox();
+      }
+    });
+  </script>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
       }
     });
   </script>
