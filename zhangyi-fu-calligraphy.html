@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>福字八品 | 张毅书法艺术</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary-red: #C41E3A;
+      --dark-red: #8B0000;
+      --gold: #D4A574;
+      --light-gold: #F5E6C8;
+      --paper: #F7F3E9;
+      --ink: #2C2C2C;
+      --gray: #666;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    /* 返回按钮 */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--gold);
+      border-radius: 25px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .back-home:hover {
+      background: rgba(196,30,58,0.8);
+      color: white;
+    }
+
+    /* Hero区域 */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, var(--dark-red) 0%, var(--primary-red) 50%, #8B0000 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.5;
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+      padding: 40px;
+    }
+
+    .hero-fu {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 200px;
+      color: var(--gold);
+      text-shadow: 0 0 60px rgba(212,165,116,0.5);
+      margin-bottom: 30px;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 60px rgba(212,165,116,0.5); }
+      50% { text-shadow: 0 0 100px rgba(212,165,116,0.8), 0 0 150px rgba(212,165,116,0.4); }
+    }
+
+    .hero-title {
+      font-size: 48px;
+      color: white;
+      font-weight: 700;
+      letter-spacing: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--light-gold);
+      letter-spacing: 8px;
+      margin-bottom: 40px;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--light-gold);
+      font-size: 14px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(10px); }
+    }
+
+    /* 福字文化介绍 */
+    .intro-section {
+      padding: 100px 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 8px 20px;
+      background: var(--primary-red);
+      color: white;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: var(--ink);
+      margin-bottom: 20px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .intro-content {
+      font-size: 18px;
+      line-height: 2.2;
+      color: var(--gray);
+      text-align: justify;
+    }
+
+    .intro-content p {
+      margin-bottom: 20px;
+      text-indent: 2em;
+    }
+
+    .fu-meaning {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 20px;
+      margin: 60px 0;
+      padding: 40px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+    }
+
+    .meaning-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .meaning-char {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 48px;
+      color: var(--primary-red);
+      margin-bottom: 10px;
+    }
+
+    .meaning-text {
+      font-size: 14px;
+      color: var(--gray);
+    }
+
+    /* 作品展示 */
+    .gallery-section {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, var(--paper) 0%, #EDE8DA 100%);
+    }
+
+    .gallery-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+    }
+
+    .gallery-item {
+      position: relative;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: all 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .gallery-number {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 24px;
+      color: var(--primary-red);
+      margin-bottom: 5px;
+    }
+
+    .gallery-style {
+      font-size: 16px;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .gallery-desc {
+      font-size: 13px;
+      color: var(--gray);
+      margin-top: 8px;
+    }
+
+    /* 灯箱 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 10px solid white;
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-size: 30px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .lightbox-prev { left: -80px; }
+    .lightbox-next { right: -80px; }
+
+    .lightbox-info {
+      position: absolute;
+      bottom: -60px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+    }
+
+    .lightbox-title {
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    .lightbox-counter {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* 艺术家介绍 */
+    .artist-section {
+      padding: 100px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .artist-card {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      align-items: center;
+      background: white;
+      padding: 60px;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .artist-image {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .artist-info h3 {
+      font-size: 32px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .artist-title {
+      color: var(--primary-red);
+      font-size: 16px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+    }
+
+    .artist-bio {
+      color: var(--gray);
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    /* 页脚 */
+    .footer {
+      background: var(--ink);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .footer-fu {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 80px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      opacity: 0.7;
+      letter-spacing: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 1200px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .artist-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      
+      .artist-image {
+        max-width: 250px;
+        margin: 0 auto;
+      }
+      
+      .fu-meaning {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      
+      .hero-fu {
+        font-size: 120px;
+      }
+      
+      .hero-title {
+        font-size: 32px;
+        letter-spacing: 10px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .fu-meaning {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .lightbox-nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页 -->
+  <a href="index.html" class="back-home">← 返回主页</a>
+
+  <!-- Hero区域 -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-fu">福</div>
+      <h1 class="hero-title">福字八品</h1>
+      <p class="hero-subtitle">张毅书法艺术展</p>
+    </div>
+    <div class="scroll-hint">↓ 向下滚动探索</div>
+  </section>
+
+  <!-- 福字文化介绍 -->
+  <section class="intro-section">
+    <div class="section-header">
+      <span class="section-tag">福文化</span>
+      <h2 class="section-title">一字之福 万象更新</h2>
+    </div>
+    
+    <div class="intro-content">
+      <p>"福"字，是中国最古老、最吉祥的文字之一。从甲骨文的"双手捧酒祭天"，到今天的"幸福安康"，这个字承载了中华民族五千年来对美好生活的全部向往。</p>
+      <p>每逢新春佳节，千家万户贴福字，既是对过去一年的感恩，更是对新一年的祈愿。一个"福"字，写尽了中国人对平安、健康、富足、和谐的所有期盼。</p>
+      <p>书法家张毅以八种不同书体演绎"福"字，从篆书的古朴庄重到草书的奔放洒脱，每一笔都凝聚着对传统文化的敬畏，每一划都流淌着对美好生活的祝福。</p>
+    </div>
+
+    <div class="fu-meaning">
+      <div class="meaning-item">
+        <div class="meaning-char">平</div>
+        <div class="meaning-text">平安是福</div>
+      </div>
+      <div class="meaning-item">
+        <div class="meaning-char">健</div>
+        <div class="meaning-text">健康是福</div>
+      </div>
+      <div class="meaning-item">
+        <div class="meaning-char">和</div>
+        <div class="meaning-text">和睦是福</div>
+      </div>
+      <div class="meaning-item">
+        <div class="meaning-char">顺</div>
+        <div class="meaning-text">顺遂是福</div>
+      </div>
+      <div class="meaning-item">
+        <div class="meaning-char">富</div>
+        <div class="meaning-text">富足是福</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 作品展示 -->
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <div class="section-header">
+        <span class="section-tag">作品赏析</span>
+        <h2 class="section-title">八品福字</h2>
+      </div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item" onclick="openLightbox(0)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-01.jpg" alt="福字一品">
+          <div class="gallery-info">
+            <div class="gallery-number">一品</div>
+            <div class="gallery-style">篆书之福</div>
+            <div class="gallery-desc">古朴庄重 源远流长</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(1)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-02.jpg" alt="福字二品">
+          <div class="gallery-info">
+            <div class="gallery-number">二品</div>
+            <div class="gallery-style">隶书之福</div>
+            <div class="gallery-desc">蚕头燕尾 端庄大方</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(2)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-03.jpg" alt="福字三品">
+          <div class="gallery-info">
+            <div class="gallery-number">三品</div>
+            <div class="gallery-style">楷书之福</div>
+            <div class="gallery-desc">方正严谨 法度森严</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(3)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-04.jpg" alt="福字四品">
+          <div class="gallery-info">
+            <div class="gallery-number">四品</div>
+            <div class="gallery-style">行书之福</div>
+            <div class="gallery-desc">行云流水 潇洒自如</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(4)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-05.jpg" alt="福字五品">
+          <div class="gallery-info">
+            <div class="gallery-number">五品</div>
+            <div class="gallery-style">草书之福</div>
+            <div class="gallery-desc">龙飞凤舞 气势恢宏</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(5)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-06.jpg" alt="福字六品">
+          <div class="gallery-info">
+            <div class="gallery-number">六品</div>
+            <div class="gallery-style">魏碑之福</div>
+            <div class="gallery-desc">方劲雄强 骨力洞达</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(6)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-07.jpg" alt="福字七品">
+          <div class="gallery-info">
+            <div class="gallery-number">七品</div>
+            <div class="gallery-style">瘦金之福</div>
+            <div class="gallery-desc">铁画银钩 锋芒毕露</div>
+          </div>
+        </div>
+
+        <div class="gallery-item" onclick="openLightbox(7)">
+          <img src="images/zhangyi-calligraphy/portfolios-fu-08.jpg" alt="福字八品">
+          <div class="gallery-info">
+            <div class="gallery-number">八品</div>
+            <div class="gallery-style">创意之福</div>
+            <div class="gallery-desc">融会贯通 自成一格</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 灯箱 -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">&#8249;</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">&#8250;</button>
+      <div class="lightbox-info">
+        <div class="lightbox-title" id="lightbox-title"></div>
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 艺术家介绍 -->
+  <section class="artist-section">
+    <div class="section-header">
+      <span class="section-tag">艺术家</span>
+      <h2 class="section-title">关于张毅</h2>
+    </div>
+
+    <div class="artist-card">
+      <img src="images/zhangyi-calligraphy/zhangyi-figure.jpg" alt="张毅" class="artist-image" onerror="this.style.display='none'">
+      <div class="artist-info">
+        <h3>张毅</h3>
+        <div class="artist-title">当代书法家 / 书法教育者</div>
+        <div class="artist-bio">
+          <p>张毅，当代实力派书法家，自幼习书，临池不辍。其书法博采众长，兼收并蓄，于篆隶楷行草各体皆有深入研究，尤擅行草，作品气势开张，骨力遒劲。</p>
+          <p>多年来致力于书法艺术的传承与推广，主张"书法即生活"，强调传统与现代的融合。其创作的"福"字系列作品，将传统书法美学与当代审美相结合，深受藏家喜爱。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="footer-fu">福</div>
+    <p class="footer-text">愿君多福 · 岁岁平安</p>
+  </footer>
+
+  <script>
+    const images = [
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-01.jpg', title: '篆书之福 - 古朴庄重 源远流长' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-02.jpg', title: '隶书之福 - 蚕头燕尾 端庄大方' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-03.jpg', title: '楷书之福 - 方正严谨 法度森严' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-04.jpg', title: '行书之福 - 行云流水 潇洒自如' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-05.jpg', title: '草书之福 - 龙飞凤舞 气势恢宏' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-06.jpg', title: '魏碑之福 - 方劲雄强 骨力洞达' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-07.jpg', title: '瘦金之福 - 铁画银钩 锋芒毕露' },
+      { src: 'images/zhangyi-calligraphy/portfolios-fu-08.jpg', title: '创意之福 - 融会贯通 自成一格' }
+    ];
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function changeImage(direction, event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      document.getElementById('lightbox-img').src = images[currentIndex].src;
+      document.getElementById('lightbox-title').textContent = images[currentIndex].title;
+      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${images.length}`;
+    }
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightbox();
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
