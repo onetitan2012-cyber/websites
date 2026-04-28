@@ -214,20 +214,27 @@
     .gallery-image img {
       width: 100%;
       height: auto;
-      max-height: 400px;
+      max-height: none;
       object-fit: contain;
       display: block;
       transition: all 0.5s ease;
     }
 
     .gallery-item:hover .gallery-image img {
-      transform: scale(1.02);
+      transform: scale(1.01);
+    }
+
+    .gallery-content {
+      padding: 50px 50px 40px;
+      text-align: center;
+      position: relative;
     }
 
     .gallery-number {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 60px;
       height: 60px;
       background: var(--seal-red);
@@ -239,11 +246,8 @@
       font-family: 'Ma Shan Zheng', cursive;
       font-size: 28px;
       box-shadow: 0 4px 15px rgba(139,26,26,0.4);
-    }
-
-    .gallery-content {
-      padding: 40px 50px;
-      text-align: center;
+      z-index: 10;
+      border: 3px solid white;
     }
 
     .gallery-title {
@@ -543,9 +547,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(0)">
           <img src="images/zhangyi-calligraphy/portfolios-mind-01.jpg" alt="开心每一天">
-          <div class="gallery-number">一</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">一</div>
           <h3 class="gallery-title">开心每一天</h3>
           <p class="gallery-insight">快乐不在于拥有多少，而在于计较多少。每一天都是限量版，与其愁眉苦脸，不如开怀大笑。心态决定状态，开心是一天，不开心也是一天，何不选择前者？</p>
         </div>
@@ -555,9 +559,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(1)">
           <img src="images/zhangyi-calligraphy/portfolios-mind-02.jpg" alt="不纠结">
-          <div class="gallery-number">二</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">二</div>
           <h3 class="gallery-title">不纠结</h3>
           <p class="gallery-insight">世间本无事，庸人自扰之。许多烦恼，源于想得太多、纠结太久。放下执念，顺其自然，该来的会来，该走的会走。心若简单，世界便简单；心若通透，万事皆通透。</p>
         </div>
@@ -567,9 +571,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(2)">
           <img src="images/zhangyi-calligraphy/portfolios-mind-03.jpg" alt="都是命">
-          <div class="gallery-number">三</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">三</div>
           <h3 class="gallery-title">都是命</h3>
           <p class="gallery-insight">命里有时终须有，命里无时莫强求。这不是消极的认命，而是历经沧桑后的通达。尽人事，听天命，在努力之后学会释然，在执着之后懂得放手，便是大智慧。</p>
         </div>
@@ -579,9 +583,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(3)">
           <img src="images/zhangyi-calligraphy/portfolios-mind-04.jpg" alt="酒色财气皆烟云">
-          <div class="gallery-number">四</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">四</div>
           <h3 class="gallery-title">酒色财气皆烟云</h3>
           <p class="gallery-insight">世人皆为名利忙，殊不知酒色财气，不过是过眼烟云。生不带来，死不带去，唯有内心的安宁与精神的富足，才是真正属于自己的财富。看淡身外物，方得大自在。</p>
         </div>
@@ -591,9 +595,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(4)">
           <img src="images/zhangyi-calligraphy/portfolios-mind-05.jpg" alt="有钱没钱百年都完">
-          <div class="gallery-number">五</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">五</div>
           <h3 class="gallery-title">有钱没钱百年都完</h3>
           <p class="gallery-insight">富贵荣华，终是南柯一梦；贫穷困顿，亦是过眼云烟。百年之后，一抔黄土，谁还记得谁有钱没钱？活在当下，珍惜眼前，无愧于心，便是最好的人生。</p>
         </div>

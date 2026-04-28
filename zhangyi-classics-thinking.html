@@ -221,19 +221,26 @@
 
     .gallery-image img {
       width: 100%;
-      height: 400px;
-      object-fit: cover;
+      height: auto;
+      max-height: 500px;
+      object-fit: contain;
+      background: var(--paper-warm);
       transition: all 0.5s ease;
     }
 
     .gallery-item:hover .gallery-image img {
-      transform: scale(1.05);
+      transform: scale(1.02);
+    }
+
+    .gallery-content {
+      padding: 40px;
+      position: relative;
     }
 
     .gallery-number {
       position: absolute;
-      top: 20px;
-      left: 20px;
+      top: -25px;
+      right: 30px;
       width: 50px;
       height: 50px;
       background: var(--seal-red);
@@ -245,10 +252,8 @@
       font-family: 'Ma Shan Zheng', cursive;
       font-size: 24px;
       box-shadow: 0 4px 15px rgba(178,34,34,0.4);
-    }
-
-    .gallery-content {
-      padding: 40px;
+      z-index: 10;
+      border: 3px solid white;
     }
 
     .gallery-text {
@@ -533,9 +538,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(0)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-00.jpg" alt="贤圣之君">
-          <div class="gallery-number">一</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">一</div>
           <div class="gallery-text">贤圣之君，不以禄私其亲，功多者授之；不以官随其爱，能当之者处之。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -558,9 +563,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(1)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-01.jpg" alt="小暑不足畏">
-          <div class="gallery-number">二</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">二</div>
           <div class="gallery-text">小暑不足畏，深居如退藏。青奴初荐枕，黄妳亦升堂。鸟语竹阴密，雨声荷叶香。晚窗无一事，步屧到西厢。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -583,9 +588,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(2)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-02.jpg" alt="土能浊河">
-          <div class="gallery-number">三</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">三</div>
           <div class="gallery-text">土能浊河，而不能浊海；风能拔木，而不能拔山。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -608,9 +613,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(3)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-03.jpg" alt="观古今之成败">
-          <div class="gallery-number">四</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">四</div>
           <div class="gallery-text">观古今之成败，能见事机者，则恒受其福。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -633,9 +638,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(4)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-04.jpg" alt="行胜于言">
-          <div class="gallery-number">五</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">五</div>
           <div class="gallery-text">行胜于言，质胜于华。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -658,9 +663,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(5)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-05.jpg" alt="人心如良田">
-          <div class="gallery-number">六</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">六</div>
           <div class="gallery-text">人心如良田，得养乃滋长；苗以泉水灌，心以理义养。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -683,9 +688,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(6)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-06.jpg" alt="凡道无所">
-          <div class="gallery-number">七</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">七</div>
           <div class="gallery-text">凡道无所，善心安爱；心静气理，道乃可止。</div>
           <div class="gallery-meta">
             <div class="meta-row">
@@ -708,9 +713,9 @@
       <div class="gallery-item">
         <div class="gallery-image" onclick="openLightbox(7)">
           <img src="images/zhangyi-calligraphy/portfolios-thinking-07.jpg" alt="为贵人当举纲维">
-          <div class="gallery-number">八</div>
         </div>
         <div class="gallery-content">
+          <div class="gallery-number">八</div>
           <div class="gallery-text">为贵人当举纲维，何必事事详细。</div>
           <div class="gallery-meta">
             <div class="meta-row">
