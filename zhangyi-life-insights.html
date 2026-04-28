@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>书法家人生感悟 | 张毅书法艺术</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ink: #1a1a1a;
+      --ink-light: #3a3a3a;
+      --paper: #f8f5f0;
+      --paper-warm: #f0ebe3;
+      --seal-red: #8b1a1a;
+      --gold: #b8956b;
+      --gray: #666;
+      --light-gray: #999;
+    }
+
+    body {
+      font-family: 'Noto Serif SC', serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    /* 返回按钮 */
+    .back-home {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid var(--gold);
+      border-radius: 25px;
+      font-size: 14px;
+      color: var(--gold);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-family: 'Noto Serif SC', serif;
+    }
+
+    .back-home:hover {
+      background: var(--seal-red);
+      color: white;
+    }
+
+    /* Hero区域 */
+    .hero {
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 80px 20px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(184,149,107,0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(184,149,107,0.1) 0%, transparent 50%);
+    }
+
+    .hero-content {
+      text-align: center;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-icon {
+      font-size: 80px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .hero-title {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 64px;
+      color: var(--paper);
+      margin-bottom: 20px;
+      letter-spacing: 8px;
+    }
+
+    .hero-subtitle {
+      font-size: 20px;
+      color: var(--gold);
+      letter-spacing: 6px;
+      margin-bottom: 30px;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: rgba(255,255,255,0.7);
+      line-height: 2;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* 引言区域 */
+    .intro-section {
+      padding: 100px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .intro-text {
+      font-size: 20px;
+      line-height: 2.2;
+      color: var(--gray);
+      position: relative;
+      padding: 40px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 30px rgba(0,0,0,0.08);
+    }
+
+    .intro-text::before {
+      content: '❝';
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 60px;
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    /* 作品展示 */
+    .gallery-section {
+      padding: 60px 20px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      padding: 8px 24px;
+      background: var(--seal-red);
+      color: white;
+      font-size: 12px;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 36px;
+      color: var(--ink);
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: var(--gold);
+    }
+
+    .gallery-list {
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+    }
+
+    .gallery-item {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      transition: all 0.4s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .gallery-image {
+      position: relative;
+      width: 100%;
+      background: var(--paper-warm);
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .gallery-image img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: contain;
+      display: block;
+      transition: all 0.5s ease;
+    }
+
+    .gallery-item:hover .gallery-image img {
+      transform: scale(1.02);
+    }
+
+    .gallery-number {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background: var(--seal-red);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 28px;
+      box-shadow: 0 4px 15px rgba(139,26,26,0.4);
+    }
+
+    .gallery-content {
+      padding: 40px 50px;
+      text-align: center;
+    }
+
+    .gallery-title {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 42px;
+      color: var(--ink);
+      margin-bottom: 20px;
+      letter-spacing: 4px;
+    }
+
+    .gallery-insight {
+      font-size: 18px;
+      line-height: 2;
+      color: var(--gray);
+      max-width: 700px;
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--paper-warm);
+    }
+
+    /* 灯箱 */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 90%;
+    }
+
+    .lightbox img {
+      max-width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      border: 8px solid var(--paper);
+      box-shadow: 0 0 50px rgba(0,0,0,0.5);
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.2);
+      border: none;
+      color: white;
+      font-size: 30px;
+      padding: 20px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .lightbox-prev { left: -80px; }
+    .lightbox-next { right: -80px; }
+
+    .lightbox-info {
+      position: absolute;
+      bottom: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      text-align: center;
+    }
+
+    .lightbox-counter {
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    /* 总结区域 */
+    .summary-section {
+      padding: 100px 20px;
+      background: linear-gradient(180deg, var(--paper) 0%, var(--paper-warm) 100%);
+    }
+
+    .summary-content {
+      max-width: 900px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .summary-quote {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 36px;
+      color: var(--ink);
+      margin-bottom: 30px;
+      letter-spacing: 4px;
+    }
+
+    .summary-text {
+      font-size: 18px;
+      line-height: 2.2;
+      color: var(--gray);
+    }
+
+    .insight-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 50px;
+    }
+
+    .insight-tag {
+      padding: 12px 24px;
+      background: white;
+      border: 2px solid var(--paper-warm);
+      border-radius: 30px;
+      font-size: 15px;
+      color: var(--ink);
+      transition: all 0.3s;
+    }
+
+    .insight-tag:hover {
+      background: var(--seal-red);
+      color: white;
+      border-color: var(--seal-red);
+    }
+
+    /* 艺术家介绍 */
+    .artist-section {
+      padding: 80px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .artist-card {
+      display: grid;
+      grid-template-columns: 250px 1fr;
+      gap: 50px;
+      align-items: center;
+      background: white;
+      padding: 50px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+
+    .artist-image {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .artist-info h3 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .artist-title {
+      color: var(--seal-red);
+      font-size: 14px;
+      margin-bottom: 25px;
+      letter-spacing: 2px;
+    }
+
+    .artist-bio {
+      color: var(--gray);
+      line-height: 2;
+      font-size: 15px;
+    }
+
+    /* 点赞区域 */
+    .like-section {
+      padding: 40px 20px;
+      background: var(--paper-warm);
+    }
+
+    /* 页脚 */
+    .footer {
+      background: var(--ink);
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .footer-quote {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 32px;
+      color: var(--gold);
+      margin-bottom: 15px;
+    }
+
+    .footer-text {
+      font-size: 14px;
+      opacity: 0.7;
+      letter-spacing: 2px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 900px) {
+      .hero-title {
+        font-size: 48px;
+      }
+
+      .gallery-title {
+        font-size: 32px;
+      }
+
+      .gallery-content {
+        padding: 30px;
+      }
+
+      .artist-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .artist-image {
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      .lightbox-nav {
+        display: none;
+      }
+
+      .summary-quote {
+        font-size: 28px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        font-size: 36px;
+      }
+
+      .gallery-title {
+        font-size: 28px;
+      }
+
+      .insight-tag {
+        padding: 10px 18px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 返回主页 -->
+  <a href="index.html" class="back-home">← 返回主页</a>
+
+  <!-- Hero区域 -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-icon">🎋</div>
+      <h1 class="hero-title">人生感悟</h1>
+      <p class="hero-subtitle">五则智慧 · 通透人生</p>
+      <p class="hero-desc">书法家的笔墨之间，不仅有艺术的追求，更有对人生的思考。这五则感悟，或豁达、或通透、或淡然，是历经岁月沉淀后的生命智慧。</p>
+    </div>
+  </section>
+
+  <!-- 引言 -->
+  <section class="intro-section">
+    <div class="intro-text">
+      人生如逆旅，我亦是行人。在这漫长而又短暂的旅途中，有人追逐名利，有人执着得失，而真正的智慧，或许在于看透之后的淡然与从容。
+    </div>
+  </section>
+
+  <!-- 作品展示 -->
+  <section class="gallery-section">
+    <div class="section-header">
+      <span class="section-tag">五则感悟</span>
+      <h2 class="section-title">笔墨间的生命智慧</h2>
+    </div>
+
+    <div class="gallery-list">
+      <!-- 第一则 -->
+      <div class="gallery-item">
+        <div class="gallery-image" onclick="openLightbox(0)">
+          <img src="images/zhangyi-calligraphy/portfolios-mind-01.jpg" alt="开心每一天">
+          <div class="gallery-number">一</div>
+        </div>
+        <div class="gallery-content">
+          <h3 class="gallery-title">开心每一天</h3>
+          <p class="gallery-insight">快乐不在于拥有多少，而在于计较多少。每一天都是限量版，与其愁眉苦脸，不如开怀大笑。心态决定状态，开心是一天，不开心也是一天，何不选择前者？</p>
+        </div>
+      </div>
+
+      <!-- 第二则 -->
+      <div class="gallery-item">
+        <div class="gallery-image" onclick="openLightbox(1)">
+          <img src="images/zhangyi-calligraphy/portfolios-mind-02.jpg" alt="不纠结">
+          <div class="gallery-number">二</div>
+        </div>
+        <div class="gallery-content">
+          <h3 class="gallery-title">不纠结</h3>
+          <p class="gallery-insight">世间本无事，庸人自扰之。许多烦恼，源于想得太多、纠结太久。放下执念，顺其自然，该来的会来，该走的会走。心若简单，世界便简单；心若通透，万事皆通透。</p>
+        </div>
+      </div>
+
+      <!-- 第三则 -->
+      <div class="gallery-item">
+        <div class="gallery-image" onclick="openLightbox(2)">
+          <img src="images/zhangyi-calligraphy/portfolios-mind-03.jpg" alt="都是命">
+          <div class="gallery-number">三</div>
+        </div>
+        <div class="gallery-content">
+          <h3 class="gallery-title">都是命</h3>
+          <p class="gallery-insight">命里有时终须有，命里无时莫强求。这不是消极的认命，而是历经沧桑后的通达。尽人事，听天命，在努力之后学会释然，在执着之后懂得放手，便是大智慧。</p>
+        </div>
+      </div>
+
+      <!-- 第四则 -->
+      <div class="gallery-item">
+        <div class="gallery-image" onclick="openLightbox(3)">
+          <img src="images/zhangyi-calligraphy/portfolios-mind-04.jpg" alt="酒色财气皆烟云">
+          <div class="gallery-number">四</div>
+        </div>
+        <div class="gallery-content">
+          <h3 class="gallery-title">酒色财气皆烟云</h3>
+          <p class="gallery-insight">世人皆为名利忙，殊不知酒色财气，不过是过眼烟云。生不带来，死不带去，唯有内心的安宁与精神的富足，才是真正属于自己的财富。看淡身外物，方得大自在。</p>
+        </div>
+      </div>
+
+      <!-- 第五则 -->
+      <div class="gallery-item">
+        <div class="gallery-image" onclick="openLightbox(4)">
+          <img src="images/zhangyi-calligraphy/portfolios-mind-05.jpg" alt="有钱没钱百年都完">
+          <div class="gallery-number">五</div>
+        </div>
+        <div class="gallery-content">
+          <h3 class="gallery-title">有钱没钱百年都完</h3>
+          <p class="gallery-insight">富贵荣华，终是南柯一梦；贫穷困顿，亦是过眼云烟。百年之后，一抔黄土，谁还记得谁有钱没钱？活在当下，珍惜眼前，无愧于心，便是最好的人生。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 总结 -->
+  <section class="summary-section">
+    <div class="summary-content">
+      <p class="summary-quote">看透世事惊破胆，阅尽人情冷透心</p>
+      <p class="summary-text">五则感悟，五种境界，从开心到不纠结，从认命到看淡，最终归于"百年都完"的终极通透。这不是消极避世，而是历经千帆后的豁达与从容。书法家的笔墨，写下的不仅是文字，更是人生的况味与智慧的结晶。</p>
+      <div class="insight-tags">
+        <span class="insight-tag">😊 开心</span>
+        <span class="insight-tag">🍃 放下</span>
+        <span class="insight-tag">☯️ 随缘</span>
+        <span class="insight-tag">☁️ 看淡</span>
+        <span class="insight-tag">🌸 通透</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 艺术家介绍 -->
+  <section class="artist-section">
+    <div class="section-header">
+      <span class="section-tag">艺术家</span>
+      <h2 class="section-title">关于张毅</h2>
+    </div>
+
+    <div class="artist-card">
+      <img src="images/zhangyi-calligraphy/zhangyi-figure.jpg" alt="张毅" class="artist-image" onerror="this.style.display='none'">
+      <div class="artist-info">
+        <h3>张毅</h3>
+        <div class="artist-title">当代书法家 / 书法教育者</div>
+        <div class="artist-bio">
+          <p>张毅，当代实力派书法家，自幼习书，临池不辍。其书法博采众长，兼收并蓄，于篆隶楷行草各体皆有深入研究，尤擅行草，作品气势开张，骨力遒劲。</p>
+          <p>多年来致力于书法艺术的传承与推广，主张"书法即生活"，强调传统与现代的融合。其创作的人生感悟系列作品，以书法诠释生命智慧，引发观者共鸣。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 点赞区域 -->
+  <div class="like-section">
+    <div id="like-component"></div>
+  </div>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <p class="footer-quote">看透世事 · 自在人生</p>
+    <p class="footer-text">笔墨传情 · 智慧永续</p>
+  </footer>
+
+  <!-- 灯箱 -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+    <div class="lightbox-content">
+      <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
+      <button class="lightbox-nav lightbox-prev" onclick="changeImage(-1, event)">&#8249;</button>
+      <img id="lightbox-img" src="" alt="">
+      <button class="lightbox-nav lightbox-next" onclick="changeImage(1, event)">&#8250;</button>
+      <div class="lightbox-info">
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const images = [
+      'images/zhangyi-calligraphy/portfolios-mind-01.jpg',
+      'images/zhangyi-calligraphy/portfolios-mind-02.jpg',
+      'images/zhangyi-calligraphy/portfolios-mind-03.jpg',
+      'images/zhangyi-calligraphy/portfolios-mind-04.jpg',
+      'images/zhangyi-calligraphy/portfolios-mind-05.jpg'
+    ];
+
+    let currentIndex = 0;
+
+    function openLightbox(index) {
+      currentIndex = index;
+      updateLightbox();
+      document.getElementById('lightbox').classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function changeImage(direction, event) {
+      event.stopPropagation();
+      currentIndex = (currentIndex + direction + images.length) % images.length;
+      updateLightbox();
+    }
+
+    function updateLightbox() {
+      document.getElementById('lightbox-img').src = images[currentIndex];
+      document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${images.length}`;
+    }
+
+    // 键盘导航
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('lightbox').classList.contains('active')) return;
+      
+      if (e.key === 'Escape') {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+      } else if (e.key === 'ArrowLeft') {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateLightbox();
+      } else if (e.key === 'ArrowRight') {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateLightbox();
+      }
+    });
+  </script>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+</body>
+</html>
