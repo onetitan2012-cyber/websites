@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-05-11</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    .back-home:hover {
+      background: var(--card);
+      color: var(--text);
+      transform: translateX(-2px);
+      border-color: var(--accent1);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #050D1A 0%, #0A1628 45%, #091524 100%);
+      color: #fff;
+      padding: 64px 24px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 75% 35%, rgba(26,115,232,.22) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 50% at 20% 75%, rgba(107,63,160,.25) 0%, transparent 60%),
+        radial-gradient(ellipse 30% 40% at 50% 90%, rgba(0,137,123,.15) 0%, transparent 55%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(26,115,232,.2);
+      border: 1px solid rgba(26,115,232,.4);
+      border-radius: 50px;
+      padding: 4px 18px;
+      font-size: .78rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 12px;
+      position: relative;
+      letter-spacing: -.01em;
+    }
+    .hero h1 span { color: #7DD6FF; }
+    .hero-sub {
+      font-size: 1.05rem;
+      opacity: .65;
+      max-width: 560px;
+      margin: 0 auto 32px;
+      position: relative;
+    }
+    .hero-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50px;
+      padding: 6px 20px;
+      font-size: .85rem;
+      opacity: .85;
+      position: relative;
+    }
+    .hero-date::before { content: '📡'; font-size: 1rem; }
+
+    .nav-bar {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 0 24px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .nav-bar::-webkit-scrollbar { display: none; }
+    .nav-list {
+      display: flex;
+      gap: 0;
+      list-style: none;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .nav-item a {
+      display: block;
+      padding: 14px 18px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      transition: all .2s;
+    }
+    .nav-item a:hover, .nav-item a.active {
+      color: var(--accent1);
+      border-color: var(--accent1);
+    }
+
+    .container { max-width: 1100px; margin: 0 auto; padding: 40px 24px 72px; }
+
+    section { padding: 48px 0; border-bottom: 1px solid var(--border); }
+    section:last-of-type { border-bottom: none; }
+    .section-header { margin-bottom: 32px; }
+    .section-header .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+    }
+    .section-header h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-header p {
+      font-size: .95rem;
+      color: var(--muted);
+    }
+
+    .signal-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .signal-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 24px;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .signal-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent1);
+    }
+    .signal-card.accent2::before { background: var(--accent2); }
+    .signal-card.accent3::before { background: var(--accent3); }
+    .signal-card.accent4::before { background: var(--accent4); }
+    .signal-card.accent5::before { background: var(--accent5); }
+    .signal-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 40px rgba(0,0,0,.45);
+    }
+    .signal-card .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 50px;
+      font-size: .72rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      letter-spacing: .02em;
+    }
+    .tag-ai    { background: rgba(26,115,232,.18);  color: #7BB5FF; }
+    .tag-vr    { background: rgba(0,137,123,.18);   color: #4DB8AE; }
+    .tag-game  { background: rgba(232,113,26,.18);  color: #F4A46A; }
+    .tag-tech  { background: rgba(107,63,160,.18);  color: #B589E0; }
+    .tag-product { background: rgba(198,40,40,.18); color: #F07070; }
+
+    .signal-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .signal-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: .78rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .signal-source:hover { color: var(--text); }
+    .signal-source svg { width: 14px; height: 14px; opacity: .6; }
+
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .stat-pill strong { color: #fff; font-weight: 600; }
+
+    .note-card {
+      background: linear-gradient(135deg, rgba(26,115,232,.12) 0%, rgba(107,63,160,.12) 100%);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 28px;
+      margin-top: 48px;
+    }
+    .note-label {
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent1);
+      margin-bottom: 10px;
+    }
+    .note-text {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #CBD5E1;
+    }
+    .note-sign {
+      margin-top: 16px;
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid var(--border);
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 640px) {
+      .hero { padding: 52px 20px 40px; }
+      .hero h1 { font-size: 2rem; }
+      .signal-grid { grid-template-columns: 1fr; }
+      .nav-list { gap: 0; }
+      .nav-item a { padding: 12px 14px; font-size: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="index.html" class="back-home">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M3 12l9-9 9 9M4 10v10a2 2 0 002 2h12a2 2 0 002-2V10"/>
+  </svg>
+  返回主页
+</a>
+
+<div class="hero">
+  <div class="hero-tag">Intel Report · 第 #0511 期</div>
+  <h1>每日<span>未来情报</span></h1>
+  <p class="hero-sub">扫描世界 · 捕捉信号 · 洞见未来</p>
+  <div class="hero-date">2026年5月11日 · 今日信号 10 条</div>
+  <div class="stats-bar">
+    <div class="stat-pill">🤖 AI趋势 <strong>2</strong></div>
+    <div class="stat-pill">🥽 VR动态 <strong>0</strong></div>
+    <div class="stat-pill">🎮 游戏设计 <strong>2</strong></div>
+    <div class="stat-pill">🔬 新科技 <strong>3</strong></div>
+    <div class="stat-pill">📦 新产品 <strong>3</strong></div>
+  </div>
+</div>
+
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li class="nav-item"><a href="#ai" class="active">AI趋势</a></li>
+    <li class="nav-item"><a href="#vr">VR动态</a></li>
+    <li class="nav-item"><a href="#game">游戏设计</a></li>
+    <li class="nav-item"><a href="#tech">新科技</a></li>
+    <li class="nav-item"><a href="#product">新产品</a></li>
+  </ul>
+</nav>
+
+<main class="container">
+
+  <section id="ai">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(26,115,232,.15);">🤖</div>
+      <h2>AI 趋势</h2>
+      <p>大模型、应用落地与产业竞争最新进展</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card">
+        <span class="tag tag-ai">模型发布</span>
+        <h3>OpenAI发布GPT-5.5 Instant：免费用户首触前沿模型，幻觉率暴降52.5%</h3>
+        <p>5月6日，<strong>OpenAI宣布GPT-5.5 Instant正式上线</strong>，取代GPT-5.3成为ChatGPT默认模型。这是<strong>全球数亿免费用户首次直接使用最前沿模型能力</strong>。核心提升：医疗/法律/金融领域<strong>幻觉率下降52.5%</strong>；AIME2025数学测试从65.4分跃升至<strong>81.2分</strong>；MMMU-Pro多模态推理从69.2分提升至<strong>76分</strong>。产业信号明确：技术突破仍在加速，但"卷参数"时代已结束，仅凭模型能力无法构成护城河。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          OpenAI官方 / 腾讯新闻 · 2026-05-07
+        </span>
+      </div>
+
+      <div class="signal-card">
+        <span class="tag tag-ai">商业落地</span>
+        <h3>豆包月活3.45亿领跑中国AI应用，月费68元起开启商业化变现</h3>
+        <p>字节跳动旗下<strong>豆包月活用户达3.45亿</strong>（2026年Q1），稳居中国第一，超越文心一言(1.66亿)和DeepSeek(1.27亿)。日均Token消耗达<strong>120万亿</strong>，三个月增长一倍。豆包推出三档订阅方案：<strong>标准版68元/月、加强版200元/月、专业版500元/月</strong>（年费最高5088元）。战略意图清晰：用免费版保用户规模和数据增长，用付费版验证产品价值与算力成本闭环。中国AI应用月活已超<strong>8.5亿</strong>，同比增长81.71%。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          腾讯新闻 / 行业报告 · 2026-05-07
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="vr">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(0,137,123,.15);">🥽</div>
+      <h2>VR 动态</h2>
+      <p>虚拟现实硬件、内容与行业应用</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent2">
+        <span class="tag tag-vr">暂无信号</span>
+        <h3>今日暂无重要信号</h3>
+        <p>宁缺毋滥，今日未检测到符合收录标准的VR动态信号。我们将持续扫描全球VR/AR行业动态，第一时间为您捕捉值得关注的进展。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="game">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(232,113,26,.15);">🎮</div>
+      <h2>游戏设计</h2>
+      <p>游戏产业、设计趋势与技术革新</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">大作动态</span>
+        <h3>Take-Two CEO亲鉴《GTA6》实机演示，形容"令人惊叹"，11月发售不变</h3>
+        <p>Take-Two首席执行官Strauss Zelnick通过内部实机演示了解《GTA6》进展后，用<strong>"令人惊叹"（stunning）</strong>形容该作表现。Zelnick本人虽不亲自玩游戏，但会定期通过演示跟进重点项目。这一表态<strong>稳定了投资者信心</strong>，确认游戏按原计划推进。此前有传闻称《GTA6》可能从5月延期，但最新消息显示发售日仍为<strong>2026年11月19日</strong>，登陆PS5和Xbox Series平台。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          每日经济新闻 · 2026-05-11
+        </span>
+      </div>
+
+      <div class="signal-card accent3">
+        <span class="tag tag-game">财报业绩</span>
+        <h3>任天堂财年净销售额暴涨98.6%达23130亿日元，Switch全球涨价</h3>
+        <p>任天堂发布最新财报：<strong>财年净销售额23,130亿日元，同比增长98.6%</strong>；营业利润3,601亿日元，同比增长27.5%。业绩暴涨主要受益于Switch 2发售。同时，任天堂宣布<strong>Switch和Switch 2全球涨价</strong>：日版Switch 2售价59,980日元，美版$499.99，日本Switch Online会员价格也同步上涨。这是主机行业罕见的"销量涨、价格也涨"局面，任天堂正试图打破主机硬件不赚钱的行业惯例。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          每日经济新闻 / 任天堂财报 · 2026-05-11
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="tech">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(107,63,160,.15);">🔬</div>
+      <h2>新科技</h2>
+      <p>前沿科技突破与产业变革</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">航天科技</span>
+        <h3>天舟十号货运飞船今日发射，空间站常态化运营再进一步</h3>
+        <p>据中国载人航天工程办公室消息，<strong>天舟十号货运飞船于5月11日8时13分在文昌航天发射场成功发射</strong>。长征七号遥十一运载火箭已完成推进剂加注，准时点火升空。天舟十号装载约<strong>6.3吨补给物资</strong>、220多件（套）货物及700公斤推进剂，保障神舟二十三号和二十四号航天员乘组在轨工作生活。这是中国天舟系列第十艘货运飞船，也是空间站应用与发展阶段第5次货运任务，标志着<strong>中国空间站进入常态化运营阶段</strong>。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          新华社 / IT之家 · 2026-05-11
+        </span>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">芯片产业</span>
+        <h3>存储芯片价格暴涨：DRAM涨58%-63%，NAND涨70%-75%，SK海力士股价创新高</h3>
+        <p>据TrendForce集邦咨询数据，<strong>2026年Q2 DRAM合约价格预计环比上涨58%-63%，NAND闪存涨70%-75%</strong>。AI算力需求爆发导致存储芯片严重短缺，CSP大厂以前所未有的长周期锁定供应，部分合同周期长达5年。5月11日早盘，A股存储芯片板块领涨：红板科技3连板，澜起科技最高涨超16%。全球存储巨头<strong>SK海力士股价涨逾10%、三星电子涨超5%，双双刷新历史新高</strong>。2026年Q1全球半导体销售额达2985亿美元，环比增长25%。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          TrendForce / 新浪财经 · 2026-05-11
+        </span>
+      </div>
+
+      <div class="signal-card accent4">
+        <span class="tag tag-tech">AI算力</span>
+        <h3>全球AI基建投入7250亿美元，OpenAI单家算力支出500亿美元</h3>
+        <p>2026年，全球科技巨头AI基础设施总投入达<strong>7250亿美元</strong>，同比增长77%。其中<strong>OpenAI单家算力支出500亿美元</strong>。AI行业呈现"头部分化固化"格局：Anthropic(31.4%)、OpenAI(29%)、Google(12.1%)占据超72%市场份额；全球AI用户达38亿，季度收入207亿美元。同时，<strong>AI Agent智能手机量产提前至2027年上半年</strong>，目标两年出货3000万部，自然语言将取代App切换成为主流交互方式。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          行业报告 / 腾讯新闻 · 2026-05-07
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="product">
+    <div class="section-header">
+      <div class="icon" style="background: rgba(198,40,40,.15);">📦</div>
+      <h2>新产品</h2>
+      <p>硬件新品与消费科技</p>
+    </div>
+    <div class="signal-grid">
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">手机新品</span>
+        <h3>5月新机潮爆发：小米17、OPPO Reno16、vivo S60等五大中端旗舰扎堆发布</h3>
+        <p>2026年5月迎来上半年最猛新机潮：<strong>小米17系列、OPPO Reno16、vivo S60、iQOO 15T、荣耀600系列</strong>五大品牌中端旗舰扎堆发布。清一色搭载骁龙8至尊版/天玑9500旗舰芯片，配备AI功能全面升级、影像技术持续突破。市场呈现微妙矛盾：行业整体氛围低迷，但新品发布节奏丝毫未减，消费者逐渐产生审美疲劳。专家建议<strong>"死等618"</strong>，届时价格将有明显松动。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          知乎 / 什么值得买 · 2026-05-11
+        </span>
+      </div>
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">电池技术</span>
+        <h3>亿纬锂能发布"开源电池4.0：AI Battery"，商用车电池进入AI时代</h3>
+        <p>5月9日，亿纬锂能第二届商用车电池科技日在惠州举行，正式发布<strong>"开源电池4.0：AI Battery"</strong>产品及开源电池品牌形象。本届科技日以"赢，AI Battery构建价值共创的世界"为主题，聚焦商用车AI电池技术。AI Battery通过人工智能算法优化电池充放电策略、预测电池寿命、提升安全性能，标志着<strong>商用车动力电池正式进入AI驱动时代</strong>。亿纬锂能正从传统电池制造商向AI能源解决方案提供商转型。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          中国新闻周刊 · 2026-05-11
+        </span>
+      </div>
+
+      <div class="signal-card accent5">
+        <span class="tag tag-product">监管新规</span>
+        <h3>无人机两项国家强制性标准正式实施，北京全域禁售无人机及核心部件</h3>
+        <p>2026年5月1日起，《民用无人驾驶航空器实名登记和激活要求》（GB 46761-2025）与《民用无人驾驶航空器系统运行识别规范》（GB 46750-2025）两项<strong>国家强制性标准正式落地</strong>。同时，《北京市无人驾驶航空器管理规定》同步施行：<strong>北京行政区域全域划为管制空域</strong>，室外飞行需提前申请，全域禁售无人机及核心部件，大疆等产品将全面下架。这标志着中国无人机管理从"黑飞"时代进入"智管"时代，低空经济规范化进程加速。</p>
+        <span class="signal-source">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+          新浪财经 / 腾讯新闻 · 2026-05-05
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="note-card">
+    <div class="note-label">🐉 龙大仙注记</div>
+    <div class="note-text">
+      今日最强信号：<strong>存储芯片价格暴涨</strong>——DRAM涨58%-63%，NAND涨70%-75%，这不是简单的周期性涨价，而是AI算力需求引发的结构性短缺。SK海力士和三星股价双双创历史新高，说明资本市场已经认定这是长期趋势而非短期波动。更深层的问题是：当存储芯片成为AI算力的"瓶颈环节"，中国存储产业能否抓住这次机遇？长江存储、长鑫存储的国产化替代进度，将直接影响中国AI产业的自主可控程度。另一个值得关注的信号是<strong>豆包月费68元起</strong>——中国AI应用开始从"免费换用户"转向"付费验证价值"，这标志着中国AI商业化进入新阶段。
+    </div>
+    <div class="note-sign">— 龙大仙 · 2026年5月11日</div>
+  </div>
+
+  <div id="like-component"></div>
+
+</main>
+
+<footer>
+  <p>《每日未来情报》· 2026-05-11 · 由龙大仙自动生成</p>
+  <p>信息来源于公开互联网，仅供参考，不构成投资建议</p>
+</footer>
+
+<script src="like-system.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    PonghoodLike.init('#like-component');
+  });
+</script>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-item a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      if (scrollY >= sectionTop - 200) {
+        current = section.getAttribute('id');
+      }
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
