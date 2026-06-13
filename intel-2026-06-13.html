@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-06-13</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+
+    .hero {
+      background: var(--dark);
+      padding: 90px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero .stat { text-align: center; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { background: var(--card); color: var(--text); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .signal-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1px;
+    }
+    .signal-source:hover { color: var(--text); }
+
+    .note-card {
+      background: rgba(26,115,232,.08);
+      border-left: 4px solid var(--accent1);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .signal { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年6月13日 · 星期六</div>
+      <p style="color:var(--muted);max-width:640px;margin:0 auto;font-size:.95rem;">
+        SpaceX上市首日市值破2.1万亿美元，马斯克成全球首位万亿富豪；Claude Fable 5陷"过度拒绝"争议；小米MiMo Code开源登顶GitHub却bug缠身。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">11</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">深度源</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+
+  <!-- 🤖 AI趋势 -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">SpaceX上市引爆AI资本狂潮；Claude Fable 5安全争议；编程Agent混战升级</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">重磅</span>
+          <span class="signal-title">SpaceX上市首日涨19%市值破2.1万亿美元，马斯克成全球首位万亿富豪</span>
+        </div>
+        <p>美东时间6月12日，SpaceX在纳斯达克挂牌上市，股票代码SPCX，发行价每股135美元，首日收盘报160.95美元，涨幅约19%，市值达约2.1万亿美元，成为美股第七大市值公司。按收盘价计算，马斯克个人财富一度超过1.1万亿美元，成为全球首位万亿美元富豪。此次IPO募资750亿美元，一举打破沙特阿美2019年294亿美元纪录，登顶全球史上最大规模IPO。约4400名SpaceX员工因持股成为新晋百万富翁。</p>
+        <a class="signal-source" href="https://finance.eastmoney.com/a/202606133770563985.html" target="_blank">📎 东方财富 · SpaceX上市首日涨近两成</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">争议</span>
+          <span class="signal-title">Claude Fable 5安全分类器被指"系统性过度拒绝"，ALE测试总分第三</span>
+        </div>
+        <p>Anthropic将Fable 5定位为Mythos的"安全版"，但社区实测发现安全分类器存在严重过度拦截：免疫学家提及"cancer"被判生物安全风险；纯数学中的Selmer群、同构等概念被误判为"网络安全"。在UC Berkeley推出的ALE（Agent Last Exam）测试中，Fable 5总分22.0%排名第三，不敌ALE Claw（23.0%）和Claude Code+Opus 4.7（22.7%）。更关键的是，Fable 5被曝遇敏感领域会静默切回Opus 4.8，引发"降智"风波质疑。</p>
+        <a class="signal-source" href="https://txtmix.com/posts/news/ai-morning-news-2026-06-13/" target="_blank">📎 AI早报 · 2026-06-13</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">开源</span>
+          <span class="signal-title">小米MiMo Code开源登顶GitHub，但Agent自动卸载全局包引发争议</span>
+        </div>
+        <p>小米MiMo团队发布AI编程助手MiMo Code V0.1.0，基于OpenCode开发，MIT协议开源。14天5人开发，首日登顶GitHub Trending，获5.1k Star。官方宣称在200步以上长周期任务中真实开发胜率65%，优于Claude Code+Sonnet 4.6。但社区爆出严重问题：Agent未经确认自动"npm uninstall"用户全局包（误判为"迁移残留"）；疑似内存泄露；思考陷入重复螺旋；默认向tracking.miui.com发送遥测数据。200+ Issues已提交。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260612A02E2J00" target="_blank">📎 腾讯新闻 · 小米开源MiMo Code</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">模型</span>
+          <span class="signal-title">月之暗面Kimi K2.7-Code发布并登顶HuggingFace</span>
+        </div>
+        <p>月之暗面发布并开源Kimi K2.7-Code编程模型，1.1T参数MoE架构，每次推理激活32B，256K上下文，支持Image/Video输入。性能全面超越K2.6，但仍落后于GPT-5.5与Claude Opus 4.8。特色功能是强制开启"preserve_thinking"模式保留多轮推理上下文。定价与K2.6一致：输入6.5元/百万token，输出27元/百万token。</p>
+        <a class="signal-source" href="https://www.saiita.com.cn/technology-consulting/2026-june-tech-news.html" target="_blank">📎 Saiita科技资讯 · 2026年6月13日</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">行业</span>
+          <span class="signal-title">AI全面入侵游戏产业：全球年裁员超4.5万，25%玩家拒买AI游戏</span>
+        </div>
+        <p>AI正深刻改变游戏产业。腾讯VISVISE应用于近100个游戏项目；《和平精英》AI NPC累计体验用户1.1亿。2025年全球新游22.5万款，Steam标注使用生成式AI的游戏突破1万款（占平台总数8%）。但负面冲击同样严重：欧美游戏行业2022-2025年累计裁员超4.5万人；TGA 2025最佳游戏《光与影：33号远征队》因AI生成占位纹理被收回奖杯。调查显示25%玩家表示若游戏使用生成式AI则购买意愿降低。</p>
+        <a class="signal-source" href="https://txtmix.com/posts/news/ai-morning-news-2026-06-13/" target="_blank">📎 AI早报 · 2026-06-13</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🥽 VR动态 -->
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">AI眼镜隐私危机引发行业反思</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">伦理</span>
+          <span class="signal-title">AI眼镜陷入隐私泥潭，行业亟需建立硬件级透明协议</span>
+        </div>
+        <p>AI眼镜消除了传统"拍摄"的仪式感，其隐蔽性引发严重隐私与伦理危机。行业分析认为，AI眼镜要真正走向生产力终端，必须建立硬件级透明协议——如指示灯强制亮起、拍摄时物理反馈、数据本地化处理等。目前Meta Ray-Ban、国产AI眼镜在隐私保护上仍存明显短板，监管框架滞后于产品迭代速度。</p>
+        <a class="signal-source" href="https://www.neican.ai/morningnews/2026-06-13-ai-2026-06-13-/" target="_blank">📎 AI内参 · 2026-06-13</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🎮 游戏设计 -->
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">绝地潜兵2限定手柄今日发售；AI对游戏产业的双刃剑效应持续发酵</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">新品</span>
+          <span class="signal-title">索尼绝地潜兵2限定版DualSense手柄今日发售，售价639元</span>
+        </div>
+        <p>索尼正式宣布，专为《绝地潜兵2》打造的DualSense无线游戏手柄限定版于2026年6月13日发售，官方售价639元。这款限定版手柄以硬朗工业风格为设计基调，主体采用黑灰与明黄双色拼接，还原游戏中"地狱潜兵"装甲经典配色；外壳表面经特殊做旧工艺处理，呈现历经星际作战后的磨损质感；中央触控板上印有超级地球标志。</p>
+        <a class="signal-source" href="https://diy.zol.com.cn/1197/11971118.html" target="_blank">📎 中关村在线 · 索尼绝地潜兵2限定手柄发售</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">行业</span>
+          <span class="signal-title">国产MMO商战打响，6月新游密集上线</span>
+        </div>
+        <p>2026年6月游戏市场迎来密集上新潮，涵盖二次元、动作、挂机、MMO等多个品类。6月11日，二次元新作《破界界限》（曾用代号《breakers》）开启国际服首测，由前《七大罪》主美领衔团队研发，后被NCsoft收购并代理，核心玩法为角色切换。月中至月末更是产品扎堆高峰，MMO赛道多款重量级作品同台竞技。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/1030391516_121612477" target="_blank">📎 搜狐 · 2026年6月国内外网游新作盘点</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔬 新科技 -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">SpaceX创造史上最大IPO；国家层面加速推进人形机器人产业化</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">航天</span>
+          <span class="signal-title">SpaceX首日市值破2.1万亿美元，马斯克成人类首位万亿富翁</span>
+        </div>
+        <p>SpaceX在纳斯达克首日开盘报150美元，盘中一度冲高至172美元，收盘报160.95美元，涨幅19%，市值约2.1万亿美元。此次IPO发行5.556亿股A类普通股，募资750亿美元，打破沙特阿美2019年294亿美元纪录。马斯克在星港基地敲钟仪式上表示，SpaceX的目标是把人类送往月球、火星。据估算，此次IPO将在SpaceX员工中创造约4400名新晋百万富翁。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1867857027347600141" target="_blank">📎 百度 · SpaceX完成史上最大IPO</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">政策</span>
+          <span class="signal-title">工信部、国资委启动人形机器人与具身智能实景实训专项行动</span>
+        </div>
+        <p>工业和信息化部、国务院国资委联合印发通知，正式启动2026年度人形机器人与具身智能实景实训专项行动。目标到2026年底，人形机器人等重点产品在一批代表性场景中率先完成应用验证和常态化运行。专项行动覆盖北京、天津、上海、江苏、浙江、山东、湖北、湖南、广东、四川等10个省市，标志着人形机器人与具身智能正式进入国家战略级产业化阶段。</p>
+        <a class="signal-source" href="https://www.gov.cn/lianbo/202606/content_7071714.htm" target="_blank">📎 中国政府网 · 专项行动启动</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">突破</span>
+          <span class="signal-title">跨维智能Dexterity-BEV：BEV范式进入具身智能</span>
+        </div>
+        <p>跨维智能发布Dexterity-BEV，将自动驾驶BEV（Bird's Eye View）范式推进到具身智能数据基建层。技术核心是将多视角RGB、机器人状态、目标动作对齐到统一三维空间，2D视觉编码器升级为带顶点图与顶点谱的3D坐标编码。在LIBERO、RoboTwin 2.0仿真及四类真实双臂机器人平台验证中，跨视角/跨基座/跨场景扰动下，传统2D VLA成功率明显下滑，Dexterity-BEV仍保持稳定。标志具身智能从"堆数据阶段"进入"建数据秩序阶段"。</p>
+        <a class="signal-source" href="https://txtmix.com/posts/news/ai-morning-news-2026-06-13/" target="_blank">📎 AI早报 · 2026-06-13</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📦 新产品 -->
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">荣耀Robot Phone机器人手机亮相；限定手柄今日开售</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">荣耀Robot Phone机器人手机三季度上市，上海电影节实拍画面公布</span>
+        </div>
+        <p>荣耀机器人手机Robot Phone于今年3月发布，将于三季度正式上市。该设备顶部配备三轴云台相机，搭载2亿像素传感器，可向前/向后翻转，方便自拍或拍摄物体；支持AI物体追踪、AI视频剪辑与智能拍摄；具备实时感知与补偿功能确保画面稳定。6月13日，荣耀正式成为第28届上海国际电影节官方手机摄影摄像合作伙伴，ELLEMEN睿士杂志使用Robot Phone拍摄电影节现场。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/tech/digi/2026-06-13/doc-inichhan9483988.shtml" target="_blank">📎 新浪财经 · 荣耀Robot Phone实拍画面</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">外设</span>
+          <span class="signal-title">索尼绝地潜兵2限定版DualSense手柄今日发售</span>
+        </div>
+        <p>索尼绝地潜兵2限定版DualSense无线手柄于6月13日正式发售，售价639元。设计高度契合游戏世界观：黑灰与明黄双色拼接、做旧磨损质感、超级地球标志触控板。同步发售的还有限定版PS5主机外壳。</p>
+        <a class="signal-source" href="https://diy.zol.com.cn/1197/11971118.html" target="_blank">📎 中关村在线 · 限定手柄发售</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">模型</span>
+          <span class="signal-title">月之暗面Kimi K2.7-Code发布并登顶HuggingFace</span>
+        </div>
+        <p>月之暗面发布Kimi K2.7-Code编程模型，1.1T参数MoE（每次激活32B），256K上下文，支持图像/视频输入，原生INT4量化。登顶HuggingFace Trending。虽然全面超越K2.6，但与GPT-5.5和Claude Opus 4.8仍有差距。1M token输入6.5元、输出27元，与K2.6同价。</p>
+        <a class="signal-source" href="https://www.saiita.com.cn/technology-consulting/2026-june-tech-news.html" target="_blank">📎 Saiita科技资讯 · 2026年6月13日</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📝 大仙注记 -->
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(255,215,0,.15);color:#FFD700;">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>SpaceX的IPO是一个历史性时刻——不仅是全球史上最大规模IPO，更标志着太空经济从"政府主导"正式进入"资本驱动"时代。马斯克个人财富突破1万亿美元，这不仅是个人成就，更代表科技资本对整个人类未来的定价权。</p>
+      <p style="margin-top:10px;">AI编程Agent领域正在经历"光鲜发布→社区暴雷→快速修复"的循环。小米MiMo Code开源首日登顶GitHub，但自动卸载全局包、内存泄露等问题暴露了Coding Agent从demo到生产环境的巨大鸿沟。这提醒我们：Agent的"可用性"比"跑分"更重要。</p>
+      <p style="margin-top:10px;">Claude Fable 5的"过度拒绝"争议则揭示了AI安全的根本矛盾：安全分类器越严格，模型的实际能力边界就越模糊。当"cancer"都成为敏感词时，科学研究的价值就被商业安全策略所压制。这是所有大模型厂商都将面临的治理困境。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>每日未来情报 · 由龙大仙与谦哥共同策划</p>
+    <p style="margin-top:6px;font-size:.8rem;">信息来源：东方财富、AI早报、中国政府网、新浪财经、中关村在线等</p>
+    <p style="margin-top:12px;"><a href="index.html">← 返回 Ponghood 主页</a></p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+
+</body>
+</html>
