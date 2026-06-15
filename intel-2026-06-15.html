@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-06-15</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+
+    .hero {
+      background: var(--dark);
+      padding: 90px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero .stat { text-align: center; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { background: var(--card); color: var(--text); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .signal-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1px;
+    }
+    .signal-source:hover { color: var(--text); }
+
+    .note-card {
+      background: rgba(26,115,232,.08);
+      border-left: 4px solid var(--accent1);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .signal { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年6月15日 · 星期一</div>
+      <p style="color:var(--muted);max-width:640px;margin:0 auto;font-size:.95rem;">
+        Meta Horizon Worlds VR版今日正式关闭，烧光700亿后挥别元宇宙；燧原科技科创板过会，国产AI芯片龙头冲刺资本市场；理想汽车LivisDay发布会宣告全面进军具身智能。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">10</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">深度源</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+
+  <!-- 🤖 AI趋势 -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Meta AI成本失控被迫限流；OpenAI GPT-5.6本月发布；华为云发布Agentic AI全链路产品</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">重磅</span>
+          <span class="signal-title">Meta AI成本失控：员工为KPI疯狂消耗Token，6500名工程师被强制调岗</span>
+        </div>
+        <p>Meta内部AI使用成本全面失控，员工为绩效考核疯狂消耗Token，推动公司2026年AI相关支出飙升至数十亿美元。面对不断膨胀的账单，Meta被迫设定使用上限、上线实时监控系统。更严峻的是组织危机：Applied AI部门约6500名工程师被强制调岗，工作内容从产品开发降级为生成测试任务；一场数千名员工参与的直播会议中，员工以粗口打断演讲直指AI高管。CEO扎克伯格承认"犯了错误"，承诺调整管理架构。AI行业正从"拼能力"转向"拼成本"。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1868015768461773212" target="_blank">📎 华尔街见闻 · Meta限制AI使用量</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">模型</span>
+          <span class="signal-title">OpenAI GPT-5.6本月发布：上下文扩至150万Token，酝酿大幅降价</span>
+        </div>
+        <p>OpenAI首席科学家确认，GPT-5.6将于6月底前正式发布，核心升级为上下文窗口扩展至150万Token，可直接处理整本书级别的文本。为应对Anthropic Claude系列竞争，OpenAI正酝酿大幅下调API定价，企业级AI应用成本有望进一步降低，推动全民AI普惠加速。此前Claude Fable 5在编程评测中全面领先GPT-5.5，迫使OpenAI加速迭代。</p>
+        <a class="signal-source" href="https://gitcode.csdn.net/6a2f943a662f9a54cb7f42c7.html" target="_blank">📎 CSDN · 2026年6月15日科技热点</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">生态</span>
+          <span class="signal-title">华为云INSPIRE创想者大会：发布Agentic AI全链路产品，搭建本土化智能体底座</span>
+        </div>
+        <p>华为云INSPIRE创想者大会在上海举办，发布覆盖底层算力、模型平台、行业应用全链路的Agentic AI新产品。华为云CEO周跃峰表示："我们不在乎Token总量，也不在乎收入总量，更在乎每一个词元背后生产力的提升。"核心战略是脱离"万国牌"算力依赖，从实践、技术、生态三大维度搭建本土化智能体能力底座，标志着国产AI从"跟跑"进入智能体时代的自主构建阶段。</p>
+        <a class="signal-source" href="http://k.sina.com.cn/article_7857201856_1d45362c001906snya.html" target="_blank">📎 新浪财经 · 华为云INSPIRE大会</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🥽 VR动态 -->
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">Meta Horizon Worlds VR版今日正式关闭，烧光700亿后正式挥别元宇宙</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">关闭</span>
+          <span class="signal-title">Meta Horizon Worlds VR版今日正式关闭，创作者无法再构建VR世界</span>
+        </div>
+        <p>当地时间6月15日，Meta旗下Horizon Worlds VR版正式关闭，创作者将无法在VR环境中构建、发布或更新任何世界。该应用仍将存在，但仅作为智能手机端体验。这是Meta元宇宙战略的重大收缩：Reality Labs 2025年营业亏损超过190亿美元，收入仅约22亿美元，亏损约为收入的8.6倍。与之形成鲜明对比的是，Ray-Ban Meta智能眼镜已成为Meta真正的商业亮点。Meta正从"VR优先的元宇宙"向"AI优先的多平台"战略转型。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1867784859000382508" target="_blank">📎 百度 · Horizon Worlds VR版正式关闭</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🎮 游戏设计 -->
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">《绍宋：还我河山》真人互动影游首曝；《战争机器：事变日》PC配置公布</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">首曝</span>
+          <span class="signal-title">《绍宋：还我河山》真人互动影游首曝，玩家扮演宋高宗与岳飞并肩抗金</span>
+        </div>
+        <p>6月15日，真人互动影游《绍宋：还我河山》正式官宣首曝，预告片与宣传海报同步上线。作品改编自阅文集团起点中文网作者榴弹怕水的热门小说《绍宋》，由互动之星、猫眼娱乐、万维猫、三花猫影视联合出品。玩家将穿越至靖康之变后的乱世南宋，成为临危受命的宋高宗赵构，面对一心议和的满朝文武与金国铁骑兵临城下的险境，与岳飞、宗泽、韩世忠等千古名将并肩，亲手做出可能改变历史的抉择。Steam平台预约通道已开放。</p>
+        <a class="signal-source" href="https://www.3dmgame.com/news_32_1/" target="_blank">📎 3DM · 《绍宋：还我河山》首曝</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">配置</span>
+          <span class="signal-title">《战争机器：事变日》PC配置要求公布，10月6日发售</span>
+        </div>
+        <p>The Coalition工作室与Xbox游戏工作室公布《战争机器：事变日》PC官方配置要求。最低配置：64位Windows 10 22H2、AMD锐龙5 2600X或英特尔酷睿i7-处理器。游戏将于2026年10月6日正式发售，作为系列前传讲述战争爆发首日的故事。</p>
+        <a class="signal-source" href="http://k.sina.com.cn/article_7857201856_1d45362c001906tj70.html" target="_blank">📎 IT之家 · 战争机器PC配置公布</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔬 新科技 -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">燧原科技科创板过会；理想汽车全面进军具身智能；人形机器人专项行动启动</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">IPO</span>
+          <span class="signal-title">燧原科技6月15日科创板过会：国产AI算力芯片龙头，三年营收复合增长81%</span>
+        </div>
+        <p>上海证券交易所上市审核委员会于6月15日召开审议会议，燧原科技科创板IPO申请顺利过会。公司是国内专注云端AI芯片自主研发的领军企业，2023-2025年营业收入从3.01亿元增长至9.90亿元，三年复合增长率81.32%；净亏损从16.65亿元收窄至11.64亿元。公司坚持DSA自主架构、软硬件全栈自研，深度绑定腾讯等头部互联网客户。拟募资60亿元，用于五代/六代AI芯片研发及产业化。预计2026年或2027年实现合并报表盈利。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1867765605329323278" target="_blank">📎 证券时报 · 燧原科技6月15日上会</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">具身智能</span>
+          <span class="signal-title">理想汽车LivisDay发布会：全面进军具身智能，年中发布双轮机器人</span>
+        </div>
+        <p>理想汽车于6月15日举办LivisDay软件与人工智能发布会，CEO李想正式回应"不务正业"质疑，宣布全面进军具身智能。理想认为"基于汽车形态的具身智能可能是第一个进入物理世界的人工智能机器人"。已规划两款机器人产品：双轮机器人将于2026年中发布，面向工厂制造场景；双足人形机器人也在规划中。李想表示最晚2028年实现L4自动驾驶落地，目标成为全球不超过3家的AI领先公司之一。四大业务布局：基座模型、芯片、操作系统、具身智能。</p>
+        <a class="signal-source" href="https://www.d1ev.com/newsflash/302704" target="_blank">📎 第一电动 · 理想汽车AI发布会</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">政策</span>
+          <span class="signal-title">人形机器人实景实训专项行动落地，开普勒建成国内唯一工业实景训练场</span>
+        </div>
+        <p>工信部、国资委联合启动的2026年度人形机器人与具身智能实景实训专项行动正式进入实施阶段，覆盖北京、天津、上海等10个省市。行动聚焦工业、服务、特种等领域重点场景，部署打造实景实训空间、组建创新应用联合体等六项重点任务，加速构建"实景实训—数据沉淀—产品迭代—规模部署"闭环。开普勒已建成国内唯一工业实景人形机器人训练场，标志着人形机器人从实验室走向工厂的关键一步。</p>
+        <a class="signal-source" href="https://www.cinn.cn/hz/2026/06-15/xDLejzXk.html" target="_blank">📎 中国工业新闻网 · 专项行动落地</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📦 新产品 -->
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">理想汽车具身智能战略发布；燧原科技IPO过会；GPT-5.6即将发布</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">机器人</span>
+          <span class="signal-title">理想汽车公布具身智能产品路线图：双轮机器人年中发布</span>
+        </div>
+        <p>理想汽车在LivisDay发布会上公布具身智能产品路线图：2026年中发布面向工厂的双轮机器人，双足人形机器人同步规划中。公司定位为"基于汽车形态的具身智能"。</p>
+        <a class="signal-source" href="https://www.d1ev.com/newsflash/302704" target="_blank">📎 第一电动 · 理想汽车发布会</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">芯片</span>
+          <span class="signal-title">燧原科技科创板过会：募资60亿元用于五代/六代AI芯片</span>
+        </div>
+        <p>燧原科技6月15日科创板IPO过会，拟募资60亿元用于基于五代AI芯片系列产品研发及产业化项目、基于六代AI芯片系列产品研发及产业化项目、先进人工智能软硬件协同创新项目等。</p>
+        <a class="signal-source" href="https://finance.eastmoney.com/a/202606093764833516.html" target="_blank">📎 东方财富 · 燧原科技IPO</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">模型</span>
+          <span class="signal-title">OpenAI GPT-5.6即将发布：150万Token超长上下文</span>
+        </div>
+        <p>OpenAI首席科学家确认GPT-5.6将于6月底前发布，上下文窗口扩至150万Token，可直接处理整本书级别文本；同时酝酿大幅下调API定价。</p>
+        <a class="signal-source" href="https://gitcode.csdn.net/6a2f943a662f9a54cb7f42c7.html" target="_blank">📎 CSDN · 科技热点</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📝 大仙注记 -->
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(255,215,0,.15);color:#FFD700;">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>Meta关闭Horizon Worlds VR版是一个标志性事件——烧光700亿美元后，Meta终于承认VR社交平台的商业化失败。这不是VR技术的失败，而是"元宇宙叙事"的失败。Ray-Ban智能眼镜的成功证明：AI+轻量化硬件才是正确的路径，而非沉浸式虚拟世界。Meta的战略转向（从VR优先到AI优先）值得所有科技公司深思。</p>
+      <p style="margin-top:10px;">燧原科技科创板过会是国产AI芯片的里程碑。DSA架构区别于英伟达GPGPU路线，坚持全栈自研，这代表了国产算力"换道超车"的尝试。但三年累计亏损超36亿、尚未盈利的 reality，也提醒我们：AI芯片是一场资本密集型马拉松，不是短跑。</p>
+      <p style="margin-top:10px;">理想汽车进军具身智能，是国内车企AI化的最新样本。从"移动的家"到"物理世界的AI机器人"，李想的战略野心清晰可见。但问题是：汽车公司做机器人，是核心能力的自然延伸，还是资本故事的新包装？2026年中双轮机器人发布时，答案会逐渐清晰。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>每日未来情报 · 由龙大仙与谦哥共同策划</p>
+    <p style="margin-top:6px;font-size:.8rem;">信息来源：华尔街见闻、证券时报、第一电动、华为云、3DM、IT之家等</p>
+    <p style="margin-top:12px;"><a href="index.html">← 返回 Ponghood 主页</a></p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+
+</body>
+</html>
