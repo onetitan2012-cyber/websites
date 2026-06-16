@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医迹 iSaveMe 隐私政策</title>
+  <meta name="description" content="医迹 iSaveMe 的隐私政策页面，说明本地健康记录、图片识别、权限使用、备份与分享方式。">
+  <style>
+    :root {
+      --bg: #f5f8f7;
+      --surface: #ffffff;
+      --surface-soft: #eef6f4;
+      --line: #d9e5e1;
+      --text: #18312c;
+      --muted: #5f7a73;
+      --brand: #2d8f7b;
+      --brand-deep: #1f6456;
+      --accent: #78c8b7;
+      --warn: #b95d3b;
+      --shadow: 0 18px 48px rgba(16, 56, 49, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(120, 200, 183, 0.18), transparent 32%),
+        linear-gradient(180deg, #f8fbfa 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 18px;
+      left: 18px;
+      z-index: 20;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(24, 49, 44, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 30px rgba(16, 56, 49, 0.08);
+    }
+
+    .back-home:hover {
+      color: var(--brand-deep);
+      border-color: rgba(45, 143, 123, 0.28);
+      transform: translateX(-2px);
+    }
+
+    .back-home svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .hero {
+      padding: 108px 24px 56px;
+    }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(45, 143, 123, 0.98), rgba(31, 100, 86, 0.98));
+      color: #f5fffc;
+      border-radius: 28px;
+      padding: 42px 40px;
+      box-shadow: 0 24px 64px rgba(20, 82, 71, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 86% 20%, rgba(255, 255, 255, 0.18), transparent 20%),
+        radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.12), transparent 24%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      font-size: 1.02rem;
+      max-width: 640px;
+      color: rgba(245, 255, 252, 0.88);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+      font-size: 14px;
+      color: rgba(245, 255, 252, 0.82);
+    }
+
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    .summary-card,
+    .section-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .summary-card {
+      margin-top: -22px;
+      position: relative;
+      z-index: 2;
+      padding: 24px 24px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--brand-deep);
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .summary-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 14px;
+      align-items: start;
+      font-size: 14px;
+    }
+
+    .summary-item strong {
+      color: var(--text);
+    }
+
+    .summary-item span {
+      color: var(--muted);
+    }
+
+    .section-list {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .section-card {
+      padding: 28px 26px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.32;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      margin-top: 14px;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    li {
+      font-size: 15px;
+    }
+
+    .notice {
+      margin-top: 28px;
+      padding: 18px 18px 18px 20px;
+      border-left: 4px solid var(--warn);
+      background: #fff6f2;
+      border-radius: 0 14px 14px 0;
+    }
+
+    .notice strong {
+      display: block;
+      color: var(--warn);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .notice p {
+      color: #785a4d;
+    }
+
+    footer {
+      max-width: 860px;
+      margin: 40px auto 72px;
+      padding: 0 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    footer a {
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(45, 143, 123, 0.25);
+    }
+
+    footer a:hover {
+      color: var(--brand-deep);
+      border-color: rgba(45, 143, 123, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      .hero {
+        padding: 88px 16px 40px;
+      }
+
+      .hero-inner {
+        padding: 32px 22px;
+        border-radius: 22px;
+      }
+
+      .main {
+        padding: 0 16px 56px;
+      }
+
+      .summary-card {
+        padding: 20px 18px;
+      }
+
+      .section-card {
+        padding: 22px 18px;
+      }
+
+      .summary-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">医迹 iSaveMe · Privacy Policy</div>
+      <h1>医迹 iSaveMe 隐私政策</h1>
+      <p class="hero-subtitle">
+        医迹 iSaveMe 是一个用于个人和家庭成员记录、整理和分享就医资料的本地工具。当前版本不提供医疗诊断、问诊或治疗建议。
+      </p>
+      <div class="hero-meta">
+        <span>更新日期：2026-06-16</span>
+        <span>适用版本：当前 TestFlight 与后续公开版本</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="summary-card" aria-label="摘要">
+      <div class="summary-title">简要说明</div>
+      <div class="summary-list">
+        <div class="summary-item">
+          <strong>数据保存方式</strong>
+          <span>成员、记录、主题、摘要和图片资料默认保存在用户设备本地。</span>
+        </div>
+        <div class="summary-item">
+          <strong>开发者收集</strong>
+          <span>当前版本不收集健康资料、照片、成员信息、备份文件或使用行为数据。</span>
+        </div>
+        <div class="summary-item">
+          <strong>图片识别方式</strong>
+          <span>病例图片文字识别使用设备本地能力完成，不上传到开发者服务器。</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-list">
+      <section class="section-card">
+        <div class="section-label">Data Storage</div>
+        <h2>数据保存方式</h2>
+        <ul>
+          <li>你创建的成员、健康记录、病情主题、就医摘要和图片资料保存在你的设备本地。</li>
+          <li>App 当前不提供账号系统、云同步或开发者服务器上传功能。</li>
+          <li>病例图片文字识别使用设备本地能力完成，不上传到开发者服务器。</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-label">Data Collection</div>
+        <h2>数据收集</h2>
+        <p>当前版本中，开发者不收集你的健康资料、照片、成员信息、就医记录、备份文件或使用行为数据。</p>
+        <ul>
+          <li>App 不用于跨 App 或跨网站跟踪用户。</li>
+          <li>当前版本没有开发者服务器保存你的医疗资料。</li>
+          <li>如果未来增加云同步、账号系统或统计服务，本页面会同步更新。</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-label">Permissions</div>
+        <h2>权限使用</h2>
+        <ul>
+          <li>相机权限：用于拍摄并保存你的病历和检查资料。</li>
+          <li>相册权限：用于选择并保存你的病历和检查资料。</li>
+          <li>文件保存和导入：通过 iOS 系统文件选择器完成，用于用户主动导出备份、恢复备份或分享摘要。</li>
+        </ul>
+      </section>
+
+      <section class="section-card">
+        <div class="section-label">Backup & Sharing</div>
+        <h2>备份与分享</h2>
+        <p>你可以主动导出完整备份，也可以主动分享文字摘要或 PDF 摘要。是否导出、导出到哪里、分享给谁，由你自己决定。</p>
+        <ul>
+          <li>备份文件可能包含健康记录、成员信息、病情主题和图片资料，请只保存到可信位置。</li>
+          <li>分享内容由你决定，接收方和分享渠道由 iOS 系统分享面板处理。</li>
+        </ul>
+        <div class="notice">
+          <strong>重要提示</strong>
+          <p>当前导出的备份文件未加密。请不要把备份文件或摘要发送给无关人员。</p>
+        </div>
+      </section>
+
+      <section class="section-card">
+        <div class="section-label">Medical Disclaimer</div>
+        <h2>医疗免责声明</h2>
+        <p>医迹 iSaveMe 仅用于个人记录整理和就医沟通辅助，不能替代医生诊断、治疗建议或专业医疗服务。</p>
+      </section>
+
+      <section class="section-card">
+        <div class="section-label">Contact</div>
+        <h2>联系方式</h2>
+        <p>如对隐私政策或测试版本有疑问，请通过 App Store Connect / TestFlight 中填写的反馈邮箱联系开发者。</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>医迹 iSaveMe 隐私政策页面</p>
+    <p>发布后建议访问：<a href="https://ponghood.com/privacy-policy-isaveme.html">https://ponghood.com/privacy-policy-isaveme.html</a></p>
+  </footer>
+</body>
+</html>
