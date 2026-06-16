@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>医迹 iSaveMe</title>
+  <meta name="description" content="医迹 iSaveMe 是一个用于记录、整理和分享就医资料的本地工具，帮助个人和家庭保存自己的健康时间线。">
+  <style>
+    :root {
+      --bg: #f5f8f7;
+      --surface: #ffffff;
+      --line: #d9e5e1;
+      --text: #18312c;
+      --muted: #5f7a73;
+      --brand: #2d8f7b;
+      --brand-deep: #1f6456;
+      --brand-soft: #eef6f4;
+      --shadow: 0 18px 48px rgba(16, 56, 49, 0.08);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(120, 200, 183, 0.18), transparent 32%),
+        linear-gradient(180deg, #f8fbfa 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .hero {
+      padding: 72px 24px 40px;
+    }
+
+    .hero-inner {
+      max-width: 920px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(45, 143, 123, 0.98), rgba(31, 100, 86, 0.98));
+      color: #f5fffc;
+      border-radius: 28px;
+      padding: 42px 40px;
+      box-shadow: 0 24px 64px rgba(20, 82, 71, 0.22);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 86% 20%, rgba(255, 255, 255, 0.18), transparent 20%),
+        radial-gradient(circle at 10% 90%, rgba(255, 255, 255, 0.12), transparent 24%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-subtitle {
+      max-width: 680px;
+      font-size: 1.04rem;
+      color: rgba(245, 255, 252, 0.9);
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: 0.2s ease;
+      border: 1px solid transparent;
+    }
+
+    .button.primary {
+      background: #ffffff;
+      color: var(--brand-deep);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f5fffc;
+      border-color: rgba(255, 255, 255, 0.18);
+    }
+
+    .button:hover {
+      transform: translateY(-1px);
+    }
+
+    .main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+      margin-top: 24px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 26px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.45rem;
+      line-height: 1.32;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      margin-top: 14px;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    li {
+      font-size: 15px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      padding: 20px;
+      border-radius: 16px;
+      background: var(--brand-soft);
+      border: 1px solid rgba(45, 143, 123, 0.12);
+    }
+
+    .feature strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--brand-deep);
+      font-size: 15px;
+    }
+
+    .feature span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .path-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .path-item {
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: #f8fbfa;
+      border: 1px solid var(--line);
+    }
+
+    .path-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .path-item span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .inline-link {
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(45, 143, 123, 0.25);
+    }
+
+    .inline-link:hover {
+      color: var(--brand-deep);
+      border-color: rgba(45, 143, 123, 0.45);
+    }
+
+    footer {
+      max-width: 920px;
+      margin: 32px auto 72px;
+      padding: 0 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 48px 16px 28px;
+      }
+
+      .hero-inner {
+        padding: 32px 22px;
+        border-radius: 22px;
+      }
+
+      .main {
+        padding: 0 16px 56px;
+      }
+
+      .card {
+        padding: 22px 18px;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">医迹 iSaveMe · Health Timeline</div>
+      <h1>记录、整理、分享你的就医资料</h1>
+      <p class="hero-subtitle">
+        医迹 iSaveMe 是一个面向个人和家庭成员的本地健康记录工具。它帮助你保存就医记忆、回看历史病情，并在需要时快速整理给医生看。
+      </p>
+      <div class="hero-actions">
+        <a class="button primary" href="privacy-policy-isaveme.html">查看隐私政策</a>
+        <a class="button secondary" href="isaveme-support.html">支持与反馈</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="card">
+      <div class="section-label">Product Scope</div>
+      <h2>当前版本专注三件事</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <strong>记录一次就医</strong>
+          <span>支持手动录入，也支持通过拍照或选择病例图片生成待确认记录草稿。</span>
+        </div>
+        <div class="feature">
+          <strong>查看历史病情</strong>
+          <span>按成员、年份和时间线回看以往症状、就医经过、检查和用药信息。</span>
+        </div>
+        <div class="feature">
+          <strong>汇总给医生看</strong>
+          <span>围绕病情主题整理相关记录，并生成适合就医沟通的文字或 PDF 摘要。</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card">
+        <div class="section-label">Core Features</div>
+        <h2>核心能力</h2>
+        <ul>
+          <li>多成员管理，适合记录自己和家人的健康资料。</li>
+          <li>本地健康记录、图片资料、病情主题、就医摘要与备份恢复。</li>
+          <li>病例图片 OCR 识别在设备本地完成，生成待确认草稿，不自动诊断、不自动保存。</li>
+          <li>记录详情支持图片查看、编辑、删除与按主题关联。</li>
+          <li>支持导出文字摘要和 PDF 摘要，用于门诊、复诊和家人转述。</li>
+        </ul>
+      </section>
+
+      <section class="card">
+        <div class="section-label">Typical Flow</div>
+        <h2>典型使用路径</h2>
+        <div class="path-list">
+          <div class="path-item">
+            <strong>拍照建档</strong>
+            <span>拍摄病历、检查单或处方单，识别后生成一条待确认记录草稿，再由用户补充和保存。</span>
+          </div>
+          <div class="path-item">
+            <strong>时间线回看</strong>
+            <span>查看同一成员过去不同年份的病情记录，快速回忆什么时候、看过什么、当时怎么处理。</span>
+          </div>
+          <div class="path-item">
+            <strong>主题汇总</strong>
+            <span>把同一病情主题下的多条记录串起来，生成医生更容易快速扫读的摘要。</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="section-label">Privacy</div>
+        <h2>隐私与数据处理原则</h2>
+        <ul>
+          <li>当前版本的成员、记录、主题、摘要和图片资料默认保存在设备本地。</li>
+          <li>病例图片 OCR 使用 Apple Vision 在设备本地完成，不上传到开发者服务器。</li>
+          <li>当前版本不提供云同步和账号系统，也不收集健康记录内容用于分析或广告。</li>
+        </ul>
+        <div class="link-row">
+          <a class="inline-link" href="privacy-policy-isaveme.html">查看完整隐私政策</a>
+          <a class="inline-link" href="isaveme-support.html">查看支持与反馈页面</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <p>建议发布地址：<a class="inline-link" href="https://ponghood.com/isaveme.html">https://ponghood.com/isaveme.html</a></p>
+  </footer>
+</body>
+</html>
