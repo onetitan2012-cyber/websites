@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-06-17</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+
+    .hero {
+      background: var(--dark);
+      padding: 90px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero .stat { text-align: center; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { background: var(--card); color: var(--text); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .signal-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1px;
+    }
+    .signal-source:hover { color: var(--text); }
+
+    .note-card {
+      background: rgba(26,115,232,.08);
+      border-left: 4px solid var(--accent1);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .signal { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年6月17日 · 星期三</div>
+      <p style="color:var(--muted);max-width:640px;margin:0 auto;font-size:.95rem;">
+        DeepSeek首轮融资500亿创中国AI纪录；SpaceX 600亿美元收购Cursor，市值2.66万亿超越亚马逊；阿里发布Qwen-Robot具身大模型系列；AI行业从"拼能力"进入"拼成本"阶段。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">10</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">4</div><div class="stat-label">深度源</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+
+  <!-- 🤖 AI趋势 -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">DeepSeek融资500亿创纪录；SpaceX收购Cursor；大厂收紧AI预算</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">重磅</span>
+          <span class="signal-title">DeepSeek完成首轮融资500亿元，估值超500亿美元创中国AI纪录</span>
+        </div>
+        <p>6月16日，国产大模型企业DeepSeek完成成立以来首轮外部融资，总规模500亿元人民币（约74亿美元），刷新中国AI初创企业单轮融资最高纪录。投后估值突破500亿美元（约3380亿元），跻身国内头部AI企业估值第一梯队。融资结构极具特色：创始人梁文锋个人出资200亿元，是本轮最大单笔投资；腾讯投资100亿元，宁德时代、网易、京东、IDG等跟投。资金将用于算力集群扩建、多模态模型V4.1研发及海外市场拓展。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1868139667529623905" target="_blank">📎 百度 · DeepSeek完成500亿融资</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">并购</span>
+          <span class="signal-title">SpaceX 600亿美元收购AI编程独角兽Cursor，市值2.66万亿超越亚马逊</span>
+        </div>
+        <p>当地时间6月16日，SpaceX（NASDAQ: SPCX）向SEC提交文件，宣布以全股票交易方式收购AI编程工具Cursor开发商Anysphere，交易估值600亿美元。Cursor将并入xAI生态，补齐马斯克AI业务的开发工具板块。收购消息推动SpaceX股价持续上涨，截至6月16日收盘报201.8美元/股，涨幅4.83%。自以135美元发行价上市以来，三个交易日累计涨幅接近50%，市值达到2.66万亿美元，超越亚马逊跻身全球市值前五公司行列。</p>
+        <a class="signal-source" href="https://finance.eastmoney.com/a/202606163773262529.html" target="_blank">📎 东方财富 · SpaceX收购Cursor</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">行业</span>
+          <span class="signal-title">AI行业进入"降本阶段"：腾讯下调员工Token额度，大厂收紧AI预算</span>
+        </div>
+        <p>AI行业正从"粗放投入"转向"精细化运营"。腾讯已下调员工外部大模型调用额度，多数岗位月Token额度从万元级缩减至千元区间，仅核心算法岗位保持原有配额。此前Meta也因AI成本失控被迫设定使用上限、监控员工Token消耗。行业普遍认为，智能体任务会大幅消耗算力资源，各大企业开始管控无节制算力开销。这标志着AI行业从"拼能力"正式进入"拼成本"阶段。</p>
+        <a class="signal-source" href="https://iaipie.com/2026-%e5%b9%b4-6-%e6%9c%88-17-%e6%97%a5-ai-%e8%b5%84%e8%ae%af%e9%80%9f%e8%a7%88/" target="_blank">📎 无矩AI · 2026年6月17日资讯</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🥽 VR动态 -->
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">今日暂无重要VR动态</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">暂无</span>
+          <span class="signal-title">今日暂无重要VR/AR信号</span>
+        </div>
+        <p>6月17日VR/AR领域未出现重大产品发布或行业动态。Meta Horizon Worlds关闭后的行业调整仍在持续，头部厂商聚焦AI与轻量化硬件融合方向。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎮 游戏设计 -->
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">今日暂无重要游戏动态</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">暂无</span>
+          <span class="signal-title">今日暂无重要游戏信号</span>
+        </div>
+        <p>6月17日游戏行业未出现重大发布或行业事件。6月新游密集上线潮仍在持续，《逆水寒：新世界》《燕云十六声》等作品陆续进入测试或运营阶段。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔬 新科技 -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">阿里发布Qwen-Robot具身大模型；硅基流动融资20亿；摩尔线程开源MusaCoder</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">具身智能</span>
+          <span class="signal-title">阿里发布Qwen-Robot具身大模型系列：为机器人装上"手、脚、大脑"</span>
+        </div>
+        <p>6月16日，阿里巴巴正式发布千问具身智能大模型Qwen-Robot系列，这是千问大模型家族首个完整的具身智能模型体系。系列包含三大核心模型：VLA操作模型Qwen-RobotManip（灵巧的手）、VLN移动模型Qwen-RobotNav（认路的脚）、世界模型Qwen-RobotWorld（会思考的大脑）。三个模型既可单独部署，也能协同运转，适配人形机器人、自动驾驶设备等不同形态，打通大模型落地实体硬件的技术链路。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260616A04MFA00" target="_blank">📎 腾讯新闻 · 阿里发布Qwen-Robot</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">融资</span>
+          <span class="signal-title">硅基流动完成超20亿元B轮融资，MaaS赛道持续升温</span>
+        </div>
+        <p>6月16日，模型推理服务商硅基流动宣布完成超20亿元B轮融资，投资方包括携程战投、晶科能源控股、金蝶股份、联通新沃、盛奕资本（润泽集团产业资本）等，华兴资本担任独家财务顾问。随着智能体（Agent）热潮推动MaaS（模型即服务）赛道升温，模型推理服务成为AI产业链的关键基础设施。硅基流动为国内多家大模型厂商提供推理加速服务。</p>
+        <a class="signal-source" href="https://www.caixin.com/2026-06-17/102454873.html" target="_blank">📎 财新网 · T早报</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">开源</span>
+          <span class="signal-title">摩尔线程开源MusaCoder：首个基于国产GPU全栈训练的代码大模型</span>
+        </div>
+        <p>摩尔线程发布并开源面向GPU底层算子生成的专用代码大模型MusaCoder，包含9B和27B两个参数版本。这是业内首个基于国产全功能GPU全栈训练的代码大模型，依托摩尔线程自研MUSA架构和GPU硬件完成从训练到推理的全流程。在代码评测中，MusaCoder成绩超越多款海外主流模型，为国产AI芯片生态填补了关键一环。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/962/509.htm" target="_blank">📎 IT之家 · 摩尔线程开源MusaCoder</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">国际</span>
+          <span class="signal-title">德国人形机器人Neura Robotics获14亿美元融资，亚马逊英伟达参投</span>
+        </div>
+        <p>德国人形机器人企业Neura Robotics完成14亿美元融资，亚马逊、英伟达等科技巨头参与投资。该公司专注于工业场景人形机器人研发，与开普勒、Figure AI等形成全球人形机器人竞争格局。同期，深朴智能等国内机器人公司也完成数亿元Pre-A轮融资，具身智能赛道全球资本热度持续攀升。</p>
+        <a class="signal-source" href="https://iaipie.com/2026-%e5%b9%b4-6-%e6%9c%88-17-%e6%97%a5-ai-%e8%b5%84%e8%ae%af%e9%80%9f%e8%a7%88/" target="_blank">📎 无矩AI · 2026年6月17日资讯</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📦 新产品 -->
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">火山引擎发布Seedance 2.0 mini视频生成模型；MiniMax接入支付宝Token Pay</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">视频模型</span>
+          <span class="signal-title">火山引擎发布Seedance 2.0 mini：单秒生成成本约5毛钱</span>
+        </div>
+        <p>6月16日，火山引擎旗下火山方舟体验中心上线Seedance 2.0 mini视频生成模型，并将于近期推出API服务。该模型定位为高性价比视频生成方案，面向更广泛的视频创作与规模化生产需求。定价极具竞争力：图生视频0.023元/千tokens，视频生视频0.014元/千tokens；按720P规格折算，单秒生成成本约0.5元，相较前代成本直砍50%。</p>
+        <a class="signal-source" href="https://baijiahao.baidu.com/s?id=1868121166969625195" target="_blank">📎 百度 · 火山引擎发布Seedance 2.0 mini</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">支付</span>
+          <span class="signal-title">MiniMax M3大模型接入支付宝Token Pay，打通AI付费链路</span>
+        </div>
+        <p>MiniMax最新M3大模型接入支付宝Token Pay服务，成为首批打通AI模型与支付体系的厂商。用户可直接通过智能体完成付费订阅、工具调用结算，完善大模型商业化付费链路。这标志着AI应用从"免费试用"向"按需付费"的商业模式转型加速。</p>
+        <a class="signal-source" href="https://iaipie.com/2026-%e5%b9%b4-6-%e6%9c%88-17-%e6%97%a5-ai-%e8%b5%84%e8%ae%af%e9%80%9f%e8%a7%88/" target="_blank">📎 无矩AI · 2026年6月17日资讯</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">大会</span>
+          <span class="signal-title">2026世界人工智能大会7月将在上海举办</span>
+        </div>
+        <p>6月17日，国新办新闻发布会宣布，2026世界人工智能大会暨人工智能全球治理高级别会议将于今年7月在上海举办。大会期待以本次为契机，同各方进一步加强国际人工智能合作。这是中国AI行业年度最高规格的国际会议，预计将有全球头部AI企业和研究机构参与。</p>
+        <a class="signal-source" href="https://www.news.cn/tech/20260617/d9fe4b3886504512bb9c9dbdb0e273f8/c.html" target="_blank">📎 新华社 · 世界人工智能大会</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📝 大仙注记 -->
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(255,215,0,.15);color:#FFD700;">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>DeepSeek的500亿融资是一个里程碑事件——不仅刷新了中国AI单轮融资纪录，更值得注意的是创始人梁文锋个人出资200亿的"反向投资"结构。这种将资金注入由创始人管理的有限合伙企业而非公司本体的设计，确保了梁文锋继续保持绝对控制权。这揭示了中国AI创业的一个新范式：创始人不再只是技术领袖，更是最大的财务投资人。</p>
+      <p style="margin-top:10px;">SpaceX收购Cursor的600亿美元估值，让这家成立仅两年的AI编程工具公司跻身全球最有价值的初创企业之列。而SpaceX上市三天市值涨50%的疯狂表现，说明市场正在用"AI+太空"的叙事重新定价马斯克帝国。Cursor并入xAI生态后，将与Grok形成"模型+工具"的闭环，这对GitHub Copilot和Claude Code构成直接威胁。</p>
+      <p style="margin-top:10px;">AI行业进入"降本阶段"的信号值得关注：腾讯、Meta等大厂相继收紧AI预算，从"万元级Token"到"千元级Token"的缩减，标志着行业从"疯狂投入期"进入"ROI考核期"。这与2000年互联网泡沫后的"精实运营"逻辑相似——先烧钱抢市场，再精细算成本。对AI创业者来说，这意味着"能省钱的AI"比"最强的AI"更有商业价值。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>每日未来情报 · 由龙大仙与谦哥共同策划</p>
+    <p style="margin-top:6px;font-size:.8rem;">信息来源：财新网、百度、东方财富、腾讯新闻、IT之家、新华社、无矩AI等</p>
+    <p style="margin-top:12px;"><a href="index.html">← 返回 Ponghood 主页</a></p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+
+</body>
+</html>
