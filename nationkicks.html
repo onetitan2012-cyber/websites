@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NationKicks — 8国主题概念足球鞋设计</title>
+  <meta name="description" content="以8个足球强国的文化基因为灵感，打造的原创概念足球鞋设计系列。包含巴西、阿根廷、德国、法国、荷兰、英格兰、中国、日本8款主题设计。">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    :root {
+      --bg: #0a0e17;
+      --surface: #111827;
+      --card: #1a2332;
+      --card-hover: #1e293b;
+      --border: rgba(255,255,255,.08);
+      --border-h: rgba(255,255,255,.15);
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --accent: #3b82f6;
+      --accent2: #06b6d4;
+      --gold: #fbbf24;
+      --green: #22c55e;
+      --red: #ef4444;
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+    
+    html { scroll-behavior: smooth; }
+    
+    body {
+      font-family: 'PingFang SC', -apple-system, 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
+    /* Back to Home */
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(17,24,39,.9);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all .2s;
+    }
+    .back-home:hover {
+      color: var(--text);
+      background: rgba(255,255,255,.1);
+      border-color: rgba(255,255,255,.2);
+    }
+    .back-home svg { width: 16px; height: 16px; }
+    
+    /* Hero */
+    .hero {
+      position: relative;
+      padding: 100px 24px 80px;
+      text-align: center;
+      background: 
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(34,197,94,.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(59,130,246,.1) 0%, transparent 50%);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      background: rgba(34,197,94,.12);
+      border: 1px solid rgba(34,197,94,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: #4ade80;
+      letter-spacing: .05em;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero h1 {
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 800;
+      margin-bottom: 16px;
+      line-height: 1.2;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 32px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .hero-meta {
+      display: inline-flex;
+      gap: 24px;
+      font-size: .85rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-meta span {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: .85rem;
+      color: var(--muted);
+      font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", "PingFang SC", -apple-system, sans-serif;
+    }
+    .hero-meta .flag {
+      font-size: 1.3em;
+      line-height: 1;
+      filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+    }
+    
+    /* Stats */
+    .stats-bar {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #22c55e, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-desc {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    
+    /* Intro */
+    .intro-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+    }
+    .lead {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      line-height: 1.9;
+      padding: 28px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border-left: 3px solid var(--green);
+    }
+    
+    /* Section */
+    .section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px;
+    }
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 28px;
+      background: linear-gradient(180deg, var(--green), var(--accent));
+      border-radius: 2px;
+    }
+    .section-subtitle {
+      color: var(--muted);
+      margin-bottom: 40px;
+      font-size: .95rem;
+    }
+    
+    /* Featured (Brazil) */
+    .featured-wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 60px;
+    }
+    .featured-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .featured-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 28px 32px;
+      border-bottom: 1px solid var(--border);
+    }
+    .featured-flag {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .featured-info h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+    .featured-info .design-name {
+      font-size: 1rem;
+      color: #4ade80;
+      font-weight: 600;
+      letter-spacing: .05em;
+    }
+    .featured-info .design-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .featured-badge {
+      margin-left: auto;
+      padding: 6px 14px;
+      background: rgba(251,191,36,.15);
+      border: 1px solid rgba(251,191,36,.3);
+      border-radius: 50px;
+      font-size: .75rem;
+      color: var(--gold);
+      white-space: nowrap;
+    }
+    .featured-gallery {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 0;
+    }
+    .featured-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 400px;
+    }
+    .featured-side {
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border);
+    }
+    .featured-side-img {
+      width: 100%;
+      height: 50%;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+    .featured-video {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      background: var(--card);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .featured-video video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .featured-video::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,.2);
+      pointer-events: none;
+    }
+    
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: all .3s ease;
+      cursor: pointer;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-h);
+      box-shadow: 0 20px 50px rgba(0,0,0,.3);
+    }
+    .card-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .card-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .card:hover .card-img-wrap img {
+      transform: scale(1.05);
+    }
+    .card-flag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 1.8rem;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.5));
+    }
+    .card-body {
+      padding: 20px 22px;
+    }
+    .card-country {
+      font-size: .8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+    .card-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .card-desc {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .card-tag {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 10px;
+      background: rgba(59,130,246,.12);
+      border: 1px solid rgba(59,130,246,.2);
+      border-radius: 6px;
+      font-size: .7rem;
+      color: #60a5fa;
+      letter-spacing: .02em;
+    }
+    
+    /* Design Story */
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+    .story-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .story-flag {
+      font-size: 2rem;
+    }
+    .story-header h4 {
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .story-header .name {
+      font-size: .85rem;
+      color: #4ade80;
+      font-weight: 600;
+    }
+    .story-card p {
+      color: #94a3b8;
+      font-size: .9rem;
+      line-height: 1.8;
+    }
+    .story-card .highlights {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .story-card .highlights span {
+      padding: 4px 10px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: .75rem;
+      color: var(--muted);
+    }
+    
+    /* Like */
+    .like-section {
+      padding: 40px 24px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 50px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.95);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 40px;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img, .lightbox video {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: var(--radius-sm);
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      color: white;
+      font-size: 36px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    
+    /* Responsive */
+    @media (max-width: 900px) {
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .featured-gallery { grid-template-columns: 1fr; }
+      .featured-main-img { min-height: 300px; }
+      .featured-side { flex-direction: row; }
+      .featured-side-img { height: 200px; border-bottom: none; border-right: 1px solid var(--border); }
+      .featured-video { height: 200px; }
+      .story-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .featured-side { flex-direction: column; }
+      .featured-side-img { border-right: none; border-bottom: 1px solid var(--border); }
+      .grid { grid-template-columns: 1fr; }
+      .hero { padding: 80px 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+    返回主页
+  </a>
+  
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">⚽ 原创概念设计</div>
+    <h1>NationKicks<br>国家主题概念足球鞋</h1>
+    <p class="hero-subtitle">以8个足球强国的文化基因为灵感，将国家精神注入战靴设计。每一双鞋，都是一部关于荣耀、传承与信仰的足球史诗。</p>
+    <div class="hero-meta">
+      <span><span class="flag">🇧🇷</span> 巴西</span>
+      <span><span class="flag">🇦🇷</span> 阿根廷</span>
+      <span><span class="flag">🇩🇪</span> 德国</span>
+      <span><span class="flag">🇫🇷</span> 法国</span>
+      <span><span class="flag">🇳🇱</span> 荷兰</span>
+      <span><span class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span> 英格兰</span>
+      <span><span class="flag">🇨🇳</span> 中国</span>
+      <span><span class="flag">🇯🇵</span> 日本</span>
+    </div>
+  </section>
+  
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stat-box">
+      <div class="stat-number">8</div>
+      <div class="stat-desc">国家主题</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">10</div>
+      <div class="stat-desc">设计图稿</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">1</div>
+      <div class="stat-desc">宣传视频</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-number">∞</div>
+      <div class="stat-desc">足球热爱</div>
+    </div>
+  </div>
+  
+  <!-- Intro -->
+  <section class="intro-section">
+    <div class="lead">
+      足球鞋从来不只是一双鞋。它是球员在绿茵场上的战甲，是国家荣耀的延伸，是球迷情感的寄托。本系列设计以8个足球强国的文化符号、自然风貌与足球精神为灵感，尝试将国家的灵魂注入鞋身——从巴西雨林的狂野韵律到德国黑森林的精密工业，从英格兰三狮的贵族骄傲到中国龙脉的东方气韵。每一款设计都是一次跨文化的设计对话。
+    </div>
+  </section>
+  
+  <!-- Featured: Brazil -->
+  <section class="section">
+    <h2 class="section-title">全案设计</h2>
+    <p class="section-subtitle">巴西 Amazon Samba 系列 — 完整设计链路展示，含主视觉、三视图、上脚场景及宣传视频</p>
+    
+    <div class="featured-wrap">
+      <div class="featured-card">
+        <div class="featured-header">
+          <div class="featured-flag">🇧🇷</div>
+          <div class="featured-info">
+            <h3>巴西 Brazil</h3>
+            <div class="design-name">Amazon Samba</div>
+            <div class="design-desc">亚马逊桑巴 — 狂野律动，足球之魂</div>
+          </div>
+          <div class="featured-badge">🎬 完整方案</div>
+        </div>
+        <div class="featured-gallery">
+          <img class="featured-main-img" src="images/Soccer-boots/Amazon%20samba.jpg" alt="Amazon Samba 主视觉" onclick="openLightbox(this.src)">
+          <div class="featured-side">
+            <img class="featured-side-img" src="images/Soccer-boots/Amazon%20samba%203view.jpg" alt="Amazon Samba 三视图" onclick="openLightbox(this.src)">
+            <img class="featured-side-img" src="images/Soccer-boots/Amazon%20samba%20on%20foot.jpg" alt="Amazon Samba 上脚场景" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+        <div style="padding: 24px 32px; border-top: 1px solid var(--border);">
+          <p style="color: #94a3b8; font-size: .95rem; line-height: 1.8;">
+            <strong style="color: #e2e8f0;">设计灵感：</strong>取自亚马逊雨林的蓬勃生机与桑巴舞蹈的律动节奏。鞋身以热带绿黄渐变为主调，象征巴西国旗与雨林的交织；鞋底纹理模拟亚马逊河流的蜿蜒走向，鞋面动态线条呼应桑巴舞步的旋转韵律。这是一双为拥有足球DNA的国度而生的战靴。
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Brazil Video -->
+    <div class="featured-wrap" style="padding-top: 24px;">
+      <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;">
+        <div style="padding: 20px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.2rem;">🎬</span>
+          <span style="font-weight: 600; font-size: 1rem;">Amazon Samba 宣传视频</span>
+        </div>
+        <div style="position: relative; padding-bottom: 56.25%; background: #000;">
+          <video controls style="position: absolute; inset: 0; width: 100%; height: 100%;" poster="images/Soccer-boots/Amazon%20samba.jpg">
+            <source src="images/Soccer-boots/amazon%20samba%20pv.mp4" type="video/mp4">
+            您的浏览器不支持视频播放。
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Grid: Other 7 Nations -->
+  <section class="section" style="padding-top: 20px;">
+    <h2 class="section-title">概念设计</h2>
+    <p class="section-subtitle">7国主题主视觉 — 点击可放大查看</p>
+    
+    <div class="grid">
+      <!-- Argentina -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/pampas%20eagle.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/pampas%20eagle.jpg" alt="Pampas Eagle">
+          <div class="card-flag">🇦🇷</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">Argentina</div>
+          <div class="card-name">Pampas Eagle</div>
+          <div class="card-desc">潘帕斯雄鹰 — 蓝白天空下的自由翱翔，以阿根廷天空与雄鹰姿态为灵感，鞋身流线如鹰翼展开。</div>
+          <div class="card-tag">蓝天白翼</div>
+        </div>
+      </div>
+      
+      <!-- Germany -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/black%20forest%20engine.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/black%20forest%20engine.jpg" alt="Black Forest Engine">
+          <div class="card-flag">🇩🇪</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">Germany</div>
+          <div class="card-name">Black Forest Engine</div>
+          <div class="card-desc">黑森林引擎 — 德意志精密工业的足球化身，黑色主调配以机械纹理，象征德国足球的效率与秩序。</div>
+          <div class="card-tag">精密工业</div>
+        </div>
+      </div>
+      
+      <!-- France -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/gallic%20blade.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/gallic%20blade.jpg" alt="Gallic Blade">
+          <div class="card-flag">🇫🇷</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">France</div>
+          <div class="card-name">Gallic Blade</div>
+          <div class="card-desc">高卢利刃 — 法兰西优雅的锋利一面，以高卢雄鸡与骑士精神为灵感，蓝红配色彰显浪漫与力量的融合。</div>
+          <div class="card-tag">高卢雄鸡</div>
+        </div>
+      </div>
+      
+      <!-- Netherlands -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/orange%20tide.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/orange%20tide.jpg" alt="Orange Tide">
+          <div class="card-flag">🇳🇱</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">Netherlands</div>
+          <div class="card-name">Orange Tide</div>
+          <div class="card-desc">橙潮 — 荷兰橙色风暴的足球宣言，以郁金香花海与橙色军团为灵感，鞋身如橙色浪潮席卷球场。</div>
+          <div class="card-tag">橙色风暴</div>
+        </div>
+      </div>
+      
+      <!-- England -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/three%20lions%20aegis.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/three%20lions%20aegis.jpg" alt="Three Lions Aegis">
+          <div class="card-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">England</div>
+          <div class="card-name">Three Lions Aegis</div>
+          <div class="card-desc">三狮之盾 — 英格兰足球的贵族荣耀，以三狮徽章与盾牌为灵感，白色主调配以金色狮纹，象征绅士与勇气的传承。</div>
+          <div class="card-tag">三狮荣耀</div>
+        </div>
+      </div>
+      
+      <!-- China -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/dragon%20vein%20rise.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/dragon%20vein%20rise.jpg" alt="Dragon Vein Rise">
+          <div class="card-flag">🇨🇳</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">China</div>
+          <div class="card-name">Dragon Vein Rise</div>
+          <div class="card-desc">龙脉崛起 — 东方龙魂的现代足球诠释，以中国龙图腾与山川龙脉为灵感，红金配色彰显大国崛起的磅礴气势。</div>
+          <div class="card-tag">龙魂东方</div>
+        </div>
+      </div>
+      
+      <!-- Japan -->
+      <div class="card" onclick="openLightbox('images/Soccer-boots/rising%20sun%20ronin.jpg')">
+        <div class="card-img-wrap">
+          <img src="images/Soccer-boots/rising%20sun%20ronin.jpg" alt="Rising Sun Ronin">
+          <div class="card-flag">🇯🇵</div>
+        </div>
+        <div class="card-body">
+          <div class="card-country">Japan</div>
+          <div class="card-name">Rising Sun Ronin</div>
+          <div class="card-desc">日出浪人 — 东瀛武士精神的足球演绎，以旭日与武士刀为灵感，简洁利落的线条体现日本设计的侘寂之美。</div>
+          <div class="card-tag">武士日出</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Design Story -->
+  <section class="section" style="padding-top: 20px;">
+    <h2 class="section-title">设计解读</h2>
+    <p class="section-subtitle">每个国家主题背后的文化与足球精神</p>
+    
+    <div class="story-grid">
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇧🇷</span>
+          <div>
+            <h4>巴西 · Amazon Samba</h4>
+            <div class="name">亚马逊桑巴</div>
+          </div>
+        </div>
+        <p>巴西足球的精髓在于自由与律动。设计提取亚马逊雨林的层层叠叠的绿色与桑巴舞蹈的旋转韵律，鞋身动态纹理仿佛雨林中涌动的生命力，黄绿渐变则直接呼应国旗色彩。这是为足球王国而生的战靴。</p>
+        <div class="highlights">
+          <span>雨林绿</span>
+          <span>桑巴黄</span>
+          <span>河流纹理</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇦🇷</span>
+          <div>
+            <h4>阿根廷 · Pampas Eagle</h4>
+            <div class="name">潘帕斯雄鹰</div>
+          </div>
+        </div>
+        <p>潘帕斯草原上的雄鹰是阿根廷足球的灵魂象征。设计以天蓝与纯白为主调，鞋身线条模拟鹰翼展开的流线姿态，象征梅西一代在蓝白天空下的自由翱翔。简洁、优雅、充满灵性。</p>
+        <div class="highlights">
+          <span>天空蓝</span>
+          <span>鹰翼流线</span>
+          <span>草原自由</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇩🇪</span>
+          <div>
+            <h4>德国 · Black Forest Engine</h4>
+            <div class="name">黑森林引擎</div>
+          </div>
+        </div>
+        <p>德国足球是效率与秩序的艺术。以黑森林的深邃与德国工业的精密为灵感，黑色主调配以机械纹理和金属质感，每一处细节都经过精密计算。这是为机器般运转的德意志战车打造的装备。</p>
+        <div class="highlights">
+          <span>黑森林</span>
+          <span>机械纹理</span>
+          <span>精密工业</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇫🇷</span>
+          <div>
+            <h4>法国 · Gallic Blade</h4>
+            <div class="name">高卢利刃</div>
+          </div>
+        </div>
+        <p>法兰西足球是浪漫与锋利的矛盾统一。以高卢雄鸡的骄傲与骑士剑刃的锋利为灵感，蓝红配色间流淌着贵族般的优雅。设计如同一柄出鞘的利刃，既优雅又致命。</p>
+        <div class="highlights">
+          <span>高卢蓝</span>
+          <span>骑士红</span>
+          <span>锋利剑刃</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇳🇱</span>
+          <div>
+            <h4>荷兰 · Orange Tide</h4>
+            <div class="name">橙潮</div>
+          </div>
+        </div>
+        <p>橙色是荷兰足球的基因。以郁金香的绚烂花海与橙色军团的狂热风暴为灵感，鞋身如橙色浪潮般席卷球场。全攻全守的足球哲学，在这双鞋上化作一道流动的橙色光芒。</p>
+        <div class="highlights">
+          <span>郁金香橙</span>
+          <span>全攻全守</span>
+          <span>浪潮纹理</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</span>
+          <div>
+            <h4>英格兰 · Three Lions Aegis</h4>
+            <div class="name">三狮之盾</div>
+          </div>
+        </div>
+        <p>现代足球的发源地，三狮徽章承载着最悠久的足球荣耀。以白色主调配以金色狮纹，鞋身如盾牌般坚固庄重。这是为绅士与战士并存的足球国度打造的信仰之靴。</p>
+        <div class="highlights">
+          <span>三狮金</span>
+          <span>贵族白</span>
+          <span>盾牌造型</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇨🇳</span>
+          <div>
+            <h4>中国 · Dragon Vein Rise</h4>
+            <div class="name">龙脉崛起</div>
+          </div>
+        </div>
+        <p>东方龙图腾的现代化足球演绎。以中国龙脉的蜿蜒气势与山川大地的磅礴为灵感，红金配色承载千年文化的厚重。这是为中国足球的崛起而设计的战靴，龙魂附体，势不可挡。</p>
+        <div class="highlights">
+          <span>中国红</span>
+          <span>龙脉金</span>
+          <span>图腾纹理</span>
+        </div>
+      </div>
+      
+      <div class="story-card">
+        <div class="story-header">
+          <span class="story-flag">🇯🇵</span>
+          <div>
+            <h4>日本 · Rising Sun Ronin</h4>
+            <div class="name">日出浪人</div>
+          </div>
+        </div>
+        <p>东瀛武士精神与现代足球的完美融合。以旭日旗的放射光芒与武士刀的锋利线条为灵感，极简设计中蕴含巨大的力量。日本足球的崛起，正是从这种匠人精神开始。</p>
+        <div class="highlights">
+          <span>旭日红</span>
+          <span>武士刃</span>
+          <span>极简侘寂</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Like -->
+  <div class="like-section">
+    <div id="like-component"></div>
+  </div>
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <p>NationKicks — 国家主题概念足球鞋设计</p>
+    <p style="margin-top: 8px; opacity: .7;">原创设计 · 概念展示 · 非商业产品</p>
+  </footer>
+  
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+  
+  <script>
+    function openLightbox(src) {
+      const lb = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      img.src = src;
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      document.getElementById('lightbox').classList.remove('active');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+  
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+</body>
+</html>
