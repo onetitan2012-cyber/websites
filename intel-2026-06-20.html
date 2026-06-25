@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-06-20</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;
+      --accent2:  #00897B;
+      --accent3:  #E8711A;
+      --accent4:  #6B3FA0;
+      --accent5:  #C62828;
+      --light:    #F5F7FA;
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+
+    .hero {
+      background: var(--dark);
+      padding: 90px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .hero .stat { text-align: center; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { background: var(--card); color: var(--text); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .signal-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-transform: uppercase;
+    }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1px;
+    }
+    .signal-source:hover { color: var(--text); }
+
+    .note-card {
+      background: rgba(26,115,232,.08);
+      border-left: 4px solid var(--accent1);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .signal { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年6月20日 · 星期六</div>
+      <p style="color:var(--muted);max-width:640px;margin:0 auto;font-size:.95rem;">
+        GPT-5.6系列有望下周登场，150万Token上下文狙击Mythos；马斯克获7800亿天价薪酬，SpaceX股价较IPO涨37%；谷歌全球首个AI艺术博物馆Dataland今日开馆。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">9</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">3</div><div class="stat-label">深度源</div></div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+
+  <!-- 🤖 AI趋势 -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">GPT-5.6系列有望下周登场，150万Token上下文狙击Mythos；马斯克获7800亿天价薪酬</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">重磅</span>
+          <span class="signal-title">GPT-5.6系列有望下周登场：150万Token上下文，定价仅为Anthropic一半</span>
+        </div>
+        <p>6月20日，科技媒体testingcatalog发布博文称，OpenAI有望下周（6月23日）推出GPT-5.6系列模型，涵盖mini、标准版以及Pro版。部分Pro订阅网友已在X平台发布推文，指出已支持访问GPT-5.6 Pro模型，首批输出质量大幅提升。性能方面，上下文窗口从100万tokens扩展至150万tokens，优化了长周期编码能力和Codex响应速度。在智能体编码工作中，GPT-5.6已优于Anthropic的Mythos系列，成为开发者新标杆。定价方面，OpenAI当前token价格仅为Anthropic的一半，且将直接发动价格战，在提升性能前提下进一步降价。</p>
+        <a class="signal-source" href="https://www.itbear.com.cn/html/2026-06/1403968.html" target="_blank">📎 IT之家 · GPT-5.6系列有望下周登场</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">资本</span>
+          <span class="signal-title">马斯克获7800亿天价薪酬，SpaceX股价较IPO涨37%总市值2.4万亿</span>
+        </div>
+        <p>6月20日，据券商中国援引外媒消息，全球首富埃隆·马斯克已全额行使其2018年特斯拉CEO薪酬方案，获得3.04亿股股票，账面收益约1160亿美元（约合人民币7800亿元），股票将锁定至2028年。同时，SpaceX周四盘中一度暴跌超10%，收盘跌幅收窄至3.56%，报185美元/股，总市值2.4万亿美元。最新股价较IPO发行价（135美元/股）仍上涨37%。SpaceX上市不到两周，市值已稳居全球前五。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/stock/wbstock/2026-06-20/doc-inieakfm3670491.shtml" target="_blank">📎 每日经济新闻 · 马斯克获7800亿天价薪酬</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent1);">行业</span>
+          <span class="signal-title">2026上半年具身智能融资460亿，288起融资但分配极度失衡</span>
+        </div>
+        <p>2026年上半年国内具身智能及机器人领域投融资数据显示，共发生288起融资事件，涉及226家企业和274家投资机构，披露融资额超460亿元。但分配方式极度失衡——20家企业"养肥"了绝大部分资金。一位美元基金合伙人在朋友圈转发千寻智能A+轮15亿融资新闻时配文"玩不起"，很快删除，这三个字足以道出2026年上半年具身智能赛道规则的变化。行业正从"技术验证"进入"量产交付"的硬核跨越。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/cj/2026-06-15/doc-inicnisv8294011.shtml" target="_blank">📎 新浪财经 · 460亿砸向具身智能</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🥽 VR动态 -->
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">谷歌全球首个AI艺术博物馆Dataland今日开馆，12亿像素超现实画面</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">开馆</span>
+          <span class="signal-title">谷歌全球首个AI艺术博物馆Dataland今日洛杉矶开馆，12亿像素超现实画面</span>
+        </div>
+        <p>6月20日，谷歌携手艺术家Refik Anadol打造的全球首个AI艺术博物馆Dataland在洛杉矶正式开馆。该博物馆位于Frank Gehry设计的The Grand LA综合体内，面积约2500平方米。Dataland是一个将数据转化为颜料、艺术实时演变的全感官生态系统。开幕展"Machine Dreams: Rainforest"由Large Nature Model驱动，该模型基于大量自然世界数据集训练，将复杂环境数据转化为12亿像素的超现实画面，使用Google Cloud工具协调GANs、扩散模型和Gemini等AI模型。这标志着AI从工具走向艺术创作的核心媒介。</p>
+        <a class="signal-source" href="https://finance.sina.com.cn/stock/t/2026-06-19/doc-inicxcuz1687906.shtml" target="_blank">📎 IT之家 · 谷歌打造全球首个AI艺术博物馆</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🎮 游戏设计 -->
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">2026夏日游戏季开启，索尼抢跑、微软押注新主机</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">行业</span>
+          <span class="signal-title">2026夏日游戏季开启：索尼抢跑、微软押注新主机、任天堂或缺席</span>
+        </div>
+        <p>2026年夏日游戏季从6月初开始，持续约两周。索尼今年抢跑，比主秀还早三天举办发布会。微软押注新主机战略，展示下一代硬件方向。值得注意的是，任天堂可能缺席本次夏日游戏季，将重心放在Switch 2的独占内容布局上。本季重点作品包括《逆水寒：新世界》《燕云十六声》《诡秘之主》等国产MMO，以及多款国际3A大作。游戏行业正经历从"硬件换代"到"内容为王"的转型。</p>
+        <a class="signal-source" href="https://www.myzaker.com/article/6a115519b15ec03e9432494a" target="_blank">📎 ZAKER · 2026夏日游戏季</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 🔬 新科技 -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">越疆将发布家庭AI人形机器人；世界人工智能大会7月上海举办</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+          <span class="signal-title">越疆将发布下一代陪伴交互AI人形机器人，以自研大模型重新定义家庭具身智能</span>
+        </div>
+        <p>深圳市越疆科技预告即将发布下一代陪伴交互AI人形机器人，宣告重新定义家庭具身智能赛道。这款新品以越疆全栈自研的"空弈 DobotWAM"具身大模型为智能大脑，具备理解人、适配人、服务人的全维度智能能力。专为家庭场景打造，外形亲和可爱，智力强大，语音交互流畅自然。这标志着人形机器人从工商业场景向真实家庭场景的里程碑式跨越，家庭具身智能赛道正式开启。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/965/270.htm" target="_blank">📎 IT之家 · 越疆下一代陪伴交互AI人形机器人</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">大会</span>
+          <span class="signal-title">2026世界人工智能大会7月17-20日上海举办，倒计时27天</span>
+        </div>
+        <p>6月17日，2026世界人工智能大会暨人工智能全球治理高级别会议倒计时30天发布会在世博滨江大酒店举行。大会将于7月17日至20日在上海举办，主题、全新五大生态矩阵、首个AI生态开放平台"Hi WAIC"APP等集中发布。这是中国AI行业年度最高规格的国际会议，预计将有全球头部AI企业和研究机构参与，聚焦AI全球治理与产业落地。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/1035472711_122558976" target="_blank">📎 搜狐 · 2026世界人工智能大会</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📦 新产品 -->
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">GPT-5.6系列即将发布；Dataland AI艺术博物馆开馆</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">模型</span>
+          <span class="signal-title">OpenAI GPT-5.6系列即将发布：mini/标准/Pro三版本，150万Token上下文</span>
+        </div>
+        <p>GPT-5.6系列预计6月23日发布，涵盖mini、标准版、Pro版三个版本。上下文窗口从100万扩展至150万tokens，优化长周期编码能力和Codex响应速度。部分Pro订阅用户已可提前访问。在智能体编码工作中已优于Anthropic Mythos系列。定价仅为Anthropic一半，OpenAI将发动价格战。</p>
+        <a class="signal-source" href="https://news.qq.com/rain/a/20260616A05NRO00" target="_blank">📎 腾讯新闻 · GPT-5.6将于6月23日发布</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">艺术</span>
+          <span class="signal-title">谷歌Dataland全球首个AI艺术博物馆今日开馆，2500平米全感官生态</span>
+        </div>
+        <p>谷歌与艺术家Refik Anadol合作的Dataland于6月20日在洛杉矶正式开馆。位于The Grand LA综合体内，面积约2500平方米。开幕展"Machine Dreams: Rainforest"由Large Nature Model驱动，将复杂环境数据转化为12亿像素超现实画面，使用Google Cloud协调GANs、扩散模型和Gemini等AI模型。</p>
+        <a class="signal-source" href="https://aiproducthub.cn/newsflash/google-dataland-ai-art-museum-opens-los-angeles/" target="_blank">📎 AI产品库 · Dataland今日开馆</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📝 大仙注记 -->
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(255,215,0,.15);color:#FFD700;">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>GPT-5.6的发布节奏延续了OpenAI今年6周一版的高频迭代策略。150万Token上下文意味着可以一次性处理整本书级别的文本，这对学术研究和法律分析是革命性的。但真正的看点是定价——仅为Anthropic一半且还要进一步降价。这标志着大模型竞争从"性能竞赛"正式进入"价格战"阶段，API成本下降将加速AI应用普及。</p>
+      <p style="margin-top:10px;">马斯克7800亿天价薪酬和SpaceX股价37%的涨幅，让人再次思考"科技资本对个人财富的定价极限"。3.04亿股锁定至2028年，这意味着马斯克短期内无法变现，但账面财富已突破1.1万亿美元。SpaceX市值2.4万亿，超越亚马逊跻身全球前五，这不仅是太空经济的胜利，更是"AI+太空"叙事对资本市场的征服。</p>
+      <p style="margin-top:10px;">谷歌Dataland AI艺术博物馆的开馆是一个被低估的信号。AI不仅是生产力工具，正在成为艺术创作的核心媒介。12亿像素的超现实画面、GANs与扩散模型的协同、Gemini的调度——这展示了AI在创意领域的无限可能。当AI可以"创造美"而不仅是"处理数据"时，人类对"创造力"的定义将被重写。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>每日未来情报 · 由龙大仙与谦哥共同策划</p>
+    <p style="margin-top:6px;font-size:.8rem;">信息来源：IT之家、每日经济新闻、新浪财经、ZAKER、搜狐、AI产品库等</p>
+    <p style="margin-top:12px;"><a href="index.html">← 返回 Ponghood 主页</a></p>
+  </footer>
+
+  <!-- 点赞系统 -->
+  <script src="like-system.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof PonghoodLike !== 'undefined') {
+        PonghoodLike.init('#like-component');
+      }
+    });
+  </script>
+
+</body>
+</html>
