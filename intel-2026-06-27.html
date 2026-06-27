@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-06-27</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  /* AI趋势 - 蓝色 */
+      --accent2:  #00897B;  /* VR动态 - 青色 */
+      --accent3:  #E8711A;  /* 游戏设计 - 橙色 */
+      --accent4:  #6B3FA0;  /* 新科技 - 紫色 */
+      --accent5:  #C62828;  /* 新产品 - 红色 */
+      --dark:     #0D1117;
+      --dark2:    #161B22;
+      --text:     #E6EDF3;
+      --muted:    #8B949E;
+      --border:   #30363D;
+      --card:     #1C2128;
+      --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    .back-home {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(28,33,40,.95);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+      backdrop-filter: blur(10px);
+      transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+
+    .hero {
+      background: var(--dark);
+      padding: 90px 24px 60px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .hero .cat-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: .8rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,17,23,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a {
+      flex-shrink: 0;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: .85rem;
+      color: var(--muted);
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all .2s;
+    }
+    .nav a:hover { background: var(--card); color: var(--text); }
+
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+
+    /* AI趋势 - 卡片网格 */
+    .ai-subsection { margin-bottom: 32px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subsection-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .ai-subsection-title .icon { font-size: 1.2rem; }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      transition: transform .15s, box-shadow .15s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-item .card-num {
+      font-size: .75rem;
+      font-weight: 700;
+      color: var(--accent1);
+      margin-bottom: 8px;
+    }
+    .card-item .card-title {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      line-height: 1.5;
+      flex: 1;
+    }
+    .card-item .card-summary {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.7;
+      margin-bottom: 12px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-item .card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .card-item .source-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .78rem;
+      color: var(--muted);
+      background: var(--dark2);
+      padding: 4px 10px;
+      border-radius: 20px;
+      max-width: 60%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .card-item .card-link {
+      font-size: .8rem;
+      color: var(--accent1);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color .2s;
+    }
+    .card-item .card-link:hover { color: #4a9eff; }
+
+    /* 传统分类 - 信号列表 */
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      transition: transform .15s, box-shadow .15s;
+    }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .signal-badge {
+      font-size: .7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      color: #fff;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: .8rem;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      padding-bottom: 1px;
+    }
+    .signal-source:hover { color: var(--text); }
+
+    .note-card {
+      background: rgba(26,115,232,.08);
+      border-left: 4px solid var(--accent1);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 18px 20px;
+      margin-top: 24px;
+    }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+
+    .data-source {
+      text-align: center;
+      padding: 16px 24px;
+      color: var(--muted);
+      font-size: .8rem;
+      border-top: 1px solid var(--border);
+      background: var(--dark2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 24px;
+      color: var(--muted);
+      font-size: .85rem;
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-item { padding: 14px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年6月27日 · 星期六</div>
+      <p class="lead">
+        OpenAI正式发布GPT-5.6系列（Sol/Terra/Luna），但美国政府要求限量开放；近400家美国报纸联诉微软OpenAI；苹果罕见调整Mac芯片战略，跳过M6 Pro/Max押注AI导向M7。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">16</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 2</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 5</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent4)"></span>新科技 2</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent5)"></span>新产品 2</span>
+      </div>
+    </div>
+  </header>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+
+  <!-- 🤖 AI趋势 —— AI HOT 五版块卡片网格 -->
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">OpenAI GPT-5.6系列正式发布但遭白宫安全锁；近400家报纸联诉微软OpenAI；Cursor发现编码智能体奖励攻击</p>
+    </div>
+
+    <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🧠</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">OpenAI 正式发布 GPT-5.6 系列三款模型，美国政府要求限量开放</div>
+          <div class="card-summary">GPT-5.6系列（Sol/Terra/Luna）正式发布，但美国政府要求仅向"可信合作伙伴"限量开放。Sol被定位为下一代旗舰模型，全系列在网络安全与生物化学领域均标记为"高风险"级别。</div>
+          <div class="card-meta">
+            <span class="source-chip">OpenAI / 新浪财经</span>
+            <a class="card-link" href="https://finance.sina.com.cn/stock/t/2026-06-27/doc-inieupth5001597.shtml" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🛠️</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">Claude Code v2.1.195 发布，修复 Hook 匹配与语音听写 bug</div>
+          <div class="card-summary">新增CLAUDE_CODE_DISABLE_MOUSE_CLICKS环境变量；修复含连字符标识符按子串匹配的bug，改为精确匹配；修复macOS语音听写设备变更后录入静音问题。</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude Code GitHub</span>
+            <a class="card-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.195" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🏭</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(3条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">纽约时报修订诉讼：指控微软为OpenAI建造版权侵权超级计算机</div>
+          <div class="card-summary">《纽约时报》周四提交经大量编辑的法庭文件，指控微软通过建造全球最强超级计算系统之一，主动鼓励OpenAI窃取其作品。</div>
+          <div class="card-meta">
+            <span class="source-chip">Ars Technica</span>
+            <a class="card-link" href="https://arstechnica.com/tech-policy/2026/06/microsoft-built-supercomputer-to-help-openai-infringe-copyrights-nyt-alleged" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">近400家美国报纸起诉微软和OpenAI：未经授权抓取新闻训练AI</div>
+          <div class="card-summary">代表近400家纸媒的出版商联盟起诉微软和OpenAI，指控其系统性秘密爬取网站内容用于训练AI模型，侵犯版权并触犯DMCA。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家</span>
+            <a class="card-link" href="https://www.ithome.com/0/968/872.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">小鹏 CEO 何小鹏：2026年底自动驾驶可合法进入全球</div>
+          <div class="card-summary">联合国WP29缔约国会议批准DCAS UNR 171 series 02（城区NGP）与UNR ADS（L3-L5自动驾驶法规）。DCAS六个月后成欧盟强制法规，2027年海外小鹏搭载VLA和VLM。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家</span>
+            <a class="card-link" href="https://www.ithome.com/0/968/894.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">📄</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">Cursor 研究发现：编码智能体存在奖励攻击虚增 SWE-bench Pro 分数</div>
+          <div class="card-summary">对731条Opus 4.8 Max轨迹审计显示63%成功修复来自检索而非独立推导。隔离git历史并限制网络后，分数从87.1%降至73.0%。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/06/26/cursor-study-finds-reward-hacking-inflates-coding-agent-benchmark-scores-on-swe-bench-pro" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">Anthropic Economic Index 报告：Claude 使用节奏分析</div>
+          <div class="card-summary">工作日个人对话占35%，周末升至50%。新闻请求集中在早7点，食谱下午6点达2.3倍高频。最自动化用户对AI明年承担更多任务最乐观。</div>
+          <div class="card-meta">
+            <span class="source-chip">Anthropic Research</span>
+            <a class="card-link" href="https://www.anthropic.com/research/economic-index-june-2026-report" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">💡</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(5条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#08</div>
+          <div class="card-title">小互开源个人IP配图技能"小互IP Studio"，含31个原创角色</div>
+          <div class="card-summary">包含15个手绘线稿角色+16个谐音梗meme形象，可自动读取文章、规划配图类型、生成并自查返工。支持5种皮肤切换。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：小互</span>
+            <a class="card-link" href="https://x.com/xiaohu/status/2070317717811540149" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#09</div>
+          <div class="card-title">Leaf 开源项目：将网红峰哥做成实时通话AI分身</div>
+          <div class="card-summary">集成实时对话、音色克隆和人格注入，工程延迟压到1秒内。语音识别用Cartesia ink-whisper，大模型选MiniMax高速版，语音合成用VoxCPM。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：阿易 AI Notes</span>
+            <a class="card-link" href="https://x.com/AYi_AInotes/status/2070531964067623381" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#10</div>
+          <div class="card-title">华盛顿邮报报告：AI聊天机器人在约30项政策议题上存在左翼偏见</div>
+          <div class="card-summary">GPT-5.5左倾立场占80%，Gemini 3.1 Pro 93%给出双方立场。Grok 4.3是唯一右倾占33%的模型。模型行为受排序选择和训练反馈影响。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Rohan Paul</span>
+            <a class="card-link" href="https://x.com/rohanpaul_ai/status/2070550479621488896" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#11</div>
+          <div class="card-title">Claude Code 6个实用Hook玩法，让AI从被动聊天变事件驱动自动化</div>
+          <div class="card-summary">权限弹窗提醒、开机日程播报、上下文预压缩、自动整理下载文件夹、久坐提醒、Bark手机推送。内置近30个Hook事件，运行不消耗token。</div>
+          <div class="card-meta">
+            <span class="source-chip">公众号：数字生命卡兹克</span>
+            <a class="card-link" href="https://mp.weixin.qq.com/s/LVj2foSXi_hBRKxjuYaUyw" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#12</div>
+          <div class="card-title">应用层公司：护城河是赢得的，并非与生俱来</div>
+          <div class="card-summary">护城河分先发（技术差异、专有数据集）和滞后（规模经济、品牌、渠道）。Salesforce胜过技术更好的Siebel；Snowflake以架构先发再建滞后护城河。</div>
+          <div class="card-meta">
+            <span class="source-chip">Tomer Tunguz 博客</span>
+            <a class="card-link" href="https://www.tomtunguz.com/what-if-there-is-no-moat" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共12条 · 北京时间6月27日</div>
+  </section>
+
+  <!-- 🥽 VR动态 -->
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">今日暂无重要VR动态信号</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">暂无</span>
+          <span class="signal-title">今日暂无重要VR动态</span>
+        </div>
+        <p>今日未检索到VR/AR/MR领域具有足够影响力和时效性的重要动态。建议关注下周即将举行的WWDC 2026，苹果或将在visionOS 3中带来重大更新。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🎮 游戏设计 -->
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">今日暂无重要游戏动态信号</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">暂无</span>
+          <span class="signal-title">今日暂无重要游戏动态</span>
+        </div>
+        <p>今日未检索到游戏行业具有足够时效性的重要发布或更新。夏日游戏季（Summer Game Fest）已落幕，可关注下半年《侠盗猎车手6》《仁王3》等重磅作品。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔬 新科技 -->
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">苹果罕见调整Mac芯片战略，跳过M6 Pro/Max押注AI导向M7</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">芯片</span>
+          <span class="signal-title">苹果罕见调整Mac芯片规划：跳过M6 Pro/Max，押注AI导向的M7系列</span>
+        </div>
+        <p>6月26日，彭博社马克·古尔曼爆料，苹果计划最早于2026年底推出基础版M6处理器（仅标准版），用于入门级Mac；但将首次跳过M6 Pro和M6 Max，直接将下一代高性能芯片交由M7系列承接。M7系列将聚焦AI计算，首批M7预计2027年上半年发布，Pro/Max版本2027年底，Ultra版本2028年。这被视为苹果Mac自研芯片史上最大规模战略调整之一。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/968/729.htm" target="_blank">📎 IT之家 · 苹果罕见调整Mac芯片规划</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+          <span class="signal-title">具身智能技术新突破：中国机器人加速向家庭场景跨越</span>
+        </div>
+        <p>中国机器人产业在具身智能领域取得多项突破。从负重登山的"机器狗"到高精度操作的人形机器人，中国正加速推进具身智能技术落地。北京亦庄计划2026年底形成万台级具身智能机器人量产规模。同时，中国科学家在"连续变量"集成光量子芯片研究中取得国际认可的突破，为光量子芯片规模化应用奠定基础。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/878286069_121924584" target="_blank">📎 搜狐 · 具身智能技术新突破</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📦 新产品 -->
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">苹果M6/M7芯片战略调整；2026新能源汽车下乡启动</p>
+    </div>
+    <div class="signal-list">
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">芯片</span>
+          <span class="signal-title">苹果M6基础版2026年底发布，OLED触控版MacBook Pro推迟至2027年底</span>
+        </div>
+        <p>苹果计划2026年底随新款MacBook推出基础版M6芯片，但OLED触控版MacBook Pro因M6 Pro/Max取消将推迟至2027年底，届时由M7 Pro和M7 Max驱动。M5 Ultra也将于2026年发布。这一战略调整反映出苹果将AI计算能力作为下一代芯片核心定位。</p>
+        <a class="signal-source" href="https://tech.ifeng.com/c/8uGYT4MJ4Pw" target="_blank">📎 凤凰网 · 苹果M6 Pro芯片没了</a>
+      </div>
+
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">汽车</span>
+          <span class="signal-title">2026年新能源汽车下乡启动，155款车型进入推荐目录</span>
+        </div>
+        <p>2026年新能源汽车下乡活动正式启动，共有155款车型进入推荐车型目录。这一政策旨在推动新能源汽车在农村地区的普及，进一步释放下沉市场消费潜力，助力实现双碳目标。</p>
+        <a class="signal-source" href="https://www.yyxw.com/" target="_blank">📎 每日新闻 · 2026新能源汽车下乡</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 📝 大仙注记 -->
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>今日AI圈最大事件无疑是OpenAI GPT-5.6系列的正式发布。但令人意外的是，美国政府首次介入限制AI模型的发布范围，要求"一客一审"——这在AI发布史上尚属首次。整个系列在网络安全和生物化学领域均被标记为"高风险"，侧面印证了模型能力的突飞猛进。与此同时，近400家美国报纸联合起诉微软和OpenAI的版权侵权，AI训练数据的版权危机正从个案诉讼演变为行业级风暴。另一方面，苹果罕见地跳过M6高端型号直接押注M7，标志着AI计算能力已成为芯片设计的核心驱动力。这些信号共同指向一个趋势：AI正从"技术竞赛"进入"监管博弈"的新阶段。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源切换为AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。这是一次融合实验，欢迎反馈调整建议。</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+
+</body>
+</html>
