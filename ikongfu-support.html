@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iKongFu 少年武谱支持与反馈</title>
+  <meta name="description" content="iKongFu 少年武谱的支持与反馈页面，说明测试阶段的反馈方式、常见问题和隐私相关说明。">
+  <style>
+    :root {
+      --bg: #f7f1e6;
+      --surface: #fffaf0;
+      --line: #ead9bf;
+      --text: #221817;
+      --muted: #765f51;
+      --brand: #c81f1f;
+      --brand-deep: #8e1717;
+      --brand-soft: #fff3df;
+      --warn: #9e4b24;
+      --shadow: 0 18px 48px rgba(80, 38, 20, 0.10);
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "PingFang SC", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(200, 31, 31, 0.16), transparent 30%),
+        linear-gradient(180deg, #fffaf2 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    .hero { padding: 72px 24px 40px; }
+
+    .hero-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, rgba(24, 18, 17, 0.98), rgba(129, 24, 20, 0.98));
+      color: #fffaf0;
+      border-radius: 28px;
+      padding: 42px 40px;
+      box-shadow: 0 24px 64px rgba(70, 28, 16, 0.25);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 250, 240, 0.10);
+      border: 1px solid rgba(255, 250, 240, 0.18);
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 14px;
+    }
+
+    .hero-subtitle {
+      max-width: 650px;
+      font-size: 1.02rem;
+      color: rgba(255, 250, 240, 0.90);
+    }
+
+    .main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px 72px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 28px 26px;
+    }
+
+    .section-label {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      line-height: 1.32;
+      margin-bottom: 12px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    ul {
+      margin-top: 14px;
+      padding-left: 20px;
+      color: var(--muted);
+      display: grid;
+      gap: 10px;
+    }
+
+    li { font-size: 15px; }
+
+    .contact-box {
+      margin-top: 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      background: var(--brand-soft);
+      border: 1px solid rgba(200, 31, 31, 0.14);
+    }
+
+    .contact-box strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--brand-deep);
+      font-size: 15px;
+    }
+
+    .contact-box span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 16px 18px;
+      border-left: 4px solid var(--warn);
+      background: #fff3df;
+      border-radius: 0 14px 14px 0;
+    }
+
+    .notice strong {
+      display: block;
+      color: var(--warn);
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .notice p { color: #76513d; }
+
+    .inline-link {
+      color: var(--brand);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(200, 31, 31, 0.28);
+    }
+
+    .inline-link:hover {
+      color: var(--brand-deep);
+      border-color: rgba(200, 31, 31, 0.48);
+    }
+
+    footer {
+      max-width: 860px;
+      margin: 32px auto 72px;
+      padding: 0 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 760px) {
+      .hero { padding: 48px 16px 28px; }
+      .hero-inner { padding: 32px 22px; border-radius: 22px; }
+      .main { padding: 0 16px 56px; }
+      .card { padding: 22px 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">iKongFu · Support</div>
+      <h1>支持与反馈</h1>
+      <p class="hero-subtitle">
+        当前版本处于亲友内测和真实训练验证阶段，重点围绕建档、任务、训练记录、照片视频、五维点评和成长档案收集反馈。问题反馈越具体，后续修正越快。
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="card">
+      <div class="section-label">Feedback</div>
+      <h2>建议优先反馈哪些问题</h2>
+      <ul>
+        <li>习武成员是否能顺利创建、切换、编辑和删除。</li>
+        <li>训练任务的时间范围、长期修炼和当前状态是否符合真实训练习惯。</li>
+        <li>训练记录是否足够快：修炼日期、武谱、今日任务、动作重点、孩子感受、照片和视频是否容易录入。</li>
+        <li>照片查看、缩放、旋转，以及系统相册视频播放是否稳定。</li>
+        <li>形、劲、步、神、礼五维评分和维度点评是否能降低输入压力。</li>
+        <li>成长档案中的本周进度、五维熟练度、最近点亮是否能给孩子带来继续练习的动力。</li>
+        <li>IKONGFU1 备份导出、恢复和重复恢复是否稳定，是否保留现有资料。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <div class="section-label">How To Contact</div>
+      <h2>反馈方式</h2>
+      <p>当前测试阶段，建议优先通过 TestFlight 的反馈渠道提交问题，并附上截图、复现步骤和设备信息。</p>
+      <div class="contact-box">
+        <strong>推荐反馈内容</strong>
+        <span>设备型号、iOS 版本、App 版本号、训练成员、相关任务或记录、操作步骤、实际结果、期望结果、是否影响数据保存或视频播放。</span>
+      </div>
+      <div class="notice">
+        <strong>发布前需补充</strong>
+        <p>如果这个页面后续将作为正式 App Store Support URL，建议再补充一个公开可用的联系邮箱或其他稳定联系渠道。</p>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-label">Known Notes</div>
+      <h2>当前使用说明</h2>
+      <ul>
+        <li>App 数据默认只保存在当前设备本地；删除 App 可能会删除本地训练资料。</li>
+        <li>训练视频仍保存在系统相册，App 内只保存视频引用；删除相册原视频后，App 内无法继续播放。</li>
+        <li>从 Debug 版切换到 TestFlight 版前，如已有重要训练资料，建议先导出 IKONGFU1 备份。</li>
+        <li>当前版本不是在线教学平台，也不替代专业教练现场指导。</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <div class="section-label">Privacy</div>
+      <h2>隐私相关说明</h2>
+      <ul>
+        <li>训练记录、点评和 App 内照片默认保存在设备本地。</li>
+        <li>当前版本不建立账号，不上传训练记录，不收集数据用于广告或用户画像。</li>
+        <li>相册视频只保存本机资产引用，不复制、不压缩、不上传视频文件。</li>
+      </ul>
+      <p style="margin-top:14px;">详细说明请查看 <a class="inline-link" href="privacy-policy-ikongfu.html">隐私政策页面</a>。</p>
+    </section>
+
+    <section class="card">
+      <div class="section-label">Related Links</div>
+      <h2>相关页面</h2>
+      <ul>
+        <li><a class="inline-link" href="ikongfu.html">产品介绍</a></li>
+        <li><a class="inline-link" href="privacy-policy-ikongfu.html">隐私政策</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>建议发布地址：<a class="inline-link" href="https://ponghood.com/ikongfu-support.html">https://ponghood.com/ikongfu-support.html</a></p>
+  </footer>
+</body>
+</html>
