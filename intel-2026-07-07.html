@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-M66NDQY0DF");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-07</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--accent1:#1A73E8;--accent2:#00897B;--accent3:#E8711A;--accent4:#6B3FA0;--accent5:#C62828;--dark:#0D1117;--dark2:#161B22;--text:#E6EDF3;--muted:#8B949E;--border:#30363D;--card:#1C2128;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.35)}
+    html{scroll-behavior:smooth}
+    body{font-family:"PingFang SC","Segoe UI",system-ui,sans-serif;background:var(--dark);color:var(--text);line-height:1.75}
+    .back-home{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(28,33,40,.95);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;text-decoration:none;backdrop-filter:blur(10px);transition:all .2s}
+    .back-home:hover{color:var(--text);border-color:var(--accent1)}
+    .back-home svg{width:16px;height:16px}
+    .hero{background:var(--dark);padding:90px 24px 60px;display:flex;justify-content:center}
+    .hero-inner{max-width:900px;width:100%;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+    .hero .date{color:var(--muted);font-size:1rem;margin-bottom:24px}
+    .hero .lead{color:var(--muted);max-width:680px;margin:0 auto 32px;font-size:.95rem;line-height:1.8}
+    .hero .stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+    .hero .stat{text-align:center;min-width:80px}
+    .hero .stat-num{font-size:2rem;font-weight:800;color:var(--accent1)}
+    .hero .stat-label{font-size:.85rem;color:var(--muted)}
+    .hero .category-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto}
+    .hero .cat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;background:var(--card);border:1px solid var(--border);color:var(--text)}
+    .hero .cat-chip .dot{width:8px;height:8px;border-radius:50%}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;padding:12px 24px;overflow-x:auto}
+    .nav a{flex-shrink:0;padding:8px 16px;border-radius:8px;font-size:.85rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:all .2s}
+    .nav a:hover{background:var(--card);color:var(--text)}
+    .section{max-width:900px;margin:0 auto;padding:48px 24px}
+    .section+.section{border-top:1px solid var(--border)}
+    .section-header{margin-bottom:28px}
+    .section-tag{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;margin-bottom:10px}
+    .section-title{font-size:1.6rem;font-weight:700;margin-bottom:8px}
+    .section-desc{color:var(--muted);font-size:.95rem}
+    .ai-subsection{margin-bottom:32px}
+    .ai-subsection:last-child{margin-bottom:0}
+    .ai-subsection-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+    .ai-subsection-title .icon{font-size:1.2rem}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .card-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+    .card-item:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .card-item .card-num{font-size:.75rem;font-weight:700;color:var(--accent1);margin-bottom:8px}
+    .card-item .card-title{font-weight:700;font-size:1rem;margin-bottom:10px;line-height:1.5;flex:1}
+    .card-item .card-summary{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .card-item .card-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:auto}
+    .card-item .source-chip{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;color:var(--muted);background:var(--dark2);padding:4px 10px;border-radius:20px;max-width:60%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+    .card-item .card-link{font-size:.8rem;color:var(--accent1);text-decoration:none;font-weight:600;transition:color .2s}
+    .card-item .card-link:hover{color:#4a9eff}
+    .signal-list{display:flex;flex-direction:column;gap:16px}
+    .signal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:transform .15s,box-shadow .15s}
+    .signal:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .signal-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+    .signal-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;color:#fff;text-transform:uppercase;flex-shrink:0}
+    .signal-title{font-weight:700;font-size:1.05rem;flex:1;min-width:200px}
+    .signal p{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+    .signal-source{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);padding-bottom:1px}
+    .signal-source:hover{color:var(--text)}
+    .note-card{background:rgba(26,115,232,.08);border-left:4px solid var(--accent1);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin-top:24px}
+    .note-card h4{font-size:1rem;margin-bottom:8px;color:var(--accent1)}
+    .note-card p{color:var(--muted);font-size:.9rem;margin:0}
+    .data-source{text-align:center;padding:16px 24px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);background:var(--dark2)}
+    footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+    footer a:hover{color:var(--text)}
+    @media(max-width:640px){.hero{padding:72px 16px 40px}.section{padding:32px 16px}.card-grid{grid-template-columns:1fr}.card-item{padding:14px 16px}.signal{padding:16px}.hero .stats{gap:16px}.hero .category-stats{gap:8px}}
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月7日 · 星期二</div>
+      <p class="lead">
+        腾讯混元 3 正式版发布，搜索追平 GPT-5.5 幻觉率减半；字节 Seedance 进入好莱坞长片工作流；大厂 AI 步入"大一统"，微信"小微"支付宝"阿宝"灰度上线；Meta 推出 Meta Compute 卖 GPU 算力股价大涨 9%；ICML 2026 公布 10 篇获奖论文。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">7</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 8</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 8</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Claude Sonnet 5 发布刷新编码天花板；Google DeepMind 发布 Nano Banana 2 Lite 和 Gemini Omni Flash；X 发布 hosted X MCP 让 AI 智能体直连 Twitter</p>
+    </div>
+            <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128640;</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">腾讯混元 3 正式版发布：搜索追平 GPT-5.5，幻觉率减半</div>
+          <div class="card-summary">姚顺雨加入腾讯后首个重量级产品 Hy3 正式版落地。模型总参 295B、单次激活 21B、上下文 256K，搜索能力追平 GPT-5.5、幻觉率减半。</div>
+          <div class="card-meta">
+            <span class="source-chip">36氪（字母AI）</span>
+            <a class="card-link" href="https://www.36kr.com/p/3884027229420160" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128736;</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">字节 Seedance 进入好莱坞长片工作流</div>
+          <div class="card-summary">Seedance 2.0 正在进入洛杉矶 AI 创作者圈与好莱坞周边工作流。95 分钟长片《Hell Grind》主要用 Seedance 2.0 制作，15 人团队两周完成。好莱坞从最初抵触转向接受。</div>
+          <div class="card-meta">
+            <span class="source-chip">量子位</span>
+            <a class="card-link" href="https://www.qbitai.com/2026/07/443665.html" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128240;</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">大厂 AI 步入&quot;大一统&quot;：微信&quot;小微&quot;、支付宝&quot;阿宝&quot;灰度上线</div>
+          <div class="card-summary">微信启动原生 AI 助手&quot;小微&quot;灰度测试，支付宝上线&quot;阿宝&quot;；字节豆包开启付费功能，百度整合文心全产品线，阿里准备推出统一生产力 AI 平台。</div>
+          <div class="card-meta">
+            <span class="source-chip">36氪（商业新研社）</span>
+            <a class="card-link" href="https://www.36kr.com/p/3884034614950534" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">Meta 推出 Meta Compute，卖 GPU 算力转向 Neocloud，股价大涨 9%</div>
+          <div class="card-summary">Meta 正考虑推出 Meta Compute，把庞大 AI 基建开放给外部客户。今年前 6 个月已签下超过 5GW 数据中心容量，2026 年资本开支指引 1250–1450 亿美元。</div>
+          <div class="card-meta">
+            <span class="source-chip">量子位</span>
+            <a class="card-link" href="https://www.qbitai.com/2026/07/443606.html" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128209;</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">ICML 2026 公布 10 篇获奖论文：清华黄高团队获杰出论文，A3C 获时间检验奖</div>
+          <div class="card-summary">ICML 2026 在韩国首尔举行，清华黄高团队参与、阿里清华合作的《The Flexibility Trap》获杰出论文，提出 JustGRPO 方法，GSM8K 准确率达 89.1%；A3C 算法获得时间检验奖。</div>
+          <div class="card-meta">
+            <span class="source-chip">36氪（机器之心）</span>
+            <a class="card-link" href="https://www.36kr.com/p/3883880502046980" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128161;</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">Karpathy 解读：Agent 性能差距在 Harness 而非模型</div>
+          <div class="card-summary">Andrej Karpathy 指出 AI 行业最大误区是逼 Agent 尽快干活却没有先理解底层模型。Hugging Face 实验显示：冻结 DeepSeek-V4-Pro 权重，仅替换 5 种 Agent Harness，pooled score 在 3.5% 到 80.1% 之间波动。</div>
+          <div class="card-meta">
+            <span class="source-chip">36氪（AI前线）</span>
+            <a class="card-link" href="https://www.36kr.com/p/3884083529658374" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">GLM 5.2 与即将到来的 AI 利润率塌缩</div>
+          <div class="card-summary">Martin Alderson 指出&quot;真正的 DeepSeek 时刻&quot;已经到来。当 GLM 5.2 这类开源模型进一步压缩推理成本，Anthropic、OpenAI 收取的 $25/MTok 定价将无法维持，AI 行业将进入利润率塌缩阶段。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News</span>
+            <a class="card-link" href="https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-source">AI趋势数据来自 <a href="https://txtmix.com/posts/news/ai-morning-news-2026-07-07/" target="_blank" rel="noopener noreferrer">Text Matrix AI新闻早报</a>（AI HOT API 临时不可用） · 共7条 · 北京时间7月7日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">今日暂无重要VR动态信号</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">暂无</span>
+          <span class="signal-title">今日暂无重要VR动态</span>
+        </div>
+        <p>今日未检索到VR/AR/MR领域具有足够影响力和时效性的重要动态。可关注谷歌与三星秋季联合发布智能眼镜的最新进展。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">6月游戏版号171款环比增加，7月暑期消费旺季游戏板块逆市走强</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">暂无</span>
+          <span class="signal-title">6月游戏版号171款环比增加，7月暑期消费旺季游戏板块逆市走强</span>
+        </div>
+        <p>7月7日，2026年第二十三届中国国际数码互动娱乐展览会(ChinaJoy)新闻发布会在上海国际会议中心举行。本届展会将于7月31日至8月3日在上海新国际博览中心举办，主题定为"与AI同游"，将以空前的游戏试玩阵容与前沿AI技术生态为核心驱动，全面呈现数字娱乐产业最新成果。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">2026世界人工智能大会7月17日上海开幕，展览面积首超10万平；联想Y700无极发布首款5G小平板</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">暂无</span>
+          <span class="signal-title">2026世界人工智能大会7月17日上海开幕，展览面积首超10万平</span>
+        </div>
+        <p>7月7日，格力在慕尼黑上海电子展上展示了其自主研发的"芯"矩阵，涵盖工业控制、消费电子、汽车电子等多个领域的芯片产品。这标志着格力在半导体领域的布局进入新阶段，从空调主业向芯片核心技术自主化迈进。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">苹果iOS 27引入RAW 9引擎；苹果首款折叠屏iPhone Ultra加速量产9月发布</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">苹果iOS 27引入RAW 9引擎；苹果首款折叠屏iPhone Ultra加速量产9月发布</span>
+        </div>
+        <p>7月7日，vivo全新折叠旗舰vivo X Fold6正式开售。新机已在vivo官网、京东/天猫官方旗舰店及全国线下门店同步发售。作为vivo最新一代大折叠屏机型，X Fold6在屏幕、影像和性能方面均有升级。</p>
+        <a class="signal-source" href="https://mobile.zol.com.cn/more/3_506.shtml" target="_blank">📎 中关村在线 · 7月7日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">平板</span>
+          <span class="signal-title">联想Y700无极发布：首款5G小平板，OLED屏+双卡双待+骁龙8E5</span>
+        </div>
+        <p>7月7日，联想拯救者Y700无极正式公布，计划于8月正式上市。该系列产品首次引入5G通信能力，官方将其定位为"小平板，大生态"，搭载OLED屏幕、双卡双待和骁龙8E5处理器，是首款支持5G的小尺寸平板设备。</p>
+        <a class="signal-source" href="https://www.zol.com.cn/index_360.html" target="_blank">📎 中关村在线 · 7月7日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">科创</span>
+          <span class="signal-title">长三角联合出台举措助力国际科创中心建设</span>
+        </div>
+        <p>7月7日，长三角三省一市联合出台新举措，助力上海国际科创中心建设。政策聚焦集成电路、人工智能、生物医药等三大先导产业，推动区域创新资源共享和产业链协同，打造具有全球影响力的科技创新高地。</p>
+        <a class="signal-source" href="https://www.xinhuanet.com/tech/20260703/da9f2139c0594c92a120b7571ee703c5/c.html" target="_blank">📎 新华网 · 7月7日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月7日AI圈迎来“超级星期二”，Claude Sonnet 5 的发布无疑是最大头条。Anthropic 再次刷新编码能力天花板，Sonnet 5 在 SWE-bench 和代码生成任务上全面超越前代。Google DeepMind 同日发布 Nano Banana 2 Lite 和 Gemini Omni Flash，形成了“Claude vs Gemini”的正面交锋格局。X（Twitter）发布 hosted X MCP 让 AI 智能体直接连接 Twitter API，这是社交媒体平台首次向 AI Agent 开放原生接口，可能重塑社交媒体自动化生态。更值得关注的是，商务部解除了 Claude Fable 5 等模型的出口管制，这意味着美国最先进的 AI 模型将可以更自由地流向全球市场。在产品层面，Acti 将 AI Agent 塞进手机键盘、NotebookLM 上线短视频概览、Claude 推出 Linux 桌面版和 Science 科研工作台，AI 应用正在以前所未有的速度渗透进每一个工作场景。OpenAI 的 GeneBench-Pro 和 Anthropic 的 Turn-Averaged SAE 则分别代表了计算生物学和可解释性研究的前沿。整体来看，今天 AI 行业呈现“模型发布 + 产品渗透 + 政策松绑 + 学术突破”的四重奏，是近期信息量最大的一天。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源因 AI HOT API 临时不可用，降级为网络搜索获取。按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。数据主要来自 Text Matrix AI 新闻早报（2026-07-07）、36氪、量子位、新浪财经等。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI 趋势 7条信号，行业动态2条、技巧与观点2条最为密集。其他分类中：游戏设计1条（6月版号171款）、新科技2条（WAIC 2026、联想Y700无极）、新产品1条（苹果iOS 27 RAW 9/iPhone折叠屏）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://txtmix.com/posts/news/ai-morning-news-2026-07-07/" target="_blank">Text Matrix AI新闻早报</a>（AI HOT API 临时不可用） · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
