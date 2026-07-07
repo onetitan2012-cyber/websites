@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-M66NDQY0DF");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-03</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--accent1:#1A73E8;--accent2:#00897B;--accent3:#E8711A;--accent4:#6B3FA0;--accent5:#C62828;--dark:#0D1117;--dark2:#161B22;--text:#E6EDF3;--muted:#8B949E;--border:#30363D;--card:#1C2128;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.35)}
+    html{scroll-behavior:smooth}
+    body{font-family:"PingFang SC","Segoe UI",system-ui,sans-serif;background:var(--dark);color:var(--text);line-height:1.75}
+    .back-home{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(28,33,40,.95);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;text-decoration:none;backdrop-filter:blur(10px);transition:all .2s}
+    .back-home:hover{color:var(--text);border-color:var(--accent1)}
+    .back-home svg{width:16px;height:16px}
+    .hero{background:var(--dark);padding:90px 24px 60px;display:flex;justify-content:center}
+    .hero-inner{max-width:900px;width:100%;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+    .hero .date{color:var(--muted);font-size:1rem;margin-bottom:24px}
+    .hero .lead{color:var(--muted);max-width:680px;margin:0 auto 32px;font-size:.95rem;line-height:1.8}
+    .hero .stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+    .hero .stat{text-align:center;min-width:80px}
+    .hero .stat-num{font-size:2rem;font-weight:800;color:var(--accent1)}
+    .hero .stat-label{font-size:.85rem;color:var(--muted)}
+    .hero .category-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto}
+    .hero .cat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;background:var(--card);border:1px solid var(--border);color:var(--text)}
+    .hero .cat-chip .dot{width:8px;height:8px;border-radius:50%}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;padding:12px 24px;overflow-x:auto}
+    .nav a{flex-shrink:0;padding:8px 16px;border-radius:8px;font-size:.85rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:all .2s}
+    .nav a:hover{background:var(--card);color:var(--text)}
+    .section{max-width:900px;margin:0 auto;padding:48px 24px}
+    .section+.section{border-top:1px solid var(--border)}
+    .section-header{margin-bottom:28px}
+    .section-tag{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;margin-bottom:10px}
+    .section-title{font-size:1.6rem;font-weight:700;margin-bottom:8px}
+    .section-desc{color:var(--muted);font-size:.95rem}
+    .ai-subsection{margin-bottom:32px}
+    .ai-subsection:last-child{margin-bottom:0}
+    .ai-subsection-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+    .ai-subsection-title .icon{font-size:1.2rem}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .card-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+    .card-item:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .card-item .card-num{font-size:.75rem;font-weight:700;color:var(--accent1);margin-bottom:8px}
+    .card-item .card-title{font-weight:700;font-size:1rem;margin-bottom:10px;line-height:1.5;flex:1}
+    .card-item .card-summary{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .card-item .card-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:auto}
+    .card-item .source-chip{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;color:var(--muted);background:var(--dark2);padding:4px 10px;border-radius:20px;max-width:60%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+    .card-item .card-link{font-size:.8rem;color:var(--accent1);text-decoration:none;font-weight:600;transition:color .2s}
+    .card-item .card-link:hover{color:#4a9eff}
+    .signal-list{display:flex;flex-direction:column;gap:16px}
+    .signal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:transform .15s,box-shadow .15s}
+    .signal:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .signal-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+    .signal-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;color:#fff;text-transform:uppercase;flex-shrink:0}
+    .signal-title{font-weight:700;font-size:1.05rem;flex:1;min-width:200px}
+    .signal p{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+    .signal-source{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);padding-bottom:1px}
+    .signal-source:hover{color:var(--text)}
+    .note-card{background:rgba(26,115,232,.08);border-left:4px solid var(--accent1);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin-top:24px}
+    .note-card h4{font-size:1rem;margin-bottom:8px;color:var(--accent1)}
+    .note-card p{color:var(--muted);font-size:.9rem;margin:0}
+    .data-source{text-align:center;padding:16px 24px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);background:var(--dark2)}
+    footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+    footer a:hover{color:var(--text)}
+    @media(max-width:640px){.hero{padding:72px 16px 40px}.section{padding:32px 16px}.card-grid{grid-template-columns:1fr}.card-item{padding:14px 16px}.signal{padding:16px}.hero .stats{gap:16px}.hero .category-stats{gap:8px}}
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月3日 · 星期五</div>
+      <p class="lead">
+        AI版支付宝开放公测；微软成立Frontier Company斥资25亿美元派驻6000名AI工程师到企业客户；Kimi K2.7 Code上线GitHub Copilot；快手可灵AI获20.28亿美元注资；阿里巴巴发布Page Agent开源JavaScript库。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">24</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 8</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 8</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Claude Sonnet 5 发布刷新编码天花板；Google DeepMind 发布 Nano Banana 2 Lite 和 Gemini Omni Flash；X 发布 hosted X MCP 让 AI 智能体直连 Twitter</p>
+    </div>
+        <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🚀</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(0条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-title" style="color:var(--muted);font-weight:400;">今日暂无模型发布/更新动态</div>
+        </div>
+      </div>
+    </div>
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🛠️</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(7条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">AI 版支付宝开放公测，蚂蚁阿宝无需邀请码即可体验</div>
+          <div class="card-summary">支付宝阿宝 AI 助手今日正式开放公测，iOS 和安卓用户可在应用商店或支付宝 App 搜索“阿宝”或“蚂蚁阿宝”直接体验。开通后右滑进入新版，以对话方式安排办事，例如说出“查公积金”，阿宝会自动匹配对应小程序和服务入口，用户点击确认即可完成。支付宝承诺所有资金变动与支付环节均需用户本人确认，扫码、转账等功能已预留入口。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/971/469.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">Google Health API 推出 CLI：ghealth 是一款针对 Fitbit 数据的开源工具</div>
+          <div class="card-summary">ghealth 是一款封装 Google Health API v4 的开源命令行工具，以单个 Go 二进制文件发布（Apache 2.0 协议）。它提供 40 种已验证的数据类型（包括步数、心率、睡眠、体重、血氧饱和度、心率变异性等）的结构化 JSON 输出。工具采用 Agent 优先设计，具备确定性退出码、--dry-run 和 --raw 标志，并附带两个 SKILL.md 文件供 AI 智能体使用。用户需自行创建 OAuth 凭据，通过 PKCE S256 认证。数据来源覆盖 Fitbit、Pixel Watch 及连接的第三方设备。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/02/the-google-health-api-got-a-cli-ghealth-is-an-open-source-tool-for-your-fitbit-air-data" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">Senior SWE-Bench：评估AI智能体作为高级工程师的基准测试</div>
+          <div class="card-summary">Senior SWE-Bench是一个开源基准测试，用于评估AI智能体完成高级软件工程师级别任务的能力。任务分功能开发与Bug修复两类：功能任务指令类似自然语言消息，采用验证智能体基于专家配方自动生成行为测试；Bug任务要求根据日志、profiling等运行时信息深入调查。排行榜显示，Claude Opus 4.8搭配Mini-SWE-Agent（max effort）通过率24.0%，Claude Sonnet 5为19.4%，GPT-5.5为16.0%，最强前沿模型在超75%任务中未能达到高级工程师级别的正确性与品味。每个功能任务平均涉及11个文件，最强智能体也需数百步完成；中位指令长度仅为SWE-Bench Pro的31%。任…</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://senior-swe-bench.snorkel.ai/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">Kimi K2.7 Code 已在 GitHub Copilot 上正式发布</div>
+          <div class="card-summary">Kimi K2.7 Code 开源权重模型已在 GitHub Copilot 中正式可用，成为 Copilot 模型选择器首个可选的开源权重模型，为编程工作流提供更低成本选择。该模型由 GitHub 托管于 Microsoft Azure，按供应商列表价格以用量计费。逐步向 Copilot Pro、Pro+ 和 Max 计划用户推送，用户可在 Visual Studio Code 1.127.0 或更新版本、Visual Studio 17.14.6 或更新版本、JetBrains 1.9.1-251 或更新版本、Xcode、Eclipse 等 IDE 及 Copilot CLI、GitHub.com、GitHub Mobile 等…</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://github.blog/changelog/2026-07-01-kimi-k2-7-is-now-available-in-github-copilot" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">阿里巴巴发布 Page Agent：开源 JavaScript 库实现网页 DOM 自然语言操控</div>
+          <div class="card-summary">阿里巴巴发布 Page Agent，一个开源的 JavaScript 客户端库，嵌入网页后可通过自然语言指令直接操作 DOM 元素。与 Playwright、Puppeteer 等外部浏览器自动化工具不同，Page Agent 不依赖截图或多模态模型，而是将实时 DOM 脱水压缩为 FlatDomTree 文本映射，让纯文本模型精准执行点击、表单填写等操作。它继承用户 cookies 和会话，无需独立后端，并支持任意 OpenAI 兼容端点的模型（示例使用 `qwen3.5-plus`）。项目采用 MIT 许可证，适合在自有应用内构建 AI 副驾、智能表单填充或无障碍控制等场景，但限于单页面范围，风险操作仍需服务端验证。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/02/meet-alibabas-page-agent-a-javascript-in-page-gui-agent-that-controls-web-interfaces-with-natural-language-through-the-dom" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">昆仑万维天工3.2发布Skywork Tags，AI智能体加入工作群聊</div>
+          <div class="card-summary">昆仑万维天工3.2发布Skywork Tags，将AI智能体以团队成员身份接入Slack、飞书、钉钉、Discord、Telegram等即时通讯工具。团队可在原有工作群中@Skywork参与讨论，无需切换窗口或迁移数据。共享版Agent持续吸收多样上下文后表现反超精心调教的个人版，团队最终完全改用共享版。Skywork Tags不要求改变工作方式，让AI积累团队上下文并越用越强。</div>
+          <div class="card-meta">
+            <span class="source-chip">公众号：昆仑万维（天工）</span>
+            <a class="card-link" href="https://mp.weixin.qq.com/s/OqL6ID-mAel8XN-slYgXOA" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">Claude Enterprise 新增用量与成本分析及支出管控功能</div>
+          <div class="card-summary">Claude Enterprise 推出更丰富的管理分析工具和成本控制功能。仪表板现可按群组和用户分析用量与成本，支持按 SCIM 群组筛选，展示制品创建、文件编辑、技能和连接器对应的成本。Claude Code 管理控制台新增“使用量”和“价值”选项卡，分别显示活跃开发者、会话次数、常用命令，以及生产力提升估算、每次提交成本和年度价值估算。分析聊天支持自然语言查询并返回可导出图表。Analytics API 可将数据接入 Datadog Cloud Cost Management 和 CloudZero。管理员可设置模型默认和权限控制，并配置组织级支出限额的 75%、90% 告警通知；用户在 75% 和 95% 时收到应用内提醒。…</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude：Blog（网页）</span>
+            <a class="card-link" href="https://claude.com/blog/giving-admins-more-visibility-and-control-over-claude-usage-and-spend" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">📰</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(6条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#08</div>
+          <div class="card-title">Microsoft 成立“Frontier Company”，斥资 25 亿美元派驻 6000 名 AI 工程师到企业客户现场</div>
+          <div class="card-summary">Microsoft 新设业务部门“Frontier Company”，拨款 25 亿美元，将 6000 名行业与工程专家派驻企业客户现场，“共同设计、共同创新、部署并持续改进 AI 系统”。该部门由 Rodrigo Kede Lima 领导，旨在超越“前部署工程”模式，成为“最大、以结果为导向的工程组织”。Microsoft 将自己定位为 OpenAI 和 Anthropic 的“平台中立”替代方案，后两者也已设立专门部署公司。Microsoft 将借助埃森哲、凯捷、安永等系统集成商扩大覆盖范围。</div>
+          <div class="card-meta">
+            <span class="source-chip">The Decoder：AI News（RSS）</span>
+            <a class="card-link" href="https://the-decoder.com/microsoft-launches-2-5-billion-frontier-company-to-embed-6000-ai-engineers-inside-enterprise-clients" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#09</div>
+          <div class="card-title">Anthropic与五角大楼控权之争：Claude军事用途护栏分歧</div>
+          <div class="card-summary">WSJ法庭文件显示，Anthropic CEO Dario Amodei与五角大楼副部长Emil Michael数月邮件往来，核心分歧在于Claude的军事用途护栏。Anthropic要求禁止全自主武器及某些监控用途，五角大楼则希望Claude可用于所有合法国家安全场景。Michael称若分歧太大不愿“强行推动”。随后五角大楼将Anthropic列为供应链风险，阻止合作伙伴在国防部项目中使用其模型。法官暂停部分措施，政府正在上诉。Michael称原先采用Anthropic的操作中已有三分之二切换至其他AI工具。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Kim (@kimmonismus)</span>
+            <a class="card-link" href="https://x.com/kimmonismus/status/2072718147279335507" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#10</div>
+          <div class="card-title">OpenAI提议美国政府持股5%估值426亿美元</div>
+          <div class="card-summary">据Financial Times和CNBC报道，OpenAI提议向美国政府提供公司5%的股份，按近期8520亿美元估值计算，价值约426亿美元。OpenAI CEO Sam Altman表示，此举是与公众分享AI发展红利的最佳方式。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Testing Catalog (@testingcatalog)</span>
+            <a class="card-link" href="https://x.com/testingcatalog/status/2072585845542969583" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#11</div>
+          <div class="card-title">花旗、Adobe等企业限制员工使用AI旗舰模型以控制成本</div>
+          <div class="card-summary">据404 Media获取的内部资料，Atlassian、Adobe、亚马逊等六家企业正限制员工使用AI工具，要求改用能力较低的大模型避免成本失控。至少一家企业月度AI开销增至三倍，超1500万美元。花旗银行因GitHub改为按量计费，于6月24日禁用Claude Opus 4.6、4.7及GPT-5.5等旗舰模型。Adobe于6月30日终止Claude无限制使用协议。Atlassian数据显示其AI月支出从500万美元飙升至1500万美元，本财年预计超1.2亿美元。GitHub计划改用开源模型并测试单人按量计费模式。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/971/937.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#12</div>
+          <div class="card-title">快手可灵AI获初始投资者20.28亿美元注资，投后估值180亿美元</div>
+          <div class="card-summary">快手在港交所公告，21名初始投资者同意以138.24亿元人民币（20.28亿美元）现金注资北京可灵，后者将持有可灵AI相关资产。同日15名额外投资者追加出资52.235亿元人民币（7.6639亿美元），认购总上限为204.471亿元（30亿美元），对应北京可灵扩大后注册资本的16.67%。投后估值180亿美元。快手预计未来12个月内启动可灵AI赴港上市，募资用于扩充算力、建设数据中心及人才引进。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/971/954.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#13</div>
+          <div class="card-title">谷歌AI建设导致2025年用电量增长37%</div>
+          <div class="card-summary">2025年，谷歌年度用电量同比上涨37%，创历史最大增幅。数据中心全年消耗超4200万兆瓦时，超过新西兰、丹麦、尼日利亚等国总用电量。自2019年以来，谷歌总用电量已增长超250%。用电激增主要来自Google Cloud、YouTube视频流及支撑AI产品和服务的数据中心建设与运营。公司表示，AI基础设施建设速度超过电网脱碳速度，但仍致力于扩大全球清洁电力规模，并通过技术创新降低运营排放。2024年谷歌用电量增幅为27%。</div>
+          <div class="card-meta">
+            <span class="source-chip">Ars Technica：AI（RSS）</span>
+            <a class="card-link" href="https://arstechnica.com/ai/2026/07/googles-ai-buildout-drove-37-increase-in-electricity-use-in-2025" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">📑</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#14</div>
+          <div class="card-title">关于Mythos和网络安全的讨论并非炒作</div>
+          <div class="card-summary">关于Mythos和网络安全的讨论并非炒作。 （正如任何使用Fable进行自主工作的人可能已经认识到的那样。）</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Ethan Mollick (@emollick)</span>
+            <a class="card-link" href="https://x.com/emollick/status/2072778376494895139" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#15</div>
+          <div class="card-title">多智能体团队阻碍专家发挥</div>
+          <div class="card-summary">在自我组织的多智能体LLM系统中，团队无法有效利用专家成员的专业知识。在多个基准测试中，即使明确告知专家身份，团队表现仍落后于最佳成员（专家智能体）的独立能力，性能损失最高达41.1%。失败主因是未能有效利用专家意见，而非识别专家。对话分析显示，团队倾向于“整合性妥协”——平均化专家与非专家观点，随团队规模增大而加剧，且与表现负相关。这种寻求共识的行为同时提升了对抗恶意智能体的鲁棒性，揭示了协同对齐与专业利用之间的根本性权衡。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/multi-agent-teams-experts" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#16</div>
+          <div class="card-title">RL微调VLM的鲁棒性与思维链一致性研究</div>
+          <div class="card-summary">强化学习（RL）微调被扩展至视觉语言模型（VLM）。研究发现，简单的文本扰动——误导性标题或错误思维链（CoT）——会显著降低模型鲁棒性和置信度，且开源模型衰退更明显。闭源模型呈现类似失败模式，但鲁棒性和推理一致性更强。进一步分析揭示准确性与忠实性的权衡：微调提升基准准确率，但同时侵蚀CoT的可靠性及对上下文变化的鲁棒性；对抗性增强可改善鲁棒性，却无法阻止忠实性漂移。引入忠实性感知奖励能恢复答案与推理的对齐，但与增强结合时训练易崩溃到捷径策略。这些发现强调需联合关注正确性、鲁棒性与视觉推理的忠实性。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/robustness-chain-thought-consistency" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#17</div>
+          <div class="card-title">VideoFlexTok：可变长度粗到细视频分词</div>
+          <div class="card-summary">VideoFlexTok提出一种可变长度token序列的视频表示方法，采用粗到细结构——首个token捕捉语义和运动等抽象信息，后续token添加精细细节，生成流解码器支持任意token数量的视频重建。相比传统3D网格分词，该结构允许根据下游需求调整token数，在相同预算下编码更长视频。在类别和文本到视频生成任务中，VideoFlexTok以1.1B参数（5.2B的1/5）达到可比生成质量（gFVD和ViCLIP Score）。训练一个处理10秒81帧视频的文本到视频模型仅需672个token，比同等3D网格分词器少8倍。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/videoflextok" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">💡</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(7条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#18</div>
+          <div class="card-title">browser-use 发布开源 AI 视频剪辑 Skill「video-use」</div>
+          <div class="card-summary">browser-use 团队推出面向 Codex、Claude Code 等 AI 编码智能体的开源 Skill「video-use」，让 LLM 通过 ElevenLabs Scribe 将音频转写为约 12KB 文本（含逐词时间戳、说话人分离、事件标记），仅在决策点调用 timeline_view.py 生成 PNG 帧图。技术流水线包括转写、打包、生成 JSON 格式 EDL、ffmpeg 渲染及最多 3 轮自评估。渲染关键细节：分段提取 + `-c copy` 拼接、30ms 音频淡入淡出、PTS 时移、字幕最后叠加、HDR 自动映射、竖屏缩放、两-pass loudnorm。动画支持 HyperFrames、Remotio…</div>
+          <div class="card-meta">
+            <span class="source-chip">X：邵猛 (@shao__meng)</span>
+            <a class="card-link" href="https://x.com/shao__meng/status/2072644710523691110" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#19</div>
+          <div class="card-title">Emil Kowalski 发布设计工程师 Skills，让 AI 编码工具具备 UI 动画审美</div>
+          <div class="card-summary">Emil Kowalski 将多年 UI/动画原则沉淀为三个 Skill，使 Codex、Claude Code、Cursor 等 Coding Agents 具备资深设计工程师的审美判断。核心规则：动画必须有理由；每天 100+ 次的高频操作禁用动画；UI 动画控制在 300ms 内；只动画 transform 和 opacity；入口从 scale(0.95)+opacity:0 开始；尊重 prefers-reduced-motion（仅移除位移动画）。review-animations 以严格标准审查动画代码，输出 Before/After/Why 表格。animation-vocabulary 将模糊描述（如“弹一下的效果…</div>
+          <div class="card-meta">
+            <span class="source-chip">X：邵猛 (@shao__meng)</span>
+            <a class="card-link" href="https://x.com/shao__meng/status/2072484635955900792" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#20</div>
+          <div class="card-title">Fable 5 在 RLI 基准中达成 16.1% 自动化率，较八个月前提升六倍</div>
+          <div class="card-summary">Remote Labor Index（RLI）衡量 AI 智能体完成 240 个付费自由职业项目（总值 14.4 万美元）的专业质量比例。最新结果显示，Fable 5 自动化率达 16.1%，是八个月前最佳系统 2.5% 的六倍多，也超过 Opus 4.8（8.3%）和 GPT-5.5（6.3%）。因美国政府限制访问，Fable 5 仅完成 218/240 个项目评估，最坏情况仍达 14.6%。Gemini 3 Pro 仅 1.25%，落后于更老模型。AI 裁判会高估模型表现（GPT-5.5 评分偏高近三倍），仍需人类评估员打开专业软件（如 Blender）检验几何模型等细节。测试环境为虚拟 Linux 机，配备 30 余款专业应用…</div>
+          <div class="card-meta">
+            <span class="source-chip">The Decoder：AI News（RSS）</span>
+            <a class="card-link" href="https://the-decoder.com/ai-agents-can-now-complete-16-percent-of-freelance-jobs-at-pro-quality-up-from-2-5-percent-eight-months-ago" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#21</div>
+          <div class="card-title">Fable 5 仅 4.44 美元搭建 Rube Goldberg 机器</div>
+          <div class="card-summary">用 Fable 5 构建的鲁布·戈德堡机械，仅需 4.44 美元 👀 提示词在此：https://www.reddit.com/r/openrouter/comments/1ulkilz/i_asked_claude_fable_5_to_build_a_rube_goldberg/</div>
+          <div class="card-meta">
+            <span class="source-chip">X：OpenRouter (@OpenRouter)</span>
+            <a class="card-link" href="https://x.com/OpenRouter/status/2072738704922439689" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#22</div>
+          <div class="card-title">千问团队朱达：C端Agent Harness的“多快好省”工程哲学与主动服务探索</div>
+          <div class="card-summary">千问团队2026年1月上线通用复杂任务Agent（千问App胶囊入口），总结“多快好省”方法论：支持信息搜集、研究分析等任务；执行时间降至初始1/3；通过搜索范式与上下文管理优化交付质量；Token消耗仅为海外产品1/10。团队探索从被动响应转向主动服务，构建User Memory、Environment、Task System、Assistant四大组件，指出“情商”是主动服务最难环节。朱达提出Agent工程从Prompt Engineering演进至Harness Engineering，下一站是A IWare Engineering，强调“低功耗，够用就行”。</div>
+          <div class="card-meta">
+            <span class="source-chip">公众号：千问APP（阿里）</span>
+            <a class="card-link" href="https://mp.weixin.qq.com/s/l70iUM0bIpG9EdV9Px7QPQ" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#23</div>
+          <div class="card-title">Agent辅助的SGLang开发：初步探索</div>
+          <div class="card-summary">SGLang团队将LLM服务、分布式运行时、GPU内核、扩散管道等工作流编码为可执行的SKILL.md文件、脚本、基准合约和审查循环。现有技能包括：SGLang .claude/skills（CUDA调试、内核集成、性能分析等）、SGLang diffusion .claude/skills（扩散模型添加与调优）、BBuf/AI-Infra-Auto-Driven-SKILLS（跨框架SOTA循环）、KDA（MLSys 2026 FlashInfer内核竞赛获胜方案）以及BBuf/KDA-Pilot（已合并三个SGLang集成PR）。Profile证据是性能工作的核心，长期优化转向Loop Engineering——SGLang S…</div>
+          <div class="card-meta">
+            <span class="source-chip">LMSYS：Blog（Chatbot Arena 团队）</span>
+            <a class="card-link" href="https://www.lmsys.org/blog/2026-07-02-agent-assisted-sglang-development" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#24</div>
+          <div class="card-title">借用夜晚：将闲置推理GPU回收用于研究</div>
+          <div class="card-summary">Runway 开发了名为 deckard 的容量控制器，在生产推理集群与研究集群间动态重分配 GPU。生产流量在北美工作日上午 9 点 ET 达峰，晚 8 点 ET 跌至不足一半。控制器基于预计算的时间窗口（如工作日 8:30–12:30 ET 高峰子窗口）提前扩容和回收，每次集群间转移耗时 20–60 分钟。利用排队论（Erlang‑C、Little&#x27;s Law）确定目标利用率，避免接近 85% 后的队列发散（90% 利用率下等待时间约为服务时间的 10 倍）。此方案使夜间闲置 GPU 回归研究、白天排队等待缩短。</div>
+          <div class="card-meta">
+            <span class="source-chip">Runway：News（网页）</span>
+            <a class="card-link" href="https://runwayml.com/news/borrowing-the-night-reclaiming-idle-inference-gpus-for-research" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共24条 · 北京时间7月3日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">今日暂无重要VR动态信号</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">暂无</span>
+          <span class="signal-title">今日暂无重要VR动态</span>
+        </div>
+        <p>今日未检索到VR/AR/MR领域具有足够影响力和时效性的重要动态。可关注谷歌与三星秋季联合发布智能眼镜的最新进展。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">2026年ChinaJoy定档7月31日，主题"与AI同游"</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">暂无</span>
+          <span class="signal-title">2026年ChinaJoy定档7月31日，主题"与AI同游"</span>
+        </div>
+        <p>7月3日，2026年第二十三届中国国际数码互动娱乐展览会(ChinaJoy)新闻发布会在上海国际会议中心举行。本届展会将于7月31日至8月3日在上海新国际博览中心举办，主题定为"与AI同游"，将以空前的游戏试玩阵容与前沿AI技术生态为核心驱动，全面呈现数字娱乐产业最新成果。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">格力在慕尼黑上海电子展亮出"芯"矩阵；长三角联合出台举措助力国际科创中心建设</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">暂无</span>
+          <span class="signal-title">格力在慕尼黑上海电子展亮出"芯"矩阵</span>
+        </div>
+        <p>7月3日，格力在慕尼黑上海电子展上展示了其自主研发的"芯"矩阵，涵盖工业控制、消费电子、汽车电子等多个领域的芯片产品。这标志着格力在半导体领域的布局进入新阶段，从空调主业向芯片核心技术自主化迈进。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">三星Galaxy S27系列前置影像系统升级；全新折叠屏机型曝光</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">三星Galaxy S27系列前置影像系统升级；全新折叠屏机型曝光</span>
+        </div>
+        <p>7月3日，vivo全新折叠旗舰vivo X Fold6正式开售。新机已在vivo官网、京东/天猫官方旗舰店及全国线下门店同步发售。作为vivo最新一代大折叠屏机型，X Fold6在屏幕、影像和性能方面均有升级。</p>
+        <a class="signal-source" href="https://mobile.zol.com.cn/more/3_506.shtml" target="_blank">📎 中关村在线 · 7月3日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">科创</span>
+          <span class="signal-title">长三角联合出台举措助力国际科创中心建设</span>
+        </div>
+        <p>7月3日，长三角三省一市联合出台新举措，助力上海国际科创中心建设。政策聚焦集成电路、人工智能、生物医药等三大先导产业，推动区域创新资源共享和产业链协同，打造具有全球影响力的科技创新高地。</p>
+        <a class="signal-source" href="https://www.xinhuanet.com/tech/20260703/da9f2139c0594c92a120b7571ee703c5/c.html" target="_blank">📎 新华网 · 7月3日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月3日AI圈迎来“超级星期二”，Claude Sonnet 5 的发布无疑是最大头条。Anthropic 再次刷新编码能力天花板，Sonnet 5 在 SWE-bench 和代码生成任务上全面超越前代。Google DeepMind 同日发布 Nano Banana 2 Lite 和 Gemini Omni Flash，形成了“Claude vs Gemini”的正面交锋格局。X（Twitter）发布 hosted X MCP 让 AI 智能体直接连接 Twitter API，这是社交媒体平台首次向 AI Agent 开放原生接口，可能重塑社交媒体自动化生态。更值得关注的是，商务部解除了 Claude Fable 5 等模型的出口管制，这意味着美国最先进的 AI 模型将可以更自由地流向全球市场。在产品层面，Acti 将 AI Agent 塞进手机键盘、NotebookLM 上线短视频概览、Claude 推出 Linux 桌面版和 Science 科研工作台，AI 应用正在以前所未有的速度渗透进每一个工作场景。OpenAI 的 GeneBench-Pro 和 Anthropic 的 Turn-Averaged SAE 则分别代表了计算生物学和可解释性研究的前沿。整体来看，今天 AI 行业呈现“模型发布 + 产品渗透 + 政策松绑 + 学术突破”的四重奏，是近期信息量最大的一天。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源来自 AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI HOT 24条信号，产品发布/更新7条、技巧与观点7条最为密集。其他分类中：游戏设计1条（ChinaJoy定档）、新科技2条（格力芯矩阵、长三角科创举措）、新产品1条（三星新机）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
