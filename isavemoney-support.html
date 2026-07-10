@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>iSaveMoney 技术支持</title>
+  <meta name="description" content="iSaveMoney 技术支持：了解语音记账、确认修改、原声回放、备份恢复和常见问题。">
+  <link rel="canonical" href="https://ponghood.com/isavemoney-support.html">
+  <style>
+    :root {
+      --bg: #f5f8f6;
+      --surface: #ffffff;
+      --line: #dbe7df;
+      --text: #14241b;
+      --muted: #637268;
+      --brand: #24c95f;
+      --brand-deep: #13713a;
+      --blue: #1399ff;
+      --expense: #ff8a1f;
+      --soft: #eef8f1;
+      --shadow: 0 18px 48px rgba(17, 61, 35, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top right, rgba(19, 153, 255, 0.12), transparent 34rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.68;
+    }
+
+    a {
+      color: var(--brand-deep);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      width: min(980px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 36px 0 56px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 28px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .hero {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(238, 248, 241, 0.96)),
+        radial-gradient(circle at 86% 28%, rgba(255, 138, 31, 0.14), transparent 20rem);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: clamp(34px, 7vw, 68px);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--brand-deep);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(40px, 7vw, 64px);
+      line-height: 1.06;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 20px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .quick {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .quick-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .quick-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .section {
+      margin-top: 22px;
+    }
+
+    .section h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .card p + p {
+      margin-top: 10px;
+    }
+
+    .contact-box {
+      margin-top: 22px;
+      background: #07100b;
+      color: #ffffff;
+      border-radius: 24px;
+      padding: clamp(24px, 5vw, 36px);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: 0 24px 60px rgba(7, 16, 11, 0.22);
+    }
+
+    .contact-box h2 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    .contact-box p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.68);
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      background: #ffffff;
+      color: #07100b;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .notice {
+      margin-top: 20px;
+      background: #fff8ef;
+      border: 1px solid #ffe1bd;
+      border-radius: var(--radius);
+      padding: 20px;
+      color: #7a4b17;
+    }
+
+    footer {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 760px) {
+      .quick,
+      .grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .button {
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .page {
+        width: min(100% - 28px, 980px);
+        padding-top: 24px;
+      }
+
+      .hero {
+        padding: 28px 18px;
+        border-radius: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <a class="back" href="isavemoney.html">返回 iSaveMoney</a>
+
+    <section class="hero">
+      <p class="eyebrow">Support</p>
+      <h1>iSaveMoney 技术支持</h1>
+      <p class="lead">这里整理了 iSaveMoney 的常见使用问题。当前版本定位为小巧的个人记账应用，重点是日常记录、语音录入、账单回看和本地备份。</p>
+      <div class="quick" aria-label="功能摘要">
+        <div class="quick-card"><strong>按住说一句</strong>识别后先确认，再保存。</div>
+        <div class="quick-card"><strong>可回放原声</strong>方便核对语音识别结果。</div>
+        <div class="quick-card"><strong>可导出备份</strong>账单和音频一起保底。</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>常见问题</h2>
+      <div class="grid">
+        <article class="card">
+          <h3>语音识别不准确怎么办？</h3>
+          <p>语音录入后不会直接保存，会先显示确认卡片。你可以检查类型、金额、分类、备注和原始文本，也可以进入修改后再保存。</p>
+        </article>
+        <article class="card">
+          <h3>为什么要保留原始语音？</h3>
+          <p>原声留存用于纠错。若识别结果不理想，你可以在确认卡片或编辑页听原声，核对当时到底说了什么。</p>
+        </article>
+        <article class="card">
+          <h3>取消一条语音记账后会留下音频吗？</h3>
+          <p>不会。取消本次记账后，临时音频不会作为账单附件保留。</p>
+        </article>
+        <article class="card">
+          <h3>删除账单会删除原声文件吗？</h3>
+          <p>会。删除带有原始音频的账单时，App 会同步删除关联的本地音频文件。</p>
+        </article>
+        <article class="card">
+          <h3>数据保存在哪里？</h3>
+          <p>当前版本没有账号系统和开发者云同步。账单数据和原始音频默认保存在设备本地，备份文件由你主动导出和保管。</p>
+        </article>
+        <article class="card">
+          <h3>如何备份和恢复？</h3>
+          <p>在账单页使用右上角的备份入口，可以导出或恢复备份。备份文件可能包含账单记录和语音文件，请妥善保存。</p>
+        </article>
+        <article class="card">
+          <h3>没有网络还能用吗？</h3>
+          <p>手动记账、账单查看、本地编辑和本地备份主要依赖设备本地能力。语音识别是否可用取决于 iOS 系统状态、权限和设备环境。</p>
+        </article>
+        <article class="card">
+          <h3>为什么账单页只有 2026 年年度汇总？</h3>
+          <p>当前版本先服务已有使用场景，只显示 2026 年年度收入、年度支出和年度结余。后续数据跨度变长后，可以再扩展多年度切换。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact-box">
+      <div>
+        <h2>需要进一步帮助？</h2>
+        <p>请通过发布本页面的个人主页联系方式、TestFlight 反馈入口或 App Store 反馈渠道联系开发者。反馈时建议附上设备型号、iOS 版本、问题截图和复现步骤。</p>
+      </div>
+      <a class="button" href="privacy-policy-isavemoney.html">查看隐私政策</a>
+    </section>
+
+    <div class="notice">
+      正式发布前，建议把这里补充为稳定公开的支持邮箱或个人主页联系入口，方便作为 App Store 技术支持页面长期使用。
+    </div>
+
+    <footer>
+      <span>© 2026 iSaveMoney</span>
+      <span><a href="isavemoney.html">产品介绍</a> · <a href="privacy-policy-isavemoney.html">隐私政策</a></span>
+    </footer>
+  </main>
+</body>
+</html>
