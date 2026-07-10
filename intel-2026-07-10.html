@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-M66NDQY0DF");</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-10</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--accent1:#1A73E8;--accent2:#00897B;--accent3:#E8711A;--accent4:#6B3FA0;--accent5:#C62828;--dark:#0D1117;--dark2:#161B22;--text:#E6EDF3;--muted:#8B949E;--border:#30363D;--card:#1C2128;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.35)}
+    html{scroll-behavior:smooth}
+    body{font-family:"PingFang SC","Segoe UI",system-ui,sans-serif;background:var(--dark);color:var(--text);line-height:1.75}
+    .back-home{position:fixed;top:16px;left:16px;z-index:200;display:flex;align-items:center;gap:8px;padding:10px 16px;background:rgba(28,33,40,.95);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:14px;text-decoration:none;backdrop-filter:blur(10px);transition:all .2s}
+    .back-home:hover{color:var(--text);border-color:var(--accent1)}
+    .back-home svg{width:16px;height:16px}
+    .hero{background:var(--dark);padding:90px 24px 60px;display:flex;justify-content:center}
+    .hero-inner{max-width:900px;width:100%;text-align:center}
+    .hero h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+    .hero .date{color:var(--muted);font-size:1rem;margin-bottom:24px}
+    .hero .lead{color:var(--muted);max-width:680px;margin:0 auto 32px;font-size:.95rem;line-height:1.8}
+    .hero .stats{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+    .hero .stat{text-align:center;min-width:80px}
+    .hero .stat-num{font-size:2rem;font-weight:800;color:var(--accent1)}
+    .hero .stat-label{font-size:.85rem;color:var(--muted)}
+    .hero .category-stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;max-width:700px;margin:0 auto}
+    .hero .cat-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;font-size:.8rem;background:var(--card);border:1px solid var(--border);color:var(--text)}
+    .hero .cat-chip .dot{width:8px;height:8px;border-radius:50%}
+    .nav{position:sticky;top:0;z-index:100;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+    .nav-inner{max-width:900px;margin:0 auto;display:flex;gap:8px;padding:12px 24px;overflow-x:auto}
+    .nav a{flex-shrink:0;padding:8px 16px;border-radius:8px;font-size:.85rem;color:var(--muted);text-decoration:none;white-space:nowrap;transition:all .2s}
+    .nav a:hover{background:var(--card);color:var(--text)}
+    .section{max-width:900px;margin:0 auto;padding:48px 24px}
+    .section+.section{border-top:1px solid var(--border)}
+    .section-header{margin-bottom:28px}
+    .section-tag{display:inline-block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;border-radius:6px;margin-bottom:10px}
+    .section-title{font-size:1.6rem;font-weight:700;margin-bottom:8px}
+    .section-desc{color:var(--muted);font-size:.95rem}
+    .ai-subsection{margin-bottom:32px}
+    .ai-subsection:last-child{margin-bottom:0}
+    .ai-subsection-title{font-size:1.1rem;font-weight:700;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+    .ai-subsection-title .icon{font-size:1.2rem}
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+    .card-item{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+    .card-item:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .card-item .card-num{font-size:.75rem;font-weight:700;color:var(--accent1);margin-bottom:8px}
+    .card-item .card-title{font-weight:700;font-size:1rem;margin-bottom:10px;line-height:1.5;flex:1}
+    .card-item .card-summary{color:var(--muted);font-size:.88rem;line-height:1.7;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+    .card-item .card-meta{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:auto}
+    .card-item .source-chip{display:inline-flex;align-items:center;gap:4px;font-size:.78rem;color:var(--muted);background:var(--dark2);padding:4px 10px;border-radius:20px;max-width:60%;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+    .card-item .card-link{font-size:.8rem;color:var(--accent1);text-decoration:none;font-weight:600;transition:color .2s}
+    .card-item .card-link:hover{color:#4a9eff}
+    .signal-list{display:flex;flex-direction:column;gap:16px}
+    .signal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 22px;transition:transform .15s,box-shadow .15s}
+    .signal:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+    .signal-header{display:flex;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+    .signal-badge{font-size:.7rem;font-weight:700;padding:3px 10px;border-radius:20px;color:#fff;text-transform:uppercase;flex-shrink:0}
+    .signal-title{font-weight:700;font-size:1.05rem;flex:1;min-width:200px}
+    .signal p{color:var(--muted);font-size:.9rem;margin-bottom:10px}
+    .signal-source{display:inline-flex;align-items:center;gap:4px;font-size:.8rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);padding-bottom:1px}
+    .signal-source:hover{color:var(--text)}
+    .note-card{background:rgba(26,115,232,.08);border-left:4px solid var(--accent1);border-radius:0 var(--radius) var(--radius) 0;padding:18px 20px;margin-top:24px}
+    .note-card h4{font-size:1rem;margin-bottom:8px;color:var(--accent1)}
+    .note-card p{color:var(--muted);font-size:.9rem;margin:0}
+    .data-source{text-align:center;padding:16px 24px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--border);background:var(--dark2)}
+    footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--border)}
+    footer a{color:var(--muted);text-decoration:underline;text-underline-offset:3px}
+    footer a:hover{color:var(--text)}
+    @media(max-width:640px){.hero{padding:72px 16px 40px}.section{padding:32px 16px}.card-grid{grid-template-columns:1fr}.card-item{padding:14px 16px}.signal{padding:16px}.hero .stats{gap:16px}.hero .category-stats{gap:8px}}
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月10日 · 星期五</div>
+      <p class="lead">
+        腾讯混元 3 正式版发布，搜索追平 GPT-5.5 幻觉率减半；字节 Seedance 进入好莱坞长片工作流；大厂 AI 步入"大一统"，微信"小微"支付宝"阿宝"灰度上线；Meta 推出 Meta Compute 卖 GPU 算力股价大涨 9%；ICML 2026 公布 10 篇获奖论文。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">25</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 8</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 8</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Claude Sonnet 5 发布刷新编码天花板；Google DeepMind 发布 Nano Banana 2 Lite 和 Gemini Omni Flash；X 发布 hosted X MCP 让 AI 智能体直连 Twitter</p>
+    </div>
+                <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128640;</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(7条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">OpenAI 推出 ChatGPT Work：可跨应用自主工作的 AI 智能体</div>
+          <div class="card-summary">OpenAI 发布 ChatGPT Work，一个能跨应用和文件收集信息、将复杂项目分解为小步骤独立完成并持续工作数小时的 AI 智能体。它内置 Codex 技术，目前每周超 500 万用户使用 Codex，其中超 100 万用于非软件开发场景。ChatGPT Work 由今天同步推出的最新前沿模型 GPT‑5.6 驱动，具备多步骤推理和按模板生成材料的能力。该功能今天起面向 Pro、Enterprise 和 Edu 计划推出，未来几天扩展至 Plus 和 Business 计划。桌面版 ChatGPT 在所有计划（含免费版）中提供 Chat、Work 和 Codex 模式，且 Codex 应用已合并至新的桌面应用。</div>
+          <div class="card-meta">
+            <span class="source-chip">OpenAI：官网动态（RSS · 排除企业/客户案例）</span>
+            <a class="card-link" href="https://openai.com/index/chatgpt-for-your-most-ambitious-work" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">蚂蚁灵波开源实时交互世界模型 LingBot-World 2.0</div>
+          <div class="card-summary">蚂蚁灵波开源新一代实时交互世界模型 LingBot-World 2.0（14B 参数），支持施法、攻击、跳跃等丰富角色动作及文本驱动事件（如切换场景、召唤风暴），内置 Pilot Agent 与 Director Agent 实现世界持续演化，并支持多人同时交互。模型采用因果预训练范式和混合双向自回归注意力掩码（MoBA），可稳定输出 720p/60fps 实时画面，长达一小时测试画质不衰减。通过一致性蒸馏与 DMD 降低采样成本，结合注意力 kernel 优化、混合并行推理、动态 KV 缓存调度和异步流媒体传输实现低延迟交互。模型权重及推理代码以非商用协议开源，SGLang 已适配，并提供 Reactor PC 端和灵光 APP …</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/974/508.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">OpenAI 发布最强模型与最佳博文</div>
+          <div class="card-summary">显然是我们有史以来最好的模型，也是我们写得最好的博文之一： https://openai.com/index/gpt-5-6/</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Sam Altman (@sama)</span>
+            <a class="card-link" href="https://x.com/sama/status/2075266471316615436" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">蚂蚁灵波开源全球首个面向具身智能的MoE视频基模LingBot-Video</div>
+          <div class="card-summary">蚂蚁灵波科技正式开源LingBot-Video，这是全球首个基于MoE架构、面向具身智能的视频生成基础模型。总参数30B，推理时仅激活约3B，效率较同规模Dense架构提升约3倍。模型引入7万小时VLA、VLN、Ego等机器人数据，并通过多维强化学习奖励系统对齐物理合理性与任务完成度。在RBench上总分0.620，超越Wan2.6等模型；在Physics-IQ Verified评测中排名第一。可用于机器人动作预测、仿真数据生成等方向。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/974/517.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">NVIDIA 发布 Nemotron-Labs-3-Puzzle-75B-A9B：压缩混合 MoE 模型，服务器吞吐量提升 2.03 倍</div>
+          <div class="card-summary">NVIDIA 发布 Nemotron-3-Super 的压缩变体 Nemotron-Labs-3-Puzzle-75B-A9B，总参数从 120.7B 降至 75.3B，活跃参数从 12.8B 降至 9.3B，保持 88 块混合布局（40 Mamba、40 MoE、8 注意力）。在 8×B200 节点上，8K/64K 场景匹配用户吞吐量≥100 tok/s 时，服务器吞吐量提升 2.03 倍。单 H100 上 1M-token 并发从 1 增至 8，权重占用从 70 GB 降至 44.5 GB。迭代式 Puzzle 方法平均得分比单步高 0.57。代价：Arena-Hard-V2 降 4.2 分、SWE-Bench 降 2.6 分。…</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/09/nvidia-releases-nemotron-labs-3-puzzle-75b-a9b-a-compressed-hybrid-moe-llm-delivering-2-03x-server-throughput-at-matched-user-throughput" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">Robbyant 发布 LingBot-VLA 2.0：开源 6B 跨实体机器人视觉-语言-动作模型</div>
+          <div class="card-summary">Robbyant 推出 LingBot-VLA 2.0，一个 6B 参数的开源视觉-语言-动作（VLA）基础模型。它以 Qwen3-VL-4B-Instruct 为骨干，采用 MoE 动作专家架构，通过 55 维规范向量统一表示不同机器人的状态和动作。训练数据涵盖约 60,000 小时高质量数据（50,000 小时机器人轨迹 + 10,000 小时第一人称人类视频），覆盖 20 种机器人配置。在 GM-100 双机械臂基准测试中，模型在多个平台上超越 π0.5 和之前版本。模型权重、代码和技术报告已以 Apache-2.0 许可开源。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/08/lingbot-vla-2-0" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">Meta 发布 Muse Spark 1.1 模型</div>
+          <div class="card-summary">来自 @finkd 的消息 — Muse Spark 1.1 已上线。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：AI at Meta (@AIatMeta)</span>
+            <a class="card-link" href="https://x.com/AIatMeta/status/2075218647359111460" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128736;</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(5条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#08</div>
+          <div class="card-title">微软发布Flint：面向AI智能体的可视化语言</div>
+          <div class="card-summary">微软研究院推出Flint，一种可视化中间语言，让AI智能体通过简洁的人类可编辑spec自动生成美观图表。用户只需提供数据、语义类型和图表类型，Flint编译器即可推导坐标轴、配色、布局等底层参数。支持46种图表类型，可渲染到Vega-Lite、ECharts和Chart.js三个后端。项目通过npm安装（TypeScript/JavaScript），并提供MCP服务器用于智能体工作流集成。采用弹性布局模型自动优化图表尺寸与间距，已开源。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://microsoft.github.io/flint-chart" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#09</div>
+          <div class="card-title">Claude 推出反思功能（Beta）</div>
+          <div class="card-summary">Anthropic 为 Claude 推出一项反思功能（Beta），帮助用户追踪使用模式。用户可回顾过去 1、3、6 或 12 个月的活动总结，涵盖关键主题、使用频率和任务类型。功能结合 4D AI Fluency Framework（委托、描述、辨别、勤勉）提供协作分析，支持设定静音时段或定时休息提醒。隐私方面，不涉及无痕对话和健康集成工具，也不提取连接工具中的底层文件。该功能面向 Free、Pro 和 Max 用户，需开启记忆功能，可通过 Claude 网页或桌面应用设置。</div>
+          <div class="card-meta">
+            <span class="source-chip">Anthropic：Newsroom（网页）</span>
+            <a class="card-link" href="https://www.anthropic.com/news/reflect-with-claude" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#10</div>
+          <div class="card-title">ChatGPT Sites将创意变可发布网站</div>
+          <div class="card-summary">将一个想法变成可发布和分享的实时网站 以下是OpenAI团队的一些成员用Sites构建的示例👇 @prd_008 用Sites将一个想法变成了个人专注应用：</div>
+          <div class="card-meta">
+            <span class="source-chip">X：OpenAI Developers (@OpenAIDevs)</span>
+            <a class="card-link" href="https://x.com/OpenAIDevs/status/2075331020090687666" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#11</div>
+          <div class="card-title">Google 推出 LiteRT.js：高性能 Web AI 推理运行时</div>
+          <div class="card-summary">Google 发布 LiteRT.js，这是 LiteRT 跨平台边缘 AI 运行时的最新成员，专为 JavaScript 开发者设计，可直接在浏览器中运行机器学习模型。LiteRT.js 基于 WebGPU 和即将推出的 WebNN 实现 SOTA 推理性能，同时支持回退到 WebAssembly CPU 方案。</div>
+          <div class="card-meta">
+            <span class="source-chip">Google Developers Blog（RSS）</span>
+            <a class="card-link" href="https://developers.googleblog.com/litertjs-googles-high-performance-web-ai-inference" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#12</div>
+          <div class="card-title">Mistral 推出 Studio，为 AI 提示词和技能提供系统记录</div>
+          <div class="card-summary">Mistral 今日推出 Studio，为 AI 提示词和技能提供集中式系统记录。平台将 prompts 和 skills 视为生产资产，支持不可变版本、回滚、明确所有权、分类标签和审计日志，保证变更可追溯。非开发者可直接编辑测试，通过标签将变更推送至生产，保留原有 CI/CD 流程。可观测性让生产输出回溯到对应资产版本，形成闭环治理。现面向 Mistral Studio 客户开放。</div>
+          <div class="card-meta">
+            <span class="source-chip">Mistral AI：News（网页）</span>
+            <a class="card-link" href="https://mistral.ai/news/manage-prompts-and-skills-in-studio" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128240;</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(6条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#13</div>
+          <div class="card-title">Elon Musk称赞Anthropic并承诺不切断其算力</div>
+          <div class="card-summary">Elon Musk近日在X上承认此前对Anthropic的判断有误，称其“显然是当前AI领域的领导者”，盛赞Mythos/Fable模型“目前最好”，并承诺不会恶意切断其计算资源。2026年7月起，Anthropic成为SpaceX最大客户之一——双方5月签署协议，Anthropic以每月12.5亿美元（至2029年5月，总计约400亿美元）购买xAI旗下Colossus 1数据中心300兆瓦全部算力。Musk以特斯拉开放专利、超充网络等先例佐证其“不挤压竞争对手”的风格，合同条款也提供了保障。</div>
+          <div class="card-meta">
+            <span class="source-chip">TechCrunch：AI（RSS）</span>
+            <a class="card-link" href="https://techcrunch.com/2026/07/09/elon-musk-praises-mythos-fable-promises-not-to-cut-off-anthropic" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#14</div>
+          <div class="card-title">消息称特斯拉三代擎天柱人形机器人初步定型，马斯克放话达不成产能目标就开掉整个采购团队</div>
+          <div class="card-summary">据晚点LatePost报道，特斯拉Optimus Gen 3经马斯克评审通过，即将量产。供应链要求供应商9月产能达1000台/周，年底升至2000-2500台/周，届时年产能可达10万台。马斯克六月底高管会上要求年底前实现产能目标，否则开除整个Optimus采购团队。弗里蒙特工厂已改造为Optimus生产线，Model S/X于5月停产。马斯克表示初期生产极其缓慢，低产量夏季启动，高产量2027年展开。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/974/782.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#15</div>
+          <div class="card-title">Ollama 开发者数达890万，B轮融资由Theory领投</div>
+          <div class="card-summary">Ollama 让开源模型在本地或云端轻松运行，保持体验一致。目前拥有890万开发者、6.7万集成，并与各大模型实验室及硬件供应商建立合作。B轮融资由Theory领投。</div>
+          <div class="card-meta">
+            <span class="source-chip">Tomer Tunguz 博客（VC 分析）</span>
+            <a class="card-link" href="https://www.tomtunguz.com/ollama-series-b" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#16</div>
+          <div class="card-title">Anthropic发起“硬问题”倡议，邀请公众提出AI相关尖锐问题</div>
+          <div class="card-summary">Anthropic作为公益公司，发起“硬问题”倡议，邀请公众就AI对就业、社会、家庭、科学医学等领域的影响提出最尖锐的问题。此前已通过多种方式收集看法：首轮调查询问5.2万美国人；通过Anthropic Interviewer调查了159个国家70种语言的8.1万Claude用户；开展数十场线下焦点小组；并基于匿名真实数据研究Claude使用情况。公司还设立了Anthropic Institute和Long-Term Benefit Trust以监督公益使命进展。Anthropic承诺将公开追踪并报告针对这些问题的具体行动及成效。</div>
+          <div class="card-meta">
+            <span class="source-chip">Anthropic：Newsroom（网页）</span>
+            <a class="card-link" href="https://www.anthropic.com/news/hard-questions" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#17</div>
+          <div class="card-title">Anthropic长期利益信托任命本·伯南克为受托人</div>
+          <div class="card-summary">Anthropic的长期利益信托（LTBT）任命前美联储主席、2022年诺贝尔经济学奖得主本·伯南克为最新受托人。他将与另外三位受托人共同监督公司以对社会长期有益的方式负责任开发先进AI的使命。LTBT独立于管理团队和投资者，受托人不持股、不分红，仅按服务时间获酬。该信托有权向Anthropic董事会任命成员，并就AI风险与社会影响等关键决策提供建议。伯南克将参与公司的经济研究，帮助理解AI对全球劳动力与经济的影响。</div>
+          <div class="card-meta">
+            <span class="source-chip">Anthropic：Newsroom（网页）</span>
+            <a class="card-link" href="https://www.anthropic.com/news/ben-bernanke" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#18</div>
+          <div class="card-title">GPT-5.5 生物漏洞赏金计划</div>
+          <div class="card-summary">OpenAI 将 GPT-5.5 Bio Bug Bounty 升级为持续私密项目 OpenAI Bio Bounty Program，以 GPT-5.6 为起点并覆盖后续前沿模型，旨在发现能突破预设生物安全挑战的通用越狱攻击。奖励从 $25,000 提高至 $50,000，适用于</div>
+          <div class="card-meta">
+            <span class="source-chip">OpenAI：官网动态（RSS · 排除企业/客户案例）</span>
+            <a class="card-link" href="https://openai.com/index/bio-bug-bounty" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128209;</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(3条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#19</div>
+          <div class="card-title">揭密在线策略蒸馏：何时有益、何时有害及原因</div>
+          <div class="card-summary">Apple机器学习研究团队提出训练无关诊断框架，以每个token、每个问题、每个教师的分辨率分析on-policy蒸馏。通过可扩展targeted-rollout算法估计理想梯度，并计算蒸馏梯度与理想梯度的余弦相似度（梯度对齐分数）。实验发现，蒸馏指导在错误rollouts上的对齐程度显著高于正确rollouts；最优蒸馏上下文取决于学生模型容量和目标任务，无通用配置。这些发现推动每任务、每token的诊断分析。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/unmasking-on-policy-distillation" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#20</div>
+          <div class="card-title">TGPO：通过可验证奖励强化学习激励第一人称视频时序感知</div>
+          <div class="card-summary">多模态大语言模型（MLLM）在第一人称视频理解中缺乏时序感知，常依赖空间捷径。为此，研究者提出 Temporal Global Policy Optimization（TGPO），一种基于可验证奖励的强化学习算法。TGPO 通过对比模型在时序有序与打乱帧上的输出，生成全局归一化奖励信号，明确奖励时序连贯推理。TGPO 可集成 GRPO 和 GSPO，支持冷启动 RL 训练，抑制 MLLM 的空间捷径行为。在五个第一人称视频基准上，TGPO 一致提升时序定位与因果连贯性，优于此前基于 RL 的视频推理方法。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/incentivizing-temporal-awareness-egocentric" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#21</div>
+          <div class="card-title">Apple 提出 SRLM：自反思程序搜索提升长上下文处理能力</div>
+          <div class="card-summary">Apple 机器学习研究团队提出 SRLM 框架，利用自一致性、推理链长度和口头置信度三种内在信号，让模型在推理时评估候选长上下文交互程序。实验表明，在相同时间预算下，SRLM 较传统递归语言模型（RLM）最高提升 22%。分析发现，递归本身并非 RLM 性能关键，简单的自反思程序搜索无需显式递归即可匹配或超越 RLM；在模型上下文窗口内，RLM 反而降低性能，而 SRLM 在短上下文和长上下文中均实现稳定增益。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/self-reflective-program-search" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128161;</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#22</div>
+          <div class="card-title">AI 能否回答 3 万亿美元的问题？</div>
+          <div class="card-summary">Sequoia 合伙人 David Cahn 更新 AI 基础设施支出估算：2026 年全球投入达 1.5 万亿美元，行业需产生 3 万亿美元收入才能回本。Anthropic 年化收入（ARR）达 600 亿美元，OpenAI 2025 年收入 130 亿美元（11 月称 ARR 200 亿美元），但缺口仍大。Apollo 首席经济学家指出，谷歌、Meta、微软、亚马逊均预测 2028 年自由现金流加速，但风险在于更多组织转向更便宜的开放权重模型（尤其中国模型），且 OpenAI 最新模型编码任务 token 效率提升 54%，导致 token 价格持续下降。若超大规模厂商现金流目标落空，可能引发经济衰退和标普 500 回调。</div>
+          <div class="card-meta">
+            <span class="source-chip">TechCrunch：AI（RSS）</span>
+            <a class="card-link" href="https://techcrunch.com/2026/07/09/can-ai-answer-the-3-trillion-question" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#23</div>
+          <div class="card-title">社交媒体AI生成内容泛滥：LinkedIn超过40%长文为AI写作</div>
+          <div class="card-summary">安全公司Pangram通过Chrome扩展收集超100万条帖子，分析发现社交媒体AI生成内容泛滥。整体AI检测率13.8%，长文（超250词）中25.72%完全由AI生成。LinkedIn最为严重，超40%长文帖子被标记为完全AI生成，占全部AI内容的62%；X/Twitter近一半文章（23.9%完全AI+22.9%混合）为AI写作。Reddit整体AI率仅4.4%，但顶层帖子AI率达11.6%。分析使用Pangram 3.3模型，假阳性率0.01%。Substack上长文AI率反而略低。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://www.pangram.com/blog/ai-in-your-feed" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#24</div>
+          <div class="card-title">Bun 被 Anthropic 收购后用 Rust 重写，月下载超 2200 万</div>
+          <div class="card-summary">Bun 于 2025 年 12 月被 Anthropic 收购，作者使用预发布版 Claude Fable 5 进行了大量 Rust 重写。Bun 最初用 Zig 在一年内构建，如今 CLI 月下载超 2200 万，被 Claude Code 等采用。广泛功能带来稳定性挑战，v1.3.14 修复了多项 use-after-free、内存泄漏等 bug。团队通过 ASAN、Fuzzilli 模糊测试等系统性预防，并借助 Rust 的内存安全特性减少此类缺陷。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://bun.com/blog/bun-in-rust" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#25</div>
+          <div class="card-title">TeXada：基于MiniCPM的本地数学Agent发布</div>
+          <div class="card-summary">社区开发者基于MiniCPM5-1B和MiniCPM-V 4.6构建了本地优先的数学智能体TeXada。该Agent支持自然语言直接转LaTeX、手写/图像公式OCR转可编辑LaTeX、LaTeX补全与错误修复等核心功能。所有推理在本地完成，无需依赖云服务，保障隐私安全，适用于学生、研究人员和开发者随时随地处理数学表达式。已开源至GitHub，并提供HuggingFace模型下载。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：面壁智能 OpenBMB (@OpenBMB)</span>
+            <a class="card-link" href="https://x.com/OpenBMB/status/2075218678027850154" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-source">AI趋势数据来自 <a href="https://txtmix.com/posts/news/ai-morning-news-2026-07-10/" target="_blank" rel="noopener noreferrer">Text Matrix AI新闻早报</a>（AI HOT API 临时不可用） · 共25条 · 北京时间7月10日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">Meta CTO 否认放弃 VR 赛道，多款新头显蓄势待发；XREAL/Rokid/雷鸟 AI 眼镜上市竞赛进入倒计时</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">暂无</span>
+          <span class="signal-title">Meta CTO 否认放弃 VR 赛道，多款新头显蓄势待发</span>
+        </div>
+        <p>7月10日，Meta CTO 博斯沃思在 Instagram 公开辟谣否认放弃 VR 赛道，表示正在同步研发多款新一代头显，有望在 9 月 23 日 Meta Connect 大会集中披露。同日，移远通信发布全链路自研 AI+AR 眼镜 Hawk 系列及配套算力单元 Dolphin 系列，宣告全面切入 XR 赛道，股价涨停。AI 眼镜第一股竞赛也进入倒计时：XREAL 正式递交港股招股书，Rokid 完成股份制改革上市准备，雷鸟创新释放资本化信号。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">《幻兽帕鲁》1.0版正式发布 Steam在线超20万；网易《遗忘之海》开启公测；B站《三国火凤燎原》亮相BW2026</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">暂无</span>
+          <span class="signal-title">《幻兽帕鲁》1.0版正式发布 Steam在线超20万；网易《遗忘之海》开启公测；B站《三国火凤燎原》亮相BW2026</span>
+        </div>
+        <p>7月10日，2026年第二十三届中国国际数码互动娱乐展览会(ChinaJoy)新闻发布会在上海国际会议中心举行。本届展会将于7月31日至8月3日在上海新国际博览中心举办，主题定为"与AI同游"，将以空前的游戏试玩阵容与前沿AI技术生态为核心驱动，全面呈现数字娱乐产业最新成果。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">全球首个具身原生VA模型LingBot-VA 2.0发布；美团开源万亿参数LongCat-2.0；人形机器人首次走进手术室完成活体手术</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">暂无</span>
+          <span class="signal-title">全球首个具身原生VA模型LingBot-VA 2.0发布，双臂任务成功率93.6%</span>
+        </div>
+        <p>7月10日，格力在慕尼黑上海电子展上展示了其自主研发的"芯"矩阵，涵盖工业控制、消费电子、汽车电子等多个领域的芯片产品。这标志着格力在半导体领域的布局进入新阶段，从空调主业向芯片核心技术自主化迈进。</p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">OpenAI GPT-5.6 系列全量发布；小米澎程首款 SUV 首秀；日产 NX8 上市</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">OpenAI GPT-5.6 系列全量发布；小米澎程首款 SUV 首秀；日产 NX8 上市</span>
+        </div>
+        <p>7月10日，vivo全新折叠旗舰vivo X Fold6正式开售。新机已在vivo官网、京东/天猫官方旗舰店及全国线下门店同步发售。作为vivo最新一代大折叠屏机型，X Fold6在屏幕、影像和性能方面均有升级。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/974/795.htm" target="_blank">📎 中关村在线 · 7月10日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">AI</span>
+          <span class="signal-title">OpenAI 全量发布 GPT-5.6 系列，Codex 并入 ChatGPT 桌面端</span>
+        </div>
+        <p>7月10日，OpenAI 正式全量发布 GPT-5.6 系列模型，采用天体命名体系推出 Sol（旗舰）、Terra（均衡）、Luna（轻量）三档模型。Sol 在 Agent 测试中得分超竞品 13.1 分，编程能力刷新纪录，Token 效率提升 54%、成本降至竞品四分之一。同时推出 ChatGPT Work 自主智能体应用，可跨工具整合信息、自主规划执行路径。Codex 应用并入 ChatGPT 桌面端。</p>
+        <a class="signal-source" href="https://www.ithome.com/0/974/795.htm" target="_blank">📎 IT之家 · 7月10日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">平板</span>
+          <span class="signal-title">联想Y700无极发布：首款5G小平板，OLED屏+双卡双待+骁龙8E5</span>
+        </div>
+        <p>7月10日，联想拯救者Y700无极正式公布，计划于8月正式上市。该系列产品首次引入5G通信能力，官方将其定位为"小平板，大生态"，搭载OLED屏幕、双卡双待和骁龙8E5处理器，是首款支持5G的小尺寸平板设备。</p>
+        <a class="signal-source" href="https://www.zol.com.cn/index_360.html" target="_blank">📎 中关村在线 · 7月10日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">科创</span>
+          <span class="signal-title">长三角联合出台举措助力国际科创中心建设</span>
+        </div>
+        <p>7月10日，长三角三省一市联合出台新举措，助力上海国际科创中心建设。政策聚焦集成电路、人工智能、生物医药等三大先导产业，推动区域创新资源共享和产业链协同，打造具有全球影响力的科技创新高地。</p>
+        <a class="signal-source" href="https://www.xinhuanet.com/tech/20260703/da9f2139c0594c92a120b7571ee703c5/c.html" target="_blank">📎 新华网 · 7月10日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月10日AI圈迎来“超级星期五”，Claude Sonnet 5 的发布无疑是最大头条。Anthropic 再次刷新编码能力天花板，Sonnet 5 在 SWE-bench 和代码生成任务上全面超越前代。Google DeepMind 同日发布 Nano Banana 2 Lite 和 Gemini Omni Flash，形成了“Claude vs Gemini”的正面交锋格局。X（Twitter）发布 hosted X MCP 让 AI 智能体直接连接 Twitter API，这是社交媒体平台首次向 AI Agent 开放原生接口，可能重塑社交媒体自动化生态。更值得关注的是，商务部解除了 Claude Fable 5 等模型的出口管制，这意味着美国最先进的 AI 模型将可以更自由地流向全球市场。在产品层面，Acti 将 AI Agent 塞进手机键盘、NotebookLM 上线短视频概览、Claude 推出 Linux 桌面版和 Science 科研工作台，AI 应用正在以前所未有的速度渗透进每一个工作场景。OpenAI 的 GeneBench-Pro 和 Anthropic 的 Turn-Averaged SAE 则分别代表了计算生物学和可解释性研究的前沿。整体来看，今天 AI 行业呈现“模型发布 + 产品渗透 + 政策松绑 + 学术突破”的四重奏，是近期信息量最大的一天。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源因 AI HOT API 临时不可用，降级为网络搜索获取。按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。数据主要来自 Text Matrix AI 新闻早报（2026-07-10）、36氪、量子位、新浪财经等。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI 趋势 7条信号，行业动态2条、技巧与观点2条最为密集。其他分类中：游戏设计1条（6月版号171款）、新科技2条（WAIC 2026、联想Y700无极）、新产品1条（苹果iOS 27 RAW 9/iPhone折叠屏）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://txtmix.com/posts/news/ai-morning-news-2026-07-10/" target="_blank">Text Matrix AI新闻早报</a>（AI HOT API 临时不可用） · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
