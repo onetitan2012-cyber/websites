@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-M66NDQY0DF");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-12</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  --accent2:  #00897B;  --accent3:  #E8711A;
+      --accent4:  #6B3FA0;  --accent5:  #C62828;  --dark:     #0D1117;
+      --dark2:    #161B22;  --text:     #E6EDF3;  --muted:    #8B949E;
+      --border:   #30363D;  --card:     #1C2128;  --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.75;
+    }
+    .back-home {
+      position: fixed; top: 16px; left: 16px; z-index: 200;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: rgba(28,33,40,.95);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: var(--dark); padding: 90px 24px 60px;
+      display: flex; justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .hero .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: .8rem; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a { flex-shrink: 0; padding: 8px 16px; border-radius: 8px; font-size: .85rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: all .2s; }
+    .nav a:hover { background: var(--card); color: var(--text); }
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+    .ai-subsection { margin-bottom: 32px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subsection-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .ai-subsection-title .icon { font-size: 1.2rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-item .card-num { font-size: .75rem; font-weight: 700; color: var(--accent1); margin-bottom: 8px; }
+    .card-item .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; line-height: 1.5; flex: 1; }
+    .card-item .card-summary { color: var(--muted); font-size: .88rem; line-height: 1.7; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-item .card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .card-item .source-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--muted); background: var(--dark2); padding: 4px 10px; border-radius: 20px; max-width: 60%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .card-item .card-link { font-size: .8rem; color: var(--accent1); text-decoration: none; font-weight: 600; transition: color .2s; }
+    .card-item .card-link:hover { color: #4a9eff; }
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform .15s, box-shadow .15s; }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .signal-badge { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: #fff; text-transform: uppercase; flex-shrink: 0; }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 1px; }
+    .signal-source:hover { color: var(--text); }
+    .note-card { background: rgba(26,115,232,.08); border-left: 4px solid var(--accent1); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; margin-top: 24px; }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .data-source { text-align: center; padding: 16px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); background: var(--dark2); }
+    footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-item { padding: 14px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月12日 · 星期日</div>
+      <p class="lead">
+        GPT-5.6 Sol Ultra 1小时证明50年图论难题；蚂蚁发布原生具身基础模型 LingBot-VA 2.0；中国首枚可重复使用运载火箭成功发射；苹果起诉 OpenAI 窃取硬件机密；AI 智能体手机赛道全面开跑。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">8</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 2</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 0</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 1</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">GPT-5.6 Sol Ultra 1小时证明50年图论难题；蚂蚁发布原生具身基础模型 LingBot-VA 2.0；苹果起诉 OpenAI 窃密；Claude Fable 5 11天写100万行代码重构Bun</p>
+    </div>
+    <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🚀</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">蚂蚁集团 Robbyant 发布 LingBot-VA 2.0，首个原生具身基础模型</div>
+          <div class="card-summary">蚂蚁集团旗下具身智能团队 Robbyant 发布 LingBot-VA 2.0，首个原生具身基础模型。该模型采用因果 DiT 架构，视频专家约 13.0B 参数（约 1.9B 激活），训练规模约 15.3B 参数，推理时每 token 约 2.5B 激活。模型引入多块预测（MCP）实现 2.3 倍训练加速，并通过前瞻推理将推理延迟降至 142 ms/chunk。在 RoboTwin 2.0 的 50 个任务上，干净与随机演示数据平均成功率分别达 93.8% 和 93.4%。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/11/ant-groups-robbyant-unveils-lingbot-va-2-0" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">OpenAI 发布 GPT-5.6 系列医疗评估结果</div>
+          <div class="card-summary">OpenAI 发布 GPT-5.6 系列在医疗领域的评估结果。最小变体 GPT-5.6 Luna 在最低推理强度下即超越最高推理强度的 GPT-5.5，且成本低 25 倍；最大变体 GPT-5.6 Sol 树立新标杆。在涵盖患者端与临床端的多样化任务中，专科医生被要求以无限时间和网络访问权限撰写回答，随后由其他医生盲评。评估基于准确性、沟通、完整性、指令遵循及健康决策帮助性五个维度，共 20000 次评分。结果显示，所有 GPT-5.6 模型表现均显著优于医生，且医生发现 GPT-5.6 回答中的缺陷少于医生自己撰写的回答。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Sam Altman (@sama)</span>
+            <a class="card-link" href="https://x.com/sama/status/2075985056846451123" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">🛠️</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">Claude Code v2.1.207 发布</div>
+          <div class="card-summary">Claude Code v2.1.207 发布。Auto 模式在 Bedrock、Vertex AI 和 Foundry 上无需 `CLAUDE_CODE_ENABLE_AUTO_MODE` 即可使用，可通过 `disableAutoMode` 设置关闭。修复了流式响应中包含超长列表、表格、段落或代码块时终端冻结和按键延迟的问题；修复了非交互式运行中远程托管设置被永久记录为已同意而未显示安全同意对话框的问题；修复了自动更新程序每次发布时覆盖 `~/.local/bin/claude` 自定义启动脚本或符号链接的问题。Bedrock、Vertex 和 Claude Platform on AWS 默认切换为 Claude Opus 4…</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude Code：GitHub Releases（RSS）</span>
+            <a class="card-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.207" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">📰</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">OpenAI GPT-5.6-Sol 删光 AI 创业者 Matt Shumer 的 Mac 硬盘</div>
+          <div class="card-summary">知名 AI 创业者 Matt Shumer 的 Mac 硬盘被 OpenAI 最新 Agent 模型 GPT-5.6-Sol 彻底清空。他在本地 Agent 上开启 Full Access 权限，让 subagent 执行文件清理任务，结果 shell 变量 $HOME 路径解析错误，Agent 直接执行 `rm -rf /Users/mattsdevbox`，导致数年代码、文件、照片丢失。该任务此前已安全运行数百次。事后 Agent 自动生成事故报告承认错误。Matt 表示“1000x 更信任 Anthropic 的 Fable”。事件暴露 Agent 行业核心风险：顶级模型仍会在变量展开、路径等细节翻车；Subagent + 长…</div>
+          <div class="card-meta">
+            <span class="source-chip">X：阿易 AI Notes (@AYi_AInotes)</span>
+            <a class="card-link" href="https://x.com/AYi_AInotes/status/2075761215251312722" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">研究：博科圣地已使用ChatGPT、Claude等主流AI聊天机器人用于袭击策划与武器开发</div>
+          <div class="card-summary">剑桥大学CASP研究员Antonia Jülich对27名前成员的57次访谈显示，博科圣地已使用ChatGPT、Claude、Gemini、Grok、Meta AI和DeepSeek等主流AI聊天机器人，用于袭击策划、制造更强爆炸装置、武器维护及行动安全。该组织两个派系均设立了专门的AI部门。ISIS自2023年起便提供提示工程和越狱培训，并训练尼日利亚的博科圣地指挥官绕过AI安全过滤器。研究指出，安全过滤器未能可靠防止滥用。Anthropic近期承认，越狱可能永远无法完全消除。</div>
+          <div class="card-meta">
+            <span class="source-chip">The Decoder：AI News（RSS）</span>
+            <a class="card-link" href="https://the-decoder.com/terrorist-groups-are-using-every-major-ai-chatbot-for-attack-planning-and-weapons-development" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">11天Claude Fable 5写超100万行代码：Rust重构JavaScript运行时Bun</div>
+          <div class="card-summary">开发者Jarred Sumner借助Claude Fable 5模型，11天内将Bun从Zig重写为Rust，64个实例并行编写超100万行代码，API费用约16.5万美元。重构主因是Zig频繁内存错误，Rust可在编译时捕获。Bun v1.4.0以Canary版本发布，修复128个错误，速度提高约2%到5%。Bun团队已于2025年12月被Anthropic收购。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/975/469.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">彭博社揭秘苹果起诉 OpenAI 内幕：前员工一句“哈哈”成窃密关键</div>
+          <div class="card-summary">苹果起诉 OpenAI，指控前工程师 Chang Liu 离职时带走未归还的 MacBook、一名可分享内情的员工，并利用软件漏洞持续访问苹果内网。他发现漏洞后向同事分享“哈哈，我发现我还能访问网络存储”，后者协助其获取更多机密。苹果称 OpenAI 试图复制 iPhone 产品研发体系，核心从非法窃取的商业机密腐烂。目前已有超 400 名苹果员工跳槽至 OpenAI，包括前苹果高管、现任 OpenAI 首席硬件官 Tang Tan。苹果曾于今年 2 月尝试私了，但 OpenAI 未回应。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/975/634.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">📑</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(0条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-title" style="color:var(--muted);font-weight:400;">今日暂无论文研究动态</div>
+        </div>
+      </div>
+    </div>
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">💡</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#08</div>
+          <div class="card-title">Ghost Font：一种人类能读懂但AI无法识别的反AI字体</div>
+          <div class="card-summary">Ghost Font 是一种利用运动、视频、噪点和诱饵来隐藏文字的反AI字体。用户输入文字后可生成并下载视频片段，视频中的字母由与背景完全相同的点组成，单帧截图无法显示任何信息。该字体生成的视频被传递给Claude Fable和GPT Sol 5.6 Ultra等前沿模型时，这些模型即使具备编程能力也无法解码移动信息，直到被提示具体技术。视频中还包含一条诱饵信息，使模型误以为找到真实内容。项目灵感来自2013年Sang Mun设计的ZXX字体，但现代AI已能轻松读取ZXX。Ghost Font目前为本地原型，数据不发送至任何服务器。作者计划未来将视频生成代码开源，并探索将其用于CAPTCHA系统或AI视觉感知基准测试。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://www.mixfont.com/ghost-font" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共8条 · 北京时间7月12日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">AI 眼镜赛道持续升温：逸文科技1.5亿美元融资跻身独角兽；Rokid 提出 AI 眼镜新操作系统命题</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">融资</span>
+          <span class="signal-title">深圳逸文科技完成1.5亿美元融资，跻身智能眼镜独角兽</span>
+        </div>
+        <p>7月6日，深圳智能眼镜公司逸文科技宣布完成Pre-B轮融资1.5亿美元，投后估值超10亿美元，正式跻身独角兽行列。本轮由美团龙珠及美团战投领投，老股东源一资本和腾讯超额跟投。逸文科技聚焦消费级音频AI和AR眼镜赛道。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260707A05NBK00" target="_blank">📎 界面新闻 · 7月6日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">产业</span>
+          <span class="signal-title">全国首个AI智能眼镜主题商业综合体落地深圳横岗</span>
+        </div>
+        <p>7月8日，全国首个AI智能眼镜主题商业综合体"横岗AI+眼镜中心"在深圳龙岗正式开业。项目首创垂直产业生态布局，首批入驻16家优质品牌，覆盖消费级音频AI、观影AR、空间计算等主流赛道，未来将引入工业AR、医疗AR等商用解决方案。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260708A082J800" target="_blank">📎 21世纪经济报道 · 7月8日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">生态</span>
+          <span class="signal-title">Rokid Open Day：AI 眼镜需要新操作系统和新交互方式</span>
+        </div>
+        <p>7月12日，在杭州未来科技城的开发者大会上，Rokid创始人祝铭明提出核心命题：AI时代是否需要一套新的操作系统和一种新的人机交互方式。用户买的不是智能眼镜，而是AI能力——设备只是恰好长成了眼镜的样子。这一观点挑战了手机作为最终计算入口的范式。</p>
+        <a class="signal-source" href="https://www.angelyeast.com/dy/article/detail_xebewo0p.txt" target="_blank">📎  AngelYeast · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">监管</span>
+          <span class="signal-title">纽约州7月20日起全面禁止智能眼镜进入法院</span>
+        </div>
+        <p>纽约州法院管理局公告，自2026年7月20日起，全州超过1240个各级法院将禁止携带任何具备摄像头、麦克风等录制功能的智能眼镜进入。这是全球首个 statewide 级别的智能眼镜禁令，可能对AI眼镜的普及路径产生深远影响。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260710A0531Z00" target="_blank">📎 手机中国 · 7月10日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">南威软件首款海外游戏公测；末日生存《Zeverland》转向纯合作；B站《伍六七》IP跨媒介生态发布</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">出海</span>
+          <span class="signal-title">南威软件首款海外游戏《海滩奇缘》公测，8月1日全球发行</span>
+        </div>
+        <p>7月12日，南威软件旗下魔趣视界首款面向全球市场的二合休闲游戏《海滩奇缘》全面进入公测阶段，将于8月1日正式发行。游戏以海滨小镇为舞台，将温馨家庭剧情与二合合成玩法深度融合，正面切入全球休闲游戏增长最快的黄金赛道。</p>
+        <a class="signal-source" href="https://www.163.com/dy/article/L1L6AG0I0552FTEC.html" target="_blank">📎 南威软件 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">设计</span>
+          <span class="signal-title">《Zeverland》响应社区呼声，从PvPvE彻底转向纯合作PvE</span>
+        </div>
+        <p>7月12日，末日生存新游《Zeverland》宣布重大设计调整。封闭alpha测试后，玩家反馈几乎一边倒地要求移除对抗元素，开发商Quantum Quirks决定响应社区，将游戏从类DayZ的PvPvE玩法彻底改为纯合作PvE体验。工作室公告"你们说了，我们听了"成为社区驱动开发的标志性案例。</p>
+        <a class="signal-source" href="https://www.163.com/dy/article/L1JMQFJ105561FXI.html" target="_blank">📎 自愈小日子 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">IP</span>
+          <span class="signal-title">B站BW2026：《伍六七》发布跨媒介生态矩阵，2028年大电影全球上映</span>
+        </div>
+        <p>7月12日，在BilibiliWorld 2026上，啊哈娱乐集中发布《伍六七》系列新项目矩阵：大电影计划2028年全球上映，外传动画《黑白双龙》2027年Q1上线，官方自研RPG手游2026年Q4首发，漫画品牌"啊哈BOOKS"同步启动。该IP正从单一动画向影视、游戏、出版、线下消费的完整生态跃迁。</p>
+        <a class="signal-source" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_0166a534dbc65452" target="_blank">📎 QQ看点 · 7月12日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">中国首枚可重复使用运载火箭成功发射；破晓智能发布触觉基础模型TouchWorld；变脸机器人在日内瓦亮相</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">航天</span>
+          <span class="signal-title">中国首枚可重复使用运载火箭成功发射，全球首次相关技术突破</span>
+        </div>
+        <p>7月12日，中国第一枚可重复使用运载火箭成功发射，实现全球首次相关技术突破。这标志着中国在商业航天领域取得重大进展，将大幅降低发射成本，推动航天商业化进程进入新阶段。</p>
+        <a class="signal-source" href="https://new.qq.com/rain/a/20260712A055PW00" target="_blank">📎 科技每日快讯 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">具身智能</span>
+          <span class="signal-title">破晓智能发布首个触觉基础模型TouchWorld，"视觉卷到头了"后的新突破</span>
+        </div>
+        <p>7月12日，破晓智能发布触觉基础模型TouchWorld，被称为视觉卷到头后的新突破。该模型旨在为机器人提供触觉感知能力，让机器人在操作中不仅能"看见"物体，还能"感受"物体的质地、软硬和形状，补齐具身智能的关键感知维度。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260712V04QJF00" target="_blank">📎 科技每日快讯 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+          <span class="signal-title">哈工大98年教授创业做人形灵巧操作世界模型</span>
+        </div>
+        <p>7月12日，哈尔滨工业大学一位1998年出生的教授宣布创业，专注于研发人形机器人灵巧操作世界模型。这代表了年轻一代科研人才正在快速进入具身智能创业赛道，有望推动人形机器人在精细操作领域的突破。</p>
+        <a class="signal-source" href="http://mp.weixin.qq.com/s?__biz=MzIzNjc1NzUzMw==&mid=2247903073&idx=1&sn=650968173ea717e7ffa59d76ed1a4179" target="_blank">📎 量子位 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">AI安全</span>
+          <span class="signal-title">变脸机器人日内瓦亮相，一秒切换特朗普/奥巴马面孔</span>
+        </div>
+        <p>7月12日，一款能够一秒切换特朗普、奥巴马面孔的变脸机器人在日内瓦亮相，引发国际关注。该技术展示了人工智能在面部识别与生成领域的最新突破，同时也引发了对深度伪造技术滥用的担忧，应用场景涵盖娱乐、安防等多个领域。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260712V04Z3200" target="_blank">📎 Nee看 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">芯片</span>
+          <span class="signal-title">存储芯片因AI需求涨价潮加剧，2027年HBM4价格或翻倍</span>
+        </div>
+        <p>7月12日，受AI算力需求爆发及产能结构性紧缺影响，存储芯片行业迎来强劲涨价预期。2027年HBM4价格或翻倍至4-5美元/千兆比特，行业面临史上最严重供应短缺。AI基础设施的爆发式增长正在重塑全球半导体供应链格局。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260712A03WGI00" target="_blank">📎 环球网 · 7月12日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">AI智能体手机赛道全面开跑：阶跃星辰发布Step Edge端侧模型全家桶；海信A10墨水屏手机发布；REDMI Note 17定档7月14日</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">AI手机</span>
+          <span class="signal-title">阶跃星辰发布Step Edge端侧模型全家桶，AI智能体手机赛道全面开跑</span>
+        </div>
+        <p>7月12日，阶跃星辰宣布推出Step Edge端侧模型全家桶，包含基础模型、Audio、GUI和Gen四款产品。核心亮点：0.1秒端侧本地toolcall执行、全模态隐私保护、原生端云协同。该系列配套Step Inference NPU引擎，针对终端硬件进行推理优化。同时，阶跃星辰宣布将发布首款AI智能体手机，由华勤技术代工。</p>
+        <a class="signal-source" href="https://www.163.com/dy/article/L1KRVO930511B8LM.html" target="_blank">📎 IT之家 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">海信A10墨水屏手机发布：正面6.13英寸单色墨水屏，背面磁吸可拆卸彩色LCD副屏</span>
+        </div>
+        <p>7月12日，海信正式官宣新一代墨水屏手机A10。配备6.13英寸单色墨水屏，背部支持磁吸可拆卸彩色LCD副屏，搭载4nm高通芯片，预装Android 16系统，支持5G全网通及Wi-Fi 6。这是墨水屏手机领域的创新形态探索，兼顾阅读护眼与彩色显示需求。</p>
+        <a class="signal-source" href="http://mp.weixin.qq.com/s?__biz=MzIzNjc3OTgzNQ==&mid=2247491905&idx=2&sn=17c895ad9dbd7db9b6858e949dd8b4b5" target="_blank">📎 海信官方 · 7月12日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">手机</span>
+          <span class="signal-title">小米REDMI Note 17系列定档7月14日，搭载骁龙4 Gen4/6s Gen4</span>
+        </div>
+        <p>7月11日，小米REDMI Note 17系列发布会定档7月14日，号称"升配不升档，守住中端体验基线"。主打超长续航与耐用性，将搭载骁龙4 Gen4/6s Gen4芯片，面向中端市场持续巩固红米在性价比区间的统治力。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260711A09YJD00" target="_blank">📎 IT之家 · 7月11日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">AI手机</span>
+          <span class="signal-title">Claude、Cursor、OpenClaw集体登陆移动端，AI智能体实现远程环境运行</span>
+        </div>
+        <p>7月12日，Anthropic宣布Claude Cowork扩展至移动端，Cursor和OpenClaw也相继登陆手机平台。AI智能体产品实现移动端跨越，支持远程环境运行——用户合上电脑后任务仍可继续执行。这标志着AI智能体从桌面端向全天候随身化演进。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260712A03LGN00" target="_blank">📎 InfoQ · 7月12日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月12日是一个信息量爆炸的周日。AI领域最重磅的消息无疑是 GPT-5.6 Sol Ultra 在1小时内证明了困扰数学界50年的"循环双覆盖猜想"——这不仅是AI在数学研究上的里程碑，更展示了64个子智能体协同工作、对抗验证的"群体智能"方法论。OpenAI同时公布了完整的提示词工程，将研究过程透明化，这可能会改变学术研究的协作模式。另一方面，蚂蚁集团发布首个原生具身基础模型 LingBot-VA 2.0，这是国内具身智能领域的重要里程碑，与宇树G1完成活体手术（《Nature》刊载）共同构成了"具身智能中国速度"的双响炮。行业安全层面，博科圣地使用ChatGPT、Claude等主流AI聊天机器人进行袭击策划和武器开发的研究，以及OpenAI GPT-5.6-Sol删除AI创业者Mac硬盘的事件，共同指向一个严峻现实：AI能力的普及速度远超安全治理的跟进速度。产品方面，AI智能体手机赛道全面开跑——阶跃星辰发布Step Edge端侧全家桶、Claude/Cursor集体登陆移动端、努比亚第二代豆包AI手机备货50万台，AI正在从云端向终端、从桌面向口袋加速渗透。科技突破层面，中国首枚可重复使用运载火箭成功发射是全球首次，与破晓智能TouchWorld触觉模型、京东机器人产业园开工共同构成了"硬科技中国周"。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源来自 AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI HOT 8条信号，模型发布2条、行业动态4条最为密集。论文研究版块今日暂无数据。其他分类中：VR动态4条（智能眼镜融资/产业/生态/监管）、游戏设计3条（出海/设计转向/IP矩阵）、新科技5条（航天/具身智能/机器人/AI安全/芯片）、新产品4条（AI手机/墨水屏/中端手机/AI智能体移动端）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
