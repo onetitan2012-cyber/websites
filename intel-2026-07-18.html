@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-M66NDQY0DF");
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-18</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  --accent2:  #00897B;  --accent3:  #E8711A;
+      --accent4:  #6B3FA0;  --accent5:  #C62828;  --dark:     #0D1117;
+      --dark2:    #161B22;  --text:     #E6EDF3;  --muted:    #8B949E;
+      --border:   #30363D;  --card:     #1C2128;  --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.75;
+    }
+    .back-home {
+      position: fixed; top: 16px; left: 16px; z-index: 200;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: rgba(28,33,40,.95);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: var(--dark); padding: 90px 24px 60px;
+      display: flex; justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .hero .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: .8rem; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a { flex-shrink: 0; padding: 8px 16px; border-radius: 8px; font-size: .85rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: all .2s; }
+    .nav a:hover { background: var(--card); color: var(--text); }
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+    .ai-subsection { margin-bottom: 32px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subsection-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .ai-subsection-title .icon { font-size: 1.2rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-item .card-num { font-size: .75rem; font-weight: 700; color: var(--accent1); margin-bottom: 8px; }
+    .card-item .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; line-height: 1.5; flex: 1; }
+    .card-item .card-summary { color: var(--muted); font-size: .88rem; line-height: 1.7; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-item .card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .card-item .source-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--muted); background: var(--dark2); padding: 4px 10px; border-radius: 20px; max-width: 60%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .card-item .card-link { font-size: .8rem; color: var(--accent1); text-decoration: none; font-weight: 600; transition: color .2s; }
+    .card-item .card-link:hover { color: #4a9eff; }
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform .15s, box-shadow .15s; }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .signal-badge { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: #fff; text-transform: uppercase; flex-shrink: 0; }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 1px; }
+    .signal-source:hover { color: var(--text); }
+    .note-card { background: rgba(26,115,232,.08); border-left: 4px solid var(--accent1); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; margin-top: 24px; }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .data-source { text-align: center; padding: 16px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); background: var(--dark2); }
+    footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-item { padding: 14px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月18日 · 星期六</div>
+      <p class="lead">
+        WAIC 2026 历史性开幕：300余款AI新品全球首发，世界人工智能合作组织WAICO正式成立；Kimi K3 登顶前端编码榜，参数规模2.8万亿刷新全球开源模型纪录；Apple 与 OpenAI 法律战升级，约40名前员工收到律师函；复旦量子闪存技术登顶《科学》，国产碳-14核电池全产业链自主突破。
+      </p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">18</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业 2</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧 7</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">&#129302; AI趋势</a>
+      <a href="#vr">&#129373; VR动态</a>
+      <a href="#game">&#127918; 游戏设计</a>
+      <a href="#tech">&#128300; 新科技</a>
+      <a href="#product">&#128230; 新产品</a>
+      <a href="#note">&#128221; 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">&#129302; AI趋势</h2>
+      <p class="section-desc">Kimi K3 登顶前端编码榜，开放权重挑战闭源双巨头；Sora 2 视频克隆效果惊人；NVIDIA 发布 Nemotron 3 Embed 系列；通义 Wan-Streamer v0.2 端到端延迟仅550ms</p>
+    </div>
+    <!-- 模型发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128640;</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#01</div>
+          <div class="card-title">Sora 2 视频克隆效果惊人，真假难辨</div>
+          <div class="card-summary">一年后，没有任何东西能接近 Sora 的完美视频深度克隆。它捕捉到了我和 Sam 的每一块面部肌肉运动以及我们走路的方式。 如果你从这段关于我或 Sam 的视频中截取一帧，根本无法判断它是真是假。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Gabriel (@gabriel1)</span>
+            <a class="card-link" href="https://x.com/gabriel1/status/2078156277247881438" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#02</div>
+          <div class="card-title">Kimi K3 登顶前端编码榜，开放权重挑战闭源双巨头</div>
+          <div class="card-summary">Kimi K3 在 Frontend Code Arena 以 1679 分登顶，力压 Claude Fable 5 与 GPT-5.6 Sol，7 个前端细分赛道拿下 6 个第一。该模型为 2.8 万亿参数 MoE 架构，百万上下文窗口，7 月 27 日开放权重。K3 的 API 定价为输入每百万 tokens 15 美元，对标前沿闭源模型，放弃低价路线，转向长上下文智能体编码场景的定价策略。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：阿易 AI Notes (@AYi_AInotes)</span>
+            <a class="card-link" href="https://x.com/AYi_AInotes/status/2077981025905316253" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#03</div>
+          <div class="card-title">NVIDIA 发布 Nemotron 3 Embed 系列，8B 版本在 RTEB 基准上排名第一</div>
+          <div class="card-summary">NVIDIA 发布 Nemotron 3 Embed 系列，包含三个开源 checkpoint，其中 8B-BF16 版本在 RTEB 基准上以 78.46 的平均 NDCG@10 排名第一。1B-NVFP4 版本在 Blackwell 上吞吐量比 BF16 高 2 倍，精度保留 99.5%，所有模型最大序列长度 32,768 tokens。</div>
+          <div class="card-meta">
+            <span class="source-chip">MarkTechPost（RSS）</span>
+            <a class="card-link" href="https://www.marktechpost.com/2026/07/17/nvidia-ai-releases-nemotron-3-embed-an-open-embedding-collection-whose-8b-checkpoint-ranks-1-on-rteb" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#04</div>
+          <div class="card-title">通义实验室发布 Wan-Streamer v0.2，端到端响应延迟仅 550ms</div>
+          <div class="card-summary">通义实验室发布 Wan-Streamer v0.2，这是一款将“听、看、说、演”统一进单个 Transformer 的端到端全模态模型。其端到端响应延迟仅 550ms，输出分辨率从 v0.1 的 192×336 提升至 640×368 @ 25FPS，并采用 Thinker-Performer 双通路架构在提升画质的同时维持了极低延迟。</div>
+          <div class="card-meta">
+            <span class="source-chip">公众号：通义实验室（千问）</span>
+            <a class="card-link" href="https://mp.weixin.qq.com/s/_eaO0wmsiQFGsrE2_zW_Dg" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 产品发布/更新 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128295;</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#05</div>
+          <div class="card-title">Claude Code v2.1.212 发布</div>
+          <div class="card-summary">Claude Code v2.1.212 新增 `/fork` 命令，可将当前对话复制到新后台会话中独立运行。新增会话级 WebSearch 调用上限（默认 200）和子智能体生成上限（默认 200），防止失控循环。MCP 工具调用超过 2 分钟自动移至后台，并修复了计划模式自动执行文件修改命令等多项问题。</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude Code：GitHub Releases（RSS）</span>
+            <a class="card-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.212" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 行业动态 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128240;</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#06</div>
+          <div class="card-title">Apple 起诉 OpenAI：诉讼背后是竞争焦虑还是时机博弈？</div>
+          <div class="card-summary">Apple 对 OpenAI 提起诉讼，指控其存在多项不当行为，尽管许多专家认为部分指控属于行业惯例。此举正值 Apple 发布新版软件公测版（以新 Siri AI 为核心）之际，外界猜测 Apple 究竟是担忧 OpenAI 成为潜在竞争对手，还是想利用 OpenAI 的弱势期获利。</div>
+          <div class="card-meta">
+            <span class="source-chip">The Verge：AI（RSS）</span>
+            <a class="card-link" href="https://www.theverge.com/podcast/967244/apple-openai-lawsuit-vergecast" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#07</div>
+          <div class="card-title">苹果与 OpenAI 法律战升级：约 40 名前员工收到苹果律师函</div>
+          <div class="card-summary">苹果已向约40名就职于OpenAI的前员工发出律师函，要求保存相关文件。此前苹果起诉OpenAI及两名前员工，指控其通过挖角获取商业机密以加速AI硬件研发。苹果称已有超400名前员工在OpenAI工作，正寻求法院禁令阻止OpenAI使用苹果信息并要求归还机密。</div>
+          <div class="card-meta">
+            <span class="source-chip">IT之家（RSS）</span>
+            <a class="card-link" href="https://www.ithome.com/0/978/277.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 论文研究 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128209;</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#08</div>
+          <div class="card-title">月之暗面在GTC 2026披露Kimi K2.5技术路线：用MuonClip、线性注意力与Agent Swarm重构三大基础组件</div>
+          <div class="card-summary">月之暗面CEO杨植麟在GTC 2026演讲中提出用MuonClip优化器替代Adam，可将数据利用效率提升近一倍。同时推出Kimi Linear线性注意力，在百万Token上下文下全面超越全注意力；Agent Swarm已支持300个Agent并行工作。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：宝玉 (@dotey)</span>
+            <a class="card-link" href="https://x.com/dotey/status/2078172517085085951" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#09</div>
+          <div class="card-title">Schema Harness 在 ARC-AGI-3 公开集上取得约 99% 成绩</div>
+          <div class="card-summary">Schema 框架在 ARC-AGI-3 公开集上，使用 Claude Opus 4.8 和 Fable 5 达到 99% RHAE 分数，使用 GPT-5.6 Sol 达到 95.35%。该框架不修改模型权重，而是将原始观测转化为可编辑程序，联合解决状态归因和机制发现问题。此前最强模型 GPT-5.6 Sol 在半私有集上仅得 7.78%。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://schema-harness.github.io/" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#10</div>
+          <div class="card-title">美团LongCat发布LoHoSearch：更难搜索智能体基准</div>
+          <div class="card-summary">美团LongCat推出LoHoSearch，一个基于762万实体维基百科知识图谱自动生成问题的搜索智能体基准，旨在解决BrowseComp等现有基准趋于饱和的问题。在11个前沿模型测试中，最佳得分仅34.74%，远低于当前模型在BrowseComp上约90%的成绩；上下文策略仅带来+6.8个百分点的提升。该基准包含544道问题、11个领域，采用树与图结构，已开源。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：美团 LongCat (@Meituan_LongCat)</span>
+            <a class="card-link" href="https://x.com/Meituan_LongCat/status/2078119654632124547" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#11</div>
+          <div class="card-title">Apple 研究：Show Me Examples — 从图像集推断视觉概念</div>
+          <div class="card-summary">Apple 机器学习研究团队提出一种方法，让视觉语言模型（VLM）仅从图像集示例中推断视觉概念，无需文本指令。该方法通过对比示例图像与候选图像，使模型捕捉颜色、纹理等视觉规律，在多个概念推理基准上提升准确率。该研究目前为学术论文，未公布模型或 API 可用性。</div>
+          <div class="card-meta">
+            <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+            <a class="card-link" href="https://machinelearning.apple.com/research/visual-concept-inference" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 技巧与观点 -->
+    <div class="ai-subsection">
+      <div class="ai-subsection-title"><span class="icon">&#128161;</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(7条)</span></div>
+      <div class="card-grid">
+        <div class="card-item">
+          <div class="card-num">#12</div>
+          <div class="card-title">八天四款前沿模型发布，Kimi K3 跻身第三</div>
+          <div class="card-summary">过去八天内，Grok 4.5、GPT-5.6、Muse Spark 1.1 与 Kimi K3 四款前沿模型相继发布，使 Artificial Analysis Intelligence Index 得分超 50 的实验室从 6 月初的 2 家增至 6 家。</div>
+          <div class="card-meta">
+            <span class="source-chip">X：Artificial Analysis (@ArtificialAnlys)</span>
+            <a class="card-link" href="https://x.com/ArtificialAnlys/status/2078165665278730490" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#13</div>
+          <div class="card-title">首届“小有可为”大赛乡村教育一等奖作品“智绘科普”技术拆解</div>
+          <div class="card-summary">首届“小有可为”大赛乡村教育赛道一等奖作品“智绘科普”采用 Qwen3.5-397B-A17B 大语言模型与 Manim 动画引擎，通过多Agent分阶段协作与自动修复机制，将知识主题转化为可控、可编辑的教学动画。系统包含规划、草稿、实现、审查、合成五个阶段，渲染失败时可自动提取日志并修复，该工程范式可迁移至其他赛道。</div>
+          <div class="card-meta">
+            <span class="source-chip">公众号：通义实验室（千问）</span>
+            <a class="card-link" href="https://mp.weixin.qq.com/s/a2YKWmyMoyIc3GKLbXffpQ" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#14</div>
+          <div class="card-title">生成式人工智能是一场工程灾难：AI公司抢购70%高端内存，推高电脑价格</div>
+          <div class="card-summary">AI公司为维持大语言模型（如ChatGPT、Claude）运行，可能已购买全球70%的高端计算机内存，导致内存与存储价格飙升：两年前350美元的硬盘现已涨至800美元且缺货，部分笔记本电脑涨价50%。科技公司计划未来几年将美国数据中心容量扩大8倍，部分站点甚至用喷气发动机供电。预测称，平价入门级电脑可能在2028年前消失，内存短缺预计持续数年。</div>
+          <div class="card-meta">
+            <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+            <a class="card-link" href="https://www.theatlantic.com/technology/2026/07/generative-ai-engineering-disaster/687901" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#15</div>
+          <div class="card-title">Cursor 评估负责人确认 Claude Fable 5 在 CursorBench 达 72.9% 新高</div>
+          <div class="card-summary">Cursor 的模型评估负责人 Nate Schmidt 发现，Claude Fable 5 在其内部基准 CursorBench 上以 Max effort 模式达到 72.9%，创下新高。该模型在模糊的真实编程任务中表现出全局推理能力，例如在航天模拟器中仅凭一句提示自主规划并成功登月，而此前 Claude Opus 运行 12 小时以上仍无结果。</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude：Blog（网页）</span>
+            <a class="card-link" href="https://claude.com/blog/working-at-the-frontier-cursor" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#16</div>
+          <div class="card-title">OpenAI 提出 AI 时代记分卡：“有用智能每美元”衡量实际工作价值</div>
+          <div class="card-summary">OpenAI 提出“Useful Intelligence per Dollar”（有用智能每美元）作为衡量 AI 投资回报的核心指标，从完成的有用工作量、成功任务的实际成本、结果可靠性三个维度评估。</div>
+          <div class="card-meta">
+            <span class="source-chip">OpenAI：官网动态（RSS · 排除企业/客户案例）</span>
+            <a class="card-link" href="https://openai.com/index/a-scorecard-for-the-ai-age" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#17</div>
+          <div class="card-title">Anthropic 副首席信息安全官发布智能体 AI 风险评估框架：零风险不是目标</div>
+          <div class="card-summary">Anthropic 副首席信息安全官 Jason Clinton 分享了其团队在采用智能体 AI 过程中的经验教训，并提出了一套用于安全构建和部署智能体的风险评估框架。该框架通过四个核心问题（摄入的不可信内容、可执行的操作、失控时的爆炸半径、可观测性）来评估风险，并强调“最小代理权限”原则。Anthropic 的默认策略是管理员控制的分阶段推出，并指出与意图偏离的智能体在行为上无异于内部攻击。</div>
+          <div class="card-meta">
+            <span class="source-chip">Claude：Blog（网页）</span>
+            <a class="card-link" href="https://claude.com/blog/ciso-guide-to-agentic-ai" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+        <div class="card-item">
+          <div class="card-num">#18</div>
+          <div class="card-title">AI 时代“小需求”的成本逻辑变了：GitHub 博客谈工程决策新范式</div>
+          <div class="card-summary">工程师对小型功能请求的决策成本已超过代码实现成本。AI 智能体可在会议预热时间内生成首个补丁，将抽象的“是否在范围内”争论转化为可审查的具体产物。关键区分在于：代码生成便宜不等于维护便宜，只有人类能自信审查并承担长期责任的变更才算低成本。</div>
+          <div class="card-meta">
+            <span class="source-chip">GitHub Blog</span>
+            <a class="card-link" href="https://github.blog/engineering/the-cost-of-saying-yes-has-changed" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共18条 · 北京时间7月18日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">&#129373; VR动态</h2>
+      <p class="section-desc">WAIC首发智能眼镜原生AI系统、AR空间计算设备、中医机器人；Rokid发布YodaOS</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">WAIC</span>
+          <span class="signal-title">WAIC 2026首发智能眼镜原生AI系统YodaOS、AR空间计算设备与中医机器人</span>
+        </div>
+        <p>7月18日WAIC现场，Rokid携全球首款智能眼镜原生操作系统YodaOS及AR空间计算设备首秀；网易有道AI耳机OpenPods可实时同传并自动生成会议纪要；安顿健康首发国内首个生命预警标准与七诊合参中医机器人。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260718A01IO600" target="_blank">&#128195; 新闻晨报 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent2);">眼镜</span>
+          <span class="signal-title">Moonix发布首款主动式AI眼镜，2299元起</span>
+        </div>
+        <p>WAIC期间，AI穿戴硬件品牌Moonix（莫奈）发布旗下首款产品Moonix AI眼镜，搭载主动式AI助手，通过"无感记录+AI生成"的核心逻辑，打造全球首款基于个人数据的主动式AI眼镜。</p>
+        <a class="signal-source" href="https://stock.10jqka.com.cn/20260718/c678264854.shtml" target="_blank">&#128195; 同花顺 · 7月18日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">&#127918; 游戏设计</h2>
+      <p class="section-desc">Steam新游AI换皮趋势严重，31%承认使用AI生成内容</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">Steam</span>
+          <span class="signal-title">统计显示Steam新游AI换皮趋势严重，31%承认使用AI生成</span>
+        </div>
+        <p>电玩迷援引Sulka Haro调查称，Steam上架新游戏中31%承认使用AI，每三款约一款含AI生成；AI降低批量制游门槛，山寨换皮游戏将大幅增加玩家筛选难度。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260717A08PYD00" target="_blank">&#128195; 电玩迷 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent3);">新游</span>
+          <span class="signal-title">Steam 7月13-19日新游速览：多款模拟、策略及桌面伴侣游戏集中上架</span>
+        </div>
+        <p>本周Steam上架游戏类型丰富，涵盖模拟经营、策略战棋、Rogue-like、解谜冒险以及新兴的桌面伴侣等多个品类，且不少作品支持中文。值得关注的是，多款游戏选择以抢先体验（EA）形式推出，部分作品还融入了AI生成内容和桌面互动等新颖概念。</p>
+        <a class="signal-source" href="https://www.sohu.com/a/1050880625_122598898" target="_blank">&#128195; 搜狐游戏 · 7月18日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">&#128300; 新科技</h2>
+      <p class="section-desc">WAIC 2026 300余款AI新品全球首发，世界人工智能合作组织WAICO正式成立；复旦量子闪存登顶《科学》；国产碳-14核电池全产业链自主突破</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">WAIC</span>
+          <span class="signal-title">WAIC 2026历史性开幕：300余款AI新品全球首发，世界人工智能合作组织WAICO成立</span>
+        </div>
+        <p>7月18日WAIC迎来历史性时刻，首设姚期智任主席的国际学术会议WAICA。本届WAIC由多部委与上海市联合主办，1100余家企业参展，集中推出300多款全球首发硬核科技产品。开幕式上，29个国家共同签署协定，世界人工智能合作组织（WAICO）宣告成立，同步发布《国际人工智能伦理治理行动计划》，以中国方案搭建全球AI风险防控与普惠发展框架。</p>
+        <a class="signal-source" href="https://view.inews.qq.com/a/20260718A00UC000" target="_blank">&#128195; 大河网 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">存储</span>
+          <span class="signal-title">复旦量子闪存技术登顶《科学》，打破传统存储速度功耗瓶颈</span>
+        </div>
+        <p>复旦大学团队攻克单电子室温存储难题，全新量子闪存结构打破传统存储速度、功耗瓶颈，未来可让手机、终端设备脱离云端，本地流畅运行百亿级大模型。长江存储、长鑫存储已启动技术适配合作，有望重构AI终端存储底层架构。</p>
+        <a class="signal-source" href="https://weibo.com/1903951291/5321969186636971" target="_blank">&#128195; 微博科技 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">能源</span>
+          <span class="signal-title">国产碳-14微型核电池全产业链自主可控，理论寿命可达数千年</span>
+        </div>
+        <p>西北师范大学发布"千纪源天枢"同位素核电池，体积大幅缩小、使用寿命可达数千年，无需频繁充电，可用于深空探测、深海装备、极地无人传感器长期供电，填补了我国超长寿命微能源装备的国产化空白，即将进入航天领域商用测试。</p>
+        <a class="signal-source" href="https://weibo.com/1903951291/5321969186636971" target="_blank">&#128195; 微博科技 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+          <span class="signal-title">RoboScience实现跨本体灵巧操作行业突破，30秒极速换手即用</span>
+        </div>
+        <p>WAIC现场，RoboScience机器科学展示自研通用具身大模型Visics，多款不同品牌灵巧手搭载同一套模型完成流畅抓取，无需针对特定硬件重新训练。现场"30秒极速换手"展示中，工作人员直接更换不同品牌灵巧手，30秒内即时识别并执行任务，多SKU抓取成功率稳定在99%以上。</p>
+        <a class="signal-source" href="https://www.163.com/dy/article/L232C9V005118HA4.html" target="_blank">&#128195; 雷峰网 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent4);">核能</span>
+          <span class="signal-title">我国核能基础研究再添AI助手，夯实核能系统运行安全可控底座</span>
+        </div>
+        <p>7月17日WAIC上，我国科研机构正式发布面向加速器驱动先进核能系统的智能化解决方案，布局四大应用场景：物理过程快速仿真、系统智能控制、全链路主动故障预警、核安全数字化研判，旨在解决加速器和反应堆在设计、运行与安全之间的壁垒。</p>
+        <a class="signal-source" href="https://news.cctv.com/2026/07/18/ARTIodahRgGdYqOb9WfYYWvo260718.shtml" target="_blank">&#128195; 央视网 · 7月18日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">&#128230; 新产品</h2>
+      <p class="section-desc">Kimi K3 全球参数最大开源模型2.8万亿；千问推出AI智能体眼镜与Bose联名耳机；沐曦发布超节点曦景S600</p>
+    </div>
+    <div class="signal-list">
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">模型</span>
+          <span class="signal-title">Kimi K3 发布全球参数最大开源模型，2.8万亿参数原生多模态</span>
+        </div>
+        <p>月之暗面发布Kimi K3大模型，参数规模2.8万亿，为当前全球参数最大开源模型。该模型原生支持多模态视觉理解，拥有100万词元超长上下文窗口，针对编程、科研、深度资料分析等场景优化，综合能力接近国际顶尖闭源大模型。</p>
+        <a class="signal-source" href="https://dy.163.com/article/L2399U4Q0511CMF5.html" target="_blank">&#128195; 新京报/科技狐 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">硬件</span>
+          <span class="signal-title">千问推出AI智能体眼镜与Bose联名AI耳机</span>
+        </div>
+        <p>WAIC上，阿里千问发布升级后的智能体眼镜，搭载全双工语音、眼动追踪、体征监测技术，可测心率血氧，能提醒用眼疲劳；旧款S1、G1眼镜可OTA升级获得智能体能力。联名Bose推出首款AI智能体耳机，耳夹式设计，支持同声传译、会议纪要、健康记录等功能。</p>
+        <a class="signal-source" href="https://dy.163.com/article/L2399U4Q0511CMF5.html" target="_blank">&#128195; IT之家 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">算力</span>
+          <span class="signal-title">沐曦股份发布超节点新品曦景S600，支持万卡级集群</span>
+        </div>
+        <p>WAIC期间，沐曦股份正式发布新一代AI超节点产品曦景S600，面向大模型训练、推理及智算中心建设。曦景S600可实现单机柜64张GPU高速全互连，并支持灵活扩展至万卡级集群，为AI基础设施建设提供兼具性能、效率与可靠性的国产算力底座。</p>
+        <a class="signal-source" href="https://new.qq.com/rain/a/20260718A05GIZ00" target="_blank">&#128195; 界面新闻 · 7月18日</a>
+      </div>
+      <div class="signal">
+        <div class="signal-header">
+          <span class="signal-badge" style="background:var(--accent5);">机器人</span>
+          <span class="signal-title">努比亚情感陪伴AI宠物机器人iMoochi正式发售，1699元起</span>
+        </div>
+        <p>努比亚情感陪伴AI宠物机器人iMoochi正式发售，单机售价1699元。产品主打拟生命交互，抚摸可触发摇头、摆尾等反馈，长期使用会形成专属性格，搭配特制萌系音效避免不适感。机器配有多传感器，支持Wi-Fi、4G联网，单次充电续航8至10小时，专为都市独居人群提供情感陪伴。</p>
+        <a class="signal-source" href="https://dy.163.com/article/L2399U4Q0511CMF5.html" target="_blank">&#128195; ZAKER · 7月18日</a>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">&#128221; 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月18日，2026世界人工智能大会（WAIC）在上海盛大开幕，这是今天科技圈的绝对主角。1100余家企业参展、300余款AI新品全球首发、29国签署成立世界人工智能合作组织（WAICO），这些数据标志着中国AI产业正从"跟随者"向"规则制定者"转变。华为昇腾Atlas 950超节点真机首度亮相，可支持8192颗AI芯片高速互联，承载十万亿参数大模型训练，这是国产算力基础设施的重大里程碑。Kimi K3以2.8万亿参数登顶全球开源模型参数榜，同时在前端编码能力上超越GPT和Claude，月之暗面正在用"参数规模+专项能力"双轮驱动挑战闭源巨头。Apple与OpenAI的法律战持续升级，约40名前员工收到律师函，这场"人才争夺战"的司法化走向值得持续关注。在基础科研层面，复旦量子闪存技术登顶《科学》期刊，有望让终端设备本地运行百亿级大模型；国产碳-14核电池实现全产业链自主可控，理论寿命可达数千年。从产品层面看，AI智能体眼镜、耳机、宠物机器人、超节点算力芯片等密集发布，AI硬件生态正在加速成型。整体来看，今天AI行业呈现"国际盛会+模型突破+科研登顶+硬件爆发+法律博弈"的五重奏，WAIC 2026无疑将载入中国AI产业发展史册。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源来自 AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI HOT 18条信号，技巧与观点7条最为密集。其他分类中：VR动态2条（WAIC智能眼镜/AR设备、Moonix AI眼镜）、游戏设计2条（Steam AI换皮趋势、本周新游速览）、新科技5条（WAIC/WAICO、复旦量子闪存、碳-14核电池、RoboScience跨本体操作、核能AI助手）、新产品4条（Kimi K3、千问眼镜/耳机、沐曦S600、努比亚iMoochi）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
