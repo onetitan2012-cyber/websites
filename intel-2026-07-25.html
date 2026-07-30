@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-25</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  --accent2:  #00897B;  --accent3:  #E8711A;
+      --accent4:  #6B3FA0;  --accent5:  #C62828;  --dark:     #0D1117;
+      --dark2:    #161B22;  --text:     #E6EDF3;  --muted:    #8B949E;
+      --border:   #30363D;  --card:     #1C2128;  --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.75;
+    }
+    .back-home {
+      position: fixed; top: 16px; left: 16px; z-index: 200;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: rgba(28,33,40,.95);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: var(--dark); padding: 90px 24px 60px;
+      display: flex; justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .hero .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: .8rem; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a { flex-shrink: 0; padding: 8px 16px; border-radius: 8px; font-size: .85rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: all .2s; }
+    .nav a:hover { background: var(--card); color: var(--text); }
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+    .ai-subsection { margin-bottom: 32px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subsection-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .ai-subsection-title .icon { font-size: 1.2rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-item .card-num { font-size: .75rem; font-weight: 700; color: var(--accent1); margin-bottom: 8px; }
+    .card-item .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; line-height: 1.5; flex: 1; }
+    .card-item .card-summary { color: var(--muted); font-size: .88rem; line-height: 1.7; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-item .card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .card-item .source-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--muted); background: var(--dark2); padding: 4px 10px; border-radius: 20px; max-width: 60%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .card-item .card-link { font-size: .8rem; color: var(--accent1); text-decoration: none; font-weight: 600; transition: color .2s; }
+    .card-item .card-link:hover { color: #4a9eff; }
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform .15s, box-shadow .15s; }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .signal-badge { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: #fff; text-transform: uppercase; flex-shrink: 0; }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 1px; }
+    .signal-source:hover { color: var(--text); }
+    .note-card { background: rgba(26,115,232,.08); border-left: 4px solid var(--accent1); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; margin-top: 24px; }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .data-source { text-align: center; padding: 16px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); background: var(--dark2); }
+    footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-item { padding: 14px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月25日 · 星期六</div>
+      <p class="lead">Anthropic 发布 Claude Opus 5，半价追平 Fable 5；蚂蚁百灵发布 Ling-3.0-flash 原生混合推理模型；Black Forest Labs 发布 FLUX 3 多模态模型支持 20 秒视频与原生音频；英伟达/微软/Meta 联合警告开放权重模型过度监管；Kimi K3 登顶代码榜但网络安全测试大幅落后；国内实现全球首次千人跨地域同步脑电采集。</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">29</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型发布更新 5</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品发布更新 4</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业动态 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文研究 2</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧与观点 4</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Anthropic发布Claude Opus 5半价追平Fable 5；蚂蚁百灵Ling-3.0-flash原生混合推理模型；FLUX 3支持20秒视频与原生音频；英伟达/微软/Meta联合警告开放权重模型过度监管</p>
+    </div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">🚀</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(5条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#01</div>
+  <div class="card-title">Anthropic 发布 Claude Opus 5</div>
+  <div class="card-summary">Anthropic 发布 Claude Opus 5，其智能水平接近 Claude Fable 5，但价格减半。该模型在 Frontier-Bench v0.1 上性能超过 Opus 4.8 两倍以上，在 ARC-AGI 3 上得分是次优模型的三倍。Opus 5 即日起成为 Claude Max 的默认模型和 Claude Pro 的最强模型。</div>
+  <div class="card-meta">
+    <span class="source-chip">Anthropic：Newsroom（网页）</span>
+    <a class="card-link" href="https://www.anthropic.com/news/claude-opus-5" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#02</div>
+  <div class="card-title">蚂蚁百灵发布Ling-3.0-flash原生混合推理模型</div>
+  <div class="card-summary">蚂蚁百灵发布新一代原生混合推理模型Ling-3.0-flash，总参数量124B，激活参数量仅5.1B，在传统推理、指令遵循与长文本等指标上对标甚至超越上一代旗舰Ring-2.6-1T。模型采用原生混合线性注意力架构与1/64稀疏MoE，并扩展至10,000+可交互训练环境，长输入下TTFT降低60%至80%以上。</div>
+  <div class="card-meta">
+    <span class="source-chip">公众号：蚂蚁百灵（Ling）</span>
+    <a class="card-link" href="https://mp.weixin.qq.com/s/5ic54FCsy334JJsQcyBr1g" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#03</div>
+  <div class="card-title">FLUX 3 x mimic：新一代视频动作模型</div>
+  <div class="card-summary">Black Forest Labs 发布多模态基础模型 FLUX 3，联合训练图像、视频和音频，其中视频预测占训练算力的 95% 以上。该模型与机器人公司 mimic 合作推出 FLUX-mimic，已在奥迪生产线上测试部署。加入动作预测后，视频生成质量最初下降最多 10%，但经 3500 步训练后恢复原有水平。</div>
+  <div class="card-meta">
+    <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+    <a class="card-link" href="https://bfl.ai/blog/flux-3-mimic" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#04</div>
+  <div class="card-title">Midjourney V8.2 发布：专注美学提升与个性化理解</div>
+  <div class="card-summary">Midjourney 今日推出 V8.2 图像模型，重点提升美学质量、图像创意与个性化表现。低质量图像出现频率将显著降低，个性化功能能更精准理解用户审美偏好。V8.2 的个性化配置文件拥有更大、更优的图像选择池，建议用户尝试新旧配置文件体验最新版本。</div>
+  <div class="card-meta">
+    <span class="source-chip">Midjourney：Updates（RSS）</span>
+    <a class="card-link" href="https://updates.midjourney.com/version-8-2" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#05</div>
+  <div class="card-title">Black Forest Labs 发布 FLUX 3 多模态模型，支持单次生成 20 秒视频与原生音频</div>
+  <div class="card-summary">Black Forest Labs 以 Early Access 方式推出 FLUX 3 多模态基础模型，采用统一架构联合学习图像、视频和音频。该模型基于 Self-Flow 学习框架扩展，可在单次生成中输出最长 20 秒视频并附带原生音频，支持文生视频、图生视频、多镜头串联等任务。</div>
+  <div class="card-meta">
+    <span class="source-chip">IT之家（RSS）</span>
+    <a class="card-link" href="https://www.ithome.com/0/981/137.htm" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">🛠️</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#06</div>
+  <div class="card-title">Runway Agent 推出自然语言工作流功能</div>
+  <div class="card-summary">在 Runway Agent 中引入工作流。现在你可以通过自然语言构建、运行或编辑基于节点的工作流。工作流可大规模解锁高质量输出。 立即尝试，点击下方链接调用 / Workflow 技能。</div>
+  <div class="card-meta">
+    <span class="source-chip">X：Runway (@runwayml)</span>
+    <a class="card-link" href="https://x.com/runwayml/status/2080649234672439389" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#07</div>
+  <div class="card-title">百度搭子更新：电脑手机接力、桌面端内嵌浏览器上线，复杂任务可跨端连续执行</div>
+  <div class="card-summary">百度搭子在近期AI Day上推出多项升级，支持电脑与手机双端互联，同步任务上下文与执行进度，用户可跨设备接力完成复杂工作。桌面端内嵌浏览器正式上线，能自动打开多个网页执行调研、下载等操作，手机端支持云端远程操控。智能路由自动匹配任务模式，平均任务耗时降低20%，Token利用率提升25%；简单任务完成度达100%，复杂任务高交付率94%，积分消耗最高降低75%。</div>
+  <div class="card-meta">
+    <span class="source-chip">公众号：百度智能云（文心）</span>
+    <a class="card-link" href="https://mp.weixin.qq.com/s/HRySK1LU53clPe2I_M-Fug" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#08</div>
+  <div class="card-title">OpenRouter 推出 Classifiers 测试版：自动标记 AI 请求的用途与成本归属</div>
+  <div class="card-summary">OpenRouter 上线 Classifiers 测试版，允许用户通过自定义分类法（最多 8 个维度）自动标记每次 AI 请求的任务类型、部门归属、合规类别等信息。分类异步运行，不增加推理延迟；支持采样率控制成本，推荐使用 Gemini 3.5 Flash Lite 作为分类模型。标记结果写入日志，并可在 Activity Explorer 中按维度聚合分析模型使用分布与成本流向。</div>
+  <div class="card-meta">
+    <span class="source-chip">OpenRouter：Announcements（RSS）</span>
+    <a class="card-link" href="https://openrouter.ai/blog/announcements/classifiers" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#09</div>
+  <div class="card-title">Claude Code v2.1.219 发布：新增 Claude Opus 5，支持 1M 上下文与嵌套子智能体</div>
+  <div class="card-summary">Claude Code v2.1.219 新增 Claude Opus 5 作为默认 Opus 模型，支持 1M 上下文窗口，快速模式定价为 $10/$50 每百万 token。</div>
+  <div class="card-meta">
+    <span class="source-chip">Claude Code：GitHub Releases（RSS）</span>
+    <a class="card-link" href="https://github.com/anthropics/claude-code/releases/tag/v2.1.219" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">📰</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(3条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#10</div>
+  <div class="card-title">英伟达、微软和Meta联合警告：应避免对开放权重模型过度监管</div>
+  <div class="card-summary">英伟达、微软和Meta联合签署公开信，警告对开放权重AI模型的过度监管将削弱美国在AI领域的竞争力。信中指出，开放权重模型能促进创新、降低准入门槛，并支持学术研究。OpenAI和Anthropic未签署该信函。</div>
+  <div class="card-meta">
+    <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+    <a class="card-link" href="https://www.cnbc.com/2026/07/24/nvidia-microsoft-meta-open-weight-ai-models.html" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#11</div>
+  <div class="card-title">微软阐述开源模型助力美国竞争力路径</div>
+  <div class="card-summary">开放权重模型对健康的 AI 生态系统至关重要。我们与行业同仁一道，正在规划一条路径，让开放权重模型在保护国家安全的同时，增强美国竞争力并扩大经济机会。</div>
+  <div class="card-meta">
+    <span class="source-chip">X：Satya Nadella (@satyanadella)</span>
+    <a class="card-link" href="https://x.com/satyanadella/status/2080646162483417097" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#12</div>
+  <div class="card-title">Kimi K3 在网络安全漏洞利用测试中大幅落后美国前沿模型，知识蒸馏或为原因</div>
+  <div class="card-summary">英国AI安全研究所与美国AI标准与创新中心联合评估显示，月之暗面的Kimi K3在ExploitBench基准上得分32.2%，远低于美国领先模型的76.2%，但优于智谱GLM-5.2的24.4%。</div>
+  <div class="card-meta">
+    <span class="source-chip">The Decoder：AI News（RSS）</span>
+    <a class="card-link" href="https://the-decoder.com/kimi-k3-trails-frontier-us-models-by-a-wide-margin-on-cyber-exploits-and-distillation-may-explain-why" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">📑</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(2条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#13</div>
+  <div class="card-title">Anthropic 联合 Andon Labs 发布 Drone-Bench，评估 AI 模型自主操控无人机执行定位追踪任务的能力</div>
+  <div class="card-summary">Anthropic 与 Andon Labs 合作推出 Drone-Bench，用于测试 AI 模型自主操控四旋翼无人机在室内环境中定位并追踪指定人员的能力。该基准将任务分解为 3D 地图重建、定位、导航、目标检测与跟随五个子任务，并通过软件复现实现快速评估。实验表明，该任务链的难度足以区分不同智能水平的模型，并揭示 AI 在物理世界操控能力上的进步轨迹。</div>
+  <div class="card-meta">
+    <span class="source-chip">Anthropic：Research（发表成果 · 网页）</span>
+    <a class="card-link" href="https://www.anthropic.com/research/project-pilot" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#14</div>
+  <div class="card-title">Apple 提出 LEAD 方法，破解长程推理中的“不可恢复瓶颈”</div>
+  <div class="card-summary">Apple 研究发现，大语言模型在长程执行中即使有高层策略也不稳定，极端分解会导致“不可恢复瓶颈”——少数“困难”步骤上的持续错误变得不可逆转。为此提出 Lookahead-Enhanced Atomic Decomposition（LEAD），通过引入短程未来验证与聚合来打破这一瓶颈。该方法在受控算法谜题上验证了有效性。</div>
+  <div class="card-meta">
+    <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+    <a class="card-link" href="https://machinelearning.apple.com/research/lead-no-recovery-bottleneck" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">💡</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(4条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#15</div>
+  <div class="card-title">Claude-thermos：保持 Claude 会话缓存热度，避免重新编码费用</div>
+  <div class="card-summary">Claude-thermos 通过本地反向代理监控 Claude Code 会话，在主智能体因等待子智能体而空闲超过 5 分钟时，自动发送预热请求刷新提示缓存。实测约 185 次本地会话中，缓存过期导致的重新编码占账单约 22%。工具以 uvx 运行，支持自定义空闲阈值和预热间隔。</div>
+  <div class="card-meta">
+    <span class="source-chip">Hacker News 热门（buzzing.cc 中文翻译）</span>
+    <a class="card-link" href="https://github.com/izeigerman/claude-thermos" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#16</div>
+  <div class="card-title">Claude 5 代模型上下文工程新规则：Claude Code 系统提示词精简超 80%</div>
+  <div class="card-summary">Anthropic 为 Claude Opus 5 和 Claude Fable 5 等新一代模型删除了 Claude Code 超过 80% 的系统提示词，且编码评测无显著损失。</div>
+  <div class="card-meta">
+    <span class="source-chip">Claude：Blog（网页）</span>
+    <a class="card-link" href="https://claude.com/blog/the-new-rules-of-context-engineering-for-claude-5-generation-models" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#17</div>
+  <div class="card-title">Claude Design 产品设计师 Nate Parrott 分享如何用其探索视觉创意</div>
+  <div class="card-summary">Anthropic 产品设计师 Nate Parrott 分享了他在 Claude Design（beta 版）中利用 HTML 交互能力进行产品原型、幻灯片、动画等视觉创意探索与迭代的方法。他将 Anthropic 品牌规范提炼为提示词，使输出自动符合品牌指南。Claude Design 不包含图像模型，不适合 Logo 设计，但可与 Claude Code 协同工作，将早期创意与生产开发衔接。</div>
+  <div class="card-meta">
+    <span class="source-chip">Claude：Blog（网页）</span>
+    <a class="card-link" href="https://claude.com/blog/how-the-product-designer-who-built-claude-design-uses-it-to-explore-ideas-before-building-them" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#18</div>
+  <div class="card-title">Claude 模型家族详解：如何为工作负载选择最佳模型</div>
+  <div class="card-summary">Anthropic 发布 Claude 模型选择指南，将模型分为 Mythos/Fable（最强能力，用于前沿编码与智能体任务）、Opus（推理密集型企业任务）、Sonnet（日常通用任务）和 Haiku（最低成本与最快速度）四个类别。</div>
+  <div class="card-meta">
+    <span class="source-chip">Claude：Blog（网页）</span>
+    <a class="card-link" href="https://claude.com/blog/claude-models-explained-choosing-the-best-model-for-your-use-case" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共18条 · 北京时间7月25日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">多伦多大学：VR改变人体空间感知；SimX发布无代码VR医疗模拟编辑器；前Meta高管融资2100万打造AI传感器</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">研究</span>
+    <span class="signal-title">多伦多大学：VR或改变人体空间感知，摘下头显后影响仍会持续</span>
+  </div>
+  <p>多伦多大学运动机能与体育教育学院发布研究，发现用户在VR中会倾向于认为自己的身体比现实世界更大，且这种空间感知偏差在摘下头显后短时间内仍会持续存在。实验中受试者在VR中普遍认为自己需要更宽的通行空间才能安全通过障碍物，返回现实世界后这种认知偏差依然存在。</p>
+  <a class="signal-source" href="https://m.sohu.com/a/1054317222_549351" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">医疗</span>
+    <span class="signal-title">SimX发布Scenario Editor，可无代码定制VR医疗模拟场景</span>
+  </div>
+  <p>虚拟现实医疗培训企业SimX推出Scenario Editor新工具，允许模拟教学导师通过网页浏览器直接修改VR训练场景中的各类元素，无需编写代码。用户可修改患者对话、上传电子病历截图、更换虚拟药柜药物列表，并调整学习目标和考核指标。新增对话可借助AI自动生成语音。</p>
+  <a class="signal-source" href="https://weibo.com/ttarticle/p/show?id=2309405324143297167366" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">传感器</span>
+    <span class="signal-title">前Meta AR/VR高管融资2100万美元打造AI导向型传感器Elio</span>
+  </div>
+  <p>前Meta AR/VR高管创立的Elio宣布完成2100万美元融资，研发允许AI实时决定捕获内容的动态光学传感器。技术将计算嵌入光学元件内部，由微镜构成的动态光学层在光线抵达传感器前直接处理，使单个模块可持续获得新能力，应用于任何需要传感的场景。</p>
+  <a class="signal-source" href="https://weibo.com/ttarticle/p/show?id=2309405324143582642333" target="_blank">📎 来源 · 7月25日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">AI+游戏热度达新高峰ChinaJoy主题"与AI同游"；魔兽联动龙与地下城时隔20年重启桌游RPG</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">AI游戏</span>
+    <span class="signal-title">AI+游戏热度达新高峰：ChinaJoy主题"与AI同游"，字节发布AI修仙游戏</span>
+  </div>
+  <p>2026年ChinaJoy将展会主题确定为"与AI同游"，增设Next Play创新游戏体验场。字节跳动旗下朝夕光年发布AI修仙游戏《不问凡尘》，场景建模、人物形象、战斗动画、剧情素材等大量内容依托AI生成，NPC由AI驱动。Steam新品节上近20%作品标注"AI生成内容"标签，独立开发者靠AI补齐资源短板。</p>
+  <a class="signal-source" href="https://www.toutiao.com/article/7666333515759288872" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">联动</span>
+    <span class="signal-title">魔兽联动龙与地下城疑似泄露，时隔20年艾泽拉斯桌游RPG将重启</span>
+  </div>
+  <p>知名虚拟桌游平台Roll20短暂上线文章，指向《魔兽世界》与《龙与地下城》联动产品。这不是游戏内活动，而是一套以艾泽拉斯为主题的D&D桌面角色扮演设定产品，将提供预购。更完整消息预计将在7月30日Gen Con桌游展会期间正式公布。</p>
+  <a class="signal-source" href="https://www.163.com/dy/article/L2LVQINS0526CPHV.html" target="_blank">📎 来源 · 7月25日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">智元机器人启动赴港上市流程；国内实现全球首次千人跨地域同步脑电采集；宇树王兴兴登《时代》封面</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+    <span class="signal-title">智元机器人已启动赴港上市流程，2025年出货量全球第一</span>
+  </div>
+  <p>通用AI机器人公司智元创新宣布已启动赴港上市流程。成立仅三年，智元创新已完成从技术研發、产品量产到真实场景部署的快速跨越。据Omdia统计，2025年智元创新通用人形机器人出货量超5100台，位居全球第一，占据全球人形机器人市场约39%份额。</p>
+  <a class="signal-source" href="https://www.163.com/dy/article/L2M5TK5H05119FMA.html" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">脑机接口</span>
+    <span class="signal-title">国内实现全球首次千人跨地域同步脑电采集，脑机接口技术取得里程碑突破</span>
+  </div>
+  <p>国内顶尖科研团队完成全球首个上千人跨区域同步脑电信号规模化采集，攻克异地时钟同步、便携设备降噪两大核心技术难题，搭建起海量人脑神经数据集，可支撑通用神经大模型训练。该技术后续可落地脑卒中康复、精神疾病诊疗、人机意念交互、车载情绪监测等场景。</p>
+  <a class="signal-source" href="https://weibo.com/1903951291/5324544913181363" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">机器人</span>
+    <span class="signal-title">宇树科技CEO王兴兴登上《时代》杂志封面，GD01载人机甲亮相</span>
+  </div>
+  <p>宇树科技CEO王兴兴与近2.7米高的GD01载人机甲共同登上《时代》杂志封面，标志着机器人时代来临。GD01是全球首款量产载人机甲，可双足或四足行走。王兴兴认为，未来10年每个家庭都可能拥有小型机器人处理家务或高危工作。</p>
+  <a class="signal-source" href="https://www.ithome.com/0/981/406.htm" target="_blank">📎 来源 · 7月25日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">OpenHands发布桌面Beta及跨会话持久记忆；腾讯云CodeBuddy NPC推动AI编程交付时代；AMD联合Cerebras挑战英伟达</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">AI编程</span>
+    <span class="signal-title">OpenHands发布桌面Beta及Canvas 1.6.1更新，推出跨会话持久记忆</span>
+  </div>
+  <p>OpenHands本周发布Agent Canvas 1.6.1与SDK 1.37.1更新，同时推出Apple Silicon macOS和Windows的桌面Beta安装器。SDK 1.37增加可选的跨会话持久记忆功能，通过MEMORY.md保存上下文。Canvas支持将最近的提交历史和文件diff放入上下文实现逐提交审查，可直接带着已挂载的插件启动新对话。</p>
+  <a class="signal-source" href="https://agihunt.info/e/19f95b3ec18c6347288e509a0eb" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">AI编程</span>
+    <span class="signal-title">腾讯云发布CodeBuddy NPC，推动AI编程迈向"交付时代"</span>
+  </div>
+  <p>腾讯云正式发布面向研发流程的云端智能体CodeBuddy NPC（Cloud Agent），让AI直接融入企业现有研发流程。开发者只需下达目标，NPC即可自主获取上下文、闭环完成任务并交付可验收成果，成为研发流程里的"AI原住民"。</p>
+  <a class="signal-source" href="http://seatodayflash.com/article/live-%E8%85%BE%E8%AE%AF%E4%BA%91%E5%8F%91%E5%B8%83-codebuddy-npc-%E6%8E%A8%E5%8A%A8-ai-%E7%BC%96%E7%A8%8B%E8%BF%88%E5%90%91-%E4%BA%A4%E4%BB%98%E6%97%B6%E4%BB%A3-3138807" target="_blank">📎 来源 · 7月25日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">芯片</span>
+    <span class="signal-title">AMD联合Cerebras推出超低时延AI推理硬件方案，挑战英伟达</span>
+  </div>
+  <p>AMD与晶圆级AI芯片厂商Cerebras达成深度合作，推出面向超高并发场景的联合推理系统：由AMD Helios机架平台负责大吞吐量上下文处理，Cerebras晶圆级引擎承担Token解码。整套方案每瓦算力产出提升5倍，推理延迟降低70%，将于2026年下半年量产交付，直接对标英伟达NVL72 AI超集群。</p>
+  <a class="signal-source" href="https://weibo.com/1903951291/5324544913181363" target="_blank">📎 来源 · 7月25日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月25日AI行业呈现"模型密集发布+开源监管博弈+产品工程化落地"三重主线。模型层面，Anthropic发布Claude Opus 5以半价追平Fable 5，在Frontier-Bench等编程评测中登顶；蚂蚁百灵Ling-3.0-flash用124B总参数/5.1B激活参数实现对标上一代旗舰的性能；Black Forest Labs FLUX 3支持单次生成20秒视频与原生音频，多模态能力再进一步；Midjourney V8.2专注美学提升。产品层面，Runway Agent推出自然语言工作流、百度搭子实现电脑手机跨端接力、OpenRouter上线Classifiers自动标记AI请求用途、Claude Code支持1M上下文——AI产品正从单一功能向工作流整合和工程化部署演进。行业层面，英伟达/微软/Meta联合警告开放权重模型过度监管将削弱美国竞争力，而Kimi K3在网络安全测试中大幅落后美国前沿模型，引发对知识蒸馏安全性的讨论。整体来看，今天是AI模型能力平价化（Opus 5定价仅为Fable 5一半）与 geopolitical 博弈同步加剧的一天，技术民主化与安全可控性的矛盾愈发尖锐。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源来自 AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI HOT 18条信号，模型发布/更新5条最为密集。其他分类中：VR动态3条（研究、医疗、传感器）、游戏设计2条（AI游戏、联动）、新科技3条（机器人×2、脑机接口）、新产品3条（AI编程×2、芯片）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>

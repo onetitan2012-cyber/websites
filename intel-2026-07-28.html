@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-07-28</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  --accent2:  #00897B;  --accent3:  #E8711A;
+      --accent4:  #6B3FA0;  --accent5:  #C62828;  --dark:     #0D1117;
+      --dark2:    #161B22;  --text:     #E6EDF3;  --muted:    #8B949E;
+      --border:   #30363D;  --card:     #1C2128;  --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.75;
+    }
+    .back-home {
+      position: fixed; top: 16px; left: 16px; z-index: 200;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: rgba(28,33,40,.95);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: var(--dark); padding: 90px 24px 60px;
+      display: flex; justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .hero .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: .8rem; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a { flex-shrink: 0; padding: 8px 16px; border-radius: 8px; font-size: .85rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: all .2s; }
+    .nav a:hover { background: var(--card); color: var(--text); }
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+    .ai-subsection { margin-bottom: 32px; }
+    .ai-subsection:last-child { margin-bottom: 0; }
+    .ai-subsection-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+    .ai-subsection-title .icon { font-size: 1.2rem; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .card-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; transition: transform .15s, box-shadow .15s; display: flex; flex-direction: column; }
+    .card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .card-item .card-num { font-size: .75rem; font-weight: 700; color: var(--accent1); margin-bottom: 8px; }
+    .card-item .card-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; line-height: 1.5; flex: 1; }
+    .card-item .card-summary { color: var(--muted); font-size: .88rem; line-height: 1.7; margin-bottom: 12px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .card-item .card-meta { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+    .card-item .source-chip { display: inline-flex; align-items: center; gap: 4px; font-size: .78rem; color: var(--muted); background: var(--dark2); padding: 4px 10px; border-radius: 20px; max-width: 60%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+    .card-item .card-link { font-size: .8rem; color: var(--accent1); text-decoration: none; font-weight: 600; transition: color .2s; }
+    .card-item .card-link:hover { color: #4a9eff; }
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform .15s, box-shadow .15s; }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .signal-badge { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: #fff; text-transform: uppercase; flex-shrink: 0; }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 1px; }
+    .signal-source:hover { color: var(--text); }
+    .note-card { background: rgba(26,115,232,.08); border-left: 4px solid var(--accent1); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; margin-top: 24px; }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .data-source { text-align: center; padding: 16px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); background: var(--dark2); }
+    footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .card-item { padding: 14px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年7月28日 · 星期二</div>
+      <p class="lead">Kimi K3 开放日开源 2.8 万亿参数混合专家模型；Google AI Overviews 搜索出现率升至 43%；NVIDIA 等数十家机构成立 Open Secure AI Alliance；Cognizant 成为 Claude 全球首要合作伙伴；OpenAI 称 43.5% 员工用 ChatGPT 处理其他岗位工作；甲骨文与 OpenAI 3000 亿美元交易后股价暴跌。</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">26</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">2</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>模型发布更新 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>产品发布更新 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>行业动态 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>论文研究 1</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>技巧与观点 8</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence · AI HOT</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">Kimi K3 开放日开源 2.8 万亿参数混合专家模型；Google AI Overviews 搜索出现率升至 43%；NVIDIA 等成立 Open Secure AI Alliance；OpenAI 称 43.5% 员工用 ChatGPT 做其他岗位工作</p>
+    </div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">🚀</span>模型发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#01</div>
+  <div class="card-title">Kimi K3 开放日：模型权重、技术报告和关键 Infra 技术同步开放</div>
+  <div class="card-summary">月之暗面发布 2.8 万亿参数的混合专家模型 Kimi K3，支持原生视觉理解和 100 万 token 上下文窗口。其规模化效率较 Kimi K2.5 提升 2.5 倍，并同步开源模型权重、技术报告及 MoonEP、FlashKDA、AgentEnv 三项 Infra 技术。</div>
+  <div class="card-meta">
+    <span class="source-chip">公众号：月之暗面（Kimi）</span>
+    <a class="card-link" href="https://mp.weixin.qq.com/s/IW9BdyA3hLvuuiX_aMCJEQ" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">🛠️</span>产品发布/更新 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#02</div>
+  <div class="card-title">Kimi 发布视觉感知基准 PerceptionBench</div>
+  <div class="card-summary">Kimi.ai 发布 PerceptionBench，一个从当前前沿模型在 42 个基准上的失败模式中归纳出的视觉感知基准。该基准将视觉感知拆解为 10 种原子能力，并构建了 3000 道验证题，每道题只考察单一感知能力，无需推理或外部知识。</div>
+  <div class="card-meta">
+    <span class="source-chip">X：Kimi.ai (@Kimi_Moonshot)</span>
+    <a class="card-link" href="https://x.com/Kimi_Moonshot/status/2081813202514681878" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">📰</span>行业动态 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(3条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#03</div>
+  <div class="card-title">Google AI Overviews 搜索结果出现率升至43%</div>
+  <div class="card-summary">Google AI Overviews 在搜索结果中的出现率一年内从15%升至43%，AI Mode月访问量从1.26亿增至2.79亿。用户搜索长度增加，正从短关键词转向更长的自然对话式查询。</div>
+  <div class="card-meta">
+    <span class="source-chip">TechCrunch：AI（RSS）</span>
+    <a class="card-link" href="https://techcrunch.com/2026/07/27/googles-ai-search-is-rapidly-becoming-the-default-new-data-shows" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#04</div>
+  <div class="card-title">NVIDIA 等多家行业领袖联合成立 Open Secure AI Alliance，推动 AI 安全与防御开源化</div>
+  <div class="card-summary">NVIDIA、Microsoft、Hugging Face、IBM 等数十家机构联合成立 Open Secure AI Alliance，旨在通过开源模型、工具和框架构建可审查、可定制的 AI 安全防御体系。</div>
+  <div class="card-meta">
+    <span class="source-chip">NVIDIA Blog（RSS）</span>
+    <a class="card-link" href="https://blogs.nvidia.com/blog/open-secure-ai-alliance" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#05</div>
+  <div class="card-title">Cognizant 与 Anthropic 扩大合作，成为 Claude Partner Network 全球首要合作伙伴</div>
+  <div class="card-summary">Cognizant 与 Anthropic 扩大合作，成为 Claude Partner Network 中的 Global Premier Partner，并将 Claude 嵌入其 Flowsource 等平台。已有超过 3 万名员工完成 Claude 培训，其为一家生物制药公司构建的智能合约系统将合同审核时间缩短最高 40%，提取准确率超过 88%。</div>
+  <div class="card-meta">
+    <span class="source-chip">Anthropic：Newsroom（网页）</span>
+    <a class="card-link" href="https://www.anthropic.com/news/cognizant-anthropic" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">📑</span>论文研究 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(1条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#06</div>
+  <div class="card-title">Apple 提出 GH-ESD：面向实例级视觉任务的假设驱动错误切片发现方法</div>
+  <div class="card-summary">Apple 机器学习研究团队提出 GH-ESD（Grounded Hypothesis-Driven Error Slice Discovery），一种针对目标检测与分割等实例级视觉任务的错误切片发现方法。现有方法主要适用于图像级分类，难以捕捉由上下文关系和空间视觉模式导致的实例级失败。GH-ESD 通过基于假设的驱动方式，系统性地发现模型在语义连贯子集上的系统性失效。</div>
+  <div class="card-meta">
+    <span class="source-chip">Apple Machine Learning Research（RSS）</span>
+    <a class="card-link" href="https://machinelearning.apple.com/research/gh-esd" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+<div class="ai-subsection">
+  <div class="ai-subsection-title"><span class="icon">💡</span>技巧与观点 <span style="color:var(--muted);font-size:.85rem;font-weight:400">(8条)</span></div>
+  <div class="card-grid">
+<div class="card-item">
+  <div class="card-num">#07</div>
+  <div class="card-title">用AI Skill自动生成可协作HTML PPT</div>
+  <div class="card-summary">Vista 基于 bento PPT 改造了一个 Skill，输入内容或主题即可自动生成可编辑、在线演示并支持协作的 HTML PPT。安装指令为 `npx skills add joeseesun/qiaomu-bento-ppt`，推荐使用 Kimi K3 或 Opus 4.8+ 等前端审美好的模型。</div>
+  <div class="card-meta">
+    <span class="source-chip">X：Vista (@vista8)</span>
+    <a class="card-link" href="https://x.com/vista8/status/2081568902241513786" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#08</div>
+  <div class="card-title">GitHub Copilot 发布“Harness”工作流：用单一工具完成原型、规划、实现与代码审查</div>
+  <div class="card-summary">GitHub Copilot 推出“Harness”工作流，让开发者通过单一 AI 工具完成从原型设计、规划、实现到代码审查的完整软件开发流程，无需追逐多种新 AI 工具。该工作流强调实用性与集成性，旨在减少工具切换带来的效率损耗。</div>
+  <div class="card-meta">
+    <span class="source-chip">GitHub Blog</span>
+    <a class="card-link" href="https://github.blog/ai-and-ml/github-copilot/the-harness-is-all-you-need-mostly" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#09</div>
+  <div class="card-title">用Claude和Python构建技能驱动的金融分析智能体</div>
+  <div class="card-summary">本教程基于Anthropic的financial-services仓库，用纯Python复现其技能驱动架构。通过解析SKILL.md文件构建可搜索技能注册表，并创建可复用SkillAgent，将金融分析剧本注入Anthropic Messages API，支持迭代工具调用循环。</div>
+  <div class="card-meta">
+    <span class="source-chip">MarkTechPost（RSS）</span>
+    <a class="card-link" href="https://www.marktechpost.com/2026/07/27/designing-skill-driven-financial-analysis-agents-with-claude-python-mcp-connectors-and-automated-deliverables" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#10</div>
+  <div class="card-title">OpenAI 称越来越多员工用 ChatGPT 做其他岗位的工作</div>
+  <div class="card-summary">OpenAI 分析超 80 万条与工作相关的 ChatGPT 消息后发现，43.5% 的岗位特定查询涉及另一职业，营销和工程任务交叉最多。用户用 AI 处理合同审查、数据分析、网站故障排查等原由专家负责的工作。OpenAI 认为这是岗位职责正在变化的早期信号，该趋势在缺乏专业团队的小公司尤为明显。</div>
+  <div class="card-meta">
+    <span class="source-chip">The Decoder：AI News（RSS）</span>
+    <a class="card-link" href="https://the-decoder.com/openai-says-more-workers-are-using-chatgpt-to-do-other-peoples-jobs" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#11</div>
+  <div class="card-title">GitHub Copilot app 入门指南：多 Agent 会话工作区与 Canvas 预览</div>
+  <div class="card-summary">GitHub Copilot app 将 AI 编码工具升级为多 Agent 会话工作区，支持同时管理多个任务线程而不丢失进度。用户可为每个会话绑定项目上下文，通过 `/create-canvas` 命令在浏览器 Canvas 中预览 UI 并直接点选修改，还能启用 Agent Merge 自动处理 PR 审查反馈和合并冲突。</div>
+  <div class="card-meta">
+    <span class="source-chip">GitHub Blog</span>
+    <a class="card-link" href="https://github.blog/ai-and-ml/github-copilot/github-copilot-app-for-beginners-getting-started" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#12</div>
+  <div class="card-title">浪费20亿Token后，我开源了帮Agent定义目标的Leader.skill</div>
+  <div class="card-summary">作者开源了Leader.skill，用于将模糊的人类需求转化为Agent可独立执行数小时的目标任务书。该Skill基于“目标七问”方法论，涵盖目的、完成态、反作弊、边界等维度，并推荐用Claude Fable 5或Kimi K3规划目标，再交由GPT-5.6 Sol或GLM-5.2等模型长程执行。项目已开源。</div>
+  <div class="card-meta">
+    <span class="source-chip">公众号：数字生命卡兹克</span>
+    <a class="card-link" href="https://mp.weixin.qq.com/s/AwOk3di8m6eVeIUjzNftgg" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#13</div>
+  <div class="card-title">OpenRouter 新增图像生成模型专用 API 端点</div>
+  <div class="card-summary">OpenRouter 通过专用 `/api/v1/images` 端点提供图像生成模型服务，图像理解仍通过 `/chat/completions` 端点完成，两者共用同一 API Key 和计费体系。该平台同时公布了两种任务的完整接口合约，并修复了此前出现的“no endpoints found”错误。</div>
+  <div class="card-meta">
+    <span class="source-chip">OpenRouter：Announcements（RSS）</span>
+    <a class="card-link" href="https://openrouter.ai/blog/tutorials/image-generation-models" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+<div class="card-item">
+  <div class="card-num">#14</div>
+  <div class="card-title">甲骨文与OpenAI的3000亿美元交易后股价暴跌，市场对循环融资模式失去信心</div>
+  <div class="card-summary">2025年9月10日甲骨文宣布与OpenAI达成3000亿美元交易后股价一度飙升43%，但如今已从307美元跌至约120美元。市场对循环融资模式日益警惕，昨日英伟达考虑为OpenAI主导的数据中心提供2500亿美元支持的消息传出后，其股价开盘下跌超4.5%。苹果因未过度投资AI反而市值超越英伟达，SpaceX则从6月高点225美元下跌超50%。</div>
+  <div class="card-meta">
+    <span class="source-chip">Gary Marcus：The Road to AI We Can Trust（RSS）</span>
+    <a class="card-link" href="https://garymarcus.substack.com/p/circular-financing-aint-what-it-used" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+  </div>
+</div>
+  </div>
+</div>
+    <div class="data-source">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank" rel="noopener noreferrer">AI HOT</a> · 共14条 · 北京时间7月28日</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">Immersed Visor 办公头显即将发货；Valve Steam Frame 因高通芯片涨价面临成本冲击；SteamVR 新作持续上架</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">硬件</span>
+    <span class="signal-title">多次跳票后，Immersed 宣布 Visor 办公头显即将发货</span>
+  </div>
+  <p>XR 初创公司 Immersed 宣布其面向办公场景的一体式 VR 头显 Visor 即将上市，已向预购客户发送发货时间表邮件。Visor 基于高通骁龙 XR2+ Gen 2 芯片，配备双 4K microOLED 显示屏、手部及眼部追踪、彩色透视与六自由度追踪。受全球元器件危机导致 RAM 和存储价格飙升影响，起售价将从 500 美元上调至 700 美元，且需额外订阅"Visor Plus"AI 助手服务。</p>
+  <a class="signal-source" href="https://weibo.com/ttarticle/p/show?id=2309405325593511591944" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">供应链</span>
+    <span class="signal-title">高通芯片大幅提价，Valve Steam Frame VR 头显面临成本冲击或延期</span>
+  </div>
+  <p>据彭博社报道，高通已将其芯片产品价格上调两位数百分比，Valve 即将推出的轻量化 PC VR 头显 Steam Frame 恰好使用骁龙 8 Gen 3 处理器，成本将显著上升。该头显原计划配备 16GB LPDDR5X 内存与最高 1TB 存储，裸机仅 185g，支持 Wi-Fi 7 串流、双 2160x2160 Pancake 显示屏与 144Hz 刷新率。高通涨价叠加内存供应紧张，发布节奏与定价策略或需重新调整。</p>
+  <a class="signal-source" href="https://www.163.com/dy/article/L2TMR21A0511BLFD.html" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">平台</span>
+    <span class="signal-title">SteamVR 新作持续上架，Valve Index 仍是旗舰但 Deckard 传闻未确认</span>
+  </div>
+  <p>SteamVR 平台 7 月 28 日新增多款 VR 游戏与 Demo，涵盖创意、动作与恐怖等品类。SteamVR 2.0 自 2023 年底发布以来持续通过运行时更新修复追踪与串流行为。关于代号"Deckard"的新头显传闻仍未经官方证实，Valve 自 2019 年发布的 Index 至今仍是公司旗舰头显。</p>
+  <a class="signal-source" href="https://vrgearguide.com/vr-basics-glossary/new-on-steamvr-2026-07-28" target="_blank">📎 来源 · 7月28日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">2026 上海游戏产业精英大会聚焦 AI 重构游戏边界；游戏商务大会上半年出海收入增 30%；QQ 宠物 3D 版回归</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">产业</span>
+    <span class="signal-title">2026 上海游戏产业精英大会在杨浦举行，聚焦"AI 重构游戏边界"</span>
+  </div>
+  <p>7 月 28 日下午，2026 上海游戏产业精英大会在长阳创谷举行，主题为"AI 重构游戏边界，智能驱动产业未来"。伽马数据发布报告显示，今年上半年上海网络游戏总收入突破 950 亿元。大会当天上海（杨浦）创新游戏孵化器正式揭牌，首批 12 位专家获颁导师证书，5 家意向入孵企业签约。游族、盛趣、完美世界等企业分享了 AI 生产力革命与游戏出海经验。</p>
+  <a class="signal-source" href="https://new.qq.com/rain/a/20260728A0AX0K00" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">出海</span>
+    <span class="signal-title">2026 年度游戏商务大会举办：上半年自研游戏海外收入 123.72 亿美元增 30%</span>
+  </div>
+  <p>7 月 28 日，2026 年度游戏商务大会在上海虹桥举办，主题为"AI 变革时代·游戏出海迎来新篇章"。中国音像与数字出版协会数据显示，2026 年上半年自主研发游戏海外销售收入达 123.72 亿美元，同比增长 30.22%。会议发布《中国桌游发展研究报告》，显示 2025 年我国桌游市场规模 78.25 亿元。三七互娱、完美世界等企业分享了 AI 赋能出海的实战经验。</p>
+  <a class="signal-source" href="https://new.qq.com/rain/a/20260728A0B8HI00" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">怀旧</span>
+    <span class="signal-title">QQ 宠物全新 3D 版本官宣回归，停运近八年后重启</span>
+  </div>
+  <p>7 月 27 日，停运近八年的 QQ 宠物正式官宣重启升级回归。新版产品升级为 3D 毛茸茸建模，除经典企鹅形象外新增柴犬等多种宠物形态，玩家可自定义宠物性格，喂食、打工等经典养宠玩法全部保留。依托腾讯社交生态，产品有望低成本获取流量，补足轻度休闲赛道布局。</p>
+  <a class="signal-source" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_7126a67e48033352" target="_blank">📎 来源 · 7月28日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">英伟达循环融资引担忧股价大跌 5% 苹果重夺第一；亚马逊申请 5000 余颗卫星；微软发布网安 AI 模型</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">资本</span>
+    <span class="signal-title">英伟达循环融资引担忧：CDS 价差飙升股价大跌 5%，苹果重夺市值第一</span>
+  </div>
+  <p>英伟达正推进总规模逾 7500 亿美元的 AI 基础设施合作，包括与 SK 集团深化合作及与 OpenAI 讨论数据中心融资。随着英伟达同时扮演芯片供应商、投资方及融资支持方等多重角色，市场担忧加剧。ICE 数据显示其五年期信用违约互换价差创纪录飙升，股价周一下跌 5% 至 4.76 万亿美元，苹果市值达 4.95 万亿美元重夺全球第一。</p>
+  <a class="signal-source" href="https://www.mrjjxw.com/articles/2026-07-28/4517967.html" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">卫星</span>
+    <span class="signal-title">亚马逊申请部署 5000 余颗通信卫星，拓展手机直连服务</span>
+  </div>
+  <p>亚马逊宣布已向美国联邦通信委员会提交申请，计划在 2028 年前部署由 5000 余颗卫星组成的通信星座，为全球用户提供语音通话、短信、数据及紧急通信等手机直连服务。该计划是在"柯伊伯计划"基础上的进一步拓展，未来将与 SpaceX"星链"等卫星通信服务展开竞争。</p>
+  <a class="signal-source" href="https://www.mrjjxw.com/articles/2026-07-28/4517967.html" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">安全</span>
+    <span class="signal-title">微软发布首款网络安全 AI 模型 MAI-Cyber-1-Flash 及"感知计划"</span>
+  </div>
+  <p>微软发布首款自主研发的网络安全模型 MAI-Cyber-1-Flash，并同步推出代理式安全系统 Project Perception（感知计划）。该模型旨在发现复杂代码库中的安全漏洞，与多模型智能体扫描平台结合使用时，可在约一半成本下实现与领先模型相当的漏洞检测能力。系统通过红队、蓝队、绿队三组代理构建闭环风险降低流程。</p>
+  <a class="signal-source" href="https://www.mrjjxw.com/articles/2026-07-28/4517967.html" target="_blank">📎 来源 · 7月28日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">腾讯 WorkBuddy 上架鸿蒙电脑；荣耀 Robot Phone 首发自研影像芯片；华为 nova 16 SE 参数曝光</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">AI办公</span>
+    <span class="signal-title">腾讯 WorkBuddy 上架鸿蒙电脑，成桌面办公智能体首例</span>
+  </div>
+  <p>7 月 28 日腾讯 WorkBuddy 正式上架鸿蒙电脑应用市场，为鸿蒙平台首个桌面办公智能体。PC 端月访问量 3 个月从 885 万增至 2097 万。该产品定位企业级 AI 办公助手，支持文档处理、信息检索与任务自动化，标志着国产操作系统办公生态在 AI 原生应用上的重要补位。</p>
+  <a class="signal-source" href="https://view.inews.qq.com/a/20260728A0377L00" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">手机</span>
+    <span class="signal-title">荣耀 Robot Phone 首发自研影像芯片驭光 H1，8 月 12 日定档发布</span>
+  </div>
+  <p>荣耀在横店发布影像技术，Robot Phone 搭载自研"驭光 H1"芯片与德国阿莱电影级影像系统，8 月 12 日定档发布，将首发 AgenticOS 多模态智能体内核。该机定位 AI 影像旗舰，强调端侧智能体与计算摄影的深度融合。</p>
+  <a class="signal-source" href="https://view.inews.qq.com/a/20260728A0538D00" target="_blank">📎 来源 · 7月28日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">手机</span>
+    <span class="signal-title">华为 nova 16 SE 参数曝光：麒麟 8020 + 1.5K 直屏 + 8500mAh 大电池</span>
+  </div>
+  <p>7 月 28 日数码博主曝光华为 nova 16 SE 部分参数：搭载麒麟 8020 芯片、1.5K OLED 直屏、8500mAh 大电池，红枫原色影像首次下放中端，填补 2000 元档影像空白，预计 8-9 月发布。在中端市场影像与续航双重升级，竞争焦点回归硬件本体。</p>
+  <a class="signal-source" href="https://view.inews.qq.com/a/20260728A06B8F00" target="_blank">📎 来源 · 7月28日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>7月28日AI行业呈现"开源开放+安全防御+岗位重构"三重主线。模型层面，月之暗面在Kimi K3开放日开源2.8万亿参数混合专家模型，支持原生视觉理解与100万token上下文，并同步开放MoonEP、FlashKDA、AgentEnv三项Infra技术，延续了国产开源大模型的激进路线。行业层面，NVIDIA、Microsoft、Hugging Face、IBM等数十家机构联合成立Open Secure AI Alliance，推动AI安全与防御开源化，这与上周英伟达/微软/Meta呼吁开放权重模型形成呼应，显示AI安全正从闭源护城河转向开放协作；但另一端，甲骨文与OpenAI的3000亿美元循环融资交易后股价暴跌（从307美元跌至约120美元），市场对AI基建的融资模式日益警惕，英伟达CDS价差创纪录飙升、苹果重夺市值第一，资本对AI泡沫的担忧正在显性化。产品与技巧层面，GitHub Copilot推出"Harness"工作流与多Agent会话工作区，OpenRouter新增图像生成专用API，OpenAI分析发现43.5%的员工用ChatGPT处理其他岗位工作——AI正从"替代岗位"转向"跨岗位能力弥散"，岗位职责边界加速模糊。整体来看，今天是AI能力持续开放与安全治理同步推进的一天，但资本层面的退潮信号值得警惕。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">AI HOT 整合说明</h4>
+      <p>本次AI趋势部分数据源来自 AI HOT（aihot.virxact.com），按模型发布/更新、产品发布/更新、行业动态、论文研究、技巧与观点五个版块分组，全局连续编号。VR动态、游戏设计、新科技、新产品四个分类仍按原有规则获取和生成。本次共收录 AI HOT 14条信号，技巧与观点8条最为密集。其他分类中：VR动态3条（硬件、供应链、平台）、游戏设计3条（产业、出海、怀旧）、新科技3条（资本、卫星、安全）、新产品3条（AI办公、手机×2）。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">AI趋势数据来自 <a href="https://aihot.virxact.com" target="_blank">AI HOT</a> · 其他分类来自网络搜索</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
