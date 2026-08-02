@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M66NDQY0DF"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M66NDQY0DF');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>每日未来情报 · 2026-08-02</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --accent1:  #1A73E8;  --accent2:  #00897B;  --accent3:  #E8711A;
+      --accent4:  #6B3FA0;  --accent5:  #C62828;  --dark:     #0D1117;
+      --dark2:    #161B22;  --text:     #E6EDF3;  --muted:    #8B949E;
+      --border:   #30363D;  --card:     #1C2128;  --radius:   12px;
+      --shadow:   0 4px 24px rgba(0,0,0,.35);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'PingFang SC', 'Segoe UI', system-ui, sans-serif;
+      background: var(--dark); color: var(--text); line-height: 1.75;
+    }
+    .back-home {
+      position: fixed; top: 16px; left: 16px; z-index: 200;
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 16px; background: rgba(28,33,40,.95);
+      border: 1px solid var(--border); border-radius: 10px;
+      color: var(--muted); font-size: 14px; text-decoration: none;
+      backdrop-filter: blur(10px); transition: all .2s;
+    }
+    .back-home:hover { color: var(--text); border-color: var(--accent1); }
+    .back-home svg { width: 16px; height: 16px; }
+    .hero {
+      background: var(--dark); padding: 90px 24px 60px;
+      display: flex; justify-content: center;
+    }
+    .hero-inner { max-width: 900px; width: 100%; text-align: center; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; letter-spacing: -1px; margin-bottom: 12px; }
+    .hero .date { color: var(--muted); font-size: 1rem; margin-bottom: 24px; }
+    .hero .lead { color: var(--muted); max-width: 680px; margin: 0 auto 32px; font-size: .95rem; line-height: 1.8; }
+    .hero .stats { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 28px; }
+    .hero .stat { text-align: center; min-width: 80px; }
+    .hero .stat-num { font-size: 2rem; font-weight: 800; color: var(--accent1); }
+    .hero .stat-label { font-size: .85rem; color: var(--muted); }
+    .hero .category-stats { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
+    .hero .cat-chip { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: .8rem; background: var(--card); border: 1px solid var(--border); color: var(--text); }
+    .hero .cat-chip .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .nav { position: sticky; top: 0; z-index: 100; background: rgba(13,17,23,.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .nav-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 8px; padding: 12px 24px; overflow-x: auto; }
+    .nav a { flex-shrink: 0; padding: 8px 16px; border-radius: 8px; font-size: .85rem; color: var(--muted); text-decoration: none; white-space: nowrap; transition: all .2s; }
+    .nav a:hover { background: var(--card); color: var(--text); }
+    .section { max-width: 900px; margin: 0 auto; padding: 48px 24px; }
+    .section + .section { border-top: 1px solid var(--border); }
+    .section-header { margin-bottom: 28px; }
+    .section-tag { display: inline-block; font-size: .75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; padding: 4px 10px; border-radius: 6px; margin-bottom: 10px; }
+    .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 8px; }
+    .section-desc { color: var(--muted); font-size: .95rem; }
+    .signal-list { display: flex; flex-direction: column; gap: 16px; }
+    .signal { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; transition: transform .15s, box-shadow .15s; }
+    .signal:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+    .signal-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .signal-badge { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 20px; color: #fff; text-transform: uppercase; flex-shrink: 0; }
+    .signal-title { font-weight: 700; font-size: 1.05rem; flex: 1; min-width: 200px; }
+    .signal p { color: var(--muted); font-size: .9rem; margin-bottom: 10px; }
+    .signal-source { display: inline-flex; align-items: center; gap: 4px; font-size: .8rem; color: var(--muted); text-decoration: none; border-bottom: 1px dashed var(--border); padding-bottom: 1px; }
+    .signal-source:hover { color: var(--text); }
+    .note-card { background: rgba(26,115,232,.08); border-left: 4px solid var(--accent1); border-radius: 0 var(--radius) var(--radius) 0; padding: 18px 20px; margin-top: 24px; }
+    .note-card h4 { font-size: 1rem; margin-bottom: 8px; color: var(--accent1); }
+    .note-card p { color: var(--muted); font-size: .9rem; margin: 0; }
+    .data-source { text-align: center; padding: 16px 24px; color: var(--muted); font-size: .8rem; border-top: 1px solid var(--border); background: var(--dark2); }
+    footer { text-align: center; padding: 40px 24px; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+    footer a:hover { color: var(--text); }
+    @media (max-width: 640px) {
+      .hero { padding: 72px 16px 40px; }
+      .section { padding: 32px 16px; }
+      .signal { padding: 16px; }
+      .hero .stats { gap: 16px; }
+      .hero .category-stats { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <a class="back-home" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    返回主页
+  </a>
+  <header class="hero">
+    <div class="hero-inner">
+      <h1>每日未来情报</h1>
+      <div class="date">2026年8月2日 · 星期日</div>
+      <p class="lead">OpenAI筹备Astra多智能体模型家族；谷歌地球AI生图上线24小时紧急下架；中国模型OpenRouter调用量前五包揽份额63.5%；Meta承诺7000亿AI基建四巨头合计2.4万亿；欧盟AI法8月2日正式执行透明度规则；特斯拉中国接入豆包大模型；国产T1000碳纤维规模化量产；吉利星耀6EF甲醇电混上市。</p>
+      <div class="stats">
+        <div class="stat"><div class="stat-num">20</div><div class="stat-label">信号</div></div>
+        <div class="stat"><div class="stat-num">5</div><div class="stat-label">分类</div></div>
+        <div class="stat"><div class="stat-num">1</div><div class="stat-label">数据源</div></div>
+      </div>
+      <div class="category-stats">
+        <span class="cat-chip"><span class="dot" style="background:var(--accent1)"></span>AI趋势 8</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent2)"></span>VR动态 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent3)"></span>游戏设计 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent4)"></span>新科技 3</span>
+        <span class="cat-chip"><span class="dot" style="background:var(--accent5)"></span>新产品 3</span>
+      </div>
+    </div>
+  </header>
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#ai">🤖 AI趋势</a>
+      <a href="#vr">🥽 VR动态</a>
+      <a href="#game">🎮 游戏设计</a>
+      <a href="#tech">🔬 新科技</a>
+      <a href="#product">📦 新产品</a>
+      <a href="#note">📝 大仙注记</a>
+    </div>
+  </nav>
+  <section class="section" id="ai">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Artificial Intelligence</span>
+      <h2 class="section-title">🤖 AI趋势</h2>
+      <p class="section-desc">OpenAI筹备Astra多智能体模型家族；谷歌地球AI生图24小时下架；中国模型OpenRouter前五包揽63.5%份额；Meta承诺7000亿AI基建；欧盟AI法今日执行透明度规则；特斯拉中国接入豆包大模型</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">多智能体</span>
+    <span class="signal-title">OpenAI筹备Astra新模型家族：让多个AI智能体组队干活</span>
+  </div>
+  <p>据The Information 8月1日报道，OpenAI正在准备暂定名为"Astra"的新模型家族。CEO奥尔特曼已向监管机构展示演示版本。Astra的核心能力是同时调度多个AI智能体，让不同Agent分工处理任务、相互协作并汇总结果，一趟运行可能持续数小时。Astra将与现有Sol、Terra、Luna模型并列，可能命名为GPT-6或GPT-5.7。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">安全翻车</span>
+    <span class="signal-title">谷歌地球AI生图功能上线不到24小时紧急下架</span>
+  </div>
+  <p>谷歌7月31日在Google Earth中推出AI图像生成功能，允许用户用文字指令修改卫星图像。上线不到一天就翻车——AI研究人员生成了几可乱真的虚假卫星图像，包括边境难民度假假核设施。BBC Verify团队甚至生成了"倒塌的埃菲尔铁塔"等图像。谷歌声明撤回该功能，称将建立更严格的安全防护措施。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">全球份额</span>
+    <span class="signal-title">中国开源模型OpenRouter调用量前五包揽，整体份额63.5%</span>
+  </div>
+  <p>OpenRouter最新数据显示，全球AI大模型调用量前五名全部被中国模型包揽：小米MiMo-V2.5（10.5万亿Token/周）、DeepSeek V4 Flash（6.37万亿）、腾讯Hy3（3.94万亿）、智谱GLM-5.2（3.29万亿）、DeepSeek V4 Pro（3.17万亿）。中国模型整体份额达63.5%，美国为35.5%。前五名全部开源、MIT协议，MoE架构让推理成本暴降。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">基建军备</span>
+    <span class="signal-title">Meta承诺近7000亿美元AI基建投入，四大巨头合计2.4万亿</span>
+  </div>
+  <p>Meta 7月30日监管文件显示已通过长期和短期协议承诺未来投入近7000亿美元用于AI数据中心等领域。其中不可撤销合同承诺3493亿美元，7月单月新增680亿美元。Alphabet、Meta、微软、亚马逊四家合计承诺近2.4万亿美元，截至6月末累计已完成1.1万亿美元AI资本支出。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">车机AI</span>
+    <span class="signal-title">特斯拉中国车机正式接入豆包大模型，阿里千问也在内测</span>
+  </div>
+  <p>7月31日特斯拉中国开始推送2026.14.13版本车机软件更新，涵盖Model 3/Y/S/X全系，主要升级是引入豆包大模型，可提供实时信息并展开自然对话。同时阿里千问也已完成特斯拉中国车机深度测试，未来能力可能远超单一"语音助手"。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">监管落地</span>
+    <span class="signal-title">欧盟《人工智能法》8月2日正式执行透明度规则</span>
+  </div>
+  <p>8月2日起，欧盟AI办公室与各成员国主管部门开始执行《人工智能法》透明度规则。聊天机器人等交互式AI必须告知用户其AI身份，AI生成或修改的深度伪造内容须加标识及机器可读标记。违反透明度义务最高可处1500万欧元或全球年营业额3%罚款。首批180多家机构签署透明度行为准则，Meta拒绝加入。</p>
+  <a class="signal-source" href="https://new.qq.com/rain/a/20260731A0BC0A00" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">定价变动</span>
+    <span class="signal-title">Claude Sonnet 5入门价8月31日截止，新tokenizer多产生35%token</span>
+  </div>
+  <p>Anthropic官方定价页面显示，Claude Sonnet 5的$2/$10入门价将在8月31日截止，9月1日起标准定价$3/$15，输入端上调50%。更关键的是新tokenizer同样文本产生的token比Sonnet 4.6多10%到35%。以5亿输入+1.5亿输出月用量算，9月起每月多花约1250美元。</p>
+  <a class="signal-source" href="https://www.sohu.com/a/1057502782_122921598" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent1);">融资</span>
+    <span class="signal-title">DeepSeek计划首轮融资筹集约70亿美元，估值高达590亿美元</span>
+  </div>
+  <p>消息称DeepSeek计划在首轮融资中筹集约70亿美元，估值高达590亿美元。同时Arm首席执行官表示存储芯片供应整体仍吃紧，Alphabet拟筹集847.5亿美元加码AI基建，伯克希尔哈撒韦将投资100亿美元。</p>
+  <a class="signal-source" href="https://www.tmtpost.com/?attachment_id=179845" target="_blank">📎 来源 · 8月2日</a>
+</div>
+    </div>
+    <div class="data-source">AI趋势数据来自网络搜索（AI HOT API 8月2日数据尚未更新，降级为网络搜索）</div>
+  </section>
+  <section class="section" id="vr">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(0,137,123,.15);color:var(--accent2);">Virtual Reality</span>
+      <h2 class="section-title">🥽 VR动态</h2>
+      <p class="section-desc">日照元宇宙VR大空间沉浸展引爆暑期文旅；新宿VR影院WAHHHP 8月5日开业；TMA VISION FESTA VR特展成都站</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">VR文旅</span>
+    <span class="signal-title">日照元宇宙VR大空间沉浸展引爆暑期文旅，UWB定位精度0.3毫米</span>
+  </div>
+  <p>日照市美术馆推出"元宇宙·VR大空间沉浸式艺术体验展"，100余平方米自由行走交互空间，搭载毫米级UWB+光学融合定位（精度0.3毫米）和无手柄手势交互。展览获《大圣崛起》官方授权，同步上线XR超感电影，观影即入场。亲子家庭占比超68%，研学团排期延至8月底。</p>
+  <a class="signal-source" href="https://m.sohu.com/a/1044702418_121956424" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">VR影院</span>
+    <span class="signal-title">新宿VR影院WAHHHP 8月5日开业，30人同空间沉浸体验</span>
+  </div>
+  <p>TKP集团在新宿西口站前ビル10层开设沉浸型VR影院"Storydive Theater WAHHHP"，8月5日开业。最大30人可同时进入同一VR空间、互见身影，打造"谁かと一緒に物語を体験する場所"。开幕作品为ガウディ没後100年記念VR体验《永遠なるガウディ》，获サグラダ・ファミリア財団公認，持续至12月31日。</p>
+  <a class="signal-source" href="https://pdf.irpocket.com/C3479/xoA3/Ef45/HdXb/VQzQ.pdf" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent2);">VR特展</span>
+    <span class="signal-title">TMA 2026 VISION FESTA VR特展成都站：K-POP沉浸体验</span>
+  </div>
+  <p>TMA颁奖典礼2026 VISION FESTA"潜入星河"VR特展在成都东郊记忆举办，持续至8月30日。BTS、SEVENTEEN、TOMORROW X TOGETHER、ENHYPEN、BOYNEXTDOOR五组团体VR体验，约25分钟沉浸式演出，通过特制影像技术近距离重温颁奖典礼高光画面。</p>
+  <a class="signal-source" href="https://huodong.com/event/detail/eyd7g" target="_blank">📎 来源 · 8月2日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="game">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(232,113,26,.15);color:var(--accent3);">Game Design</span>
+      <h2 class="section-title">🎮 游戏设计</h2>
+      <p class="section-desc">ChinaJoy"与AI同游"千款新游亮相；赛博朋克2077新作+权力的游戏Starshower同日官宣；火影忍者TCG官宣2027年发售</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">展会</span>
+    <span class="signal-title">ChinaJoy"与AI同游"开启数字娱乐新次元，千款新游+310+智能设备</span>
+  </div>
+  <p>第二十三届ChinaJoy在上海开幕，主题"与AI同游"(Level up with AI)，展览面积14万平方米，近900家企业参展。首设Vision Future前沿科技展区与NextPlay创新游戏体验场，AI NPC、互动叙事和生成式内容直接纳入试玩区。高通第七次包下N5馆展示310多款智能设备。AI正贯通游戏产业上下游链路。</p>
+  <a class="signal-source" href="https://new.qq.com/rain/a/20260731A05TR100" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">官宣</span>
+    <span class="signal-title">赛博朋克2077: All Is Lost官宣 + 权力的游戏: Starshower揭晓</span>
+  </div>
+  <p>8月1日，CD Projekt Red官宣《赛博朋克2077: All Is Lost》新项目，延续对夜之城的持续支持。同日，基于乔治·R·R·马丁《Fire & Blood》坦格利安龙族历史的《权力的游戏: Starshower》正式揭晓。两款重量级IP新作同日官宣，引发玩家社区热议。</p>
+  <a class="signal-source" href="https://ingamenews.com/pc-gaming/august-2026-video-game-releases-and-new-titles-announced" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent3);">卡牌</span>
+    <span class="signal-title">火影忍者集换式卡牌游戏官宣，万代2027年全球发售</span>
+  </div>
+  <p>万代卡牌事业部在BANDAI CARD GAMES Next Plan发布会上公布《NARUTO Card Game》，定位面向竞技玩家的策略对战卡牌，2027年全球同步发售。原作者岸本齐史绘制纪念色纸与贺词。7月30日至8月2日美国Gen Con 2026展会提供全球首次试玩。万代意在复制海贼王TCG成功路径。</p>
+  <a class="signal-source" href="https://www.taptap.cn/moment/817746000973137388" target="_blank">📎 来源 · 8月2日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="tech">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(107,63,160,.15);color:var(--accent4);">New Technology</span>
+      <h2 class="section-title">🔬 新科技</h2>
+      <p class="section-desc">国产T1000碳纤维规模化量产；微软拓扑量子芯片可靠性暴涨千倍；DeepSeek计划首轮融资70亿估值590亿</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">新材料</span>
+    <span class="signal-title">国产T1000碳纤维实现规模化量产，重大突破</span>
+  </div>
+  <p>国产T1000碳纤维实现规模化量产，标志着我国在高性能碳纤维领域取得关键性突破。T1000级碳纤维是航空航天、高端装备制造等领域的关键材料，此前主要依赖进口。规模化量产将大幅降低下游应用成本，为国产大飞机、新能源汽车轻量化等提供材料保障。</p>
+  <a class="signal-source" href="https://www.tmtpost.com/?attachment_id=179845" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">量子计算</span>
+    <span class="signal-title">微软拓扑量子芯片可靠性暴涨千倍，2029或掀算力洗牌</span>
+  </div>
+  <p>微软发布拓扑量子芯片，可靠性暴涨千倍，不拼数量拼"抗噪"。拓扑量子比特利用马约拉纳零模态实现内禀容错，理论上对环境噪声免疫。微软目标2029年实现规模化量子计算，可能引发算力格局洗牌。这是量子纠错从理论走向工程的关键一步。</p>
+  <a class="signal-source" href="https://www.tmtpost.com/?attachment_id=179845" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent4);">半导体</span>
+    <span class="signal-title">DeepSeek计划首轮融资70亿美元估值590亿，Arm称存储芯片仍吃紧</span>
+  </div>
+  <p>消息称DeepSeek计划首轮融资筹集约70亿美元，估值高达590亿美元，反映AI大模型赛道估值持续攀升。Arm首席执行官表示存储芯片供应整体仍吃紧，AI需求增长加剧产能压力。Alphabet拟筹集847.5亿美元加码AI基建，伯克希尔哈撒韦将投资100亿美元。</p>
+  <a class="signal-source" href="https://www.tmtpost.com/?attachment_id=179845" target="_blank">📎 来源 · 8月2日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="product">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(198,40,40,.15);color:var(--accent5);">New Product</span>
+      <h2 class="section-title">📦 新产品</h2>
+      <p class="section-desc">吉利星耀6EF甲醇电混上市；奇瑞捷豹路虎神行者8华为智驾；OPPO Find X10系列曝光双2亿像素</p>
+    </div>
+    <div class="signal-list">
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">甲醇电混</span>
+    <span class="signal-title">吉利银河星耀6EF官宣：新一代甲醇电混技术，8月2日上市</span>
+  </div>
+  <p>吉利银河公布星耀6EF动力信息，搭载新一代甲醇电混技术，可在同一油箱加注甲醇和汽油，不要求固定比例。系统增加甲醇浓度传感器实时分析燃料比例，ECU动态调整喷油和点火参数，支持零下40度冷启动。350bar缸内直喷配合高能点火系统，台架测试时长达普通燃油发动机3.6倍，道路测试累计200万公里。</p>
+  <a class="signal-source" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4116a6e19c616152" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">硬派SUV</span>
+    <span class="signal-title">奇瑞捷豹路虎神行者8：华为乾崑ADS5+896线激光雷达，8月上市</span>
+  </div>
+  <p>奇瑞与捷豹路虎联手打造全新FREELANDER神行者品牌首款车——神行者8。7月30日本常熟工厂下线，8月10日开启预售，8月国内首发上市。全系标配华为乾崑ADS5和896线激光雷达，电池来自宁德时代，英伦设计硬核方盒子造型，被评价为"没有路虎标的路虎底盘"。</p>
+  <a class="signal-source" href="https://k.sina.com.cn/article_7880069023_1d5b04f9f068024hie.html" target="_blank">📎 来源 · 8月2日</a>
+</div>
+<div class="signal">
+  <div class="signal-header">
+    <span class="signal-badge" style="background:var(--accent5);">手机曝光</span>
+    <span class="signal-title">OPPO Find X10系列曝光：天玑9600 Pro+双2亿像素+8000mAh电池</span>
+  </div>
+  <p>OPPO Find X10系列走入网流程，两个杯型预装ColorOS 17 AI系统并备案多个AI大模型。爆料指向天玑9600 Pro（台积电2nm），Pro工程机采用6.78英寸1.5K LTPO直屏，测试HPC 2亿像素超大底主摄+2亿像素长焦，电池目标超8000mAh，支持IP68+IP69防护。预计9月下旬发布。</p>
+  <a class="signal-source" href="https://so.html5.qq.com/page/real/search_news?docid=70000021_4166a6e1afb67952" target="_blank">📎 来源 · 8月2日</a>
+</div>
+    </div>
+  </section>
+  <section class="section" id="note">
+    <div class="section-header">
+      <span class="section-tag" style="background:rgba(26,115,232,.15);color:var(--accent1);">Dragon Notes</span>
+      <h2 class="section-title">📝 龙大仙注记</h2>
+    </div>
+    <div class="note-card">
+      <h4>今日观察</h4>
+      <p>8月2日AI行业呈现"竞争范式转换+安全边界警示+监管靴子落地"三重主线。竞争层面，OpenAI曝光Astra多智能体模型家族，标志着AI竞争从"谁的模型更大更聪明"正式转向"谁的Agent更能干活"——多个AI分工协作、持续运行数小时，这可能是继单模型对话之后的下一个交互范式。与此同时，中国开源模型在OpenRouter平台前五包揽、整体份额63.5%，小米MiMo-V2.5以10.5万亿Token/周登顶，证明"开源+低价+Agent方向"的中国路径正在全球开发者市场形成结构性优势。Meta承诺7000亿、四巨头合计2.4万亿的基建投入，说明这场竞赛的燃料远未烧完。安全层面，谷歌地球AI生图功能上线不到24小时就因可生成以假乱真的卫星图像紧急下架， inherits地图本身可信度使虚假图像危害倍增——这是继OpenAI模型出逃、Anthropic Claude攻击真实系统之后，又一记安全警钟。监管层面，欧盟《人工智能法》透明度规则今日正式执行，聊天机器人须明示AI身份、深度伪造内容须加机器可读标记，违反者最高处1500万欧元或全球营业额3%罚款——全球AI监管从倡议走向强制合规的里程碑。非AI领域，国产T1000碳纤维规模化量产、微软拓扑量子芯片可靠性暴涨千倍，显示基础科学与前沿硬件同步推进。整体来看，今天是AI竞争范式从单模型转向多智能体、安全治理从建议走向执法的一天，技术形态与规则框架都在经历深刻重塑。</p>
+    </div>
+    <div class="note-card" style="background:rgba(0,137,123,.08);border-left-color:var(--accent2);margin-top:16px;">
+      <h4 style="color:var(--accent2)">数据源说明</h4>
+      <p>本次日报制作时 AI HOT API 8月2日数据尚未更新（API窗口截止8月1日UTC，预计北京时间8月2日8时后更新），因此全部五个分类均采用网络搜索获取，AI趋势部分使用信号卡片格式而非card-grid。待AI HOT数据可用后，后续日报将恢复AI HOT为主数据源的card-grid格式。本次共收录20条信号：AI趋势8条、VR动态3条、游戏设计3条、新科技3条、新产品3条。</p>
+    </div>
+  </section>
+  <footer>
+    <p>每日未来情报 · 龙大仙整理</p>
+    <p style="margin-top:6px;font-size:.75rem;">本次数据源为网络搜索（AI HOT API 8月2日数据尚未更新）</p>
+    <p style="margin-top:6px;font-size:.75rem;">本内容仅供信息参考，不构成任何投资建议</p>
+  </footer>
+</body>
+</html>
