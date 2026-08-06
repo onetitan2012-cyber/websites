@@ -177,6 +177,12 @@
       color: rgba(255, 255, 255, 0.68);
     }
 
+    .contact-box p a {
+      color: #ffffff;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     .button {
       display: inline-flex;
       align-items: center;
@@ -189,6 +195,13 @@
       color: #07100b;
       text-decoration: none;
       white-space: nowrap;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 10px;
     }
 
     .notice {
@@ -221,6 +234,10 @@
 
       .button {
         width: fit-content;
+      }
+
+      .contact-actions {
+        justify-content: flex-start;
       }
     }
 
@@ -293,13 +310,17 @@
     <section class="contact-box">
       <div>
         <h2>需要进一步帮助？</h2>
-        <p>请通过发布本页面的个人主页联系方式、TestFlight 反馈入口或 App Store 反馈渠道联系开发者。反馈时建议附上设备型号、iOS 版本、问题截图和复现步骤。</p>
+        <p>电子邮箱：<a href="mailto:onetitan@hotmail.com">onetitan@hotmail.com</a><br>联系电话：<a href="tel:+8613911085717">13911085717</a><br>反馈时建议附上设备型号、iOS 版本、问题截图和复现步骤。</p>
       </div>
-      <a class="button" href="privacy-policy-isavemoney.html">查看隐私政策</a>
+      <div class="contact-actions">
+        <a class="button" href="mailto:onetitan@hotmail.com">发送邮件</a>
+        <a class="button" href="tel:+8613911085717">拨打电话</a>
+        <a class="button" href="privacy-policy-isavemoney.html">隐私政策</a>
+      </div>
     </section>
 
     <div class="notice">
-      正式发布前，建议把这里补充为稳定公开的支持邮箱或个人主页联系入口，方便作为 App Store 技术支持页面长期使用。
+      为保护个人隐私，反馈问题时请先遮盖截图中的真实账目、姓名和其他敏感信息，不要直接发送原始语音或完整备份文件。
     </div>
 
     <footer>
