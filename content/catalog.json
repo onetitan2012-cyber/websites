@@ -1,0 +1,1136 @@
+{
+  "works": [
+    {
+      "url": "projects/act-demo.html",
+      "title": "三维动作游戏 Demo",
+      "summary": "独立开发一款能真正打起来的游戏，把角色、动作、战斗和场景做到一起。",
+      "category": "游戏",
+      "thumbnail": "assets/showcase/images/act-desert.jpg",
+      "thumbnail_alt": "动作游戏沙漠场景实机画面"
+    },
+    {
+      "url": "projects/isavemoney.html",
+      "title": "小钱 iSaveMoney · 一句话记账",
+      "summary": "给日常记账做一个简单的小工具。从最初的想法到设计、开发和上架，都由我独立完成。",
+      "category": "App",
+      "thumbnail": "assets/showcase/images/isavemoney-use-4.jpg",
+      "thumbnail_alt": "小钱 App 的语音记账界面"
+    },
+    {
+      "url": "nationkicks.html",
+      "title": "NationKicks · 国家主题概念足球鞋",
+      "summary": "八个国家主题，一组概念足球鞋。看看足球文化怎样变成造型、材质和画面。",
+      "category": "视觉设计",
+      "thumbnail": "images/Soccer-boots/Amazon samba.jpg",
+      "thumbnail_alt": "NationKicks 巴西主题概念足球鞋"
+    },
+    {
+      "url": "projects/sportsperformance.html",
+      "title": "SportsPerformance",
+      "summary": "我正在开发的足球运动 App，把腕上记录、运动数据和赛后回顾放进一次完整的使用体验。",
+      "category": "App"
+    },
+    {
+      "url": "cambridge/index.html",
+      "title": "Cambridge · 学院与康河",
+      "summary": "沿河与街巷两章十站，泛舟穿过学院与桥梁，在水岸之间感受剑桥。",
+      "category": "互动空间"
+    },
+    {
+      "url": "oxford/index.html",
+      "title": "Oxford · 学院与街巷",
+      "summary": "从圆形图书馆走向学院庭院与城市街巷。",
+      "category": "互动空间",
+      "thumbnail": "assets/showcase/images/work-oxford.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "uca-farnham/index.html",
+      "title": "Farnham · 艺术与小镇",
+      "summary": "从 UCA 艺术校园走向 Farnham 小镇。",
+      "category": "互动空间"
+    },
+    {
+      "url": "ustb-campus/index.html",
+      "title": "北京科技大学 · 重返校园",
+      "summary": "从西校门走向主楼、图书馆与体育馆。",
+      "category": "互动空间"
+    },
+    {
+      "url": "terracotta-army/index.html",
+      "title": "兵马俑 · 坑道之间",
+      "summary": "从一号坑军阵到二、三号坑。",
+      "category": "互动空间"
+    },
+    {
+      "url": "badaling/index.html",
+      "title": "八达岭 · 山脊之间",
+      "summary": "从关城走向南北山脊。",
+      "category": "互动空间"
+    },
+    {
+      "url": "west-lake/index.html",
+      "title": "西湖 · 一湖四季",
+      "summary": "从苏堤春晓到断桥残雪。",
+      "category": "互动空间",
+      "thumbnail": "assets/showcase/images/work-west-lake.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "humble-garden/index.html",
+      "title": "拙政园 · 一池晴雨",
+      "summary": "从晴日入园到廊下听雨。",
+      "category": "互动空间"
+    },
+    {
+      "url": "angkor-wat/index.html",
+      "title": "吴哥 · 等待天亮",
+      "summary": "沿石道走近五塔，在睡莲池边等待日出。",
+      "category": "互动空间"
+    },
+    {
+      "url": "giza-plateau/index.html",
+      "title": "吉萨高地 · 石与时间",
+      "summary": "三大金字塔、狮身人面像与神庙堤道。",
+      "category": "互动空间"
+    },
+    {
+      "url": "villa-rotonda/index.html",
+      "title": "圆厅别墅 · 四面皆风景",
+      "summary": "走进帕拉第奥的圆与方。",
+      "category": "互动空间",
+      "thumbnail": "assets/showcase/images/work-villa-rotonda.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "beijing-axis/index.html",
+      "title": "北京中轴线 · 一路向北",
+      "summary": "从天坛到钟鼓楼。",
+      "category": "互动空间"
+    },
+    {
+      "url": "football-tactics/index.html",
+      "title": "兽星球场 · 足球桌游",
+      "summary": "三位兽星，一块球场：360° 旋转棋盘、亲手掷骰与 AI 战术对决，低多边形 Q 版足球桌游",
+      "category": "游戏",
+      "thumbnail": "football-tactics/poster.jpg",
+      "thumbnail_alt": "兽星球场游戏封面"
+    },
+    {
+      "url": "teotihuacan/index.html",
+      "title": "特奥蒂瓦坎 · 古城漫游",
+      "summary": "从一页书走进一座城。",
+      "category": "互动空间",
+      "thumbnail": "teotihuacan/poster.jpg",
+      "thumbnail_alt": "特奥蒂瓦坎互动作品封面"
+    },
+    {
+      "url": "ikongfu.html",
+      "title": "iKongFu 少年武谱 · 武术成长档案",
+      "summary": "记录孩子武术训练任务、过程、照片视频和五维点评的本地成长档案工具，让每一次挥拳都有迹可循",
+      "category": "App"
+    },
+    {
+      "url": "isaveme.html",
+      "title": "医迹 iSaveMe · 健康记录工具",
+      "summary": "面向个人和家庭成员的本地健康记录工具，帮助保存就医记忆、回看历史病情，并在需要时快速整理给医生看",
+      "category": "App"
+    },
+    {
+      "url": "isavespace.html",
+      "title": "iSaveSpace 放哪了？· 家庭物品定位",
+      "summary": "用物品照片、位置照片和一句原声记录东西放在哪里，支持文字搜索、位置历史和本地完整备份",
+      "category": "App"
+    },
+    {
+      "url": "poet-mahjong.html",
+      "title": "诗人三缺一",
+      "summary": "与李白、杜甫、苏轼、李清照一起打麻将，听诗人在对局中吟诗作对",
+      "category": "游戏",
+      "thumbnail": "assets/showcase/images/work-poet-mahjong.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "crazy-mantis.html",
+      "title": "疯狂的螳螂",
+      "summary": "参考《疯狂鸽子》玩法，操控螳螂绕树桩爬行，伸出利爪捕捉蝉虫，避开枯叶与蜘蛛陷阱",
+      "category": "游戏",
+      "thumbnail": "assets/showcase/images/work-crazy-mantis.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "coin-rush-game.html",
+      "title": "接财宝大作战",
+      "summary": "30秒极限挑战！控制笨重惯性小车，在策略性两难抉择中收集财宝，连击越高分数翻倍",
+      "category": "游戏",
+      "thumbnail": "assets/showcase/images/work-coin-rush-game.jpg",
+      "thumbnail_alt": "作品实际打开画面"
+    },
+    {
+      "url": "shenzhen-happy-coast-water-show.html",
+      "title": "深圳欢乐海岸《深蓝秘境》水秀改版设计全记录",
+      "summary": "一场水秀的改版设计记录，聊聊故事、演出节奏和现场体验。",
+      "category": "体验设计"
+    }
+  ],
+  "articles": [
+    {
+      "url": "intel-2026-08-08.html",
+      "title": "未来日报 · 2026-08-08",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-08-05.html",
+      "title": "未来日报 · 2026-08-05",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-08-02.html",
+      "title": "未来日报 · 2026-08-02",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "tuina-therapy-experience.html",
+      "title": "AI医疗番外篇 · 命运的推拿术",
+      "summary": "从足跟伤到中医推拿治疗的真实体验，附中医推拿原理、手法与功效深度解析",
+      "collection": "life"
+    },
+    {
+      "url": "meta-rayban-daily-experience.html",
+      "title": "解锁未来科技！Meta Ray-Ban智能眼镜日用体验",
+      "summary": "坚持日用一年半真实分享，每天8小时融入生活，附Meta Ray-Ban 2代和Display版产品介绍",
+      "collection": "technology"
+    },
+    {
+      "url": "rokid-charging-case-review.html",
+      "title": "ROKID GLASSES充电眼镜盒一手详细体验分享",
+      "summary": "补齐续航短板后的深度评测，4套设备对比测量，详细数据分析，依然对标Meta Ray-Ban",
+      "collection": "technology"
+    },
+    {
+      "url": "rokid-glasses-deep-analysis.html",
+      "title": "我用270+问题解剖国产AI眼镜ROKID GLASSES",
+      "summary": "39页1万6千字深度评测，对比Meta Ray-Ban，发现270+条可优化问题，被ROKID老板亲自关注的硬核分析",
+      "collection": "technology"
+    },
+    {
+      "url": "vr-papers-introduction.html",
+      "title": "VR论文导读：8万字研究全公开",
+      "summary": "15篇论文+3份专题报告导读，从晕动症到元宇宙运动，一文带你入门VR用户体验研究",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set15.html",
+      "title": "[15/15] VR体验影响因素：总结与展望",
+      "summary": "15篇系列论文综合总结，VR晕动症解决方案与未来技术展望",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set14.html",
+      "title": "[14/15] 个体因素（四）：3D经验/时长/适应",
+      "summary": "探讨三维空间经验、单次使用时长与适应时间对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set13.html",
+      "title": "[13/15] 个体因素（三）：平衡/健康/接受度",
+      "summary": "探讨平衡能力、感官健康状况与新技术接受能力对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set12.html",
+      "title": "[12/15] 个体因素（二）：疲劳/频率/主视眼",
+      "summary": "探讨疲劳程度、使用频率与主视眼对VR晕动症的个体差异影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set11.html",
+      "title": "[11/15] 个体因素（一）：经验/心理/性别年龄",
+      "summary": "探讨经验、心理预期、性别与年龄对VR晕动症的个体差异影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set10.html",
+      "title": "[10/15] 运动与参照系因素",
+      "summary": "静态参照系、运动加速度与视线高度对VR晕动症的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set09.html",
+      "title": "[09/15] 内容设计因素（三）",
+      "summary": "环境模糊度、环境开阔度与环境特性对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set08.html",
+      "title": "[08/15] 内容设计因素（二）",
+      "summary": "镜头运动、场景比例与图像色度对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set07.html",
+      "title": "[07/15] 内容设计因素（一）",
+      "summary": "细节复杂度、环境逼真度与视角类别对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set06.html",
+      "title": "[06/15] 多感官协调与环境因素",
+      "summary": "探讨视听触觉协调、听觉音量、温湿度对VR体验的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set05.html",
+      "title": "[05/15] 瞳距、亮度、重量与佩戴舒适度",
+      "summary": "探讨VR硬件人体工学设计对用户体验和晕动症的影响",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set04.html",
+      "title": "[04/15] 体感反馈、焦距与畸变校正",
+      "summary": "深入解析体感失调、焦距不匹配与图像畸变对VR晕动症的影响机制",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set03.html",
+      "title": "[03/15] 视场角、分辨率与像素密度对沉浸感的影响",
+      "summary": "解析FOV、Resolution、PPI三大视觉参数，探讨纱窗效应与沉浸体验的关系",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set02.html",
+      "title": "[02/15] 硬件技术参数对晕动症的影响机制",
+      "summary": "深入解析刷新率、帧率、MTP时延三大核心指标，结合2025-2026最新硬件技术进展",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-user-experience-set01.html",
+      "title": "[01/15] VR用户体验与晕动症：构成因素深度解析",
+      "summary": "基于8万字论文精炼，系统梳理影响VR体验的42个关键因素，结合2025-2026最新技术数据",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-sports-guide.html",
+      "title": "元宇宙运动指南，今天你VR运动了吗？",
+      "summary": "从现实运动到电子游戏再到VR元宇宙，深度评测ETT和FPT两款必玩VR运动游戏",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-tabletennis-report.html",
+      "title": "VR 乒乓球调研报告",
+      "summary": "2021–2026 年全球 VR 乒乓球产品、市场与用户深度研究，含 ITTF 赛事生态分析",
+      "collection": "vr"
+    },
+    {
+      "url": "vr-headset-hardware-report.html",
+      "title": "VR 一体机硬件报告",
+      "summary": "Quest 2/3、Pico 4/Ultra、Vision Pro 等主流设备横向对比，解析硬件演进路线与未来趋势",
+      "collection": "vr"
+    },
+    {
+      "url": "tokimeki-memorial-review.html",
+      "title": "心跳回忆 Review",
+      "summary": "1994年恋爱游戏鼻祖深度评测：十二位女主角、原创好感度系统、以及对整个游戏行业的深远影响",
+      "collection": "game-design"
+    },
+    {
+      "url": "dq7-reimagined-review.html",
+      "title": "DQ7 Reimagined Review",
+      "summary": "勇者斗恶龙7重制版深度评测",
+      "collection": "game-design"
+    },
+    {
+      "url": "world-of-warcraft-legacy.html",
+      "title": "魔兽世界：二十年传奇",
+      "summary": "",
+      "collection": "game-design"
+    },
+    {
+      "url": "grandia2-analysis.html",
+      "title": "格兰蒂亚2：DC末代RPG神作",
+      "summary": "世嘉DreamCast最后的RPG反击，IP槽半即时战斗系统的革新者，仙剑3的深度借鉴对象",
+      "collection": "game-design"
+    },
+    {
+      "url": "jin-yong-heroes-analysis.html",
+      "title": "金庸群侠传：国产武侠RPG开山鼻祖",
+      "summary": "河洛工作室1996年传奇之作，开放世界武侠先驱，影响后世无数国产游戏",
+      "collection": "game-design"
+    },
+    {
+      "url": "slay-the-spire-analysis.html",
+      "title": "杀戮尖塔深度分析",
+      "summary": "卡牌Roguelike的巅峰，独立游戏教科书。1代823万销量，2代首周300万破纪录",
+      "collection": "game-design"
+    },
+    {
+      "url": "game-genre.html",
+      "title": "Game Genre 游戏类型全图鉴",
+      "summary": "面向大众的游戏类型科普：RPG、ACT、FPS、RTS、MOBA……11 大类型的鼻祖与集大成者",
+      "collection": "game-design"
+    },
+    {
+      "url": "gastroscopy-guide.html",
+      "title": "能救你命的大保养：胃肠镜全流程攻略",
+      "summary": "从挂号到复查的全程实录，8个关键步骤图文详解——省你时间、少你烦恼、稳你心神",
+      "collection": "life"
+    },
+    {
+      "url": "game-design-document.html",
+      "title": "游戏设计文档 (GDD)：游戏的蓝图",
+      "summary": "面向游戏开发者与学生的专业指南：从GDD的核心价值到写作实践，掌握游戏设计的第一块基石",
+      "collection": "game-design"
+    },
+    {
+      "url": "design-aesthetics-principles.html",
+      "title": "设计美学风格的形成原理",
+      "summary": "从哲学、心理学、文化、技术和实践五个维度，深度解析苹果风、包豪斯、工业风等经典设计风格背后的科学原理与演化逻辑",
+      "collection": "game-design"
+    },
+    {
+      "url": "driving-simulator.html",
+      "title": "World-class Simulator？通往驾驶元宇宙之路",
+      "summary": "从游戏模拟到专业驾驶模拟器，探索虚拟驾驶世界的终极形态，三款世界级产品深度解析",
+      "collection": "technology"
+    },
+    {
+      "url": "gravity-jet-suit.html",
+      "title": "Gravity Jet Suit：人类飞行梦想",
+      "summary": "公众号 6000+ 阅读热门文章：当钢铁侠的飞行梦照进现实，个人飞行装置如何让我们像鸟儿一样自由翱翔",
+      "collection": "technology"
+    },
+    {
+      "url": "ronaldinho.html",
+      "title": "罗纳尔迪尼奥 · 足球精灵",
+      "summary": "从阿雷格里港的贫民窟到世界足坛巅峰，探索小罗的传奇生涯、荣誉殿堂与足球魔法",
+      "collection": "football"
+    },
+    {
+      "url": "ronaldo.html",
+      "title": "罗纳尔多 · 外星人",
+      "summary": "从阿雷格里港走出的足球天才，20岁世界足球先生，两届世界杯冠军，永远的R9传奇",
+      "collection": "football"
+    },
+    {
+      "url": "batistuta.html",
+      "title": "巴蒂斯图塔 · 战神",
+      "summary": "阿根廷传奇射手，紫百合与罗马的图腾，三届世界杯进球纪录保持者，Batigol永垂不朽",
+      "collection": "football"
+    },
+    {
+      "url": "maradona.html",
+      "title": "马拉多纳 · 球王",
+      "summary": "阿根廷足球上帝，1986年世界杯封神，那不勒斯永恒英雄，上帝之手与世纪进球的创造者",
+      "collection": "football"
+    },
+    {
+      "url": "david-beckham.html",
+      "title": "贝克汉姆 · 圆月弯刀",
+      "summary": "曼联传奇7号，英格兰万人迷，独步天下的任意球大师，从老特拉福德到伯纳乌再到银河的足球偶像",
+      "collection": "football"
+    },
+    {
+      "url": "casillas.html",
+      "title": "卡西利亚斯 · 圣伊戈尔",
+      "summary": "皇马青训出品的传奇队长，西班牙黄金一代的守护神，足坛唯一一位集齐世界杯、欧洲杯、欧冠三大荣誉的门将",
+      "collection": "football"
+    },
+    {
+      "url": "haaland.html",
+      "title": "哈兰德 · 魔人布欧",
+      "summary": "曼城当家射手，足坛新一代进球机器，英超单赛季36球纪录保持者，凭借恐怖效率成为当今最令人畏惧的前锋",
+      "collection": "football"
+    },
+    {
+      "url": "five-major-leagues.html",
+      "title": "欧洲五大联赛完全指南",
+      "summary": "英超、西甲、德甲、意甲、法甲的诞生历史、足球风格、传奇球星与知名教练科普",
+      "collection": "football"
+    },
+    {
+      "url": "2026世界杯赛程预测.html",
+      "title": "2026 世界杯赛程预测",
+      "summary": "基于数据模型的世界杯赛事分析与预测报告，覆盖小组赛至决赛完整赛程",
+      "collection": "football"
+    },
+    {
+      "url": "zhangyi-calligraphy-intro.html",
+      "title": "张毅书法 | 国粹艺术名家介绍",
+      "summary": "中国书法家协会会员张毅，字一丁，号白眉老翁，师从杨萱庭、苏适、李力生、姚俊卿诸先生，真草隶行诸体皆涉猎",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "zhangyi-fu-calligraphy.html",
+      "title": "福字八品 | 张毅书法艺术展",
+      "summary": "八种不同书体演绎\"福\"字，从篆书的古朴庄重到草书的奔放洒脱，一笔一划承载对美好生活的祝福",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "zhangyi-classics-thinking.html",
+      "title": "古文经典摘抄八则 | 张毅书法",
+      "summary": "从战国策到资治通鉴，八则古文经典承载着华夏文明的智慧与哲思，以书法演绎千古名句",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "zhangyi-life-insights.html",
+      "title": "书法家人生感悟 | 张毅书法",
+      "summary": "五则人生感悟，从\"开心每一天\"到\"百年都完\"，书法家的笔墨间写满通透豁达的生命智慧",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "zhangyi-calligraphy-collection.html",
+      "title": "书法精选 | 张毅书法艺术",
+      "summary": "古文摘抄、经典古诗、诗人感悟，八幅书法作品跨越千年时空，展现书法艺术的无尽魅力",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "zhangyi-ancient-wisdom.html",
+      "title": "古文智慧摘抄 | 张毅书法",
+      "summary": "从韩非子到黄石公，从三国志到弟子规，八则跨越两千年的先贤智慧箴言，以书法演绎修身治国之道",
+      "collection": "calligraphy"
+    },
+    {
+      "url": "maowu-weifeng.html",
+      "title": "《茅屋为秋风所破歌》句读解读",
+      "summary": "从\"群童抱茅\"看杜甫的时代与情怀——古典工笔画风格Web分页展示",
+      "collection": "culture"
+    },
+    {
+      "url": "wushu-fundamentals.html",
+      "title": "Wushu Fundamentals 武术基本功",
+      "summary": "五大基本步型（弓马虚仆歇）与四大核心腿法（正踢侧踢里合外摆）系统修炼指南",
+      "collection": "culture"
+    },
+    {
+      "url": "三皇炮捶拳深度调研报告.html",
+      "title": "三皇炮捶拳深度调研",
+      "summary": "历史源流、技术体系、宋派传承与三皇会友武术总会的系统研究",
+      "collection": "culture"
+    },
+    {
+      "url": "中华武术文化深度分析报告.html",
+      "title": "中华武术文化深度分析",
+      "summary": "传统武术文化全景研究：少林武当峨眉、哲学内涵、传承现状与当代价值",
+      "collection": "culture"
+    },
+    {
+      "url": "shaolin-temple-special-report.html",
+      "title": "少林寺专题报告",
+      "summary": "天下武功出少林：1500年历史、禅宗传承、武术渊源、现代发展与Speed学艺事件",
+      "collection": "culture"
+    },
+    {
+      "url": "wudang-mountain-special-report.html",
+      "title": "武当山专题报告",
+      "summary": "亘古无双胜境：2500年道教圣地、张三丰太极传承、美国传人杰克故事",
+      "collection": "culture"
+    },
+    {
+      "url": "emeishan-special-report.html",
+      "title": "峨眉山专题报告",
+      "summary": "震旦第一山：普贤菩萨道场、世界双遗产、峨眉武术发源地",
+      "collection": "culture"
+    },
+    {
+      "url": "huashan-special-report.html",
+      "title": "华山专题报告",
+      "summary": "奇险天下第一山：西岳道教圣地、长空栈道、陈抟老祖与华山派",
+      "collection": "culture"
+    },
+    {
+      "url": "taishan-special-report.html",
+      "title": "泰山专题报告",
+      "summary": "五岳独尊：天下第一山、帝王封禅圣地、中国首个世界双遗产",
+      "collection": "culture"
+    },
+    {
+      "url": "huangshan-special-report.html",
+      "title": "黄山专题报告",
+      "summary": "天下第一奇山：黄帝炼丹传说、五绝景观、世界双遗产",
+      "collection": "culture"
+    },
+    {
+      "url": "nanquan-beitui-special-report.html",
+      "title": "南拳北腿专题报告",
+      "summary": "中华武术南北流派之辨：洪拳咏春、戳脚弹腿、地理文化与历史演变",
+      "collection": "culture"
+    },
+    {
+      "url": "chinese-swordsmanship-special-report.html",
+      "title": "中华剑法专题报告",
+      "summary": "百兵之祖：十大名剑、武当峨眉昆仑剑术流派、剑圣裴旻与剑文化",
+      "collection": "culture"
+    },
+    {
+      "url": "chinese-blade-special-report.html",
+      "title": "中华刀法专题报告",
+      "summary": "百兵之胆：十大名刀、少林八卦太极刀法、武圣关羽与刀文化",
+      "collection": "culture"
+    },
+    {
+      "url": "chinese-spear-special-report.html",
+      "title": "中华枪法专题报告",
+      "summary": "百兵之王：十大名枪、杨家岳家少林枪法、霸王项羽与枪文化",
+      "collection": "culture"
+    },
+    {
+      "url": "chinese-staff-special-report.html",
+      "title": "中华棍法专题报告",
+      "summary": "百兵之祖：十大名棍、少林棍俞家棍五郎八卦棍、赵匡胤与棍文化",
+      "collection": "culture"
+    },
+    {
+      "url": "design-aesthetics-history.html",
+      "title": "设计美学史：从手工艺到人工智能",
+      "summary": "跨越三千年的造物智慧，探索形式与功能的永恒对话：MAYA原则、康德美学、算法美学",
+      "collection": "game-design"
+    },
+    {
+      "url": "intel-2026-08-01.html",
+      "title": "未来日报 · 2026-08-01",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-28.html",
+      "title": "未来日报 · 2026-07-28",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-25.html",
+      "title": "未来日报 · 2026-07-25",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-24.html",
+      "title": "未来日报 · 2026-07-24",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-21.html",
+      "title": "未来日报 · 2026-07-21",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-18.html",
+      "title": "未来日报 · 2026-07-18",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-15.html",
+      "title": "未来日报 · 2026-07-15",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-12.html",
+      "title": "未来日报 · 2026-07-12",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-10.html",
+      "title": "未来日报 · 2026-07-10",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-07.html",
+      "title": "未来日报 · 2026-07-07",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-03.html",
+      "title": "未来日报 · 2026-07-03",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-07-01.html",
+      "title": "未来日报 · 2026-07-01",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-29.html",
+      "title": "未来日报 · 2026-06-29",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-28.html",
+      "title": "未来日报 · 2026-06-28",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-27.html",
+      "title": "未来日报 · 2026-06-27",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-20.html",
+      "title": "未来日报 · 2026-06-20",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-17.html",
+      "title": "未来日报 · 2026-06-17",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-15.html",
+      "title": "未来日报 · 2026-06-15",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-13.html",
+      "title": "未来日报 · 2026-06-13",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-03.html",
+      "title": "未来日报 · 2026-06-03",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-06-01.html",
+      "title": "未来日报 · 2026-06-01",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-29.html",
+      "title": "未来日报 · 2026-05-29",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-28.html",
+      "title": "未来日报 · 2026-05-28",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-27.html",
+      "title": "未来日报 · 2026-05-27",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-26.html",
+      "title": "未来日报 · 2026-05-26",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-11.html",
+      "title": "未来日报 · 2026-05-11",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-09.html",
+      "title": "未来日报 · 2026-05-09",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-08.html",
+      "title": "未来日报 · 2026-05-08",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-07.html",
+      "title": "未来日报 · 2026-05-07",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-04.html",
+      "title": "未来日报 · 2026-05-04",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-03.html",
+      "title": "未来日报 · 2026-05-03",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-02.html",
+      "title": "未来日报 · 2026-05-02",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-05-01.html",
+      "title": "未来日报 · 2026-05-01",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-30.html",
+      "title": "未来日报 · 2026-04-30",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-29.html",
+      "title": "未来日报 · 2026-04-29",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-28.html",
+      "title": "未来日报 · 2026-04-28",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-27.html",
+      "title": "未来日报 · 2026-04-27",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-24.html",
+      "title": "未来日报 · 2026-04-24",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-23.html",
+      "title": "未来日报 · 2026-04-23",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-22.html",
+      "title": "未来日报 · 2026-04-22",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-21.html",
+      "title": "未来日报 · 2026-04-21",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-20.html",
+      "title": "未来日报 · 2026-04-20",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-19.html",
+      "title": "未来日报 · 2026-04-19",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-17.html",
+      "title": "未来日报 · 2026-04-17",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-15.html",
+      "title": "未来日报 · 2026-04-15",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-14.html",
+      "title": "未来日报 · 2026-04-14",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-13.html",
+      "title": "未来日报 · 2026-04-13",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-11.html",
+      "title": "未来日报 · 2026-04-11",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-10.html",
+      "title": "未来日报 · 2026-04-10",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-09.html",
+      "title": "未来日报 · 2026-04-09",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-08.html",
+      "title": "未来日报 · 2026-04-08",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-07.html",
+      "title": "未来日报 · 2026-04-07",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-06.html",
+      "title": "未来日报 · 2026-04-06",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-05.html",
+      "title": "未来日报 · 2026-04-05",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-04.html",
+      "title": "未来日报 · 2026-04-04",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-03.html",
+      "title": "未来日报 · 2026-04-03",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-02.html",
+      "title": "未来日报 · 2026-04-02",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-04-01.html",
+      "title": "未来日报 · 2026-04-01",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-31.html",
+      "title": "未来日报 · 2026-03-31",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-30.html",
+      "title": "未来日报 · 2026-03-30",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-29.html",
+      "title": "未来日报 · 2026-03-29",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-28.html",
+      "title": "未来日报 · 2026-03-28",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-27.html",
+      "title": "未来日报 · 2026-03-27",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-26.html",
+      "title": "未来日报 · 2026-03-26",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-25.html",
+      "title": "未来日报 · 2026-03-25",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-24.html",
+      "title": "未来日报 · 2026-03-24",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-23.html",
+      "title": "未来日报 · 2026-03-23",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-22.html",
+      "title": "未来日报 · 2026-03-22",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-21.html",
+      "title": "未来日报 · 2026-03-21",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-20.html",
+      "title": "未来日报 · 2026-03-20",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-19.html",
+      "title": "未来日报 · 2026-03-19",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-18.html",
+      "title": "未来日报 · 2026-03-18",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-17.html",
+      "title": "未来日报 · 2026-03-17",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-16.html",
+      "title": "未来日报 · 2026-03-16",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-15.html",
+      "title": "未来日报 · 2026-03-15",
+      "summary": "",
+      "collection": "intel"
+    },
+    {
+      "url": "intel-2026-03-14.html",
+      "title": "未来日报 · 2026-03-14",
+      "summary": "",
+      "collection": "intel"
+    }
+  ],
+  "collections": {
+    "vr": {
+      "title": "VR 与体验研究",
+      "summary": "关于沉浸感、舒适度和交互体验的系列阅读。"
+    },
+    "game-design": {
+      "title": "游戏与设计",
+      "summary": "游戏评论、玩法分析，以及设计过程中值得琢磨的问题。"
+    },
+    "technology": {
+      "title": "产品体验",
+      "summary": "戴在身上、用在生活里的产品，究竟带来了什么体验？"
+    },
+    "culture": {
+      "title": "文化与武术",
+      "summary": "从武术、诗词到名山古迹，记录我感兴趣的文化主题。"
+    },
+    "football": {
+      "title": "足球人物与知识",
+      "summary": "球员、联赛和比赛，写给同样喜欢足球的人。"
+    },
+    "life": {
+      "title": "生活随笔",
+      "summary": "一些亲身经历，以及从中学到的东西。"
+    },
+    "calligraphy": {
+      "title": "张毅书法",
+      "summary": "欣赏张毅的书法作品，读读笔墨背后的故事。"
+    },
+    "intel": {
+      "title": "未来日报",
+      "summary": "按日期查阅过去整理的科技资讯。内容反映当时信息。"
+    }
+  },
+  "product_help": [
+    {
+      "url": "ikongfu-support.html",
+      "title": "iKongFu 少年武谱 支持与反馈",
+      "summary": "测试阶段的反馈渠道、常见问题解答，以及关于武术训练记录与隐私相关的使用说明"
+    },
+    {
+      "url": "privacy-policy-ikongfu.html",
+      "title": "iKongFu 少年武谱 隐私政策",
+      "summary": "详细说明本地武术训练记录、照片视频权限、数据备份与分享方式，以及隐私保护相关承诺"
+    },
+    {
+      "url": "isaveme-support.html",
+      "title": "医迹 iSaveMe 支持与反馈",
+      "summary": "当前版本处于持续优化阶段，围绕记录、回看、分享三条主链路收集反馈，说明测试阶段的反馈方式和常见问题"
+    },
+    {
+      "url": "privacy-policy-isaveme.html",
+      "title": "医迹 iSaveMe 隐私政策",
+      "summary": "详细说明数据保存方式、数据收集范围、权限使用、备份与分享规则，以及医疗免责声明"
+    },
+    {
+      "url": "isavemoney-support.html",
+      "title": "iSaveMoney 技术支持",
+      "summary": "了解语音记账、确认修改、原声回放、备份恢复和常见问题，帮助用户快速上手个人记账工具"
+    },
+    {
+      "url": "privacy-policy-isavemoney.html",
+      "title": "iSaveMoney 隐私政策",
+      "summary": "本地优先、无账号、无广告，详细说明记账数据、语音录入、原声文件和备份导出的处理方式"
+    },
+    {
+      "url": "isavespace-support.html",
+      "title": "iSaveSpace 技术支持",
+      "summary": "了解拍照、语音识别、搜索、设备验证、位置更新和备份恢复等常见问题"
+    },
+    {
+      "url": "privacy-policy-isavespace.html",
+      "title": "iSaveSpace 隐私政策",
+      "summary": "说明本地物品资料、家庭照片、原始语音、Apple 系统权限以及备份导出的处理方式"
+    }
+  ],
+  "about": [
+    {
+      "url": "qian-skills-showcase.html",
+      "title": "谦哥技能矩阵 | 跨界设计专家",
+      "summary": "35+核心技能、8大专业领域、10年+行业经验，从工业设计到AI创作，从VR/AR到三皇炮捶的完整能力展示"
+    },
+    {
+      "url": "alumni-interview-zhangqian.html",
+      "title": "北科大校友专访 | 张谦：二十年元宇宙初心不改",
+      "summary": "北科大工业设计系优秀校友系列报道：从2000级本科生到XR体验设计先锋，用设计思维改变世界"
+    }
+  ]
+}
