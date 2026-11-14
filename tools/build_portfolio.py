@@ -37,7 +37,7 @@ def featured(slug):
     if slug=='act-demo':media=img('act-desert.jpg','动作游戏中的沙漠对战');cls='';label='独立开发三维动作游戏'
     elif slug=='isavemoney':
         media='<div class="money-word">'+img('isavemoney-icon.jpg','小钱图标')+'<span>一句话<br>记下每一笔</span></div>'+img('isavemoney-use-4.jpg','小钱的语音记账界面',cls='store-screen');cls=' money-media';label='独立完成 iOS App 全流程'
-    else:media=img('fantasy-rose-antlers.jpg','幻想生物：鹿角上长出花枝的林间鹿');cls=' visual-media fantasy-cover';label='视觉设计与资产制作'
+    else:media=image(BOOTS+'Amazon samba.jpg','NationKicks 巴西主题概念足球鞋');cls=' visual-media';label='视觉设计与资产制作'
     series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
     action=button(url+'#motion','看 8 秒动作演示','card-link') if slug=='act-demo' else button(url,'看作品','card-link')
     return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{series}{action}</div></article>'
