@@ -62,3 +62,25 @@
  .habitat-pair{padding-top:22px}
  .habitat-pair .gallery-interlude{margin-bottom:22px}
 }
+
+/* Minimal figure series preserves the artwork's original negative space. */
+.minimal-series>a{background:#f6eddf}
+.minimal-series img,.minimal-gallery img{width:100%;height:auto;object-fit:contain}
+.minimal-gallery figcaption,.minimal-motion figcaption{font-size:13px;line-height:1.9;color:var(--muted);margin-top:12px}
+.minimal-reading{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;padding:35px 0;margin:28px 0 36px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.minimal-reading h2{font-size:30px;font-weight:550;line-height:1.4;margin-top:14px}
+.minimal-reading p{font-size:15px;line-height:1.9;margin-bottom:15px}
+.minimal-reading .text-link{display:inline-block}
+.minimal-stills,.minimal-video-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px 26px}
+.minimal-motion{padding-top:34px;margin-top:45px;border-top:1px solid var(--line)}
+.minimal-motion .gallery-interlude{padding-top:0;margin-bottom:28px}
+.minimal-video-grid video{display:block;width:100%;height:auto;aspect-ratio:1264/720;background:#f6eddf}
+.minimal-motion figcaption strong{display:block;font-size:15px;font-weight:500;color:var(--ink);margin-bottom:4px}
+@media(max-width:760px){
+ .minimal-reading{grid-template-columns:1fr;gap:20px;padding:25px 0;margin:24px 0 28px}
+ .minimal-reading h2{font-size:26px}
+ .minimal-reading p{font-size:14px}
+ .minimal-stills,.minimal-video-grid{grid-template-columns:1fr;gap:27px}
+ .minimal-motion{padding-top:26px;margin-top:32px}
+ .minimal-gallery figcaption,.minimal-motion figcaption{font-size:12px}
+}

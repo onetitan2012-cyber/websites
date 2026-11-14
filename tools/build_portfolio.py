@@ -8,7 +8,7 @@ import json
 import sys
 from portfolio_evidence import ACT_DEMO, MONEY_STORY, QG_STORY, SPORTS_FLOW, SPORTS_STORY
 ROOT=Path(__file__).resolve().parents[1]
-SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures')
+SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures','minimal-figures')
 DATA={s:json.loads((ROOT/'content/projects'/s/'metadata.yaml').read_text(encoding='utf-8')) for s in SLUGS}
 CAT=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 BOOTS='images/Soccer-boots/'
@@ -17,6 +17,8 @@ PUBLIC_URL='https://www.ponghood.com/'
 
 def image(src,alt,p='',cls='',eager=False):
     dimensions=' width="1536" height="1024"' if src.endswith(('fantasy-rose-antlers.jpg','fantasy-fern-creature.jpg')) else ' width="1672" height="941"' if src.startswith('assets/showcase/images/fantasy-') else ''
+    if src.startswith('assets/showcase/images/minimal-'):
+        dimensions=' width="1264" height="720"' if src.endswith('-poster.jpg') else ' width="1182" height="665"'
     return f'<img src="{p}{quote(src,safe="/")}" alt="{e(alt)}" class="{cls}"{dimensions} loading="{"eager" if eager else "lazy"}" decoding="async">'
 def img(name,alt,p='',cls='',eager=False):return image('assets/showcase/images/'+name,alt,p,cls,eager)
 def button(url,label,cls='button'):return f'<a class="{cls}" href="{e(url)}">{e(label)} <span aria-hidden="true">↗</span></a>'
@@ -38,7 +40,7 @@ def featured(slug):
     elif slug=='isavemoney':
         media='<div class="money-word">'+img('isavemoney-icon.jpg','小钱图标')+'<span>一句话<br>记下每一笔</span></div>'+img('isavemoney-use-4.jpg','小钱的语音记账界面',cls='store-screen');cls=' money-media';label='独立完成 iOS App 全流程'
     else:media=image(BOOTS+'Amazon samba.jpg','NationKicks 巴西主题概念足球鞋');cls=' visual-media';label='视觉设计与资产制作'
-    series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
+    series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/minimal-figures.html">极简人物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
     action=button(url+'#motion','看 8 秒动作演示','card-link') if slug=='act-demo' else button(url,'看作品','card-link')
     return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{series}{action}</div></article>'
 
@@ -64,10 +66,24 @@ def boots_gallery(p='../'):
 
 def visual_content():
     fantasy='<article class="series-feature" id="visual-series"><a href="fantasy-creatures.html" aria-label="浏览幻想生物系列">'+img('fantasy-orchid-birds.jpg','兰花与蜂鸟融合的幻想生物，栖息在雨林里','../',eager=True)+'</a><div class="series-copy"><span class="eyebrow">01 / FANTASY CREATURES</span><h2>让人相信，<br>它真的存在。</h2><p>我最在意的是融合的合理性。花与鸟、树与象，要成为一个说得通的生命，让人看到后觉得它可能真的存在。</p><p class="series-focus">生物概念 · 形态融合 · 场景气氛</p>'+button('fantasy-creatures.html','看幻想生物 · 7 幅作品','card-link')+'</div></article>'
-    qg='<article class="series-feature"><a href="qg.html" aria-label="浏览 Q&G NationKicks 系列">'+image(BOOTS+'dragon vein rise.jpg','NationKicks 中国主题概念足球鞋，红金配色与蜿蜒的鞋身线条','../')+'</a><div class="series-copy"><span class="eyebrow">02 / Q&G · NATIONKICKS</span><h2>把文化印象，<br>变成鞋的性格。</h2><p>中国主题用红金与蜿蜒的线条，回应龙与山川；巴西主题把叶脉和羽毛般的纹理放进鞋面。主题也体现在鞋的造型与材质里。</p><p class="series-focus">主题设定 · 视觉方向 · AI 辅助制作</p>'+button('qg.html','看 Q&G 代表系列','card-link')+'</div></article>'
+    minimal='<article class="series-feature minimal-series"><a href="minimal-figures.html" aria-label="浏览极简人物系列">'+img('minimal-dance.jpg','极简舞者，黑色与浅金色曲线围绕人物展开','../')+'</a><div class="series-copy"><span class="eyebrow">02 / MINIMAL FIGURES</span><h2>几笔线条，<br>留下人物的姿态。</h2><p>用线条的轻重、留白和少量色块，表现坐姿的安静、舞蹈的旋转与运动的张力。这一组也从静态图像延伸到动态。</p><p class="series-focus">人物表现 · 线条与构图 · 动态视觉</p>'+button('minimal-figures.html','看极简人物 · 图像与短片','card-link')+'</div></article>'
+    qg='<article class="series-feature"><a href="qg.html" aria-label="浏览 Q&G NationKicks 系列">'+image(BOOTS+'dragon vein rise.jpg','NationKicks 中国主题概念足球鞋，红金配色与蜿蜒的鞋身线条','../')+'</a><div class="series-copy"><span class="eyebrow">03 / Q&G · NATIONKICKS</span><h2>把文化印象，<br>变成鞋的性格。</h2><p>中国主题用红金与蜿蜒的线条，回应龙与山川；巴西主题把叶脉和羽毛般的纹理放进鞋面。主题也体现在鞋的造型与材质里。</p><p class="series-focus">主题设定 · 视觉方向 · AI 辅助制作</p>'+button('qg.html','看 Q&G 代表系列','card-link')+'</div></article>'
     contrast='<div class="theme-comparison"><figure>'+image(BOOTS+'Amazon samba.jpg','巴西主题：黄绿蓝与叶脉般的鞋面纹理','../')+'<figcaption><strong>巴西 · Amazon Samba</strong>黄绿蓝、叶脉与羽毛般的纹理，让鞋本身带出雨林的气质。</figcaption></figure><figure>'+image(BOOTS+'black forest engine.jpg','德国主题：黑银配色与硬朗的结构线条','../')+'<figcaption><strong>德国 · Black Forest Engine</strong>黑银配色与硬朗线条，让同一个产品有了更冷静的性格。</figcaption></figure></div>'
     game='<section class="case-section visual-in-use"><h2>再把画面，<br>放进能运行的游戏。</h2><div><figure class="scene-film"><video controls playsinline preload="none" poster="../assets/showcase/images/act-water.jpg" aria-label="浅滩场景动态演示"><source src="../assets/showcase/motion/shallow-water.mp4" type="video/mp4">浏览器无法播放时，可<a href="../assets/showcase/motion/shallow-water.mp4">打开浅滩演示</a>。</video><figcaption>动作游戏 Demo · 浅滩实机片段，静音</figcaption></figure><p class="application-note">我把角色素材、材质、动作和场景整合到游戏里，再结合镜头与玩法调整。这里可以看到角色进入水面后，水纹如何随动作变化。</p>'+button('act-demo.html#motion','看动作演示与制作过程','card-link')+'</div></section>'
-    return fantasy+qg+contrast+game
+    return fantasy+minimal+qg+contrast+game
+
+def minimal_content():
+    def art(name,alt,caption,eager=False):
+        src='minimal-'+name+'.jpg'
+        return '<figure><a href="../assets/showcase/images/'+src+'" aria-label="查看完整画面：'+e(alt)+'">'+img(src,alt,'../',eager=eager)+'</a><figcaption>'+caption+'</figcaption></figure>'
+    lead=art('dance','舞者以单脚支撑，轻重交替的曲线呈现旋转的动势','舞蹈 · 曲线围绕人物展开，留下旋转的节奏。',True)
+    intro='<div class="minimal-reading"><div><span class="eyebrow">线条 · 留白 · 动势</span><h2>轮廓之外，<br>也能读到动作。</h2></div><div><p>黑线交代身体的转折，浅色块带出体积，大块留白让姿态更清楚。人物省去了五官和衣饰的细节，重心、伸展与方向成为画面的主角。</p><a class="text-link" href="#minimal-motion">看线条如何动起来 ↗</a></div></div>'
+    stills='<div class="minimal-stills">'+art('seated','坐姿人物由黑色弧线与浅米色色块构成','坐姿 · 弧线与色块，把重心稳稳放在画面下方。')+art('ribbon','持彩带的体操人物以流动曲线表现伸展动作','体操 · 手臂的伸展，与彩带的轨迹相互呼应。')+art('skating','滑冰人物单腿支撑，另一条腿向后伸展','滑冰 · 一条舒展的身体轮廓，带出平衡与方向。')+art('martial-arts','武术人物的身体转折与环绕曲线形成圆形动势','武术 · 身体的转折和环绕的弧线，形成收放的节奏。')+'</div>'
+    movies='<section class="minimal-motion" id="minimal-motion"><div class="gallery-interlude"><h2>让线条，<br>继续流动。</h2><p>两段约 10 秒的动态作品。人物的姿态、线条和色块随时间变化，延续这组图像的简洁语言。</p></div><div class="minimal-video-grid">'
+    for name,title,description in [('dance','舞蹈 · 动态','人物旋转，线条随姿态舒展和收拢。'),('seated','坐姿 · 动态','轮廓轻轻变化，暖色块在人物身上流动。')]:
+        movies+='<figure><video controls playsinline preload="none" width="1264" height="720" poster="../assets/showcase/images/minimal-'+name+'-poster.jpg" aria-label="极简人物 '+title+'"><source src="../assets/showcase/motion/minimal-'+name+'.mp4" type="video/mp4">浏览器无法播放时，可<a href="../assets/showcase/motion/minimal-'+name+'.mp4">打开'+title+'</a>。</video><figcaption><strong>'+title+'</strong>'+description+'</figcaption></figure>'
+    movies+='</div></section>'
+    return '<div class="minimal-gallery">'+lead+intro+stills+'</div>'+movies+'<div class="actions">'+button('visual-creation.html','返回视觉创作')+button('fantasy-creatures.html','也看看幻想生物','text-link')+'</div>'
 
 def fantasy_content():
     def art(name,alt,caption,eager=False):
@@ -88,11 +104,11 @@ def sports_content():
     return SPORTS_FLOW+SPORTS_STORY+section('为什么想做它','<p>踢完一场球，除了比分，我也想知道自己跑得怎么样、运动强度如何，以及不同场次之间有什么变化。这个项目希望把场上的记录和赛后的理解接在一起。</p>')+section('我正在完成的，<br>是一整个使用过程。','<div class="timeline">'+story('场上用手表记录','让 Apple Watch 承担运动、心率和路线记录，尽量少打断踢球。')+story('赛后用手机回顾','在 iPhone 上整理运动记录、查看路线与表现，把数据放回一场具体的比赛或训练。')+story('让两端配合得自然','从开始记录到保存和查看，需要手机、手表和运动数据一起工作。我正在把这些部分做成连贯的体验。')+story('带到实际运动里继续改','通过内测观察记录是否方便、信息是否好懂，再调整产品。接下来会继续围绕真实使用完善。')+'</div>','progress')+section('目前的进展','<p>项目正在开发和内测中，目前没有公开下载入口。后续有适合分享的进展，会继续更新在这里。</p>','boundaries')
 
 def project(slug):
-    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content}[slug]()
-    parent='visual-creation.html' if slug in ['qg','fantasy-creatures'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures'] else '作品'
-    if slug in ['visual-creation','fantasy-creatures','qg']:
+    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content,'minimal-figures':minimal_content}[slug]()
+    parent='visual-creation.html' if slug in ['qg','fantasy-creatures','minimal-figures'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures','minimal-figures'] else '作品'
+    if slug in ['visual-creation','fantasy-creatures','qg','minimal-figures']:
         body=f'<main id="main" class="wrap art-page"><header class="art-intro"><div class="breadcrumb"><a href="{parent}">{parentlabel}</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p>{e(d["intro"])}</p></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
-        social=BOOTS+'Amazon samba.jpg' if slug=='qg' else 'assets/showcase/images/fantasy-orchid-birds.jpg'
+        social=BOOTS+'Amazon samba.jpg' if slug=='qg' else 'assets/showcase/images/minimal-dance.jpg' if slug=='minimal-figures' else 'assets/showcase/images/fantasy-orchid-birds.jpg'
         return shell(d['title'],d['summary'],body,'../',social=social)
     body=f'<main id="main" class="wrap"><section class="project-hero"><div class="breadcrumb"><a href="{parent}">{parentlabel}</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p class="intro">{e(d["intro"])}</p><p class="contribution">{"我正在做的：" if slug=="sportsperformance" else "我完成的部分："}{e(d["contribution"])}</p><div class="actions">{button(d["cta_url"],d["cta_label"])}</div></section>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
     if slug=='act-demo': body += '<script src="../assets/showcase/motion.js" defer></script>'
