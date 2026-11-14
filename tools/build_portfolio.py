@@ -8,7 +8,7 @@ import json
 import sys
 from portfolio_evidence import ACT_DEMO, MONEY_STORY, QG_STORY, SPORTS_FLOW, SPORTS_STORY
 ROOT=Path(__file__).resolve().parents[1]
-SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance')
+SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures')
 DATA={s:json.loads((ROOT/'content/projects'/s/'metadata.yaml').read_text(encoding='utf-8')) for s in SLUGS}
 CAT=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 BOOTS='images/Soccer-boots/'
@@ -16,7 +16,8 @@ PREVIEW='--preview' in sys.argv
 PUBLIC_URL='https://www.ponghood.com/'
 
 def image(src,alt,p='',cls='',eager=False):
-    return f'<img src="{p}{quote(src,safe="/")}" alt="{e(alt)}" class="{cls}" loading="{"eager" if eager else "lazy"}" decoding="async">'
+    dimensions=' width="1536" height="1024"' if src.endswith(('fantasy-rose-antlers.jpg','fantasy-fern-creature.jpg')) else ' width="1672" height="941"' if src.startswith('assets/showcase/images/fantasy-') else ''
+    return f'<img src="{p}{quote(src,safe="/")}" alt="{e(alt)}" class="{cls}"{dimensions} loading="{"eager" if eager else "lazy"}" decoding="async">'
 def img(name,alt,p='',cls='',eager=False):return image('assets/showcase/images/'+name,alt,p,cls,eager)
 def button(url,label,cls='button'):return f'<a class="{cls}" href="{e(url)}">{e(label)} <span aria-hidden="true">↗</span></a>'
 def heading(n,title,extra=''):return f'<div class="section-heading"><div><span class="section-number">{n}</span><h2>{title}</h2></div>{extra}</div>'
@@ -36,8 +37,9 @@ def featured(slug):
     if slug=='act-demo':media=img('act-desert.jpg','动作游戏中的沙漠对战');cls='';label='独立开发三维动作游戏'
     elif slug=='isavemoney':
         media='<div class="money-word">'+img('isavemoney-icon.jpg','小钱图标')+'<span>一句话<br>记下每一笔</span></div>'+img('isavemoney-use-4.jpg','小钱的语音记账界面',cls='store-screen');cls=' money-media';label='独立完成 iOS App 全流程'
-    else:media=image(BOOTS+'Amazon samba.jpg','Q&G NationKicks 巴西主题概念足球鞋');cls=' visual-media';label='视觉设计与资产制作'
-    return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{button(url,"看作品","card-link")}</div></article>'
+    else:media=img('fantasy-rose-antlers.jpg','幻想生物：鹿角上长出花枝的林间鹿');cls=' visual-media fantasy-cover';label='视觉设计与资产制作'
+    series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
+    return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{series}{button(url,"看作品","card-link")}</div></article>'
 
 def homepage():
     body=f'''<main id="main"><div class="wrap"><section class="hero compact-hero"><div class="hero-copy"><div class="eyebrow">ONETITAN / 张谦 · 设计师，独立开发者</div><h1>我做设计，<br>也开发<em>游戏和 App</em>。</h1><p>从三维动作游戏、上架的记账 App，到视觉概念设计。<br>这里是我的作品，以及做它们的过程。</p><div class="actions">{button('#works','看我的作品')}{button('#about','认识我','text-link')}</div></div><figure class="hero-art"><a href="projects/act-demo.html" aria-label="查看三维动作游戏 Demo">{img('act-roof.jpg','月色屋顶上的动作游戏实机画面',cls='hero-shot',eager=True)}</a><figcaption class="shot-caption"><div><strong>从一个角色，到一场交锋。</strong><span>独立开发 · 角色、战斗与场景</span></div><a class="shot-arrow" href="projects/act-demo.html" aria-label="查看游戏作品">↗</a></figcaption></figure></section>
@@ -60,7 +62,15 @@ def boots_gallery(p='../'):
     return '<div class="visual-gallery">'+''.join('<figure>'+image(BOOTS+f,a,p)+'<figcaption>'+a+'</figcaption></figure>' for f,a in [('Amazon samba.jpg','巴西主题 · Amazon Samba'),('dragon vein rise.jpg','中国主题 · Dragon Vein Rise'),('black forest engine.jpg','德国主题 · Black Forest Engine')])+'</div>'
 
 def visual_content():
-    return boots_gallery()+section('Q&G 视觉共创','<p>同一个主题，可以有完全不同的视觉性格。NationKicks 是其中一组代表作品：从足球文化出发，把不同国家的自然、建筑与色彩放进概念足球鞋。</p><div class="actions">'+button('qg.html','看 Q&G 代表系列')+'</div>','visual-series')+section('这一组作品，<br>我主要做了什么？','<div class="timeline">'+story('找到主题的特点','从国家文化与足球印象中挑出合适的元素，决定每款鞋的造型、颜色和材质方向。')+story('让画面形成一个系列','用主视觉、三视图和使用场景讲清设计，让每款有自己的性格，也让整组作品彼此呼应。')+'</div>')+section('让视觉走进游戏','<figure class="project-cover">'+img('act-water.jpg','动作游戏中的浅滩场景','../')+'<figcaption>游戏角色与场景 · 实机画面</figcaption></figure><p>视觉制作也会落到实际使用里。游戏中的角色、材质和场景，需要放在一起看，也需要在动作和交互中成立。</p>'+button('act-demo.html','看角色与场景如何进入游戏','card-link'))
+    fantasy='<article class="series-feature" id="visual-series"><a href="fantasy-creatures.html" aria-label="浏览幻想生物系列">'+img('fantasy-orchid-birds.jpg','兰花与蜂鸟融合的幻想生物，栖息在雨林里','../',eager=True)+'</a><div class="series-copy"><span class="eyebrow">01 / FANTASY CREATURES</span><h2>如果植物，<br>也有动物的模样。</h2><p>花瓣变成羽翼，枝条长成鹿角，巨树伸出象鼻。这组幻想生物，把熟悉的自然形态接在一起，放进一片似曾相识的森林。</p><p class="series-focus">生物造型 · 材质细节 · 场景气氛</p>'+button('fantasy-creatures.html','看幻想生物 · 7 幅作品','card-link')+'</div></article>'
+    qg='<article class="series-feature"><a href="qg.html" aria-label="浏览 Q&G NationKicks 系列">'+image(BOOTS+'Amazon samba.jpg','NationKicks 巴西主题概念足球鞋','../')+'</a><div class="series-copy"><span class="eyebrow">02 / Q&G · NATIONKICKS</span><h2>让足球文化，<br>长出不同的造型。</h2><p>从雨林、山川到建筑与色彩，我把不同国家的特点放进概念足球鞋。NationKicks 是 Q&G 视觉共创中的一组代表作品。</p><p class="series-focus">主题设定 · 产品概念 · 系列画面</p>'+button('qg.html','看 Q&G 代表系列','card-link')+'</div></article>'
+    return fantasy+qg+section('让视觉走进游戏','<figure class="project-cover">'+img('act-water.jpg','动作游戏中的浅滩场景','../')+'<figcaption>游戏角色与场景 · 实机画面</figcaption></figure><p>视觉制作也会落到实际使用里。游戏中的角色、材质和场景，需要放在一起看，也需要在动作和交互中成立。</p>'+button('act-demo.html','看角色与场景如何进入游戏','card-link'))
+
+def fantasy_content():
+    def art(name,alt,caption,eager=False):
+        src='fantasy-'+name+'.jpg'
+        return '<figure><a href="../assets/showcase/images/'+src+'" aria-label="查看完整画面：'+e(alt)+'">'+img(src,alt,'../',eager=eager)+'</a><figcaption>'+caption+'</figcaption></figure>'
+    return '<div class="fantasy-gallery" id="fantasy-gallery"><p class="gallery-hint">7 幅作品 · 点开图片，看完整画面</p>'+art('orchid-birds','兰花花瓣与蜂鸟羽翼融合，停在湿润的雨林枝头','01 / 花与羽翼 — 花瓣的形状，也可以成为鸟的翅膀。',True)+'<div class="fantasy-pair">'+art('rose-antlers','雾林中的鹿，角上生出带刺的枝条与玫瑰','02 / 花枝鹿角 — 让鹿角像枝条一样生长、开花。')+art('fern-creature','林地上的蕨叶呈现小兽的耳朵与卷曲的尾巴','03 / 蕨叶小兽 — 几片叶子，一条卷起的尾巴。')+'</div><div class="gallery-interlude"><h2>从一只小兽，<br>到一整片森林。</h2><p>同样的想象，换一个尺度：松针与羽毛交叠，树干延伸成象鼻。周围的山、水和光，让这些生物有了自己的栖息地。</p></div>'+art('pine-eagle','松针与松果融入鹰的羽翼，在云雾山间展开','04 / 松羽之鹰 — 把松林的形态，放进展开的羽翼。')+art('banyan-elephant','巨大的榕树长出象鼻，伸入河水，岸边站着一只小鹿','05 / 榕树与象鼻 — 树根、树皮与象的形态，连成一个庞大的生命。')+'<div class="gallery-interlude"><h2>再往水面上看看。</h2><p>像叶片，也像展开双翼的鳐。从贴近水面的视角到俯瞰，看看它们怎样组成一片生境。</p></div>'+art('leaf-wings-water','晨光中的水面，巨大叶片呈现鳐鱼般的双翼','06 / 水上叶翼 — 近看叶脉、水珠和掠过水面的轮廓。')+art('leaf-wings-aerial','从空中俯瞰湿地，叶翼形态的幻想生物分布在莲花与水鸟之间','07 / 水上叶翼 · 俯瞰 — 拉远之后，它们成为这片湿地的一部分。')+'</div><div class="actions">'+button('visual-creation.html','返回视觉创作')+button('qg.html','也看看 NationKicks','text-link')+'</div>'
 
 def qg_content():
     return f'<figure class="project-cover">{image(BOOTS+"Amazon samba.jpg","Q&G 巴西主题概念足球鞋主视觉","../",eager=True)}<figcaption>NationKicks · 巴西主题概念设计</figcaption></figure>'+section('从足球文化，<br>找到造型的线索。','<p>巴西的雨林与鲜明色彩、中国的山川与建筑轮廓、德国的森林与机械印象，被转化成鞋面的纹理、结构和材质。这个系列里，我负责主题设定和视觉方向，并借助 AI 工具完成画面制作与调整。</p>')+QG_STORY+section('让一个想法，<br>看得更完整。','<div class="visual-gallery pair">'+''.join('<figure>'+image(BOOTS+f,a,'../')+'<figcaption>'+a+'</figcaption></figure>' for f,a in [('Amazon samba 3view.jpg','从不同角度看造型'),('Amazon samba on foot.jpg','放回使用场景里')])+'</div>')+section('八个主题，<br>各有自己的性格。','<p>完整系列还包括阿根廷、法国、荷兰、英格兰、日本等主题，也有巴西主题的短片。它们都是概念设计作品。</p><div class="actions">'+button('../nationkicks.html','浏览 NationKicks 完整系列')+button('visual-creation.html','返回视觉创作','text-link')+'</div>')
@@ -69,11 +79,12 @@ def sports_content():
     return SPORTS_FLOW+SPORTS_STORY+section('为什么想做它','<p>踢完一场球，除了比分，我也想知道自己跑得怎么样、运动强度如何，以及不同场次之间有什么变化。这个项目希望把场上的记录和赛后的理解接在一起。</p>')+section('我正在完成的，<br>是一整个使用过程。','<div class="timeline">'+story('场上用手表记录','让 Apple Watch 承担运动、心率和路线记录，尽量少打断踢球。')+story('赛后用手机回顾','在 iPhone 上整理运动记录、查看路线与表现，把数据放回一场具体的比赛或训练。')+story('让两端配合得自然','从开始记录到保存和查看，需要手机、手表和运动数据一起工作。我正在把这些部分做成连贯的体验。')+story('带到实际运动里继续改','通过内测观察记录是否方便、信息是否好懂，再调整产品。接下来会继续围绕真实使用完善。')+'</div>','progress')+section('目前的进展','<p>项目正在开发和内测中，目前没有公开下载入口。后续有适合分享的进展，会继续更新在这里。</p>','boundaries')
 
 def project(slug):
-    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content}[slug]()
-    parent='visual-creation.html' if slug=='qg' else '../works.html';parentlabel='视觉创作' if slug=='qg' else '作品'
+    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content}[slug]()
+    parent='visual-creation.html' if slug in ['qg','fantasy-creatures'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures'] else '作品'
     body=f'<main id="main" class="wrap"><section class="project-hero"><div class="breadcrumb"><a href="{parent}">{parentlabel}</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p class="intro">{e(d["intro"])}</p><p class="contribution">{"我正在做的：" if slug=="sportsperformance" else "我完成的部分："}{e(d["contribution"])}</p><div class="actions">{button(d["cta_url"],d["cta_label"])}</div></section>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
     if slug=='act-demo': body += '<script src="../assets/showcase/motion.js" defer></script>'
-    return shell(d['title'],d['summary'],body,'../',social=BOOTS+'Amazon samba.jpg' if slug in ['qg','visual-creation'] else None)
+    social=BOOTS+'Amazon samba.jpg' if slug=='qg' else 'assets/showcase/images/fantasy-orchid-birds.jpg' if slug in ['visual-creation','fantasy-creatures'] else None
+    return shell(d['title'],d['summary'],body,'../',social=social)
 
 CATEGORIES=[('all','全部'),('app','App'),('game','游戏'),('spatial','互动空间'),('visual','视觉设计'),('experience','体验设计')]
 def search_ui(filters=None):
