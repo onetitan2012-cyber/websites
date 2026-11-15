@@ -6,7 +6,7 @@ from html import escape as e
 from urllib.parse import quote
 import json
 import sys
-from portfolio_evidence import ACT_DEMO, MONEY_STORY, QG_STORY, SPORTS_FLOW, SPORTS_STORY
+from portfolio_evidence import ACT_SCENE, ACT_DEMO, MONEY_STORY, QG_STORY, SPORTS_FLOW
 ROOT=Path(__file__).resolve().parents[1]
 SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures','minimal-figures')
 DATA={s:json.loads((ROOT/'content/projects'/s/'metadata.yaml').read_text(encoding='utf-8')) for s in SLUGS}
@@ -19,6 +19,7 @@ def image(src,alt,p='',cls='',eager=False):
     dimensions=' width="1536" height="1024"' if src.endswith(('fantasy-rose-antlers.jpg','fantasy-fern-creature.jpg')) else ' width="1672" height="941"' if src.startswith('assets/showcase/images/fantasy-') else ''
     if src.startswith('assets/showcase/images/minimal-'):
         dimensions=' width="1264" height="720"' if src.endswith('-poster.jpg') else ' width="1182" height="665"'
+    if src.endswith('act-water-motion.jpg'): dimensions=' width="1280" height="720"'
     if src.endswith('football-match-report.png'): dimensions=' width="2275" height="1279"'
     return f'<img src="{p}{quote(src,safe="/")}" alt="{e(alt)}" class="{cls}"{dimensions} loading="{"eager" if eager else "lazy"}" decoding="async">'
 def img(name,alt,p='',cls='',eager=False):return image('assets/showcase/images/'+name,alt,p,cls,eager)
@@ -37,12 +38,12 @@ def shell(title,desc,body,p='',library=False,legacy=False,social=None):
 
 def featured(slug):
     d=DATA[slug];url=f'projects/{slug}.html'
-    if slug=='act-demo':media=img('act-desert.jpg','动作游戏中的沙漠对战');cls='';label='独立开发三维动作游戏'
+    if slug=='act-demo':media=img('act-water-motion.jpg','浅滩实机片段中的持剑角色与水面互动')+'<span class="clip-label"><span aria-hidden="true">▶</span> 12 秒实机片段</span>';cls=' game-media';label='独立开发三维动作游戏'
     elif slug=='isavemoney':
         media='<div class="money-word">'+img('isavemoney-icon.jpg','小钱图标')+'<span>一句话<br>记下每一笔</span></div>'+img('isavemoney-use-4.jpg','小钱的语音记账界面',cls='store-screen');cls=' money-media';label='独立完成 iOS App 全流程'
     else:media=image(BOOTS+'Amazon samba.jpg','NationKicks 巴西主题概念足球鞋');cls=' visual-media';label='视觉设计与资产制作'
     series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/minimal-figures.html">极简人物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
-    action=button(url+'#motion','看 8 秒动作演示','card-link') if slug=='act-demo' else button(url,'看作品','card-link')
+    action=button(url+'#motion','看实机片段','card-link') if slug=='act-demo' else button(url,'看作品','card-link')
     return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{series}{action}</div></article>'
 
 def homepage():
@@ -56,11 +57,13 @@ def homepage():
 
 def act_content():
     gallery='<div class="gallery">'+''.join(f'<figure><a href="../assets/showcase/images/{f}">{img(f,a,"../")}</a><figcaption>{a} · 实机画面</figcaption></figure>' for f,a in [('act-desert.jpg','荒沙孤杨'),('act-roof.jpg','檐脊对月'),('act-water.jpg','雾岭浅滩')])+'</div>'
-    return f'<figure class="project-cover">{img("act-desert.jpg","沙漠场景中的角色对战","../",eager=True)}<figcaption>游戏实机画面</figcaption></figure>'+section('这个 Demo 里，<br>我完成了什么？','<div class="timeline">'+story('把角色做进游戏','从角色素材的整理、装配和材质，到动作接入与操作控制，我把角色一步步做成了能在场景里行动和战斗的人物。')+story('把动作做成玩法','攻击、防守、闪避和拳腿动作需要互相配合。我反复调整出手的节奏、命中的时机，以及对手怎样应对。')+story('让不同对手有不同打法','镜像、长柄和剑盾带来不同的距离和节奏。换一个对手，玩家也需要换一种应对方式。')+story('搭建能承载战斗的场景','沙漠、月夜屋顶和浅滩有不同的空间与气氛。我把它们和角色、镜头、战斗一起调整，最后做成可运行的 Demo。')+'</div>','journey')+section('换一个地方，<br>看看这场交锋。',gallery,'scenes')+ACT_DEMO+section('做下来，<br>最花心思的部分','<div class="lessons">'+story('让每一次出手都说得通','动作看着顺，还要打得合理。长柄武器的距离、盾牌的防守、攻击后的空档，都要放到实际对战里反复体会。')+story('让场景和玩法一起成立','场景需要有气氛，也要看得清、站得住、打得起来。角色放进去之后，很多构图和空间关系都需要重新考虑。')+'</div>','lessons')+section('关于这个作品','<p>这是我独立开发的个人游戏 Demo，目前暂未开放下载。制作中使用了 AI 工具及第三方角色、动作素材；这里主要展示我的制作、整合和玩法开发工作。</p>','boundaries')
+    work=section('我把这些部分，<br>做进了同一个游戏。','<div class="timeline">'+story('角色与操作','整理角色素材、装配和材质，接入动作与操作控制，让角色能在场景里移动和战斗。')+story('战斗与对手','完成攻击、防守、闪避和拳腿玩法，调整出手与命中的节奏，让镜像、长柄和剑盾有不同的应对方式。')+story('场景与镜头','搭建沙漠、月夜屋顶和浅滩，结合角色与镜头调整空间，让交锋看得清、打得起来。')+'</div>','journey')
+    return ACT_SCENE+work+ACT_DEMO+section('三处场景，<br>不同的交锋气氛。',gallery,'scenes')+section('关于这个作品','<p>这是我独立开发的个人游戏 Demo，目前暂未开放下载。制作中使用了 AI 工具及第三方角色、动作素材；这里展示我的制作、整合和玩法开发工作。</p>','boundaries')
 
 def money_content():
-    cover=f'<section class="app-showcase"><div>{img("isavemoney-icon.jpg","小钱图标","../",cls="app-icon",eager=True)}<h2>记录，确认，存下来。</h2><p>语音录入后，金额和内容都可以再检查一遍。</p></div><div class="phone-pair">{img("isavemoney-use-4.jpg","小钱语音录入界面","../",eager=True)}{img("isavemoney-use-5.jpg","小钱确认与修改记录界面","../",eager=True)}</div></section>'
-    return cover+MONEY_STORY+section('从自己的需要出发','<p>我希望记账这件事足够简单。拿起手机，说清楚花了什么钱，确认一下，就可以继续忙自己的事。需要回看时，又能很快找到那一笔。</p>','intent')+section('从想法到上架，<br>我自己走了一遍。','<div class="timeline">'+story('产品与界面设计','确定日常记账最需要的流程，再把语音录入、确认修改和账单回看放到容易理解的界面里。')+story('iOS 开发','完成语音记账、记录查看、原声回放，以及本地备份和恢复等功能。')+story('把细节做顺','不断检查输入、修改、保存和回看之间的衔接，让一个小工具用起来尽量省心。')+story('完成 App Store 上架','整理产品介绍、展示图片、支持与隐私页面，完成应用上架，让别人也能下载使用。')+'</div>')+section('你可以这样用它','<p>手动输入或说一句话，保存前确认；按日回看账单，需要时听原声，也可以导出本地备份。小钱无需注册账号。</p>','boundaries')+section('下载与使用帮助','<div class="actions">'+button(DATA['isavemoney']['cta_url'],'前往 App Store')+button('../isavemoney-support.html','使用帮助','text-link')+button('../privacy-policy-isavemoney.html','隐私说明','text-link')+'</div>')
+    cover=f'<section class="app-showcase"><div>{img("isavemoney-icon.jpg","小钱图标","../",cls="app-icon",eager=True)}<h2>记录，确认，存下来。</h2><p>两张界面，分别对应语音录入和保存前的确认。</p></div><div class="phone-pair">{img("isavemoney-use-4.jpg","小钱语音录入界面","../",eager=True)}{img("isavemoney-use-5.jpg","小钱确认与修改记录界面","../",eager=True)}</div></section>'
+    work=section('设计、开发和上架，<br>我自己走了一遍。','<div class="timeline">'+story('产品与 iOS 开发','确定记账流程，完成语音和手动录入、记录查看、原声回放，以及本地备份和恢复。')+story('完成 App Store 上架','准备产品介绍、展示图片、支持与隐私页面，让别人也能下载使用。')+'</div>')
+    return cover+MONEY_STORY+work+section('日常使用','<p>小钱无需注册账号。保存的账单可以按日回看，需要核对时听一下原声，也可以导出本地备份。</p>','boundaries')+section('下载与使用帮助','<div class="actions">'+button(DATA['isavemoney']['cta_url'],'前往 App Store')+button('../isavemoney-support.html','使用帮助','text-link')+button('../privacy-policy-isavemoney.html','隐私说明','text-link')+'</div>')
 
 def boots_gallery(p='../'):
     return '<div class="visual-gallery">'+''.join('<figure>'+image(BOOTS+f,a,p)+'<figcaption>'+a+'</figcaption></figure>' for f,a in [('Amazon samba.jpg','巴西主题 · Amazon Samba'),('dragon vein rise.jpg','中国主题 · Dragon Vein Rise'),('black forest engine.jpg','德国主题 · Black Forest Engine')])+'</div>'
@@ -103,13 +106,19 @@ def qg_content():
 
 def sports_content():
     report='<figure class="football-report" id="match-report"><a href="../assets/showcase/images/football-match-report.png" aria-label="放大查看完整比赛战报">'+img('football-match-report.png','我的足球生涯真机横版战报，展示比赛概览、跑动热图、心率与移动强度、比赛脉搏、自评和高光时刻','../',eager=True)+'</a><figcaption><span>开发中版本 · 真机战报</span><a class="text-link" href="../assets/showcase/images/football-match-report.png">放大查看完整战报 ↗</a></figcaption></figure>'
-    reading=section('把一场球，<br>整理成一张回顾。','<div class="decision-story"><h3>先看这场怎么样，再看细节。</h3><p>我把进球、助攻和距离放在最上面，让人先抓住这场比赛的概况。跑动热图占据主要位置，右侧再展开运动强度、比赛中的变化和高光时刻。</p><p>记录之外，也留一处写下自己的判断。本场自评、球员自评和运动数据分别呈现，让这张战报既能回看表现，也能留下踢球时的感受。</p></div>')
-    progress=section('我正在完成的，<br>是一整个使用过程。','<p class="football-contribution">产品设计 · iPhone 与 Apple Watch 开发 · 运动数据呈现</p><div class="timeline">'+story('场上用手表记录','让 Apple Watch 承担运动、心率和路线记录，尽量少打断踢球。')+story('赛后用手机回顾','在 iPhone 上整理运动记录、查看路线与表现，把数据放回一场具体的比赛或训练。')+story('把比赛整理成战报','设计横版战报的信息层次，把跑动热图、运动强度、自评和高光时刻组织在同一张画面里。')+story('带到实际运动里继续改','通过内测观察记录是否方便、信息是否好懂，再调整产品。接下来会继续围绕真实使用完善。')+'</div>','progress')
-    return report+reading+progress+SPORTS_FLOW+SPORTS_STORY+section('为什么想做它','<p>踢完一场球，除了比分，我也想知道自己跑得怎么样、运动强度如何，以及不同场次之间有什么变化。这个项目希望把场上的记录和赛后的理解接在一起。</p>')+section('目前的进展','<p>项目正在开发和内测中，目前没有公开下载入口。后续有适合分享的进展，会继续更新在这里。</p>','boundaries')
+    reading=section('先看这场怎么样，<br>再看细节。','<div class="decision-story"><p>我把进球、助攻和距离放在最上面，让人先抓住比赛概况。跑动热图占据主要位置，右侧展开运动强度、比赛中的变化和高光时刻。</p><p>本场自评、球员自评和运动数据分别呈现，留出空间记录自己的判断。</p></div>')
+    progress=section('我正在做的部分','<p class="football-contribution">产品设计 · iPhone 与 Apple Watch 开发 · 运动数据呈现</p><div class="timeline">'+story('把记录接成一次体验','完成两端的界面与开发，处理记录导入、位置数据和球场映射。位置记录不足时，需要说明展示限制，避免让热图显得比数据本身更确定。')+story('带到球场上继续改','通过内测观察记录是否方便、回顾是否好懂，再调整操作与信息呈现。')+'</div>','progress')
+    return report+reading+SPORTS_FLOW+progress+section('目前的进展','<p>项目正在开发和内测中，目前没有公开下载入口。</p>','boundaries')
 
 def project(slug):
     d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content,'minimal-figures':minimal_content}[slug]()
     parent='visual-creation.html' if slug in ['qg','fantasy-creatures','minimal-figures'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures','minimal-figures'] else '作品'
+    if slug in ['act-demo','isavemoney']:
+        links=(button('#mechanics','看剑盾机制','text-link')+button('#journey','我完成的部分','text-link')) if slug=='act-demo' else button(d['cta_url'],d['cta_label'])
+        body=f'<main id="main" class="wrap compact-case"><header class="art-intro case-intro"><div class="breadcrumb"><a href="../works.html">作品</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p>{e(d["intro"])}</p><div class="case-actions">{links}</div></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
+        if slug=='act-demo': body += '<script src="../assets/showcase/motion.js" defer></script>'
+        social='assets/showcase/images/act-water-motion.jpg' if slug=='act-demo' else 'assets/showcase/images/isavemoney-use-4.jpg'
+        return shell(d['title'],d['summary'],body,'../',social=social)
     if slug=='sportsperformance':
         body=f'<main id="main" class="wrap football-page"><header class="art-intro football-intro"><div class="breadcrumb"><a href="../works.html">作品</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["title"])}</h1><p class="football-deck">在场上专心踢球，结束后再看表现。</p><p>{e(d["intro"])}</p></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
         return shell(d['title'],d['summary'],body,'../',social='assets/showcase/images/football-match-report.png')
@@ -129,7 +138,7 @@ def search_ui(filters=None):
     return f'<div class="catalog-controls"><label class="search-label" for="catalog-search">{label}</label><div class="search-box"><input id="catalog-search" type="search" placeholder="输入名称或关键词" autocomplete="off"><button type="button" data-clear>清空</button></div><div class="filters" aria-label="内容分类">{btns}</div><p class="result-count" data-count aria-live="polite"></p></div>'
 def entry_card(x,p='',collection=False):
     url=p+x['url'];title=x['title'];cat=x.get('category') or CAT['collections'][x['collection']]['title'];desc=x.get('summary','') if not collection else ''
-    thumb=image(x['thumbnail'],x.get('thumbnail_alt',title),p,cls='catalog-thumb') if x.get('thumbnail') and not collection else ''
+    thumb=image(x['thumbnail'],x.get('thumbnail_alt',title),p,cls='catalog-thumb report-thumb' if x.get('thumbnail','').endswith('football-match-report.png') else 'catalog-thumb') if x.get('thumbnail') and not collection else ''
     return f'<article class="catalog-item{" has-thumb" if thumb else ""}" data-category="{e(cat)}"><a href="{e(url)}">{thumb}<div class="catalog-copy"><span class="catalog-kicker">{e(cat)}</span><h2>{e(title)}</h2>{"<p>"+e(desc)+"</p>" if desc else ""}<span class="catalog-arrow" aria-hidden="true">↗</span></div></a></article>'
 def listing_intro(kicker,title,intro):return f'<section class="listing-hero"><span class="eyebrow">{kicker}</span><h1>{title}</h1><p>{intro}</p></section>'
 def works():

@@ -5,8 +5,8 @@
       "title": "三维动作游戏 Demo",
       "summary": "独立开发一款能真正打起来的游戏，把角色、动作、战斗和场景做到一起。",
       "category": "游戏",
-      "thumbnail": "assets/showcase/images/act-desert.jpg",
-      "thumbnail_alt": "动作游戏沙漠场景实机画面"
+      "thumbnail": "assets/showcase/images/act-water-motion.jpg",
+      "thumbnail_alt": "浅滩场景实机片段，持剑角色在水面上相对站立"
     },
     {
       "url": "projects/isavemoney.html",
@@ -15,6 +15,14 @@
       "category": "App",
       "thumbnail": "assets/showcase/images/isavemoney-use-4.jpg",
       "thumbnail_alt": "小钱 App 的语音记账界面"
+    },
+    {
+      "url": "projects/sportsperformance.html",
+      "title": "我的足球生涯",
+      "summary": "开发中的足球运动 App，连接腕上记录、赛后回顾与比赛战报。",
+      "category": "App",
+      "thumbnail": "assets/showcase/images/football-match-report.png",
+      "thumbnail_alt": "我的足球生涯真机战报，展示跑动热图、运动强度和比赛高光"
     },
     {
       "url": "projects/fantasy-creatures.html",
@@ -39,12 +47,6 @@
       "category": "视觉设计",
       "thumbnail": "images/Soccer-boots/Amazon samba.jpg",
       "thumbnail_alt": "NationKicks 巴西主题概念足球鞋"
-    },
-    {
-      "url": "projects/sportsperformance.html",
-      "title": "我的足球生涯",
-      "summary": "开发中的足球运动 App，连接腕上记录、赛后回顾与比赛战报。",
-      "category": "App"
     },
     {
       "url": "cambridge/index.html",
