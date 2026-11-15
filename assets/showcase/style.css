@@ -1,4 +1,21 @@
 @charset "UTF-8";
+/* Football report: show the complete landscape composition. */
+.football-preview{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(280px,1fr);gap:40px;align-items:center}
+.football-preview figure,.football-preview-copy{min-width:0}
+.football-preview figure>a,.football-report>a{display:block;background:#050b0b;border:1px solid var(--line)}
+.football-preview img,.football-report img{width:100%;height:auto}
+.football-preview figcaption{font-size:12px;color:var(--muted);margin-top:10px}
+.football-preview-copy h3{font-size:clamp(25px,2.5vw,34px);font-weight:600;margin:12px 0 20px}
+.football-preview-copy p{font-size:14px;line-height:1.85}
+.football-preview-copy .football-tagline{font-size:20px;line-height:1.6;color:var(--ink);margin-bottom:16px}
+.football-preview-copy .football-role{margin-top:18px;font-size:12px;color:var(--accent)}
+.football-intro .football-deck{font-size:20px;color:var(--ink);margin-bottom:10px}
+.football-report{margin-bottom:42px;scroll-margin-top:24px}
+.football-report figcaption{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:12px;font-size:12px;color:var(--muted)}
+.football-report .text-link{padding:4px 0}
+.football-contribution{color:var(--accent);margin-bottom:24px}
+@media(max-width:900px){.football-preview{grid-template-columns:1fr;gap:24px}.football-preview-copy h3{margin:10px 0 16px}.football-preview-copy{max-width:650px}}
+@media(max-width:760px){.football-preview-copy .football-tagline{font-size:20px}.football-preview-copy .football-tagline br{display:none}.football-intro .football-deck{font-size:17px}.football-report{margin-bottom:28px}.football-report figcaption{font-size:11px;gap:4px 12px}.football-report .text-link{font-size:12px;min-height:40px;display:inline-flex;align-items:center}}
 /* Visual series: original artwork proportions are preserved in the gallery. */
 .series-links{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:12px;color:var(--accent)}.series-links a{padding:4px 0;border-bottom:1px solid var(--line)}.fantasy-cover>img{object-position:50% 34%}.series-feature{display:grid;grid-template-columns:1.4fr 1fr;gap:36px;align-items:center;padding:0 0 48px;margin-bottom:48px;border-bottom:1px solid var(--line)}.series-feature>a{display:block}.series-feature img{width:100%;height:auto}.series-copy h2{font-size:clamp(25px,2.5vw,36px);line-height:1.35;margin:18px 0}.series-copy p{font-size:14px;line-height:1.9}.series-copy .series-focus{font-size:12px;color:var(--accent);margin-top:18px}.fantasy-gallery{display:grid;gap:38px}.fantasy-gallery img{width:100%;height:auto}.fantasy-gallery figcaption{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.8}.fantasy-pair{display:grid;grid-template-columns:1fr 1fr;gap:24px}.gallery-hint{font-size:12px}.gallery-interlude{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:25px 0 10px}.gallery-interlude h2{font-size:30px;font-weight:550;line-height:1.4}.gallery-interlude p{font-size:15px;line-height:1.9}
 @media(max-width:760px){.series-feature{grid-template-columns:1fr;gap:22px;padding-bottom:32px;margin-bottom:32px}.series-copy h2{font-size:27px;margin:12px 0}.series-copy .card-link{margin-top:16px}.fantasy-gallery{gap:25px}.fantasy-pair{grid-template-columns:1fr;gap:25px}.gallery-interlude{grid-template-columns:1fr;gap:16px;padding-top:15px}.gallery-interlude h2{font-size:26px}.gallery-interlude p{font-size:14px}.fantasy-gallery figcaption{font-size:12px}}
