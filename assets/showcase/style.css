@@ -94,6 +94,37 @@
 }
 
 /* Minimal figure series preserves the artwork's original negative space. */
+.series-new{display:flex;align-items:center;gap:12px;padding:13px 0 4px;text-decoration:none}
+.series-new img{width:100px;height:auto;flex-shrink:0}
+.series-new span{min-width:0}
+.series-new small{display:block;font-size:10px;line-height:1.6;color:var(--muted)}
+.series-new strong{display:block;font-size:13px;line-height:1.6;font-weight:500;margin-top:4px}
+.series-new:hover strong{color:var(--accent)}
+.myth-gallery img,.myth-gallery video{display:block;width:100%;height:auto;object-fit:contain}
+.myth-gallery figure{margin:0}
+.myth-gallery figcaption{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;font-size:13px;line-height:1.8;color:var(--muted);margin-top:12px}
+.myth-gallery figcaption strong{color:var(--ink);font-size:15px;font-weight:500}
+.myth-reading{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;margin:32px 0 40px;padding:30px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.myth-reading h2{font-size:30px;font-weight:550;line-height:1.4;margin-top:14px}
+.myth-reading p{font-size:15px;line-height:1.9;margin-bottom:14px}
+.myth-reading .text-link{display:inline-block}
+.myth-film .gallery-interlude,.myth-chapter .gallery-interlude{padding-top:0;margin-bottom:26px}
+.myth-film video{aspect-ratio:1264/720;background:#0c1115}
+.myth-film figcaption{justify-content:space-between}
+.myth-chapter{margin-top:48px}
+.myth-pair{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.myth-pair figcaption{display:block}
+.myth-pair figcaption span{display:block;margin-top:5px}
+.catalog-thumb[src$="myth-fuxi-preview.webp"]{object-fit:contain;background:#101615}
+@media(max-width:760px){
+ .myth-reading{grid-template-columns:1fr;gap:16px;margin:24px 0 28px;padding:24px 0}
+ .myth-reading h2{font-size:26px}
+ .myth-reading p{font-size:14px}
+ .myth-pair{grid-template-columns:1fr;gap:26px}
+ .myth-chapter{margin-top:32px}
+ .myth-gallery figcaption{font-size:12px}
+ .myth-film .gallery-interlude,.myth-chapter .gallery-interlude{margin-bottom:20px}
+}
 .minimal-series>a{background:#f6eddf}
 .minimal-series img,.minimal-gallery img{width:100%;height:auto;object-fit:contain}
 .minimal-gallery figcaption,.minimal-motion figcaption{font-size:13px;line-height:1.9;color:var(--muted);margin-top:12px}

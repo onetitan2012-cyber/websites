@@ -8,7 +8,7 @@ import json
 import sys
 from portfolio_evidence import ACT_SCENE, ACT_DEMO, MONEY_STORY, QG_STORY, SPORTS_FLOW
 ROOT=Path(__file__).resolve().parents[1]
-SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures','minimal-figures')
+SLUGS=('act-demo','isavemoney','visual-creation','qg','sportsperformance','fantasy-creatures','minimal-figures','myth-creators')
 DATA={s:json.loads((ROOT/'content/projects'/s/'metadata.yaml').read_text(encoding='utf-8')) for s in SLUGS}
 CAT=json.loads((ROOT/'content/catalog.json').read_text(encoding='utf-8'))
 BOOTS='images/Soccer-boots/'
@@ -21,6 +21,9 @@ def image(src,alt,p='',cls='',eager=False):
         dimensions=' width="1264" height="720"' if src.endswith('-poster.jpg') else ' width="1182" height="665"'
     if src.endswith('act-water-motion.jpg'): dimensions=' width="1280" height="720"'
     if src.endswith('football-match-report.png'): dimensions=' width="2275" height="1279"'
+    if src.startswith('assets/showcase/images/myth-'):
+        dimensions=' width="1182" height="666"' if src.endswith('myth-fuxi.webp') else ' width="1182" height="665"'
+    if src.endswith('myth-fuxi-preview.webp'): dimensions=' width="640" height="361"'
     return f'<img src="{p}{quote(src,safe="/")}" alt="{e(alt)}" class="{cls}"{dimensions} loading="{"eager" if eager else "lazy"}" decoding="async">'
 def img(name,alt,p='',cls='',eager=False):return image('assets/showcase/images/'+name,alt,p,cls,eager)
 def button(url,label,cls='button'):return f'<a class="{cls}" href="{e(url)}">{e(label)} <span aria-hidden="true">↗</span></a>'
@@ -43,6 +46,8 @@ def featured(slug):
         media='<div class="money-word">'+img('isavemoney-icon.jpg','小钱图标')+'<span>一句话<br>记下每一笔</span></div>'+img('isavemoney-use-4.jpg','小钱的语音记账界面',cls='store-screen');cls=' money-media';label='独立完成 iOS App 全流程'
     else:media=image(BOOTS+'Amazon samba.jpg','NationKicks 巴西主题概念足球鞋');cls=' visual-media';label='视觉设计与资产制作'
     series='<div class="series-links"><a href="projects/fantasy-creatures.html">幻想生物 ↗</a><a href="projects/minimal-figures.html">极简人物 ↗</a><a href="projects/qg.html">NationKicks ↗</a></div>' if slug=='visual-creation' else ''
+    if slug=='visual-creation':
+        series='<a class="series-new" href="projects/myth-creators.html">'+img('myth-fuxi-preview.webp','伏羲抚琴，鹤群飞过山水之间')+'<span><small>新系列 · 9 幅图像 / 15 秒短片</small><strong>神话里的创造者 ↗</strong></span></a>'+series
     action=button(url+'#motion','看实机片段','card-link') if slug=='act-demo' else button(url,'看作品','card-link')
     return f'<article class="work-card"><a class="work-media{cls}" href="{url}" aria-label="查看{e(d["title"])}">{media}</a><div class="work-body"><div class="card-meta"><span>{e(d["title"])}</span><span class="badge">{e(d["status"])}</span></div><h3><a href="{url}">{label}</a></h3><p>{e(d["summary"])}</p>{series}{action}</div></article>'
 
@@ -69,12 +74,27 @@ def boots_gallery(p='../'):
     return '<div class="visual-gallery">'+''.join('<figure>'+image(BOOTS+f,a,p)+'<figcaption>'+a+'</figcaption></figure>' for f,a in [('Amazon samba.jpg','巴西主题 · Amazon Samba'),('dragon vein rise.jpg','中国主题 · Dragon Vein Rise'),('black forest engine.jpg','德国主题 · Black Forest Engine')])+'</div>'
 
 def visual_content():
+    myth='<article class="series-feature myth-series" id="myth-series"><a href="myth-creators.html" aria-label="浏览神话里的创造者系列">'+img('myth-fuxi.webp','伏羲在山水之间抚琴，鹤群与天象呼应琴声','../',eager=True)+'</a><div class="series-copy"><span class="eyebrow">01 / MYTH &amp; CREATION</span><h2>把神话里的创造，<br>变成眼前的瞬间。</h2><p>女娲塑形、仓颉造字、伏羲奏乐。我把熟悉的人物放进创造的现场，让动作、器物与山水一起讲述故事。</p><p class="series-focus">主题构想 · 画面叙事 · 系列视觉</p>'+button('myth-creators.html','看九幅作品与伏羲短片','card-link')+'</div></article>'
     fantasy='<article class="series-feature" id="visual-series"><a href="fantasy-creatures.html" aria-label="浏览幻想生物系列">'+img('fantasy-orchid-birds.jpg','兰花与蜂鸟融合的幻想生物，栖息在雨林里','../',eager=True)+'</a><div class="series-copy"><span class="eyebrow">01 / FANTASY CREATURES</span><h2>让人相信，<br>它真的存在。</h2><p>我最在意的是融合的合理性。花与鸟、树与象，要成为一个说得通的生命，让人看到后觉得它可能真的存在。</p><p class="series-focus">生物概念 · 形态融合 · 场景气氛</p>'+button('fantasy-creatures.html','看幻想生物 · 7 幅作品','card-link')+'</div></article>'
     minimal='<article class="series-feature minimal-series"><a href="minimal-figures.html" aria-label="浏览极简人物系列">'+img('minimal-dance.jpg','极简舞者，黑色与浅金色曲线围绕人物展开','../')+'</a><div class="series-copy"><span class="eyebrow">02 / MINIMAL FIGURES</span><h2>几笔线条，<br>留下人物的姿态。</h2><p>用线条的轻重、留白和少量色块，表现坐姿的安静、舞蹈的旋转与运动的张力。这一组也从静态图像延伸到动态。</p><p class="series-focus">人物表现 · 线条与构图 · 动态视觉</p>'+button('minimal-figures.html','看极简人物 · 图像与短片','card-link')+'</div></article>'
     qg='<article class="series-feature"><a href="qg.html" aria-label="浏览 Q&G NationKicks 系列">'+image(BOOTS+'dragon vein rise.jpg','NationKicks 中国主题概念足球鞋，红金配色与蜿蜒的鞋身线条','../')+'</a><div class="series-copy"><span class="eyebrow">03 / Q&G · NATIONKICKS</span><h2>把文化印象，<br>变成鞋的性格。</h2><p>中国主题用红金与蜿蜒的线条，回应龙与山川；巴西主题把叶脉和羽毛般的纹理放进鞋面。主题也体现在鞋的造型与材质里。</p><p class="series-focus">主题设定 · 视觉方向 · AI 辅助制作</p>'+button('qg.html','看 Q&G 代表系列','card-link')+'</div></article>'
     contrast='<div class="theme-comparison"><figure>'+image(BOOTS+'Amazon samba.jpg','巴西主题：黄绿蓝与叶脉般的鞋面纹理','../')+'<figcaption><strong>巴西 · Amazon Samba</strong>黄绿蓝、叶脉与羽毛般的纹理，让鞋本身带出雨林的气质。</figcaption></figure><figure>'+image(BOOTS+'black forest engine.jpg','德国主题：黑银配色与硬朗的结构线条','../')+'<figcaption><strong>德国 · Black Forest Engine</strong>黑银配色与硬朗线条，让同一个产品有了更冷静的性格。</figcaption></figure></div>'
     game='<section class="case-section visual-in-use"><h2>再把画面，<br>放进能运行的游戏。</h2><div><figure class="scene-film"><video controls playsinline preload="none" poster="../assets/showcase/images/act-water.jpg" aria-label="浅滩场景动态演示"><source src="../assets/showcase/motion/shallow-water.mp4" type="video/mp4">浏览器无法播放时，可<a href="../assets/showcase/motion/shallow-water.mp4">打开浅滩演示</a>。</video><figcaption>动作游戏 Demo · 浅滩实机片段，静音</figcaption></figure><p class="application-note">我把角色素材、材质、动作和场景整合到游戏里，再结合镜头与玩法调整。这里可以看到角色进入水面后，水纹如何随动作变化。</p>'+button('act-demo.html#motion','看动作演示与制作过程','card-link')+'</div></section>'
-    return fantasy+minimal+qg+contrast+game
+    return myth+fantasy.replace('01 / FANTASY','02 / FANTASY')+minimal.replace('02 / MINIMAL','03 / MINIMAL')+qg.replace('03 / Q&G','04 / Q&G')+contrast+game
+
+def myth_content():
+    def art(name,title,alt,caption,eager=False):
+        ext='webp'
+        src='myth-'+name+'.'+ext
+        return '<figure><a href="../assets/showcase/images/'+src+'" aria-label="放大查看'+title+'完整作品">'+img(src,alt,'../',eager=eager)+'</a><figcaption><strong>'+title+'</strong><span>'+caption+'</span></figcaption></figure>'
+    lead=art('nuwa','女娲 · 塑形','女娲俯身塑造泥土中的人形，双手靠近尚未完成的面孔','从手与泥土的接触，看到一个生命慢慢有了模样。',True)
+    reading='<div class="myth-reading"><div><span class="eyebrow">这一组的想法</span><h2>让人物正在做的事，<br>成为画面的中心。</h2></div><div><p>我用今天熟悉的创作方式，重新看这些神话与传说：塑形、文字、音乐、绘画，也包括材料与空间。每个人物都有一个具体的动作，周围的世界也随之发生变化。</p><p>这是一组关于创造的视觉想象。海报中的“第一位”，也是这个想象的一部分。</p><a class="text-link" href="#fuxi-film">看 15 秒伏羲短片 ↗</a></div></div>'
+    film='<section class="myth-film" id="fuxi-film" aria-labelledby="fuxi-title"><div class="gallery-interlude"><h2 id="fuxi-title">伏羲 · 让琴声，<br>流进山水之间。</h2><p>从一幅海报延伸出的 15 秒短片。琴弦、飞鹤与水流，把画面里的节奏继续展开。</p></div><figure><video controls playsinline preload="none" width="1264" height="720" poster="../assets/showcase/images/myth-fuxi.webp" aria-label="伏羲十五秒动态短片"><source src="../assets/showcase/motion/myth-fuxi.mp4" type="video/mp4">浏览器无法播放时，可<a href="../assets/showcase/motion/myth-fuxi.mp4">打开伏羲短片</a>。</video><figcaption><span>伏羲 · 动态作品 · 15 秒</span><a class="text-link" href="../assets/showcase/images/myth-fuxi.webp">查看海报原作 ↗</a></figcaption></figure></section>'
+    language='<section class="myth-chapter"><div class="gallery-interlude"><h2>让想法，<br>留下可以看见的痕迹。</h2><p>仓颉把文字刻进山崖，马良让山水走出画面。一个留下符号，一个让想象成真。</p></div><div class="myth-pair">'+art('cangjie','仓颉 · 文字','仓颉在岩壁上书写发光的文字，鹤群从云层飞过','笔尖、石壁与天空里的字迹，让书写有了尺度。')+art('maliang','神笔马良 · 绘画','马良面向岩壁，水墨山水逐渐变成真实的瀑布与飞鹤','墨迹与真实山水在画面中相接。')+'</div></section>'
+    thunder='<section class="myth-chapter">'+art('thunder','雷公电母 · 声光','雷公击鼓，电母举镜，雷电穿过翻涌的云层','鼓点、镜光与雷电，把整片天空变成声光的舞台。')+'</section>'
+    living='<section class="myth-chapter"><div class="gallery-interlude"><h2>从一株幼苗，<br>到一根丝线。</h2><p>有些创造发生在宏大的天地间，也有些就藏在手中。神农与嫘祖，让这组画面慢下来，靠近植物、材料和触感。</p></div><div class="myth-pair">'+art('shennong','神农 · 草木','神农双手托起泥土与幼苗，夕阳照亮山谷','手中的幼苗，是整个画面的重心。')+art('leizu','嫘祖 · 织物','嫘祖从蚕茧中牵出丝线，阳光穿过桑树','一根丝线，把手的动作和远处的光连在一起。')+'</div></section>'
+    space='<section class="myth-chapter"><div class="gallery-interlude"><h2>让材料成形，<br>也为创造留出空间。</h2><p>从鲁班手中的木构，到盘古撑开的天地，尺度越来越大，创造的动作始终清楚。</p></div><div class="myth-pair">'+art('luban','鲁班 · 营造','鲁班在巨大的木构建筑中装配梁柱，阳光穿过屋架','手边的榫卯与远处的屋架，共同交代营造的过程。')+art('pangu','盘古 · 空间','盘古伸手撑开黑暗的天幕，下方山河向远处展开','撑起的天幕与铺开的山河，让力量有了参照。')+'</div></section>'
+    return '<div class="myth-gallery">'+lead+reading+film+language+thunder+living+space+'</div><div class="actions">'+button('visual-creation.html','返回视觉创作')+button('minimal-figures.html','也看看极简人物','text-link')+'</div>'
 
 def minimal_content():
     def art(name,alt,caption,eager=False):
@@ -111,8 +131,8 @@ def sports_content():
     return report+reading+SPORTS_FLOW+progress+section('目前的进展','<p>项目正在开发和内测中，目前没有公开下载入口。</p>','boundaries')
 
 def project(slug):
-    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content,'minimal-figures':minimal_content}[slug]()
-    parent='visual-creation.html' if slug in ['qg','fantasy-creatures','minimal-figures'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures','minimal-figures'] else '作品'
+    d=DATA[slug];content={'act-demo':act_content,'isavemoney':money_content,'visual-creation':visual_content,'qg':qg_content,'sportsperformance':sports_content,'fantasy-creatures':fantasy_content,'minimal-figures':minimal_content,'myth-creators':myth_content}[slug]()
+    parent='visual-creation.html' if slug in ['qg','fantasy-creatures','minimal-figures','myth-creators'] else '../works.html';parentlabel='视觉创作' if slug in ['qg','fantasy-creatures','minimal-figures','myth-creators'] else '作品'
     if slug in ['act-demo','isavemoney']:
         links=(button('#mechanics','看剑盾机制','text-link')+button('#journey','我完成的部分','text-link')) if slug=='act-demo' else button(d['cta_url'],d['cta_label'])
         body=f'<main id="main" class="wrap compact-case"><header class="art-intro case-intro"><div class="breadcrumb"><a href="../works.html">作品</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p>{e(d["intro"])}</p><div class="case-actions">{links}</div></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
@@ -122,9 +142,10 @@ def project(slug):
     if slug=='sportsperformance':
         body=f'<main id="main" class="wrap football-page"><header class="art-intro football-intro"><div class="breadcrumb"><a href="../works.html">作品</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["title"])}</h1><p class="football-deck">在场上专心踢球，结束后再看表现。</p><p>{e(d["intro"])}</p></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
         return shell(d['title'],d['summary'],body,'../',social='assets/showcase/images/football-match-report.png')
-    if slug in ['visual-creation','fantasy-creatures','qg','minimal-figures']:
+    if slug in ['visual-creation','fantasy-creatures','qg','minimal-figures','myth-creators']:
         body=f'<main id="main" class="wrap art-page"><header class="art-intro"><div class="breadcrumb"><a href="{parent}">{parentlabel}</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p>{e(d["intro"])}</p></header>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
         social=BOOTS+'Amazon samba.jpg' if slug=='qg' else 'assets/showcase/images/minimal-dance.jpg' if slug=='minimal-figures' else 'assets/showcase/images/fantasy-orchid-birds.jpg'
+        if slug=='myth-creators': social='assets/showcase/images/myth-fuxi.webp'
         return shell(d['title'],d['summary'],body,'../',social=social)
     body=f'<main id="main" class="wrap"><section class="project-hero"><div class="breadcrumb"><a href="{parent}">{parentlabel}</a> / {e(d["title"])}</div><span class="eyebrow">{e(d["type"])} · {e(d["status"])}</span><h1>{e(d["headline"]).replace(chr(10),"<br>")}</h1><p class="intro">{e(d["intro"])}</p><p class="contribution">{"我正在做的：" if slug=="sportsperformance" else "我完成的部分："}{e(d["contribution"])}</p><div class="actions">{button(d["cta_url"],d["cta_label"])}</div></section>{content}<div class="backline">{button("../works.html","浏览其他作品","text-link")}{button("../reading.html","读一些文章","text-link")}</div></main>'
     if slug=='act-demo': body += '<script src="../assets/showcase/motion.js" defer></script>'
