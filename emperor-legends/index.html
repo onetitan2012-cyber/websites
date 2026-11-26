@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121c19">
+  <meta name="description" content="史书留白处，有你这一手。从邯郸旧院到咸阳议号，走进《帝王传说·始皇篇》。">
+  <title>帝王传说 · 始皇篇</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="feature.css">
+</head>
+<body>
+  <header class="mast">
+    <div class="brand-line">
+      <a class="wordmark" href="#opening"><span class="seal" aria-hidden="true">帝</span>帝王传说</a>
+      <p class="tagline">史书留白处，有你这一手。</p>
+    </div>
+    <nav aria-label="本页导航"><a href="#shelter">实机片段</a><a href="https://www.ponghood.com/emperor-legends/0.27.0/">进入试玩</a></nav>
+  </header>
+  <main>
+    <section class="hero" id="opening" aria-labelledby="feature-title">
+      <div class="night" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <p class="dateline">公元前 259 年 <span>／</span> 赵国 · 邯郸</p>
+        <h1 id="feature-title">始皇篇</h1>
+        <p class="lead">你第一次见到政时，<br>他还住在邯郸。</p>
+        <a class="start" href="https://www.ponghood.com/emperor-legends/0.27.0/">从邯郸开始</a>
+      </div>
+      <button class="lamp-control" type="button" hidden>暂停灯影</button>
+    </section>
+    <section class="shelter section" id="shelter" aria-labelledby="shelter-title">
+      <div class="section-intro"><div><p class="kicker">第一章 <span>／</span> 邯郸孤子</p><h2 id="shelter-title">灯下藏身</h2></div>
+        <p>巷里有人经过，窗缝还透着光。<br>看棋盘上这两手，再看门口的木箱和窗下的灯。</p></div>
+      <figure class="film">
+        <video controls playsinline preload="metadata" aria-label="灯下藏身，无声游戏实录" aria-describedby="clip-caption">
+          <source media="(max-width: 620px)" src="feature-media/shelter-phone.mp4" type="video/mp4">
+          <source src="feature-media/shelter-wide.mp4" type="video/mp4">
+          <a href="feature-media/shelter-wide.mp4">打开「灯下藏身」实机片段</a>
+        </video>
+        <figcaption id="clip-caption"><span>0.27.0 <b>·</b> 无声实机</span><span>木箱移开，门扇有了合拢的余地。再消一组，窗缝也暗了。</span></figcaption>
+      </figure>
+    </section>
+    <section class="paper" aria-labelledby="pottery-title"><div class="section pottery">
+      <div class="plate"><img src="feature-media/pottery.jpg" width="1018" height="326" loading="lazy" alt="邯郸陶坊门前，政和丹隔着三颗石子站着，冉伯在旁晒陶坯。"></div>
+      <div><p class="kicker">数年后 <span>／</span> 邯郸陶坊</p><h2 id="pottery-title">门前的三颗石子</h2>
+        <p>政遇到一个也常来陶坊的孩子。两个孩子蹲下去捡石子时，还没有人叫他们秦王和太子。</p>
+        <a class="text-link" href="https://www.ponghood.com/emperor-legends/0.27.0/?preview=stones">去陶坊见见他们</a></div>
+    </div></section>
+    <section class="afterword section" aria-labelledby="story-title">
+      <h2 id="story-title">关于帝王传说</h2>
+      <div>
+        <p>沿着史实，从邯郸走到咸阳。路上，你会为藏身的母子掩住灯光，也会替年少的政选一句见到父亲时说的话。</p>
+      </div>
+    </section>
+  </main>
+  <footer><span>帝王传说 · 始皇篇</span><a href="https://www.ponghood.com/emperor-legends/0.27.0/">试玩 0.27.0</a></footer>
+  <script>
+    const hero = document.querySelector('.hero');
+    const lamp = document.querySelector('.lamp-control');
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    function showLamp(on) {
+      hero.classList.toggle('lit', on);
+      lamp.textContent = on ? '暂停灯影' : '播放灯影';
+    }
+    lamp.hidden = false;
+    showLamp(!motion.matches);
+    motion.addEventListener('change', () => showLamp(!motion.matches));
+    lamp.addEventListener('click', () => showLamp(!hero.classList.contains('lit')));
+    const film = document.querySelector('video');
+    film.poster = 'feature-media/shelter-' + (matchMedia('(max-width: 620px)').matches ? 'phone' : 'wide') + '.jpg';
+  </script>
+</body>
+</html>
