@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#111817">
+  <meta name="description" content="《帝王传说·始皇篇》完整试玩，从邯郸新生到咸阳议号，用三消推动剧情，在传说卷回看旅程。">
+  <meta property="og:title" content="帝王传说 · 始皇篇">
+  <meta property="og:description" content="从邯郸到咸阳的历史剧情与三消游戏。十二章与终章，每章结算可续玩。">
+  <title>邯郸孤子 · 帝王传说</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="friend-expansion.css">
+  <link rel="stylesheet" href="layout-compare.css?v=mobile-reading1">
+  <link rel="stylesheet" href="reading-header.css?v=bronze1">
+  <script type="module">
+    if (location.protocol !== 'file:') {
+      try {
+        await import('./game.mjs?v=mobile-reading1');
+      } catch (error) {
+        console.error(error);
+        document.getElementById('game-shell').hidden = true;
+        document.getElementById('launch-failure').hidden = false;
+      }
+    }
+  </script>
+</head>
+<body data-phase="opening">
+  <div class="shell" id="game-shell">
+    <header class="masthead">
+      <div class="brand"><span class="seal" aria-hidden="true">帝</span><span>帝王传说</span><span class="edition">始皇篇</span></div>
+      <nav class="tools" aria-label="试玩工具">
+        <button id="sound" class="text-button" type="button" aria-pressed="false">声音：关</button>
+        <button id="history" class="text-button" type="button">史实与演绎</button>
+      </nav>
+    </header>
+
+    <main>
+      <div class="checkpoint-bar" id="checkpoint-bar" hidden>
+        <p id="checkpoint-status" role="status"></p>
+        <button id="restart-campaign" class="text-button" type="button" hidden>从头开始</button>
+      </div>
+      <div class="chapter">
+        <div>
+          <p class="overline"><b id="chapter-number">第一章</b> <span></span> 试玩 0.27.0</p>
+          <h1 id="chapter-name">邯郸孤子</h1>
+        </div>
+        <div class="date"><b id="chapter-region">赵国 · 邯郸</b><br><span id="chapter-date">公元前 259 年</span></div>
+      </div>
+
+      <div class="layout">
+        <section class="setting" aria-label="剧情场景">
+          <div class="scene" id="scene">
+            <canvas aria-label="邯郸旧院三维场景" role="img"></canvas>
+            <div class="scene-fallback" aria-hidden="true"><i class="fallback-door"></i><i class="fallback-crate"></i><i class="fallback-window"></i><i class="fallback-lamp"></i><i class="fallback-patrol"></i><i class="fallback-lane-people"></i><i class="fallback-rear-door"></i></div>
+            <div class="vignette"></div>
+            <div class="scene-focus" id="scene-focus" aria-hidden="true" hidden></div>
+            <button type="button" id="jade-target" aria-label="移开青玉" hidden></button>
+            <button type="button" id="proposal-roll" aria-label="展简" hidden></button>
+            <div class="scene-heading"><span></span><p id="place">邯郸 · 原居所</p></div>
+            <div class="scene-caption">
+              <p id="scene-note">入夜，街口尚有脚步声。</p>
+              <ol class="progress" aria-label="藏身准备" id="scene-progress" hidden>
+                <li data-count="3"><b>3</b> 挪箱</li>
+                <li data-count="6"><b>6</b> 遮灯</li>
+                <li data-count="8"><b>8</b> 扣门</li>
+              </ol>
+            </div>
+          </div>
+          <p id="desk-caption"></p>
+          <div class="route-strip" aria-label="剧情进度"><span data-act="birth" aria-current="step">新生</span><i></i><span data-act="escape">西去之人</span><i></i><span data-act="shelter">灯下藏身</span><i></i><span data-act="friends">城中岁月</span><i></i><span data-act="lane">穿过巷口</span><i></i><span data-act="west">往西去</span></div>
+        </section>
+
+        <section class="panel" aria-labelledby="panel-title">
+          <div class="panel-head">
+            <p id="panel-kicker" class="overline">剧情</p>
+            <h2 id="panel-title">西去之人</h2>
+          </div>
+          <div id="desk-slips" hidden aria-label="案上简文" role="group">
+            <div><small>上书末署</small><b>臣　李斯</b></div>
+            <div><small>待遣名籍</small><b id="roster-line"></b></div>
+          </div>
+          <div id="content"></div>
+          <div id="play" hidden>
+            <div class="stats">
+              <div class="stat"><span class="chip shade" aria-hidden="true"></span><span id="target-name">遮蔽棋子</span><strong id="target">0 / 8</strong></div>
+              <div class="stat moves"><span>剩余步数</span><strong id="moves">12</strong></div>
+            </div>
+            <p id="instructions"><strong></strong><span></span></p>
+            <div id="flood-witness" role="status" aria-atomic="true" hidden><strong></strong><span></span></div>
+            <fieldset id="hall-order" hidden>
+              <legend>灯亮了，下一手先帮谁？</legend>
+              <div><button type="button" data-order="lead" aria-pressed="false"></button><button type="button" data-order="share" aria-pressed="false"></button></div>
+            </fieldset>
+            <div id="trial-tools" hidden>
+              <p id="trial-next"></p>
+              <div id="charges" aria-label="可发动的符牌"></div>
+            </div>
+            <div id="board" role="group" aria-label="七乘七三消棋盘" aria-describedby="instructions"></div>
+            <div class="play-footer">
+              <p id="feedback" role="status" aria-live="polite"></p>
+              <button id="hint" type="button" class="text-button">提示</button>
+            </div>
+          </div>
+          <button id="log" type="button" class="text-button log">回看对白</button>
+        </section>
+      </div>
+      <p id="save-notice" role="status" hidden></p>
+    </main>
+
+    <footer><span>《帝王传说·始皇篇》</span><nav aria-label="场景试玩"><a href="?preview=stones">试玩三颗石子</a><a href="?preview=rear">试玩陶坊后院</a><a href="?preview=side">试玩熟悉侧巷</a><a href="?preview=tactics">符牌试验</a><a href="?preview=qin">试玩西归秦关</a><a href="?preview=king">门外等令的人 · 串联试玩</a><a href="?preview=crown">冠礼之后 · 串联试玩</a><a href="?preview=petition">案上的两处名字 · 串联试玩</a><a href="?preview=handover">试玩第一国</a><a href="?preview=return">试玩邯郸旧梦</a><a href="?preview=hall">试玩两廊接应</a><a href="?preview=zhao-story">陶摊至渡亭 · 退回的信</a><a href="?preview=friend-story">陶坊至秦廷 · 深化样章</a><a href="?preview=friend">试玩故人之刃</a><a href="?preview=flood">大梁街口至楚营 · 串联试玩</a><a href="?preview=letters">咸阳至临淄 · 等下一封</a><a href="?preview=canal">韩国水工 · 水到哪一畦</a><a href="?preview=chu">楚线 · 等车的人</a><a href="?preview=yan">试玩燕代余烬</a><a href="?preview=qi">临淄至咸阳 · 串联试玩</a><a href="?preview=emperor">试玩咸阳议号</a></nav></footer>
+  </div>
+
+  <div class="shell" id="local-launch" hidden>
+    <header class="masthead">
+      <div class="brand"><span class="seal" aria-hidden="true">帝</span><span>帝王传说</span><span class="edition">始皇篇</span></div>
+    </header>
+    <main class="panel">
+      <h1>打开线上试玩</h1>
+      <p class="body-text">请连接网络，从下方入口开始试玩。</p>
+      <div class="actions"><a id="local-play" class="action-button primary preview-link" href="https://www.ponghood.com/emperor-legends/0.27.0/">进入 0.27.0 试玩</a></div>
+    </main>
+  </div>
+
+  <main class="shell panel" id="launch-failure" hidden>
+    <h1>试玩未能载入</h1>
+    <p class="body-text">请刷新页面后重试。若仍打不开，请从收到的试玩链接重新进入。</p>
+  </main>
+
+  <dialog id="notes" aria-labelledby="notes-title">
+    <form method="dialog"><button class="text-button dismiss" value="close">关闭</button></form>
+    <h2 id="notes-title"></h2>
+    <div id="notes-body"></div>
+  </dialog>
+  <noscript>请启用 JavaScript 后开始试玩。</noscript>
+  <script>
+    if (location.protocol === 'file:') {
+      const localPlay = document.getElementById('local-play');
+      localPlay.href += location.search + location.hash;
+      document.getElementById('game-shell').hidden = true;
+      document.getElementById('local-launch').hidden = false;
+    }
+  </script>
+</body>
+</html>

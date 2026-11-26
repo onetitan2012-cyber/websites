@@ -1,0 +1,208 @@
+.comparison-bar {display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px 12px;padding:5px 0;border-bottom:1px solid var(--line)}
+.comparison-bar nav,.comparison-bar [role=group] {display:flex;align-items:center;gap:2px}
+.comparison-bar a,.comparison-bar button {display:grid;place-content:center;min-height:40px;padding:2px 10px;color:var(--secondary);font-size:.86rem;text-decoration:none;white-space:nowrap}
+.comparison-bar a[aria-current] {color:#f4d19e;box-shadow:inset 0 -2px #b59869}
+.comparison-bar button {background:transparent;border:1px solid transparent;border-radius:5px}
+.comparison-bar button[aria-pressed=true] {color:var(--ink);background:#34483d;border-color:#697b65}
+.speaker-portrait {display:none}
+
+body[data-layout=new] .shell {max-width:1180px}
+body[data-layout=new] .masthead {min-height:44px}
+body[data-layout=new] .chapter {align-items:center;margin:9px 0}
+body[data-layout=new] .chapter>div:first-child {display:flex;align-items:center;gap:10px}
+body[data-layout=new] .chapter h1 {font-size:1.5rem;margin:0;letter-spacing:.04em}
+body[data-layout=new] .chapter .overline {display:block;font-size:0;letter-spacing:normal}
+body[data-layout=new] .chapter .overline b {font-size:.82rem;font-weight:500}
+body[data-layout=new] .chapter .overline span,
+body[data-layout=new] .date b,body[data-layout=new] .date br,
+body[data-layout=new] .route-strip,body[data-layout=new] footer {display:none}
+body[data-layout=new] .setting {position:static;align-self:stretch}
+body[data-layout=new] .scene-heading {top:10px;left:12px}
+body[data-layout=new] #scene:is([data-world=petition],[data-world=emperor]) + #desk-caption {display:none}
+body[data-layout=new] .scene[data-world="emperor"] .scene-caption {display:block}
+body[data-layout=new] .scene-caption {inset:auto 15px 10px;font-size:.88rem}
+body[data-layout=new]:not([data-phase=game]) .layout {display:block;overflow:hidden;padding:12px;border:1px solid #74877525;border-radius:21px;background:linear-gradient(135deg,#242f29,#161e1b 78%)}
+body[data-layout=new]:not([data-phase=game]) .scene {border:0;border-radius:14px;height:clamp(300px,53svh,610px)}
+body[data-layout=new]:not([data-phase=game]) .panel {display:block;padding:14px clamp(14px,3vw,36px) 8px;border:0;border-radius:0;min-height:0;background:transparent}
+body[data-layout=new]:not([data-phase=game]):not([data-phase=complete]):not([data-phase=lost]):not([data-phase=choice]) .panel:has(#content > .dialogue,.decree-reading) .panel-head {display:none}
+body[data-layout=new]:not([data-phase=complete]) #content {display:block}
+body[data-layout=new] .dialogue {min-width:0}
+.reading-pending {visibility:hidden}
+body[data-layout=new] .dialogue:has(.speaker-portrait) {display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:14px;align-content:center}
+body[data-layout=new] .speaker-portrait {display:block;width:70px;height:82px;object-fit:contain;grid-row:1 / span 3;align-self:center;background:radial-gradient(ellipse at 50% 65%,#5f6550,#26362e 83%);border-radius:8px;border-bottom:1px solid #927c512b}
+body[data-layout=new] .dialogue .line {margin:4px 0;max-width:37em;font-size:clamp(1.15rem,1.8vw,1.5rem);line-height:1.48}
+body[data-layout=new] .dialogue .action {margin:0}
+body[data-layout=new] #content .actions {margin:10px 0 0;align-items:center;justify-content:flex-start}
+body[data-layout=new] .body-text,body[data-layout=new] .decree-reading {margin:0}
+body[data-layout=new][data-phase=complete] .panel-head {margin-bottom:10px}
+body[data-layout=new][data-phase=complete] #content .actions {margin-top:12px}
+
+body[data-layout=new][data-phase=game] .layout {gap:0;align-items:stretch;overflow:hidden;border:1px solid var(--line);border-radius:10px}
+body[data-layout=new][data-phase=game] .scene {height:100%;min-height:300px;border:0;border-radius:0}
+body[data-layout=new][data-phase=game] .panel {border:0;border-radius:0;min-height:0;padding:12px}
+body[data-layout=new][data-phase=game] .panel-head {margin:0 0 6px}
+body[data-layout=new][data-phase=game] .panel-head h2 {font-size:1.15rem}
+body[data-layout=new][data-phase=game] .panel-head .overline {display:none}
+body[data-layout=new][data-phase=game] #play {width:100%;max-width:430px;margin:0 auto}
+
+@media(max-width:820px) {
+  body[data-layout=new] .shell {width:min(calc(100% - 16px),620px)}
+  .comparison-bar a,.comparison-bar button {padding-inline:7px;min-height:36px}
+  body[data-layout=new] .chapter h1 {font-size:1.1rem}
+  body[data-layout=new]:not([data-phase=game]) .scene {height:clamp(245px,47svh,510px)}
+  body[data-layout=new]:not([data-phase=game]) .panel {padding:11px 12px 5px}
+  body[data-layout=new]:not([data-phase=complete]) #content {display:block}
+  body[data-layout=new] .speaker-portrait {width:49px;height:60px}
+  body[data-layout=new] .dialogue:has(.speaker-portrait) {column-gap:11px}
+  body[data-layout=new] #content .actions {margin-top:9px;flex-direction:row-reverse;justify-content:flex-start}
+  body[data-layout=new] #content .actions .primary {min-width:80px}
+  body[data-layout=new] .scene[data-world="emperor"] #scene-note {display:block}
+  body[data-layout=new][data-phase=game] .scene {height:clamp(128px,24svh,230px);min-height:0}
+  body[data-layout=new][data-phase=game] .scene-caption {inset:auto 8px 5px;font-size:.78rem}
+  body[data-layout=new][data-phase=game] .panel {padding:6px 8px 2px}
+  body[data-layout=new][data-phase=game] .panel-head {display:none}
+  body[data-layout=new][data-phase=game] #instructions {margin:3px 0}
+  body[data-layout=new][data-phase=game] #board {width:min(100%,max(274px,calc(74svh - 195px)));margin-inline:auto}
+  body[data-layout=new][data-phase=game] .stat {padding-block:3px}
+  body[data-layout=new][data-phase=game] .progress {gap:4px}
+  body[data-layout=new][data-phase=game] #feedback {font-size:.8rem}
+}
+
+@media (min-width:350px) and (max-width:820px) {
+  body[data-layout=new]:not([data-phase=complete]):not([data-phase=lost]) .panel:has(.dialogue + .actions) {
+    position:relative;
+    padding-bottom:10px;
+  }
+}
+@media (max-width:820px) and (max-height:690px) {
+  body[data-layout=new][data-phase=game] .scene {height:clamp(98px,18svh,124px)}
+}
+
+.reading-accessible {position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+body[data-reading]:not([data-reading=controls]) #content .actions,
+body[data-reading] #proposal-roll, body:is([data-reading=lead],[data-reading=speaker],[data-reading=text]) .dialogue .action,
+body[data-reading=lead] #content :is(.speaker,.speaker-portrait) {visibility:hidden}
+body[data-reading] #content {cursor:pointer}
+body[data-reading] .panel {position:relative}
+/* Reduced motion keeps the order and pauses, with no vertical travel. */
+@media (prefers-reduced-motion:reduce) {
+  :root {--reading-rise:0px}
+}
+@keyframes reading-in {
+  from {opacity:0;visibility:hidden;transform:translateY(var(--reading-rise,3px))}
+  to {opacity:1;visibility:visible;transform:translateY(0)}
+}
+#title-screen[open] .title-cycle {animation:reading-in .48s ease-out .18s backwards}
+#title-screen[open] h1 {animation:reading-in .65s ease-out .38s backwards}
+#title-screen[open] .title-place {animation:reading-in .5s ease-out .76s backwards}
+#title-screen[open] form {animation:reading-in .36s ease-out 1.06s backwards}
+:is(#journey-sheet,#notes)[open] h2 {animation:reading-in .32s ease-out backwards}
+#journey-sheet[open] .nearby-chapters,#notes[open] #notes-body {animation:reading-in .4s ease-out .16s backwards}
+body[data-layout=new] #play:not([hidden]) :is(.stats,#instructions) {animation:reading-in .24s ease-out backwards}
+body:is([data-reading=after],[data-reading=controls]) #content .action {animation:reading-in .46s ease-out backwards}
+body[data-reading=controls] #content .actions {animation:reading-in .3s ease-out backwards}
+body[data-layout=new]:not([data-phase=game]) #content [data-reading-block] {
+  animation:reading-in .48s ease-out var(--reading-onset) backwards
+}
+body[data-layout=new] #content .choices .choice {
+  animation:reading-in .32s ease-out var(--decision-onset,.76s) backwards
+}
+body[data-layout=new] #content .choices .choice:nth-child(2) {animation-delay:calc(var(--decision-onset,.76s) + .17s)}
+body[data-layout=new] #content .choices .choice:nth-child(n+3) {animation-delay:calc(var(--decision-onset,.76s) + .34s)}
+body[data-layout=new]:not([data-reading]):not([data-phase=game]) #content:not(:has(.dialogue,.decree-reading,[data-paced])) > .actions {
+  animation:reading-in .34s ease-out var(--decision-onset,.62s) backwards
+}
+
+body[data-layout=new] .comparison-bar {border-color:#839a8626}
+body[data-layout=new] .comparison-bar a,body[data-layout=new] .comparison-bar button {font-size:.78rem}
+body[data-layout=new] .scene-heading {border:0;border-radius:20px;background:#17211dd9}
+body[data-layout=new] .action-button,body[data-layout=new] .choice {
+  border-radius:24px;font-size:.88rem;font-weight:500;line-height:1.25;
+  padding:5px 16px;min-height:34px;border-color:#81938345;background:#26362e;color:#eee7d7
+}
+body[data-layout=new] .primary {background:#35463b;border-color:#a2936b75}
+body[data-layout=new] :is(.action-button,.choice):hover {background:#405044}
+body[data-layout=new] .layout:has(.scene:is([data-story-beat=signed],[data-story-beat=closed])) .primary {
+  background:#ddbe8c;color:#28251e
+}
+body[data-layout=new] .choices {max-width:29rem;gap:8px;margin-block:12px}
+body[data-layout=new] .choice {position:relative;padding-inline-start:29px;text-align:start}
+body[data-layout=new] .choice:focus {outline:2px solid #e5c692;outline-offset:2px}
+body[data-layout=new] .choice:focus::before {content:'›';position:absolute;left:13px;color:#e5c692}
+body[data-layout=new] .legend-chapter {letter-spacing:.08em;color:#ddca9d}
+body[data-layout=new][data-phase=complete] .panel-head .overline {
+  border-inline-start:3px solid #a15d49;padding-inline-start:9px
+}
+@media(min-width:821px) {
+  body[data-layout=new] .panel:has(.speaker-portrait) #content .actions {margin:0 0 0 84px}
+}
+@media(max-width:820px) {
+  body[data-layout=new]:not([data-phase=game]) .layout {padding:6px;border-radius:16px}
+  body[data-layout=new]:not([data-phase=game]) .scene {border-radius:11px}
+  body[data-layout=new] .action-button,body[data-layout=new] .choice {min-height:44px}
+  body[data-layout=new] .action-button {
+    appearance:none;-webkit-appearance:none;
+    border:4px solid transparent;border-radius:999px;background-clip:padding-box;padding:4px 12px
+  }
+  .comparison-bar {gap:2px}
+  .comparison-bar a,.comparison-bar button {padding-inline:5px}
+}
+
+/* Keep room for a second spoken line without stretching the reading card. */
+@media (max-width:820px) and (orientation:portrait) {
+  body[data-layout=new] main {
+    padding-bottom:max(16px,env(safe-area-inset-bottom))
+  }
+  body[data-layout=new]:not([data-phase=game]):not([data-phase=folio]) .scene {
+    height:clamp(200px,min(102vw,50svh),460px)
+  }
+  body[data-layout=new] #content > .dialogue:has(+ .actions) {
+    min-block-size:7rem;align-content:start
+  }
+}
+@media (max-width:350px) and (max-height:630px) and (orientation:portrait) {
+  body[data-layout=new]:not([data-phase=game]):not([data-phase=folio]) .scene {
+    height:min(62vw,40svh)
+  }
+}
+body[data-layout=new][data-touch-reading] #content :is(.action-button,.choice):focus {outline:none}
+body[data-layout=new][data-touch-reading] #content .choice:focus::before {content:none}
+@media (hover:none) {
+  body[data-layout=new] .action-button:is(:hover,:active),
+  body[data-layout=new] .choice:is(:hover,:active) {
+    background-color:#26362e;border-color:#81938345
+  }
+  body[data-layout=new] .action-button.primary:is(:hover,:active) {background-color:#35463b}
+  body[data-layout=new] .choice:focus:not(:focus-visible) {outline:none}
+  body[data-layout=new] .choice:focus:not(:focus-visible)::before {content:none}
+}
+@media (max-width:820px) {
+  body[data-layout=new] .action-button:is(:hover,:active) {border-color:transparent;background-clip:padding-box}
+}
+
+body[data-layout=new] #scene[data-world=petition] .scene-caption {display:block}
+body[data-layout=new][data-phase=choice] .panel-head {margin:0 0 10px}
+body[data-layout=new][data-phase=choice] .panel-head h2 {font-size:1.35rem}
+body[data-layout=new] #panel-title:focus {outline:none}
+@media(min-width:821px) and (max-height:720px) {
+  body[data-layout=new][data-phase=choice] .scene {height:clamp(235px,43svh,308px)}
+}
+
+body[data-layout=new] .layout:has([data-story-beat=legend]) #panel-kicker::before {
+  content:'';width:17px;height:19px;display:inline-block;border:1px solid #a96951;
+  background:linear-gradient(0deg,transparent 27%,#af715b 27% 33%,transparent 33% 65%,#af715b 65% 71%,transparent 71%),
+    repeating-linear-gradient(90deg,transparent 0 3px,#9a614e 3px 4px);
+  box-shadow:inset 0 0 0 2px #222d26
+}
+@media(min-width:821px) and (pointer:fine) {
+  body[data-layout=new] #content .actions .primary::after {
+    content:' ↵' / '';font-size:.76em;font-weight:400;opacity:.68
+  }
+}
+
+/* The rubbing puzzle needs the same thumb space as the main board. */
+@media(max-width:820px) {
+  body[data-layout=new][data-phase=folio] .scene {height:clamp(108px,21svh,185px)}
+  body[data-layout=new][data-phase=folio] .folio-grid {width:min(100%,max(265px,calc(75svh - 180px)));margin-inline:auto}
+}
+body[data-reading] #scene :is(#jade-target,.friend-hotspot) {visibility:hidden}

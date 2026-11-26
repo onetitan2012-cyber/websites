@@ -1,0 +1,71 @@
+#game-shell.reading-shell > .masthead,.reading-shell footer,.reading-shell .route-strip {display:none}
+#game-shell.reading-shell .chapter {
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  grid-template-rows:auto auto;align-content:center;align-items:baseline;
+  gap:3px 8px;min-height:66px;margin:0;padding:8px 0
+}
+#game-shell.reading-shell .chapter>div:first-child {display:contents}
+#game-shell.reading-shell .chapter h1 {grid-area:1/1/2/3;margin:0;font:600 clamp(1.18rem,2vw,1.56rem)/1.18 var(--serif);letter-spacing:.05em}
+/* A shallow stepped foot, like the base of the courtyard lamp. */
+body[data-layout=new][data-chapter=one]:has(#scene[data-world=pottery]):not(:has(#pottery-engraving:not(:checked))) .reading-shell #chapter-name::after {
+  content:'';display:inline-block;width:24px;height:6px;margin-inline-start:8px;
+  vertical-align:.22em;pointer-events:none;background:#826d50;
+  clip-path:polygon(0 80%,24% 80%,34% 40%,42% 40%,47% 10%,55% 10%,60% 40%,68% 40%,78% 80%,100% 80%,
+    100% 100%,75% 100%,65% 60%,57% 60%,52% 30%,49% 30%,44% 60%,36% 60%,26% 100%,0 100%);
+}
+.pottery-comparison {display:flex;align-items:center;gap:8px;min-height:44px;color:var(--secondary);font-size:.85rem;cursor:pointer}
+.pottery-comparison input {accent-color:#8c795b}
+#game-shell.reading-shell .chapter .overline {grid-area:2/1;display:block;margin:0;color:#aaa996;font-size:0;letter-spacing:0}
+#game-shell.reading-shell .chapter .overline b {font:450 .75rem/1.3 system-ui;white-space:nowrap}
+#game-shell.reading-shell .chapter .overline span,.reading-shell .date :is(br,b) {display:none}
+#game-shell.reading-shell .chapter .date {grid-area:2/2;text-align:start;color:#c9b58f}
+#game-shell.reading-shell .date span {font:500 .8rem/1.35 var(--serif);color:inherit}
+.reading-shell .date::before {content:'·';padding-right:7px;color:#858575}
+.reading-shell .reading-actions {grid-area:1/3/3/4;align-self:center}
+#save-notice {margin:8px 4px;color:var(--secondary);font-size:.8rem}
+#journey-sheet .checkpoint-bar {margin:0 0 4px;padding:0;background:transparent;border:0;font-size:.82rem}
+.reading-actions {display:flex;align-items:center;gap:4px;white-space:nowrap}
+.reading-shell .reading-actions #log {align-self:center;margin:0;min-height:36px;padding:4px 8px;color:var(--secondary);font-size:.85rem}
+#journey-toggle {border:1px solid #7b907947;background:#223028;color:#dfd7c3;border-radius:18px;min-height:36px;padding:4px 13px;font-size:.85rem}
+#journey-sheet {width:min(430px,calc(100% - 28px));border:1px solid #70846f62;border-radius:16px;background:#1b2823}
+#journey-sheet h2 {font:500 1.6rem var(--serif);margin:0 0 18px}
+.nearby-chapters {padding:0 0 0 8px;list-style:none;margin:0 0 22px}
+.nearby-chapters li {position:relative;border-inline-start:1px solid #687461;padding:0 0 17px 18px}
+.nearby-chapters li::before {content:'';position:absolute;left:-3.5px;top:6px;width:6px;height:6px;background:#818975;border-radius:50%}
+.nearby-chapters li:last-child {padding-bottom:0;border-color:transparent}
+.nearby-chapters li[aria-current]::before {background:#deb77a}
+.nearby-chapters small,.nearby-chapters b {display:block}
+.nearby-chapters small {color:#c4ac83}.nearby-chapters b {font:600 1.12rem/1.5 var(--serif)}
+.nearby-chapters p {font-size:.88rem;color:#c5c4b6;margin:3px 0}
+.journey-options {border-top:1px solid #71816a40;padding-top:8px}
+.journey-options .tools {display:flex;justify-content:flex-start}
+.journey-options details {font-size:.84rem;padding:8px;color:var(--secondary)}
+.journey-options summary {cursor:pointer}
+.journey-options details nav {display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+#title-screen {container-type:size;overflow:hidden;inset:0;width:100%;max-width:none;height:100%;max-height:none;margin:0;padding:0;border:0;border-radius:0;color:#f1e7cc;background:#12201c url(handan-opening.jpg) center/cover no-repeat}
+#title-screen::before {z-index:1;pointer-events:none;content:'';position:absolute;inset:0;background:linear-gradient(90deg,#0c1818ed 0%,#0f1b19a6 31%,transparent 72%),linear-gradient(0deg,#101b17a6,transparent 55%)}
+.title-copy {z-index:2;position:absolute;left:clamp(24px,9vw,160px);bottom:clamp(44px,18vh,180px)}
+#title-screen .title-cycle {font:500 1rem/1.4 var(--serif);color:#e1bc82;margin:0 0 12px}
+#game-title {font:600 clamp(3.2rem,7vw,7rem)/1.18 var(--serif);letter-spacing:.1em;margin:0}
+#title-screen .title-place {color:#dfd4bb;letter-spacing:.10em;margin:20px 0 30px}
+.title-start {min-height:44px;border-radius:30px;border:1px solid #c4a87c;background:#d8b988;color:#222b23;padding:8px 25px}
+@media(max-width:650px) {
+  #game-shell.reading-shell .chapter {min-height:58px;column-gap:6px}
+  .reading-shell .reading-actions #log {min-height:44px;padding-inline:4px}
+  #journey-toggle {min-height:44px;background:transparent;border-color:transparent;padding-inline:6px}
+  #title-screen {background-size:auto 74%;background-position:51% top}
+  .title-copy {bottom:clamp(28px,7svh,80px)}
+  #title-screen::before {background:linear-gradient(0deg,#12201c 0% 27%,#12201cc2 37%,transparent 68%)}
+}
+
+/* This is a rendered loop of the same courtyard and camera as the static cover. */
+.title-lamplight {display:none;position:absolute;inset:0;pointer-events:none;
+  background-position:inherit;background-size:inherit;background-repeat:no-repeat}
+@media (prefers-reduced-motion:no-preference) {
+  .title-lamplight {display:block;background-image:url(handan-lamp-sway.webp?v=4)}
+}
+#title-screen[data-play-lamp] .title-lamplight {display:block;background-image:url(handan-lamp-sway.webp?v=4)}
+.lamp-play {display:none}
+@media (prefers-reduced-motion:reduce) {
+  .lamp-play {display:inline-block;margin-top:8px;min-height:40px;background:transparent;border:0;color:#e0ccb0;font-size:.85rem}
+}
