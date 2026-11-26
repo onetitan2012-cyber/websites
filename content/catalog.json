@@ -201,6 +201,12 @@
   ],
   "articles": [
     {
+      "url": "case-studies/last-boring-performance/",
+      "title": "当演示开始改写自己：The Last Boring Slide 的设计与性能研究",
+      "summary": "张谦 × Codex 联合研究：从 AI 互动演示的设计判断，到 M4 上的 CPU、内存与后台运行实测。",
+      "collection": "research"
+    },
+    {
       "url": "intel-2026-08-08.html",
       "title": "未来日报 · 2026-08-08",
       "summary": "",
@@ -1103,6 +1109,10 @@
     "intel": {
       "title": "未来日报",
       "summary": "按日期查阅过去整理的科技资讯。内容反映当时信息。"
+    },
+    "research": {
+      "title": "技术研究",
+      "summary": "拆开一个技术案例，看它如何实现、为什么有效，以及运行起来的真实成本。"
     }
   },
   "product_help": [
