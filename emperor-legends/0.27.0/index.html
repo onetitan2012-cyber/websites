@@ -14,10 +14,19 @@
   <link rel="stylesheet" href="friend-expansion.css">
   <link rel="stylesheet" href="layout-compare.css?v=mobile-reading1">
   <link rel="stylesheet" href="reading-header.css?v=bronze1">
+  <style>
+    #game-shell[inert] { opacity: 0; }
+    #launch-status { display: none; }
+    #game-shell[inert]:not([hidden]) + #launch-status {
+      display: grid; place-items: center; position: fixed; inset: 0; margin: 0;
+      background: #111817; color: #c8bea9;
+    }
+  </style>
+  <noscript><style>#game-shell, #launch-status { display: none !important; }</style></noscript>
   <script type="module">
     if (location.protocol !== 'file:') {
       try {
-        await import('./game.mjs?v=mobile-reading1');
+        await import('./game.mjs?v=launch-ready1');
       } catch (error) {
         console.error(error);
         document.getElementById('game-shell').hidden = true;
@@ -27,7 +36,7 @@
   </script>
 </head>
 <body data-phase="opening">
-  <div class="shell" id="game-shell">
+  <div class="shell" id="game-shell" inert>
     <header class="masthead">
       <div class="brand"><span class="seal" aria-hidden="true">帝</span><span>帝王传说</span><span class="edition">始皇篇</span></div>
       <nav class="tools" aria-label="试玩工具">
@@ -111,6 +120,8 @@
 
     <footer><span>《帝王传说·始皇篇》</span><nav aria-label="场景试玩"><a href="?preview=stones">试玩三颗石子</a><a href="?preview=rear">试玩陶坊后院</a><a href="?preview=side">试玩熟悉侧巷</a><a href="?preview=tactics">符牌试验</a><a href="?preview=qin">试玩西归秦关</a><a href="?preview=king">门外等令的人 · 串联试玩</a><a href="?preview=crown">冠礼之后 · 串联试玩</a><a href="?preview=petition">案上的两处名字 · 串联试玩</a><a href="?preview=handover">试玩第一国</a><a href="?preview=return">试玩邯郸旧梦</a><a href="?preview=hall">试玩两廊接应</a><a href="?preview=zhao-story">陶摊至渡亭 · 退回的信</a><a href="?preview=friend-story">陶坊至秦廷 · 深化样章</a><a href="?preview=friend">试玩故人之刃</a><a href="?preview=flood">大梁街口至楚营 · 串联试玩</a><a href="?preview=letters">咸阳至临淄 · 等下一封</a><a href="?preview=canal">韩国水工 · 水到哪一畦</a><a href="?preview=chu">楚线 · 等车的人</a><a href="?preview=yan">试玩燕代余烬</a><a href="?preview=qi">临淄至咸阳 · 串联试玩</a><a href="?preview=emperor">试玩咸阳议号</a></nav></footer>
   </div>
+
+  <p id="launch-status" role="status">正在载入始皇篇…</p>
 
   <div class="shell" id="local-launch" hidden>
     <header class="masthead">

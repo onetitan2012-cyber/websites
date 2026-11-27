@@ -3788,6 +3788,8 @@ if ((preview === null && !checkpointStore.initial && !checkpointStore.previous()
   document.title = '帝王传说 · 始皇篇';
   await openTitleScreen();
 }
+// The route renders synchronously below; release the shell now so its controls can take focus.
+$('game-shell').removeAttribute('inert');
 if (floodStore?.initial) {
   ({ result: floodResult, logs } = floodStore.initial.ninth);
   showFloodResult();
